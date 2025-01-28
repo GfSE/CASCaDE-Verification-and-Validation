@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<mdOwnedViews>
+	<mdElement elementClass='DiagramFrame' xmi:id='_19_0_3_e40094_1648484566274_117515_13454'>
+		<elementID xmi:idref='_19_0_3_e40094_1648484566187_980854_13433'/>
+		<geometry>5, 5, 723, 414</geometry>
+		<compartment compartmentID='TAGGED_VALUES'/>
+		<mdOwnedViews/>
+	</mdElement>
+	<mdElement elementClass='Package' xmi:id='_19_0_3_e40094_1648484750159_711880_13516'>
+		<elementID xmi:idref='_19_0_3_e40094_1648484750148_152421_13513'/>
+		<properties>
+			<mdElement elementClass='ColorProperty'>
+				<propertyID>FILL_COLOR</propertyID>
+				<propertyDescriptionID>FILL_COLOR_DESCRIPTION</propertyDescriptionID>
+				<value xmi:value='-3342337'/>
+			</mdElement>
+		</properties>
+		<geometry>42, 52, 574, 347</geometry>
+		<compartment compartmentID='TAGGED_VALUES'/>
+		<mdOwnedViews>
+			<mdElement elementClass='Stereotype' xmi:id='_19_0_3_e40094_1648484717936_325020_13490'>
+				<elementID xmi:idref='_19_0_3_e40094_1648484717927_952719_13484'/>
+				<properties>
+					<mdElement elementClass='ColorProperty'>
+						<propertyID>FILL_COLOR</propertyID>
+						<propertyDescriptionID>FILL_COLOR_DESCRIPTION</propertyDescriptionID>
+						<value xmi:value='-13159'/>
+					</mdElement>
+				</properties>
+				<geometry>266, 182, 80, 48</geometry>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<mdOwnedViews/>
+			</mdElement>
+			<mdElement elementClass='Stereotype' xmi:id='_19_0_3_e40094_1648485759687_118610_13617'>
+				<elementID xmi:idref='_19_0_3_e40094_1648485759681_489572_13611'/>
+				<properties>
+					<mdElement elementClass='ColorProperty'>
+						<propertyID>FILL_COLOR</propertyID>
+						<propertyDescriptionID>FILL_COLOR_DESCRIPTION</propertyDescriptionID>
+						<value xmi:value='-3355393'/>
+					</mdElement>
+				</properties>
+				<geometry>476, 315, 80, 48</geometry>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<mdOwnedViews/>
+			</mdElement>
+			<mdElement elementClass='Stereotype' xmi:id='_19_0_3_e40094_1648485834776_614911_13649'>
+				<elementID xmi:idref='_19_0_3_e40094_1648485834751_472983_13643'/>
+				<properties>
+					<mdElement elementClass='ColorProperty'>
+						<propertyID>FILL_COLOR</propertyID>
+						<propertyDescriptionID>FILL_COLOR_DESCRIPTION</propertyDescriptionID>
+						<value xmi:value='-3355393'/>
+					</mdElement>
+				</properties>
+				<geometry>266, 315, 80, 48</geometry>
+				<compartment compartmentID='TAGGED_VALUES'/>
+				<mdOwnedViews/>
+			</mdElement>
+			<mdElement elementClass='Note' xmi:id='_19_0_3_e40094_1697962196192_739805_14109'>
+				<elementID xmi:idref='_19_0_3_e40094_1648484717927_952719_13484'/>
+				<geometry>70, 189, 100, 40</geometry>
+				<compartment compartmentID='TAGGED_VALUES2'/>
+				<mdOwnedViews/>
+				<text>Functiion Layer</text>
+				<active xmi:idref='_19_0_3_e40094_1697962220976_326611_14121'/>
+			</mdElement>
+			<mdElement elementClass='NoteAnchor' xmi:id='_19_0_3_e40094_1697962220976_326611_14121'>
+				<linkFirstEndID xmi:idref='_19_0_3_e40094_1648484717936_325020_13490'/>
+				<linkSecondEndID xmi:idref='_19_0_3_e40094_1697962196192_739805_14109'/>
+				<geometry>266, 207; 170, 208; </geometry>
+			</mdElement>
+			<mdElement elementClass='Note' xmi:id='_19_0_3_e40094_1697962227911_958308_14122'>
+				<elementID xmi:idref='_19_0_3_e40094_1648485759681_489572_13611'/>
+				<geometry>70, 315, 100, 40</geometry>
+				<compartment compartmentID='TAGGED_VALUES2'/>
+				<mdOwnedViews/>
+				<text>Physical Layer</text>
+				<active xmi:idref='_19_0_3_e40094_1697962258688_701556_14136'/>
+			</mdElement>
+			<mdElement elementClass='NoteAnchor' xmi:id='_19_0_3_e40094_1697962258688_701556_14136'>
+				<linkFirstEndID xmi:idref='_19_0_3_e40094_1648485759687_118610_13617'/>
+				<linkSecondEndID xmi:idref='_19_0_3_e40094_1697962227911_958308_14122'/>
+				<geometry>476, 363; 445, 382; 193, 382; 151, 355; </geometry>
+			</mdElement>
+			<mdElement elementClass='NoteAnchor' xmi:id='_19_0_3_e40094_1697962399107_947210_14137'>
+				<linkFirstEndID xmi:idref='_19_0_3_e40094_1648485834776_614911_13649'/>
+				<linkSecondEndID xmi:idref='_19_0_3_e40094_1697962227911_958308_14122'/>
+				<geometry>266, 338; 170, 336; </geometry>
+			</mdElement>
+			<mdElement elementClass='Note' xmi:id='_19_0_3_e40094_1697962479973_284618_14138'>
+				<geometry>70, 252, 100, 40</geometry>
+				<compartment compartmentID='TAGGED_VALUES2'/>
+				<mdOwnedViews/>
+				<text>Logical Layer</text>
+			</mdElement>
+			<mdElement elementClass='Note' xmi:id='_19_0_3_e40094_1697962563440_337449_14150'>
+				<geometry>70, 105, 100, 59</geometry>
+				<compartment compartmentID='TAGGED_VALUES2'/>
+				<mdOwnedViews/>
+				<text>Requirements already in standard profile</text>
+			</mdElement>
+		</mdOwnedViews>
+	</mdElement>
+</mdOwnedViews>
