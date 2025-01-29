@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fmiModelDescription
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  fmiVersion="2.0"
+  modelName="stimuli_model"
+  guid="{d3415b22-9c2b-4494-80fe-ed2cfc34da92}"
+  description="Stimulus of e-drive example"
+  version="1.2.0"
+  generationTool="Dymola Version 2024x Refresh 1 Beta 1, 2024-03-01"
+  generationDateAndTime="2024-03-06T12:53:37Z"
+  variableNamingConvention="structured"
+  numberOfEventIndicators="0">
+  <ModelExchange
+    modelIdentifier="stimuli_model"
+    completedIntegratorStepNotNeeded="true"
+    canNotUseMemoryManagementFunctions="true"
+    canGetAndSetFMUstate="true"
+    canSerializeFMUstate="true"
+    providesDirectionalDerivative="true">
+    <SourceFiles>
+      <File
+        name="all.c"/>
+    </SourceFiles>
+  </ModelExchange>
+  <CoSimulation
+    modelIdentifier="stimuli_model"
+    canHandleVariableCommunicationStepSize="true"
+    canInterpolateInputs="true"
+    maxOutputDerivativeOrder="1"
+    canNotUseMemoryManagementFunctions="true"
+    canGetAndSetFMUstate="true"
+    canSerializeFMUstate="true"
+    providesDirectionalDerivative="true">
+    <SourceFiles>
+      <File
+        name="all.c"/>
+    </SourceFiles>
+  </CoSimulation>
+  <UnitDefinitions>
+    <Unit
+      name="N.m">
+      <BaseUnit kg="1"
+        m="2"
+        s="-2"/>
+    </Unit>
+    <Unit
+      name="V">
+      <BaseUnit kg="1"
+        m="2"
+        s="-3"
+        A="-1"/>
+    </Unit>
+    <Unit
+      name="s">
+      <BaseUnit s="1"/>
+    </Unit>
+  </UnitDefinitions>
+  <TypeDefinitions>
+    <SimpleType
+      name="Modelica.Blocks.Interfaces.RealOutput">
+      <Real/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.Units.SI.Time">
+      <Real
+        quantity="Time"
+        unit="s"/>
+    </SimpleType>
+  </TypeDefinitions>
+  <DefaultExperiment startTime="0.0"
+    stopTime="1.0"
+    tolerance="0.0001"/>
+  <ModelVariables>
+    <!-- Index for next variable = 1 -->
+    <ScalarVariable
+      name="Voltage_step.height"
+      valueReference="16777216"
+      description="Height of step"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="V"
+        start="12"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 2 -->
+    <ScalarVariable
+      name="Voltage_step.offset"
+      valueReference="16777217"
+      description="Offset of output signal y"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="V"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 3 -->
+    <ScalarVariable
+      name="Voltage_step.startTime"
+      valueReference="16777218"
+      description="Output y = offset for time &lt; startTime"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.Units.SI.Time"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 4 -->
+    <ScalarVariable
+      name="MLoad.k"
+      valueReference="16777219"
+      description="Constant output value"
+      causality="parameter"
+      variability="fixed">
+      <Real
+        unit="N.m"
+        start="0.05"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 5 -->
+    <ScalarVariable
+      name="M_load"
+      valueReference="67108864"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 6 -->
+    <ScalarVariable
+      name="U"
+      valueReference="335544321"
+      causality="output"
+      variability="discrete">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="V"/>
+    </ScalarVariable>
+  </ModelVariables>
+  <ModelStructure>
+    <Outputs>
+      <Unknown index="5"
+        dependencies=""
+        dependenciesKind=""/>
+      <Unknown index="6"
+        dependencies=""
+        dependenciesKind=""/>
+    </Outputs>
+    <InitialUnknowns>
+      <Unknown index="5"
+        dependencies="4"
+        dependenciesKind="dependent"/>
+      <Unknown index="6"
+        dependencies="1 2 3"
+        dependenciesKind="dependent dependent dependent"/>
+    </InitialUnknowns>
+  </ModelStructure>
+</fmiModelDescription>

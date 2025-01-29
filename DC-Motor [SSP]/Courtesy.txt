@@ -1,0 +1,8 @@
+Th DC-Motor example with format SSP has been provided by eXXcellent solutions, Ulm. 
+
+Gregor Herrmann (gregor.herrmann@exxcellent.de) schreibt: 
+
+Hallo Oskar, 
+einfach auf https://www.easy-ssp.com gehen und registrieren und anmelden, das DC-Motor Beispiel unten links auswählen und dann in der Anwendung mit dem Download-Pfeil oben rechts das SSP-File herunterladen.
+VG und viel Erfolg,
+  Gregor 

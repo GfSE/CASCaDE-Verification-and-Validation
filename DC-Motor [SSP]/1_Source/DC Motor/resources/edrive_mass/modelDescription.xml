@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fmiModelDescription
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  fmiVersion="2.0"
+  modelName="edrive_mass"
+  guid="{4b6ac5c9-3e3d-4d36-a021-3551c34f8bb9}"
+  description="Rotational mass with damper"
+  version="1.2.0"
+  generationTool="Dymola Version 2024x Refresh 1 Beta 1, 2024-03-01"
+  generationDateAndTime="2024-03-06T12:54:09Z"
+  variableNamingConvention="structured"
+  numberOfEventIndicators="0">
+  <ModelExchange
+    modelIdentifier="edrive_mass"
+    completedIntegratorStepNotNeeded="true"
+    canNotUseMemoryManagementFunctions="true"
+    canGetAndSetFMUstate="true"
+    canSerializeFMUstate="true"
+    providesDirectionalDerivative="true">
+    <SourceFiles>
+      <File
+        name="all.c"/>
+    </SourceFiles>
+  </ModelExchange>
+  <CoSimulation
+    modelIdentifier="edrive_mass"
+    canHandleVariableCommunicationStepSize="true"
+    canInterpolateInputs="true"
+    maxOutputDerivativeOrder="1"
+    canNotUseMemoryManagementFunctions="true"
+    canGetAndSetFMUstate="true"
+    canSerializeFMUstate="true"
+    providesDirectionalDerivative="true">
+    <SourceFiles>
+      <File
+        name="all.c"/>
+    </SourceFiles>
+  </CoSimulation>
+  <UnitDefinitions>
+    <Unit
+      name="1"/>
+    <Unit
+      name="N.m">
+      <BaseUnit kg="1"
+        m="2"
+        s="-2"/>
+    </Unit>
+    <Unit
+      name="N.m.s/rad">
+      <BaseUnit kg="1"
+        m="2"
+        s="-1"
+        rad="-1"/>
+    </Unit>
+    <Unit
+      name="kg.m2">
+      <BaseUnit kg="1"
+        m="2"/>
+    </Unit>
+    <Unit
+      name="rad">
+      <BaseUnit rad="1"/>
+      <DisplayUnit
+        name="deg"
+        factor="57.29577951308232"/>
+    </Unit>
+    <Unit
+      name="rad/s">
+      <BaseUnit s="-1"
+        rad="1"/>
+    </Unit>
+    <Unit
+      name="rad/s2">
+      <BaseUnit s="-2"
+        rad="1"/>
+    </Unit>
+  </UnitDefinitions>
+  <TypeDefinitions>
+    <SimpleType
+      name="Modelica.Blocks.Interfaces.RealInput">
+      <Real/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.Blocks.Interfaces.RealOutput">
+      <Real/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.Units.SI.Angle">
+      <Real
+        quantity="Angle"
+        unit="rad"
+        displayUnit="deg"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.Units.SI.AngularVelocity">
+      <Real
+        quantity="AngularVelocity"
+        unit="rad/s"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.Units.SI.Inertia">
+      <Real
+        quantity="MomentOfInertia"
+        unit="kg.m2"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.Units.SI.RotationalDampingConstant">
+      <Real
+        quantity="RotationalDampingConstant"
+        unit="N.m.s/rad"/>
+    </SimpleType>
+  </TypeDefinitions>
+  <DefaultExperiment startTime="0.0"
+    stopTime="1.0"
+    tolerance="0.0001"/>
+  <ModelVariables>
+    <!-- Index for next variable = 1 -->
+    <ScalarVariable
+      name="inertia.J"
+      valueReference="16777216"
+      description="Moment of inertia"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.Units.SI.Inertia"
+        min="0.0"
+        start="0.002"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 2 -->
+    <ScalarVariable
+      name="M_A"
+      valueReference="352321536"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="N.m"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 3 -->
+    <ScalarVariable
+      name="wA"
+      valueReference="335544320"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad/s"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 4 -->
+    <ScalarVariable
+      name="phiA"
+      valueReference="335544321"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 5 -->
+    <ScalarVariable
+      name="M_B"
+      valueReference="352321537"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="N.m"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 6 -->
+    <ScalarVariable
+      name="wB"
+      valueReference="335544322"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad/s"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 7 -->
+    <ScalarVariable
+      name="phiB"
+      valueReference="335544323"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="rad"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 8 -->
+    <ScalarVariable
+      name="M_gain.k"
+      valueReference="16777217"
+      description="Gain value multiplied with input signal"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="1"
+        start="-1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 9 -->
+    <ScalarVariable
+      name="M_gain1.k"
+      valueReference="16777218"
+      description="Gain value multiplied with input signal"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="1"
+        start="-1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 10 -->
+    <ScalarVariable
+      name="damper.phi_rel"
+      valueReference="33554432"
+      description="Relative rotation angle (= flange_b.phi - flange_a.phi)"
+      initial="exact">
+      <Real
+        declaredType="Modelica.Units.SI.Angle"
+        nominal="0.0001"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 11 -->
+    <ScalarVariable
+      name="der(damper.phi_rel)"
+      valueReference="587202560"
+      description="der(Relative rotation angle (= flange_b.phi - flange_a.phi))">
+      <Real
+        unit="rad/s"
+        derivative="10"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 12 -->
+    <ScalarVariable
+      name="damper.w_rel"
+      valueReference="33554433"
+      description="Relative angular velocity (= der(phi_rel))"
+      initial="exact">
+      <Real
+        declaredType="Modelica.Units.SI.AngularVelocity"
+        start="0"
+        derivative="10"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 13 -->
+    <ScalarVariable
+      name="der(damper.w_rel)"
+      valueReference="587202561"
+      description="der(Relative angular velocity (= der(phi_rel)))">
+      <Real
+        unit="rad/s2"
+        derivative="12"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 14 -->
+    <ScalarVariable
+      name="damper.d"
+      valueReference="16777219"
+      description="Damping constant"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.Units.SI.RotationalDampingConstant"
+        min="0.0"
+        start="0.001"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 15 -->
+    <ScalarVariable
+      name="fixed.phi0"
+      valueReference="16777220"
+      description="Fixed offset angle of housing"
+      causality="parameter"
+      variability="fixed">
+      <Real
+        declaredType="Modelica.Units.SI.Angle"
+        start="0"/>
+    </ScalarVariable>
+  </ModelVariables>
+  <ModelStructure>
+    <Outputs>
+      <Unknown index="3"
+        dependencies="12"
+        dependenciesKind="fixed"/>
+      <Unknown index="4"
+        dependencies="10"
+        dependenciesKind="fixed"/>
+      <Unknown index="6"
+        dependencies="12"
+        dependenciesKind="fixed"/>
+      <Unknown index="7"
+        dependencies="10"
+        dependenciesKind="fixed"/>
+    </Outputs>
+    <Derivatives>
+      <Unknown index="11"
+        dependencies="12"
+        dependenciesKind="fixed"/>
+      <Unknown index="13"
+        dependencies="2 5 12"
+        dependenciesKind="fixed fixed fixed"/>
+    </Derivatives>
+    <InitialUnknowns>
+      <Unknown index="3"
+        dependencies="12"
+        dependenciesKind="dependent"/>
+      <Unknown index="4"
+        dependencies="10 15"
+        dependenciesKind="dependent dependent"/>
+      <Unknown index="6"
+        dependencies="12"
+        dependenciesKind="dependent"/>
+      <Unknown index="7"
+        dependencies="10 15"
+        dependenciesKind="dependent dependent"/>
+      <Unknown index="11"
+        dependencies="12"
+        dependenciesKind="dependent"/>
+      <Unknown index="13"
+        dependencies="1 2 5 8 9 12 14"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent"/>
+    </InitialUnknowns>
+  </ModelStructure>
+</fmiModelDescription>

@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fmiModelDescription
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  fmiVersion="2.0"
+  modelName="emachine_model"
+  guid="{27927f3c-f4b6-4f27-ae7a-a6001766cad2}"
+  description="DC-Motor for a mild hybrid application"
+  version="1.2.0"
+  generationTool="Dymola Version 2024x Refresh 1 Beta 1, 2024-03-01"
+  generationDateAndTime="2024-03-06T12:53:54Z"
+  variableNamingConvention="structured"
+  numberOfEventIndicators="0">
+  <ModelExchange
+    modelIdentifier="emachine_model"
+    completedIntegratorStepNotNeeded="true"
+    canNotUseMemoryManagementFunctions="true"
+    canGetAndSetFMUstate="true"
+    canSerializeFMUstate="true"
+    providesDirectionalDerivative="true">
+    <SourceFiles>
+      <File
+        name="all.c"/>
+    </SourceFiles>
+  </ModelExchange>
+  <CoSimulation
+    modelIdentifier="emachine_model"
+    canHandleVariableCommunicationStepSize="true"
+    canInterpolateInputs="true"
+    maxOutputDerivativeOrder="1"
+    canNotUseMemoryManagementFunctions="true"
+    canGetAndSetFMUstate="true"
+    canSerializeFMUstate="true"
+    providesDirectionalDerivative="true">
+    <SourceFiles>
+      <File
+        name="all.c"/>
+    </SourceFiles>
+  </CoSimulation>
+  <UnitDefinitions>
+    <Unit
+      name="1"/>
+    <Unit
+      name="1/K">
+      <BaseUnit K="-1"/>
+    </Unit>
+    <Unit
+      name="A">
+      <BaseUnit A="1"/>
+    </Unit>
+    <Unit
+      name="A/s">
+      <BaseUnit s="-1"
+        A="1"/>
+    </Unit>
+    <Unit
+      name="H">
+      <BaseUnit kg="1"
+        m="2"
+        s="-2"
+        A="-2"/>
+    </Unit>
+    <Unit
+      name="K">
+      <BaseUnit K="1"/>
+      <DisplayUnit
+        name="degC"
+        offset="-273.15"/>
+    </Unit>
+    <Unit
+      name="N.m">
+      <BaseUnit kg="1"
+        m="2"
+        s="-2"/>
+    </Unit>
+    <Unit
+      name="N.m/A">
+      <BaseUnit kg="1"
+        m="2"
+        s="-2"
+        A="-1"/>
+    </Unit>
+    <Unit
+      name="Ohm">
+      <BaseUnit kg="1"
+        m="2"
+        s="-3"
+        A="-2"/>
+    </Unit>
+    <Unit
+      name="V">
+      <BaseUnit kg="1"
+        m="2"
+        s="-3"
+        A="-1"/>
+    </Unit>
+    <Unit
+      name="rad">
+      <BaseUnit rad="1"/>
+    </Unit>
+    <Unit
+      name="rad/s">
+      <BaseUnit s="-1"
+        rad="1"/>
+    </Unit>
+  </UnitDefinitions>
+  <TypeDefinitions>
+    <SimpleType
+      name="Modelica.Blocks.Interfaces.RealInput">
+      <Real/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.Blocks.Interfaces.RealOutput">
+      <Real/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.Units.SI.Current">
+      <Real
+        quantity="ElectricCurrent"
+        unit="A"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.Units.SI.ElectricalTorqueConstant">
+      <Real
+        quantity="ElectricalTorqueConstant"
+        unit="N.m/A"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.Units.SI.Inductance">
+      <Real
+        quantity="Inductance"
+        unit="H"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.Units.SI.LinearTemperatureCoefficient">
+      <Real
+        quantity="LinearTemperatureCoefficient"
+        unit="1/K"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.Units.SI.Resistance">
+      <Real
+        quantity="Resistance"
+        unit="Ohm"/>
+    </SimpleType>
+    <SimpleType
+      name="Modelica.Units.SI.Temperature">
+      <Real
+        quantity="ThermodynamicTemperature"
+        unit="K"
+        displayUnit="degC"
+        min="0.0"
+        nominal="300.0"/>
+    </SimpleType>
+  </TypeDefinitions>
+  <DefaultExperiment startTime="0.0"
+    stopTime="1.0"
+    tolerance="0.0001"/>
+  <ModelVariables>
+    <!-- Index for next variable = 1 -->
+    <ScalarVariable
+      name="resistor.R"
+      valueReference="16777216"
+      description="Resistance at temperature T_ref"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.Units.SI.Resistance"
+        start="1"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 2 -->
+    <ScalarVariable
+      name="resistor.T_ref"
+      valueReference="16777217"
+      description="Reference temperature"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.Units.SI.Temperature"
+        start="300.15"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 3 -->
+    <ScalarVariable
+      name="resistor.alpha"
+      valueReference="16777218"
+      description="Temperature coefficient of resistance (R_actual = R*(1 + alpha*(T_heatPort - T_ref))"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.Units.SI.LinearTemperatureCoefficient"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 4 -->
+    <ScalarVariable
+      name="resistor.T"
+      valueReference="16777219"
+      description="Fixed device temperature if useHeatPort = false"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.Units.SI.Temperature"
+        start="300.15"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 5 -->
+    <ScalarVariable
+      name="inductor.i"
+      valueReference="33554432"
+      description="Current flowing from pin p to pin n"
+      initial="exact">
+      <Real
+        declaredType="Modelica.Units.SI.Current"
+        start="0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 6 -->
+    <ScalarVariable
+      name="der(inductor.i)"
+      valueReference="587202560"
+      description="der(Current flowing from pin p to pin n)">
+      <Real
+        unit="A/s"
+        derivative="5"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 7 -->
+    <ScalarVariable
+      name="inductor.L"
+      valueReference="16777220"
+      description="Inductance"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.Units.SI.Inductance"
+        start="0.001"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 8 -->
+    <ScalarVariable
+      name="emf.k"
+      valueReference="16777221"
+      description="Transformation coefficient"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        declaredType="Modelica.Units.SI.ElectricalTorqueConstant"
+        start="0.01"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 9 -->
+    <ScalarVariable
+      name="I"
+      valueReference="335544320"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="A"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 10 -->
+    <ScalarVariable
+      name="w"
+      valueReference="352321536"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="rad/s"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 11 -->
+    <ScalarVariable
+      name="phi"
+      valueReference="352321537"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="rad"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 12 -->
+    <ScalarVariable
+      name="M"
+      valueReference="335544321"
+      causality="output">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealOutput"
+        unit="N.m"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 13 -->
+    <ScalarVariable
+      name="U"
+      valueReference="352321538"
+      causality="input">
+      <Real
+        declaredType="Modelica.Blocks.Interfaces.RealInput"
+        unit="V"
+        start="0.0"/>
+    </ScalarVariable>
+    <!-- Index for next variable = 14 -->
+    <ScalarVariable
+      name="M_gain.k"
+      valueReference="16777223"
+      description="Gain value multiplied with input signal"
+      causality="parameter"
+      variability="tunable">
+      <Real
+        unit="1"
+        start="-1"/>
+    </ScalarVariable>
+  </ModelVariables>
+  <ModelStructure>
+    <Outputs>
+      <Unknown index="9"
+        dependencies="5"
+        dependenciesKind="fixed"/>
+      <Unknown index="12"
+        dependencies="5"
+        dependenciesKind="fixed"/>
+    </Outputs>
+    <Derivatives>
+      <Unknown index="6"
+        dependencies="5 10 13"
+        dependenciesKind="fixed fixed fixed"/>
+    </Derivatives>
+    <InitialUnknowns>
+      <Unknown index="6"
+        dependencies="1 2 3 4 5 7 8 10 13"
+        dependenciesKind="dependent dependent dependent dependent dependent dependent dependent dependent dependent"/>
+      <Unknown index="9"
+        dependencies="5"
+        dependenciesKind="dependent"/>
+      <Unknown index="12"
+        dependencies="5 8 14"
+        dependenciesKind="dependent dependent dependent"/>
+    </InitialUnknowns>
+  </ModelStructure>
+</fmiModelDescription>
