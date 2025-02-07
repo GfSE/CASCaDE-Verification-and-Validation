@@ -1,0 +1,288 @@
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix W3C: <https://www.w3.org/standards/semanticweb#> .
+@prefix xs: <http://www.w3.org/2001/XMLSchema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix schema: <https://schema.org#> .
+@prefix iana: <https://www.iana.org/assignments/media-types#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix FMC: <http://fmc-modeling.org#> .
+@prefix IR: <https://www.adesso.de/de/impulse/interaction-room/index.jsp#> .
+@prefix IREB: <https://www.ireb.org/en/downloads/#cpre-glossary> .
+@prefix ReqIF: <https://www.prostep.org/fileadmin/downloads/PSI_ImplementationGuide_ReqIF_V1-7.pdf#> .
+@prefix ReqIF-WF: <https://www.prostep.org/fileadmin/downloads/Recommendation_ReqIF_V2_RZ3.pdf#> .
+@prefix HIS: <https://www.itwissen.info/Herstellerinitiative-Software-Automotive-HIS.html#> .
+@prefix oslc: <http://open-services.net/ns/core#> .
+@prefix oslc_rm: <http://open-services.net/ns/rm#> .
+@prefix oslc_cm: <http://open-services.net/ns/cm#> .
+@prefix ArchiMate: <https://pubs.opengroup.org#> .
+@prefix bpmn: <https://www.bpmn.org/#> .
+@prefix uml: <https://www.omg.org/spec/UML#> .
+@prefix sysml: <https://www.omg.org/spec/SysML#> .
+@prefix DDP: <http://www.prostep.org/dictionary/2.0#> .
+@prefix SpecIF: <https://specif.de/v1.1/schema#> .
+
+@prefix : <https://specif.de/examples/ACP-Very-Simple-Model-FMC-with-Requirements#> .
+
+W3C:Ontology rdfs:subClassOf rdfs:Resource .
+SpecIF:Project rdfs:subClassOf rdfs:Resource .
+SpecIF:File rdfs:subClassOf rdfs:Resource .
+SpecIF:Glossary rdfs:subClassOf rdfs:Resource .
+SpecIF:Node rdfs:subClassOf rdfs:Resource .
+SpecIF:HierarchyRoot rdfs:subClassOf SpecIF:Node .
+
+: a SpecIF:Project ;
+	dcterms:identifier 'ACP-Very-Simple-Model-FMC-with-Requirements' ;
+	rdfs:label 'Project \'Very Simple Model (FMC) with Requirements\'' ;
+	SpecIF:schema <https://specif.de/v1.2/schema.json> ;
+	SpecIF:generator 'SpecIF Modellintegrator und Editor' ;
+	SpecIF:generatorVersion '1.2.a.11' ;
+	SpecIF:rights-title 'Creative Commons 4.0 CC BY-SA' ;
+	SpecIF:rights-url 'https://creativecommons.org/licenses/by-sa/4.0/' ;
+	dcterms:modified '2025-02-07T16:07:36.778Z' .
+
+:RC-Folder rdfs:subClassOf :RC-Paragraph ;
+	rdfs:label 'SpecIF:Heading';
+	rdfs:comment 'A \'Heading\' is a chapter title at any level with optional description.' ;
+	dcterms:modified '2024-03-02T15:28:50.414Z' .
+
+:RC-Paragraph rdfs:subClassOf rdfs:Resource ;
+	rdfs:label 'SpecIF:Paragraph';
+	rdfs:comment '<p>A \'Paragraph\' is an unspecified information in a document at any level.</p>' ;
+	dcterms:modified '2023-07-16T09:30:25.850Z' .
+
+:RC-View rdfs:subClassOf rdfs:Resource ;
+	rdfs:label 'SpecIF:View';
+	rdfs:comment 'A \'View\' is a graphical model view with a specific communication purpose, e.g. a business process or system composition.' ;
+	SpecIF:icon '▣' ;
+	dcterms:modified '2018-05-10T11:54:00+01:00' .
+
+:RC-Actor rdfs:subClassOf rdfs:Resource ;
+	rdfs:label 'FMC:Actor';
+	rdfs:comment 'An \'Actor\' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role.' ;
+	SpecIF:icon '&#9632;' ;
+	dcterms:modified '2018-05-10T11:54:00+01:00' .
+
+:RC-State rdfs:subClassOf rdfs:Resource ;
+	rdfs:label 'FMC:State';
+	rdfs:comment 'A \'State\' is a fundamental model element type representing a passive entity, be it a value, a document, an information storage or even a physical shape.' ;
+	SpecIF:icon '●' ;
+	dcterms:modified '2018-05-10T11:54:00+01:00' .
+
+:RC-Event rdfs:subClassOf rdfs:Resource ;
+	rdfs:label 'FMC:Event';
+	rdfs:comment 'An \'Event\' is a fundamental model element type representing a time reference, a change in condition/value or more generally a synchronisation primitive.' ;
+	SpecIF:icon '⬧' ;
+	dcterms:modified '2018-05-10T11:54:00+01:00' .
+
+:RC-Requirement rdfs:subClassOf rdfs:Resource ;
+	rdfs:label 'IREB:Requirement';
+	rdfs:comment 'A \'Requirement\' is a singular documented physical and functional need that a particular design, product or process must be able to perform.' ;
+	SpecIF:icon '&#8623;' ;
+	dcterms:modified '2021-02-22T08:59:00+02:00' .
+
+:SC-shows rdfs:subPropertyOf rdf:Property ;
+	rdfs:label  'SpecIF:shows' ;
+	rdfs:comment '\'View\' shows \'Model-Element\'' ;
+	dcterms:modified '2018-05-10T11:54:00+01:00' .
+
+:SC-writes rdfs:subPropertyOf rdf:Property ;
+	rdfs:label  'SpecIF:writes' ;
+	rdfs:comment '\'Actor\' (Role, Function) writes \'State\' (Information)' ;
+	dcterms:modified '2018-05-10T11:54:00+01:00' .
+
+:SC-reads rdfs:subPropertyOf rdf:Property ;
+	rdfs:label  'SpecIF:reads' ;
+	rdfs:comment '\'Actor\' (Role, Function) reads \'State\' (Information)' ;
+	dcterms:modified '2018-05-10T11:54:00+01:00' .
+
+:SC-satisfies rdfs:subPropertyOf rdf:Property ;
+	rdfs:label  'oslc_rm:satisfies' ;
+	rdfs:comment 'Statement: Model-Element satisfies Requirement' ;
+	dcterms:modified '2016-05-26T08:59:00+02:00' .
+
+:Folder-Introduction a :RC-Folder ;
+	dcterms:title 'Introduction' ;
+	dcterms:description '<div><p>This is a minimal showcase for a model with model-elements and related requirements. It covers pretty much all characteristics neeeded in such cases (including \'statements on statements\'), so that transformations and expressive power of other data formats can be evaluated. The example and its representation in SpecIF format is discussed in <a href="https://specif.de/Tutorials/06_Very-Simple-Model-FMC.html" target="_blank">Tutorial 6: Very Simple Model (FMC)</a> and <a href="https://specif.de/Tutorials/09_Very-Simple-Model-FMC-with-Requirements.html" target="_blank">Tutorial 9: Very Simple Model (FMC) with Requirements</a>.</p></div>' ;
+	dcterms:modified '2025-02-07T08:32:00+01:00' .
+
+:Folder-Requirements a :RC-Folder ;
+	dcterms:title 'Requirements' ;
+	dcterms:modified '2020-03-06T08:32:00+01:00' .
+
+:Req-1a8016e2872e78ecadc50feddc00029b a :RC-Requirement ;
+	dcterms:title 'Data Volume' ;
+	dcterms:description '<div><p>The data store MUST support a total volume up to 850 GB.</p></div>' ;
+	SpecIF:Priority 'SpecIF:priorityRatherHigh' ;
+	dcterms:modified '2020-10-17T10:00:00+01:00' .
+
+:Req-0Z7916e2872e78ecadc50feddc00918a a :RC-Requirement ;
+	dcterms:title 'Consistency' ;
+	dcterms:description '<div><p>The data store MUST be consistent at all times.</p></div>' ;
+	SpecIF:Priority 'SpecIF:priorityHigh' ;
+	dcterms:modified '2020-10-17T10:00:00+01:00' .
+
+:Req-2b9016e2872e78ecadc50feddc0013Ac a :RC-Requirement ;
+	dcterms:title 'Response Time' ;
+	dcterms:description '<div><p>The system SHOULD respond on user queries within 300 ms.</p></div>' ;
+	SpecIF:Priority 'SpecIF:priorityMedium' ;
+	dcterms:modified '2020-10-17T10:00:00+01:00' .
+
+:Folder-SystemModel a :RC-Folder ;
+	dcterms:title 'System Model' ;
+	dcterms:modified '2020-03-06T08:32:00+01:00' .
+
+:Diagram-aec0df7900010000017001eaf53e8876 a :RC-View ;
+	dcterms:title 'IT-Integration: FiCo-Application and FiCo-Data' ;
+	SpecIF:Diagram '<div><p class="inline-label">Model Diagram:</p><p><object type="image/svg+xml" data="files_and_images/Very-Simple-Model-FMC.svg">Notation: FMC Block Diagram</object></p></div>' ;
+	dcterms:type 'FMC Block Diagram' ;
+	dcterms:modified '2020-03-06T08:32:00+01:00' .
+
+:MEl-50fbfe8f0029b1a8016ea86245a9d83a a :RC-Actor ;
+	dcterms:title 'FiCo-Application' ;
+	dcterms:description '<div><p>IT-Application for Finance and Controlling.</p></div>' ;
+	dcterms:modified '2020-03-06T09:04:00+01:00' .
+
+:MEl-50feddc00029b1a8016e2872e78ecadc a :RC-State ;
+	dcterms:title 'FiCo-Data' ;
+	dcterms:description '<div><p>Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc.</p></div>' ;
+	dcterms:modified '2020-03-06T09:03:00+01:00' .
+
+:FolderGlossary-10875487071 a :RC-Folder ;
+	dcterms:title 'Model Elements (Glossary)' ;
+	dcterms:type 'SpecIF:Glossary' ;
+	dcterms:modified '2025-02-07T16:07:22.760Z' .
+
+:SVis-aec0df7900010000017001eaf53e8876-50fbfe8f0029b1a8016ea86245a9d83a a rdf:Statement ;
+	rdf:predicate :SC-shows ;
+	rdf:subject :Diagram-aec0df7900010000017001eaf53e8876 ;
+	rdf:object :MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
+	dcterms:description '\'FMC Block Diagram\' shows \'FiCo-Application\'' ;
+	dcterms:modified '2020-03-06T08:32:00+01:00' .
+
+:SVis-aec0df7900010000017001eaf53e8876-50feddc00029b1a8016e2872e78ecadc a rdf:Statement ;
+	rdf:predicate :SC-shows ;
+	rdf:subject :Diagram-aec0df7900010000017001eaf53e8876 ;
+	rdf:object :MEl-50feddc00029b1a8016e2872e78ecadc ;
+	dcterms:description '\'FMC Block Diagram\' shows \'FiCo-Data\'' ;
+	dcterms:modified '2020-03-06T08:32:00+01:00' .
+
+:SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc a rdf:Statement ;
+	rdf:predicate :SC-writes ;
+	rdf:subject :MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
+	rdf:object :MEl-50feddc00029b1a8016e2872e78ecadc ;
+	dcterms:description '\'FiCo-Application\' writes \'FiCo-Data\'' ;
+	dcterms:modified '2020-03-06T09:05:00+01:00' .
+
+:SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc a rdf:Statement ;
+	rdf:predicate :SC-reads ;
+	rdf:subject :MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
+	rdf:object :MEl-50feddc00029b1a8016e2872e78ecadc ;
+	dcterms:description '\'FiCo-Application\' reads \'FiCo-Data\'' ;
+	dcterms:modified '2020-03-06T09:05:00+01:00' .
+
+:Ssat-50feddc00029b1a8016e2872e78ecadc-1a8016e2872e78ecadc50feddc00029b a rdf:Statement ;
+	rdf:predicate :SC-satisfies ;
+	rdf:subject :MEl-50feddc00029b1a8016e2872e78ecadc ;
+	rdf:object :Req-1a8016e2872e78ecadc50feddc00029b ;
+	dcterms:description '\'FiCo-Data\' satisfies \'Data Volume\'' ;
+	dcterms:modified '2020-10-17T10:00:00+01:00' .
+
+:Ssat-50feddc00029b1a8016e2872e78ecadc-0Z7916e2872e78ecadc50feddc00918a a rdf:Statement ;
+	rdf:predicate :SC-satisfies ;
+	rdf:subject :MEl-50feddc00029b1a8016e2872e78ecadc ;
+	rdf:object :Req-0Z7916e2872e78ecadc50feddc00918a ;
+	dcterms:description '\'FiCo-Data\' satisfies \'Consistency\'' ;
+	dcterms:modified '2020-10-17T10:00:00+01:00' .
+
+:Ssat-50fbfe8f0029b1a8016ea86245a9d83a-2b9016e2872e78ecadc50feddc0013Ac a rdf:Statement ;
+	rdf:predicate :SC-satisfies ;
+	rdf:subject :MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
+	rdf:object :Req-2b9016e2872e78ecadc50feddc0013Ac ;
+	dcterms:description '\'FiCo-Application\' satisfies \'Response Time\'' ;
+	dcterms:modified '2020-10-17T10:00:00+01:00' .
+
+:SVis-aec0df7900010000017001eaf53e8876-SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc a rdf:Statement ;
+	rdf:predicate :SC-shows ;
+	rdf:subject :Diagram-aec0df7900010000017001eaf53e8876 ;
+	rdf:object :SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc ;
+	dcterms:title 'SpecIF:shows' ;
+	dcterms:description '\'FMC Block Diagram\' shows \'FiCo-Application writes FiCo-Data\'' ;
+	dcterms:modified '2025-01-26T08:32:00+01:00' .
+
+:SVis-aec0df7900010000017001eaf53e8876-SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc a rdf:Statement ;
+	rdf:predicate :SC-shows ;
+	rdf:subject :Diagram-aec0df7900010000017001eaf53e8876 ;
+	rdf:object :SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc ;
+	dcterms:title 'SpecIF:shows' ;
+	dcterms:description '\'FMC Block Diagram\' shows \'FiCo-Application reads FiCo-Data\'' ;
+	dcterms:modified '2025-01-26T08:32:00+01:00' .
+
+:F-10376758211 a SpecIF:File ;
+	rdfs:label 'files_and_images/Very-Simple-Model-FMC.svg' ;
+	iana:mediaType 'image/svg+xml' ;
+	dcterms:modified '2025-01-26T17:11:56.000Z' .
+
+:N-Folder-Introduction a SpecIF:HierarchyRoot ;
+	SpecIF:shows :Folder-Introduction ;
+	dcterms:modified '2025-02-07T10:00:00+01:00' .
+
+:N-Folder-Requirements a SpecIF:HierarchyRoot ;
+	SpecIF:shows :Folder-Requirements ;
+	dcterms:modified '2020-10-17T10:00:00+01:00' ;
+	rdf:Seq
+		:N-1a8016e2872e78ecadc50feddc00029b ,
+		:N-0Z7916e2872e78ecadc50feddc00918a ,
+		:N-2b9016e2872e78ecadc50feddc0013Ac .
+
+:N-1a8016e2872e78ecadc50feddc00029b a SpecIF:Node ;
+	SpecIF:shows :Req-1a8016e2872e78ecadc50feddc00029b ;
+	dcterms:modified '2020-10-17T10:00:00+01:00' .
+
+:N-0Z7916e2872e78ecadc50feddc00918a a SpecIF:Node ;
+	SpecIF:shows :Req-0Z7916e2872e78ecadc50feddc00918a ;
+	dcterms:modified '2020-10-17T10:00:00+01:00' .
+
+:N-2b9016e2872e78ecadc50feddc0013Ac a SpecIF:Node ;
+	SpecIF:shows :Req-2b9016e2872e78ecadc50feddc0013Ac ;
+	dcterms:modified '2020-10-17T10:00:00+01:00' .
+
+:N-Folder-SystemModel a SpecIF:HierarchyRoot ;
+	SpecIF:shows :Folder-SystemModel ;
+	dcterms:modified '2020-10-17T10:00:00+01:00' ;
+	rdf:Seq
+		:N-Diagram-aec0df7900010000017001eaf53e8876 .
+
+:N-Diagram-aec0df7900010000017001eaf53e8876 a SpecIF:Node ;
+	SpecIF:shows :Diagram-aec0df7900010000017001eaf53e8876 ;
+	dcterms:modified '2020-10-17T10:00:00+01:00' ;
+	rdf:Seq
+		:N-50fbfe8f0029b1a8016ea86245a9d83a ,
+		:N-50feddc00029b1a8016e2872e78ecadc .
+
+:N-50fbfe8f0029b1a8016ea86245a9d83a a SpecIF:Node ;
+	SpecIF:shows :MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
+	dcterms:modified '2020-03-06T09:05:00+01:00' .
+
+:N-50feddc00029b1a8016e2872e78ecadc a SpecIF:Node ;
+	SpecIF:shows :MEl-50feddc00029b1a8016e2872e78ecadc ;
+	dcterms:modified '2020-03-06T09:05:00+01:00' .
+
+:N-FolderGlossary-10875487071 a SpecIF:HierarchyRoot ;
+	SpecIF:shows :FolderGlossary-10875487071 ;
+	dcterms:modified '2025-02-07T16:07:22.760Z' ;
+	rdf:Seq
+		:N-9559304043 ,
+		:N-12075661949 .
+
+:N-9559304043 a SpecIF:Node ;
+	SpecIF:shows :MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
+	dcterms:modified '2025-02-07T16:07:22.760Z' .
+
+:N-12075661949 a SpecIF:Node ;
+	SpecIF:shows :MEl-50feddc00029b1a8016e2872e78ecadc ;
+	dcterms:modified '2025-02-07T16:07:22.760Z' .
