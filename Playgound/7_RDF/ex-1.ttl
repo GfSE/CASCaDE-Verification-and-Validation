@@ -1,0 +1,38 @@
+# Example 1: One resource (node) class with an instance. 
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix W3C: <https://www.w3.org/standards/semanticweb#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix SpecIF: <https://specif.de/v1.1/schema#> .
+
+# Property Classes:
+:PC-Priority rdfs:subClassOf rdfs:Resource ;
+	# Term as literal allows translation to national languages without bloating the model:
+	rdfs:label 'SpecIF:hasPriority';
+	rdfs:comment 'The fact or condition of being regarded or treated as more important than others.' ;
+	rdfs:domain :RC-Requirement;
+	# Enumerated (=permissible) values:
+	rdfs:range 'SpecIF:priorityHigh','SpecIF:priorityMedium','SpecIF:priorityLow'.
+
+# Resource (Node) Classes:
+:RC-Requirement rdfs:subClassOf rdfs:Resource ;
+	rdfs:label 'IREB:Requirement';
+	rdfs:comment 'A \'Requirement\' is a singular documented need …. ' ;
+	SpecIF:icon '&#8623;' ;
+	# List the properties a requirement MUST or MAY have: 
+	:requiredProperty rdfs:label;
+	:requiredProperty rdfs:comment;
+	:optionalProperty :PC-Priority;
+	dcterms:modified '2021-02-22T08:59:00+02:00' .
+
+# Instances:	
+:Req-1a8016e2872e78ecadc50feddc00029b a :RC-Requirement ;
+	rdfs:label 'Data Volume' ;
+	rdfs:comment 'The data store MUST support a total volume up to 850 GB.' ;
+	:PC-Priority 'SpecIF:priorityHigh' ;
+	dcterms:modified '2020-10-17T10:00:00+01:00' .
+
+
