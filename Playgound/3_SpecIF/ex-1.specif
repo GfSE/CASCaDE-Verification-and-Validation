@@ -1,0 +1,198 @@
+{
+  "@Context": "http://purl.org/dc/terms/",
+  "id": "ex-1-A-single-Requirement-with-Priority",
+  "$schema": "https://specif.de/v1.1/schema.json",
+  "title": [
+    {
+      "text": "A single Requirement with Priority"
+    }
+  ],
+  "generator": "manual",
+  "createdAt": "2025-01-26T17:06:19.300Z",
+  "rights": {
+    "title": "Creative Commons 4.0 CC BY-SA",
+    "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  "dataTypes": [
+    {
+      "id": "DT-ShortString",
+      "changedAt": "2016-05-26T08:59:00+02:00",
+      "title": "String[256]",
+      "description": [
+        {
+          "text": "String with max. length 256"
+        }
+      ],
+      "type": "xs:string",
+      "maxLength": 256
+    },
+    {
+      "id": "DT-Text",
+      "changedAt": "2021-02-14T08:59:00+02:00",
+      "title": "Plain or formatted Text",
+      "description": [
+        {
+          "text": "A text string, plain, or formatted with XHTML or markdown"
+        }
+      ],
+      "type": "xs:string"
+    },
+    {
+      "id": "DT-Priority",
+      "changedAt": "2016-05-26T08:59:00+02:00",
+      "title": "SpecIF:Priority",
+      "description": [
+        {
+          "text": "Enumerated values for priority"
+        }
+      ],
+      "type": "xs:string",
+      "maxLength": 32,
+      "enumeration": [
+        {
+          "id": "V-Prio-0",
+          "value": [
+            {
+              "text": "SpecIF:priorityHigh"
+            }
+          ]
+        },
+        {
+          "id": "V-Prio-2",
+          "value": [
+            {
+              "text": "SpecIF:priorityMedium"
+            }
+          ]
+        },
+        {
+          "id": "V-Prio-4",
+          "value": [
+            {
+              "text": "SpecIF:priorityLow"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "propertyClasses": [
+    {
+      "id": "PC-Name",
+      "changedAt": "2018-05-10T11:54:00+01:00",
+      "title": "dcterms:title",
+      "dataType": {
+        "id": "DT-ShortString"
+      },
+      "format": "plain"
+    },
+    {
+      "id": "PC-Description",
+      "changedAt": "2021-02-23T08:59:00+02:00",
+      "title": "dcterms:description",
+      "description": [
+        {
+          "text": "An account of the resource (source: http://dublincore.org/documents/dcmi-terms/). Descriptive text represented in plain or rich text using XHTML or Markdown. SHOULD include only content that is valid and suitable inside an XHTML &lt;div&gt; element (source: http://open-services.net/)."
+        }
+      ],
+      "dataType": {
+        "id": "DT-Text"
+      },
+      "format": "xhtml"
+    },
+    {
+      "id": "PC-Priority",
+      "changedAt": "2020-03-26T22:59:00+02:00",
+      "title": "SpecIF:Priority",
+      "description": [
+        {
+          "text": "The 'Priority' of the resource."
+        }
+      ],
+      "dataType": {
+        "id": "DT-Priority"
+      },
+      "format": "plain"
+    }
+  ],
+  "resourceClasses": [
+    {
+      "id": "RC-Requirement",
+      "changedAt": "2021-02-22T08:59:00+02:00",
+      "title": "IREB:Requirement",
+      "description": [
+        {
+          "text": "A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform."
+        }
+      ],
+      "icon": "&#8623;",
+      "instantiation": [
+        "user"
+      ],
+      "propertyClasses": [
+        {
+          "id": "PC-Name"
+        },
+        {
+          "id": "PC-Description"
+        },
+        {
+          "id": "PC-Priority"
+        }
+      ]
+    }
+  ],
+  "statementClasses": [],
+  "files": [],
+  "resources": [
+    {
+      "id": "Req-1a8016e2872e78ecadc50feddc00029b",
+      "changedAt": "2020-10-17T10:00:00+01:00",
+      "class": {
+        "id": "RC-Requirement"
+      },
+      "properties": [
+        {
+          "class": {
+            "id": "PC-Name"
+          },
+          "values": [
+            [
+              {
+                "text": "Data Volume"
+              }
+            ]
+          ]
+        },
+        {
+          "class": {
+            "id": "PC-Description"
+          },
+          "values": [
+            [
+              {
+                "text": "<div><p>The data store MUST support a total volume up to 850 GB.</p></div>"
+              }
+            ]
+          ]
+        },
+        {
+          "class": {
+            "id": "PC-Priority"
+          },
+          "values": [ "V-Prio-1" ]
+        }
+      ]
+    }
+  ],
+  "statements": [],
+  "hierarchies": [
+        {
+          "id": "N-1a8016e2872e78ecadc50feddc00029b",
+          "resource": {
+            "id": "Req-1a8016e2872e78ecadc50feddc00029b"
+          },
+          "changedAt": "2020-10-17T10:00:00+01:00"
+        }
+  ]
+}
