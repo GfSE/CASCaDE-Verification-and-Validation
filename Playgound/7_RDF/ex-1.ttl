@@ -7,20 +7,20 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix SpecIF: <https://specif.de/v1.1/schema#> .
-@prefix : <https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements.specifz> .
+@prefix : <https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements> .
 
-## Property Classes:
+## -------- Property Classes
 
 # Property class 'Priority' (e.g. for requirements) with 3 literal values
 # Term as literal lets software applications translate it to national languages without bloating the model
-:PC-Priority rdfs:subClassOf rdfs:Resource ;
+:PC-Priority rdfs:subClassOf rdfs:Property ;
 	rdfs:label 'SpecIF:hasPriority';
 	rdfs:comment 'The fact or condition of being regarded or treated as more important than others.' ;
 	rdfs:domain :RC-Requirement;
 	# Enumerated (=permissible) values:
 	rdfs:range 'SpecIF:priorityHigh','SpecIF:priorityMedium','SpecIF:priorityLow'.
 
-## Resource (Node) Classes:
+## -------- Resource (Node) Classes
 
 # Resource 'Requirement' with 2 required and an optional property
 :RC-Requirement rdfs:subClassOf rdfs:Resource ;
@@ -34,7 +34,7 @@
 	:optionalProperty :PC-Priority;
 	dcterms:modified '2021-02-22T08:59:00+02:00' .
 
-## Instances:	
+## -------- Instances = Payload
 
 :Req-1a8016e2872e78ecadc50feddc00029b a :RC-Requirement ;
 	rdfs:label 'Data Volume' ;

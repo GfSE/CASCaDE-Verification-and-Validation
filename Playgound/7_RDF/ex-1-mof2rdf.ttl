@@ -1,0 +1,128 @@
+### Example 1: One resource (node) class with an instance following MOF2RDF.
+# see: https://www.omg.org/spec/MOF2RDF/1.0/PDF
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix mof2rdf: <http://www.omg.org/spec/MOF2RDF/MOFSupport/> .
+
+@prefix W3C: <https://www.w3.org/standards/semanticweb#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix SpecIF: <https://specif.de/v1.1/schema#> .
+@prefix : <https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements> .
+
+## -------- MOF Support (excerpt)
+
+<http://www.omg.org/spec/MOF2RDF/MOFSupport/>
+    a owl:Ontology ;
+    rdfs:comment """Provides annotations for basic MOF concepts not directly
+                 supported by OWL""" ;
+    rdfs:label "MOF2RDF Support"@en .
+
+<http://www.omg.org/spec/MOF2RDF/MOFSupport/Class>
+    a owl:Class ;
+    rdfs:comment """Classes instantiating MOF classes""" ;
+    rdfs:label "class"@en .
+    
+<http://www.omg.org/spec/MOF2RDF/MOFSupport/DataType>
+    a owl:Class ;
+    rdfs:comment """Provides traceability for a MOF DataType represented
+                 by an owl:Class""" ;
+    rdfs:label "data type"@en .
+    
+<http://www.omg.org/spec/MOF2RDF/MOFSupport/Enumeration>
+    a owl:Class ;
+    rdfs:comment """Provides traceability for a MOF Enumeration represented
+                 by an owl:Class""" ;
+    rdfs:label "data type"@en .
+    
+<http://www.omg.org/spec/MOF2RDF/MOFSupport/isUnique>
+    a owl:AnnotationProperty ;
+    rdfs:comment """Whether the values of a property for a specific object
+                 can contain the same value more than once""" ;
+    rdfs:domain rdfs:Property ;
+    rdfs:label "is unique"@en ;
+    rdfs:range xsd:boolean .
+
+## -------- Property Classes
+
+# Priority with enumerated values
+:PC-Priority
+    a owl:Class ;
+#    rdfs:isDefinedBy [
+#        rdfs:resource "http://example.com/Package1/"
+#    ] ;
+    rdfs:label "Priority" ;
+    rdfs:subClassOf mof2rdf:Enumeration ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:oneOf ( SpecIF:priorityHigh SpecIF:priorityMedium SpecIF:priorityLow )
+    ] .
+
+SpecIF:priorityHigh
+    a :PC-Priority, owl:NamedIndividual ;
+#    rdfs:isDefinedBy [
+#        rdfs:resource "http://example.com/Package1/"
+#    ] ;
+    rdfs:label "High"@en .
+
+SpecIF:priorityMedium
+    a :PC-Priority, owl:NamedIndividual ;
+#    rdfs:isDefinedBy [
+#        rdfs:resource "http://example.com/Package1/"
+#    ] ;
+    rdfs:label "Medium"@en .
+
+SpecIF:priorityLow
+    a :PC-Priority, owl:NamedIndividual ;
+#    rdfs:isDefinedBy [
+#        rdfs:resource "http://example.com/Package1/"
+#    ] ;
+    rdfs:label "Low"@en .
+
+[]
+    a owl:AllDifferent ;
+    owl:distinctMembers ( SpecIF:priorityHigh SpecIF:priorityMedium SpecIF:priorityLow ) .
+
+## -------- Resource (Node) Classes
+
+# Requirement
+
+:RC-Requirement
+    a owl:Class ;
+#    rdfs:isDefinedBy [
+#        rdfs:resource "http://example.com/Package1/"
+#    ] ;
+    rdfs:label "Requirement"@en ;
+    rdfs:subClassOf mof2rdf:Class, [
+        a owl:Restriction ;
+        owl:allValuesFrom :PC-Priority ;
+        owl:onProperty :RC-Requirement-Priority
+    ], [
+        a owl:Restriction ;
+        owl:onClass :PC-Priority ;
+        owl:onProperty :RC-Requirement-Priority ;
+        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+    ] .
+
+:RC-Requirement-Priority
+    a owl:ObjectProperty ;
+    rdfs:domain :RC-Requirement ;
+#    rdfs:isDefinedBy [
+#        rdfs:resource "http://example.com/Package1/"
+#    ] ;
+    rdfs:label "Priority"@en ;
+    rdfs:range :PC-Priority .
+
+## -------- Instances = Payload
+
+:Req-1a8016e2872e78ecadc50feddc00029b a :RC-Requirement ;
+	rdfs:label 'Data Volume' ;
+	rdfs:comment 'The data store MUST support a total volume up to 850 GB.' ;
+	:RC-Requirement-Priority SpecIF:priorityHigh ;
+	dcterms:modified '2020-10-17T10:00:00+01:00' .
