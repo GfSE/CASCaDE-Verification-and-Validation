@@ -1,0 +1,377 @@
+{
+  "@Context": "http://purl.org/dc/terms/",
+  "id": "ex-2-A-Model-Element-with-linked-Requirement",
+  "$schema": "https://specif.de/v1.1/schema.json",
+  "title": [
+    {
+      "text": "A Model-Element with linked Requirement"
+    }
+  ],
+  "generator": "manual",
+  "createdAt": "2025-01-26T17:06:19.300Z",
+  "rights": {
+    "title": "Creative Commons 4.0 CC BY-SA",
+    "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  "dataTypes": [
+    {
+      "id": "DT-ShortString",
+      "changedAt": "2016-05-26T08:59:00+02:00",
+      "title": "String[256]",
+      "description": [
+        {
+          "text": "String with max. length 256"
+        }
+      ],
+      "type": "xs:string",
+      "maxLength": 256
+    },
+    {
+      "id": "DT-Text",
+      "changedAt": "2021-02-14T08:59:00+02:00",
+      "title": "Plain or formatted Text",
+      "description": [
+        {
+          "text": "A text string, plain, or formatted with XHTML or markdown"
+        }
+      ],
+      "type": "xs:string"
+    },
+    {
+      "id": "DT-Priority",
+      "changedAt": "2016-05-26T08:59:00+02:00",
+      "title": "SpecIF:Priority",
+      "description": [
+        {
+          "text": "Enumerated values for priority"
+        }
+      ],
+      "type": "xs:string",
+      "maxLength": 32,
+      "enumeration": [
+        {
+          "id": "V-Prio-0",
+          "value": [
+            {
+              "text": "SpecIF:priorityHigh"
+            }
+          ]
+        },
+        {
+          "id": "V-Prio-2",
+          "value": [
+            {
+              "text": "SpecIF:priorityMedium"
+            }
+          ]
+        },
+        {
+          "id": "V-Prio-4",
+          "value": [
+            {
+              "text": "SpecIF:priorityLow"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "DT-String-LE32",
+      "changedAt": "2023-02-26T20:18:04.451Z",
+      "title": "String <=32",
+      "description": [
+        {
+          "text": "Text string with maximum length 32"
+        }
+      ],
+      "revision": "1.1",
+      "type": "xs:string",
+      "maxLength": 32
+    }
+  ],
+  "propertyClasses": [
+    {
+      "id": "PC-Name",
+      "changedAt": "2018-05-10T11:54:00+01:00",
+      "title": "dcterms:title",
+      "dataType": {
+        "id": "DT-ShortString"
+      },
+      "format": "plain"
+    },
+    {
+      "id": "PC-Description",
+      "changedAt": "2021-02-23T08:59:00+02:00",
+      "title": "dcterms:description",
+      "description": [
+        {
+          "text": "An account of the resource (source: http://dublincore.org/documents/dcmi-terms/). Descriptive text represented in plain or rich text using XHTML or Markdown. SHOULD include only content that is valid and suitable inside an XHTML &lt;div&gt; element (source: http://open-services.net/)."
+        }
+      ],
+      "dataType": {
+        "id": "DT-Text"
+      },
+      "format": "xhtml"
+    },
+    {
+      "id": "PC-Priority",
+      "changedAt": "2020-03-26T22:59:00+02:00",
+      "title": "SpecIF:Priority",
+      "description": [
+        {
+          "text": "The 'Priority' of the resource."
+        }
+      ],
+      "dataType": {
+        "id": "DT-Priority"
+      },
+      "format": "plain"
+    },
+    {
+      "id": "PC-Type",
+      "changedAt": "2023-02-26T20:18:04.451Z",
+      "title": "dcterms:type",
+      "description": [
+        {
+          "text": "<p>The nature or genre of the resource. <small>(<i>source: <a href=\"http://purl.org/dc/elements/1.1/type\">DCMI</a></i>)</small></p><p>Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element.</p><p>For example, a [[FMC:Actor]] may represent a <i>System Function</i>, a <i>System Component</i> or a <i>User Role</i>. Similarly, in the context of process modelling, a FMC:Actor may represent a <i>Process Step</i> or again a <i>User Role</i>. So, all of these are meaningful values for a FMC:Actor's property named dcterms:type.</p>",
+          "language": "en"
+        }
+      ],
+      "revision": "1.1",
+      "dataType": {
+        "id": "DT-String-LE32"
+      },
+      "format": "plain"
+    }
+  ],
+  "resourceClasses": [
+    {
+      "id": "RC-Actor",
+      "changedAt": "2018-05-10T11:54:00+01:00",
+      "title": "FMC:Actor",
+      "description": [
+        {
+          "text": "An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role."
+        }
+      ],
+      "icon": "&#9632;",
+      "instantiation": [
+        "auto"
+      ],
+      "propertyClasses": [
+        {
+          "id": "PC-Name"
+        },
+        {
+          "id": "PC-Description"
+        },
+        {
+          "id": "PC-Type"
+        }
+      ]
+    },
+    {
+      "id": "RC-State",
+      "changedAt": "2018-05-10T11:54:00+01:00",
+      "title": "FMC:State",
+      "description": [
+        {
+          "text": "A 'State' is a fundamental model element type representing a passive entity, be it a value, a document, an information storage or even a physical shape."
+        }
+      ],
+      "icon": "●",
+      "instantiation": [
+        "auto"
+      ],
+      "propertyClasses": [
+        {
+          "id": "PC-Name"
+        },
+        {
+          "id": "PC-Description"
+        },
+        {
+          "id": "PC-Type"
+        }
+      ]
+    },
+    {
+      "id": "RC-Requirement",
+      "changedAt": "2021-02-22T08:59:00+02:00",
+      "title": "IREB:Requirement",
+      "description": [
+        {
+          "text": "A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform."
+        }
+      ],
+      "icon": "&#8623;",
+      "instantiation": [
+        "user"
+      ],
+      "propertyClasses": [
+        {
+          "id": "PC-Name"
+        },
+        {
+          "id": "PC-Description"
+        },
+        {
+          "id": "PC-Priority"
+        }
+      ]
+    }
+  ],
+  "statementClasses": [
+    {
+      "id": "SC-satisfies",
+      "changedAt": "2016-05-26T08:59:00+02:00",
+      "title": "oslc_rm:satisfies",
+      "description": [
+        {
+          "text": "Statement: Model-Element satisfies Requirement"
+        }
+      ],
+      "instantiation": [
+        "user"
+      ],
+      "propertyClasses": [
+        {
+          "id": "PC-Description"
+        }
+      ],
+      "subjectClasses": [
+        {
+          "id": "RC-Actor"
+        },
+        {
+          "id": "RC-State"
+        }
+      ],
+      "objectClasses": [
+        {
+          "id": "RC-Requirement"
+        }
+      ]
+    }
+  ],
+  "files": [],
+  "resources": [
+    {
+      "id": "MEl-50feddc00029b1a8016e2872e78ecadc",
+      "changedAt": "2020-03-06T09:03:00+01:00",
+      "class": {
+        "id": "RC-State"
+      },
+      "properties": [
+        {
+          "class": {
+            "id": "PC-Name"
+          },
+          "values": [
+            [
+              {
+                "text": "FiCo-Data"
+              }
+            ]
+          ]
+        },
+        {
+          "class": {
+            "id": "PC-Description"
+          },
+          "values": [
+            [
+              {
+                "text": "<div><p>Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc.</p></div>"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "Req-1a8016e2872e78ecadc50feddc00029b",
+      "changedAt": "2020-10-17T10:00:00+01:00",
+      "class": {
+        "id": "RC-Requirement"
+      },
+      "properties": [
+        {
+          "class": {
+            "id": "PC-Name"
+          },
+          "values": [
+            [
+              {
+                "text": "Data Volume"
+              }
+            ]
+          ]
+        },
+        {
+          "class": {
+            "id": "PC-Description"
+          },
+          "values": [
+            [
+              {
+                "text": "<div><p>The data store MUST support a total volume up to 850 GB.</p></div>"
+              }
+            ]
+          ]
+        },
+        {
+          "class": {
+            "id": "PC-Priority"
+          },
+          "values": [ "V-Prio-2" ]
+        }
+      ]
+    }
+  ],
+  "statements": [
+    {
+      "id": "Ssat-50feddc00029b1a8016e2872e78ecadc-1a8016e2872e78ecadc50feddc00029b",
+      "changedAt": "2020-10-17T10:00:00+01:00",
+      "class": {
+        "id": "SC-satisfies"
+      },
+      "properties": [
+        {
+          "class": {
+            "id": "PC-Description"
+          },
+          "values": [
+            [
+              {
+                "text": "'FiCo-Data' satisfies 'Data Volume'"
+              }
+            ]
+          ]
+        }
+      ],
+      "subject": {
+        "id": "MEl-50feddc00029b1a8016e2872e78ecadc"
+      },
+      "object": {
+        "id": "Req-1a8016e2872e78ecadc50feddc00029b"
+      }
+    }
+  ],
+  "hierarchies": [
+        {
+          "id": "N-1a8016e2872e78ecadc50feddc00029b",
+          "resource": {
+            "id": "Req-1a8016e2872e78ecadc50feddc00029b"
+          },
+          "changedAt": "2020-10-17T10:00:00+01:00"
+		},
+		{
+		  "id": "N-50feddc00029b1a8016e2872e78ecadc",
+		  "resource": {
+			"id": "MEl-50feddc00029b1a8016e2872e78ecadc"
+		  },
+		  "changedAt": "2020-03-06T09:05:00+01:00"
+        }
+  ]
+}

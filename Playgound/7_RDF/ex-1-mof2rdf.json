@@ -1,0 +1,198 @@
+{
+  "@context": {
+    "0": "https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "mof2rdf": "http://www.omg.org/spec/MOF2RDF/MOFSupport/",
+    "W3C": "https://www.w3.org/standards/semanticweb#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "SpecIF": "https://specif.de/v1.1/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "http://www.omg.org/spec/MOF2RDF/MOFSupport/",
+      "@type": "owl:Ontology",
+      "rdfs:comment": "Provides annotations for basic MOF concepts not directly\n                 supported by OWL",
+      "rdfs:label": {
+        "@value": "MOF2RDF Support",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://www.omg.org/spec/MOF2RDF/MOFSupport/Class",
+      "@type": "owl:Class",
+      "rdfs:comment": "Classes instantiating MOF classes",
+      "rdfs:label": {
+        "@value": "class",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://www.omg.org/spec/MOF2RDF/MOFSupport/DataType",
+      "@type": "owl:Class",
+      "rdfs:comment": "Provides traceability for a MOF DataType represented\n                 by an owl:Class",
+      "rdfs:label": {
+        "@value": "data type",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://www.omg.org/spec/MOF2RDF/MOFSupport/Enumeration",
+      "@type": "owl:Class",
+      "rdfs:comment": "Provides traceability for a MOF Enumeration represented\n                 by an owl:Class",
+      "rdfs:label": {
+        "@value": "data type",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "http://www.omg.org/spec/MOF2RDF/MOFSupport/isUnique",
+      "@type": "owl:AnnotationProperty",
+      "rdfs:comment": "Whether the values of a property for a specific object\n                 can contain the same value more than once",
+      "rdfs:domain": {
+        "@id": "rdfs:Property"
+      },
+      "rdfs:label": {
+        "@value": "is unique",
+        "@language": "en"
+      },
+      "rdfs:range": {
+        "@id": "xsd:boolean"
+      }
+    },
+    {
+      "@id": "0:PC-Priority",
+      "@type": "owl:Class",
+      "rdfs:label": "Priority",
+      "rdfs:subClassOf": {
+        "@id": "mof2rdf:Enumeration"
+      },
+      "owl:equivalentClass": {
+        "@type": "owl:Class",
+        "owl:oneOf": {
+          "@list": [
+            {
+              "@id": "SpecIF:priorityHigh"
+            },
+            {
+              "@id": "SpecIF:priorityMedium"
+            },
+            {
+              "@id": "SpecIF:priorityLow"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "@id": "SpecIF:priorityHigh",
+      "@type": [
+        "0:PC-Priority",
+        "owl:NamedIndividual"
+      ],
+      "rdfs:label": {
+        "@value": "High",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "SpecIF:priorityMedium",
+      "@type": [
+        "0:PC-Priority",
+        "owl:NamedIndividual"
+      ],
+      "rdfs:label": {
+        "@value": "Medium",
+        "@language": "en"
+      }
+    },
+    {
+      "@id": "SpecIF:priorityLow",
+      "@type": [
+        "0:PC-Priority",
+        "owl:NamedIndividual"
+      ],
+      "rdfs:label": {
+        "@value": "Low",
+        "@language": "en"
+      }
+    },
+    {
+      "@type": "owl:AllDifferent",
+      "owl:distinctMembers": {
+        "@list": [
+          {
+            "@id": "SpecIF:priorityHigh"
+          },
+          {
+            "@id": "SpecIF:priorityMedium"
+          },
+          {
+            "@id": "SpecIF:priorityLow"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "0:RC-Requirement",
+      "@type": "owl:Class",
+      "rdfs:label": {
+        "@value": "Requirement",
+        "@language": "en"
+      },
+      "rdfs:subClassOf": [
+        {
+          "@id": "mof2rdf:Class"
+        },
+        {
+          "@type": "owl:Restriction",
+          "owl:allValuesFrom": {
+            "@id": "0:PC-Priority"
+          },
+          "owl:onProperty": {
+            "@id": "0:RC-Requirement-Priority"
+          }
+        },
+        {
+          "@type": "owl:Restriction",
+          "owl:onClass": {
+            "@id": "0:PC-Priority"
+          },
+          "owl:onProperty": {
+            "@id": "0:RC-Requirement-Priority"
+          },
+          "owl:qualifiedCardinality": {
+            "@value": "1",
+            "@type": "xsd:nonNegativeInteger"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "0:RC-Requirement-Priority",
+      "@type": "owl:ObjectProperty",
+      "rdfs:domain": {
+        "@id": "0:RC-Requirement"
+      },
+      "rdfs:label": {
+        "@value": "Priority",
+        "@language": "en"
+      },
+      "rdfs:range": {
+        "@id": "0:PC-Priority"
+      }
+    },
+    {
+      "@id": "0:Req-1a8016e2872e78ecadc50feddc00029b",
+      "@type": "0:RC-Requirement",
+      "rdfs:label": "Data Volume",
+      "rdfs:comment": "The data store MUST support a total volume up to 850 GB.",
+      "0:RC-Requirement-Priority": {
+        "@id": "SpecIF:priorityHigh"
+      },
+      "dcterms:modified": "2020-10-17T10:00:00+01:00"
+    }
+  ]
+}

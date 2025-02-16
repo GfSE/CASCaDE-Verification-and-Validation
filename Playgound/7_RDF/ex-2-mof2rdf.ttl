@@ -1,0 +1,283 @@
+### Example 1: Two resource (node) classes, an edge class plus two instances with relation following MOF2RDF.
+# see: https://www.omg.org/spec/MOF2RDF/1.0/PDF
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix mof2rdf: <http://www.omg.org/spec/MOF2RDF/MOFSupport/> .
+
+@prefix W3C: <https://www.w3.org/standards/semanticweb#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix SpecIF: <https://specif.de/v1.1/schema#> .
+@prefix this: <https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements> .
+
+## -------- MOF Support (excerpt)
+
+<http://www.omg.org/spec/MOF2RDF/MOFSupport/>
+    a owl:Ontology ;
+    rdfs:comment """Provides annotations for basic MOF concepts not directly
+                 supported by OWL""" ;
+    rdfs:label "MOF2RDF Support"@en .
+
+<http://www.omg.org/spec/MOF2RDF/MOFSupport/Class>
+    a owl:Class ;
+    rdfs:comment """Classes instantiating MOF classes""" ;
+    rdfs:label "class"@en .
+    
+<http://www.omg.org/spec/MOF2RDF/MOFSupport/DataType>
+    a owl:Class ;
+    rdfs:comment """Provides traceability for a MOF DataType represented
+                 by an owl:Class""" ;
+    rdfs:label "data type"@en .
+    
+<http://www.omg.org/spec/MOF2RDF/MOFSupport/Enumeration>
+    a owl:Class ;
+    rdfs:comment """Provides traceability for a MOF Enumeration represented
+                 by an owl:Class""" ;
+    rdfs:label "data type enumeration"@en .
+
+#<http://www.omg.org/spec/MOF2RDF/MOFSupport/Association>
+#    a owl:Class ;
+#    rdfs:comment """Classes instantiating associations i.e. specific Links 
+#                 should inherit from this class""" ;
+#    rdfs:label "association"@en .
+
+<http://www.omg.org/spec/MOF2RDF/MOFSupport/AssociationClass>
+    a owl:Class ;
+    rdfs:subClassOf <http://www.omg.org/spec/MOF2RDF/MOFSupport/Association>,
+                    <http://www.omg.org/spec/MOF2RDF/MOFSupport/Class> ;
+    rdfs:comment """Classes instantiating associations with own properties
+                 (association classes) i.e. specific Links with property values, 
+                 should inherit from this class""" ;
+    rdfs:label "association class"@en .
+    
+## -------- Property Classes
+
+# Priority with enumerated values
+this:PC-Priority
+    a owl:Class ;
+#    rdfs:isDefinedBy [
+#        rdfs:resource "http://example.com/Package1/"
+#    ] ;
+    rdfs:label "Priority" ;
+    rdfs:subClassOf mof2rdf:Enumeration ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:oneOf ( SpecIF:priorityHigh SpecIF:priorityMedium SpecIF:priorityLow )
+    ] .
+
+SpecIF:priorityHigh
+    a this:PC-Priority, owl:NamedIndividual ;
+#    rdfs:isDefinedBy [
+#        rdfs:resource "http://example.com/Package1/"
+#    ] ;
+    rdfs:label "High"@en .
+
+SpecIF:priorityMedium
+    a this:PC-Priority, owl:NamedIndividual ;
+#    rdfs:isDefinedBy [
+#        rdfs:resource "http://example.com/Package1/"
+#    ] ;
+    rdfs:label "Medium"@en .
+
+SpecIF:priorityLow
+    a this:PC-Priority, owl:NamedIndividual ;
+#    rdfs:isDefinedBy [
+#        rdfs:resource "http://example.com/Package1/"
+#    ] ;
+    rdfs:label "Low"@en .
+
+[]
+    a owl:AllDifferent ;
+    owl:distinctMembers ( SpecIF:priorityHigh SpecIF:priorityMedium SpecIF:priorityLow ) .
+
+## -------- Resource (Node) Classes
+
+# Fundamental Model-Element 'State':
+this:RC-State
+    a owl:Class ;
+	# ... is this really an instance of owl:Class? Why not a subClass? 
+#    rdfs:isDefinedBy [
+#        rdfs:resource "http://example.com/Package1/"
+#    ] ;
+    rdfs:subClassOf mof2rdf:Class, [
+        a owl:Restriction ;
+        owl:allValuesFrom xsd:integer ;
+        owl:onProperty this:RC-State-Type    
+	], [
+        a owl:Restriction ;
+        owl:onDataRange xsd:integer ;
+        owl:onProperty this:RC-State-Type ;
+        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger 
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom this:SC-satisfies ;
+        owl:onProperty this:SC-satisfies-ObjectLink
+    ], [
+        a owl:Restriction ;
+        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onClass this:SC-satisfies ;
+        owl:onProperty this:SC-satisfies-ObjectLink
+    ] ;
+    rdfs:label "State"@en ;
+	rdfs:comment 'A \'State\' is a fundamental model element type representing a passive entity, be it a value, a document, an information storage or even a physical shape.' ;
+	SpecIF:icon '●' ;
+	dcterms:modified '2018-05-10T11:54:00+01:00' .
+
+this:RC-State-Type    
+    a owl:DatatypeProperty ;
+    rdfs:domain this:RC-State ;
+#    rdfs:isDefinedBy [
+#        rdfs:resource "http://example.com/Package1/"
+#    ] ;
+    rdfs:label "Type"@en ;
+    rdfs:range xsd:string .
+
+this:RC-State-satisfies-Object
+    a owl:ObjectProperty ;
+    rdfs:domain this:RC-State ;
+#    rdfs:isDefinedBy [
+#        rdfs:resource "http://example.com/Package3/"
+#    ] ;
+    rdfs:label "satisfies object"@en ;
+    rdfs:range this:RC-Requirement ;
+    owl:inverseOf this:RC-Requirement-satisfies-Subject ;
+    owl:propertyChainAxiom ([
+            owl:inverseOf this:SC-satisfies-Subject
+        ]
+        this:SC-satisfies-Object
+    ) .
+
+# 'Requirement'
+this:RC-Requirement
+    a owl:Class ;
+#    rdfs:isDefinedBy [
+#        rdfs:resource "http://example.com/Package1/"
+#    ] ;
+    rdfs:subClassOf mof2rdf:Class, [
+        a owl:Restriction ;
+        owl:allValuesFrom this:PC-Priority ;
+        owl:onProperty this:RC-Requirement-Priority
+    ], [
+        a owl:Restriction ;
+        owl:onClass this:PC-Priority ;
+        owl:onProperty this:RC-Requirement-Priority ;
+        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+    ], [
+        a owl:Restriction ;
+        owl:allValuesFrom this:SC-satisfies ;
+        owl:onProperty this:SC-satisfies-SubjectLink
+    ], [
+        a owl:Restriction ;
+        owl:onProperty this:SC-satisfies-SubjectLink ;
+        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onClass this:SC-satisfies
+    ] ;
+    rdfs:label "Requirement"@en ;
+	rdfs:comment 'A \'Requirement\' is a singular documented physical and functional need that a particular design, product or process must be able to perform.' ;
+	SpecIF:icon '&#8623;' ;
+	dcterms:modified '2021-02-22T08:59:00+02:00' .
+
+this:RC-Requirement-Priority
+    a owl:ObjectProperty ;
+    rdfs:domain this:RC-Requirement ;
+#    rdfs:isDefinedBy [
+#        rdfs:resource "http://example.com/Package1/"
+#    ] ;
+    rdfs:label "Priority"@en ;
+    rdfs:range this:PC-Priority .
+
+this:RC-Requirement-satisfies-Subject
+    a owl:ObjectProperty ;
+    rdfs:domain this:RC-Requirement ;
+#    rdfs:isDefinedBy [
+#        rdfs:resource "http://example.com/Package3/"
+#    ] ;
+    rdfs:label "satisfies subject"@en ;
+    rdfs:range this:RC-State ;
+    owl:propertyChainAxiom ([
+            owl:inverseOf this:SC-satisfies-Object
+        ]
+        this:SC-satisfies-Subject
+    ) .
+
+## -------- Statement (Edge) Classes
+
+this:SC-satisfies
+    a owl:Class ;
+	# ... is this really an instance of owl:Class? Why not a subClass? 
+	# We want a reusable associationClass ...
+#    rdfs:isDefinedBy [
+#        rdfs:resource "http://example.com/Package3/"
+#    ] ;
+    rdfs:label "satisfies"@en ;
+    rdfs:subClassOf mof2rdf:AssociationClass, [
+        a owl:Restriction ;
+        owl:onClass this:RC-Requirement ;
+        owl:onProperty this:SC-satisfies-Object ;
+        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+    ], [
+        a owl:Restriction ;
+        owl:onClass this:RC-State ;
+        owl:onProperty this:SC-satisfies-Subject ;
+        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger
+    ] .
+
+# Can this be done more simply ??
+this:SC-satisfies-Subject
+    a owl:ObjectProperty ;
+    rdfs:domain this:SC-satisfies ;
+    rdfs:label "satisfies subject"@en ;
+    rdfs:range this:RC-State .
+
+this:SC-satisfies-SubjectLink
+    a owl:ObjectProperty ;
+    rdfs:domain this:RC-State ;
+    rdfs:label "satisfies subject to link"@en ;
+    rdfs:range this:SC-satisfies .
+
+this:SC-satisfies-Object
+    a owl:ObjectProperty ;
+    rdfs:domain this:SC-satisfies ;
+    rdfs:label "satisfies object"@en ;
+    rdfs:range this:RC-Requirement .
+
+this:SC-satisfies-ObjectLink
+    a owl:ObjectProperty ;
+    rdfs:domain this:RC-Requirement ;
+    rdfs:label "satisfies object to link"@en ;
+    rdfs:range this:SC-satisfies .
+
+
+## -------- Instances = Payload
+
+# Resources (Nodes)
+
+this:MEl-50feddc00029b1a8016e2872e78ecadc 
+	a this:RC-State ;
+	rdfs:label 'FiCo-Data' ;
+	rdfs:comment 'Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc.' ;
+	dcterms:modified '2020-03-06T09:03:00+01:00' .
+
+this:Req-1a8016e2872e78ecadc50feddc00029b 
+	a this:RC-Requirement ;
+	rdfs:label 'Data Volume' ;
+	rdfs:comment 'The data store MUST support a total volume up to 850 GB.' ;
+    this:RC-Requirement-Priority SpecIF:priorityMedium ;
+	dcterms:modified '2020-10-17T10:00:00+01:00' .
+
+# Statements (Edges)
+
+# .. how to instantiate a simple 'satisfies' relation between the nodes above ... 
+# with all these classes around SC-satisfies ??
+
+# I guess I need to instantiate first an edge node and then connect it to both of the nodes above
+#this:Ssat-50feddc00029b1a8016e2872e78ecadc-1a8016e2872e78ecadc50feddc00029b
+#    a this:SC-satisfies ;
+#    dcterms:modified '2020-10-17T10:00:00+01:00' .
+	
