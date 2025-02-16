@@ -1,0 +1,537 @@
+@prefix : <https://omg.org/spec/CASCaDE/example/ACP-Very-Simple-Model-FMC-with-Requirements/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix specif: <https://specif.de/v1.1/schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix oslc_rm: <http://open-services.net/ns/rm#> .
+
+#################################################################
+# Top-Level Project
+#################################################################
+
+:ACP-Very-Simple-Model-FMC-with-Requirements a owl:Ontology ;
+    owl:imports specif: ;
+    dct:title "Project 'Very Simple Model (FMC) with Requirements";
+    dct:creator _:software1 ;
+    dct:createdAt "2025-01-26T17:06:19.300Z"^^xsd:dateTime ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> .
+_:software1 a dct:Software ;
+    dct:title "SpecIF Modellintegrator und Editor" ;
+    dct:hasVersion "1.2.a.11" . 
+
+
+#################################################################
+# Data Types
+#################################################################
+
+## IGNORE THE STRINGS AND USE SHACL FOR STRING LENGTH CONSTRAINTS 
+
+
+# DataType: DT-Priority (with enumerated values)
+## MAKE THIS A CLASS 
+:DT-Priority a owl:Class ;
+    rdfs:label "SpecIF:Priority" ;
+    dct:modified "2016-05-26T08:59:00+02:00"^^xsd:dateTime ;
+    dct:description "Enumerated values for priority" ;
+    owl:oneOf (:V-Prio-0 :V-Prio-1 :V-Prio-2 :V-Prio-3 :V-Prio-4) .
+:V-Prio-0 a :DT-Priority;
+    rdfs:label "SpecIF:priorityHigh" .
+:V-Prio-1 a :DT-Priority;
+    rdfs:label "SpecIF:priorityRatherHigh" .
+:V-Prio-2 a :DT-Priority;
+    rdfs:label "SpecIF:priorityMedium" .
+:V-Prio-3 a :DT-Priority;
+    rdfs:label "SpecIF:priorityRatherLow" .
+:V-Prio-4 a :DT-Priority;
+    rdfs:label "SpecIF:priorityLow" .
+
+
+
+#################################################################
+# Property Classes
+#################################################################
+
+# PC-Name
+:PC-Name a owl:DatatypeProperty ;
+    rdfs:subPropertyOf rdfs:label ;
+    specif:propertyClass_format specif:plain .
+
+# PC-Description
+:PC-Description a owl:DatatypeProperty ;
+    rdfs:subPropertyOf dct:description ;
+    specif:propertyClass_format specif:xhtml ;
+    dct:description "An account of the resource (detailed description)." .
+
+# PC-Diagram
+_:PC-Diagram a owl:DatatypeProperty ;
+    dct:modified "2023-02-26T14:40:17.601Z"^^xsd:dateTime ;
+    rdfs:label "SpecIF:Diagram" ;
+    dct:description "One or more diagrams illustrating the resource."@en ;
+    rdfs:domain xsd:string;
+    specif:propertyClass_format specif:xhtml ;
+    :propertyClass_revision "1.1"^^:SpecifRevision ;
+    :propertyClass_multiple true .
+
+# PC-Type
+_:PC-Type a owl:DatatypeProperty ;
+    rdfs:subPropertyOf dct:type ;
+    dct:modified "2023-02-26T20:18:04.451Z"^^xsd:dateTime ;
+    rdfs:label "SpecIF:Type" ;
+    dct:description "The nature or genre of the resource. ..."@en ;
+    rdfs:domain xsd:string;
+    specif:propertyClass_format specif:plain .
+    
+# PC-Priority - declared as a class instead of a datatype
+:PC-Priority a owl:ObjectProperty ;
+    rdfs:label "SpecIF:Priority"^^:SpecifText ;
+    dct:modified "2020-03-26T22:59:00+02:00"^^xsd:dateTime ;
+    dct:description "The 'Priority' of the resource." ;   
+    rdfs:range :DT-Priority .
+
+
+#################################################################
+# Resource Classes
+#################################################################
+
+# RC-Folder
+:RC-Folder a owl:Class ;
+    rdfs:label "SpecIF:Heading" ;
+    dct:description "A 'Heading' is a chapter title at any level with optional description."@en ;
+    rdfs:subClassOf :RC-Paragraph;
+    :resourceClass_revision "1.1"^^:SpecifRevision ;
+    specif:resourceClass_instantiation specif:auto, specif:user ;
+    :resourceClass_isHeading true .
+
+# RC-Paragraph
+:RC-Paragraph a owl:Class ;
+    rdfs:label "SpecIF:Paragraph"^^:SpecifText ;
+    dct:description "A 'Paragraph' is an unspecified information in a document at any level." ;
+    specif:resourceClass_instantiation specif:auto, specif:user ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty :PC-Name ;
+        owl:someValuesFrom xsd:string
+    ],
+    [
+        a owl:Restriction ;
+        owl:onProperty :PC-Description ;
+        owl:someValuesFrom xsd:string
+    ] ,
+    [
+        a owl:Restriction ;
+        owl:onProperty :PC-Diagram ;
+        owl:someValuesFrom xsd:string
+    ] ,
+    [
+        a owl:Restriction ;
+        owl:onProperty :PC-Type ;
+        owl:someValuesFrom xsd:string
+    ] .
+
+# RC-View
+:RC-View a owl:Class ;
+    rdfs:label "SpecIF:View"^^:SpecifText ;
+    dct:description "A 'View' is a graphical model view with a specific communication purpose, e.g. a business process or system composition." ;
+    specif:resourceClass_instantiation specif:user ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty :PC-Name ;
+        owl:someValuesFrom xsd:string
+    ],
+    [
+        a owl:Restriction ;
+        owl:onProperty :PC-Description ;
+        owl:someValuesFrom xsd:string
+    ] ,
+    [
+        a owl:Restriction ;
+        owl:onProperty :PC-Diagram ;
+        owl:someValuesFrom xsd:string
+    ] ,
+    [
+        a owl:Restriction ;
+        owl:onProperty :PC-Type ;
+        owl:someValuesFrom xsd:string
+    ] .
+
+# RC-Actor
+:RC-Actor a owl:Class ;
+    rdfs:label "FMC:Actor"^^:SpecifText ;
+    dct:description "An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role." ;
+    specif:resourceClass_instantiation specif:auto ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty :PC-Name ;
+        owl:someValuesFrom xsd:string
+    ],
+    [
+        a owl:Restriction ;
+        owl:onProperty :PC-Description ;
+        owl:someValuesFrom xsd:string
+    ] ,
+    [
+        a owl:Restriction ;
+        owl:onProperty :PC-Type ;
+        owl:someValuesFrom xsd:string
+    ] .
+
+# RC-State
+:RC-State a owl:Class ;
+    rdfs:label "FMC:State"^^:SpecifText ;
+    dct:description "A 'State' is a fundamental model element type representing a passive entity, be it a value, a document, an information storage or even a physical shape." ;
+    specif:resourceClass_instantiation specif:auto ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty :PC-Name ;
+        owl:someValuesFrom xsd:string
+    ],
+    [
+        a owl:Restriction ;
+        owl:onProperty :PC-Description ;
+        owl:someValuesFrom xsd:string
+    ] ,
+    [
+        a owl:Restriction ;
+        owl:onProperty :PC-Type ;
+        owl:someValuesFrom xsd:string
+    ] .
+
+# RC-Event
+:RC-Event a owl:Class ;
+    rdfs:label "FMC:Event"^^:SpecifText ;
+    dct:description "An 'Event' is a fundamental model element type representing a time reference, a change in condition/value or a synchronisation primitive." ;
+    specif:resourceClass_instantiation specif:auto ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty :PC-Name ;
+        owl:someValuesFrom xsd:string
+    ],
+    [
+        a owl:Restriction ;
+        owl:onProperty :PC-Description ;
+        owl:someValuesFrom xsd:string
+    ] ,
+    [
+        a owl:Restriction ;
+        owl:onProperty :PC-Type ;
+        owl:someValuesFrom xsd:string
+    ] .
+
+# RC-Requirement
+:RC-Requirement a owl:Class ;
+    rdfs:label "IREB:Requirement"^^:SpecifText ;
+    dct:description "A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform." ;
+    specif:resourceClass_instantiation specif:user ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty :PC-Name ;
+        owl:someValuesFrom xsd:string
+    ],
+    [
+        a owl:Restriction ;
+        owl:onProperty :PC-Description ;
+        owl:someValuesFrom xsd:string
+    ] ,
+    [
+        a owl:Restriction ;
+        owl:onProperty :PC-Priority ;
+        owl:someValuesFrom :DT-Priority
+    ] .
+
+
+#################################################################
+# Statement Classes
+#################################################################
+
+# SC-shows
+:SC-shows a owl:ObjectProperty ;
+    rdfs:label "SpecIF:shows" ;
+    dct:description "'View' shows 'Model-Element'"  ;
+    rdfs:domain :RC-View.
+
+# SC-writes
+:SC-writes a owl:ObjectProperty  ;
+    rdfs:label "SpecIF:writes" ;
+    dct:description "'Actor' (Role, Function) writes 'State' (Information)" ;
+    rdfs:domain :RC-Actor; 
+    rdfs:range :RC-State .
+
+
+# SC-reads
+:SC-reads a owl:ObjectProperty  ;
+    rdfs:label "SpecIF:reads" ;
+    dct:description "'Actor' (Role, Function) reads 'State' (Information)" ;
+    rdfs:domain :RC-Actor; 
+    rdfs:range :RC-State .
+
+# SC-satisfies
+:SC-satisfies a owl:ObjectProperty  ;
+    rdfs:label "SpecIF:writes" ;
+    rdfs:subPropertyOf oslc_rm:satisfies ;
+    dct:description "Statement: Model-Element satisfies Requirement" ;
+    rdfs:domain [ a owl:Class; owl:unionOf (:RC-Actor :RC-State ) ];
+    rdfs:range :RC-Requirement .
+
+
+#################################################################
+# Resources
+#################################################################
+
+# Resource: Folder-Introduction
+:Folder-Introduction a :RC-Folder ;
+    :PC-Name "Introduction" ;
+    :PC-Description "This is a minimal showcase for a model with model-elements and related requirements. It covers pretty much all characteristics needed in such cases (including 'statements on statements'), so that transformations and expressive power of other data formats can be evaluated. The example and its representation in SpecIF format is discussed in <a href=\"https://specif.de/Tutorials/06_Very-Simple-Model-FMC.html\" target=\"_blank\">Tutorial 6: Very Simple Model (FMC)</a> and <a href=\"https://specif.de/Tutorials/09_Very-Simple-Model-FMC-with-Requirements.html\" target=\"_blank\">Tutorial 9: Very Simple Model (FMC) with Requirements</a>." ;
+    dct:modified "2025-02-07T08:32:00+01:00"^^xsd:dateTime .
+
+# Resource: Folder-SystemModel
+:Folder-SystemModel a :RC-Folder ;
+    :PC-Name "System Model" ;
+    dct:modified "2020-03-06T08:32:00+01:00"^^xsd:dateTime .
+
+# Resource: Diagram-aec0df7900010000017001eaf53e8876
+:Diagram-aec0df7900010000017001eaf53e8876 a :RC-View ;
+    :PC-Name "IT-Integration: FiCo-Application and FiCo-Data" ;
+    :PC-Diagram "<div><p class=\"inline-label\">Model Diagram:</p><p><object type=\"image/svg+xml\" data=\"files_and_images/Very-Simple-Model-FMC.svg\">Notation: FMC Block Diagram</object></p></div>" ;
+    :PC-Type "FMC Block Diagram" ;
+    dct:modified "2020-03-06T08:32:00+01:00"^^xsd:dateTime .
+
+# Resource: MEl-50fbfe8f0029b1a8016ea86245a9d83a
+:MEl-50fbfe8f0029b1a8016ea86245a9d83a a :RC-Actor ;
+    :PC-Name "FiCo-Application";
+    :PC-Description "IT-Application for Finance and Controlling" ;
+    dct:modified "2020-03-06T09:04:00+01:00"^^xsd:dateTime .
+
+# Resource: MEl-50feddc00029b1a8016e2872e78ecadc
+:MEl-50feddc00029b1a8016e2872e78ecadc a :State ;
+    :PC-Name "FiCo-Data";
+    :PC-Description "Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc." ;
+    dct:modified "2020-03-06T09:03:00+01:00"^^xsd:dateTime .
+
+# Resource: Folder-Requirements
+:Folder-Requirements a :RC-Folder ;
+    :PC-Name "Requirements" ;
+    dct:modified "2020-03-06T08:32:00+01:00"^^xsd:dateTime .
+
+# Resource: Req-1a8016e2872e78ecadc50feddc00029b
+:Req-1a8016e2872e78ecadc50feddc00029b a :RC-Requirement ;
+    :PC-Name "Data Volume";
+    :PC-Description "The data store MUST support a total volume up to 850 GB." ;
+    :PC-Priority "V-Prio-0" ;
+    dct:modified "2020-10-17T10:00:00+01:00"^^xsd:dateTime .
+
+# Resource: Req-0Z7916e2872e78ecadc50feddc00918a
+:Req-0Z7916e2872e78ecadc50feddc00918a a :RC-Requirement ; ;
+    :PC-Name "Consistency";
+    :PC-Description "The data store MUST be consistent at all times." ;
+    :PC-Priority "V-Prio-0" ;
+    dct:modified "2020-10-17T10:00:00+01:00"^^xsd:dateTime .
+
+# Resource: Req-2b9016e2872e78ecadc50feddc0013Ac
+:Req-2b9016e2872e78ecadc50feddc0013Ac a :RC-Requirement ;
+    :PC-Name "Response Time";
+    :PC-Description "The system SHOULD respond on user queries within 300 ms." ;
+    :PC-Priority "V-Prio-2" ;
+    dct:modified "2020-10-17T10:00:00+01:00"^^xsd:dateTime .
+
+# Resource: FolderGlossary-10875487071
+:FolderGlossary-10875487071 a :RC-Folder ;
+    :PC-Name "Model Elements (Glossary)"@en ;
+    :PC-Type "SpecIF:Glossary" ;
+    dct:modified "2025-01-26T17:05:57.582Z"^^xsd:dateTime .
+
+#################################################################
+# Statements
+#################################################################
+
+# Statement 1
+# Using RDF-star syntax
+# :SVis-aec0df7900010000017001eaf53e8876-50fbfe8f0029b1a8016ea86245a9d83a << :Diagram-aec0df7900010000017001eaf53e8876 :SC-Shows :MEl-50fbfe8f0029b1a8016ea86245a9d83a >>
+# :PC-Description "'FMC Block Diagram' shows 'FiCo-Application'" ;
+# dct:modified "2018-05-10T11:54:00+01:00"^^xsd:dateTime .
+
+
+# Statement 2
+#:Diagram-aec0df7900010000017001eaf53e8876 :SC-Shows :MEl-50feddc00029b1a8016e2872e78ecadc .
+# :SVis-aec0df7900010000017001eaf53e8876-50feddc00029b1a8016e2872e78ecadc << :Diagram-aec0df7900010000017001eaf53e8876 :SC-Shows :MEl-50feddc00029b1a8016e2872e78ecadc >>.
+#:PC-Description "'FMC Block Diagram' shows 'FiCo-Data'".
+# dct:modified "2018-05-10T11:54:00+01:00"^^xsd:dateTime .
+
+# Statement 3
+#:MEl-50fbfe8f0029b1a8016ea86245a9d83a :SC-writes MEl-50feddc00029b1a8016e2872e78ecadc .
+# :PC-Description "'FiCo-Application' writes 'FiCo-Data'" .
+# dct:modified "2020-03-06T09:05:00+01:00"^^xsd:dateTime .
+
+# Statement 4
+#:MEl-50fbfe8f0029b1a8016ea86245a9d83a :SC-reads :MEl-50feddc00029b1a8016e2872e78ecadc .
+# :PC-Description "'FiCo-Application' reads 'FiCo-Data'" .
+# dct:modified "2020-03-06T09:05:00+01:00"^^xsd:dateTime .
+
+# Statement 5
+#:MEl-50feddc00029b1a8016e2872e78ecadc :SC-satisfies :Req-1a8016e2872e78ecadc50feddc00029b .
+# :PC-Description "'FiCo-Data' satisfies 'Data Volume'" .
+# dct:modified "2020-10-17T10:00:00+01:00"^^xsd:dateTime .
+
+# Statement 6
+#:MEl-50feddc00029b1a8016e2872e78ecadc :SC-satisfies :Req-0Z7916e2872e78ecadc50feddc00918a .
+# :PC-Description "'FiCo-Data' satisfies 'Consistency'" .
+# dct:modified "2020-10-17T10:00:00+01:00"^^xsd:dateTime .
+
+# Statement 7
+#:MEl-50fbfe8f0029b1a8016ea86245a9d83a :SC-satisfies :Req-2b9016e2872e78ecadc50feddc0013Ac .
+# :PC-Description "'FiCo-Application' satisfies 'Response Time'" .
+# dct:modified "2020-10-17T10:00:00+01:00"^^xsd:dateTime .
+
+# Statement 8 (Combined statement)
+#:Diagram-aec0df7900010000017001eaf53e8876 :SC-shows :SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc .
+# :PC-Description "'FMC Block Diagram' shows 'FiCo-Application writes FiCo-Data'" .
+# dct:modified "2025-01-26T08:32:00+01:00"^^xsd:dateTime .
+
+# Statement 9
+#:Diagram-aec0df7900010000017001eaf53e8876 :SC-shows :SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc .
+# :PC-Description "'FMC Block Diagram' shows 'FiCo-Application reads FiCo-Data'" .
+# dct:modified "2025-01-26T08:32:00+01:00"^^xsd:dateTime . 
+
+#################################################################
+# Statements
+#################################################################
+
+# Statement 1
+:SVis-aec0df7900010000017001eaf53e8876-50fbfe8f0029b1a8016ea86245a9d83a a rdf:Statement ;
+    rdf:subject :Diagram-aec0df7900010000017001eaf53e8876 ;
+    rdf:predicate :SC-shows ;
+    rdf:object :MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
+    :PC-Description "'FMC Block Diagram' shows 'FiCo-Application'" ;
+    dct:modified "2018-05-10T11:54:00+01:00"^^xsd:dateTime .
+
+# Statement 2
+:SVis-aec0df7900010000017001eaf53e8876-50feddc00029b1a8016e2872e78ecadc a rdf:Statement ;
+    rdf:subject :Diagram-aec0df7900010000017001eaf53e8876 ;
+    rdf:predicate :SC-shows ;
+    rdf:object :MEl-50feddc00029b1a8016e2872e78ecadc ;
+    :PC-Description "'FMC Block Diagram' shows 'FiCo-Data'" ;
+    dct:modified "2018-05-10T11:54:00+01:00"^^xsd:dateTime .
+
+# Statement 3
+:SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc a rdf:Statement ;
+    rdf:subject :MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
+    rdf:predicate :SC-writes ;
+    rdf:object :MEl-50feddc00029b1a8016e2872e78ecadc ;
+    :PC-Description "'FiCo-Application' writes 'FiCo-Data'" ;
+    dct:modified "2020-03-06T09:05:00+01:00"^^xsd:dateTime .
+
+# Statement 4
+:SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc a rdf:Statement ;
+    rdf:subject :MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
+    rdf:predicate :SC-reads ;
+    rdf:object :MEl-50feddc00029b1a8016e2872e78ecadc ;
+    :PC-Description "'FiCo-Application' reads 'FiCo-Data'" ;
+    dct:modified "2020-03-06T09:05:00+01:00"^^xsd:dateTime .
+
+# Statement 5
+:Ssat-50feddc00029b1a8016e2872e78ecadc-1a8016e2872e78ecadc50feddc00029b a rdf:Statement ;
+    rdf:subject :MEl-50feddc00029b1a8016e2872e78ecadc ;
+    rdf:predicate :SC-satisfies ;
+    rdf:object :Req-1a8016e2872e78ecadc50feddc00029b ;
+    :PC-Description "'FiCo-Data' satisfies 'Data Volume'" ;
+    dct:modified "2020-10-17T10:00:00+01:00"^^xsd:dateTime .
+
+# Statement 6
+:Ssat-50feddc00029b1a8016e2872e78ecadc-0Z7916e2872e78ecadc50feddc00918a a rdf:Statement ;
+    rdf:subject :MEl-50feddc00029b1a8016e2872e78ecadc ;
+    rdf:predicate :SC-satisfies ;
+    rdf:object :Req-0Z7916e2872e78ecadc50feddc00918a ;
+    :PC-Description "'FiCo-Data' satisfies 'Consistency'" ;
+    dct:modified "2020-10-17T10:00:00+01:00"^^xsd:dateTime .
+
+# Statement 7
+:Ssat-50fbfe8f0029b1a8016ea86245a9d83a-2b9016e2872e78ecadc50feddc0013Ac a rdf:Statement ;
+    rdf:subject :MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
+    rdf:predicate :SC-satisfies ;
+    rdf:object :Req-2b9016e2872e78ecadc50feddc0013Ac ;
+    :PC-Description "'FiCo-Application' satisfies 'Response Time'" ;
+    dct:modified "2020-10-17T10:00:00+01:00"^^xsd:dateTime .
+
+# Statement 8 (Combined statement)
+:SVis-aec0df7900010000017001eaf53e8876-SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc a rdf:Statement ;
+    rdf:subject :Diagram-aec0df7900010000017001eaf53e8876 ;
+    rdf:predicate :SC-shows ;
+    rdf:object :SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc ;
+    :PC-Description "'FMC Block Diagram' shows 'FiCo-Application writes FiCo-Data'" ;
+    dct:modified "2025-01-26T08:32:00+01:00"^^xsd:dateTime .
+
+# Statement 9
+:SVis-aec0df7900010000017001eaf53e8876-SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc a rdf:Statement ;
+    rdf:subject :Diagram-aec0df7900010000017001eaf53e8876 ;
+    rdf:predicate :SC-shows ;
+    rdf:object :SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc ;
+    :PC-Description "'FMC Block Diagram' shows 'FiCo-Application reads FiCo-Data'" ;
+    dct:modified "2025-01-26T08:32:00+01:00"^^xsd:dateTime .
+
+
+
+#################################################################
+# Hierarchies (Nodes)
+#################################################################
+
+# Hierarchy Node 1: N-Folder-Introduction
+:N-Folder-Introduction a :SpecifNode ;
+    dct:modified "2025-02-07T08:32:00+01:00"^^xsd:dateTime ;
+    specif:node_resource :Folder-Introduction .
+
+# Hierarchy Node 2: N-Folder-Requirements with child nodes
+:N-Folder-Requirements a specif:SpecifNode ;
+    dct:modified "2020-03-06T08:32:00+01:00"^^xsd:dateTime ;
+    specif:node_resource :Folder-Requirements ;
+    specif:node_nodes :N-1a8016e2872e78ecadc50feddc00029b, 
+    :N-0Z7916e2872e78ecadc50feddc00918a, 
+    :N-2b9016e2872e78ecadc50feddc0013Ac .
+
+:N-1a8016e2872e78ecadc50feddc00029b a :SpecifNode ;
+    dct:modified "2020-10-17T10:00:00+01:00"^^xsd:dateTime ;
+    specif:node_resource :Req-1a8016e2872e78ecadc50feddc00029b .
+
+:N-0Z7916e2872e78ecadc50feddc00918a a :SpecifNode ;
+    dct:modified "2020-10-17T10:00:00+01:00"^^xsd:dateTime ;
+    specif:node_resource :Req-0Z7916e2872e78ecadc50feddc00918a .
+
+:N-2b9016e2872e78ecadc50feddc0013Ac a :SpecifNode ;
+    dct:modified "2020-10-17T10:00:00+01:00"^^xsd:dateTime ;
+    specif:node_resource :Req-2b9016e2872e78ecadc50feddc0013Ac .
+
+# Hierarchy Node 3: N-Folder-SystemModel with nested nodes
+:N-Folder-SystemModel a :SpecifNode ;
+    dct:modified "2020-03-06T08:32:00+01:00"^^xsd:dateTime ;
+    specif:node_nodes :N-Diagram-aec0df7900010000017001eaf53e8876 .
+
+:N-Diagram-aec0df7900010000017001eaf53e8876 a :SpecifNode ;
+    dct:modified "2020-10-17T10:00:00+01:00"^^xsd:dateTime ;
+    specif:node_resource :Diagram-aec0df7900010000017001eaf53e8876 ;
+    specif:node_nodes :N-50fbfe8f0029b1a8016ea86245a9d83a, :N-50feddc00029b1a8016e2872e78ecadc .
+
+:N-50fbfe8f0029b1a8016ea86245a9d83a a :SpecifNode ;
+    dct:modified "2020-03-06T09:05:00+01:00"^^xsd:dateTime ;
+    specif:node_resource :MEl-50fbfe8f0029b1a8016ea86245a9d83a .
+
+:N-50feddc00029b1a8016e2872e78ecadc a :SpecifNode ;
+    dct:modified "2020-03-06T09:05:00+01:00"^^xsd:dateTime ;
+    specif:node_resource :MEl-50feddc00029b1a8016e2872e78ecadc .
+
+# Hierarchy Node 4: N-FolderGlossary-10875487071 with child nodes
+:N-FolderGlossary-10875487071 a :SpecifNode ;
+    dct:modified "2025-01-26T17:05:57.582Z"^^xsd:dateTime ;
+    specif:node_nodes :N-9559304043, :N-12075661949 .
+
+:N-9559304043 a :SpecifNode ;
+    dct:modified "2025-01-26T17:05:57.582Z"^^xsd:dateTime ;
+    specif:node_resource :MEl-50fbfe8f0029b1a8016ea86245a9d83a .
+
+:N-12075661949 a :SpecifNode ;
+    dct:modified "2025-01-26T17:05:57.582Z"^^xsd:dateTime ;
+    specif:node_resource :MEl-50feddc00029b1a8016e2872e78ecadc .
+
+
+#################################################################
+# End of Instance
+#################################################################

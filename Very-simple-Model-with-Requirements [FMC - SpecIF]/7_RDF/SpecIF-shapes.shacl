@@ -1,0 +1,852 @@
+@prefix :         <https://specif.de/v1.1/schema#> .
+@prefix sh:       <http://www.w3.org/ns/shacl#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+
+#################################################################
+# SHACL Shapes for SpecIF v1.1
+#
+# This file covers all the major definitions from the JSON Schema,
+# including all properties defined for each type.
+#
+# Note: Some JSON Schema constructs (e.g. arrays, oneOf, regex patterns)
+# are only approximately modeled in SHACL.
+#################################################################
+
+###############################
+# Auxiliary Shapes
+###############################
+
+# For multi-language text, the JSON Schema defines an array of objects.
+# Here we define a shape for an individual multi-language text item.
+:SpecifMultiLanguageTextItemShape a sh:NodeShape ;
+    sh:property [
+      sh:path :mlt_text ;
+      sh:datatype xsd:string ;
+      sh:description "A text string." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :mlt_format ;
+      sh:class :SpecifTextFormat ;
+      sh:description "The text format (e.g., plain, xhtml)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :mlt_language ;
+      sh:datatype xsd:string ;
+      sh:description "An IETF language tag (e.g., en, de)." ;
+      sh:minCount 0 ;
+    ] .
+
+# Because in our OWL ontology we modeled SpecifMultiLanguageText as a datatype,
+# here we assume that a multi-language text value is a container of one or more items.
+# For simplicity, we use the same shape to validate such literal values.
+
+# SpecifValue is defined (via oneOf) as either a plain string or a multi-language text.
+# We use sh:or to allow either possibility.
+:SpecifValueShape a sh:NodeShape ;
+    sh:or ( 
+        [ sh:datatype xsd:string ]
+        [ sh:node :SpecifMultiLanguageTextItemShape ]
+    ) ;
+    sh:description "A property value is either a string or a multi-language text item." .
+
+###############################
+# Shape for SpecifAlternativeId
+###############################
+:SpecifAlternativeIdShape a sh:NodeShape ;
+    sh:targetClass :SpecifAlternativeId ;
+    sh:property [
+      sh:path :alternativeId_id ;
+      sh:datatype :SpecifId ;
+      sh:description "A globally unique identifier." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :alternativeId_revision ;
+      sh:datatype :SpecifRevision ;
+      sh:description "Revision of the alternative ID (optional)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :alternativeId_project ;
+      sh:datatype :SpecifId ;
+      sh:description "Project identifier (optional, for non‑global uniqueness)." ;
+      sh:minCount 0 ;
+    ] .
+
+###############################
+# Shape for SpecifKey
+###############################
+:SpecifKeyShape a sh:NodeShape ;
+    sh:targetClass :SpecifKey ;
+    sh:property [
+      sh:path :specifKey_id ;
+      sh:datatype :SpecifId ;
+      sh:description "A globally unique identifier for the key." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :specifKey_revision ;
+      sh:datatype :SpecifRevision ;
+      sh:description "Optional revision (if omitted, the latest is implied)." ;
+      sh:minCount 0 ;
+    ] .
+
+###############################
+# Shape for SpecifRights
+###############################
+:SpecifRightsShape a sh:NodeShape ;
+    sh:targetClass :SpecifRights ;
+    sh:property [
+      sh:path :rights_title ;
+      sh:datatype xsd:string ;
+      sh:description "Title of the rights." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :rights_url ;
+      sh:datatype xsd:anyURI ;
+      sh:description "URL for the rights." ;
+      sh:minCount 1 ;
+    ] .
+
+###############################
+# Shape for SpecifOrg
+###############################
+:SpecifOrgShape a sh:NodeShape ;
+    sh:targetClass :SpecifOrg ;
+    sh:property [
+      sh:path :org_organizationName ;
+      sh:datatype xsd:string ;
+      sh:description "Organization name." ;
+      sh:minCount 1 ;
+    ] .
+
+###############################
+# Shape for SpecifCreatedBy
+###############################
+:SpecifCreatedByShape a sh:NodeShape ;
+    sh:targetClass :SpecifCreatedBy ;
+    sh:property [
+      sh:path :createdBy_familyName ;
+      sh:datatype xsd:string ;
+      sh:description "Family name (optional)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :createdBy_givenName ;
+      sh:datatype xsd:string ;
+      sh:description "Given name (optional)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :createdBy_org ;
+      sh:node :SpecifOrgShape ;
+      sh:description "Organization information (optional)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :createdBy_email ;
+      sh:datatype xsd:string ;
+      sh:description "Email address (required)." ;
+      sh:minCount 1 ;
+    ] .
+
+###############################
+# Shape for SpecifEnumeratedValue
+###############################
+:SpecifEnumeratedValueShape a sh:NodeShape ;
+    sh:targetClass :SpecifEnumeratedValue ;
+    sh:property [
+      sh:path :enumValue_id ;
+      sh:datatype :SpecifId ;
+      sh:description "Identifier for the enumerated value." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :enumValue_value ;
+      sh:node :SpecifValueShape ;
+      sh:description "The enumerated value." ;
+      sh:minCount 1 ;
+    ] .
+
+###############################
+# Shape for SpecifDataType
+###############################
+:SpecifDataTypeShape a sh:NodeShape ;
+    sh:targetClass :SpecifDataType ;
+    sh:property [
+      sh:path :datatype_id ;
+      sh:datatype :SpecifId ;
+      sh:description "Data type identifier." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :datatype_title ;
+      sh:datatype :SpecifText ;
+      sh:description "Title of the data type." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :datatype_description ;
+      sh:class :SpecifMultiLanguageText ;
+      sh:description "Description of the data type." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :datatype_changedAt ;
+      sh:datatype xsd:dateTime ;
+      sh:description "Timestamp of last change." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :datatype_changedBy ;
+      sh:datatype xsd:string ;
+      sh:description "Identifier for who made the change." ;
+      sh:minCount 0 ;
+    ] .
+
+###############################
+# Shape for SpecifPropertyClass
+###############################
+:SpecifPropertyClassShape a sh:NodeShape ;
+    sh:targetClass :SpecifPropertyClass ;
+    sh:property [
+      sh:path :propertyClass_id ;
+      sh:datatype :SpecifId ;
+      sh:description "Identifier for the property class." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :propertyClass_title ;
+      sh:datatype :SpecifText ;
+      sh:description "Title of the property class." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :propertyClass_description ;
+      sh:class :SpecifMultiLanguageText ;
+      sh:description "Description of the property class." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :propertyClass_dataType ;
+      sh:node :SpecifKeyShape ;
+      sh:description "Reference to the data type key." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :propertyClass_multiple ;
+      sh:datatype xsd:boolean ;
+      sh:description "Indicates whether multiple values are allowed." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :propertyClass_values ;
+      sh:node :SpecifValueShape ;
+      sh:description "Default property value(s) (if any)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :propertyClass_format ;
+      sh:class :SpecifTextFormat ;
+      sh:description "Default text format." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :propertyClass_unit ;
+      sh:datatype xsd:string ;
+      sh:description "Unit for the property (if any)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :propertyClass_revision ;
+      sh:datatype :SpecifRevision ;
+      sh:description "Revision tag for the property class." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :propertyClass_replaces ;
+      sh:datatype :SpecifRevision ;
+      sh:description "Revision(s) that this property class replaces." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :propertyClass_changedAt ;
+      sh:datatype xsd:dateTime ;
+      sh:description "Timestamp when the property class was changed." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :propertyClass_changedBy ;
+      sh:datatype xsd:string ;
+      sh:description "Identifier for who changed the property class." ;
+      sh:minCount 0 ;
+    ] .
+
+###############################
+# Shape for SpecifResourceClass
+###############################
+:SpecifResourceClassShape a sh:NodeShape ;
+    sh:targetClass :SpecifResourceClass ;
+    sh:property [
+      sh:path :resourceClass_id ;
+      sh:datatype :SpecifId ;
+      sh:description "Identifier for the resource class." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :resourceClass_title ;
+      sh:datatype :SpecifText ;
+      sh:description "Title of the resource class." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :resourceClass_description ;
+      sh:class :SpecifMultiLanguageText ;
+      sh:description "Description of the resource class." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :resourceClass_extends ;
+      sh:node :SpecifKeyShape ;
+      sh:description "Reference to a parent resource class (if any)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :resourceClass_icon ;
+      sh:datatype :SpecifIcon ;
+      sh:description "Icon for the resource class." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :resourceClass_isHeading ;
+      sh:datatype xsd:boolean ;
+      sh:description "Flag indicating if the resource class is a heading." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :resourceClass_instantiation ;
+      sh:class :SpecifInstantiation ;
+      sh:description "Instantiation modes (e.g., auto, user) allowed for this resource class." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :resourceClass_propertyClasses ;
+      sh:node :SpecifKeyShape ;
+      sh:description "List of property class keys (at least one required)." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :resourceClass_revision ;
+      sh:datatype :SpecifRevision ;
+      sh:description "Revision tag for the resource class." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :resourceClass_replaces ;
+      sh:datatype :SpecifRevision ;
+      sh:description "Revision(s) replaced by this resource class." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :resourceClass_changedAt ;
+      sh:datatype xsd:dateTime ;
+      sh:description "Timestamp when the resource class was changed." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :resourceClass_changedBy ;
+      sh:datatype xsd:string ;
+      sh:description "Identifier for who changed the resource class." ;
+      sh:minCount 0 ;
+    ] .
+
+###############################
+# Shape for SpecifStatementClass
+###############################
+:SpecifStatementClassShape a sh:NodeShape ;
+    sh:targetClass :SpecifStatementClass ;
+    sh:property [
+      sh:path :statementClass_id ;
+      sh:datatype :SpecifId ;
+      sh:description "Identifier for the statement class." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :statementClass_title ;
+      sh:datatype :SpecifText ;
+      sh:description "Title of the statement class." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :statementClass_description ;
+      sh:class :SpecifMultiLanguageText ;
+      sh:description "Description of the statement class." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :statementClass_extends ;
+      sh:node :SpecifKeyShape ;
+      sh:description "Reference to a parent statement class (if any)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :statementClass_icon ;
+      sh:datatype :SpecifIcon ;
+      sh:description "Icon for the statement class." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :statementClass_instantiation ;
+      sh:class :SpecifInstantiation ;
+      sh:description "Instantiation modes (e.g., auto, user) allowed for this statement class." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :statementClass_isUndirected ;
+      sh:datatype xsd:boolean ;
+      sh:description "Indicates if the statement class is undirected." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :statementClass_propertyClasses ;
+      sh:node :SpecifKeyShape ;
+      sh:description "List of property class keys (if any) for the statement class." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :statementClass_subjectClasses ;
+      sh:node :SpecifKeyShape ;
+      sh:description "List of eligible subject class keys (if specified)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :statementClass_objectClasses ;
+      sh:node :SpecifKeyShape ;
+      sh:description "List of eligible object class keys (if specified)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :statementClass_revision ;
+      sh:datatype :SpecifRevision ;
+      sh:description "Revision tag for the statement class." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :statementClass_replaces ;
+      sh:datatype :SpecifRevision ;
+      sh:description "Revisions replaced by this statement class." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :statementClass_changedAt ;
+      sh:datatype xsd:dateTime ;
+      sh:description "Timestamp when the statement class was changed." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :statementClass_changedBy ;
+      sh:datatype xsd:string ;
+      sh:description "Identifier for who changed the statement class." ;
+      sh:minCount 0 ;
+    ] .
+
+###############################
+# Shape for SpecifProperty
+###############################
+:SpecifPropertyShape a sh:NodeShape ;
+    sh:targetClass :SpecifProperty ;
+    sh:property [
+      sh:path :property_class ;
+      sh:node :SpecifPropertyClassShape ;
+      sh:description "Reference to the property class key." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :property_values ;
+      sh:node :SpecifValueShape ;
+      sh:description "One or more property values." ;
+      sh:minCount 1 ;
+    ] .
+
+###############################
+# Shape for SpecifResource
+###############################
+:SpecifResourceShape a sh:NodeShape ;
+    sh:targetClass :SpecifResource ;
+    sh:property [
+      sh:path :resource_id ;
+      sh:datatype :SpecifId ;
+      sh:description "Identifier for the resource." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :resource_alternativeIds ;
+      sh:node :SpecifAlternativeIdShape ;
+      sh:description "Alternative identifiers for the resource (if any)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :resource_class ;
+      sh:node :SpecifResourceClassShape ;
+      sh:description "Reference to the resource class key." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :resource_language ;
+      sh:datatype xsd:string ;
+      sh:description "IETF language tag for the resource (if any)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :resource_properties ;
+      sh:node :SpecifPropertyShape ;
+      sh:description "List of properties for the resource (at least one required)." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :resource_revision ;
+      sh:datatype :SpecifRevision ;
+      sh:description "Revision tag for the resource (if any)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :resource_replaces ;
+      sh:datatype :SpecifRevision ;
+      sh:description "Revisions replaced by this resource (if any)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :resource_changedAt ;
+      sh:datatype xsd:dateTime ;
+      sh:description "Timestamp when the resource was changed." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :resource_changedBy ;
+      sh:datatype xsd:string ;
+      sh:description "Identifier for who changed the resource (if any)." ;
+      sh:minCount 0 ;
+    ] .
+
+###############################
+# Shape for SpecifStatement
+###############################
+:SpecifStatementShape a sh:NodeShape ;
+    sh:targetClass :SpecifStatement ;
+    sh:property [
+      sh:path :statement_id ;
+      sh:datatype :SpecifId ;
+      sh:description "Identifier for the statement." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :statement_alternativeIds ;
+      sh:node :SpecifAlternativeIdShape ;
+      sh:description "Alternative identifiers for the statement (if any)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :statement_class ;
+      sh:node :StatementClassShape ;
+      sh:description "Reference to the statement class key." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :statement_language ;
+      sh:datatype xsd:string ;
+      sh:description "IETF language tag for the statement (if any)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :statement_subject ;
+      sh:node :SpecifKeyShape ;
+      sh:description "Reference to the subject (resource or statement)." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :statement_object ;
+      sh:node :SpecifKeyShape ;
+      sh:description "Reference to the object (resource or statement)." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :statement_properties ;
+      sh:node :SpecifPropertyShape ;
+      sh:description "List of properties for the statement (if any)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :statement_revision ;
+      sh:datatype :SpecifRevision ;
+      sh:description "Revision tag for the statement (if any)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :statement_replaces ;
+      sh:datatype :SpecifRevision ;
+      sh:description "Revisions replaced by this statement (if any)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :statement_changedAt ;
+      sh:datatype xsd:dateTime ;
+      sh:description "Timestamp when the statement was changed." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :statement_changedBy ;
+      sh:datatype xsd:string ;
+      sh:description "Identifier for who changed the statement (if any)." ;
+      sh:minCount 0 ;
+    ] .
+
+###############################
+# Shape for SpecifNode
+###############################
+:SpecifNodeShape a sh:NodeShape ;
+    sh:targetClass :SpecifNode ;
+    sh:property [
+      sh:path :node_id ;
+      sh:datatype :SpecifId ;
+      sh:description "Identifier for the node." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :node_title ;
+      sh:class :SpecifMultiLanguageText ;
+      sh:description "Title for the node (if any)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :node_description ;
+      sh:class :SpecifMultiLanguageText ;
+      sh:description "Description for the node (if any)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :node_resource ;
+      sh:node :SpecifKeyShape ;
+      sh:description "Reference to the associated resource." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :node_nodes ;
+      sh:node :SpecifNodeShape ;
+      sh:description "Nested child nodes (if any)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :node_revision ;
+      sh:datatype :SpecifRevision ;
+      sh:description "Revision tag for the node (if any)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :node_replaces ;
+      sh:datatype :SpecifRevision ;
+      sh:description "Revisions replaced by this node (if any)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :node_changedAt ;
+      sh:datatype xsd:dateTime ;
+      sh:description "Timestamp when the node was changed." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :node_changedBy ;
+      sh:datatype xsd:string ;
+      sh:description "Identifier for who changed the node (if any)." ;
+      sh:minCount 0 ;
+    ] .
+
+###############################
+# Shape for SpecifFile
+###############################
+:SpecifFileShape a sh:NodeShape ;
+    sh:targetClass :SpecifFile ;
+    sh:property [
+      sh:path :file_id ;
+      sh:datatype :SpecifId ;
+      sh:description "Identifier for the file." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :file_title ;
+      sh:datatype xsd:string ;
+      sh:description "Title (name) of the file." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :file_description ;
+      sh:class :SpecifMultiLanguageText ;
+      sh:description "Description of the file (if any)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :file_url ;
+      sh:datatype xsd:string ;
+      sh:description "URL to the file." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :file_type ;
+      sh:datatype xsd:string ;
+      sh:description "Media (MIME) type of the file." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :file_revision ;
+      sh:datatype :SpecifRevision ;
+      sh:description "Revision tag for the file (if any)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :file_replaces ;
+      sh:datatype :SpecifRevision ;
+      sh:description "Revisions replaced by this file (if any)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :file_changedAt ;
+      sh:datatype xsd:dateTime ;
+      sh:description "Timestamp when the file was changed." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :file_changedBy ;
+      sh:datatype xsd:string ;
+      sh:description "Identifier for who changed the file (if any)." ;
+      sh:minCount 0 ;
+    ] .
+
+###############################
+# Shape for the Top-Level SpecIFProject
+###############################
+:SpecIFProjectShape a sh:NodeShape ;
+    sh:targetClass :SpecIFProject ;
+    sh:property [
+      sh:path :project_schema ;
+      sh:datatype xsd:string ;
+      sh:pattern "^https?:\\/\\/(specif\\.de\\/v1\\.1\\/schema|json\\.schemastore\\.org\\/specif-1\\.1)\\.json$" ;
+      sh:description "The JSON Schema URL for SpecIF." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :project_id ;
+      sh:datatype :SpecifId ;
+      sh:description "Project identifier." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :project_revision ;
+      sh:datatype :SpecifRevision ;
+      sh:description "Project revision (if any)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :project_title ;
+      sh:class :SpecifMultiLanguageText ;
+      sh:description "Project title (if any)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :project_description ;
+      sh:class :SpecifMultiLanguageText ;
+      sh:description "Project description (if any)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :project_isExtension ;
+      sh:datatype xsd:boolean ;
+      sh:description "Flag indicating whether the project is an extension." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :project_generator ;
+      sh:datatype xsd:string ;
+      sh:description "Name of the generator (if any)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :project_generatorVersion ;
+      sh:datatype xsd:string ;
+      sh:description "Version of the generator (if any)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :project_rights ;
+      sh:node :SpecifRightsShape ;
+      sh:description "Rights information (if any)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :project_createdAt ;
+      sh:datatype xsd:dateTime ;
+      sh:description "Creation timestamp (if any)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :project_createdBy ;
+      sh:node :SpecifCreatedByShape ;
+      sh:description "Information about the creator (if any)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :project_language ;
+      sh:datatype xsd:string ;
+      sh:description "Language of the project (if any)." ;
+      sh:minCount 0 ;
+    ] ;
+    sh:property [
+      sh:path :project_dataTypes ;
+      sh:node :SpecifDataTypeShape ;
+      sh:description "List of base data types (at least one required)." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :project_propertyClasses ;
+      sh:node :SpecifPropertyClassShape ;
+      sh:description "List of property classes (at least one required)." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :project_resourceClasses ;
+      sh:node :SpecifResourceClassShape ;
+      sh:description "List of resource classes (at least one required)." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :project_statementClasses ;
+      sh:node :SpecifStatementClassShape ;
+      sh:description "List of statement classes (at least one required)." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :project_resources ;
+      sh:node :SpecifResourceShape ;
+      sh:description "List of resources (at least one required)." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :project_statements ;
+      sh:node :SpecifStatementShape ;
+      sh:description "List of statements (at least one required)." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :project_hierarchies ;
+      sh:node :SpecIFNodeShape ;
+      sh:description "Hierarchy nodes (at least one required)." ;
+      sh:minCount 1 ;
+    ] ;
+    sh:property [
+      sh:path :project_files ;
+      sh:node :SpecifFileShape ;
+      sh:description "List of files (optional)." ;
+      sh:minCount 0 ;
+    ] .

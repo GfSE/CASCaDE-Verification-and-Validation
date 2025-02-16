@@ -1,0 +1,830 @@
+@prefix :        <https://specif.de/v1.1/schema#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct:     <http://purl.org/dc/terms/> .
+
+#################################################################
+# Ontology Header
+#################################################################
+
+:SpecIFOntology a owl:Ontology ;
+    dct:title "SpecIF v1.1 Ontology" ;
+    dct:description "An OWL ontology generated from the JSON Schema for SpecIF v1.1." .
+
+#################################################################
+# Datatype Definitions (for string-based types with patterns)
+#################################################################
+
+:SpecifId a rdfs:Datatype ;
+    rdfs:label "SpecifId" ;
+    rdfs:comment "A globally unique identifier. (Pattern: ^[_a-zA-Z]{1}[_a-zA-Z0-9.-]*$)" .
+
+:SpecifRevision a rdfs:Datatype ;
+    rdfs:label "SpecifRevision" ;
+    rdfs:comment "A revision tag. (Pattern: ^(?:[0-9a-zA-Z]+[.:,;/-])*[0-9a-zA-Z]+$)" .
+
+:SpecifDateTime a rdfs:Datatype ;
+    rdfs:label "SpecifDateTime" ;
+    rdfs:comment "An ISO-8601 dateTime string." .
+
+:SpecifText a rdfs:Datatype ;
+    rdfs:label "SpecifText" ;
+    rdfs:comment "A string representing text." .
+
+:SpecifIcon a rdfs:Datatype ;
+    rdfs:label "SpecifIcon" ;
+    rdfs:comment "A symbol (or URL/dataURL) for an icon." .
+
+#################################################################
+# Enumerations
+#################################################################
+
+# SpecifTextFormat: enumeration with values "plain" and "xhtml"
+:SpecifTextFormat a owl:Class ;
+    rdfs:label "SpecifTextFormat" ;
+    rdfs:comment "Text format; allowed values are 'plain' and 'xhtml'." .
+
+:plain a :SpecifTextFormat ;
+    rdfs:label "plain" .
+
+:xhtml a :SpecifTextFormat ;
+    rdfs:label "xhtml" .
+
+# SpecifInstantiation: enumeration with values "auto" and "user"
+:SpecifInstantiation a owl:Class ;
+    rdfs:label "SpecifInstantiation" ;
+    rdfs:comment "Instantiation mode; allowed values are 'auto' and 'user'." .
+
+:auto a :SpecifInstantiation ;
+    rdfs:label "auto" .
+
+:user a :SpecifInstantiation ;
+    rdfs:label "user" .
+
+#################################################################
+# Class Definitions (from definitions in the JSON Schema)
+#################################################################
+
+### SpecifAlternativeId
+:SpecifAlternativeId a owl:Class ;
+    rdfs:label "SpecifAlternativeId" ;
+    rdfs:comment "A pointer to a resource/statement that has been merged into this one." .
+
+### SpecifKey
+:SpecifKey a owl:Class ;
+    rdfs:label "SpecifKey" ;
+    rdfs:comment "A key for a particular revision of an identifiable item; must contain an 'id' and may contain a 'revision'." .
+
+### SpecifRights
+:SpecifRights a owl:Class ;
+    rdfs:label "SpecifRights" ;
+    rdfs:comment "Rights information with a title and an URL." .
+
+### SpecifOrg
+:SpecifOrg a owl:Class ;
+    rdfs:label "SpecifOrg" ;
+    rdfs:comment "Organization information." .
+
+### SpecifCreatedBy
+:SpecifCreatedBy a owl:Class ;
+    rdfs:label "SpecifCreatedBy" ;
+    rdfs:comment "Creator of the SpecIF dataset; must at least include an email address." .
+
+### SpecifMultiLanguageText
+:SpecifMultiLanguageText a owl:Class ;
+    rdfs:label "SpecifMultiLanguageText" ;
+    rdfs:comment "A text value with optional language and format information." .
+
+### SpecifValue
+:SpecifValue a owl:Class ;
+    rdfs:label "SpecifValue" ;
+    rdfs:comment "A value that can either be a simple string or a multi-language text." .
+
+### SpecifEnumeratedValue
+:SpecifEnumeratedValue a owl:Class ;
+    rdfs:label "SpecifEnumeratedValue" ;
+    rdfs:comment "An enumerated value pairing an id with a value." .
+
+### SpecifDataType (abstract; with subclasses for each XML Schema type)
+:SpecifDataType a owl:Class ;
+    rdfs:label "SpecifDataType" ;
+    rdfs:comment "A data type definition." .
+
+:DataTypeBoolean a owl:Class ;
+    rdfs:subClassOf :SpecifDataType ;
+    rdfs:label "DataTypeBoolean" .
+
+:DataTypeDateTimeURI a owl:Class ;
+    rdfs:subClassOf :SpecifDataType ;
+    rdfs:label "DataTypeDateTimeURI" ;
+    rdfs:comment "For xs:dateTime, xs:duration, and xs:anyURI." .
+
+:DataTypeInteger a owl:Class ;
+    rdfs:subClassOf :SpecifDataType ;
+    rdfs:label "DataTypeInteger" .
+
+:DataTypeDouble a owl:Class ;
+    rdfs:subClassOf :SpecifDataType ;
+    rdfs:label "DataTypeDouble" .
+
+:DataTypeString a owl:Class ;
+    rdfs:subClassOf :SpecifDataType ;
+    rdfs:label "DataTypeString" .
+
+### SpecifPropertyClass
+:SpecifPropertyClass a owl:Class ;
+    rdfs:label "SpecifPropertyClass" ;
+    rdfs:comment "Definition of a property for resources or statements." .
+
+### SpecifResourceClass
+:SpecifResourceClass a owl:Class ;
+    rdfs:label "SpecifResourceClass" ;
+    rdfs:comment "Class definition for a resource." .
+
+### SpecifStatementClass
+:SpecifStatementClass a owl:Class ;
+    rdfs:label "SpecifStatementClass" ;
+    rdfs:comment "Class definition for a statement (linking two resources)." .
+
+### SpecifProperty
+:SpecifProperty a owl:Class ;
+    rdfs:label "SpecifProperty" ;
+    rdfs:comment "A property that links a property class to its value(s)." .
+
+### SpecifResource
+:SpecifResource a owl:Class ;
+    rdfs:label "SpecifResource" ;
+    rdfs:comment "A resource such as a diagram, model element or requirement." .
+
+### SpecifStatement
+:SpecifStatement a owl:Class ;
+    rdfs:label "SpecifStatement" ;
+    rdfs:comment "A statement linking two resources (subject and object) via a statement class." .
+
+### SpecifNode
+:SpecifNode a owl:Class ;
+    rdfs:label "SpecifNode" ;
+    rdfs:comment "A node in a hierarchy (e.g. for navigation) referencing a resource." .
+
+### SpecifFile
+:SpecifFile a owl:Class ;
+    rdfs:label "SpecifFile" ;
+    rdfs:comment "A file reference with metadata." .
+
+### SpecIFProject (top-level dataset)
+:SpecIFProject a owl:Class ;
+    rdfs:label "SpecIFProject" ;
+    rdfs:comment "The top-level SpecIF dataset." .
+
+#################################################################
+# Object & Datatype Property Definitions
+#################################################################
+
+### Properties for SpecifAlternativeId
+:alternativeId_id a owl:DatatypeProperty ;
+    rdfs:domain :SpecifAlternativeId ;
+    rdfs:range :SpecifId ;
+    rdfs:label "id" ;
+    rdfs:comment "Identifier of the merged element." .
+
+:alternativeId_revision a owl:DatatypeProperty ;
+    rdfs:domain :SpecifAlternativeId ;
+    rdfs:range :SpecifRevision ;
+    rdfs:label "revision" .
+
+:alternativeId_project a owl:DatatypeProperty ;
+    rdfs:domain :SpecifAlternativeId ;
+    rdfs:range :SpecifId ;
+    rdfs:label "project" .
+
+### Global property for alternative identifiers (arrays are modeled as multi‑valued properties)
+:hasAlternativeId a owl:ObjectProperty ;
+    rdfs:domain owl:Thing ;
+    rdfs:range :SpecifAlternativeId ;
+    rdfs:label "hasAlternativeId" .
+
+### Property for “replaces” (an array of revisions)
+:replaces a owl:DatatypeProperty ;
+    rdfs:domain owl:Thing ;
+    rdfs:range :SpecifRevision ;
+    rdfs:label "replaces" ;
+    rdfs:comment "For change/configuration management; maximum two entries." .
+
+### Properties for SpecifKey
+:specifKey_id a owl:DatatypeProperty ;
+    rdfs:domain :SpecifKey ;
+    rdfs:range :SpecifId ;
+    rdfs:label "id" .
+
+:specifKey_revision a owl:DatatypeProperty ;
+    rdfs:domain :SpecifKey ;
+    rdfs:range :SpecifRevision ;
+    rdfs:label "revision" .
+
+### Properties for SpecifRights
+:rights_title a owl:DatatypeProperty ;
+    rdfs:domain :SpecifRights ;
+    rdfs:range xsd:string ;
+    rdfs:label "title" .
+
+:rights_url a owl:DatatypeProperty ;
+    rdfs:domain :SpecifRights ;
+    rdfs:range xsd:anyURI ;
+    rdfs:label "url" .
+
+### Properties for SpecifOrg
+:org_organizationName a owl:DatatypeProperty ;
+    rdfs:domain :SpecifOrg ;
+    rdfs:range xsd:string ;
+    rdfs:label "organizationName" .
+
+### Properties for SpecifCreatedBy
+:createdBy_familyName a owl:DatatypeProperty ;
+    rdfs:domain :SpecifCreatedBy ;
+    rdfs:range xsd:string ;
+    rdfs:label "familyName" .
+
+:createdBy_givenName a owl:DatatypeProperty ;
+    rdfs:domain :SpecifCreatedBy ;
+    rdfs:range xsd:string ;
+    rdfs:label "givenName" .
+
+:createdBy_org a owl:ObjectProperty ;
+    rdfs:domain :SpecifCreatedBy ;
+    rdfs:range :SpecifOrg ;
+    rdfs:label "org" .
+
+:createdBy_email a owl:DatatypeProperty ;
+    rdfs:domain :SpecifCreatedBy ;
+    rdfs:range xsd:string ;
+    rdfs:label "email" ;
+    rdfs:comment "Email address (format: email)." .
+
+### Properties for SpecifMultiLanguageText
+:mlt_text a owl:DatatypeProperty ;
+    rdfs:domain :SpecifMultiLanguageText ;
+    rdfs:range xsd:string ;
+    rdfs:label "text" .
+
+:mlt_format a owl:ObjectProperty ;
+    rdfs:domain :SpecifMultiLanguageText ;
+    rdfs:range :SpecifTextFormat ;
+    rdfs:label "format" .
+
+:mlt_language a owl:DatatypeProperty ;
+    rdfs:domain :SpecifMultiLanguageText ;
+    rdfs:range xsd:string ;
+    rdfs:label "language" ;
+    rdfs:comment "IETF language tag (e.g., en, en-US)." .
+
+### (For SpecifValue, one may use the property :hasValue to relate a property to one or more values.)
+:hasValue a owl:ObjectProperty ;
+    rdfs:domain owl:Thing ;
+    rdfs:range :SpecifValue ;
+    rdfs:label "hasValue" ;
+    rdfs:comment "A property’s value (at least one is required)." .
+
+### Properties for SpecifEnumeratedValue
+:enumValue_id a owl:DatatypeProperty ;
+    rdfs:domain :SpecifEnumeratedValue ;
+    rdfs:range :SpecifId ;
+    rdfs:label "id" .
+
+:enumValue_value a owl:ObjectProperty ;
+    rdfs:domain :SpecifEnumeratedValue ;
+    rdfs:range :SpecifValue ;
+    rdfs:label "value" .
+
+### Properties for SpecifDataType (common to all data type definitions)
+:datatype_id a owl:DatatypeProperty ;
+    rdfs:domain :SpecifDataType ;
+    rdfs:range :SpecifId ;
+    rdfs:label "id" .
+
+:datatype_title a owl:DatatypeProperty ;
+    rdfs:domain :SpecifDataType ;
+    rdfs:range :SpecifText ;
+    rdfs:label "title" .
+
+:datatype_description a owl:DatatypeProperty ;
+    rdfs:domain :SpecifDataType ;
+    rdfs:range :SpecifMultiLanguageText ;
+    rdfs:label "description" .
+
+:datatype_revision a owl:DatatypeProperty ;
+    rdfs:domain :SpecifDataType ;
+    rdfs:range :SpecifRevision ;
+    rdfs:label "revision" .
+
+:datatype_replaces a owl:DatatypeProperty ;
+    rdfs:domain :SpecifDataType ;
+    rdfs:range :SpecifRevision ;
+    rdfs:label "replaces" .
+
+:datatype_changedAt a owl:DatatypeProperty ;
+    rdfs:domain :SpecifDataType ;
+    rdfs:range :SpecifDateTime ;
+    rdfs:label "changedAt" .
+
+:datatype_changedBy a owl:DatatypeProperty ;
+    rdfs:domain :SpecifDataType ;
+    rdfs:range xsd:string ;
+    rdfs:label "changedBy" .
+
+### Properties for SpecifPropertyClass
+:propertyClass_id a owl:DatatypeProperty ;
+    rdfs:domain :SpecifPropertyClass ;
+    rdfs:range :SpecifId ;
+    rdfs:label "id" .
+
+:propertyClass_title a owl:DatatypeProperty ;
+    rdfs:domain :SpecifPropertyClass ;
+    rdfs:range :SpecifText ;
+    rdfs:label "title" .
+
+:propertyClass_description a owl:DatatypeProperty ;
+    rdfs:domain :SpecifPropertyClass ;
+    rdfs:range :SpecifMultiLanguageText ;
+    rdfs:label "description" .
+
+:propertyClass_dataType a owl:ObjectProperty ;
+    rdfs:domain :SpecifPropertyClass ;
+    rdfs:range :SpecifKey ;
+    rdfs:label "dataType" ;
+    rdfs:comment "References a data type key from the project’s dataTypes." .
+
+:propertyClass_multiple a owl:DatatypeProperty ;
+    rdfs:domain :SpecifPropertyClass ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "multiple" .
+
+:propertyClass_values a owl:ObjectProperty ;
+    rdfs:domain :SpecifPropertyClass ;
+    rdfs:range :SpecifValue ;
+    rdfs:label "values" ;
+    rdfs:comment "Default value(s) if a property is missing." .
+
+:propertyClass_format a owl:ObjectProperty ;
+    rdfs:domain :SpecifPropertyClass ;
+    rdfs:range :SpecifTextFormat ;
+    rdfs:label "format" .
+
+:propertyClass_unit a owl:DatatypeProperty ;
+    rdfs:domain :SpecifPropertyClass ;
+    rdfs:range xsd:string ;
+    rdfs:label "unit" .
+
+:propertyClass_revision a owl:DatatypeProperty ;
+    rdfs:domain :SpecifPropertyClass ;
+    rdfs:range :SpecifRevision ;
+    rdfs:label "revision" .
+
+:propertyClass_replaces a owl:DatatypeProperty ;
+    rdfs:domain :SpecifPropertyClass ;
+    rdfs:range :SpecifRevision ;
+    rdfs:label "replaces" .
+
+:propertyClass_changedAt a owl:DatatypeProperty ;
+    rdfs:domain :SpecifPropertyClass ;
+    rdfs:range :SpecifDateTime ;
+    rdfs:label "changedAt" .
+
+:propertyClass_changedBy a owl:DatatypeProperty ;
+    rdfs:domain :SpecifPropertyClass ;
+    rdfs:range xsd:string ;
+    rdfs:label "changedBy" .
+
+### Properties for SpecifResourceClass
+:resourceClass_id a owl:DatatypeProperty ;
+    rdfs:domain :SpecifResourceClass ;
+    rdfs:range :SpecifId ;
+    rdfs:label "id" .
+
+:resourceClass_title a owl:DatatypeProperty ;
+    rdfs:domain :SpecifResourceClass ;
+    rdfs:range :SpecifText ;
+    rdfs:label "title" .
+
+:resourceClass_description a owl:DatatypeProperty ;
+    rdfs:domain :SpecifResourceClass ;
+    rdfs:range :SpecifMultiLanguageText ;
+    rdfs:label "description" .
+
+:resourceClass_extends a owl:ObjectProperty ;
+    rdfs:domain :SpecifResourceClass ;
+    rdfs:range :SpecifKey ;
+    rdfs:label "extends" .
+
+:resourceClass_icon a owl:DatatypeProperty ;
+    rdfs:domain :SpecifResourceClass ;
+    rdfs:range :SpecifIcon ;
+    rdfs:label "icon" .
+
+:resourceClass_isHeading a owl:DatatypeProperty ;
+    rdfs:domain :SpecifResourceClass ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "isHeading" .
+
+:resourceClass_instantiation a owl:ObjectProperty ;
+    rdfs:domain :SpecifResourceClass ;
+    rdfs:range :SpecifInstantiation ;
+    rdfs:label "instantiation" .
+
+:resourceClass_propertyClasses a owl:ObjectProperty ;
+    rdfs:domain :SpecifResourceClass ;
+    rdfs:range :SpecifKey ;
+    rdfs:label "propertyClasses" ;
+    rdfs:comment "References one or more property classes." .
+
+:resourceClass_revision a owl:DatatypeProperty ;
+    rdfs:domain :SpecifResourceClass ;
+    rdfs:range :SpecifRevision ;
+    rdfs:label "revision" .
+
+:resourceClass_replaces a owl:DatatypeProperty ;
+    rdfs:domain :SpecifResourceClass ;
+    rdfs:range :SpecifRevision ;
+    rdfs:label "replaces" .
+
+:resourceClass_changedAt a owl:DatatypeProperty ;
+    rdfs:domain :SpecifResourceClass ;
+    rdfs:range :SpecifDateTime ;
+    rdfs:label "changedAt" .
+
+:resourceClass_changedBy a owl:DatatypeProperty ;
+    rdfs:domain :SpecifResourceClass ;
+    rdfs:range xsd:string ;
+    rdfs:label "changedBy" .
+
+### Properties for SpecifStatementClass
+:statementClass_id a owl:DatatypeProperty ;
+    rdfs:domain :SpecifStatementClass ;
+    rdfs:range :SpecifId ;
+    rdfs:label "id" .
+
+:statementClass_title a owl:DatatypeProperty ;
+    rdfs:domain :SpecifStatementClass ;
+    rdfs:range :SpecifText ;
+    rdfs:label "title" .
+
+:statementClass_description a owl:DatatypeProperty ;
+    rdfs:domain :SpecifStatementClass ;
+    rdfs:range :SpecifMultiLanguageText ;
+    rdfs:label "description" .
+
+:statementClass_extends a owl:ObjectProperty ;
+    rdfs:domain :SpecifStatementClass ;
+    rdfs:range :SpecifKey ;
+    rdfs:label "extends" .
+
+:statementClass_icon a owl:DatatypeProperty ;
+    rdfs:domain :SpecifStatementClass ;
+    rdfs:range :SpecifIcon ;
+    rdfs:label "icon" .
+
+:statementClass_instantiation a owl:ObjectProperty ;
+    rdfs:domain :SpecifStatementClass ;
+    rdfs:range :SpecifInstantiation ;
+    rdfs:label "instantiation" .
+
+:statementClass_isUndirected a owl:DatatypeProperty ;
+    rdfs:domain :SpecifStatementClass ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "isUndirected" .
+
+:statementClass_propertyClasses a owl:ObjectProperty ;
+    rdfs:domain :SpecifStatementClass ;
+    rdfs:range :SpecifKey ;
+    rdfs:label "propertyClasses" .
+
+:statementClass_subjectClasses a owl:ObjectProperty ;
+    rdfs:domain :SpecifStatementClass ;
+    rdfs:range :SpecifKey ;
+    rdfs:label "subjectClasses" .
+
+:statementClass_objectClasses a owl:ObjectProperty ;
+    rdfs:domain :SpecifStatementClass ;
+    rdfs:range :SpecifKey ;
+    rdfs:label "objectClasses" .
+
+:statementClass_revision a owl:DatatypeProperty ;
+    rdfs:domain :SpecifStatementClass ;
+    rdfs:range :SpecifRevision ;
+    rdfs:label "revision" .
+
+:statementClass_replaces a owl:DatatypeProperty ;
+    rdfs:domain :SpecifStatementClass ;
+    rdfs:range :SpecifRevision ;
+    rdfs:label "replaces" .
+
+:statementClass_changedAt a owl:DatatypeProperty ;
+    rdfs:domain :SpecifStatementClass ;
+    rdfs:range :SpecifDateTime ;
+    rdfs:label "changedAt" .
+
+:statementClass_changedBy a owl:DatatypeProperty ;
+    rdfs:domain :SpecifStatementClass ;
+    rdfs:range xsd:string ;
+    rdfs:label "changedBy" .
+
+### Properties for SpecifProperty
+:property_class a owl:ObjectProperty ;
+    rdfs:domain :SpecifProperty ;
+    rdfs:range :SpecifKey ;
+    rdfs:label "class" ;
+    rdfs:comment "Reference to a property class." .
+
+:property_values a owl:ObjectProperty ;
+    rdfs:domain :SpecifProperty ;
+    rdfs:range :SpecifValue ;
+    rdfs:label "values" .
+
+### Properties for SpecifResource
+:resource_id a owl:DatatypeProperty ;
+    rdfs:domain :SpecifResource ;
+    rdfs:range :SpecifId ;
+    rdfs:label "id" .
+
+:resource_alternativeIds a owl:ObjectProperty ;
+    rdfs:domain :SpecifResource ;
+    rdfs:range :SpecifAlternativeId ;
+    rdfs:label "alternativeIds" .
+
+:resource_class a owl:ObjectProperty ;
+    rdfs:domain :SpecifResource ;
+    rdfs:range :SpecifKey ;
+    rdfs:label "class" ;
+    rdfs:comment "Reference to a resource class key." .
+
+:resource_language a owl:DatatypeProperty ;
+    rdfs:domain :SpecifResource ;
+    rdfs:range xsd:string ;
+    rdfs:label "language" .
+
+:resource_properties a owl:ObjectProperty ;
+    rdfs:domain :SpecifResource ;
+    rdfs:range :SpecifProperty ;
+    rdfs:label "properties" .
+
+:resource_revision a owl:DatatypeProperty ;
+    rdfs:domain :SpecifResource ;
+    rdfs:range :SpecifRevision ;
+    rdfs:label "revision" .
+
+:resource_changedAt a owl:DatatypeProperty ;
+    rdfs:domain :SpecifResource ;
+    rdfs:range :SpecifDateTime ;
+    rdfs:label "changedAt" .
+
+:resource_changedBy a owl:DatatypeProperty ;
+    rdfs:domain :SpecifResource ;
+    rdfs:range xsd:string ;
+    rdfs:label "changedBy" .
+
+### Properties for SpecifStatement
+:statement_id a owl:DatatypeProperty ;
+    rdfs:domain :SpecifStatement ;
+    rdfs:range :SpecifId ;
+    rdfs:label "id" .
+
+:statement_alternativeIds a owl:ObjectProperty ;
+    rdfs:domain :SpecifStatement ;
+    rdfs:range :SpecifAlternativeId ;
+    rdfs:label "alternativeIds" .
+
+:statement_class a owl:ObjectProperty ;
+    rdfs:domain :SpecifStatement ;
+    rdfs:range :SpecifKey ;
+    rdfs:label "class" ;
+    rdfs:comment "Reference to a statement class key." .
+
+:statement_language a owl:DatatypeProperty ;
+    rdfs:domain :SpecifStatement ;
+    rdfs:range xsd:string ;
+    rdfs:label "language" .
+
+:statement_subject a owl:ObjectProperty ;
+    rdfs:domain :SpecifStatement ;
+    rdfs:range :SpecifKey ;
+    rdfs:label "subject" ;
+    rdfs:comment "Reference to the subject (resource or statement)." .
+
+:statement_object a owl:ObjectProperty ;
+    rdfs:domain :SpecifStatement ;
+    rdfs:range :SpecifKey ;
+    rdfs:label "object" ;
+    rdfs:comment "Reference to the object (resource or statement)." .
+
+:statement_properties a owl:ObjectProperty ;
+    rdfs:domain :SpecifStatement ;
+    rdfs:range :SpecifProperty ;
+    rdfs:label "properties" .
+
+:statement_revision a owl:DatatypeProperty ;
+    rdfs:domain :SpecifStatement ;
+    rdfs:range :SpecifRevision ;
+    rdfs:label "revision" .
+
+:statement_changedAt a owl:DatatypeProperty ;
+    rdfs:domain :SpecifStatement ;
+    rdfs:range :SpecifDateTime ;
+    rdfs:label "changedAt" .
+
+:statement_changedBy a owl:DatatypeProperty ;
+    rdfs:domain :SpecifStatement ;
+    rdfs:range xsd:string ;
+    rdfs:label "changedBy" .
+
+### Properties for SpecifNode
+:node_id a owl:DatatypeProperty ;
+    rdfs:domain :SpecifNode ;
+    rdfs:range :SpecifId ;
+    rdfs:label "id" .
+
+:node_title a owl:DatatypeProperty ;
+    rdfs:domain :SpecifNode ;
+    rdfs:range :SpecifMultiLanguageText ;
+    rdfs:label "title" .
+
+:node_description a owl:DatatypeProperty ;
+    rdfs:domain :SpecifNode ;
+    rdfs:range :SpecifMultiLanguageText ;
+    rdfs:label "description" .
+
+:node_resource a owl:ObjectProperty ;
+    rdfs:domain :SpecifNode ;
+    rdfs:range :SpecifKey ;
+    rdfs:label "resource" .
+
+:node_nodes a owl:ObjectProperty ;
+    rdfs:domain :SpecifNode ;
+    rdfs:range :SpecifNode ;
+    rdfs:label "nodes" ;
+    rdfs:comment "May point to nested SpecifNode instances." .
+
+:node_revision a owl:DatatypeProperty ;
+    rdfs:domain :SpecifNode ;
+    rdfs:range :SpecifRevision ;
+    rdfs:label "revision" .
+
+:node_changedAt a owl:DatatypeProperty ;
+    rdfs:domain :SpecifNode ;
+    rdfs:range :SpecifDateTime ;
+    rdfs:label "changedAt" .
+
+:node_changedBy a owl:DatatypeProperty ;
+    rdfs:domain :SpecifNode ;
+    rdfs:range xsd:string ;
+    rdfs:label "changedBy" .
+
+### Properties for SpecifFile
+:file_id a owl:DatatypeProperty ;
+    rdfs:domain :SpecifFile ;
+    rdfs:range :SpecifId ;
+    rdfs:label "id" .
+
+:file_title a owl:DatatypeProperty ;
+    rdfs:domain :SpecifFile ;
+    rdfs:range xsd:string ;
+    rdfs:label "title" .
+
+:file_description a owl:DatatypeProperty ;
+    rdfs:domain :SpecifFile ;
+    rdfs:range :SpecifMultiLanguageText ;
+    rdfs:label "description" .
+
+:file_url a owl:DatatypeProperty ;
+    rdfs:domain :SpecifFile ;
+    rdfs:range xsd:string ;
+    rdfs:label "url" ;
+    rdfs:comment "URL (absolute or relative) to the file." .
+
+:file_type a owl:DatatypeProperty ;
+    rdfs:domain :SpecifFile ;
+    rdfs:range xsd:string ;
+    rdfs:label "type" ;
+    rdfs:comment "Media type (MIME) of the file." .
+
+:file_revision a owl:DatatypeProperty ;
+    rdfs:domain :SpecifFile ;
+    rdfs:range :SpecifRevision ;
+    rdfs:label "revision" .
+
+:file_changedAt a owl:DatatypeProperty ;
+    rdfs:domain :SpecifFile ;
+    rdfs:range :SpecifDateTime ;
+    rdfs:label "changedAt" .
+
+:file_changedBy a owl:DatatypeProperty ;
+    rdfs:domain :SpecifFile ;
+    rdfs:range xsd:string ;
+    rdfs:label "changedBy" .
+
+### Properties for the top-level SpecIFProject
+:project_schema a owl:DatatypeProperty ;
+    rdfs:domain :SpecIFProject ;
+    rdfs:range xsd:string ;
+    rdfs:label "$schema" ;
+    rdfs:comment "The JSON Schema URL for SpecIF (e.g., https://specif.de/v1.1/schema.json)." .
+
+:project_id a owl:DatatypeProperty ;
+    rdfs:domain :SpecIFProject ;
+    rdfs:range :SpecifId ;
+    rdfs:label "id" .
+
+:project_revision a owl:DatatypeProperty ;
+    rdfs:domain :SpecIFProject ;
+    rdfs:range :SpecifRevision ;
+    rdfs:label "revision" .
+
+:project_title a owl:DatatypeProperty ;
+    rdfs:domain :SpecIFProject ;
+    rdfs:range :SpecifMultiLanguageText ;
+    rdfs:label "title" .
+
+:project_description a owl:DatatypeProperty ;
+    rdfs:domain :SpecIFProject ;
+    rdfs:range :SpecifMultiLanguageText ;
+    rdfs:label "description" .
+
+:project_isExtension a owl:DatatypeProperty ;
+    rdfs:domain :SpecIFProject ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "isExtension" .
+
+:project_generator a owl:DatatypeProperty ;
+    rdfs:domain :SpecIFProject ;
+    rdfs:range xsd:string ;
+    rdfs:label "generator" .
+
+:project_generatorVersion a owl:DatatypeProperty ;
+    rdfs:domain :SpecIFProject ;
+    rdfs:range xsd:string ;
+    rdfs:label "generatorVersion" .
+
+:project_rights a owl:ObjectProperty ;
+    rdfs:domain :SpecIFProject ;
+    rdfs:range :SpecifRights ;
+    rdfs:label "rights" .
+
+:project_createdAt a owl:DatatypeProperty ;
+    rdfs:domain :SpecIFProject ;
+    rdfs:range :SpecifDateTime ;
+    rdfs:label "createdAt" .
+
+:project_createdBy a owl:ObjectProperty ;
+    rdfs:domain :SpecIFProject ;
+    rdfs:range :SpecifCreatedBy ;
+    rdfs:label "createdBy" .
+
+:project_language a owl:DatatypeProperty ;
+    rdfs:domain :SpecIFProject ;
+    rdfs:range xsd:string ;
+    rdfs:label "language" .
+
+:project_dataTypes a owl:ObjectProperty ;
+    rdfs:domain :SpecIFProject ;
+    rdfs:range :SpecifDataType ;
+    rdfs:label "dataTypes" ;
+    rdfs:comment "The list of base data types." .
+
+:project_propertyClasses a owl:ObjectProperty ;
+    rdfs:domain :SpecIFProject ;
+    rdfs:range :SpecifPropertyClass ;
+    rdfs:label "propertyClasses" .
+
+:project_resourceClasses a owl:ObjectProperty ;
+    rdfs:domain :SpecIFProject ;
+    rdfs:range :SpecifResourceClass ;
+    rdfs:label "resourceClasses" .
+
+:project_statementClasses a owl:ObjectProperty ;
+    rdfs:domain :SpecIFProject ;
+    rdfs:range :SpecifStatementClass ;
+    rdfs:label "statementClasses" .
+
+:project_resources a owl:ObjectProperty ;
+    rdfs:domain :SpecIFProject ;
+    rdfs:range :SpecifResource ;
+    rdfs:label "resources" .
+
+:project_statements a owl:ObjectProperty ;
+    rdfs:domain :SpecIFProject ;
+    rdfs:range :SpecifStatement ;
+    rdfs:label "statements" .
+
+:project_hierarchies a owl:ObjectProperty ;
+    rdfs:domain :SpecIFProject ;
+    rdfs:range :SpecifNode ;
+    rdfs:label "hierarchies" ;
+    rdfs:comment "The root nodes of one or more hierarchies." .
+
+:project_files a owl:ObjectProperty ;
+    rdfs:domain :SpecIFProject ;
+    rdfs:range :SpecifFile ;
+    rdfs:label "files" .
+
+#################################################################
+# End of Ontology
+#################################################################
