@@ -41,12 +41,13 @@
                  by an owl:Class""" ;
     rdfs:label "data type enumeration"@en .
 
-#<http://www.omg.org/spec/MOF2RDF/MOFSupport/Association>
-#    a owl:Class ;
-#    rdfs:comment """Classes instantiating associations i.e. specific Links 
-#                 should inherit from this class""" ;
-#    rdfs:label "association"@en .
+<http://www.omg.org/spec/MOF2RDF/MOFSupport/Association>
+    a owl:Class ;
+    rdfs:comment """Classes instantiating associations i.e. specific Links 
+                 should inherit from this class""" ;
+    rdfs:label "association"@en .
 
+# Using the associationClass, because we need properties ..
 <http://www.omg.org/spec/MOF2RDF/MOFSupport/AssociationClass>
     a owl:Class ;
     rdfs:subClassOf <http://www.omg.org/spec/MOF2RDF/MOFSupport/Association>,
