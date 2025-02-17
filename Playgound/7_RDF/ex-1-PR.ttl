@@ -1,0 +1,98 @@
+### Example 1: One resource (node) class with an instance. 
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix W3C: <https://www.w3.org/standards/semanticweb#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix SpecIF: <https://specif.de/v1.1/schema#> .
+@prefix : <https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements> .
+
+## -------- Data Types
+
+# Data type DT-Priority (with enumerated values)
+# declared as a class instead of a datatype
+:DT-Priority 
+	a owl:Class ;
+    rdfs:label "SpecIF:Priority" ;
+    dct:modified "2016-05-26T08:59:00+02:00"^^xsd:dateTime ;
+    dct:description "Enumerated values for priority" ;
+    owl:oneOf (:V-Prio-0 :V-Prio-1 :V-Prio-2 :V-Prio-3 :V-Prio-4) .
+:V-Prio-0 
+	a :DT-Priority;
+    rdfs:label "SpecIF:priorityHigh" .
+:V-Prio-1 
+	a :DT-Priority;
+    rdfs:label "SpecIF:priorityRatherHigh" .
+:V-Prio-2 
+	a :DT-Priority;
+    rdfs:label "SpecIF:priorityMedium" .
+:V-Prio-3 
+	a :DT-Priority;
+    rdfs:label "SpecIF:priorityRatherLow" .
+:V-Prio-4 
+	a :DT-Priority;
+    rdfs:label "SpecIF:priorityLow" .
+
+## -------- Property Classes
+
+# Property class 'Priority' (e.g. for requirements) with 3 literal values
+# Must be reusable and have permissible value range.
+
+:PC-Name 
+	a owl:DatatypeProperty ;
+    rdfs:subPropertyOf rdfs:label ;
+    specif:propertyClass_format specif:plain .
+
+:PC-Description 
+	a owl:DatatypeProperty ;
+    rdfs:subPropertyOf dct:description ;
+    specif:propertyClass_format specif:xhtml ;
+    dct:description "An account of the resource (detailed description)." .
+
+:PC-Priority 
+	a owl:ObjectProperty ;
+    rdfs:label "SpecIF:Priority" ;
+    dct:modified "2020-03-26T22:59:00+02:00"^^xsd:dateTime ;
+    dct:description "The 'Priority' of the resource." ;   
+    rdfs:range :DT-Priority .
+
+## -------- Resource (Node) Classes
+
+# Resource 'Requirement' with 2 required and an optional property
+# Must be reusable and define which properties are required or optional ... and no more.
+# RC-Requirement
+:RC-Requirement 
+	a owl:Class ;
+    rdfs:label "IREB:Requirement" ;
+    dct:description "A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform." ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty :PC-Name ;
+		# required, exactly one ?
+        owl:someValuesFrom xsd:string
+    ],
+    [
+        a owl:Restriction ;
+        owl:onProperty :PC-Description ;
+		# optional, 0..1 ?
+        owl:someValuesFrom xsd:string
+    ] ,
+    [
+        a owl:Restriction ;
+        owl:onProperty :PC-Priority ;
+		# optional, 0..1 ?
+        owl:someValuesFrom :DT-Priority
+    ] .
+
+## -------- Instances = Payload
+
+:Req-1a8016e2872e78ecadc50feddc00029b 
+	a :RC-Requirement ;
+    :PC-Name "Data Volume";
+    :PC-Description "The data store MUST support a total volume up to 850 GB." ;
+    :PC-Priority "V-Prio-0" ;
+    dct:modified "2020-10-17T10:00:00+01:00"^^xsd:dateTime .
+
+

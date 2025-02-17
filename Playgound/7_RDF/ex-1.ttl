@@ -12,18 +12,21 @@
 ## -------- Property Classes
 
 # Property class 'Priority' (e.g. for requirements) with 3 literal values
-# Term as literal lets software applications translate it to national languages without bloating the model
-:PC-Priority rdfs:subClassOf rdfs:Property ;
-	rdfs:label 'SpecIF:hasPriority';
+# Must be reusable and define permissible value range.
+:PC-Priority 
+	rdfs:subClassOf rdfs:Property ;
+	rdfs:label ' has Priority';
 	rdfs:comment 'The fact or condition of being regarded or treated as more important than others.' ;
-	rdfs:domain :RC-Requirement;
+#	rdfs:domain :RC-Requirement;
 	# Enumerated (=permissible) values:
-	rdfs:range 'SpecIF:priorityHigh','SpecIF:priorityMedium','SpecIF:priorityLow'.
+	rdfs:range 'high','medium','low'.
 
 ## -------- Resource (Node) Classes
 
 # Resource 'Requirement' with 2 required and an optional property
-:RC-Requirement rdfs:subClassOf rdfs:Resource ;
+# Must be reusable and define which properties are required or optional ... and no more.
+:RC-Requirement 
+	rdfs:subClassOf rdfs:Resource ;
 	rdfs:label 'IREB:Requirement';
 	rdfs:comment 'A \'Requirement\' is a singular documented need …. ' ;
 	# The icon can be used by software applications when displaying requirements:
@@ -36,7 +39,8 @@
 
 ## -------- Instances = Payload
 
-:Req-1a8016e2872e78ecadc50feddc00029b a :RC-Requirement ;
+:Req-1a8016e2872e78ecadc50feddc00029b 
+	a :RC-Requirement ;
 	rdfs:label 'Data Volume' ;
 	rdfs:comment 'The data store MUST support a total volume up to 850 GB.' ;
 	:PC-Priority 'SpecIF:priorityHigh' ;
