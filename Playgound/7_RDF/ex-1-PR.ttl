@@ -5,8 +5,8 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix W3C: <https://www.w3.org/standards/semanticweb#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix SpecIF: <https://specif.de/v1.1/schema#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix specif: <https://specif.de/v1.1/schema#> .
 @prefix : <https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements> .
 
 ## -------- Data Types
@@ -15,19 +15,19 @@
 # declared as a class instead of a datatype
 :DT-Priority 
 	a owl:Class ;
-    rdfs:label "SpecIF:Priority" ;
+    rdfs:label "specif:Priority" ;
     dct:modified "2016-05-26T08:59:00+02:00"^^xsd:dateTime ;
     dct:description "Enumerated values for priority" ;
     owl:oneOf (:V-Prio-0 :V-Prio-2 :V-Prio-4) .
 :V-Prio-0 
 	a :DT-Priority;
-    rdfs:label "SpecIF:priorityHigh" .
+    rdfs:label "specif:priorityHigh" .
 :V-Prio-2 
 	a :DT-Priority;
-    rdfs:label "SpecIF:priorityMedium" .
+    rdfs:label "specif:priorityMedium" .
 :V-Prio-4 
 	a :DT-Priority;
-    rdfs:label "SpecIF:priorityLow" .
+    rdfs:label "specif:priorityLow" .
 
 ## -------- Property Classes
 # Must be reusable and have permissible value range.
@@ -45,7 +45,7 @@
 
 :PC-Priority 
 	a owl:ObjectProperty ;
-    rdfs:label "SpecIF:Priority" ;
+    rdfs:label "specif:Priority" ;
     dct:modified "2020-03-26T22:59:00+02:00"^^xsd:dateTime ;
     dct:description "The 'Priority' of the resource." ;   
     rdfs:range :DT-Priority .
@@ -61,20 +61,39 @@
     rdfs:subClassOf [
         a owl:Restriction ;
         owl:onProperty :PC-Name ;
-		# required, exactly one ?
+        # someValuesFrom ??
         owl:someValuesFrom xsd:string
+    ], 
+    [
+        a owl:Restriction ;
+        owl:onProperty :PC-Name ;
+		# required, exactly one 1?
+        owl:cardinality "1"^^xsd:nonNegativeInteger
     ],
     [
         a owl:Restriction ;
         owl:onProperty :PC-Description ;
-		# optional, 0..1 ?
         owl:someValuesFrom xsd:string
+    ], 
+    [
+        a owl:Restriction ;
+        owl:onProperty :PC-Description ;
+		# optional, 0..1 !?
+#        owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+        owl:maxCardinality "1"^^xsd:nonNegativeInteger
     ],
     [
         a owl:Restriction ;
         owl:onProperty :PC-Priority ;
-		# optional, 0..1 ?
         owl:someValuesFrom :DT-Priority
+    ], 
+    [
+        a owl:Restriction ;
+        owl:onClass :PC-Priority ;
+        owl:onProperty :RC-Requirement-Priority ;
+		# optional, 0..1 !?
+#        owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+        owl:maxCardinality "1"^^xsd:nonNegativeInteger
     ] .
 
 ## -------- Instances = Payload

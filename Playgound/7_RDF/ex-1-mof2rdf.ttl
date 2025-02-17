@@ -92,8 +92,8 @@ SpecIF:priorityLow
 #    ] ;
     rdfs:subClassOf mof2rdf:Class, [
         a owl:Restriction ;
-        owl:allValuesFrom this:PC-Priority ;
-        owl:onProperty this:RC-Requirement-Priority
+        owl:onProperty this:RC-Requirement-Priority ;
+        owl:allValuesFrom this:PC-Priority
     ], [
         a owl:Restriction ;
         owl:onClass this:PC-Priority ;
