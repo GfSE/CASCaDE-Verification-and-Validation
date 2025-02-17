@@ -18,26 +18,18 @@
     rdfs:label "SpecIF:Priority" ;
     dct:modified "2016-05-26T08:59:00+02:00"^^xsd:dateTime ;
     dct:description "Enumerated values for priority" ;
-    owl:oneOf (:V-Prio-0 :V-Prio-1 :V-Prio-2 :V-Prio-3 :V-Prio-4) .
+    owl:oneOf (:V-Prio-0 :V-Prio-2 :V-Prio-4) .
 :V-Prio-0 
 	a :DT-Priority;
     rdfs:label "SpecIF:priorityHigh" .
-:V-Prio-1 
-	a :DT-Priority;
-    rdfs:label "SpecIF:priorityRatherHigh" .
 :V-Prio-2 
 	a :DT-Priority;
     rdfs:label "SpecIF:priorityMedium" .
-:V-Prio-3 
-	a :DT-Priority;
-    rdfs:label "SpecIF:priorityRatherLow" .
 :V-Prio-4 
 	a :DT-Priority;
     rdfs:label "SpecIF:priorityLow" .
 
 ## -------- Property Classes
-
-# Property class 'Priority' (e.g. for requirements) with 3 literal values
 # Must be reusable and have permissible value range.
 
 :PC-Name 
@@ -59,10 +51,9 @@
     rdfs:range :DT-Priority .
 
 ## -------- Resource (Node) Classes
+# Must be reusable and define which properties are required or optional ... and no others.
 
 # Resource 'Requirement' with 2 required and an optional property
-# Must be reusable and define which properties are required or optional ... and no more.
-# RC-Requirement
 :RC-Requirement 
 	a owl:Class ;
     rdfs:label "IREB:Requirement" ;
@@ -78,7 +69,7 @@
         owl:onProperty :PC-Description ;
 		# optional, 0..1 ?
         owl:someValuesFrom xsd:string
-    ] ,
+    ],
     [
         a owl:Restriction ;
         owl:onProperty :PC-Priority ;
@@ -94,5 +85,3 @@
     :PC-Description "The data store MUST support a total volume up to 850 GB." ;
     :PC-Priority "V-Prio-0" ;
     dct:modified "2020-10-17T10:00:00+01:00"^^xsd:dateTime .
-
-
