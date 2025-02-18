@@ -14,40 +14,48 @@
 # Data type DT-Priority (with enumerated values)
 # declared as a class instead of a datatype
 :DT-Priority 
-	a owl:Class ;
-    rdfs:label "specif:Priority" ;
+	rdf:type owl:Class ;
+    rdfs:label "Datatype for specif:Priority" ;
+    rdfs:comment "Enumerated values for priority" ;
     dct:modified "2016-05-26T08:59:00+02:00"^^xsd:dateTime ;
-    dct:description "Enumerated values for priority" ;
-    owl:oneOf (:V-Prio-0 :V-Prio-2 :V-Prio-4) .
-:V-Prio-0 
-	a :DT-Priority;
-    rdfs:label "specif:priorityHigh" .
-:V-Prio-2 
-	a :DT-Priority;
-    rdfs:label "specif:priorityMedium" .
-:V-Prio-4 
-	a :DT-Priority;
-    rdfs:label "specif:priorityLow" .
+#    owl:oneOf (specif:priorityHigh specif:priorityMedium specif:priorityLow) .
+    owl:equivalentClass [
+        rdf:type owl:Class ;
+        owl:oneOf (specif:priorityHigh specif:priorityMedium specif:priorityLow)
+    ] .
+
+#:V-Prio-0 
+#	a :DT-Priority;
+#    rdfs:label "specif:priorityHigh" .
+#:V-Prio-2 
+#	a :DT-Priority;
+#    rdfs:label "specif:priorityMedium" .
+#:V-Prio-4 
+#	a :DT-Priority;
+#    rdfs:label "specif:priorityLow" .
 
 ## -------- Property Classes
 # Must be reusable and have permissible value range.
 
 :PC-Name 
-	a owl:DatatypeProperty ;
+	rdf:type owl:DatatypeProperty ;
     rdfs:subPropertyOf rdfs:label ;
     specif:propertyClass_format specif:plain .
 
+dct:description
+    rdfs:subPropertyOf rdfs:comment .
+
 :PC-Description 
-	a owl:DatatypeProperty ;
+	rdf:type owl:DatatypeProperty ;
     rdfs:subPropertyOf dct:description ;
     specif:propertyClass_format specif:xhtml ;
-    dct:description "An account of the resource (detailed description)." .
+    rdfs:comment "An account of the resource (detailed description)." .
 
 :PC-Priority 
-	a owl:ObjectProperty ;
+	rdf:type owl:ObjectProperty ;
     rdfs:label "specif:Priority" ;
+    rdfs:comment "The 'Priority' of the resource." ;   
     dct:modified "2020-03-26T22:59:00+02:00"^^xsd:dateTime ;
-    dct:description "The 'Priority' of the resource." ;   
     rdfs:range :DT-Priority .
 
 ## -------- Resource (Node) Classes
@@ -55,31 +63,29 @@
 
 # Resource 'Requirement' with 2 required and an optional property
 :RC-Requirement 
-	a owl:Class ;
+	rdf:type owl:Class ;
     rdfs:label "IREB:Requirement" ;
-    dct:description "A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform." ;
+    rdfs:comment "A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform." ;
     rdfs:subClassOf [
+#        a owl:Restriction ;
+#        owl:onProperty :PC-Name ;
+#        owl:someValuesFrom xsd:string
+#    ], 
+#    [
         a owl:Restriction ;
         owl:onProperty :PC-Name ;
-        # someValuesFrom ??
-        owl:someValuesFrom xsd:string
-    ], 
-    [
-        a owl:Restriction ;
-        owl:onProperty :PC-Name ;
-		# required, exactly one 1?
+        # required, exactly 1:
         owl:cardinality "1"^^xsd:nonNegativeInteger
     ],
     [
+#        a owl:Restriction ;
+#        owl:onProperty :PC-Description ;
+#        owl:someValuesFrom xsd:string
+#    ], 
+#    [
         a owl:Restriction ;
         owl:onProperty :PC-Description ;
-        owl:someValuesFrom xsd:string
-    ], 
-    [
-        a owl:Restriction ;
-        owl:onProperty :PC-Description ;
-		# optional, 0..1 !?
-#        owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+		# optional, 0..1:
         owl:maxCardinality "1"^^xsd:nonNegativeInteger
     ],
     [
@@ -89,11 +95,10 @@
     ], 
     [
         a owl:Restriction ;
-        owl:onClass :PC-Priority ;
-        owl:onProperty :RC-Requirement-Priority ;
-		# optional, 0..1 !?
-#        owl:minCardinality "0"^^xsd:nonNegativeInteger ;
-        owl:maxCardinality "1"^^xsd:nonNegativeInteger
+        owl:onProperty :PC-Priority ;
+ 		# optional, 0..1:
+        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+        owl:onClass :DT-Priority
     ] .
 
 ## -------- Instances = Payload
@@ -102,5 +107,5 @@
 	a :RC-Requirement ;
     :PC-Name "Data Volume";
     :PC-Description "The data store MUST support a total volume up to 850 GB." ;
-    :PC-Priority "V-Prio-0" ;
+    :PC-Priority specif:priorityLow ;
     dct:modified "2020-10-17T10:00:00+01:00"^^xsd:dateTime .
