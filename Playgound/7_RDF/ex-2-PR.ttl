@@ -14,7 +14,7 @@
 # Data type DT-Priority (with enumerated values)
 # declared as a class instead of a datatype
 :DT-Priority 
-	rdf:type owl:Class ;
+    rdf:type owl:Class ;
     rdfs:label "Datatype for specif:Priority" ;
     rdfs:comment "Enumerated values for priority" ;
     dct:modified "2016-05-26T08:59:00+02:00"^^xsd:dateTime ;
@@ -25,20 +25,20 @@
 #    ] .
 
 #:V-Prio-0 
-#	a :DT-Priority;
+#    a :DT-Priority;
 #    rdfs:label "specif:priorityHigh" .
 #:V-Prio-2 
-#	a :DT-Priority;
+#    a :DT-Priority;
 #    rdfs:label "specif:priorityMedium" .
 #:V-Prio-4 
-#	a :DT-Priority;
+#    a :DT-Priority;
 #    rdfs:label "specif:priorityLow" .
 
 ## -------- Property Classes
 # Must be reusable and have permissible value range.
 
 :PC-Name 
-	rdf:type owl:DatatypeProperty ;
+    rdf:type owl:DatatypeProperty ;
     rdfs:subPropertyOf rdfs:label ;
     rdfs:label "dct:title" ;
     specif:propertyClass_format specif:plain .
@@ -47,21 +47,21 @@ dct:description
     rdfs:subPropertyOf rdfs:comment .
 
 :PC-Description 
-	rdf:type owl:DatatypeProperty ;
+    rdf:type owl:DatatypeProperty ;
     rdfs:subPropertyOf dct:description ;
     rdfs:label "dct:description" ;
     rdfs:comment "An account of the resource (detailed description)." ;
     specif:propertyClass_format specif:xhtml .
 
 :PC-Type 
-	rdf:type owl:DatatypeProperty ;
+    rdf:type owl:DatatypeProperty ;
     rdfs:label "specif:Type" ;
     rdfs:comment "An account of the resource (detailed description)." ;
     rdfs:range xsd:string ;
     specif:propertyClass_format specif:plain .
 
 :PC-Priority 
-	rdf:type owl:ObjectProperty ;
+    rdf:type owl:ObjectProperty ;
     rdfs:label "specif:Priority" ;
     rdfs:comment "The 'Priority' of the resource." ;   
     dct:modified "2020-03-26T22:59:00+02:00"^^xsd:dateTime ;
@@ -72,10 +72,10 @@ dct:description
 
 # ResourceClass 'Actor' with 1 required and 2 optional properties
 :RC-Actor 
-	rdf:type owl:Class ;
+    rdf:type owl:Class ;
     rdfs:label "FMC:Actor" ;
-	rdfs:comment "An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role." ;
-	specif:icon "&#9632;";
+    rdfs:comment "An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role." ;
+    specif:icon "&#9632;";
     rdfs:subClassOf [
         a owl:Restriction ;
         owl:onProperty :PC-Name ;
@@ -85,30 +85,30 @@ dct:description
     [
         a owl:Restriction ;
         owl:onProperty :PC-Description ;
-		# optional, 0..1:
+        # optional, 0..1:
         owl:maxCardinality "1"^^xsd:nonNegativeInteger
     ],
     [
         a owl:Restriction ;
         owl:onProperty :PC-Type ;
- 		# optional, 0..1:
+         # optional, 0..1:
         owl:maxCardinality "1"^^xsd:nonNegativeInteger
     ] .
 
 # ResourceClass 'State' with 1 required and 2 optional properties
 # A class definition without restrictions on the properties ... assuming it can be checked with SHACL (generated from the ontology to use)
 :RC-State 
-	rdf:type owl:Class ;
+    rdf:type owl:Class ;
     rdfs:label "FMC:State" ;
-	rdfs:comment 'A \'State\' is a fundamental model element type representing a passive entity, be it a value, a document, an information storage or even a physical shape.' ;
-	specif:icon '●' .
+    rdfs:comment 'A \'State\' is a fundamental model element type representing a passive entity, be it a value, a document, an information storage or even a physical shape.' ;
+    specif:icon '●' .
 
 # ResourceClass 'Requirement' with 1 required and 2 optional properties
 :RC-Requirement 
-	rdf:type owl:Class ;
+    rdf:type owl:Class ;
     rdfs:label "IREB:Requirement" ;
     rdfs:comment "A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform." ;
-	specif:icon '&#8623;' ;
+    specif:icon '&#8623;' ;
     rdfs:subClassOf [
 #        a owl:Restriction ;
 #        owl:onProperty :PC-Name ;
@@ -128,7 +128,7 @@ dct:description
 #    [
         a owl:Restriction ;
         owl:onProperty :PC-Description ;
-		# optional, 0..1:
+        # optional, 0..1:
         owl:maxCardinality "1"^^xsd:nonNegativeInteger
     ],
     [
@@ -139,7 +139,7 @@ dct:description
     [
         a owl:Restriction ;
         owl:onProperty :PC-Priority ;
- 		# optional, 0..1:
+         # optional, 0..1:
         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
         owl:onClass :DT-Priority
     ] .
@@ -156,14 +156,14 @@ dct:description
 ## -------- Instances = Payload
 
 :MEl-50feddc00029b1a8016e2872e78ecadc 
-	a :RC-State ;
-	:PC-Name 'FiCo-Data' ;
-	:PC-Description 'Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc.' ;
+    a :RC-State ;
+    :PC-Name 'FiCo-Data' ;
+    :PC-Description 'Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc.' ;
     # no PC-Type asserted, here
-	dct:modified '2020-03-06T09:03:00+01:00' .
+    dct:modified '2020-03-06T09:03:00+01:00' .
 
 :Req-1a8016e2872e78ecadc50feddc00029b 
-	a :RC-Requirement ;
+    a :RC-Requirement ;
     :PC-Name "Data Volume";
     :PC-Description "The data store MUST support a total volume up to 850 GB." ;
     :PC-Priority specif:priorityLow ;
