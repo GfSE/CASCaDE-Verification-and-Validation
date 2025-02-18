@@ -14,7 +14,7 @@
 # Data type DT-Priority (with enumerated values)
 # declared as a class instead of a datatype
 :DT-Priority 
-	rdf:type owl:Class ;
+    rdf:type owl:Class ;
     rdfs:label "Datatype for specif:Priority" ;
     rdfs:comment "Enumerated values for priority" ;
     dct:modified "2016-05-26T08:59:00+02:00"^^xsd:dateTime ;
@@ -25,20 +25,20 @@
 #    ] .
 
 #:V-Prio-0 
-#	a :DT-Priority;
+#    a :DT-Priority;
 #    rdfs:label "specif:priorityHigh" .
 #:V-Prio-2 
-#	a :DT-Priority;
+#    a :DT-Priority;
 #    rdfs:label "specif:priorityMedium" .
 #:V-Prio-4 
-#	a :DT-Priority;
+#    a :DT-Priority;
 #    rdfs:label "specif:priorityLow" .
 
 ## -------- Property Classes
 # Must be reusable and have permissible value range.
 
 :PC-Name 
-	rdf:type owl:DatatypeProperty ;
+    rdf:type owl:DatatypeProperty ;
     rdfs:subPropertyOf rdfs:label ;
     rdfs:label "dct:title" ;
     specif:propertyClass_format specif:plain .
@@ -47,14 +47,14 @@ dct:description
     rdfs:subPropertyOf rdfs:comment .
 
 :PC-Description 
-	rdf:type owl:DatatypeProperty ;
+    rdf:type owl:DatatypeProperty ;
     rdfs:subPropertyOf dct:description ;
     rdfs:label "dct:description" ;
     rdfs:comment "An account of the resource (detailed description)." ;
     specif:propertyClass_format specif:xhtml .
 
 :PC-Priority 
-	rdf:type owl:ObjectProperty ;
+    rdf:type owl:ObjectProperty ;
     rdfs:label "specif:Priority" ;
     rdfs:comment "The 'Priority' of the resource." ;   
     dct:modified "2020-03-26T22:59:00+02:00"^^xsd:dateTime ;
@@ -65,7 +65,7 @@ dct:description
 
 # Resource 'Requirement' with 2 required and an optional property
 :RC-Requirement 
-	rdf:type owl:Class ;
+    rdf:type owl:Class ;
     rdfs:label "IREB:Requirement" ;
     rdfs:comment "A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform." ;
     rdfs:subClassOf [
@@ -87,7 +87,7 @@ dct:description
 #    [
         a owl:Restriction ;
         owl:onProperty :PC-Description ;
-		# optional, 0..1:
+        # optional, 0..1:
         owl:maxCardinality "1"^^xsd:nonNegativeInteger
     ],
     [
@@ -98,7 +98,7 @@ dct:description
     [
         a owl:Restriction ;
         owl:onProperty :PC-Priority ;
- 		# optional, 0..1:
+         # optional, 0..1:
         owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
         owl:onClass :DT-Priority
     ] .
@@ -106,7 +106,7 @@ dct:description
 ## -------- Instances = Payload
 
 :Req-1a8016e2872e78ecadc50feddc00029b 
-	a :RC-Requirement ;
+    a :RC-Requirement ;
     :PC-Name "Data Volume";
     :PC-Description "The data store MUST support a total volume up to 850 GB." ;
     :PC-Priority specif:priorityLow ;
