@@ -18,11 +18,11 @@
     rdfs:label "Datatype for specif:Priority" ;
     rdfs:comment "Enumerated values for priority" ;
     dct:modified "2016-05-26T08:59:00+02:00"^^xsd:dateTime ;
-#    owl:oneOf (specif:priorityHigh specif:priorityMedium specif:priorityLow) .
-    owl:equivalentClass [
-        rdf:type owl:Class ;
-        owl:oneOf (specif:priorityHigh specif:priorityMedium specif:priorityLow)
-    ] .
+    owl:oneOf (specif:priorityHigh specif:priorityMedium specif:priorityLow) .
+#    owl:equivalentClass [
+#        rdf:type owl:Class ;
+#        owl:oneOf (specif:priorityHigh specif:priorityMedium specif:priorityLow)
+#    ] .
 
 #:V-Prio-0 
 #	a :DT-Priority;
