@@ -1,4 +1,4 @@
-### Example 1: One resource (node) class with an instance. 
+﻿### Example 1: One resource (node) class with an instance. 
 
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -53,6 +53,13 @@ dct:description
     rdfs:comment "An account of the resource (detailed description)." ;
     specif:propertyClass_format specif:xhtml .
 
+:PC-Type 
+	rdf:type owl:DatatypeProperty ;
+    rdfs:label "specif:Type" ;
+    rdfs:comment "An account of the resource (detailed description)." ;
+    rdfs:range xsd:string ;
+    specif:propertyClass_format specif:plain .
+
 :PC-Priority 
 	rdf:type owl:ObjectProperty ;
     rdfs:label "specif:Priority" ;
@@ -63,11 +70,37 @@ dct:description
 ## -------- Resource (Node) Classes
 # Must be reusable and define which properties are required or optional ... and no others.
 
-# Resource 'Requirement' with 2 required and an optional property
+# ResourceClass 'State' with 1 required and 2 optional properties
+:RC-State 
+	rdf:type owl:Class ;
+    rdfs:label "FMC:State" ;
+	rdfs:comment 'A \'State\' is a fundamental model element type representing a passive entity, be it a value, a document, an information storage or even a physical shape.' ;
+	specif:icon '●' ;
+    rdfs:subClassOf [
+        a owl:Restriction ;
+        owl:onProperty :PC-Name ;
+        # required, exactly 1:
+        owl:cardinality "1"^^xsd:nonNegativeInteger
+    ],
+    [
+        a owl:Restriction ;
+        owl:onProperty :PC-Description ;
+		# optional, 0..1:
+        owl:maxCardinality "1"^^xsd:nonNegativeInteger
+    ],
+    [
+        a owl:Restriction ;
+        owl:onProperty :PC-Type ;
+ 		# optional, 0..1:
+        owl:maxCardinality "1"^^xsd:nonNegativeInteger
+    ] .
+
+# ResourceClass 'Requirement' with 1 required and 2 optional properties
 :RC-Requirement 
 	rdf:type owl:Class ;
     rdfs:label "IREB:Requirement" ;
     rdfs:comment "A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform." ;
+	specif:icon '&#8623;' ;
     rdfs:subClassOf [
 #        a owl:Restriction ;
 #        owl:onProperty :PC-Name ;
@@ -104,6 +137,13 @@ dct:description
     ] .
 
 ## -------- Instances = Payload
+
+:MEl-50feddc00029b1a8016e2872e78ecadc 
+	a :RC-State ;
+	:PC-Name 'FiCo-Data' ;
+	:PC-Description 'Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc.' ;
+    # no PC-Type asserted, here
+	dcterms:modified '2020-03-06T09:03:00+01:00' .
 
 :Req-1a8016e2872e78ecadc50feddc00029b 
 	a :RC-Requirement ;
