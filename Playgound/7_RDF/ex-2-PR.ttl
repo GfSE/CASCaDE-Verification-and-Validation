@@ -70,12 +70,12 @@ dct:description
 ## -------- Resource (Node) Classes
 # Must be reusable and define which properties are required or optional ... and no others.
 
-# ResourceClass 'State' with 1 required and 2 optional properties
-:RC-State 
+# ResourceClass 'Actor' with 1 required and 2 optional properties
+:RC-Actor 
 	rdf:type owl:Class ;
-    rdfs:label "FMC:State" ;
-	rdfs:comment 'A \'State\' is a fundamental model element type representing a passive entity, be it a value, a document, an information storage or even a physical shape.' ;
-	specif:icon '●' ;
+    rdfs:label "FMC:Actor" ;
+	rdfs:comment "An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role." ;
+	specif:icon "&#9632;";
     rdfs:subClassOf [
         a owl:Restriction ;
         owl:onProperty :PC-Name ;
@@ -94,6 +94,14 @@ dct:description
  		# optional, 0..1:
         owl:maxCardinality "1"^^xsd:nonNegativeInteger
     ] .
+
+# ResourceClass 'State' with 1 required and 2 optional properties
+# A class definition without restrictions on the properties ... assuming it can be checked with SHACL (generated from the ontology to use)
+:RC-State 
+	rdf:type owl:Class ;
+    rdfs:label "FMC:State" ;
+	rdfs:comment 'A \'State\' is a fundamental model element type representing a passive entity, be it a value, a document, an information storage or even a physical shape.' ;
+	specif:icon '●' .
 
 # ResourceClass 'Requirement' with 1 required and 2 optional properties
 :RC-Requirement 
@@ -136,6 +144,15 @@ dct:description
         owl:onClass :DT-Priority
     ] .
 
+## -------- Statement (Edge) Classes
+# Must be reusable and define which properties are required or optional ... and no others.
+
+:SC-satisfies a owl:ObjectProperty  ;
+    rdfs:label "oslc_rm:satisfies" ;
+    rdfs:comment "Statement: Model-Element satisfies Requirement" ;
+    rdfs:domain [ a owl:Class; owl:unionOf (:RC-Actor :RC-State ) ];
+    rdfs:range :RC-Requirement .
+
 ## -------- Instances = Payload
 
 :MEl-50feddc00029b1a8016e2872e78ecadc 
@@ -143,7 +160,7 @@ dct:description
 	:PC-Name 'FiCo-Data' ;
 	:PC-Description 'Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc.' ;
     # no PC-Type asserted, here
-	dcterms:modified '2020-03-06T09:03:00+01:00' .
+	dct:modified '2020-03-06T09:03:00+01:00' .
 
 :Req-1a8016e2872e78ecadc50feddc00029b 
 	a :RC-Requirement ;
@@ -151,3 +168,12 @@ dct:description
     :PC-Description "The data store MUST support a total volume up to 850 GB." ;
     :PC-Priority specif:priorityLow ;
     dct:modified "2020-10-17T10:00:00+01:00"^^xsd:dateTime .
+
+:Ssat-50feddc00029b1a8016e2872e78ecadc-1a8016e2872e78ecadc50feddc00029b 
+    a rdf:Statement ;
+    rdf:subject :MEl-50feddc00029b1a8016e2872e78ecadc ;
+    rdf:predicate :SC-satisfies ;
+    rdf:object :Req-1a8016e2872e78ecadc50feddc00029b ;
+    :PC-Description "'FiCo-Data' satisfies 'Data Volume'" ;
+    dct:modified "2020-10-17T10:00:00+01:00"^^xsd:dateTime .
+
