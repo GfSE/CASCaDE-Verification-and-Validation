@@ -7,7 +7,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix specif: <https://specif.de/v1.1/schema#> .
-@prefix : <https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements> .
+@prefix : <https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements/> .
 
 ## -------- Data Types
 

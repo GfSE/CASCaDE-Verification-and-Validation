@@ -7,9 +7,30 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix dct: <http://purl.org/dc/terms/> .
 @prefix specif: <https://specif.de/v1.1/schema#> .
-@prefix : <https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements> .
+@prefix : <https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements/> .
 
-## -------- Data Types
+# Import RDF and RDFS schemata
+<https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements/>
+    owl:imports <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ,
+        <http://www.w3.org/2000/01/rdf-schema#> .
+
+#################################################################
+# Top-Level Project
+#################################################################
+
+:ACP-Very-Simple-Model-FMC-with-Requirements a owl:Ontology ;
+#    owl:imports specif: ;
+    dct:title "Project 'Very Simple Model (FMC) with Requirements";
+    dct:creator _:transformator ;
+    dct:createdAt "2025-01-26T17:06:19.300Z"^^xsd:dateTime ;
+    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> .
+_:software1 a dct:Software ;
+    dct:title "SpecIF Modellintegrator und Editor" ;
+    dct:hasVersion "1.2.a.11" . 
+
+#################################################################
+# Data Types
+#################################################################
 
 # Data type DT-Priority (with enumerated values)
 # declared as a class instead of a datatype
@@ -34,8 +55,10 @@
 #    a :DT-Priority;
 #    rdfs:label "specif:priorityLow" .
 
-## -------- Property Classes
+#################################################################
+# Property Classes
 # Must be reusable and have permissible value range.
+#################################################################
 
 :PC-Name 
     rdf:type owl:DatatypeProperty ;
@@ -67,8 +90,10 @@ dct:description
     dct:modified "2020-03-26T22:59:00+02:00"^^xsd:dateTime ;
     rdfs:range :DT-Priority .
 
-## -------- Resource (Node) Classes
+#################################################################
+# Resource (Node) Classes
 # Must be reusable and define which properties are required or optional ... and no others.
+#################################################################
 
 # ResourceClass 'Actor' with 1 required and 2 optional properties
 :RC-Actor 
@@ -144,16 +169,21 @@ dct:description
         owl:onClass :DT-Priority
     ] .
 
-## -------- Statement (Edge) Classes
+#################################################################
+# Statement (Edge) Classes
 # Must be reusable and define which properties are required or optional ... and no others.
+#################################################################
 
-:SC-satisfies a owl:ObjectProperty  ;
+:SC-satisfies 
+    a owl:ObjectProperty  ;
     rdfs:label "oslc_rm:satisfies" ;
     rdfs:comment "Statement: Model-Element satisfies Requirement" ;
     rdfs:domain [ a owl:Class; owl:unionOf (:RC-Actor :RC-State ) ];
     rdfs:range :RC-Requirement .
 
-## -------- Instances = Payload
+#################################################################
+# Instances = Payload
+#################################################################
 
 :MEl-50feddc00029b1a8016e2872e78ecadc 
     a :RC-State ;
