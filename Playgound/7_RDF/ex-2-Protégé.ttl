@@ -1,0 +1,253 @@
+@prefix : <https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements/> .
+@prefix W3C: <https://www.w3.org/standards/semanticweb#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix specif: <https://specif.de/v1.1/schema#> .
+@base <https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements/> .
+
+<https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements/> rdf:type owl:Ontology ;
+                                                                                    owl:imports rdf: ,
+                                                                                                rdfs: ;
+                                                                                    dct:createdAt "2025-01-26T17:06:19.300Z"^^xsd:dateTime ;
+                                                                                    dct:creator [ ] ;
+dct:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+dct:title "Project 'Very Simple Model (FMC) with Requirements" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/createdAt
+dct:createdAt rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/creator
+dct:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+dct:description rdf:type owl:AnnotationProperty ;
+                rdfs:subPropertyOf rdfs:comment .
+
+
+###  http://purl.org/dc/terms/hasVersion
+dct:hasVersion rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+dct:license rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/modified
+dct:modified rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+dct:title rdf:type owl:AnnotationProperty .
+
+
+###  https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements/PC-Description
+:PC-Description rdf:type owl:AnnotationProperty ;
+                rdfs:subPropertyOf dct:description .
+
+
+###  https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements/PC-Name
+:PC-Name rdf:type owl:AnnotationProperty ;
+         rdfs:subPropertyOf rdfs:label .
+
+
+###  https://specif.de/v1.1/schema#icon
+specif:icon rdf:type owl:AnnotationProperty .
+
+
+###  https://specif.de/v1.1/schema#propertyClass_format
+specif:propertyClass_format rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements/PC-Priority
+:PC-Priority rdf:type owl:ObjectProperty ;
+             rdfs:range :DT-Priority ;
+             dct:modified "2020-03-26T22:59:00+02:00"^^xsd:dateTime ;
+             rdfs:comment "The 'Priority' of the resource." ;
+             rdfs:label "specif:Priority" .
+
+
+###  https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements/SC-satisfies
+:SC-satisfies rdf:type owl:ObjectProperty ;
+              rdfs:domain [ rdf:type owl:Class ;
+                            owl:unionOf ( :RC-Actor
+                                          :RC-State
+                                        )
+                          ] ;
+              rdfs:range :RC-Requirement .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements/PC-Description
+:PC-Description rdf:type owl:DatatypeProperty .
+
+
+###  https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements/PC-Name
+:PC-Name rdf:type owl:DatatypeProperty .
+
+
+###  https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements/PC-Type
+:PC-Type rdf:type owl:DatatypeProperty ;
+         rdfs:range xsd:string ;
+         rdfs:comment "An account of the resource (detailed description)." ;
+         rdfs:label "specif:Type" ;
+         specif:propertyClass_format specif:plain .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.org/dc/terms/Software
+dct:Software rdf:type owl:Class .
+
+
+###  https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements/DT-Priority
+:DT-Priority rdf:type owl:Class ;
+             owl:equivalentClass [ rdf:type owl:Class ;
+                                   owl:oneOf ( specif:priorityHigh
+                                               specif:priorityLow
+                                               specif:priorityMedium
+                                             )
+                                 ] ;
+             dct:modified "2016-05-26T08:59:00+02:00"^^xsd:dateTime ;
+             rdfs:comment "Enumerated values for priority" ;
+             rdfs:label "Datatype for specif:Priority" .
+
+
+###  https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements/RC-Actor
+:RC-Actor rdf:type owl:Class ;
+          rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty :PC-Name ;
+                            owl:cardinality "1"^^xsd:nonNegativeInteger
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :PC-Description ;
+                            owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :PC-Type ;
+                            owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                          ] ;
+          rdfs:comment "An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role." ;
+          rdfs:label "FMC:Actor" ;
+          specif:icon "&#9632;" .
+
+
+###  https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements/RC-Requirement
+:RC-Requirement rdf:type owl:Class ;
+                rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                  owl:onProperty :PC-Priority ;
+                                  owl:someValuesFrom :DT-Priority
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :PC-Priority ;
+                                  owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                  owl:onClass :DT-Priority
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :PC-Name ;
+                                  owl:cardinality "1"^^xsd:nonNegativeInteger
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :PC-Description ;
+                                  owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                ] ;
+                rdfs:comment "A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform." ;
+                rdfs:label "IREB:Requirement" ;
+                specif:icon "&#8623;" .
+
+
+###  https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements/RC-State
+:RC-State rdf:type owl:Class ;
+          rdfs:comment "A 'State' is a fundamental model element type representing a passive entity, be it a value, a document, an information storage or even a physical shape." ;
+          rdfs:label "FMC:State" ;
+          specif:icon "●" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements/MEl-50feddc00029b1a8016e2872e78ecadc
+:MEl-50feddc00029b1a8016e2872e78ecadc rdf:type owl:NamedIndividual ,
+                                               :RC-State ;
+                                      :PC-Description "Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc." ;
+                                      :PC-Name "FiCo-Data" ;
+                                      dct:modified "2020-03-06T09:03:00+01:00" .
+
+
+###  https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements/Req-1a8016e2872e78ecadc50feddc00029b
+:Req-1a8016e2872e78ecadc50feddc00029b rdf:type owl:NamedIndividual ,
+                                               :RC-Requirement ;
+                                      :PC-Priority specif:priorityLow ;
+                                      :PC-Description "The data store MUST support a total volume up to 850 GB." ;
+                                      :PC-Name "Data Volume" ;
+                                      dct:modified "2020-10-17T10:00:00+01:00"^^xsd:dateTime .
+
+
+###  https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements/SC-satisfies
+:SC-satisfies rdf:type owl:NamedIndividual .
+
+
+###  https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements/Ssat-50feddc00029b1a8016e2872e78ecadc-1a8016e2872e78ecadc50feddc00029b
+:Ssat-50feddc00029b1a8016e2872e78ecadc-1a8016e2872e78ecadc50feddc00029b rdf:type owl:NamedIndividual ,
+                                                                                 rdf:Statement ;
+                                                                        rdf:object :Req-1a8016e2872e78ecadc50feddc00029b ;
+                                                                        rdf:predicate :SC-satisfies ;
+                                                                        rdf:subject :MEl-50feddc00029b1a8016e2872e78ecadc ;
+                                                                        :PC-Description "'FiCo-Data' satisfies 'Data Volume'" ;
+                                                                        dct:modified "2020-10-17T10:00:00+01:00"^^xsd:dateTime .
+
+
+###  https://specif.de/v1.1/schema#priorityHigh
+specif:priorityHigh rdf:type owl:NamedIndividual .
+
+
+###  https://specif.de/v1.1/schema#priorityLow
+specif:priorityLow rdf:type owl:NamedIndividual .
+
+
+###  https://specif.de/v1.1/schema#priorityMedium
+specif:priorityMedium rdf:type owl:NamedIndividual .
+
+
+[ rdf:type dct:Software ;
+  dct:hasVersion "1.2.a.11" ;
+  dct:title "SpecIF Modellintegrator und Editor"
+] .
+
+#################################################################
+#    Annotations
+#################################################################
+
+:PC-Description rdfs:comment "An account of the resource (detailed description)." ;
+                 rdfs:label "dct:description" ;
+                 specif:propertyClass_format specif:xhtml .
+
+
+:PC-Name rdfs:label "dct:title" ;
+         specif:propertyClass_format specif:plain .
+
+
+:SC-satisfies rdfs:comment "Statement: Model-Element satisfies Requirement" ;
+              rdfs:label "oslc_rm:satisfies" .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
