@@ -1,7 +1,7 @@
 {
   "@Context": "http://purl.org/dc/terms/",
   "id": "ex-1-A-single-Requirement-with-Priority",
-  "$schema": "https://specif.de/v1.1/schema.json",
+  "$schema": "https://specif.de/v1.1/schema",
   "title": [
     {
       "text": "A single Requirement with Priority"

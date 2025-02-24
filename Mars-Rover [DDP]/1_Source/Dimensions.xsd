@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--prostep iViP Digital Data Package Dimensions Schema Version 4.0 created 26.11.2024 18:46:56 by Michael Kirsch, :em engineering methods AG on behalf of prostep ivip Association-->
+<xs:schema version="4.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.prostep.org/ontologies/ddp/dimensions/4.0" targetNamespace="http://www.prostep.org/ontologies/ddp/dimensions/4.0">
+	<xs:complexType name="amperage">
+		<xs:simpleContent>
+			<xs:extension base="xs:double">
+				<xs:attribute name="unit">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="A"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="angle">
+		<xs:simpleContent>
+			<xs:extension base="xs:double">
+				<xs:attribute name="unit">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="°"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="area">
+		<xs:simpleContent>
+			<xs:extension base="xs:double">
+				<xs:attribute name="unit">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="mm²"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="dataSize">
+		<xs:simpleContent>
+			<xs:extension base="xs:double">
+				<xs:attribute name="unit">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="byte"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="dataSizeKb">
+		<xs:simpleContent>
+			<xs:extension base="xs:double">
+				<xs:attribute name="unit">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="byte"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="density">
+		<xs:simpleContent>
+			<xs:extension base="xs:double">
+				<xs:attribute name="unit">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="kg/m³"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="elasticLimit">
+		<xs:simpleContent>
+			<xs:extension base="xs:double">
+				<xs:attribute name="unit">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="N/mm²"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="elongationAtBreak">
+		<xs:simpleContent>
+			<xs:extension base="xs:double">
+				<xs:attribute name="unit">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="%"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="energy">
+		<xs:simpleContent>
+			<xs:extension base="xs:double">
+				<xs:attribute name="unit">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="kJ"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="force">
+		<xs:simpleContent>
+			<xs:extension base="xs:double">
+				<xs:attribute name="unit">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="N"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="frequency">
+		<xs:simpleContent>
+			<xs:extension base="xs:double">
+				<xs:attribute name="unit">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="1/min"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="length">
+		<xs:simpleContent>
+			<xs:extension base="xs:double">
+				<xs:attribute name="unit">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="mm"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="lengthM">
+		<xs:simpleContent>
+			<xs:extension base="xs:double">
+				<xs:attribute name="unit">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="m"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="mass">
+		<xs:simpleContent>
+			<xs:extension base="xs:double">
+				<xs:attribute name="unit">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="kg"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="massMomentOfInertia">
+		<xs:simpleContent>
+			<xs:extension base="xs:double">
+				<xs:attribute name="unit">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="kgm²"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="power">
+		<xs:simpleContent>
+			<xs:extension base="xs:double">
+				<xs:attribute name="unit">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="kW"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="rotationSpeed">
+		<xs:simpleContent>
+			<xs:extension base="xs:double">
+				<xs:attribute name="unit">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="1/min"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="tensileStrength">
+		<xs:simpleContent>
+			<xs:extension base="xs:double">
+				<xs:attribute name="unit">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="N/mm²"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="thermalExpansion">
+		<xs:simpleContent>
+			<xs:extension base="xs:double">
+				<xs:attribute name="unit">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="1/k"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="torque">
+		<xs:simpleContent>
+			<xs:extension base="xs:double">
+				<xs:attribute name="unit">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="Nm"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="voltage">
+		<xs:simpleContent>
+			<xs:extension base="xs:double">
+				<xs:attribute name="unit">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="V"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="volume">
+		<xs:simpleContent>
+			<xs:extension base="xs:double">
+				<xs:attribute name="unit">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="cm³"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+</xs:schema>

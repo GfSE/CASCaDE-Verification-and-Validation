@@ -1,0 +1,902 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--MoSSEC manifests schemas integrated-->
+<!--Modification proposals by M. Kirsch marked by comment "Proposal"-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns="http://www.mossec.org/manifests/1.0" targetNamespace="http://www.mossec.org/manifests/1.0" version="1.0">
+	<!-- -->
+	<!--Manifests-->
+	<!--In this section, different types of manifiests are specified-->
+	<!-- -->
+	<!--1 Abstract, generic model manifest-->
+	<!-- -->
+	<xs:element name="ModelManifest" type="ModelManifest" abstract="true"/>
+	<xs:complexType name="ModelManifest">
+		<xs:sequence>
+			<xs:element name="GeneralPLMInfo" type="GeneralPLMInfo"/>
+			<xs:element name="IntegrationAndExecution" type="IntegrationAndExecution"/>
+			<xs:element name="TranslationQuality" type="TranslationQuality" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- -->
+	<!--2 Requirements model manifest-->
+	<!-- -->
+	<xs:element name="RequirementModelManifest" type="RequirementModelManifest"/>
+	<xs:complexType name="RequirementModelManifest">
+		<xs:complexContent>
+			<xs:extension base="ModelManifest">
+				<xs:sequence>
+					<xs:element name="RequirementsVerificationAndValidationQualityInfo" type="ReqVerificationAndValidationQualityInfo"/>
+					<xs:element name="RequirementsTraceabilityInformation" type="RequirementsTraceabilityInformation" minOccurs="0"/>
+					<xs:element name="RequirementsActionProperties" type="RequirementsActionProperties" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<!-- -->
+	<!--3 Behavioral manifest-->
+	<!-- -->
+	<xs:element name="BehavioralManifest" type="BehavioralManifest"/>
+	<!--Proposal: "BehaviouraltManifestType" to "BehavioralManifest"-->
+	<xs:complexType name="BehavioralManifest">
+		<xs:complexContent>
+			<xs:extension base="ModelManifest">
+				<xs:sequence>
+					<xs:element name="PhysicsContentAndUsage" type="PhysicsContentAndUsage" minOccurs="0"/>
+					<xs:element name="ModelVariables" type="ModelVariables" minOccurs="0"/>
+					<xs:element name="ModelVerificationAndValidation" type="ModelVerificationAndValidation"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<!-- -->
+	<!--4 Architectural model manifest-->
+	<!-- -->
+	<xs:element name="ArchitecturalModelManifest" type="ArchitecturalModelManifest"/>
+	<xs:complexType name="ArchitecturalModelManifest">
+		<xs:complexContent>
+			<xs:extension base="ModelManifest">
+				<xs:sequence>
+					<xs:element name="ModelVerificationAndValidationQualityInfo" type="ModelVerificationAndValidationQualityInfo"/>
+					<xs:element name="ModelPortInformation" type="ModelPortInformation" minOccurs="0"/>
+					<xs:element name="ModelElements" type="ModelElements" minOccurs="0"/>
+					<xs:element name="ModelParameterInformation" type="ModelParameterInformation" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<!-- -->
+	<!--5 CAD manifest-->
+	<!-- -->
+	<xs:element name="CADManifest" type="CADManifest"/>
+	<xs:complexType name="CADManifest">
+		<xs:complexContent>
+			<xs:extension base="ModelManifest">
+				<xs:sequence>
+					<xs:element name="PhysicsContentAndUsage" type="PhysicsContentAndUsage" minOccurs="0"/>
+					<xs:element name="ModelUnitsAndAttributes" type="ModelUnitsAndAttributes"/>
+					<xs:element name="CADState" type="CADState" minOccurs="0"/>
+					<!--Proposal: "PartList" -> "PartsList"-->
+					<xs:element name="PartsList" type="PartsList"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<!-- -->
+	<!--Manifest content-->
+	<!--This section specifies manifest content elements that can be used in one or several types of manifests-->
+	<!-- -->
+	<!--1.1 General PLM info type-->
+	<!-- -->
+	<xs:complexType name="GeneralPLMInfo">
+		<xs:sequence>
+			<xs:element name="GTC_GDA">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ClassificationNo" type="ExportJurisdiction"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="IP">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Copyright" type="IntelectualPropertyRestriction"/>
+						<xs:element name="License" type="xs:string"/>
+						<xs:element name="DistributionStatements" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Statement" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="Number" type="xs:string"/>
+												<xs:element name="Content" type="xs:string"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="DestructionNotices" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Notice" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="Number" type="xs:string"/>
+												<xs:element name="Content" type="xs:string"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="PrivacyRules" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ObjectID">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="UniqueID" type="xs:string"/>
+						<xs:element name="BaselineID" type="xs:string" minOccurs="0"/>
+						<xs:element name="ClassificationReq" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Number" type="xs:string"/>
+									<xs:element name="Content" type="xs:string"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Name" type="xs:string"/>
+						<xs:element name="ModelDescription" type="xs:string" minOccurs="0"/>
+						<xs:element name="ModelPurpose" type="xs:string" minOccurs="0"/>
+						<xs:element name="SystemDesignation" type="xs:string" minOccurs="0"/>
+						<xs:element name="Format" type="xs:string"/>
+						<xs:element name="ModelDependencies" type="xs:string" minOccurs="0"/>
+						<xs:element name="ModelHierarchy" type="xs:string" minOccurs="0"/>
+						<xs:element name="ModelLinks" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Link" type="xs:string" maxOccurs="unbounded"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Special">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="SecurityLevel" type="NationalSecurityClassificationLevel" minOccurs="0"/>
+						<xs:element name="ContractNumber" type="xs:string"/>
+						<xs:element name="DesignAuthorization" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="RAA">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="CreatedBy" type="xs:string"/>
+						<xs:element name="ModifiedBy" type="xs:string"/>
+						<xs:element name="DrawnBy" type="xs:string" minOccurs="0"/>
+						<xs:element name="ModelledBy" type="xs:string" minOccurs="0"/>
+						<xs:element name="DeveloperID" type="xs:string" minOccurs="0"/>
+						<xs:element name="Organization" type="xs:string"/>
+						<xs:element name="DeveloperCompanyID" type="xs:string"/>
+						<xs:element name="MaturityState" type="xs:string"/>
+						<xs:element name="Approver" type="xs:string"/>
+						<xs:element name="ApproverID" type="xs:string" minOccurs="0"/>
+						<xs:element name="ApproverCompany" type="xs:string" minOccurs="0"/>
+						<xs:element name="ApproverCompanyID" type="xs:string" minOccurs="0"/>
+						<xs:element name="ApprovalState" type="xs:string" minOccurs="0"/>
+						<xs:element name="ApprovedOn" type="xs:string"/>
+						<xs:element name="ApprovedDateFormat" type="Date"/>
+						<xs:element name="Verifier" type="xs:string" minOccurs="0"/>
+						<xs:element name="VerifierID" type="xs:string" minOccurs="0"/>
+						<xs:element name="VerifierCompany" type="xs:string" minOccurs="0"/>
+						<xs:element name="VerifierCompanyID" type="xs:string" minOccurs="0"/>
+						<xs:element name="VerifiedOn" type="xs:string" minOccurs="0"/>
+						<xs:element name="VerificationDateFormat" type="Date" minOccurs="0"/>
+						<xs:element name="Validator" type="xs:string" minOccurs="0"/>
+						<xs:element name="ValidatorID" type="xs:string" minOccurs="0"/>
+						<xs:element name="ValidatorCompany" type="xs:string" minOccurs="0"/>
+						<xs:element name="ValidatorCompanyID" type="xs:string" minOccurs="0"/>
+						<xs:element name="ValidatedOn" type="xs:string" minOccurs="0"/>
+						<xs:element name="ValidationDateFormat" type="Date" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Version">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="VersionID" type="xs:string"/>
+						<xs:element name="RevHistory" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Date">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="CreatedOn" type="xs:string"/>
+						<xs:element name="CreationDateFormat" type="Date"/>
+						<xs:element name="VersionReleaseDate" type="xs:string"/>
+						<xs:element name="ReleaseDateFormat" type="Date"/>
+						<xs:element name="LastModifiedOn" type="xs:string"/>
+						<xs:element name="ModificationDateFormat" type="Date"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ModelTypeObjectives" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="design" type="xs:boolean"/>
+						<xs:element name="analysis" type="xs:boolean"/>
+						<xs:element name="integratedSimulation" type="xs:boolean"/>
+						<xs:element name="requirementsDO331" type="xs:boolean"/>
+						<xs:element name="designDO331" type="xs:boolean"/>
+						<xs:element name="multiphysics" type="xs:boolean"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- -->
+	<!--1.2 Integration and execution-->
+	<!-- -->
+	<xs:complexType name="IntegrationAndExecution">
+		<xs:sequence>
+			<xs:element name="OriginalDevEnvironment">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="DevOS" type="xs:string"/>
+						<xs:element name="DevOSLicense" type="xs:string" minOccurs="0"/>
+						<xs:element name="DevTool" type="xs:string"/>
+						<xs:element name="DevelopmentToolLicense" type="xs:string" minOccurs="0"/>
+						<xs:element name="DevCompiler" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Name" type="xs:string"/>
+									<xs:element name="Version" type="xs:string"/>
+									<xs:element name="License" type="xs:string"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="DevLanguage" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Model" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence minOccurs="0">
+						<xs:element name="ModelType" type="xs:string" minOccurs="0"/>
+						<xs:element name="ModelMethod" type="xs:string" minOccurs="0"/>
+						<xs:element name="ModelRelationships" type="xs:string" minOccurs="0"/>
+						<xs:element name="ModelResources" type="xs:string" minOccurs="0"/>
+						<xs:element name="ModelReferences" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Consumer" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence minOccurs="0">
+						<xs:element name="Organization" type="xs:string" minOccurs="0"/>
+						<xs:element name="ConsumingApplication" type="xs:string" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ExecutionType">
+				<xs:complexType>
+					<xs:sequence>
+						<!--Change proposal: "targetEnvironment" to "TargetEnvironent"-->
+						<xs:element name="TargetEnvironment">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="TargetOS" type="xs:string"/>
+									<xs:element name="TargetComplier" type="xs:string"/>
+									<xs:element name="TargetTol" type="xs:string"/>
+									<xs:element name="TargetLanguage" type="xs:string"/>
+									<xs:element name="CPUNumber" type="xs:string"/>
+									<xs:element name="RAMSize" type="xs:string"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="CommunicationMode" type="IntegrationCommunicationMode" minOccurs="0"/>
+						<xs:element name="CouplingMode" type="CouplingMode" minOccurs="0"/>
+						<xs:element name="ExternalDependencies" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OSFunctions" type="xs:string"/>
+									<xs:element name="LibrariesDependencies" type="xs:string"/>
+									<xs:element name="SolverDependencies" type="xs:string"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="RealTime" type="RealTime" minOccurs="0"/>
+						<xs:element name="Parallelization" type="Parallelization" minOccurs="0"/>
+						<xs:element name="ModelTypeExecution" type="IntegrationModel" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ModelingAndTestingChecks" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Checks" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- -->
+	<!--1.3 Translation quality type-->
+	<!-- -->
+	<xs:complexType name="TranslationQuality">
+		<xs:sequence>
+			<xs:element name="TranslationTool" type="xs:string"/>
+			<xs:element name="NativeFormat" type="xs:string"/>
+			<xs:element name="TranslationQualityTest">
+				<xs:complexType>
+					<xs:sequence>
+						<!--Proposal M. Kirsch: "CompliancyTest" -> "Compliance Test"-->
+						<xs:element name="ComplianceTest">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Tool" type="xs:string"/>
+									<xs:element name="Result" type="ResultStatus"/>
+									<xs:element name="Errors" type="xs:string"/>
+									<xs:element name="LinkedDocument" type="xs:string"/>
+									<xs:element name="Comment" type="xs:string"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="ModelContentTest">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Tool" type="xs:string"/>
+									<xs:element name="Result" type="ResultStatus"/>
+									<xs:element name="Errors" type="xs:string"/>
+									<xs:element name="LinkedDocument" type="xs:string"/>
+									<xs:element name="Comment" type="xs:string"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!--2.1 Requirements verification and validation quality info-->
+	<xs:complexType name="ReqVerificationAndValidationQualityInfo">
+		<xs:sequence>
+			<xs:element name="SpecificationCompleteness" type="xs:boolean"/>
+			<xs:element name="CompletenessVerifier" type="xs:string" minOccurs="0"/>
+			<xs:element name="ComletenessAssociatedDocument" type="xs:string" minOccurs="0"/>
+			<xs:element name="SpecificationConsistency" type="xs:boolean"/>
+			<xs:element name="ConsistencyVerifier" type="xs:string" minOccurs="0"/>
+			<xs:element name="ConsistencyAssociatedDocument" type="xs:string" minOccurs="0"/>
+			<xs:element name="SpecificationValidation" type="xs:boolean"/>
+			<xs:element name="QualityValidator" type="xs:string" minOccurs="0"/>
+			<xs:element name="QualityValidationAssociatedDocument" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- -->
+	<!--2.2 Requirements traceability information-->
+	<!-- -->
+	<xs:complexType name="RequirementsTraceabilityInformation">
+		<xs:sequence>
+			<xs:element name="AffectedBy" type="TraceabilityLink"/>
+			<xs:element name="Affects" type="TraceabilityLink"/>
+			<xs:element name="ConstrainedBy" type="TraceabilityLink"/>
+			<xs:element name="Constrains" type="TraceabilityLink"/>
+			<xs:element name="DecomposedBy" type="TraceabilityLink"/>
+			<xs:element name="Decomposes" type="TraceabilityLink"/>
+			<xs:element name="ElaboratedBy" type="TraceabilityLink"/>
+			<xs:element name="Elaborates" type="TraceabilityLink"/>
+			<xs:element name="ImplementedBy" type="TraceabilityLink"/>
+			<xs:element name="Implements" type="TraceabilityLink"/>
+			<xs:element name="SatisfiedBy" type="TraceabilityLink"/>
+			<xs:element name="Satisfies" type="TraceabilityLink"/>
+			<xs:element name="SpecifiedBy" type="TraceabilityLink"/>
+			<xs:element name="Specifies" type="TraceabilityLink"/>
+			<xs:element name="TrackedBy" type="TraceabilityLink"/>
+			<xs:element name="Uses" type="TraceabilityLink"/>
+			<xs:element name="ValidatedBy" type="TraceabilityLink"/>
+			<xs:element name="VerifiedBy" type="TraceabilityLink"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--Traceability link-->
+	<xs:complexType name="TraceabilityLink">
+		<xs:sequence>
+			<xs:element name="Type" type="LinkTypeInterpretation"/>
+			<xs:element name="Link" type="xs:anyURI"/>
+			<xs:element name="Content" type="Content"/>
+			<xs:element name="Description" type="xs:string"/>
+			<xs:element name="TimestampArchiving" type="xs:string"/>
+			<xs:element name="TimeStampArchivingDateFormat" type="Date"/>
+			<xs:element name="TimestampPLM" type="xs:string"/>
+			<xs:element name="TimestampPLMDateFormat" type="Date"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- -->
+	<!--2.3 Requirements action properties-->
+	<!-- -->
+	<xs:complexType name="RequirementsActionProperties">
+		<xs:sequence>
+			<xs:element name="AllocatedTo" type="xs:string"/>
+			<xs:element name="DecomposedFrom" type="xs:string"/>
+			<xs:element name="Source" type="xs:string"/>
+			<xs:element name="DerivedFrom" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- -->
+	<!--3.1 Physics content and usage type-->
+	<!-- -->
+	<xs:complexType name="PhysicsContentAndUsage">
+		<xs:sequence>
+			<xs:element name="Dimension" type="xs:string"/>
+			<xs:element name="Causality" type="xs:string"/>
+			<xs:element name="PhysicsDomain" type="xs:string"/>
+			<xs:element name="Environment" type="xs:string"/>
+			<xs:element name="ValidityRange" type="xs:string"/>
+			<xs:element name="Fidelity">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="NeglectedPhenomena" type="xs:string"/>
+						<xs:element name="RepresentedPhenomena" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="TimeScale" type="xs:string"/>
+			<xs:element name="Linearity" type="xs:boolean"/>
+			<xs:element name="ModelTypeUsage" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- -->
+	<!--3.2 Model variables-->
+	<!-- -->
+	<xs:complexType name="ModelVariables">
+		<xs:sequence>
+			<xs:element name="KeyValueTypes">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="KeyInputs" type="xs:string"/>
+						<xs:element name="KeyOutputs" type="xs:string"/>
+						<xs:element name="KeyParameters" type="xs:string"/>
+						<xs:element name="SignalDictionary" type="xs:string"/>
+						<xs:element name="OtherKeyVariables" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ScalarVariables">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ScalarVariable" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Name" type="xs:normalizedString"/>
+									<xs:element name="ValueReference" type="xs:unsignedInt"/>
+									<xs:element name="Description" type="xs:string"/>
+									<xs:element name="Causality" type="xs:normalizedString"/>
+									<xs:element name="Variability" type="xs:normalizedString"/>
+									<xs:element name="Initial" type="xs:normalizedString"/>
+									<xs:element name="Variable" type="ModelVariables"/>
+									<xs:element name="VariableDetails" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="Unit" type="xs:string"/>
+												<xs:element name="Min" type="xs:string"/>
+												<xs:element name="Max" type="ModelVariables"/>
+												<xs:element name="Start" type="xs:string"/>
+												<xs:element name="Other" type="xs:string"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- -->
+	<!--3.3 Model verification and validation-->
+	<!-- -->
+	<xs:complexType name="ModelVerificationAndValidation">
+		<xs:sequence>
+			<xs:element name="ModelVerification">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="VerificationScenario">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="UniqueID" type="xs:string"/>
+									<xs:element name="VerifiedBy" type="xs:string" minOccurs="0"/>
+									<xs:element name="LinkedDocument" type="xs:string"/>
+									<xs:element name="LinkedResources" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="VerificationLevel" type="xs:int" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ModelValidation">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ValidationScenario">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="UniqueID" type="xs:string"/>
+									<xs:element name="ValidatedBy" type="xs:string" minOccurs="0"/>
+									<xs:element name="LinkedDocument" type="xs:string"/>
+									<xs:element name="LinkedResources" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="ValidationLevel" type="xs:int" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- -->
+	<!--4.1 Model verification and validation quality info-->
+	<!-- -->
+	<xs:complexType name="ModelVerificationAndValidationQualityInfo">
+		<xs:sequence>
+			<xs:element name="QualityVerificationScenario" type="xs:string"/>
+			<xs:element name="QualityVerifier" type="xs:string" minOccurs="0"/>
+			<xs:element name="QualityVerificationScenarioAssociatedDocument" type="xs:string"/>
+			<xs:element name="QualityVerificationScenarioLinkedResources" type="xs:string" minOccurs="0"/>
+			<xs:element name="QualityVerificationAssessmentLevel" type="QualityVerificationAssessmentLevel" minOccurs="0"/>
+			<xs:element name="QualityValidationScenario" type="xs:string"/>
+			<xs:element name="QualityValidator" type="xs:string" minOccurs="0"/>
+			<xs:element name="QualityValidationScenarioAssociatedDocument" type="xs:string"/>
+			<xs:element name="QualityValidationScenarioLinkedResources" type="xs:string" minOccurs="0"/>
+			<xs:element name="QualityValidationAssessmentLevel" type="QualityValidationAssessmentLevel" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- -->
+	<!--4.2 Model port information-->
+	<!-- -->
+	<xs:complexType name="ModelPortInformation">
+		<xs:sequence>
+			<xs:element name="Port" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="PortName" type="xs:string"/>
+						<xs:element name="PortVariableAttributeName" type="xs:string"/>
+						<xs:element name="PortMin" type="xs:string"/>
+						<xs:element name="PortMax" type="xs:string"/>
+						<xs:element name="PortInitialValue" type="xs:string"/>
+						<xs:element name="PortUnit" type="xs:string"/>
+						<xs:element name="PortDimension" type="xs:string"/>
+						<xs:element name="PortDirection" type="PortDirection"/>
+						<xs:element name="PortType" type="xs:string"/>
+						<xs:element name="PortPhysics" type="PortPhysics"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- -->
+	<!--4.3 Model elments-->
+	<!-- -->
+	<xs:complexType name="ModelElements">
+		<xs:sequence>
+			<xs:element name="InputProperties" type="xs:string"/>
+			<xs:element name="OutputProperties" type="xs:string"/>
+			<xs:element name="TransitionStates" type="TransitionStates"/>
+			<xs:element name="DefinedState" type="xs:string"/>
+			<xs:element name="EndState" type="xs:string"/>
+			<xs:element name="AbstractionLevel" type="AbstractionLevel"/>
+			<xs:element name="InterfaceTypes" type="xs:string"/>
+			<xs:element name="KeyAssumptions" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- -->
+	<!--4.4 Model parameter information-->
+	<!-- -->
+	<xs:complexType name="ModelParameterInformation">
+		<xs:sequence>
+			<xs:element name="ParameterInfo" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ParameterName" type="xs:string"/>
+						<xs:element name="ParameterValue" type="xs:string"/>
+						<xs:element name="ParameterUnit" type="xs:string"/>
+						<xs:element name="ParameterType" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- -->
+	<!--5.1 Model units and attributes-->
+	<!-- -->
+	<xs:complexType name="ModelUnitsAndAttributes">
+		<xs:sequence>
+			<xs:element name="GeometricScale" type="xs:string" minOccurs="0"/>
+			<xs:element name="LengthUnits" type="xs:string"/>
+			<xs:element name="MassUnits" type="xs:string"/>
+			<xs:element name="DensityUnits" type="xs:string"/>
+			<xs:element name="Material" type="xs:string"/>
+			<xs:element name="AltMaterial" type="xs:string" minOccurs="0"/>
+			<xs:element name="ModelPrecision" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- -->
+	<!--5.2 CAD state-->
+	<!-- -->
+	<xs:complexType name="CADState">
+		<xs:sequence>
+			<xs:element name="CodeAnnAttrState" type="Level"/>
+			<xs:element name="CodeGeometryState" type="Level"/>
+			<xs:element name="CodeMaturityState" type="MatType"/>
+			<xs:element name="ProcurementType" type="ProcurementType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- -->
+	<!--5.3 Parts list-->
+	<!-- -->
+	<!--Proposal: "PartList" -> "PartsList"-->
+	<xs:complexType name="PartsList">
+		<xs:sequence>
+			<xs:element name="Part" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Item" type="xs:string"/>
+						<xs:element name="ItemID" type="xs:string"/>
+						<xs:element name="Quantity" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- -->
+	<!--Simple types-->
+	<!--In this section simple types are speficied to be reused in one or several manifest elements-->
+	<!-- -->
+	<xs:simpleType name="Date">
+		<xs:annotation>
+			<xs:documentation>ISO 8601: YYYY-MM-DDThh:mm:ss.s
+DMY: DD/MM/YYYY
+MDY: MM/DD/YYYY
+US Military: DD MM YYYY</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ISO 8601"/>
+			<xs:enumeration value="DMY"/>
+			<xs:enumeration value="MDY"/>
+			<xs:enumeration value="US Military"/>
+			<xs:enumeration value="N/A"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ResultStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Passed"/>
+			<xs:enumeration value="Fixed"/>
+			<xs:enumeration value="Failed"/>
+			<xs:enumeration value="N/A"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CouplingMode">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Workflow"/>
+			<xs:enumeration value="Co-simulation"/>
+			<xs:enumeration value="N/A"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RealTime">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="RealTime"/>
+			<xs:enumeration value="ElapsedTime"/>
+			<xs:enumeration value="N/A"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Parallelization">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Yes"/>
+			<xs:enumeration value="No"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Linearity">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Linear"/>
+			<xs:enumeration value="Non-linear"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ValidationStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Passed"/>
+			<xs:enumeration value="Fixed"/>
+			<xs:enumeration value="Failed"/>
+			<xs:enumeration value="N/A"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IntelectualPropertyRestriction">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Public Domain"/>
+			<xs:enumeration value="Non-protective Free and Open Source"/>
+			<xs:enumeration value="Boeing Propietary"/>
+			<xs:enumeration value="Property License"/>
+			<xs:enumeration value="Propietary Critical Technical Information"/>
+			<xs:enumeration value="Not defined"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NationalSecurityClassificationLevel">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Top Secret"/>
+			<xs:enumeration value="Secret"/>
+			<xs:enumeration value="Confidential"/>
+			<xs:enumeration value="Unclassified"/>
+			<xs:enumeration value="Other"/>
+			<xs:enumeration value="N/A"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ExportJurisdiction">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ITAR"/>
+			<xs:enumeration value="EAR Lic Req"/>
+			<xs:enumeration value="EAR99 or AT-only"/>
+			<xs:enumeration value="Not subject to EAR or ITAR"/>
+			<xs:enumeration value="N/A"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IntegrationCommunicationMode">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Synchronous"/>
+			<xs:enumeration value="Asynchronous"/>
+			<xs:enumeration value="N/A"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IntegrationModel">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Executable"/>
+			<xs:enumeration value="Static Library"/>
+			<xs:enumeration value="Dynamic Library"/>
+			<xs:enumeration value="Script"/>
+			<xs:enumeration value="N/A"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IntegrationModelFormat">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="mdzip"/>
+			<xs:enumeration value="mdzipx"/>
+			<xs:enumeration value="N/A"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="QualityVerificationAssessmentLevel">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+			<xs:enumeration value="N/A"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="QualityValidationAssessmentLevel">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+			<xs:enumeration value="4"/>
+			<xs:enumeration value="N/A"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Variable">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Real"/>
+			<xs:enumeration value="Integer"/>
+			<xs:enumeration value="Boolean"/>
+			<xs:enumeration value="String"/>
+			<xs:enumeration value="Enumeration"/>
+			<xs:enumeration value="N/A"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Level">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="None"/>
+			<xs:enumeration value="Partial"/>
+			<xs:enumeration value="Full"/>
+			<xs:enumeration value="N/A"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MatType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Conceptual"/>
+			<xs:enumeration value="Developmental"/>
+			<xs:enumeration value="Production"/>
+			<xs:enumeration value="Archive"/>
+			<xs:enumeration value="N/A"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ProcurementType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Make"/>
+			<xs:enumeration value="Buy"/>
+			<xs:enumeration value="N/A"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PortDirection">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="In"/>
+			<xs:enumeration value="Out"/>
+			<xs:enumeration value="InOut"/>
+			<xs:enumeration value="N/A"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PortPhysics">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Thermal"/>
+			<xs:enumeration value="Fluid Mechanics"/>
+			<xs:enumeration value="Electromagnetic"/>
+			<xs:enumeration value="Control"/>
+			<xs:enumeration value="Chemistry"/>
+			<xs:enumeration value="N/A"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TransitionStates">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Steady state"/>
+			<xs:enumeration value="Dynamic"/>
+			<xs:enumeration value="Multiple"/>
+			<xs:enumeration value="Undefined"/>
+			<xs:enumeration value="Structure Only"/>
+			<xs:enumeration value="Requirement Allocations"/>
+			<xs:enumeration value="Other"/>
+			<xs:enumeration value="None"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AbstractionLevel">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="System level"/>
+			<xs:enumeration value="Subsystem level"/>
+			<xs:enumeration value="System interfaces"/>
+			<xs:enumeration value="External to system"/>
+			<xs:enumeration value="Functional behaviours"/>
+			<xs:enumeration value="Control system"/>
+			<xs:enumeration value="Critical-safety"/>
+			<xs:enumeration value="Operational modes"/>
+			<xs:enumeration value="Failure modes"/>
+			<xs:enumeration value="Process"/>
+			<xs:enumeration value="Network"/>
+			<xs:enumeration value="Software"/>
+			<xs:enumeration value="Applications"/>
+			<xs:enumeration value="Other"/>
+			<xs:enumeration value="N/A"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RequirementAuthoringTechnique">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Formal"/>
+			<xs:enumeration value="Semi-formal"/>
+			<xs:enumeration value="Informal"/>
+			<xs:enumeration value="N/A"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LinkTypeInterpretation">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Local"/>
+			<xs:enumeration value="Global"/>
+			<xs:enumeration value="N/A"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Content">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Requirement"/>
+			<xs:enumeration value="Logical Model"/>
+			<xs:enumeration value="Physical Model"/>
+			<xs:enumeration value="Test Plan"/>
+			<xs:enumeration value="Test Case"/>
+			<xs:enumeration value="Document"/>
+			<xs:enumeration value="Variability Model"/>
+			<xs:enumeration value="Change Request"/>
+			<xs:enumeration value="Issue"/>
+			<xs:enumeration value="Evidence"/>
+			<xs:enumeration value="KPI"/>
+			<xs:enumeration value="Other"/>
+			<xs:enumeration value="N/A"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

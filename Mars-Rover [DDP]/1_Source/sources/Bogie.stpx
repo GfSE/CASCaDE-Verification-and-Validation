@@ -1,0 +1,1828 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<n0:Uos xmlns:cmn="http://standards.iso.org/iso/ts/10303/-3000/-ed-1/tech/xml-schema/common" xmlns:n0="http://standards.iso.org/iso/ts/10303/-3001/-ed-1/tech/xml-schema/bo_model" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://standards.iso.org/iso/ts/10303/-3001/-ed-1/tech/xml-schema/bo_model http://standards.iso.org/iso/ts/10303/-3001/-ed-1/tech/xml-schema/bo_model/bom.xsd">
+	<Header xmlns="">
+		<Name>Bogie.stpx</Name>
+		<TimeStamp>2021-06-09T00:25:57</TimeStamp>
+		<PreprocessorVersion>CATIA Version 5 Version 5-6 Release 2018</PreprocessorVersion>
+		<OriginatingSystem>CATIA Version 5 Version 5-6 Release 2018</OriginatingSystem>
+		<Documentation>CAx-IF Rec.Pracs.---AP242 BO Model XML Assembly Structure---1.1---2016-05-20</Documentation>
+	</Header>
+	<DataContainer xmlns="" xsi:type="n0:AP242DataContainer">
+		<ExchangeContext uid="EC--0">
+			<DefaultLanguage>en-US</DefaultLanguage>
+			<DefaultUnit uidRef="U__1"/>
+			<Description>
+				<CharacterString>AP242 BO Model XML Assembly Structure exchange</CharacterString>
+			</Description>
+			<IdentificationContext uidRef="O__3"/>
+		</ExchangeContext>
+		<Unit uid="U__1">
+			<Kind>
+				<ClassString>SI system</ClassString>
+			</Kind>
+			<Name>
+				<ClassString>metre</ClassString>
+			</Name>
+			<Prefix>
+				<ClassString>milli</ClassString>
+			</Prefix>
+		</Unit>
+		<Organization uid="O__3">
+			<Id id="www.3ds.com"/>
+			<Name>
+				<CharacterString>Dassault Systemes</CharacterString>
+			</Name>
+			<OrganizationTypes>
+				<ClassString>company</ClassString>
+			</OrganizationTypes>
+		</Organization>
+		<Part uid="Pa__4">
+			<Id>
+				<Identifier id="Bogie" idContextRef="O__3" idRoleRef="C__5" uid="I__6"/>
+			</Id>
+			<Name>
+				<CharacterString>Bogie</CharacterString>
+			</Name>
+			<PartTypes>
+				<ClassString>assembly</ClassString>
+			</PartTypes>
+			<Versions>
+				<PartVersion uid="PVe__7">
+					<Description>
+						<CharacterString>Bogie</CharacterString>
+					</Description>
+					<Id id="1"/>
+					<Views>
+						<PartView uid="PV__8" xsi:type="n0:AssemblyDefinition">
+							<InitialContext uidRef="VC__9"/>
+							<ShapeDependentProperty uid="SDP__10" xsi:type="n0:CentreOfMass">
+								<DefinedIn uidRef="GCS__11"/>
+								<Id id="notional solids centroid"/>
+								<Role>
+									<ClassString>assembly validation property</ClassString>
+								</Role>
+								<CentrePoint uid="CP__12">
+									<Coordinates>64.28402739164061 149.5 186.9079200840305 </Coordinates>
+								</CentrePoint>
+							</ShapeDependentProperty>
+							<PropertyValueAssignment uid="PVA__13">
+								<AssignedPropertyValues>
+									<PropertyValue uid="NV__14" xsi:type="n0:NumericalValue">
+										<Definition>
+											<PropertyDefinition uidRef="PD__16"/>
+										</Definition>
+										<Name>
+											<CharacterString>number of children</CharacterString>
+										</Name>
+										<Unit uidRef="U__17"/>
+										<ValueComponent>14</ValueComponent>
+									</PropertyValue>
+								</AssignedPropertyValues>
+								<ClassifiedAs>
+									<Classification uidRef="Cl__15"/>
+								</ClassifiedAs>
+							</PropertyValueAssignment>
+							<ViewOccurrenceRelationship uid="NAOU__27" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__28"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__29">
+										<RotationMatrix> 1 0 0 0 1 0 0 0 1</RotationMatrix>
+										<TranslationVector> 0 0 0</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__99" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__100"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__101">
+										<RotationMatrix> -0.06944517706588659 1.517270321793648e-017 0.9975857694365563 -0.9975857694365575 9.292540182195397e-016 -0.06944517706588391 -4.51513757951134e-016 -1.000000000000007 -1.354599398120373e-016</RotationMatrix>
+										<TranslationVector> -1.322930623105009 161 102.0040089077661</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__110" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__111"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__112">
+										<RotationMatrix> -0.06944517706588163 3.636155735003101e-031 0.9975857694365519 -0.9975857694365535 4.274030237243984e-016 -0.06944517706588088 1.205755945783209e-016 -1.000000000000004 -1.732078488021881e-015</RotationMatrix>
+										<TranslationVector> -1.322930623105009 161 102.0040089077661</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__113" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__114"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__115">
+										<RotationMatrix> -0.0689780486092211 6.513344551206668e-017 0.9976181778667277 2.114918017818829e-015 -1.000000000000014 2.767968146355493e-016 0.9976181778667232 4.258630937042235e-015 0.06897804860921888</RotationMatrix>
+										<TranslationVector> -3.942095478016959 161 140.0138788650815</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__124" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__125"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__126">
+										<RotationMatrix> 0.9975857694365377 0 0.06944517706587972 0 1 0 -0.06944517706587972 0 0.9975857694365377</RotationMatrix>
+										<TranslationVector> -24.29573140018608 161 157.6931050079591</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__135" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__136"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__137">
+										<RotationMatrix> 0.6562945067598113 -1.467576060676379e-015 0.754504818007782 -1.085097486310752e-015 1.000000000000014 9.449906135383657e-016 -0.7545048180077827 -4.336808689942018e-019 0.6562945067598127</RotationMatrix>
+										<TranslationVector> 32.71629532311207 186.146 161.6618968772742</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__138" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__139"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__140">
+										<RotationMatrix> 0.6562945067598024 0 0.7545048180077719 0 -1 0 0.7545048180077747 0 -0.6562945067597997</RotationMatrix>
+										<TranslationVector> 32.71629532311207 135.854 161.6618968772742</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__149" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__150"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__151">
+										<RotationMatrix> 0.6562945067598187 -1.648935979078892e-016 0.7545048180077906 1.971966108002907e-021 -1.000000000000024 -1.084249630680959e-019 0.7545048180077956 -1.812325246472457e-015 -0.6562945067598196</RotationMatrix>
+										<TranslationVector> 45.21870567688556 161.0000000000001 176.0352136603214</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__160" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__161"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__162">
+										<RotationMatrix> 0.9975857694365378 0 0.06944517706587995 0 1 0 -0.06944517706587995 0 0.9975857694365378</RotationMatrix>
+										<TranslationVector> 113.7315692455382 161 275.3255005185516</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__163" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__164"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__165">
+										<RotationMatrix> -0.9975857694365795 -7.419303886535555e-015 -0.06944517706588314 3.829091000368923e-015 -1.000000000000039 -1.630640067418199e-015 -0.06944517706588145 -9.471590178833367e-016 0.9975857694365561</RotationMatrix>
+										<TranslationVector> 208.7516137843684 161.0000000000015 281.9401536340773</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__166" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__167"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__168">
+										<RotationMatrix> 0.9975857694365546 8.673617379884036e-018 0.06944517706588142 2.525157045519562e-018 -1.00000000000002 -3.469329091485491e-017 0.06944517706588113 1.734723475976807e-018 -0.9975857694365539</RotationMatrix>
+										<TranslationVector> 208.7516137843685 161 281.9401536340768</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__258" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__259"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__260">
+										<RotationMatrix> 0.6562945067597915 0 0.7545048180077593 0 1 0 -0.7545048180077593 0 0.6562945067597915</RotationMatrix>
+										<TranslationVector> 32.71629532311205 161 161.6618968772742</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__309" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__310"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__311">
+										<RotationMatrix> 0.6562945067597915 0 0.7545048180077593 0 1 0 -0.7545048180077593 0 0.6562945067597915</RotationMatrix>
+										<TranslationVector> 82.72593673820813 161 219.1551640094654</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__312" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__313"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__314">
+										<RotationMatrix> 0.6562945067597915 0 0.7545048180077593 0 1 0 -0.7545048180077593 0 0.6562945067597915</RotationMatrix>
+										<TranslationVector> 132.7355781533043 161 276.6484311416567</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<AssemblyType>
+								<ClassString>design assembly</ClassString>
+							</AssemblyType>
+						</PartView>
+					</Views>
+				</PartVersion>
+			</Versions>
+		</Part>
+		<Class uid="C__5">
+			<Id id="identification information"/>
+		</Class>
+		<ViewContext uid="VC__9">
+			<ApplicationDomain>
+				<ProxyString>mechanical design</ProxyString>
+			</ApplicationDomain>
+			<LifeCycleStage>
+				<ProxyString>design</ProxyString>
+			</LifeCycleStage>
+		</ViewContext>
+		<GeometricCoordinateSpace uid="GCS__11">
+			<DimensionCount>3</DimensionCount>
+			<Id id="/NULL"/>
+			<Units>
+				<Unit uidRef="U__1"/>
+			</Units>
+		</GeometricCoordinateSpace>
+		<Classification uid="Cl__15">
+			<Class>
+				<ClassString>validation property</ClassString>
+			</Class>
+		</Classification>
+		<PropertyDefinition uid="PD__16">
+			<Id id="number of children"/>
+			<PropertyType>
+				<ClassString>assembly validation property</ClassString>
+			</PropertyType>
+		</PropertyDefinition>
+		<Unit uid="U__17">
+			<Name>
+				<ClassString>each</ClassString>
+			</Name>
+		</Unit>
+		<Part uid="Pa__18">
+			<Id>
+				<Identifier id="Bogie Skeleton" idContextRef="O__3" idRoleRef="C__5" uid="I__19"/>
+			</Id>
+			<Name>
+				<CharacterString>Bogie Skeleton</CharacterString>
+			</Name>
+			<PartTypes>
+				<ClassString>piece part</ClassString>
+			</PartTypes>
+			<Versions>
+				<PartVersion uid="PVe__20">
+					<Description>
+						<CharacterString>Bogie Skeleton</CharacterString>
+					</Description>
+					<Id id="1"/>
+					<Views>
+						<PartView uid="PV__21">
+							<InitialContext uidRef="VC__9"/>
+							<Occurrence uid="SO__28" xsi:type="n0:SingleOccurrence">
+								<Id id="Bogie Skeleton.1"/>
+							</Occurrence>
+							<DocumentAssignment uid="DA__26">
+								<AssignedDocument uidRef="DF__22"/>
+								<Role>
+									<ClassString>mandatory</ClassString>
+								</Role>
+							</DocumentAssignment>
+						</PartView>
+					</Views>
+				</PartVersion>
+			</Versions>
+		</Part>
+		<File uid="DF__22" xsi:type="n0:DigitalFile">
+			<FileFormat uidRef="FP__23"/>
+			<FileType>
+				<ClassString>geometry</ClassString>
+			</FileType>
+			<Id>
+				<Identifier id="Bogie Skeleton_Rep.stp" idContextRef="O__3" idRoleRef="C__5" uid="I__24"/>
+			</Id>
+			<Locations>
+				<ExternalItem uid="EI__25">
+					<Id id="Bogie Skeleton_Rep.stp"/>
+					<Source>
+						<IdentifierString>.</IdentifierString>
+					</Source>
+				</ExternalItem>
+			</Locations>
+			<VersionId id="/NULL"/>
+		</File>
+		<FormatProperty uid="FP__23">
+			<CharacterCode>
+				<ClassString>ISO 8859-1</ClassString>
+			</CharacterCode>
+		</FormatProperty>
+		<Part uid="Pa__30">
+			<Id>
+				<Identifier id="Channel Connector Two-Sided" idContextRef="O__3" idRoleRef="C__5" uid="I__31"/>
+			</Id>
+			<Name>
+				<CharacterString>Channel Connector Two-Sided</CharacterString>
+			</Name>
+			<PartTypes>
+				<ClassString>assembly</ClassString>
+			</PartTypes>
+			<Versions>
+				<PartVersion uid="PVe__32">
+					<Description>
+						<CharacterString>Channel Connector Two-Sided</CharacterString>
+					</Description>
+					<Id id="1"/>
+					<Views>
+						<PartView uid="PV__33" xsi:type="n0:AssemblyDefinition">
+							<InitialContext uidRef="VC__9"/>
+							<Occurrence uid="SO__100" xsi:type="n0:SingleOccurrence">
+								<Id id="Channel Connector Two-Sided.1"/>
+							</Occurrence>
+							<Occurrence uid="SO__164" xsi:type="n0:SingleOccurrence">
+								<Id id="Channel Connector Two-Sided.2"/>
+							</Occurrence>
+							<ShapeDependentProperty uid="SDP__34" xsi:type="n0:CentreOfMass">
+								<DefinedIn uidRef="GCS__35"/>
+								<Id id="notional solids centroid"/>
+								<Role>
+									<ClassString>assembly validation property</ClassString>
+								</Role>
+								<CentrePoint uid="CP__36">
+									<Coordinates>3.333333333332373 3.333333333345316 10.00000000000009 </Coordinates>
+								</CentrePoint>
+							</ShapeDependentProperty>
+							<PropertyValueAssignment uid="PVA__37">
+								<AssignedPropertyValues>
+									<PropertyValue uid="NV__38" xsi:type="n0:NumericalValue">
+										<Definition>
+											<PropertyDefinition uidRef="PD__16"/>
+										</Definition>
+										<Name>
+											<CharacterString>number of children</CharacterString>
+										</Name>
+										<Unit uidRef="U__17"/>
+										<ValueComponent>3</ValueComponent>
+									</PropertyValue>
+								</AssignedPropertyValues>
+								<ClassifiedAs>
+									<Classification uidRef="Cl__15"/>
+								</ClassifiedAs>
+							</PropertyValueAssignment>
+							<ViewOccurrenceRelationship uid="NAOU__47" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__48"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__49">
+										<RotationMatrix> 1 0 0 0 1 0 0 0 1</RotationMatrix>
+										<TranslationVector> 0 0 0</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__93" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__94"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__95">
+										<RotationMatrix> 1.000000000000019 1.214150548403224e-020 -3.83026943495679e-015 -2.428301096835107e-020 1 -3.855229156164388e-018 7.757683384568281e-015 7.710458312328726e-018 1.000000000000021</RotationMatrix>
+										<TranslationVector> 0 -3.587324068671532e-042 1.577721810442024e-030</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__96" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__97"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__98">
+										<RotationMatrix> -1.000000000000027 -4.496415391237369e-015 -2.109423746787797e-015 8.992830782474816e-015 -1.00000000000001 -1.21392091026819e-014 2.040034807748725e-015 -1.21353538735254e-014 1.00000000000002</RotationMatrix>
+										<TranslationVector> -2.98304901559439e-012 3.621241154161404e-011 3.197442310921356e-014</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<AssemblyType>
+								<ClassString>design assembly</ClassString>
+							</AssemblyType>
+						</PartView>
+					</Views>
+				</PartVersion>
+			</Versions>
+		</Part>
+		<GeometricCoordinateSpace uid="GCS__35">
+			<DimensionCount>3</DimensionCount>
+			<Id id="/NULL"/>
+			<Units>
+				<Unit uidRef="U__1"/>
+			</Units>
+		</GeometricCoordinateSpace>
+		<Part uid="Pa__39">
+			<Id>
+				<Identifier id="Channel Connector Skeleton" idContextRef="O__3" idRoleRef="C__5" uid="I__40"/>
+			</Id>
+			<Name>
+				<CharacterString>Channel Connector Skeleton</CharacterString>
+			</Name>
+			<PartTypes>
+				<ClassString>piece part</ClassString>
+			</PartTypes>
+			<Versions>
+				<PartVersion uid="PVe__41">
+					<Description>
+						<CharacterString>Channel Connector Skeleton</CharacterString>
+					</Description>
+					<Id id="1"/>
+					<Views>
+						<PartView uid="PV__42">
+							<InitialContext uidRef="VC__9"/>
+							<Occurrence uid="SO__48" xsi:type="n0:SingleOccurrence">
+								<Id id="Channel Connector Skeleton.1"/>
+							</Occurrence>
+							<Occurrence uid="SO__60" xsi:type="n0:SingleOccurrence">
+								<Id id="Channel Connector Skeleton.1_1"/>
+							</Occurrence>
+							<DocumentAssignment uid="DA__46">
+								<AssignedDocument uidRef="DF__43"/>
+								<Role>
+									<ClassString>mandatory</ClassString>
+								</Role>
+							</DocumentAssignment>
+						</PartView>
+					</Views>
+				</PartVersion>
+			</Versions>
+		</Part>
+		<File uid="DF__43" xsi:type="n0:DigitalFile">
+			<FileFormat uidRef="FP__23"/>
+			<FileType>
+				<ClassString>geometry</ClassString>
+			</FileType>
+			<Id>
+				<Identifier id="Channel Connector Skeleton_Rep.stp" idContextRef="O__3" idRoleRef="C__5" uid="I__44"/>
+			</Id>
+			<Locations>
+				<ExternalItem uid="EI__45">
+					<Id id="Channel Connector Skeleton_Rep.stp"/>
+					<Source>
+						<IdentifierString>.</IdentifierString>
+					</Source>
+				</ExternalItem>
+			</Locations>
+			<VersionId id="/NULL"/>
+		</File>
+		<Part uid="Pa__50">
+			<Id>
+				<Identifier id="Channel Connector One-Sided" idContextRef="O__3" idRoleRef="C__5" uid="I__51"/>
+			</Id>
+			<Name>
+				<CharacterString>Channel Connector One-Sided</CharacterString>
+			</Name>
+			<PartTypes>
+				<ClassString>assembly</ClassString>
+			</PartTypes>
+			<Versions>
+				<PartVersion uid="PVe__52">
+					<Description>
+						<CharacterString>Channel Connector One-Sided</CharacterString>
+					</Description>
+					<Id id="1"/>
+					<Views>
+						<PartView uid="PV__53" xsi:type="n0:AssemblyDefinition">
+							<InitialContext uidRef="VC__9"/>
+							<Occurrence uid="SO__94" xsi:type="n0:SingleOccurrence">
+								<Id id="Channel Connector One-Sided.1"/>
+							</Occurrence>
+							<Occurrence uid="SO__97" xsi:type="n0:SingleOccurrence">
+								<Id id="Channel Connector One-Sided.2"/>
+							</Occurrence>
+							<Occurrence uid="SO__114" xsi:type="n0:SingleOccurrence">
+								<Id id="Channel Connector One-Sided.1_1"/>
+							</Occurrence>
+							<ShapeDependentProperty uid="SDP__54" xsi:type="n0:CentreOfMass">
+								<DefinedIn uidRef="GCS__55"/>
+								<Id id="notional solids centroid"/>
+								<Role>
+									<ClassString>assembly validation property</ClassString>
+								</Role>
+								<CentrePoint uid="CP__56">
+									<Coordinates>-0.7627078765831881 17.92733333333286 -3.84345651903694 </Coordinates>
+								</CentrePoint>
+							</ShapeDependentProperty>
+							<PropertyValueAssignment uid="PVA__57">
+								<AssignedPropertyValues>
+									<PropertyValue uid="NV__58" xsi:type="n0:NumericalValue">
+										<Definition>
+											<PropertyDefinition uidRef="PD__16"/>
+										</Definition>
+										<Name>
+											<CharacterString>number of children</CharacterString>
+										</Name>
+										<Unit uidRef="U__17"/>
+										<ValueComponent>6</ValueComponent>
+									</PropertyValue>
+								</AssignedPropertyValues>
+								<ClassifiedAs>
+									<Classification uidRef="Cl__15"/>
+								</ClassifiedAs>
+							</PropertyValueAssignment>
+							<ViewOccurrenceRelationship uid="NAOU__59" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__60"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__61">
+										<RotationMatrix> 1 0 0 0 1 0 0 0 1</RotationMatrix>
+										<TranslationVector> 0 0 0</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__70" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Description>
+									<CharacterString> </CharacterString>
+								</Description>
+								<Related uidRef="SO__71"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__72">
+										<RotationMatrix> 0 1.971526094759991e-015 1.000000000000026 8.673617382618178e-019 -1.000000000000007 6.310887241768094e-030 1.000000000000028 -1.084683744678891e-030 -2.810252031082428e-016</RotationMatrix>
+										<TranslationVector> -2.01948391736579e-028 16.76400000000001 -6.058451752097371e-028</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__81" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Description>
+									<CharacterString> </CharacterString>
+								</Description>
+								<Related uidRef="SO__82"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__83">
+										<RotationMatrix> -5.284835069563343e-015 1.213435116860761e-014 -1.000000000000026 -1.000000000000028 6.07933842156064e-015 5.331238922545722e-015 6.066327995490775e-015 1.000000000000007 1.366310233101448e-014</RotationMatrix>
+										<TranslationVector> 5.579615818397521 12.69999999999883 13.47038418160584</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__84" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Description>
+									<CharacterString> </CharacterString>
+								</Description>
+								<Related uidRef="SO__85"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__86">
+										<RotationMatrix> -5.284835069563343e-015 1.213435116860761e-014 -1.000000000000026 -1.000000000000028 6.07933842156064e-015 5.331238922545722e-015 6.066327995490775e-015 1.000000000000007 1.366310233101448e-014</RotationMatrix>
+										<TranslationVector> 5.57961581839752 12.69999999999912 -13.47038418160233</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__87" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Description>
+									<CharacterString> </CharacterString>
+								</Description>
+								<Related uidRef="SO__88"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__89">
+										<RotationMatrix> -5.284835069563343e-015 1.213435116860761e-014 -1.000000000000026 -1.000000000000028 6.07933842156064e-015 5.331238922545722e-015 6.066327995490775e-015 1.000000000000007 1.366310233101448e-014</RotationMatrix>
+										<TranslationVector> -5.579615818395419 12.69999999999899 13.47038418160607</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__90" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Description>
+									<CharacterString> </CharacterString>
+								</Description>
+								<Related uidRef="SO__91"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__92">
+										<RotationMatrix> 0.9242245927363284 -9.151941737995295e-016 -0.381849318686609 -0.3818493186866089 1.362593713242066e-014 -0.9242245927363285 6.066327995490775e-015 1.000000000000007 1.366310233101448e-014</RotationMatrix>
+										<TranslationVector> -5.579615818395473 12.69999999999934 -13.47038418160204</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<AssemblyType>
+								<ClassString>design assembly</ClassString>
+							</AssemblyType>
+						</PartView>
+					</Views>
+				</PartVersion>
+			</Versions>
+		</Part>
+		<GeometricCoordinateSpace uid="GCS__55">
+			<DimensionCount>3</DimensionCount>
+			<Id id="/NULL"/>
+			<Units>
+				<Unit uidRef="U__1"/>
+			</Units>
+		</GeometricCoordinateSpace>
+		<Part uid="Pa__62">
+			<Id>
+				<Identifier id="Channel Connector" idContextRef="O__3" idRoleRef="C__5" uid="I__63"/>
+			</Id>
+			<Name>
+				<CharacterString>Channel Connector</CharacterString>
+			</Name>
+			<PartTypes>
+				<ClassString>piece part</ClassString>
+			</PartTypes>
+			<Versions>
+				<PartVersion uid="PVe__64">
+					<Description>
+						<CharacterString>Channel Connector</CharacterString>
+					</Description>
+					<Id id="1"/>
+					<Views>
+						<PartView uid="PV__65">
+							<InitialContext uidRef="VC__9"/>
+							<Occurrence uid="SO__71" xsi:type="n0:SingleOccurrence">
+								<Id id="Channel Connector.1"/>
+							</Occurrence>
+							<DocumentAssignment uid="DA__69">
+								<AssignedDocument uidRef="DF__66"/>
+								<Role>
+									<ClassString>mandatory</ClassString>
+								</Role>
+							</DocumentAssignment>
+						</PartView>
+					</Views>
+				</PartVersion>
+			</Versions>
+		</Part>
+		<File uid="DF__66" xsi:type="n0:DigitalFile">
+			<FileFormat uidRef="FP__23"/>
+			<FileType>
+				<ClassString>geometry</ClassString>
+			</FileType>
+			<Id>
+				<Identifier id="Channel Connector_Rep.stp" idContextRef="O__3" idRoleRef="C__5" uid="I__67"/>
+			</Id>
+			<Locations>
+				<ExternalItem uid="EI__68">
+					<Id id="Channel Connector_Rep.stp"/>
+					<Source>
+						<IdentifierString>.</IdentifierString>
+					</Source>
+				</ExternalItem>
+			</Locations>
+			<VersionId id="/NULL"/>
+		</File>
+		<Part uid="Pa__73">
+			<Id>
+				<Identifier id="6-32_SHCS X 0.250" idContextRef="O__3" idRoleRef="C__5" uid="I__74"/>
+			</Id>
+			<Name>
+				<CharacterString>6-32_SHCS X 0.250</CharacterString>
+			</Name>
+			<PartTypes>
+				<ClassString>piece part</ClassString>
+			</PartTypes>
+			<Versions>
+				<PartVersion uid="PVe__75">
+					<Description>
+						<CharacterString>6-32_SHCS X 0.250</CharacterString>
+					</Description>
+					<Id id="1"/>
+					<Views>
+						<PartView uid="PV__76">
+							<InitialContext uidRef="VC__9"/>
+							<Occurrence uid="SO__82" xsi:type="n0:SingleOccurrence">
+								<Id id="6-32_SHCS X 0.250.1"/>
+							</Occurrence>
+							<Occurrence uid="SO__85" xsi:type="n0:SingleOccurrence">
+								<Id id="6-32_SHCS X 0.250.2"/>
+							</Occurrence>
+							<Occurrence uid="SO__88" xsi:type="n0:SingleOccurrence">
+								<Id id="6-32_SHCS X 0.250.3"/>
+							</Occurrence>
+							<Occurrence uid="SO__91" xsi:type="n0:SingleOccurrence">
+								<Id id="6-32_SHCS X 0.250.4"/>
+							</Occurrence>
+							<DocumentAssignment uid="DA__80">
+								<AssignedDocument uidRef="DF__77"/>
+								<Role>
+									<ClassString>mandatory</ClassString>
+								</Role>
+							</DocumentAssignment>
+						</PartView>
+					</Views>
+				</PartVersion>
+			</Versions>
+		</Part>
+		<File uid="DF__77" xsi:type="n0:DigitalFile">
+			<FileFormat uidRef="FP__23"/>
+			<FileType>
+				<ClassString>geometry</ClassString>
+			</FileType>
+			<Id>
+				<Identifier id="6-32_SHCS X 0.250_Rep.stp" idContextRef="O__3" idRoleRef="C__5" uid="I__78"/>
+			</Id>
+			<Locations>
+				<ExternalItem uid="EI__79">
+					<Id id="6-32_SHCS X 0.250_Rep.stp"/>
+					<Source>
+						<IdentifierString>.</IdentifierString>
+					</Source>
+				</ExternalItem>
+			</Locations>
+			<VersionId id="/NULL"/>
+		</File>
+		<Part uid="Pa__102">
+			<Id>
+				<Identifier id="1.5 Aluminum Channel" idContextRef="O__3" idRoleRef="C__5" uid="I__103"/>
+			</Id>
+			<Name>
+				<CharacterString>1.5 Aluminum Channel</CharacterString>
+			</Name>
+			<PartTypes>
+				<ClassString>piece part</ClassString>
+			</PartTypes>
+			<Versions>
+				<PartVersion uid="PVe__104">
+					<Description>
+						<CharacterString>1.5 Aluminum Channel</CharacterString>
+					</Description>
+					<Id id="/NULL"/>
+					<Views>
+						<PartView uid="PV__105">
+							<InitialContext uidRef="VC__9"/>
+							<Occurrence uid="SO__111" xsi:type="n0:SingleOccurrence">
+								<Id id="1.5 Aluminum Channel.1"/>
+							</Occurrence>
+							<DocumentAssignment uid="DA__109">
+								<AssignedDocument uidRef="DF__106"/>
+								<Role>
+									<ClassString>mandatory</ClassString>
+								</Role>
+							</DocumentAssignment>
+						</PartView>
+					</Views>
+				</PartVersion>
+			</Versions>
+		</Part>
+		<File uid="DF__106" xsi:type="n0:DigitalFile">
+			<FileFormat uidRef="FP__23"/>
+			<FileType>
+				<ClassString>geometry</ClassString>
+			</FileType>
+			<Id>
+				<Identifier id="1.5 Aluminum Channel_Rep.stp" idContextRef="O__3" idRoleRef="C__5" uid="I__107"/>
+			</Id>
+			<Locations>
+				<ExternalItem uid="EI__108">
+					<Id id="1.5 Aluminum Channel_Rep.stp"/>
+					<Source>
+						<IdentifierString>.</IdentifierString>
+					</Source>
+				</ExternalItem>
+			</Locations>
+			<VersionId id="/NULL"/>
+		</File>
+		<Part uid="Pa__116">
+			<Id>
+				<Identifier id="3 Aluminum Channel" idContextRef="O__3" idRoleRef="C__5" uid="I__117"/>
+			</Id>
+			<Name>
+				<CharacterString>3 Aluminum Channel</CharacterString>
+			</Name>
+			<PartTypes>
+				<ClassString>piece part</ClassString>
+			</PartTypes>
+			<Versions>
+				<PartVersion uid="PVe__118">
+					<Description>
+						<CharacterString>3 Aluminum Channel</CharacterString>
+					</Description>
+					<Id id="/NULL"/>
+					<Views>
+						<PartView uid="PV__119">
+							<InitialContext uidRef="VC__9"/>
+							<Occurrence uid="SO__125" xsi:type="n0:SingleOccurrence">
+								<Id id="3 Aluminum Channel.1"/>
+							</Occurrence>
+							<Occurrence uid="SO__167" xsi:type="n0:SingleOccurrence">
+								<Id id="3 Aluminum Channel.2"/>
+							</Occurrence>
+							<DocumentAssignment uid="DA__123">
+								<AssignedDocument uidRef="DF__120"/>
+								<Role>
+									<ClassString>mandatory</ClassString>
+								</Role>
+							</DocumentAssignment>
+						</PartView>
+					</Views>
+				</PartVersion>
+			</Versions>
+		</Part>
+		<File uid="DF__120" xsi:type="n0:DigitalFile">
+			<FileFormat uidRef="FP__23"/>
+			<FileType>
+				<ClassString>geometry</ClassString>
+			</FileType>
+			<Id>
+				<Identifier id="3 Aluminum Channel_Rep.stp" idContextRef="O__3" idRoleRef="C__5" uid="I__121"/>
+			</Id>
+			<Locations>
+				<ExternalItem uid="EI__122">
+					<Id id="3 Aluminum Channel_Rep.stp"/>
+					<Source>
+						<IdentifierString>.</IdentifierString>
+					</Source>
+				</ExternalItem>
+			</Locations>
+			<VersionId id="/NULL"/>
+		</File>
+		<Part uid="Pa__127">
+			<Id>
+				<Identifier id="Pattern F Bracket" idContextRef="O__3" idRoleRef="C__5" uid="I__128"/>
+			</Id>
+			<Name>
+				<CharacterString>Pattern F Bracket</CharacterString>
+			</Name>
+			<PartTypes>
+				<ClassString>piece part</ClassString>
+			</PartTypes>
+			<Versions>
+				<PartVersion uid="PVe__129">
+					<Description>
+						<CharacterString>Pattern F Bracket</CharacterString>
+					</Description>
+					<Id id="1"/>
+					<Views>
+						<PartView uid="PV__130">
+							<InitialContext uidRef="VC__9"/>
+							<Occurrence uid="SO__136" xsi:type="n0:SingleOccurrence">
+								<Id id="Pattern F Bracket.1"/>
+							</Occurrence>
+							<Occurrence uid="SO__139" xsi:type="n0:SingleOccurrence">
+								<Id id="Pattern F Bracket.2"/>
+							</Occurrence>
+							<DocumentAssignment uid="DA__134">
+								<AssignedDocument uidRef="DF__131"/>
+								<Role>
+									<ClassString>mandatory</ClassString>
+								</Role>
+							</DocumentAssignment>
+						</PartView>
+					</Views>
+				</PartVersion>
+			</Versions>
+		</Part>
+		<File uid="DF__131" xsi:type="n0:DigitalFile">
+			<FileFormat uidRef="FP__23"/>
+			<FileType>
+				<ClassString>geometry</ClassString>
+			</FileType>
+			<Id>
+				<Identifier id="Pattern F Bracket_Rep.stp" idContextRef="O__3" idRoleRef="C__5" uid="I__132"/>
+			</Id>
+			<Locations>
+				<ExternalItem uid="EI__133">
+					<Id id="Pattern F Bracket_Rep.stp"/>
+					<Source>
+						<IdentifierString>.</IdentifierString>
+					</Source>
+				</ExternalItem>
+			</Locations>
+			<VersionId id="/NULL"/>
+		</File>
+		<Part uid="Pa__141">
+			<Id>
+				<Identifier id="3 Aluminum Channel Mod" idContextRef="O__3" idRoleRef="C__5" uid="I__142"/>
+			</Id>
+			<Name>
+				<CharacterString>3 Aluminum Channel Mod</CharacterString>
+			</Name>
+			<PartTypes>
+				<ClassString>piece part</ClassString>
+			</PartTypes>
+			<Versions>
+				<PartVersion uid="PVe__143">
+					<Description>
+						<CharacterString>3 Aluminum Channel Mod</CharacterString>
+					</Description>
+					<Id id="1"/>
+					<Views>
+						<PartView uid="PV__144">
+							<InitialContext uidRef="VC__9"/>
+							<Occurrence uid="SO__150" xsi:type="n0:SingleOccurrence">
+								<Id id="3 Aluminum Channel Mod.1"/>
+							</Occurrence>
+							<DocumentAssignment uid="DA__148">
+								<AssignedDocument uidRef="DF__145"/>
+								<Role>
+									<ClassString>mandatory</ClassString>
+								</Role>
+							</DocumentAssignment>
+						</PartView>
+					</Views>
+				</PartVersion>
+			</Versions>
+		</Part>
+		<File uid="DF__145" xsi:type="n0:DigitalFile">
+			<FileFormat uidRef="FP__23"/>
+			<FileType>
+				<ClassString>geometry</ClassString>
+			</FileType>
+			<Id>
+				<Identifier id="3 Aluminum Channel Mod_Rep.stp" idContextRef="O__3" idRoleRef="C__5" uid="I__146"/>
+			</Id>
+			<Locations>
+				<ExternalItem uid="EI__147">
+					<Id id="3 Aluminum Channel Mod_Rep.stp"/>
+					<Source>
+						<IdentifierString>.</IdentifierString>
+					</Source>
+				</ExternalItem>
+			</Locations>
+			<VersionId id="/NULL"/>
+		</File>
+		<Part uid="Pa__152">
+			<Id>
+				<Identifier id="3.75 Aluminum Channel" idContextRef="O__3" idRoleRef="C__5" uid="I__153"/>
+			</Id>
+			<Name>
+				<CharacterString>3.75 Aluminum Channel</CharacterString>
+			</Name>
+			<PartTypes>
+				<ClassString>piece part</ClassString>
+			</PartTypes>
+			<Versions>
+				<PartVersion uid="PVe__154">
+					<Description>
+						<CharacterString>3.75 Aluminum Channel</CharacterString>
+					</Description>
+					<Id id="/NULL"/>
+					<Views>
+						<PartView uid="PV__155">
+							<InitialContext uidRef="VC__9"/>
+							<Occurrence uid="SO__161" xsi:type="n0:SingleOccurrence">
+								<Id id="3.75 Aluminum Channel.1"/>
+							</Occurrence>
+							<DocumentAssignment uid="DA__159">
+								<AssignedDocument uidRef="DF__156"/>
+								<Role>
+									<ClassString>mandatory</ClassString>
+								</Role>
+							</DocumentAssignment>
+						</PartView>
+					</Views>
+				</PartVersion>
+			</Versions>
+		</Part>
+		<File uid="DF__156" xsi:type="n0:DigitalFile">
+			<FileFormat uidRef="FP__23"/>
+			<FileType>
+				<ClassString>geometry</ClassString>
+			</FileType>
+			<Id>
+				<Identifier id="3.75 Aluminum Channel_Rep.stp" idContextRef="O__3" idRoleRef="C__5" uid="I__157"/>
+			</Id>
+			<Locations>
+				<ExternalItem uid="EI__158">
+					<Id id="3.75 Aluminum Channel_Rep.stp"/>
+					<Source>
+						<IdentifierString>.</IdentifierString>
+					</Source>
+				</ExternalItem>
+			</Locations>
+			<VersionId id="/NULL"/>
+		</File>
+		<Part uid="Pa__169">
+			<Id>
+				<Identifier id="Triple Spacer Attachment Two-Sided" idContextRef="O__3" idRoleRef="C__5" uid="I__170"/>
+			</Id>
+			<Name>
+				<CharacterString>Triple Spacer Attachment Two-Sided</CharacterString>
+			</Name>
+			<PartTypes>
+				<ClassString>assembly</ClassString>
+			</PartTypes>
+			<Versions>
+				<PartVersion uid="PVe__171">
+					<Description>
+						<CharacterString>Triple Spacer Attachment Two-Sided</CharacterString>
+					</Description>
+					<Id id="1"/>
+					<Views>
+						<PartView uid="PV__172" xsi:type="n0:AssemblyDefinition">
+							<InitialContext uidRef="VC__9"/>
+							<Occurrence uid="SO__259" xsi:type="n0:SingleOccurrence">
+								<Id id="Triple Spacer Attachment Two-Sided.1"/>
+							</Occurrence>
+							<Occurrence uid="SO__313" xsi:type="n0:SingleOccurrence">
+								<Id id="Triple Spacer Attachment Two-Sided.2"/>
+							</Occurrence>
+							<ShapeDependentProperty uid="SDP__173" xsi:type="n0:CentreOfMass">
+								<DefinedIn uidRef="GCS__174"/>
+								<Id id="notional solids centroid"/>
+								<Role>
+									<ClassString>assembly validation property</ClassString>
+								</Role>
+								<CentrePoint uid="CP__175">
+									<Coordinates>10 3.333333333333334 3.333333333333334 </Coordinates>
+								</CentrePoint>
+							</ShapeDependentProperty>
+							<PropertyValueAssignment uid="PVA__176">
+								<AssignedPropertyValues>
+									<PropertyValue uid="NV__177" xsi:type="n0:NumericalValue">
+										<Definition>
+											<PropertyDefinition uidRef="PD__16"/>
+										</Definition>
+										<Name>
+											<CharacterString>number of children</CharacterString>
+										</Name>
+										<Unit uidRef="U__17"/>
+										<ValueComponent>3</ValueComponent>
+									</PropertyValue>
+								</AssignedPropertyValues>
+								<ClassifiedAs>
+									<Classification uidRef="Cl__15"/>
+								</ClassifiedAs>
+							</PropertyValueAssignment>
+							<ViewOccurrenceRelationship uid="NAOU__186" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__187"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__188">
+										<RotationMatrix> 1 0 0 0 1 0 0 0 1</RotationMatrix>
+										<TranslationVector> 0 0 0</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__252" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__253"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__254">
+										<RotationMatrix> 1 0 0 0 1 0 0 0 1</RotationMatrix>
+										<TranslationVector> 0 0 0</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__255" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__256"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__257">
+										<RotationMatrix> 1 0 0 0 -1 0 0 0 -1</RotationMatrix>
+										<TranslationVector> 0 0 0</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<AssemblyType>
+								<ClassString>design assembly</ClassString>
+							</AssemblyType>
+						</PartView>
+					</Views>
+				</PartVersion>
+			</Versions>
+		</Part>
+		<GeometricCoordinateSpace uid="GCS__174">
+			<DimensionCount>3</DimensionCount>
+			<Id id="/NULL"/>
+			<Units>
+				<Unit uidRef="U__1"/>
+			</Units>
+		</GeometricCoordinateSpace>
+		<Part uid="Pa__178">
+			<Id>
+				<Identifier id="Traverse Attachment Skeleton" idContextRef="O__3" idRoleRef="C__5" uid="I__179"/>
+			</Id>
+			<Name>
+				<CharacterString>Traverse Attachment Skeleton</CharacterString>
+			</Name>
+			<PartTypes>
+				<ClassString>piece part</ClassString>
+			</PartTypes>
+			<Versions>
+				<PartVersion uid="PVe__180">
+					<Description>
+						<CharacterString>Traverse Attachment Skeleton</CharacterString>
+					</Description>
+					<Id id="1"/>
+					<Views>
+						<PartView uid="PV__181">
+							<InitialContext uidRef="VC__9"/>
+							<Occurrence uid="SO__187" xsi:type="n0:SingleOccurrence">
+								<Id id="Traverse Attachment Skeleton.1"/>
+							</Occurrence>
+							<Occurrence uid="SO__199" xsi:type="n0:SingleOccurrence">
+								<Id id="Traverse Attachment Skeleton.1_1"/>
+							</Occurrence>
+							<Occurrence uid="SO__271" xsi:type="n0:SingleOccurrence">
+								<Id id="Traverse Attachment Skeleton.1_2"/>
+							</Occurrence>
+							<Occurrence uid="SO__283" xsi:type="n0:SingleOccurrence">
+								<Id id="Traverse Attachment Skeleton.1_3"/>
+							</Occurrence>
+							<DocumentAssignment uid="DA__185">
+								<AssignedDocument uidRef="DF__182"/>
+								<Role>
+									<ClassString>mandatory</ClassString>
+								</Role>
+							</DocumentAssignment>
+						</PartView>
+					</Views>
+				</PartVersion>
+			</Versions>
+		</Part>
+		<File uid="DF__182" xsi:type="n0:DigitalFile">
+			<FileFormat uidRef="FP__23"/>
+			<FileType>
+				<ClassString>geometry</ClassString>
+			</FileType>
+			<Id>
+				<Identifier id="Traverse Attachment Skeleton_Rep.stp" idContextRef="O__3" idRoleRef="C__5" uid="I__183"/>
+			</Id>
+			<Locations>
+				<ExternalItem uid="EI__184">
+					<Id id="Traverse Attachment Skeleton_Rep.stp"/>
+					<Source>
+						<IdentifierString>.</IdentifierString>
+					</Source>
+				</ExternalItem>
+			</Locations>
+			<VersionId id="/NULL"/>
+		</File>
+		<Part uid="Pa__189">
+			<Id>
+				<Identifier id="Triple Spacer Attachment One-Sided" idContextRef="O__3" idRoleRef="C__5" uid="I__190"/>
+			</Id>
+			<Name>
+				<CharacterString>Triple Spacer Attachment One-Sided</CharacterString>
+			</Name>
+			<PartTypes>
+				<ClassString>assembly</ClassString>
+			</PartTypes>
+			<Versions>
+				<PartVersion uid="PVe__191">
+					<Description>
+						<CharacterString>Triple Spacer Attachment One-Sided</CharacterString>
+					</Description>
+					<Id id="1"/>
+					<Views>
+						<PartView uid="PV__192" xsi:type="n0:AssemblyDefinition">
+							<InitialContext uidRef="VC__9"/>
+							<Occurrence uid="SO__253" xsi:type="n0:SingleOccurrence">
+								<Id id="Triple Spacer Attachment One-Sided.1"/>
+							</Occurrence>
+							<Occurrence uid="SO__256" xsi:type="n0:SingleOccurrence">
+								<Id id="Triple Spacer Attachment One-Sided.2"/>
+							</Occurrence>
+							<ShapeDependentProperty uid="SDP__193" xsi:type="n0:CentreOfMass">
+								<DefinedIn uidRef="GCS__194"/>
+								<Id id="notional solids centroid"/>
+								<Role>
+									<ClassString>assembly validation property</ClassString>
+								</Role>
+								<CentrePoint uid="CP__195">
+									<Coordinates>4.83694237275944 17.335 -1.163057627240561 </Coordinates>
+								</CentrePoint>
+							</ShapeDependentProperty>
+							<PropertyValueAssignment uid="PVA__196">
+								<AssignedPropertyValues>
+									<PropertyValue uid="NV__197" xsi:type="n0:NumericalValue">
+										<Definition>
+											<PropertyDefinition uidRef="PD__16"/>
+										</Definition>
+										<Name>
+											<CharacterString>number of children</CharacterString>
+										</Name>
+										<Unit uidRef="U__17"/>
+										<ValueComponent>10</ValueComponent>
+									</PropertyValue>
+								</AssignedPropertyValues>
+								<ClassifiedAs>
+									<Classification uidRef="Cl__15"/>
+								</ClassifiedAs>
+							</PropertyValueAssignment>
+							<ViewOccurrenceRelationship uid="NAOU__198" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__199"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__200">
+										<RotationMatrix> 1 0 0 0 1 0 0 0 1</RotationMatrix>
+										<TranslationVector> 0 0 0</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__209" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__210"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__211">
+										<RotationMatrix> 1 0 0 0 0 -1 0 1 0</RotationMatrix>
+										<TranslationVector> 9.525 8.635999999999999 -1.73472347597681e-015</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__220" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__221"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__222">
+										<RotationMatrix> 0 1 0 -1 0 0 0 0 1</RotationMatrix>
+										<TranslationVector> 9.525 19.05 0</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__231" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__232"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__233">
+										<RotationMatrix> 1 0 0 0 -1 0 0 0 -1</RotationMatrix>
+										<TranslationVector> 9.525 16.764 -2.439454888092385e-016</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__234" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__235"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__236">
+										<RotationMatrix> 1 0 0 0 0 -1 0 1 0</RotationMatrix>
+										<TranslationVector> -1.749714114281781e-015 8.635999999999999 9.524999999999999</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__237" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__238"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__239">
+										<RotationMatrix> 0 1 0 -1 0 0 0 0 1</RotationMatrix>
+										<TranslationVector> 0 19.05 9.524999999999999</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__240" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__241"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__242">
+										<RotationMatrix> 1 0 0 0 -1 0 0 0 -1</RotationMatrix>
+										<TranslationVector> 0 16.764 9.524999999999999</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__243" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__244"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__245">
+										<RotationMatrix> 1 0 0 0 0 -1 0 1 0</RotationMatrix>
+										<TranslationVector> -6.735192090801865 8.635999999999999 -6.735192090801868</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__246" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__247"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__248">
+										<RotationMatrix> 0 1 0 -1 0 0 0 0 1</RotationMatrix>
+										<TranslationVector> -6.735192090801867 19.05 -6.735192090801867</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__249" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__250"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__251">
+										<RotationMatrix> 1 0 0 0 -1 0 0 0 -1</RotationMatrix>
+										<TranslationVector> -6.735192090801867 16.764 -6.735192090801867</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<AssemblyType>
+								<ClassString>design assembly</ClassString>
+							</AssemblyType>
+						</PartView>
+					</Views>
+				</PartVersion>
+			</Versions>
+		</Part>
+		<GeometricCoordinateSpace uid="GCS__194">
+			<DimensionCount>3</DimensionCount>
+			<Id id="/NULL"/>
+			<Units>
+				<Unit uidRef="U__1"/>
+			</Units>
+		</GeometricCoordinateSpace>
+		<Part uid="Pa__201">
+			<Id>
+				<Identifier id="6-32_SHCS X 0.750" idContextRef="O__3" idRoleRef="C__5" uid="I__202"/>
+			</Id>
+			<Name>
+				<CharacterString>6-32_SHCS X 0.750</CharacterString>
+			</Name>
+			<PartTypes>
+				<ClassString>piece part</ClassString>
+			</PartTypes>
+			<Versions>
+				<PartVersion uid="PVe__203">
+					<Description>
+						<CharacterString>6-32_SHCS X 0.750</CharacterString>
+					</Description>
+					<Id id="1"/>
+					<Views>
+						<PartView uid="PV__204">
+							<InitialContext uidRef="VC__9"/>
+							<Occurrence uid="SO__210" xsi:type="n0:SingleOccurrence">
+								<Id id="6-32_SHCS X 0.750.1"/>
+							</Occurrence>
+							<Occurrence uid="SO__235" xsi:type="n0:SingleOccurrence">
+								<Id id="6-32_SHCS X 0.750.2"/>
+							</Occurrence>
+							<Occurrence uid="SO__244" xsi:type="n0:SingleOccurrence">
+								<Id id="6-32_SHCS X 0.750.3"/>
+							</Occurrence>
+							<Occurrence uid="SO__286" xsi:type="n0:SingleOccurrence">
+								<Id id="6-32_SHCS X 0.750.1_1"/>
+							</Occurrence>
+							<Occurrence uid="SO__295" xsi:type="n0:SingleOccurrence">
+								<Id id="6-32_SHCS X 0.750.2_1"/>
+							</Occurrence>
+							<DocumentAssignment uid="DA__208">
+								<AssignedDocument uidRef="DF__205"/>
+								<Role>
+									<ClassString>mandatory</ClassString>
+								</Role>
+							</DocumentAssignment>
+						</PartView>
+					</Views>
+				</PartVersion>
+			</Versions>
+		</Part>
+		<File uid="DF__205" xsi:type="n0:DigitalFile">
+			<FileFormat uidRef="FP__23"/>
+			<FileType>
+				<ClassString>geometry</ClassString>
+			</FileType>
+			<Id>
+				<Identifier id="6-32_SHCS X 0.750_Rep.stp" idContextRef="O__3" idRoleRef="C__5" uid="I__206"/>
+			</Id>
+			<Locations>
+				<ExternalItem uid="EI__207">
+					<Id id="6-32_SHCS X 0.750_Rep.stp"/>
+					<Source>
+						<IdentifierString>.</IdentifierString>
+					</Source>
+				</ExternalItem>
+			</Locations>
+			<VersionId id="/NULL"/>
+		</File>
+		<Part uid="Pa__212">
+			<Id>
+				<Identifier id="6-32_L0_25 Spacer" idContextRef="O__3" idRoleRef="C__5" uid="I__213"/>
+			</Id>
+			<Name>
+				<CharacterString>6-32_L0_25 Spacer</CharacterString>
+			</Name>
+			<PartTypes>
+				<ClassString>piece part</ClassString>
+			</PartTypes>
+			<Versions>
+				<PartVersion uid="PVe__214">
+					<Description>
+						<CharacterString>6-32_L0_25 Spacer</CharacterString>
+					</Description>
+					<Id id="/NULL"/>
+					<Views>
+						<PartView uid="PV__215">
+							<InitialContext uidRef="VC__9"/>
+							<Occurrence uid="SO__221" xsi:type="n0:SingleOccurrence">
+								<Id id="6-32_L0_25 Spacer.1"/>
+							</Occurrence>
+							<Occurrence uid="SO__238" xsi:type="n0:SingleOccurrence">
+								<Id id="6-32_L0_25 Spacer.2"/>
+							</Occurrence>
+							<Occurrence uid="SO__247" xsi:type="n0:SingleOccurrence">
+								<Id id="6-32_L0_25 Spacer.3"/>
+							</Occurrence>
+							<Occurrence uid="SO__289" xsi:type="n0:SingleOccurrence">
+								<Id id="6-32_L0_25 Spacer.1_1"/>
+							</Occurrence>
+							<Occurrence uid="SO__298" xsi:type="n0:SingleOccurrence">
+								<Id id="6-32_L0_25 Spacer.2_1"/>
+							</Occurrence>
+							<DocumentAssignment uid="DA__219">
+								<AssignedDocument uidRef="DF__216"/>
+								<Role>
+									<ClassString>mandatory</ClassString>
+								</Role>
+							</DocumentAssignment>
+						</PartView>
+					</Views>
+				</PartVersion>
+			</Versions>
+		</Part>
+		<File uid="DF__216" xsi:type="n0:DigitalFile">
+			<FileFormat uidRef="FP__23"/>
+			<FileType>
+				<ClassString>geometry</ClassString>
+			</FileType>
+			<Id>
+				<Identifier id="6-32_L0_25 Spacer_Rep.stp" idContextRef="O__3" idRoleRef="C__5" uid="I__217"/>
+			</Id>
+			<Locations>
+				<ExternalItem uid="EI__218">
+					<Id id="6-32_L0_25 Spacer_Rep.stp"/>
+					<Source>
+						<IdentifierString>.</IdentifierString>
+					</Source>
+				</ExternalItem>
+			</Locations>
+			<VersionId id="/NULL"/>
+		</File>
+		<Part uid="Pa__223">
+			<Id>
+				<Identifier id="hex_nut_6-32" idContextRef="O__3" idRoleRef="C__5" uid="I__224"/>
+			</Id>
+			<Name>
+				<CharacterString>hex_nut_6-32</CharacterString>
+			</Name>
+			<PartTypes>
+				<ClassString>piece part</ClassString>
+			</PartTypes>
+			<Versions>
+				<PartVersion uid="PVe__225">
+					<Description>
+						<CharacterString>hex_nut_6-32</CharacterString>
+					</Description>
+					<Id id="1"/>
+					<Views>
+						<PartView uid="PV__226">
+							<InitialContext uidRef="VC__9"/>
+							<Occurrence uid="SO__232" xsi:type="n0:SingleOccurrence">
+								<Id id="hex_nut_6-32.1"/>
+							</Occurrence>
+							<Occurrence uid="SO__241" xsi:type="n0:SingleOccurrence">
+								<Id id="hex_nut_6-32.2"/>
+							</Occurrence>
+							<Occurrence uid="SO__250" xsi:type="n0:SingleOccurrence">
+								<Id id="hex_nut_6-32.3"/>
+							</Occurrence>
+							<Occurrence uid="SO__292" xsi:type="n0:SingleOccurrence">
+								<Id id="hex_nut_6-32.1_1"/>
+							</Occurrence>
+							<Occurrence uid="SO__301" xsi:type="n0:SingleOccurrence">
+								<Id id="hex_nut_6-32.2_1"/>
+							</Occurrence>
+							<DocumentAssignment uid="DA__230">
+								<AssignedDocument uidRef="DF__227"/>
+								<Role>
+									<ClassString>mandatory</ClassString>
+								</Role>
+							</DocumentAssignment>
+						</PartView>
+					</Views>
+				</PartVersion>
+			</Versions>
+		</Part>
+		<File uid="DF__227" xsi:type="n0:DigitalFile">
+			<FileFormat uidRef="FP__23"/>
+			<FileType>
+				<ClassString>geometry</ClassString>
+			</FileType>
+			<Id>
+				<Identifier id="hex_nut_6-32_Rep.stp" idContextRef="O__3" idRoleRef="C__5" uid="I__228"/>
+			</Id>
+			<Locations>
+				<ExternalItem uid="EI__229">
+					<Id id="hex_nut_6-32_Rep.stp"/>
+					<Source>
+						<IdentifierString>.</IdentifierString>
+					</Source>
+				</ExternalItem>
+			</Locations>
+			<VersionId id="/NULL"/>
+		</File>
+		<Part uid="Pa__261">
+			<Id>
+				<Identifier id="Twin Spacer Attachment Two-Sided" idContextRef="O__3" idRoleRef="C__5" uid="I__262"/>
+			</Id>
+			<Name>
+				<CharacterString>Twin Spacer Attachment Two-Sided</CharacterString>
+			</Name>
+			<PartTypes>
+				<ClassString>assembly</ClassString>
+			</PartTypes>
+			<Versions>
+				<PartVersion uid="PVe__263">
+					<Description>
+						<CharacterString>Twin Spacer Attachment Two-Sided</CharacterString>
+					</Description>
+					<Id id="1"/>
+					<Views>
+						<PartView uid="PV__264" xsi:type="n0:AssemblyDefinition">
+							<InitialContext uidRef="VC__9"/>
+							<Occurrence uid="SO__310" xsi:type="n0:SingleOccurrence">
+								<Id id="Twin Spacer Attachment Two-Sided.1"/>
+							</Occurrence>
+							<ShapeDependentProperty uid="SDP__265" xsi:type="n0:CentreOfMass">
+								<DefinedIn uidRef="GCS__266"/>
+								<Id id="notional solids centroid"/>
+								<Role>
+									<ClassString>assembly validation property</ClassString>
+								</Role>
+								<CentrePoint uid="CP__267">
+									<Coordinates>10.00000000000012 3.333333333333283 3.333333333333284 </Coordinates>
+								</CentrePoint>
+							</ShapeDependentProperty>
+							<PropertyValueAssignment uid="PVA__268">
+								<AssignedPropertyValues>
+									<PropertyValue uid="NV__269" xsi:type="n0:NumericalValue">
+										<Definition>
+											<PropertyDefinition uidRef="PD__16"/>
+										</Definition>
+										<Name>
+											<CharacterString>number of children</CharacterString>
+										</Name>
+										<Unit uidRef="U__17"/>
+										<ValueComponent>3</ValueComponent>
+									</PropertyValue>
+								</AssignedPropertyValues>
+								<ClassifiedAs>
+									<Classification uidRef="Cl__15"/>
+								</ClassifiedAs>
+							</PropertyValueAssignment>
+							<ViewOccurrenceRelationship uid="NAOU__270" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__271"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__272">
+										<RotationMatrix> 1 0 0 0 1 0 0 0 1</RotationMatrix>
+										<TranslationVector> 0 0 0</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__303" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__304"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__305">
+										<RotationMatrix> 1 0 0 0 1 0 0 0 1</RotationMatrix>
+										<TranslationVector> 0 0 0</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__306" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__307"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__308">
+										<RotationMatrix> 1.000000000000031 -1.665334536937715e-016 2.664535259100376e-015 -8.326672684688578e-017 -1.000000000000015 -3.420451581231731e-031 5.301314942585123e-015 1.694818351060618e-031 -1.000000000000017</RotationMatrix>
+										<TranslationVector> 0 0 0</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<AssemblyType>
+								<ClassString>design assembly</ClassString>
+							</AssemblyType>
+						</PartView>
+					</Views>
+				</PartVersion>
+			</Versions>
+		</Part>
+		<GeometricCoordinateSpace uid="GCS__266">
+			<DimensionCount>3</DimensionCount>
+			<Id id="/NULL"/>
+			<Units>
+				<Unit uidRef="U__1"/>
+			</Units>
+		</GeometricCoordinateSpace>
+		<Part uid="Pa__273">
+			<Id>
+				<Identifier id="Twin Spacer Attachment One-Sided" idContextRef="O__3" idRoleRef="C__5" uid="I__274"/>
+			</Id>
+			<Name>
+				<CharacterString>Twin Spacer Attachment One-Sided</CharacterString>
+			</Name>
+			<PartTypes>
+				<ClassString>assembly</ClassString>
+			</PartTypes>
+			<Versions>
+				<PartVersion uid="PVe__275">
+					<Description>
+						<CharacterString>Twin Spacer Attachment One-Sided</CharacterString>
+					</Description>
+					<Id id="1"/>
+					<Views>
+						<PartView uid="PV__276" xsi:type="n0:AssemblyDefinition">
+							<InitialContext uidRef="VC__9"/>
+							<Occurrence uid="SO__304" xsi:type="n0:SingleOccurrence">
+								<Id id="Twin Spacer Attachment One-Sided.1"/>
+							</Occurrence>
+							<Occurrence uid="SO__307" xsi:type="n0:SingleOccurrence">
+								<Id id="Twin Spacer Attachment One-Sided.2"/>
+							</Occurrence>
+							<ShapeDependentProperty uid="SDP__277" xsi:type="n0:CentreOfMass">
+								<DefinedIn uidRef="GCS__278"/>
+								<Id id="notional solids centroid"/>
+								<Role>
+									<ClassString>assembly validation property</ClassString>
+								</Role>
+								<CentrePoint uid="CP__279">
+									<Coordinates>4.285714285714287 16.9857142857143 -1.42857142857141 </Coordinates>
+								</CentrePoint>
+							</ShapeDependentProperty>
+							<PropertyValueAssignment uid="PVA__280">
+								<AssignedPropertyValues>
+									<PropertyValue uid="NV__281" xsi:type="n0:NumericalValue">
+										<Definition>
+											<PropertyDefinition uidRef="PD__16"/>
+										</Definition>
+										<Name>
+											<CharacterString>number of children</CharacterString>
+										</Name>
+										<Unit uidRef="U__17"/>
+										<ValueComponent>7</ValueComponent>
+									</PropertyValue>
+								</AssignedPropertyValues>
+								<ClassifiedAs>
+									<Classification uidRef="Cl__15"/>
+								</ClassifiedAs>
+							</PropertyValueAssignment>
+							<ViewOccurrenceRelationship uid="NAOU__282" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__283"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__284">
+										<RotationMatrix> 1 0 0 0 1 0 0 0 1</RotationMatrix>
+										<TranslationVector> 0 0 0</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__285" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__286"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__287">
+										<RotationMatrix> 1 0 -6.89547899022301e-019 -6.89547899022301e-019 0 -1 0 1 0</RotationMatrix>
+										<TranslationVector> 9.525 8.635999999999996 -1.73472347597681e-015</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__288" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__289"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__290">
+										<RotationMatrix> 0 1.00000000000001 0 -1 0 0 0 -1.273287031366976e-015 1.00000000000001</RotationMatrix>
+										<TranslationVector> 9.525 19.05 0</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__291" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__292"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__293">
+										<RotationMatrix> 1 0 0 0 -1 0 0 0 -1</RotationMatrix>
+										<TranslationVector> 9.525 16.764 -2.439454888092385e-016</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__294" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__295"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__296">
+										<RotationMatrix> 1 0 -6.89547899022301e-019 -6.89547899022301e-019 0 -1 0 1 0</RotationMatrix>
+										<TranslationVector> -9.525 8.635999999999996 -2.901199552164664e-015</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__297" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__298"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__299">
+										<RotationMatrix> 0 1.000000000000005 0 -0.9999999999999987 0 0 0 -1.321859288694327e-015 1.000000000000004</RotationMatrix>
+										<TranslationVector> -9.525 19.05 0</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<ViewOccurrenceRelationship uid="NAOU__300" xsi:type="n0:NextAssemblyOccurrenceUsage">
+								<Related uidRef="SO__301"/>
+								<RelationType>
+									<ClassString>next assembly occurrence</ClassString>
+								</RelationType>
+								<Placement>
+									<CartesianTransformation uid="CT__302">
+										<RotationMatrix> 1 0 0 0 -1 0 0 0 -1</RotationMatrix>
+										<TranslationVector> -9.525 16.764 -1.410421564997093e-015</TranslationVector>
+									</CartesianTransformation>
+								</Placement>
+							</ViewOccurrenceRelationship>
+							<AssemblyType>
+								<ClassString>design assembly</ClassString>
+							</AssemblyType>
+						</PartView>
+					</Views>
+				</PartVersion>
+			</Versions>
+		</Part>
+		<GeometricCoordinateSpace uid="GCS__278">
+			<DimensionCount>3</DimensionCount>
+			<Id id="/NULL"/>
+			<Units>
+				<Unit uidRef="U__1"/>
+			</Units>
+		</GeometricCoordinateSpace>
+	</DataContainer>
+</n0:Uos>

@@ -1,7 +1,7 @@
 {
   "@Context": "http://purl.org/dc/terms/",
   "id": "ex-2-A-Model-Element-with-linked-Requirement",
-  "$schema": "https://specif.de/v1.1/schema.json",
+  "$schema": "https://specif.de/v1.1/schema",
   "title": [
     {
       "text": "A Model-Element with linked Requirement"

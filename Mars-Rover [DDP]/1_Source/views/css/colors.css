@@ -1,0 +1,46 @@
+:root {
+  /* :em colors */
+  --em_lightgrey20: #e7e7e9;
+  --em_blue10: #e1eaf3;
+  --em_green10: #eff1e5;
+  --em_green30: #cfd5b2;
+  --em_blue30: #a9c2d9;
+  --em_lightgrey60: #b9b9be;
+  --em_grey: #8d9197;
+  --em_blue60: #518cb1;
+  --em_green60: #a3ad68;
+  --em_green80: #6a7d0a;
+  --em_blue: #00537f;
+  --em_grey_dark: #4a4f4f;
+  --em_reqman_green: #afca0b;
+  --em_yellow: #f7a600;
+  --em_red: #982a2c;
+
+  /* Standard colors */
+  --black100: #000000;
+  --gray75: #323232;
+  --gray50: #808080;
+  --gray25: #BFBFBF;
+  --gray15: #D9D9D9;
+  --gray10: #E6E6E6;
+  --gray5: #f2f2f2;
+  --white: #FFFFFF;
+  
+  /* General colors */
+  --text: var(--gray75);
+  --primary: var(--em_grey_dark);
+  --secondary: var(--em_grey);
+  --passive: var(--gray25);
+  --background: var(--white);
+  --dark-background: var(--gray50);
+  --hover-background: var(--gray15);
+  --input-background: var(--gray10);
+
+  /* Table colors */
+  --table-header-text: var(--white);
+  --table-header: var(--em_grey_dark);
+  --table-row: var(--gray5);
+  --table-alternate-row: var(--gray10);
+  --table-selected-row: var(--em_red);
+  --table-border: none;
+}

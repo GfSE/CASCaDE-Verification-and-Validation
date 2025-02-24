@@ -1,11 +1,11 @@
-﻿### Example 1: One resource (node) class with an instance. 
+### Example 1: One resource (node) class with an instance. 
 
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix W3C: <https://www.w3.org/standards/semanticweb#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix specif: <https://specif.de/v1.1/schema#> .
 @prefix : <https://specif.de/apps/examples/v1.1/09_Very-Simple-Model-FMC-with-Requirements/> .
 
@@ -14,19 +14,19 @@
     owl:imports <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ,
         <http://www.w3.org/2000/01/rdf-schema#> .
 
-#################################################################
-# Top-Level Project
+##################################################################
+# Project Metadata
 #################################################################
 
 :ACP-Very-Simple-Model-FMC-with-Requirements a owl:Ontology ;
 #    owl:imports specif: ;
-    dct:title "Project 'Very Simple Model (FMC) with Requirements";
-    dct:creator _:transformator ;
-    dct:createdAt "2025-01-26T17:06:19.300Z"^^xsd:dateTime ;
-    dct:license <https://creativecommons.org/licenses/by-sa/4.0/> .
-_:software1 a dct:Software ;
-    dct:title "SpecIF Modellintegrator und Editor" ;
-    dct:hasVersion "1.2.a.11" . 
+    dcterms:title "Project 'Very Simple Model (FMC) with Requirements";
+    dcterms:creator _:software1 ;
+    dcterms:createdAt "2025-01-26T17:06:19.300Z"^^xsd:dateTime ;
+    dcterms:license <https://creativecommons.org/licenses/by-sa/4.0/> .
+_:software1 a dcterms:Software ;
+    dcterms:title "SpecIF Modellintegrator und Editor" ;
+    dcterms:hasVersion "1.2.a.11" . 
 
 #################################################################
 # Data Types
@@ -38,22 +38,22 @@ _:software1 a dct:Software ;
     rdf:type owl:Class ;
     rdfs:label "Datatype for specif:Priority" ;
     rdfs:comment "Enumerated values for priority" ;
-    dct:modified "2016-05-26T08:59:00+02:00"^^xsd:dateTime ;
-    owl:oneOf (specif:priorityHigh specif:priorityMedium specif:priorityLow) .
+    dcterms:modified "2016-05-26T08:59:00+02:00"^^xsd:dateTime ;
+    owl:oneOf ( :V-Prio-0 :V-Prio-2 :V-Prio-4 ) .
 #    owl:equivalentClass [
 #        rdf:type owl:Class ;
-#        owl:oneOf (specif:priorityHigh specif:priorityMedium specif:priorityLow)
+#        owl:oneOf ( :V-Prio-0 :V-Prio-2 :V-Prio-4 )
 #    ] .
 
-#:V-Prio-0 
-#    a :DT-Priority;
-#    rdfs:label "specif:priorityHigh" .
-#:V-Prio-2 
-#    a :DT-Priority;
-#    rdfs:label "specif:priorityMedium" .
-#:V-Prio-4 
-#    a :DT-Priority;
-#    rdfs:label "specif:priorityLow" .
+:V-Prio-0 
+    a :DT-Priority;
+    rdfs:label "specif:priorityHigh" .
+:V-Prio-2 
+    a :DT-Priority;
+    rdfs:label "specif:priorityMedium" .
+:V-Prio-4 
+    a :DT-Priority;
+    rdfs:label "specif:priorityLow" .
 
 #################################################################
 # Property Classes
@@ -63,16 +63,16 @@ _:software1 a dct:Software ;
 :PC-Name 
     rdf:type owl:DatatypeProperty ;
     rdfs:subPropertyOf rdfs:label ;
-    rdfs:label "dct:title" ;
+    rdfs:label "dcterms:title" ;
     specif:propertyClass_format specif:plain .
 
-dct:description
+dcterms:description
     rdfs:subPropertyOf rdfs:comment .
 
 :PC-Description 
     rdf:type owl:DatatypeProperty ;
-    rdfs:subPropertyOf dct:description ;
-    rdfs:label "dct:description" ;
+    rdfs:subPropertyOf dcterms:description ;
+    rdfs:label "dcterms:description" ;
     rdfs:comment "An account of the resource (detailed description)." ;
     specif:propertyClass_format specif:xhtml .
 
@@ -87,7 +87,7 @@ dct:description
     rdf:type owl:ObjectProperty ;
     rdfs:label "specif:Priority" ;
     rdfs:comment "The 'Priority' of the resource." ;   
-    dct:modified "2020-03-26T22:59:00+02:00"^^xsd:dateTime ;
+    dcterms:modified "2020-03-26T22:59:00+02:00"^^xsd:dateTime ;
     rdfs:range :DT-Priority .
 
 #################################################################
@@ -175,10 +175,10 @@ dct:description
 #################################################################
 
 :SC-satisfies 
-    a owl:ObjectProperty  ;
+    rdf:type owl:ObjectProperty ;
     rdfs:label "oslc_rm:satisfies" ;
     rdfs:comment "Statement: Model-Element satisfies Requirement" ;
-    rdfs:domain [ a owl:Class; owl:unionOf (:RC-Actor :RC-State ) ];
+    rdfs:domain [ a owl:Class; owl:unionOf (:RC-Actor :RC-State ) ] ;
     rdfs:range :RC-Requirement .
 
 #################################################################
@@ -190,14 +190,14 @@ dct:description
     :PC-Name 'FiCo-Data' ;
     :PC-Description 'Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc.' ;
     # no PC-Type asserted, here
-    dct:modified '2020-03-06T09:03:00+01:00' .
+    dcterms:modified '2020-03-06T09:03:00+01:00' .
 
 :Req-1a8016e2872e78ecadc50feddc00029b 
     a :RC-Requirement ;
     :PC-Name "Data Volume";
     :PC-Description "The data store MUST support a total volume up to 850 GB." ;
-    :PC-Priority specif:priorityLow ;
-    dct:modified "2020-10-17T10:00:00+01:00"^^xsd:dateTime .
+    :PC-Priority :V-Prio-4 ;
+    dcterms:modified "2020-10-17T10:00:00+01:00"^^xsd:dateTime .
 
 :Ssat-50feddc00029b1a8016e2872e78ecadc-1a8016e2872e78ecadc50feddc00029b 
     a rdf:Statement ;
@@ -205,5 +205,5 @@ dct:description
     rdf:predicate :SC-satisfies ;
     rdf:object :Req-1a8016e2872e78ecadc50feddc00029b ;
     :PC-Description "'FiCo-Data' satisfies 'Data Volume'" ;
-    dct:modified "2020-10-17T10:00:00+01:00"^^xsd:dateTime .
+    dcterms:modified "2020-10-17T10:00:00+01:00"^^xsd:dateTime .
 

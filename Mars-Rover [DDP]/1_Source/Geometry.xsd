@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--prostep iViP Digital Data Package Geometry Schema Version 4.0 created 26.11.2024 18:46:56 by Michael Kirsch, :em engineering methods AG on behalf of prostep ivip Association-->
+<xs:schema xmlns:dim="http://www.prostep.org/ontologies/ddp/dimensions/4.0" version="4.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.prostep.org/ontologies/ddp/geometry/4.0" targetNamespace="http://www.prostep.org/ontologies/ddp/geometry/4.0">
+	<xs:import schemaLocation="Dimensions.xsd" namespace="http://www.prostep.org/ontologies/ddp/dimensions/4.0"/>
+	<xs:element name="Point" type="Point">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Punkt, spezifiziert durch drei Koordinaten.</xs:documentation>
+			<xs:documentation xml:lang="de">Point, specified by three coordinates.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="Point">
+		<xs:sequence>
+			<xs:element name="x" type="dim:length">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">X coordinate of the point</xs:documentation>
+					<xs:documentation xml:lang="de">X-Koordinate des Punkts</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="y" type="dim:length">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Y coordinate of the point</xs:documentation>
+					<xs:documentation xml:lang="de">Y-Koordinate des Punkts</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="z" type="dim:length">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Z coordinate of the point</xs:documentation>
+					<xs:documentation xml:lang="de">Z-Koordinate des Punkts</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Direction" type="Direction">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Richtung, spezifiziert durch drei Komponenten.</xs:documentation>
+			<xs:documentation xml:lang="de">Direction, specified by three components.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="Direction">
+		<xs:sequence>
+			<xs:element name="xDir" type="xs:double">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">X direction</xs:documentation>
+					<xs:documentation xml:lang="de">X-Richtung</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="yDir" type="xs:double">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Y direction</xs:documentation>
+					<xs:documentation xml:lang="de">Y-Richtung</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="zDir" type="xs:double">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Z direction</xs:documentation>
+					<xs:documentation xml:lang="de">Z-Richtung</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AxisSystem" type="AxisSystem">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Achsensystem, spezifiziert durch drei Richtungen.</xs:documentation>
+			<xs:documentation xml:lang="de">Axis System, specified by three directions.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="AxisSystem">
+		<xs:sequence>
+			<xs:element name="Origin" type="Point">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Origin of the axis system</xs:documentation>
+					<xs:documentation xml:lang="de">Ursprung des Achsensystems</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="XAxis" type="Direction">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">X axis of the axis system</xs:documentation>
+					<xs:documentation xml:lang="de">X-Achse des Achsensystems</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="YAxis" type="Direction">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Y axis of the axis system</xs:documentation>
+					<xs:documentation xml:lang="de">Y-Achse des Achsensystems</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ZAxis" type="Direction">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Z axis of the axis system</xs:documentation>
+					<xs:documentation xml:lang="de">Z-Achse des Achsensystems</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="BoundingBox" type="BoundingBox">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Bounding box, specified by minimum and maximum extent along three axes.</xs:documentation>
+			<xs:documentation xml:lang="de">Hüllquader, spezifiziert durch die minimale und maximale Ausdehnung in drei Achsen.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="BoundingBox">
+		<xs:sequence>
+			<xs:element name="xMin" type="dim:length">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Minimum extension in X direction</xs:documentation>
+					<xs:documentation xml:lang="de">Minimale Ausdehnung in X-Richtung</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="xMax" type="dim:length">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Maximum extension in X direction</xs:documentation>
+					<xs:documentation xml:lang="de">Maximale Ausdehnung in X-Richtung</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="yMin" type="dim:length">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Minimum extension in Y direction</xs:documentation>
+					<xs:documentation xml:lang="de">Minimale Ausdehnung in Y-Richtung</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="yMax" type="dim:length">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Maximum extension in Y direction</xs:documentation>
+					<xs:documentation xml:lang="de">Maximale Ausdehnung in Y-Richtung</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="zMin" type="dim:length">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Minimum extension in Z direction</xs:documentation>
+					<xs:documentation xml:lang="de">Minimale Ausdehnung in Z-Richtung</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="zMax" type="dim:length">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Maximum extension in Z direction</xs:documentation>
+					<xs:documentation xml:lang="de">Maximale Ausdehnung in Z-Richtung</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="area" type="dim:area">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Area of the surface.</xs:documentation>
+					<xs:documentation xml:lang="de">Flächeninhalt der Fläche.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="volume" type="dim:volume">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Volume of the body.</xs:documentation>
+					<xs:documentation xml:lang="de">Rauminhalt des Körpers.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Curve" type="Curve">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Curve with geodesic length.</xs:documentation>
+			<xs:documentation xml:lang="de">Kurve mit geodätischer Länge.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="Curve">
+		<xs:sequence>
+			<xs:element name="length" type="dim:length"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Surface" type="BoundingBox">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Surface</xs:documentation>
+			<xs:documentation xml:lang="de">Fläche</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Body" type="BoundingBox">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Represents a solid body.</xs:documentation>
+			<xs:documentation xml:lang="de">Repräsentiert einen Volumenkörper.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>
