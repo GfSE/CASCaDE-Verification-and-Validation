@@ -25,45 +25,26 @@
 @prefix sysml: <https://www.omg.org/spec/SysML#> .
 @prefix DDP: <http://www.prostep.org/dictionary/2.0#> .
 @prefix SpecIF: <https://specif.de/v1.1/schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
 
-@prefix : <https://specif.de/examples/ex-2.specif> .
-
-# Import RDF and RDFS schemata
-<https://specif.de/examples/ex-2.specif>
-	owl:imports <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ,
-		<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix : <https://specif.de/examples/ex-2.specif/> .
 
 #################################################################
 # Project Metadata
 #################################################################
 
-:ex-2-A-Model-Element-with-linked-Requirement
+:
 	a owl:Ontology ;
 	rdfs:label "A Model-Element with linked Requirement" ;
-	dcterms:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
-	dcterms:createdAt "2025-02-24T20:32:41.514Z" .
+	owl:imports <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ,
+		<http://www.w3.org/2000/01/rdf-schema#> .
 
 #################################################################
-# Data Types
+# Data Types with Enumerated Values
 #################################################################
-
-:DT-ShortString
-	rdf:type owl:class ;
-	rdfs:label "String[256]" ;
-	rdfs:comment "String with max. length 256" ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" ;
-	rdfs:range xsd:string .
-	# Restriction on string length still missing
-
-:DT-Text
-	rdf:type owl:class ;
-	rdfs:label "Plain or formatted Text" ;
-	rdfs:comment "A text string, plain, or formatted with XHTML or markdown" ;
-	dcterms:modified "2021-02-14T08:59:00+02:00" ;
-	rdfs:range xsd:string .
 
 :DT-Priority
-	rdf:type owl:class ;
+	a owl:Class ;
 	rdfs:label "Priorität" ;
 	rdfs:comment "Enumerated values for priority" ;
 	dcterms:modified "2016-05-26T08:59:00+02:00" ;
@@ -78,42 +59,142 @@
 	a :DT-Priority ;
 	rdfs:label "SpecIF:priorityLow" .
 
-:DT-String-LE32
-	rdf:type owl:class ;
-	rdfs:label "String <=32" ;
-	rdfs:comment "Text string with maximum length 32" ;
-	dcterms:modified "2023-02-26T20:18:04.451Z" ;
-	rdfs:range xsd:string .
-	# Restriction on string length still missing
-
 #################################################################
 # Property Classes
-# Must be reusable and have permissible value range.
 #################################################################
 
+:PC-Name-Shape
+	a sh:PropertyShape ;
+	sh:path :PC-Name ;
+	sh:datatype xsd:string ;
+	sh:maxLength "256" .
+
 :PC-Name
-	rdf:type owl:ObjectProperty ;
+	a owl:DatatypeProperty ;
 	rdfs:label "Titel" ;
-	rdfs:range :DT-ShortString ;
+	rdfs:domain :RC-Actor ,
+		:RC-State ,
+		:RC-Requirement ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
 
+:PC-Description-Shape
+	a sh:PropertyShape ;
+	sh:path :PC-Description ;
+	sh:datatype xsd:string .
+
 :PC-Description
-	rdf:type owl:ObjectProperty ;
+	a owl:DatatypeProperty ;
 	rdfs:label "Beschreibung" ;
 	rdfs:comment "An account of the resource (source: http://dublincore.org/documents/dcmi-terms/). Descriptive text represented in plain or rich text using XHTML or Markdown. SHOULD include only content that is valid and suitable inside an XHTML &lt;div&gt; element (source: http://open-services.net/)." ;
-	rdfs:range :DT-Text ;
+	rdfs:domain :RC-Actor ,
+		:RC-State ,
+		:RC-Requirement ,
+		:SC-satisfies ;
 	dcterms:modified "2021-02-23T08:59:00+02:00" .
 
+# No shape yet for propertyClass with enumerated dataType: PC-Priority
+
 :PC-Priority
-	rdf:type owl:ObjectProperty ;
+	a owl:ObjectProperty ;
 	rdfs:label "Priorität" ;
 	rdfs:comment "The 'Priority' of the resource." ;
 	rdfs:range :DT-Priority ;
+	rdfs:domain :RC-Requirement ;
 	dcterms:modified "2020-03-26T22:59:00+02:00" .
 
+:PC-Type-Shape
+	a sh:PropertyShape ;
+	sh:path :PC-Type ;
+	sh:datatype xsd:string ;
+	sh:maxLength "32" .
+
 :PC-Type
-	rdf:type owl:ObjectProperty ;
+	a owl:DatatypeProperty ;
 	rdfs:label "Element-Typ" ;
 	rdfs:comment "<p>The nature or genre of the resource. <small>(<i>source: <a href=\"http://purl.org/dc/elements/1.1/type\">DCMI</a></i>)</small></p><p>Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element.</p><p>For example, a [[FMC:Actor]] may represent a <i>System Function</i>, a <i>System Component</i> or a <i>User Role</i>. Similarly, in the context of process modelling, a FMC:Actor may represent a <i>Process Step</i> or again a <i>User Role</i>. So, all of these are meaningful values for a FMC:Actor's property named dcterms:type.</p>" ;
-	rdfs:range :DT-String-LE32 ;
+	rdfs:domain :RC-Actor ,
+		:RC-State ;
 	dcterms:modified "2023-02-26T20:18:04.451Z" .
+
+#################################################################
+# Resource Classes
+#################################################################
+
+:RC-Actor-Shape
+	a sh:NodeShape ;
+	sh:targetClass :RC-Actor ;
+	sh:property :PC-Name-Shape ;
+	sh:property :PC-Description-Shape ;
+	sh:property :PC-Type-Shape .
+
+:RC-Actor
+	a owl:Class ;
+	rdfs:label "Akteur" ;
+	rdfs:comment "An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role." .
+
+:RC-State-Shape
+	a sh:NodeShape ;
+	sh:targetClass :RC-State ;
+	sh:property :PC-Name-Shape ;
+	sh:property :PC-Description-Shape ;
+	sh:property :PC-Type-Shape .
+
+:RC-State
+	a owl:Class ;
+	rdfs:label "Zustand" ;
+	rdfs:comment "A 'State' is a fundamental model element type representing a passive entity, be it a value, a document, an information storage or even a physical shape." .
+
+:RC-Requirement-Shape
+	a sh:NodeShape ;
+	sh:targetClass :RC-Requirement ;
+	sh:property :PC-Name-Shape ;
+	sh:property :PC-Description-Shape .
+# No shapes yet for propertyClasses with enumerated dataType: PC-Priority
+
+:RC-Requirement
+	a owl:Class ;
+	rdfs:label "Anforderung" ;
+	rdfs:comment "A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform." .
+
+#################################################################
+# Statement Classes
+#################################################################
+
+# No shapes yet for statementClasses
+
+:SC-satisfies
+	a owl:ObjectProperty ;
+	rdfs:label "erfüllt" ;
+	rdfs:comment "Statement: Model-Element satisfies Requirement" .
+
+#################################################################
+# Resources
+#################################################################
+
+:Req-1a8016e2872e78ecadc50feddc00029b
+	a :RC-Requirement ;
+	:PC-Name "Data Volume" ;
+	:PC-Description "<div><p>The data store MUST support a total volume up to 850 GB.</p></div>" ;
+	:PC-Priority :V-Prio-2 .
+
+:MEl-50feddc00029b1a8016e2872e78ecadc
+	a :RC-State ;
+	:PC-Name "FiCo-Data" ;
+	:PC-Description "<div><p>Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc.</p></div>" .
+
+#################################################################
+# Statements
+#################################################################
+
+:Ssat-50feddc00029b1a8016e2872e78ecadc-1a8016e2872e78ecadc50feddc00029b
+	a rdf:statement ;
+	rdf:subject :MEl-50feddc00029b1a8016e2872e78ecadc ;
+	rdf:predicate :SC-satisfies ;
+	rdf:object :Req-1a8016e2872e78ecadc50feddc00029b ;
+	:PC-Description "<p>'FiCo-Data' satisfies 'Data Volume'</p>" .
+
+#################################################################
+# Hierarchies
+#################################################################
+
+# ... still missing

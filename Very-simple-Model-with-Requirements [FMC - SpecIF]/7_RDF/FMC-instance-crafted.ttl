@@ -69,7 +69,7 @@ _:PC-Diagram a owl:DatatypeProperty ;
     dct:modified "2023-02-26T14:40:17.601Z"^^xsd:dateTime ;
     rdfs:label "SpecIF:Diagram" ;
     dct:description "One or more diagrams illustrating the resource."@en ;
-    rdfs:domain xsd:string;
+    rdfs:range xsd:string;
     specif:propertyClass_format specif:xhtml ;
     :propertyClass_revision "1.1"^^:SpecifRevision ;
     :propertyClass_multiple true .
@@ -80,7 +80,7 @@ _:PC-Type a owl:DatatypeProperty ;
     dct:modified "2023-02-26T20:18:04.451Z"^^xsd:dateTime ;
     rdfs:label "SpecIF:Type" ;
     dct:description "The nature or genre of the resource. ..."@en ;
-    rdfs:domain xsd:string;
+    rdfs:range xsd:string;
     specif:propertyClass_format specif:plain .
     
 # PC-Priority - declared as a class instead of a datatype

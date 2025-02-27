@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\PCUser\\Documents\\GitHub\\CASCaDE\\V\u0026V\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\PCUser\\Documents\\GitHub\\CASCaDE\\V\u0026V\\Playgound\\7_RDF\\ex-2-PR.ttl||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Playgound\\7_RDF\\ex-2-PR.ttl||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\PCUser\\Documents\\GitHub\\CASCaDE\\V\u0026V\\Very-simple-Model-with-Requirements [FMC - SpecIF]\\7_RDF\\FMC-instance-crafted.ttl||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Very-simple-Model-with-Requirements [FMC - SpecIF]\\7_RDF\\FMC-instance-crafted.ttl||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\PCUser\\Documents\\GitHub\\CASCaDE\\V\u0026V\\Playgound\\7_RDF\\ex-2-generated.ttl||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Playgound\\7_RDF\\ex-2-generated.ttl||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\PCUser\\Documents\\GitHub\\CASCaDE\\V\u0026V\\Playgound\\7_RDF\\ex-2-PR.ttl||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Playgound\\7_RDF\\ex-2-PR.ttl||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\PCUser\\Documents\\GitHub\\CASCaDE\\V\u0026V\\Very-simple-Model-with-Requirements [FMC - SpecIF]\\3_SpecIF\\Project \u0027Very Simple Model (FMC) with Requirements\u0027.specif||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -42,11 +46,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
+              "Title": "ex-2-generated.ttl",
+              "DocumentMoniker": "C:\\Users\\PCUser\\Documents\\GitHub\\CASCaDE\\V\u0026V\\Playgound\\7_RDF\\ex-2-generated.ttl",
+              "RelativeDocumentMoniker": "Playgound\\7_RDF\\ex-2-generated.ttl",
+              "ToolTip": "C:\\Users\\PCUser\\Documents\\GitHub\\CASCaDE\\V\u0026V\\Playgound\\7_RDF\\ex-2-generated.ttl",
+              "RelativeToolTip": "Playgound\\7_RDF\\ex-2-generated.ttl",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAADoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-02-24T21:54:07.88Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "SpecIF.ttl",
               "DocumentMoniker": "C:\\Users\\PCUser\\Documents\\GitHub\\CASCaDE\\V\u0026V\\Playgound\\7_RDF\\SpecIF.ttl",
               "RelativeDocumentMoniker": "Playgound\\7_RDF\\SpecIF.ttl",
@@ -54,12 +71,11 @@
               "RelativeToolTip": "Playgound\\7_RDF\\SpecIF.ttl",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-02-19T08:25:42.829Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-19T08:25:42.829Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "ex-1-mof2rdf.ttl",
               "DocumentMoniker": "C:\\Users\\PCUser\\Documents\\GitHub\\CASCaDE\\V\u0026V\\Playgound\\7_RDF\\ex-1-mof2rdf.ttl",
               "RelativeDocumentMoniker": "Playgound\\7_RDF\\ex-1-mof2rdf.ttl",
@@ -67,12 +83,11 @@
               "RelativeToolTip": "Playgound\\7_RDF\\ex-1-mof2rdf.ttl",
               "ViewState": "AgIAAEcAAAAAAAAAAAAuwFIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-02-18T16:54:49.85Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-18T16:54:49.85Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Project \u0027Very Simple Model (FMC) with Requirements\u0027.specif",
               "DocumentMoniker": "C:\\Users\\PCUser\\Documents\\GitHub\\CASCaDE\\V\u0026V\\Very-simple-Model-with-Requirements [FMC - SpecIF]\\3_SpecIF\\Project \u0027Very Simple Model (FMC) with Requirements\u0027.specif",
               "RelativeDocumentMoniker": "Very-simple-Model-with-Requirements [FMC - SpecIF]\\3_SpecIF\\Project \u0027Very Simple Model (FMC) with Requirements\u0027.specif",
@@ -80,25 +95,24 @@
               "RelativeToolTip": "Very-simple-Model-with-Requirements [FMC - SpecIF]\\3_SpecIF\\Project \u0027Very Simple Model (FMC) with Requirements\u0027.specif",
               "ViewState": "AgIAAAYBAAAAAAAAAAAQwDgBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-02-18T14:35:00.19Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-18T14:35:00.19Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "FMC-instance-crafted.ttl",
               "DocumentMoniker": "C:\\Users\\PCUser\\Documents\\GitHub\\CASCaDE\\V\u0026V\\Very-simple-Model-with-Requirements [FMC - SpecIF]\\7_RDF\\FMC-instance-crafted.ttl",
               "RelativeDocumentMoniker": "Very-simple-Model-with-Requirements [FMC - SpecIF]\\7_RDF\\FMC-instance-crafted.ttl",
               "ToolTip": "C:\\Users\\PCUser\\Documents\\GitHub\\CASCaDE\\V\u0026V\\Very-simple-Model-with-Requirements [FMC - SpecIF]\\7_RDF\\FMC-instance-crafted.ttl",
               "RelativeToolTip": "Very-simple-Model-with-Requirements [FMC - SpecIF]\\7_RDF\\FMC-instance-crafted.ttl",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAAEwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-02-18T11:19:10.429Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "ex-1-PR.ttl",
               "DocumentMoniker": "C:\\Users\\PCUser\\Documents\\GitHub\\CASCaDE\\V\u0026V\\Playgound\\7_RDF\\ex-1-PR.ttl",
               "RelativeDocumentMoniker": "Playgound\\7_RDF\\ex-1-PR.ttl",
@@ -106,12 +120,11 @@
               "RelativeToolTip": "Playgound\\7_RDF\\ex-1-PR.ttl",
               "ViewState": "AgIAADAAAAAAAAAAAAAAwHEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-02-18T10:51:11.715Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-18T10:51:11.715Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "ex-2-mof2rdf.ttl",
               "DocumentMoniker": "C:\\Users\\PCUser\\Documents\\GitHub\\CASCaDE\\V\u0026V\\Playgound\\7_RDF\\ex-2-mof2rdf.ttl",
               "RelativeDocumentMoniker": "Playgound\\7_RDF\\ex-2-mof2rdf.ttl",
@@ -123,20 +136,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "ex-2-PR.ttl",
               "DocumentMoniker": "C:\\Users\\PCUser\\Documents\\GitHub\\CASCaDE\\V\u0026V\\Playgound\\7_RDF\\ex-2-PR.ttl",
               "RelativeDocumentMoniker": "Playgound\\7_RDF\\ex-2-PR.ttl",
               "ToolTip": "C:\\Users\\PCUser\\Documents\\GitHub\\CASCaDE\\V\u0026V\\Playgound\\7_RDF\\ex-2-PR.ttl",
               "RelativeToolTip": "Playgound\\7_RDF\\ex-2-PR.ttl",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAIwDcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-02-17T08:32:43.566Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-17T08:32:43.566Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "ex-1.ttl",
               "DocumentMoniker": "C:\\Users\\PCUser\\Documents\\GitHub\\CASCaDE\\V\u0026V\\Playgound\\7_RDF\\ex-1.ttl",
               "RelativeDocumentMoniker": "Playgound\\7_RDF\\ex-1.ttl",

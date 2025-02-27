@@ -2,11 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\Playgound",
+    "\\Playgound\\3_SpecIF",
     "\\Playgound\\7_RDF",
     "\\Very-simple-Model-with-Requirements [FMC - SpecIF]",
     "\\Very-simple-Model-with-Requirements [FMC - SpecIF]\\3_SpecIF",
     "\\Very-simple-Model-with-Requirements [FMC - SpecIF]\\7_RDF"
   ],
-  "SelectedNode": "\\Playgound\\7_RDF\\ex-1-PR.ttl",
+  "SelectedNode": "\\Very-simple-Model-with-Requirements [FMC - SpecIF]\\7_RDF\\FMC-instance-crafted.ttl",
   "PreviewInSolutionExplorer": false
 }
