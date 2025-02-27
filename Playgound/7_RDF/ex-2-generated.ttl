@@ -160,10 +160,13 @@
 # Statement Classes
 #################################################################
 
-# No shapes yet for statementClasses
+:SC-satisfies-Shape
+	a sh:NodeShape ;
+	sh:targetClass :SC-satisfies ;
+	sh:property :PC-Description-Shape .
 
 :SC-satisfies
-	a owl:ObjectProperty ;
+	a owl:Class ;
 	rdfs:label "erfüllt" ;
 	rdfs:comment "Statement: Model-Element satisfies Requirement" .
 
@@ -187,10 +190,9 @@
 #################################################################
 
 :Ssat-50feddc00029b1a8016e2872e78ecadc-1a8016e2872e78ecadc50feddc00029b
-	a rdf:statement ;
-	rdf:subject :MEl-50feddc00029b1a8016e2872e78ecadc ;
-	rdf:predicate :SC-satisfies ;
-	rdf:object :Req-1a8016e2872e78ecadc50feddc00029b ;
+	a :SC-satisfies ;
+	SpecIF:hasSubject :MEl-50feddc00029b1a8016e2872e78ecadc ;
+	SpecIF:hasObject :Req-1a8016e2872e78ecadc50feddc00029b ;
 	:PC-Description "<p>'FiCo-Data' satisfies 'Data Volume'</p>" .
 
 #################################################################
