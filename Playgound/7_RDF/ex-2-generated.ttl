@@ -160,6 +160,11 @@
 # Statement Classes
 #################################################################
 
+SpecIF:Subject
+	a owl:ObjectProperty .
+SpecIF:Object
+	a owl:ObjectProperty .
+
 :SC-satisfies-Shape
 	a sh:NodeShape ;
 	sh:targetClass :SC-satisfies ;
@@ -191,8 +196,8 @@
 
 :Ssat-50feddc00029b1a8016e2872e78ecadc-1a8016e2872e78ecadc50feddc00029b
 	a :SC-satisfies ;
-	SpecIF:hasSubject :MEl-50feddc00029b1a8016e2872e78ecadc ;
-	SpecIF:hasObject :Req-1a8016e2872e78ecadc50feddc00029b ;
+	SpecIF:Subject :MEl-50feddc00029b1a8016e2872e78ecadc ;
+	SpecIF:Object :Req-1a8016e2872e78ecadc50feddc00029b ;
 	:PC-Description "<p>'FiCo-Data' satisfies 'Data Volume'</p>" .
 
 #################################################################
