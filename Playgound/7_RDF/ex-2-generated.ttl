@@ -72,9 +72,7 @@
 :PC-Name
 	a owl:DatatypeProperty ;
 	rdfs:label "Titel" ;
-	rdfs:domain :RC-Actor ,
-		:RC-State ,
-		:RC-Requirement ;
+	rdfs:range xsd:string ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
 
 :PC-Description-Shape
@@ -86,10 +84,7 @@
 	a owl:DatatypeProperty ;
 	rdfs:label "Beschreibung" ;
 	rdfs:comment "An account of the resource (source: http://dublincore.org/documents/dcmi-terms/). Descriptive text represented in plain or rich text using XHTML or Markdown. SHOULD include only content that is valid and suitable inside an XHTML &lt;div&gt; element (source: http://open-services.net/)." ;
-	rdfs:domain :RC-Actor ,
-		:RC-State ,
-		:RC-Requirement ,
-		:SC-satisfies ;
+	rdfs:range xsd:string ;
 	dcterms:modified "2021-02-23T08:59:00+02:00" .
 
 # No shape yet for propertyClass with enumerated dataType: PC-Priority
@@ -99,7 +94,6 @@
 	rdfs:label "Priorität" ;
 	rdfs:comment "The 'Priority' of the resource." ;
 	rdfs:range :DT-Priority ;
-	rdfs:domain :RC-Requirement ;
 	dcterms:modified "2020-03-26T22:59:00+02:00" .
 
 :PC-Type-Shape
@@ -112,13 +106,15 @@
 	a owl:DatatypeProperty ;
 	rdfs:label "Element-Typ" ;
 	rdfs:comment "<p>The nature or genre of the resource. <small>(<i>source: <a href=\"http://purl.org/dc/elements/1.1/type\">DCMI</a></i>)</small></p><p>Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element.</p><p>For example, a [[FMC:Actor]] may represent a <i>System Function</i>, a <i>System Component</i> or a <i>User Role</i>. Similarly, in the context of process modelling, a FMC:Actor may represent a <i>Process Step</i> or again a <i>User Role</i>. So, all of these are meaningful values for a FMC:Actor's property named dcterms:type.</p>" ;
-	rdfs:domain :RC-Actor ,
-		:RC-State ;
+	rdfs:range xsd:string ;
 	dcterms:modified "2023-02-26T20:18:04.451Z" .
 
 #################################################################
 # Resource Classes
 #################################################################
+
+SpecIF:Resource
+	a owl:Class .
 
 :RC-Actor-Shape
 	a sh:NodeShape ;
@@ -129,6 +125,7 @@
 
 :RC-Actor
 	a owl:Class ;
+	rdfs:subClassOf SpecIf:Resource ;
 	rdfs:label "Akteur" ;
 	rdfs:comment "An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role." .
 
@@ -141,6 +138,7 @@
 
 :RC-State
 	a owl:Class ;
+	rdfs:subClassOf SpecIf:Resource ;
 	rdfs:label "Zustand" ;
 	rdfs:comment "A 'State' is a fundamental model element type representing a passive entity, be it a value, a document, an information storage or even a physical shape." .
 
@@ -153,6 +151,7 @@
 
 :RC-Requirement
 	a owl:Class ;
+	rdfs:subClassOf SpecIf:Resource ;
 	rdfs:label "Anforderung" ;
 	rdfs:comment "A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform." .
 
@@ -160,9 +159,11 @@
 # Statement Classes
 #################################################################
 
-SpecIF:Subject
+SpecIF:Statement
+	a owl:Class .
+SpecIF:hasSubject
 	a owl:ObjectProperty .
-SpecIF:Object
+SpecIF:hasObject
 	a owl:ObjectProperty .
 
 :SC-satisfies-Shape
@@ -172,8 +173,26 @@ SpecIF:Object
 
 :SC-satisfies
 	a owl:Class ;
+	rdfs:subClassOf SpecIF:Statement ;
 	rdfs:label "erfüllt" ;
-	rdfs:comment "Statement: Model-Element satisfies Requirement" .
+	rdfs:comment "Statement: Model-Element satisfies Requirement" ;
+	dcterms:modified "2016-05-26T08:59:00+02:00" .
+
+:SC-satisfies-hasSubject
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf SpecIF:hasSubject ;
+	rdfs:label "Connects the subject of :SC-satisfies" ;
+	rdfs:domain :SC-satisfies ;
+	rdfs:range [ owl:unionOf( :RC-Actor :RC-State )] ;
+	dcterms:modified "2016-05-26T08:59:00+02:00" .
+
+:SC-satisfies-hasObject
+	a owl:ObjectProperty ;
+	rdfs:subPropertyOf SpecIF:hasObject ;
+	rdfs:label "Connects the object of :SC-satisfies" ;
+	rdfs:domain :SC-satisfies ;
+	rdfs:range :RC-Requirement ;
+	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
 #################################################################
 # Resources
@@ -196,8 +215,8 @@ SpecIF:Object
 
 :Ssat-50feddc00029b1a8016e2872e78ecadc-1a8016e2872e78ecadc50feddc00029b
 	a :SC-satisfies ;
-	SpecIF:Subject :MEl-50feddc00029b1a8016e2872e78ecadc ;
-	SpecIF:Object :Req-1a8016e2872e78ecadc50feddc00029b ;
+	:SC-satisfies-hasSubject :MEl-50feddc00029b1a8016e2872e78ecadc ;
+	:SC-satisfies-hasObject :Req-1a8016e2872e78ecadc50feddc00029b ;
 	:PC-Description "<p>'FiCo-Data' satisfies 'Data Volume'</p>" .
 
 #################################################################
