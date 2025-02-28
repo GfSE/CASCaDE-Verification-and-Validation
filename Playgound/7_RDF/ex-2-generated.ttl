@@ -114,7 +114,9 @@
 #################################################################
 
 SpecIF:Resource
-	a owl:Class .
+	a owl:Class ;
+	rdfs:label "Ressource" ;
+	rdfs:comment "A **Node** is a vertex in a graph. Equivalent terms are entity, object and resource." .
 
 :RC-Actor-Shape
 	a sh:NodeShape ;
@@ -127,6 +129,7 @@ SpecIF:Resource
 	a owl:Class ;
 	rdfs:subClassOf SpecIf:Resource ;
 	rdfs:label "Akteur" ;
+	SpecIF:Icon "&#9632;" ;
 	rdfs:comment "An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role." .
 
 :RC-State-Shape
@@ -140,6 +143,7 @@ SpecIF:Resource
 	a owl:Class ;
 	rdfs:subClassOf SpecIf:Resource ;
 	rdfs:label "Zustand" ;
+	SpecIF:Icon "●" ;
 	rdfs:comment "A 'State' is a fundamental model element type representing a passive entity, be it a value, a document, an information storage or even a physical shape." .
 
 :RC-Requirement-Shape
@@ -153,6 +157,7 @@ SpecIF:Resource
 	a owl:Class ;
 	rdfs:subClassOf SpecIf:Resource ;
 	rdfs:label "Anforderung" ;
+	SpecIF:Icon "&#8623;" ;
 	rdfs:comment "A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform." .
 
 #################################################################
@@ -160,7 +165,9 @@ SpecIF:Resource
 #################################################################
 
 SpecIF:Statement
-	a owl:Class .
+	a owl:Class ;
+	rdfs:label "Aussage" ;
+	rdfs:comment "An **Edge** connects 2 vertices in a graph. Equivalent terms are relationship, relation and statement." .
 SpecIF:hasSubject
 	a owl:ObjectProperty .
 SpecIF:hasObject
