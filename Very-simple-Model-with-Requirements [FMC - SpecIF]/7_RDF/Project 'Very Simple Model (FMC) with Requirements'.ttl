@@ -138,11 +138,6 @@ SpecIF:HierarchyRoot
 	rdfs:label "Hierarchy Root" ;
 	rdfs:comment "A node (vertex) in a graph anchoring all instances of [[SpecIF:Hierarchy]]." .
 
-:HierarchyRoot
-	a SpecIF:HierarchyRoot ;
-	rdfs:label "Hierarchy Root" ;
-	rdfs:comment "... anchoring all hierarchies of this graph (project)" .
-
 SpecIF:Resource
 	a owl:Class ;
 	rdfs:label "Ressource" ;
@@ -500,6 +495,11 @@ SpecIF:hasItem
 #################################################################
 # Hierarchies
 #################################################################
+
+:HierarchyRoot
+	a SpecIF:HierarchyRoot ;
+	rdfs:label "Hierarchy Root" ;
+	rdfs:comment "... anchoring all hierarchies of this graph (project)" .
 
 :HierarchyRoot
 	SpecIF:hasItem :Folder-Introduction ;
