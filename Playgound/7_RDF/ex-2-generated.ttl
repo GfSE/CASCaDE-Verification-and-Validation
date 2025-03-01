@@ -45,7 +45,7 @@
 
 :DT-Priority
 	a owl:Class ;
-	rdfs:label "Priorität" ;
+	rdfs:label "SpecIF:Priority" ;
 	rdfs:comment "Enumerated values for priority" ;
 	dcterms:modified "2016-05-26T08:59:00+02:00" ;
 	owl:oneOf ( :V-Prio-0 :V-Prio-2 :V-Prio-4 ) .
@@ -71,7 +71,8 @@
 
 :PC-Name
 	a owl:DatatypeProperty ;
-	rdfs:label "Titel" ;
+	owl:subPropertyOf rdfs:label ;
+	rdfs:label "dcterms:title" ;
 	rdfs:range xsd:string ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
 
@@ -82,7 +83,8 @@
 
 :PC-Description
 	a owl:DatatypeProperty ;
-	rdfs:label "Beschreibung" ;
+	owl:subPropertyOf rdfs:comment ;
+	rdfs:label "dcterms:description" ;
 	rdfs:comment "An account of the resource (source: http://dublincore.org/documents/dcmi-terms/). Descriptive text represented in plain or rich text using XHTML or Markdown. SHOULD include only content that is valid and suitable inside an XHTML &lt;div&gt; element (source: http://open-services.net/)." ;
 	rdfs:range xsd:string ;
 	dcterms:modified "2021-02-23T08:59:00+02:00" .
@@ -91,7 +93,7 @@
 
 :PC-Priority
 	a owl:ObjectProperty ;
-	rdfs:label "Priorität" ;
+	rdfs:label "SpecIF:Priority" ;
 	rdfs:comment "The 'Priority' of the resource." ;
 	rdfs:range :DT-Priority ;
 	dcterms:modified "2020-03-26T22:59:00+02:00" .
@@ -104,7 +106,7 @@
 
 :PC-Type
 	a owl:DatatypeProperty ;
-	rdfs:label "Element-Typ" ;
+	rdfs:label "dcterms:type" ;
 	rdfs:comment "<p>The nature or genre of the resource. <small>(<i>source: <a href=\"http://purl.org/dc/elements/1.1/type\">DCMI</a></i>)</small></p><p>Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element.</p><p>For example, a [[FMC:Actor]] may represent a <i>System Function</i>, a <i>System Component</i> or a <i>User Role</i>. Similarly, in the context of process modelling, a FMC:Actor may represent a <i>Process Step</i> or again a <i>User Role</i>. So, all of these are meaningful values for a FMC:Actor's property named dcterms:type.</p>" ;
 	rdfs:range xsd:string ;
 	dcterms:modified "2023-02-26T20:18:04.451Z" .
@@ -112,6 +114,16 @@
 #################################################################
 # Resource Classes
 #################################################################
+
+SpecIF:HierarchyRoot
+	a owl:Class ;
+	rdfs:label "Hierarchy Root" ;
+	rdfs:comment "A node (vertex) in a graph anchoring all instances of [[SpecIF:Hierarchy]]." .
+
+:HierarchyRoot
+	a SpecIF:HierarchyRoot ;
+	rdfs:label "Hierarchy Root" ;
+	rdfs:comment "... anchoring all hierarchies of this graph (project)" .
 
 SpecIF:Resource
 	a owl:Class ;
@@ -128,7 +140,7 @@ SpecIF:Resource
 :RC-Actor
 	a owl:Class ;
 	rdfs:subClassOf SpecIF:Resource ;
-	rdfs:label "Akteur" ;
+	rdfs:label "FMC:Actor" ;
 	SpecIF:Icon "&#9632;" ;
 	rdfs:comment "An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role." .
 
@@ -142,7 +154,7 @@ SpecIF:Resource
 :RC-State
 	a owl:Class ;
 	rdfs:subClassOf SpecIF:Resource ;
-	rdfs:label "Zustand" ;
+	rdfs:label "FMC:State" ;
 	SpecIF:Icon "●" ;
 	rdfs:comment "A 'State' is a fundamental model element type representing a passive entity, be it a value, a document, an information storage or even a physical shape." .
 
@@ -156,7 +168,7 @@ SpecIF:Resource
 :RC-Requirement
 	a owl:Class ;
 	rdfs:subClassOf SpecIF:Resource ;
-	rdfs:label "Anforderung" ;
+	rdfs:label "IREB:Requirement" ;
 	SpecIF:Icon "&#8623;" ;
 	rdfs:comment "A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform." .
 
@@ -168,12 +180,19 @@ SpecIF:Statement
 	a owl:Class ;
 	rdfs:label "Aussage" ;
 	rdfs:comment "An **Edge** connects 2 vertices in a graph. Equivalent terms are relationship, relation and statement." .
-	
+
 SpecIF:hasSubject
 	a owl:ObjectProperty .
 
 SpecIF:hasObject
 	a owl:ObjectProperty .
+
+dcterms:hasPart
+	a owl:ObjectProperty .
+
+SpecIF:hasItem
+	a owl:ObjectProperty ;
+	owl:subPropertyOf dcterms:hasPart .
 
 :SC-satisfies-Shape
 	a sh:NodeShape ;
@@ -183,7 +202,7 @@ SpecIF:hasObject
 :SC-satisfies
 	a owl:Class ;
 	rdfs:subClassOf SpecIF:Statement ;
-	rdfs:label "erfüllt" ;
+	rdfs:label "oslc_rm:satisfies" ;
 	rdfs:comment "Statement: Model-Element satisfies Requirement" ;
 	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
@@ -232,4 +251,6 @@ SpecIF:hasObject
 # Hierarchies
 #################################################################
 
-# ... still missing
+:HierarchyRoot
+	SpecIF:hasItem :Req-1a8016e2872e78ecadc50feddc00029b ;
+	SpecIF:hasItem :MEl-50feddc00029b1a8016e2872e78ecadc .
