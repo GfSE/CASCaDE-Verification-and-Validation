@@ -67,7 +67,8 @@
 	a sh:PropertyShape ;
 	sh:path :PC-Name ;
 	sh:datatype xsd:string ;
-	sh:maxLength "256" .
+	sh:maxLength "256" ;
+	sh:maxCount "1" .
 
 :PC-Name
 	a owl:DatatypeProperty ;
@@ -79,7 +80,8 @@
 :PC-Description-Shape
 	a sh:PropertyShape ;
 	sh:path :PC-Description ;
-	sh:datatype xsd:string .
+	sh:datatype xsd:string ;
+	sh:maxCount "1" .
 
 :PC-Description
 	a owl:DatatypeProperty ;
@@ -102,7 +104,8 @@
 	a sh:PropertyShape ;
 	sh:path :PC-Type ;
 	sh:datatype xsd:string ;
-	sh:maxLength "32" .
+	sh:maxLength "32" ;
+	sh:maxCount "1" .
 
 :PC-Type
 	a owl:DatatypeProperty ;
@@ -183,16 +186,20 @@ SpecIF:hasObject
 	a owl:ObjectProperty .
 
 dcterms:hasPart
-	a owl:ObjectProperty .
+	a owl:ObjectProperty ;
+	rdfs:comment "General containment relationship" .
 
 SpecIF:hasItem
 	a owl:ObjectProperty ;
-	owl:subPropertyOf dcterms:hasPart .
+	owl:subPropertyOf dcterms:hasPart ;
+	rdfs:comment "Containment relationship reserved for use in a hierarchy" .
 
 :SC-satisfies-Shape
 	a sh:NodeShape ;
 	sh:targetClass :SC-satisfies ;
-	sh:property :PC-Description-Shape .
+	sh:property :PC-Description-Shape ;
+	sh:property :SC-satisfies-hasSubject-Shape ;
+	sh:property :SC-satisfies-hasObject-Shape .
 
 :SC-satisfies
 	a owl:Class ;
@@ -201,6 +208,14 @@ SpecIF:hasItem
 	rdfs:comment "Statement: Model-Element satisfies Requirement" ;
 	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
+# Limit the node classes eligible as subject. Correct this way?
+:SC-satisfies-hasSubject-Shape
+	a sh:PropertyShape ;
+	sh:path :SC-satisfies-hasSubject ;
+	sh:class :RC-Actor, :RC-State ;
+	sh:minCount "1" ;
+	sh:maxCount "1" .
+
 :SC-satisfies-hasSubject
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf SpecIF:hasSubject ;
@@ -208,6 +223,14 @@ SpecIF:hasItem
 	rdfs:domain :SC-satisfies ;
 	rdfs:range [ owl:unionOf( :RC-Actor :RC-State )] ;
 	dcterms:modified "2016-05-26T08:59:00+02:00" .
+
+# Limit the node classes eligible as object. Correct this way?
+:SC-satisfies-hasObject-Shape
+	a sh:PropertyShape ;
+	sh:path :SC-satisfies-hasObject ;
+	sh:class :RC-Requirement ;
+	sh:minCount "1" ;
+	sh:maxCount "1" .
 
 :SC-satisfies-hasObject
 	a owl:ObjectProperty ;
@@ -225,12 +248,14 @@ SpecIF:hasItem
 	a :RC-Requirement ;
 	:PC-Name "Data Volume" ;
 	:PC-Description "<div><p>The data store MUST support a total volume up to 850 GB.</p></div>" ;
-	:PC-Priority :V-Prio-2 .
+	:PC-Priority :V-Prio-2 ;
+	dcterms:modified "2020-10-17T10:00:00+01:00" .
 
 :MEl-50feddc00029b1a8016e2872e78ecadc
 	a :RC-State ;
 	:PC-Name "FiCo-Data" ;
-	:PC-Description "<div><p>Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc.</p></div>" .
+	:PC-Description "<div><p>Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc.</p></div>" ;
+	dcterms:modified "2020-03-06T09:03:00+01:00" .
 
 #################################################################
 # Statements
@@ -240,7 +265,8 @@ SpecIF:hasItem
 	a :SC-satisfies ;
 	:SC-satisfies-hasSubject :MEl-50feddc00029b1a8016e2872e78ecadc ;
 	:SC-satisfies-hasObject :Req-1a8016e2872e78ecadc50feddc00029b ;
-	:PC-Description "<p>'FiCo-Data' satisfies 'Data Volume'</p>" .
+	:PC-Description "<p>'FiCo-Data' satisfies 'Data Volume'</p>" ;
+	dcterms:modified "2020-10-17T10:00:00+01:00" .
 
 #################################################################
 # Hierarchies

@@ -73,7 +73,8 @@
 	a sh:PropertyShape ;
 	sh:path :PC-Name ;
 	sh:datatype xsd:string ;
-	sh:maxLength "256" .
+	sh:maxLength "256" ;
+	sh:maxCount "1" .
 
 :PC-Name
 	a owl:DatatypeProperty ;
@@ -85,7 +86,8 @@
 :PC-Description-Shape
 	a sh:PropertyShape ;
 	sh:path :PC-Description ;
-	sh:datatype xsd:string .
+	sh:datatype xsd:string ;
+	sh:maxCount "1" .
 
 :PC-Description
 	a owl:DatatypeProperty ;
@@ -111,7 +113,8 @@
 	a sh:PropertyShape ;
 	sh:path :PC-Type ;
 	sh:datatype xsd:string ;
-	sh:maxLength "32" .
+	sh:maxLength "32" ;
+	sh:maxCount "1" .
 
 :PC-Type
 	a owl:DatatypeProperty ;
@@ -258,17 +261,21 @@ SpecIF:hasObject
 	a owl:ObjectProperty .
 
 dcterms:hasPart
-	a owl:ObjectProperty .
+	a owl:ObjectProperty ;
+	rdfs:comment "General containment relationship" .
 
 SpecIF:hasItem
 	a owl:ObjectProperty ;
-	owl:subPropertyOf dcterms:hasPart .
+	owl:subPropertyOf dcterms:hasPart ;
+	rdfs:comment "Containment relationship reserved for use in a hierarchy" .
 
 :SC-shows-Shape
 	a sh:NodeShape ;
 	sh:targetClass :SC-shows ;
 	sh:property :PC-Name-Shape ;
-	sh:property :PC-Description-Shape .
+	sh:property :PC-Description-Shape ;
+	sh:property :SC-shows-hasSubject-Shape ;
+	sh:property :SC-shows-hasObject-Shape .
 
 :SC-shows
 	a owl:Class ;
@@ -277,6 +284,14 @@ SpecIF:hasItem
 	rdfs:comment "'View' shows 'Model-Element'" ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
 
+# Limit the node classes eligible as subject. Correct this way?
+:SC-shows-hasSubject-Shape
+	a sh:PropertyShape ;
+	sh:path :SC-shows-hasSubject ;
+	sh:class :RC-View ;
+	sh:minCount "1" ;
+	sh:maxCount "1" .
+
 :SC-shows-hasSubject
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf SpecIF:hasSubject ;
@@ -284,6 +299,13 @@ SpecIF:hasItem
 	rdfs:domain :SC-shows ;
 	rdfs:range :RC-View ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
+
+# Limit the node classes eligible as object. Correct this way?
+:SC-shows-hasObject-Shape
+	a sh:PropertyShape ;
+	sh:path :SC-shows-hasObject ;
+	sh:minCount "1" ;
+	sh:maxCount "1" .
 
 :SC-shows-hasObject
 	a owl:ObjectProperty ;
@@ -295,7 +317,9 @@ SpecIF:hasItem
 :SC-writes-Shape
 	a sh:NodeShape ;
 	sh:targetClass :SC-writes ;
-	sh:property :PC-Description-Shape .
+	sh:property :PC-Description-Shape ;
+	sh:property :SC-writes-hasSubject-Shape ;
+	sh:property :SC-writes-hasObject-Shape .
 
 :SC-writes
 	a owl:Class ;
@@ -304,6 +328,14 @@ SpecIF:hasItem
 	rdfs:comment "'Actor' (Role, Function) writes 'State' (Information)" ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
 
+# Limit the node classes eligible as subject. Correct this way?
+:SC-writes-hasSubject-Shape
+	a sh:PropertyShape ;
+	sh:path :SC-writes-hasSubject ;
+	sh:class :RC-Actor ;
+	sh:minCount "1" ;
+	sh:maxCount "1" .
+
 :SC-writes-hasSubject
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf SpecIF:hasSubject ;
@@ -311,6 +343,14 @@ SpecIF:hasItem
 	rdfs:domain :SC-writes ;
 	rdfs:range :RC-Actor ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
+
+# Limit the node classes eligible as object. Correct this way?
+:SC-writes-hasObject-Shape
+	a sh:PropertyShape ;
+	sh:path :SC-writes-hasObject ;
+	sh:class :RC-State ;
+	sh:minCount "1" ;
+	sh:maxCount "1" .
 
 :SC-writes-hasObject
 	a owl:ObjectProperty ;
@@ -323,7 +363,9 @@ SpecIF:hasItem
 :SC-reads-Shape
 	a sh:NodeShape ;
 	sh:targetClass :SC-reads ;
-	sh:property :PC-Description-Shape .
+	sh:property :PC-Description-Shape ;
+	sh:property :SC-reads-hasSubject-Shape ;
+	sh:property :SC-reads-hasObject-Shape .
 
 :SC-reads
 	a owl:Class ;
@@ -332,6 +374,14 @@ SpecIF:hasItem
 	rdfs:comment "'Actor' (Role, Function) reads 'State' (Information)" ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
 
+# Limit the node classes eligible as subject. Correct this way?
+:SC-reads-hasSubject-Shape
+	a sh:PropertyShape ;
+	sh:path :SC-reads-hasSubject ;
+	sh:class :RC-Actor ;
+	sh:minCount "1" ;
+	sh:maxCount "1" .
+
 :SC-reads-hasSubject
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf SpecIF:hasSubject ;
@@ -339,6 +389,14 @@ SpecIF:hasItem
 	rdfs:domain :SC-reads ;
 	rdfs:range :RC-Actor ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
+
+# Limit the node classes eligible as object. Correct this way?
+:SC-reads-hasObject-Shape
+	a sh:PropertyShape ;
+	sh:path :SC-reads-hasObject ;
+	sh:class :RC-State ;
+	sh:minCount "1" ;
+	sh:maxCount "1" .
 
 :SC-reads-hasObject
 	a owl:ObjectProperty ;
@@ -351,7 +409,9 @@ SpecIF:hasItem
 :SC-satisfies-Shape
 	a sh:NodeShape ;
 	sh:targetClass :SC-satisfies ;
-	sh:property :PC-Description-Shape .
+	sh:property :PC-Description-Shape ;
+	sh:property :SC-satisfies-hasSubject-Shape ;
+	sh:property :SC-satisfies-hasObject-Shape .
 
 :SC-satisfies
 	a owl:Class ;
@@ -360,6 +420,14 @@ SpecIF:hasItem
 	rdfs:comment "Statement: Model-Element satisfies Requirement" ;
 	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
+# Limit the node classes eligible as subject. Correct this way?
+:SC-satisfies-hasSubject-Shape
+	a sh:PropertyShape ;
+	sh:path :SC-satisfies-hasSubject ;
+	sh:class :RC-Actor, :RC-State ;
+	sh:minCount "1" ;
+	sh:maxCount "1" .
+
 :SC-satisfies-hasSubject
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf SpecIF:hasSubject ;
@@ -367,6 +435,14 @@ SpecIF:hasItem
 	rdfs:domain :SC-satisfies ;
 	rdfs:range [ owl:unionOf( :RC-Actor :RC-State )] ;
 	dcterms:modified "2016-05-26T08:59:00+02:00" .
+
+# Limit the node classes eligible as object. Correct this way?
+:SC-satisfies-hasObject-Shape
+	a sh:PropertyShape ;
+	sh:path :SC-satisfies-hasObject ;
+	sh:class :RC-Requirement ;
+	sh:minCount "1" ;
+	sh:maxCount "1" .
 
 :SC-satisfies-hasObject
 	a owl:ObjectProperty ;
@@ -383,54 +459,64 @@ SpecIF:hasItem
 :Folder-Introduction
 	a :RC-Folder ;
 	:PC-Name "Introduction" ;
-	:PC-Description "<div><p>This is a minimal showcase for a model with model-elements and related requirements. It covers pretty much all characteristics neeeded in such cases (including 'statements on statements'), so that transformations and expressive power of other data formats can be evaluated. The example and its representation in SpecIF format is discussed in <a href=\"https://specif.de/Tutorials/06_Very-Simple-Model-FMC.html\" target=\"_blank\">Tutorial 6: Very Simple Model (FMC)</a> and <a href=\"https://specif.de/Tutorials/09_Very-Simple-Model-FMC-with-Requirements.html\" target=\"_blank\">Tutorial 9: Very Simple Model (FMC) with Requirements</a>.</p></div>" .
+	:PC-Description "<div><p>This is a minimal showcase for a model with model-elements and related requirements. It covers pretty much all characteristics neeeded in such cases (including 'statements on statements'), so that transformations and expressive power of other data formats can be evaluated. The example and its representation in SpecIF format is discussed in <a href=\"https://specif.de/Tutorials/06_Very-Simple-Model-FMC.html\" target=\"_blank\">Tutorial 6: Very Simple Model (FMC)</a> and <a href=\"https://specif.de/Tutorials/09_Very-Simple-Model-FMC-with-Requirements.html\" target=\"_blank\">Tutorial 9: Very Simple Model (FMC) with Requirements</a>.</p></div>" ;
+	dcterms:modified "2025-02-07T08:32:00+01:00" .
 
 :Folder-Requirements
 	a :RC-Folder ;
-	:PC-Name "Requirements" .
+	:PC-Name "Requirements" ;
+	dcterms:modified "2020-03-06T08:32:00+01:00" .
 
 :Req-1a8016e2872e78ecadc50feddc00029b
 	a :RC-Requirement ;
 	:PC-Name "Data Volume" ;
 	:PC-Description "<div><p>The data store MUST support a total volume up to 850 GB.</p></div>" ;
-	:PC-Priority :V-Prio-1 .
+	:PC-Priority :V-Prio-1 ;
+	dcterms:modified "2020-10-17T10:00:00+01:00" .
 
 :Req-0Z7916e2872e78ecadc50feddc00918a
 	a :RC-Requirement ;
 	:PC-Name "Consistency" ;
 	:PC-Description "<div><p>The data store MUST be consistent at all times.</p></div>" ;
-	:PC-Priority :V-Prio-0 .
+	:PC-Priority :V-Prio-0 ;
+	dcterms:modified "2020-10-17T10:00:00+01:00" .
 
 :Req-2b9016e2872e78ecadc50feddc0013Ac
 	a :RC-Requirement ;
 	:PC-Name "Response Time" ;
 	:PC-Description "<div><p>The system SHOULD respond on user queries within 300 ms.</p></div>" ;
-	:PC-Priority :V-Prio-2 .
+	:PC-Priority :V-Prio-2 ;
+	dcterms:modified "2020-10-17T10:00:00+01:00" .
 
 :Folder-SystemModel
 	a :RC-Folder ;
-	:PC-Name "System Model" .
+	:PC-Name "System Model" ;
+	dcterms:modified "2020-03-06T08:32:00+01:00" .
 
 :Diagram-aec0df7900010000017001eaf53e8876
 	a :RC-View ;
 	:PC-Name "IT-Integration: FiCo-Application and FiCo-Data" ;
 	:PC-Diagram "<div><p class=\"inline-label\">Model Diagram:</p><p><object type=\"image/svg+xml\" data=\"files_and_images/Very-Simple-Model-FMC.svg\">Notation: FMC Block Diagram</object></p></div>" ;
-	:PC-Type "FMC Block Diagram" .
+	:PC-Type "FMC Block Diagram" ;
+	dcterms:modified "2020-03-06T08:32:00+01:00" .
 
 :MEl-50fbfe8f0029b1a8016ea86245a9d83a
 	a :RC-Actor ;
 	:PC-Name "FiCo-Application" ;
-	:PC-Description "<div><p>IT-Application for Finance and Controlling.</p></div>" .
+	:PC-Description "<div><p>IT-Application for Finance and Controlling.</p></div>" ;
+	dcterms:modified "2020-03-06T09:04:00+01:00" .
 
 :MEl-50feddc00029b1a8016e2872e78ecadc
 	a :RC-State ;
 	:PC-Name "FiCo-Data" ;
-	:PC-Description "<div><p>Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc.</p></div>" .
+	:PC-Description "<div><p>Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc.</p></div>" ;
+	dcterms:modified "2020-03-06T09:03:00+01:00" .
 
 :FolderGlossary-10875487071
 	a :RC-Folder ;
 	:PC-Name "Modellelemente (Glossar)" ;
-	:PC-Type "Modellelemente (Glossar)" .
+	:PC-Type "Modellelemente (Glossar)" ;
+	dcterms:modified "2025-03-04T12:01:53.748Z" .
 
 #################################################################
 # Statements
@@ -440,57 +526,66 @@ SpecIF:hasItem
 	a :SC-shows ;
 	:SC-shows-hasSubject :Diagram-aec0df7900010000017001eaf53e8876 ;
 	:SC-shows-hasObject :MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
-	:PC-Description "<p>'FMC Block Diagram' shows 'FiCo-Application'</p>" .
+	:PC-Description "<p>'FMC Block Diagram' shows 'FiCo-Application'</p>" ;
+	dcterms:modified "2020-03-06T08:32:00+01:00" .
 
 :SVis-aec0df7900010000017001eaf53e8876-50feddc00029b1a8016e2872e78ecadc
 	a :SC-shows ;
 	:SC-shows-hasSubject :Diagram-aec0df7900010000017001eaf53e8876 ;
 	:SC-shows-hasObject :MEl-50feddc00029b1a8016e2872e78ecadc ;
-	:PC-Description "<p>'FMC Block Diagram' shows 'FiCo-Data'</p>" .
+	:PC-Description "<p>'FMC Block Diagram' shows 'FiCo-Data'</p>" ;
+	dcterms:modified "2020-03-06T08:32:00+01:00" .
 
 :SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc
 	a :SC-writes ;
 	:SC-writes-hasSubject :MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
 	:SC-writes-hasObject :MEl-50feddc00029b1a8016e2872e78ecadc ;
-	:PC-Description "<p>'FiCo-Application' writes 'FiCo-Data'</p>" .
+	:PC-Description "<p>'FiCo-Application' writes 'FiCo-Data'</p>" ;
+	dcterms:modified "2020-03-06T09:05:00+01:00" .
 
 :SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc
 	a :SC-reads ;
 	:SC-reads-hasSubject :MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
 	:SC-reads-hasObject :MEl-50feddc00029b1a8016e2872e78ecadc ;
-	:PC-Description "<p>'FiCo-Application' reads 'FiCo-Data'</p>" .
+	:PC-Description "<p>'FiCo-Application' reads 'FiCo-Data'</p>" ;
+	dcterms:modified "2020-03-06T09:05:00+01:00" .
 
 :Ssat-50feddc00029b1a8016e2872e78ecadc-1a8016e2872e78ecadc50feddc00029b
 	a :SC-satisfies ;
 	:SC-satisfies-hasSubject :MEl-50feddc00029b1a8016e2872e78ecadc ;
 	:SC-satisfies-hasObject :Req-1a8016e2872e78ecadc50feddc00029b ;
-	:PC-Description "<p>'FiCo-Data' satisfies 'Data Volume'</p>" .
+	:PC-Description "<p>'FiCo-Data' satisfies 'Data Volume'</p>" ;
+	dcterms:modified "2020-10-17T10:00:00+01:00" .
 
 :Ssat-50feddc00029b1a8016e2872e78ecadc-0Z7916e2872e78ecadc50feddc00918a
 	a :SC-satisfies ;
 	:SC-satisfies-hasSubject :MEl-50feddc00029b1a8016e2872e78ecadc ;
 	:SC-satisfies-hasObject :Req-0Z7916e2872e78ecadc50feddc00918a ;
-	:PC-Description "<p>'FiCo-Data' satisfies 'Consistency'</p>" .
+	:PC-Description "<p>'FiCo-Data' satisfies 'Consistency'</p>" ;
+	dcterms:modified "2020-10-17T10:00:00+01:00" .
 
 :Ssat-50fbfe8f0029b1a8016ea86245a9d83a-2b9016e2872e78ecadc50feddc0013Ac
 	a :SC-satisfies ;
 	:SC-satisfies-hasSubject :MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
 	:SC-satisfies-hasObject :Req-2b9016e2872e78ecadc50feddc0013Ac ;
-	:PC-Description "<p>'FiCo-Application' satisfies 'Response Time'</p>" .
+	:PC-Description "<p>'FiCo-Application' satisfies 'Response Time'</p>" ;
+	dcterms:modified "2020-10-17T10:00:00+01:00" .
 
 :SVis-aec0df7900010000017001eaf53e8876-SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc
 	a :SC-shows ;
 	:SC-shows-hasSubject :Diagram-aec0df7900010000017001eaf53e8876 ;
 	:SC-shows-hasObject :SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc ;
 	:PC-Name "zeigt" ;
-	:PC-Description "<p>'FMC Block Diagram' shows 'FiCo-Application writes FiCo-Data'</p>" .
+	:PC-Description "<p>'FMC Block Diagram' shows 'FiCo-Application writes FiCo-Data'</p>" ;
+	dcterms:modified "2025-01-26T08:32:00+01:00" .
 
 :SVis-aec0df7900010000017001eaf53e8876-SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc
 	a :SC-shows ;
 	:SC-shows-hasSubject :Diagram-aec0df7900010000017001eaf53e8876 ;
 	:SC-shows-hasObject :SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc ;
 	:PC-Name "zeigt" ;
-	:PC-Description "<p>'FMC Block Diagram' shows 'FiCo-Application reads FiCo-Data'</p>" .
+	:PC-Description "<p>'FMC Block Diagram' shows 'FiCo-Application reads FiCo-Data'</p>" ;
+	dcterms:modified "2025-01-26T08:32:00+01:00" .
 
 #################################################################
 # Hierarchies
