@@ -69,6 +69,10 @@
 # Property Classes
 #################################################################
 
+dcterms:title
+	a owl:DatatypeProperty ;
+	rdfs:comment "<p>A name given to the resource. <small>(<i>source: <a href=\"http://purl.org/dc/elements/1.1/title\">DCMI</a></i>)</small></p><p>Title (reference: Dublin Core) of the resource represented as rich text in XHTML content. SHOULD include only content that is valid inside an XHTML 'span' element. <small>(<i>source: <a href=\"http://open-services.net/\">OSLC</a></i>)</small></p>" .
+
 :PC-Name-Shape
 	a sh:PropertyShape ;
 	sh:path :PC-Name ;
@@ -77,11 +81,13 @@
 	sh:maxCount "1" .
 
 :PC-Name
-	a owl:DatatypeProperty ;
-	owl:subPropertyOf rdfs:label ;
+	owl:subPropertyOf dcterms:title ;
 	rdfs:label "dcterms:title" ;
-	rdfs:range xsd:string ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
+
+dcterms:description
+	a owl:DatatypeProperty ;
+	rdfs:comment "<p>An account of the resource. <small>(<i>source: <a href=\"http://purl.org/dc/elements/1.1/description\">DCMI</a></i>)</small></p><p>Descriptive text (reference: Dublin Core) about resource represented as rich text in XHTML content. SHOULD include only content that is valid and suitable inside an XHTML 'div' element. <small>(<i>source: <a href=\"http://open-services.net/\">OSLC</a></i>)</small></p>" .
 
 :PC-Description-Shape
 	a sh:PropertyShape ;
@@ -90,12 +96,14 @@
 	sh:maxCount "1" .
 
 :PC-Description
-	a owl:DatatypeProperty ;
-	owl:subPropertyOf rdfs:comment ;
+	owl:subPropertyOf dcterms:description ;
 	rdfs:label "dcterms:description" ;
 	rdfs:comment "An account of the resource (source: http://dublincore.org/documents/dcmi-terms/). Descriptive text represented in plain or rich text using XHTML or Markdown. SHOULD include only content that is valid and suitable inside an XHTML &lt;div&gt; element (source: http://open-services.net/)." ;
-	rdfs:range xsd:string ;
 	dcterms:modified "2021-02-23T08:59:00+02:00" .
+
+SpecIF:Diagram
+	a owl:DatatypeProperty ;
+	rdfs:comment "One or more diagrams illustrating the resource." .
 
 :PC-Diagram-Shape
 	a sh:PropertyShape ;
@@ -103,11 +111,14 @@
 	sh:datatype xsd:string .
 
 :PC-Diagram
-	a owl:DatatypeProperty ;
+	owl:subPropertyOf SpecIF:Diagram ;
 	rdfs:label "SpecIF:Diagram" ;
 	rdfs:comment "One or more diagrams illustrating the resource." ;
-	rdfs:range xsd:string ;
 	dcterms:modified "2023-02-26T14:40:17.601Z" .
+
+dcterms:type
+	a owl:DatatypeProperty ;
+	rdfs:comment "<p>The nature or genre of the resource. <small>(<i>source: <a href=\"http://purl.org/dc/elements/1.1/type\">DCMI</a></i>)</small></p><p>Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element.</p><p>For example, a [[FMC:Actor]] may represent a <i>System Function</i>, a <i>System Component</i> or a <i>User Role</i>. Similarly, in the context of process modelling, a FMC:Actor may represent a <i>Process Step</i> or again a <i>User Role</i>. So, all of these are meaningful values for a FMC:Actor's property named dcterms:type.</p>" .
 
 :PC-Type-Shape
 	a sh:PropertyShape ;
@@ -117,10 +128,9 @@
 	sh:maxCount "1" .
 
 :PC-Type
-	a owl:DatatypeProperty ;
+	owl:subPropertyOf dcterms:type ;
 	rdfs:label "dcterms:type" ;
 	rdfs:comment "<p>The nature or genre of the resource. <small>(<i>source: <a href=\"http://purl.org/dc/elements/1.1/type\">DCMI</a></i>)</small></p><p>Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element.</p><p>For example, a [[FMC:Actor]] may represent a <i>System Function</i>, a <i>System Component</i> or a <i>User Role</i>. Similarly, in the context of process modelling, a FMC:Actor may represent a <i>Process Step</i> or again a <i>User Role</i>. So, all of these are meaningful values for a FMC:Actor's property named dcterms:type.</p>" ;
-	rdfs:range xsd:string ;
 	dcterms:modified "2023-02-26T20:18:04.451Z" .
 
 # No shape yet for propertyClass with enumerated dataType: PC-Priority
@@ -129,22 +139,17 @@
 	a owl:ObjectProperty ;
 	rdfs:label "SpecIF:Priority" ;
 	rdfs:comment "The 'Priority' of the resource." ;
-	rdfs:range :DT-Priority ;
 	dcterms:modified "2020-03-26T22:59:00+02:00" .
 
 #################################################################
 # Resource Classes
 #################################################################
 
-SpecIF:HierarchyRoot
-	a owl:Class ;
-	rdfs:label "Hierarchy Root" ;
-	rdfs:comment "A node (vertex) in a graph anchoring all instances of [[SpecIF:Hierarchy]]." .
+pig:OrganizerClass
+	a owl:Class .
 
-SpecIF:Resource
-	a owl:Class ;
-	rdfs:label "Ressource" ;
-	rdfs:comment "A **Node** is a vertex in a graph. Equivalent terms are entity, object and resource." .
+pig:EntityClass
+	a owl:Class .
 
 :RC-Folder-Shape
 	a sh:NodeShape ;
@@ -155,8 +160,7 @@ SpecIF:Resource
 	sh:property :PC-Type-Shape .
 
 :RC-Folder
-	a owl:Class ;
-	rdfs:subClassOf SpecIF:Resource ;
+	rdfs:subClassOf pig:EntityClass ;
 	rdfs:label "SpecIF:Heading" ;
 	rdfs:comment "Eine 'Überschrift' in einem Dokument ist der Titel eines Kapitels. Sie kann eine Beschreibung haben, die als Einleitung oder Zusammenfassung des Kapitels genutzt werden kann." .
 
@@ -169,8 +173,7 @@ SpecIF:Resource
 	sh:property :PC-Type-Shape .
 
 :RC-Paragraph
-	a owl:Class ;
-	rdfs:subClassOf SpecIF:Resource ;
+	rdfs:subClassOf pig:EntityClass ;
 	rdfs:label "SpecIF:Paragraph" ;
 	rdfs:comment "<p>Ein 'Textabschnitt' in einem Dokument auf beliebiger Ebene.</p>" .
 
@@ -183,10 +186,9 @@ SpecIF:Resource
 	sh:property :PC-Type-Shape .
 
 :RC-View
-	a owl:Class ;
-	rdfs:subClassOf SpecIF:Resource ;
+	rdfs:subClassOf pig:EntityClass ;
 	rdfs:label "SpecIF:View" ;
-	SpecIF:Icon "▣" ;
+	pig:Icon "▣" ;
 	rdfs:comment "A 'View' is a graphical model view with a specific communication purpose, e.g. a business process or system composition." .
 
 :RC-Actor-Shape
@@ -197,10 +199,9 @@ SpecIF:Resource
 	sh:property :PC-Type-Shape .
 
 :RC-Actor
-	a owl:Class ;
-	rdfs:subClassOf SpecIF:Resource ;
+	rdfs:subClassOf pig:EntityClass ;
 	rdfs:label "FMC:Actor" ;
-	SpecIF:Icon "&#9632;" ;
+	pig:Icon "&#x25A1;" ;
 	rdfs:comment "An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role." .
 
 :RC-State-Shape
@@ -211,10 +212,9 @@ SpecIF:Resource
 	sh:property :PC-Type-Shape .
 
 :RC-State
-	a owl:Class ;
-	rdfs:subClassOf SpecIF:Resource ;
+	rdfs:subClassOf pig:EntityClass ;
 	rdfs:label "FMC:State" ;
-	SpecIF:Icon "●" ;
+	pig:Icon "&#x25CB;" ;
 	rdfs:comment "A 'State' is a fundamental model element type representing a passive entity, be it a value, a document, an information storage or even a physical shape." .
 
 :RC-Event-Shape
@@ -225,10 +225,9 @@ SpecIF:Resource
 	sh:property :PC-Type-Shape .
 
 :RC-Event
-	a owl:Class ;
-	rdfs:subClassOf SpecIF:Resource ;
+	rdfs:subClassOf pig:EntityClass ;
 	rdfs:label "FMC:Event" ;
-	SpecIF:Icon "⬧" ;
+	pig:Icon "&#x2662;" ;
 	rdfs:comment "An 'Event' is a fundamental model element type representing a time reference, a change in condition/value or more generally a synchronisation primitive." .
 
 :RC-Requirement-Shape
@@ -239,35 +238,35 @@ SpecIF:Resource
 # No shapes yet for propertyClasses with enumerated dataType: PC-Priority
 
 :RC-Requirement
-	a owl:Class ;
-	rdfs:subClassOf SpecIF:Resource ;
+	rdfs:subClassOf pig:EntityClass ;
 	rdfs:label "IREB:Requirement" ;
-	SpecIF:Icon "&#8623;" ;
+	pig:Icon "&#8623;" ;
 	rdfs:comment "A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform." .
 
 #################################################################
 # Statement Classes
 #################################################################
 
-SpecIF:Statement
-	a owl:Class ;
-	rdfs:label "Aussage" ;
-	rdfs:comment "An **Edge** connects 2 vertices in a graph. Equivalent terms are relationship, relation and statement." .
+pig:RelationshipClass
+	a owl:Class .
 
-SpecIF:hasSubject
+pig:hasSubject
 	a owl:ObjectProperty .
 
-SpecIF:hasObject
+pig:hasObject
 	a owl:ObjectProperty .
 
 dcterms:hasPart
 	a owl:ObjectProperty ;
 	rdfs:comment "General containment relationship" .
 
-SpecIF:hasItem
-	a owl:ObjectProperty ;
+pig:organizes
 	owl:subPropertyOf dcterms:hasPart ;
-	rdfs:comment "Containment relationship reserved for use in a hierarchy" .
+	rdfs:comment "Containment relationship reserved for use in a hierarchy." .
+
+SpecIF:shows
+	a owl:Class ;
+	rdfs:comment "<p>A [[SpecIF:Diagram]] 'shows' a model element, e.g, a [[FMC:Actor]], [[FMC:State]], [[FMC:Event]] or [[SpecIF:Collection]].</p>" .
 
 :SC-shows-Shape
 	a sh:NodeShape ;
@@ -278,8 +277,7 @@ SpecIF:hasItem
 	sh:property :SC-shows-hasObject-Shape .
 
 :SC-shows
-	a owl:Class ;
-	rdfs:subClassOf SpecIF:Statement ;
+	owl:subClassOf SpecIF:shows ;
 	rdfs:label "SpecIF:shows" ;
 	rdfs:comment "'View' shows 'Model-Element'" ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
@@ -294,10 +292,9 @@ SpecIF:hasItem
 
 :SC-shows-hasSubject
 	a owl:ObjectProperty ;
-	rdfs:subPropertyOf SpecIF:hasSubject ;
+	rdfs:subPropertyOf pig:hasSubject ;
 	rdfs:label "Connects the subject of :SC-shows" ;
 	rdfs:domain :SC-shows ;
-	rdfs:range :RC-View ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
 
 # Limit the node classes eligible as object. Correct this way?
@@ -309,10 +306,14 @@ SpecIF:hasItem
 
 :SC-shows-hasObject
 	a owl:ObjectProperty ;
-	rdfs:subPropertyOf SpecIF:hasObject ;
+	rdfs:subPropertyOf pig:hasObject ;
 	rdfs:label "Connects the object of :SC-shows" ;
 	rdfs:domain :SC-shows ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
+
+SpecIF:writes
+	a owl:Class ;
+	rdfs:comment "A [[FMC:Actor]] 'writes' (changes) a [[FMC:State]]." .
 
 :SC-writes-Shape
 	a sh:NodeShape ;
@@ -322,8 +323,7 @@ SpecIF:hasItem
 	sh:property :SC-writes-hasObject-Shape .
 
 :SC-writes
-	a owl:Class ;
-	rdfs:subClassOf SpecIF:Statement ;
+	owl:subClassOf SpecIF:writes ;
 	rdfs:label "SpecIF:writes" ;
 	rdfs:comment "'Actor' (Role, Function) writes 'State' (Information)" ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
@@ -338,10 +338,9 @@ SpecIF:hasItem
 
 :SC-writes-hasSubject
 	a owl:ObjectProperty ;
-	rdfs:subPropertyOf SpecIF:hasSubject ;
+	rdfs:subPropertyOf pig:hasSubject ;
 	rdfs:label "Connects the subject of :SC-writes" ;
 	rdfs:domain :SC-writes ;
-	rdfs:range :RC-Actor ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
 
 # Limit the node classes eligible as object. Correct this way?
@@ -354,11 +353,14 @@ SpecIF:hasItem
 
 :SC-writes-hasObject
 	a owl:ObjectProperty ;
-	rdfs:subPropertyOf SpecIF:hasObject ;
+	rdfs:subPropertyOf pig:hasObject ;
 	rdfs:label "Connects the object of :SC-writes" ;
 	rdfs:domain :SC-writes ;
-	rdfs:range :RC-State ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
+
+SpecIF:reads
+	a owl:Class ;
+	rdfs:comment "A [[FMC:Actor]] 'reads' a [[FMC:State]]." .
 
 :SC-reads-Shape
 	a sh:NodeShape ;
@@ -368,8 +370,7 @@ SpecIF:hasItem
 	sh:property :SC-reads-hasObject-Shape .
 
 :SC-reads
-	a owl:Class ;
-	rdfs:subClassOf SpecIF:Statement ;
+	owl:subClassOf SpecIF:reads ;
 	rdfs:label "SpecIF:reads" ;
 	rdfs:comment "'Actor' (Role, Function) reads 'State' (Information)" ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
@@ -384,10 +385,9 @@ SpecIF:hasItem
 
 :SC-reads-hasSubject
 	a owl:ObjectProperty ;
-	rdfs:subPropertyOf SpecIF:hasSubject ;
+	rdfs:subPropertyOf pig:hasSubject ;
 	rdfs:label "Connects the subject of :SC-reads" ;
 	rdfs:domain :SC-reads ;
-	rdfs:range :RC-Actor ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
 
 # Limit the node classes eligible as object. Correct this way?
@@ -400,11 +400,14 @@ SpecIF:hasItem
 
 :SC-reads-hasObject
 	a owl:ObjectProperty ;
-	rdfs:subPropertyOf SpecIF:hasObject ;
+	rdfs:subPropertyOf pig:hasObject ;
 	rdfs:label "Connects the object of :SC-reads" ;
 	rdfs:domain :SC-reads ;
-	rdfs:range :RC-State ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
+
+oslc_rm:satisfies
+	a owl:Class ;
+	rdfs:comment "<p>The object is satisfied by the subject. <small>(<i>source: <a href=\"http://open-services.net/\">OSLC</a></i>)</small></p><p>SpecIF suggests that the subject is confined to a model element, e.g, a [[FMC:Actor]] or [[FMC:State]], and the object is confined to a [[IREB:Requirement]]. More concretely, an example for this type of statement is 'Component-X <em>satisfies</em> 'Requirement-4711'.</p>" .
 
 :SC-satisfies-Shape
 	a sh:NodeShape ;
@@ -414,8 +417,7 @@ SpecIF:hasItem
 	sh:property :SC-satisfies-hasObject-Shape .
 
 :SC-satisfies
-	a owl:Class ;
-	rdfs:subClassOf SpecIF:Statement ;
+	owl:subClassOf oslc_rm:satisfies ;
 	rdfs:label "oslc_rm:satisfies" ;
 	rdfs:comment "Statement: Model-Element satisfies Requirement" ;
 	dcterms:modified "2016-05-26T08:59:00+02:00" .
@@ -430,10 +432,9 @@ SpecIF:hasItem
 
 :SC-satisfies-hasSubject
 	a owl:ObjectProperty ;
-	rdfs:subPropertyOf SpecIF:hasSubject ;
+	rdfs:subPropertyOf pig:hasSubject ;
 	rdfs:label "Connects the subject of :SC-satisfies" ;
 	rdfs:domain :SC-satisfies ;
-	rdfs:range [ owl:unionOf( :RC-Actor :RC-State )] ;
 	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
 # Limit the node classes eligible as object. Correct this way?
@@ -446,10 +447,9 @@ SpecIF:hasItem
 
 :SC-satisfies-hasObject
 	a owl:ObjectProperty ;
-	rdfs:subPropertyOf SpecIF:hasObject ;
+	rdfs:subPropertyOf pig:hasObject ;
 	rdfs:label "Connects the object of :SC-satisfies" ;
 	rdfs:domain :SC-satisfies ;
-	rdfs:range :RC-Requirement ;
 	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
 #################################################################
@@ -516,7 +516,7 @@ SpecIF:hasItem
 	a :RC-Folder ;
 	:PC-Name "Modellelemente (Glossar)" ;
 	:PC-Type "Modellelemente (Glossar)" ;
-	dcterms:modified "2025-03-04T12:01:53.748Z" .
+	dcterms:modified "2025-03-19T01:09:30.185Z" .
 
 #################################################################
 # Statements
@@ -592,32 +592,32 @@ SpecIF:hasItem
 #################################################################
 
 :HierarchyRoot
-	a SpecIF:HierarchyRoot ;
+	a pig:OrganizerClass ;
 	rdfs:label "Hierarchy Root" ;
 	rdfs:comment "... anchoring all hierarchies of this graph (project)" .
 
 :HierarchyRoot
-	SpecIF:hasItem :Folder-Introduction ;
-	SpecIF:hasItem :Folder-Requirements .
+	pig:organizes :Folder-Introduction ;
+	pig:organizes :Folder-Requirements .
 
 :Folder-Requirements
-	SpecIF:hasItem :Req-1a8016e2872e78ecadc50feddc00029b ;
-	SpecIF:hasItem :Req-0Z7916e2872e78ecadc50feddc00918a ;
-	SpecIF:hasItem :Req-2b9016e2872e78ecadc50feddc0013Ac .
+	pig:organizes :Req-1a8016e2872e78ecadc50feddc00029b ;
+	pig:organizes :Req-0Z7916e2872e78ecadc50feddc00918a ;
+	pig:organizes :Req-2b9016e2872e78ecadc50feddc0013Ac .
 
 :HierarchyRoot
-	SpecIF:hasItem :Folder-SystemModel .
+	pig:organizes :Folder-SystemModel .
 
 :Folder-SystemModel
-	SpecIF:hasItem :Diagram-aec0df7900010000017001eaf53e8876 .
+	pig:organizes :Diagram-aec0df7900010000017001eaf53e8876 .
 
 :Diagram-aec0df7900010000017001eaf53e8876
-	SpecIF:hasItem :MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
-	SpecIF:hasItem :MEl-50feddc00029b1a8016e2872e78ecadc .
+	pig:organizes :MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
+	pig:organizes :MEl-50feddc00029b1a8016e2872e78ecadc .
 
 :HierarchyRoot
-	SpecIF:hasItem :FolderGlossary-10875487071 .
+	pig:organizes :FolderGlossary-10875487071 .
 
 :FolderGlossary-10875487071
-	SpecIF:hasItem :MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
-	SpecIF:hasItem :MEl-50feddc00029b1a8016e2872e78ecadc .
+	pig:organizes :MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
+	pig:organizes :MEl-50feddc00029b1a8016e2872e78ecadc .
