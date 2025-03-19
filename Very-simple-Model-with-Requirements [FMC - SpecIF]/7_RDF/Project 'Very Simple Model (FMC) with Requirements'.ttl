@@ -202,7 +202,6 @@ SpecIF:View
 :RC-View
 	owl:subClassOf SpecIF:View ;
 	rdfs:label "SpecIF:View" ;
-	pig:Icon "▣" ;
 	rdfs:comment "A 'View' is a graphical model view with a specific communication purpose, e.g. a business process or system composition." ;
 	pig:Icon "▣" ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
@@ -221,7 +220,6 @@ FMC:Actor
 :RC-Actor
 	owl:subClassOf FMC:Actor ;
 	rdfs:label "FMC:Actor" ;
-	pig:Icon "&#x25A1;" ;
 	rdfs:comment "An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role." ;
 	pig:Icon "&#x25A1;" ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
@@ -240,7 +238,6 @@ FMC:State
 :RC-State
 	owl:subClassOf FMC:State ;
 	rdfs:label "FMC:State" ;
-	pig:Icon "&#x25CB;" ;
 	rdfs:comment "A 'State' is a fundamental model element type representing a passive entity, be it a value, a document, an information storage or even a physical shape." ;
 	pig:Icon "&#x25CB;" ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
@@ -259,7 +256,6 @@ FMC:Event
 :RC-Event
 	owl:subClassOf FMC:Event ;
 	rdfs:label "FMC:Event" ;
-	pig:Icon "&#x2662;" ;
 	rdfs:comment "An 'Event' is a fundamental model element type representing a time reference, a change in condition/value or more generally a synchronisation primitive." ;
 	pig:Icon "&#x2662;" ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
@@ -278,7 +274,6 @@ IREB:Requirement
 :RC-Requirement
 	owl:subClassOf IREB:Requirement ;
 	rdfs:label "IREB:Requirement" ;
-	pig:Icon "&#8623;" ;
 	rdfs:comment "A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform." ;
 	pig:Icon "&#8623;" ;
 	dcterms:modified "2021-02-22T08:59:00+02:00" .
