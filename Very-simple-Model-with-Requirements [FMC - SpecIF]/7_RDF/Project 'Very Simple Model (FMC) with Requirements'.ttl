@@ -151,6 +151,10 @@ pig:OrganizerClass
 pig:EntityClass
 	a owl:Class .
 
+SpecIF:Heading
+	a owl:Class ;
+	rdfs:comment "Eine 'Überschrift' in einem Dokument ist der Titel eines Kapitels. Sie kann eine Beschreibung haben, die als Einleitung oder Zusammenfassung des Kapitels genutzt werden kann." .
+
 :RC-Folder-Shape
 	a sh:NodeShape ;
 	sh:targetClass :RC-Folder ;
@@ -160,9 +164,14 @@ pig:EntityClass
 	sh:property :PC-Type-Shape .
 
 :RC-Folder
-	rdfs:subClassOf pig:EntityClass ;
+	owl:subClassOf SpecIF:Heading ;
 	rdfs:label "SpecIF:Heading" ;
-	rdfs:comment "Eine 'Überschrift' in einem Dokument ist der Titel eines Kapitels. Sie kann eine Beschreibung haben, die als Einleitung oder Zusammenfassung des Kapitels genutzt werden kann." .
+	rdfs:comment "Eine 'Überschrift' in einem Dokument ist der Titel eines Kapitels. Sie kann eine Beschreibung haben, die als Einleitung oder Zusammenfassung des Kapitels genutzt werden kann." ;
+	dcterms:modified "2024-03-02T15:28:50.414Z" .
+
+SpecIF:Paragraph
+	a owl:Class ;
+	rdfs:comment "<p>Ein 'Textabschnitt' in einem Dokument auf beliebiger Ebene.</p>" .
 
 :RC-Paragraph-Shape
 	a sh:NodeShape ;
@@ -173,9 +182,14 @@ pig:EntityClass
 	sh:property :PC-Type-Shape .
 
 :RC-Paragraph
-	rdfs:subClassOf pig:EntityClass ;
+	owl:subClassOf SpecIF:Paragraph ;
 	rdfs:label "SpecIF:Paragraph" ;
-	rdfs:comment "<p>Ein 'Textabschnitt' in einem Dokument auf beliebiger Ebene.</p>" .
+	rdfs:comment "<p>Ein 'Textabschnitt' in einem Dokument auf beliebiger Ebene.</p>" ;
+	dcterms:modified "2023-07-16T09:30:25.850Z" .
+
+SpecIF:View
+	a owl:Class ;
+	rdfs:comment "<p>Ein Modelldiagramm ist eine graphische Modellsicht zur Vermittlung eines bestimmten Sachverhalts, z.B. ein Geschäftsprozess oder Systemaufbau.</p>" .
 
 :RC-View-Shape
 	a sh:NodeShape ;
@@ -186,10 +200,16 @@ pig:EntityClass
 	sh:property :PC-Type-Shape .
 
 :RC-View
-	rdfs:subClassOf pig:EntityClass ;
+	owl:subClassOf SpecIF:View ;
 	rdfs:label "SpecIF:View" ;
 	pig:Icon "▣" ;
-	rdfs:comment "A 'View' is a graphical model view with a specific communication purpose, e.g. a business process or system composition." .
+	rdfs:comment "A 'View' is a graphical model view with a specific communication purpose, e.g. a business process or system composition." ;
+	pig:Icon "▣" ;
+	dcterms:modified "2018-05-10T11:54:00+01:00" .
+
+FMC:Actor
+	a owl:Class ;
+	rdfs:comment "<p>Ein 'Akteur' ist ein fundamentaler Modellelementtyp, der eine aktive Entität darstellt, sei es eine Aktivität, ein Prozessschritt, eine Funktion, eine Systemkomponente oder eine Rolle.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Actor' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[bpmn:timer]].</p>" .
 
 :RC-Actor-Shape
 	a sh:NodeShape ;
@@ -199,10 +219,16 @@ pig:EntityClass
 	sh:property :PC-Type-Shape .
 
 :RC-Actor
-	rdfs:subClassOf pig:EntityClass ;
+	owl:subClassOf FMC:Actor ;
 	rdfs:label "FMC:Actor" ;
 	pig:Icon "&#x25A1;" ;
-	rdfs:comment "An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role." .
+	rdfs:comment "An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role." ;
+	pig:Icon "&#x25A1;" ;
+	dcterms:modified "2018-05-10T11:54:00+01:00" .
+
+FMC:State
+	a owl:Class ;
+	rdfs:comment "<p>Ein 'Zustand' ist ein fundamentaler Modellelementtyp, der eine passive Entität darstellt, sei es ein Wert, ein Dokument, ein Informationsspeicher, eine Bedingung oder eine physische Beschaffenheit.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:State' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[ArchiMate:DataObject]].</p>" .
 
 :RC-State-Shape
 	a sh:NodeShape ;
@@ -212,10 +238,16 @@ pig:EntityClass
 	sh:property :PC-Type-Shape .
 
 :RC-State
-	rdfs:subClassOf pig:EntityClass ;
+	owl:subClassOf FMC:State ;
 	rdfs:label "FMC:State" ;
 	pig:Icon "&#x25CB;" ;
-	rdfs:comment "A 'State' is a fundamental model element type representing a passive entity, be it a value, a document, an information storage or even a physical shape." .
+	rdfs:comment "A 'State' is a fundamental model element type representing a passive entity, be it a value, a document, an information storage or even a physical shape." ;
+	pig:Icon "&#x25CB;" ;
+	dcterms:modified "2018-05-10T11:54:00+01:00" .
+
+FMC:Event
+	a owl:Class ;
+	rdfs:comment "<p>Ein 'Ereignis' ist ein fundamentaler Modellelementtyp, der eine Zeitreferenz, eine Änderung einer Bedingung/eines Wertes oder allgemeiner ein Synchronisationsmittel darstellt.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Event' spezifiziert. Die Werte dieser Eigenschaft sollen Ontologiebegriffe sein, wie z.B. [[bpmn:startEvent]].</p>" .
 
 :RC-Event-Shape
 	a sh:NodeShape ;
@@ -225,10 +257,16 @@ pig:EntityClass
 	sh:property :PC-Type-Shape .
 
 :RC-Event
-	rdfs:subClassOf pig:EntityClass ;
+	owl:subClassOf FMC:Event ;
 	rdfs:label "FMC:Event" ;
 	pig:Icon "&#x2662;" ;
-	rdfs:comment "An 'Event' is a fundamental model element type representing a time reference, a change in condition/value or more generally a synchronisation primitive." .
+	rdfs:comment "An 'Event' is a fundamental model element type representing a time reference, a change in condition/value or more generally a synchronisation primitive." ;
+	pig:Icon "&#x2662;" ;
+	dcterms:modified "2018-05-10T11:54:00+01:00" .
+
+IREB:Requirement
+	a owl:Class ;
+	rdfs:comment "<p>Eine 'Anforderung' ist ein einzelnes dokumentiertes physisches und funktionales Bedürfnis, das ein bestimmter Entwurf, ein Produkt oder ein Prozess erfüllen muss. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>Eine Bedingung oder Fähigkeit, die ein Benutzer benötigt, um ein Problem zu lösen oder ein Ziel zu erreichen.</li><li>Eine Bedingung oder Fähigkeit, die ein System oder eine Systemkomponente erfüllen oder besitzen muss, um einen Vertrag, eine Norm, eine Spezifikation oder ein anderes formal vorgeschriebenes Dokument zu erfüllen.</li><li>Eine dokumentierte Darstellung einer Bedingung oder Fähigkeit wie in (1) oder (2).</li></ol><p>Anmerkung: Die obige Definition ist die klassische Definition aus IEEE Std 610.12 von 1990. Alternativ geben wir auch eine modernere Definition an:</p><ol><li>Ein von einem Stakeholder wahrgenommener Bedarf.</li><li>Eine Fähigkeit oder Eigenschaft, die ein System haben soll.</li><li>Eine dokumentierte Darstellung eines Bedarfs, einer Fähigkeit oder Eigenschaft.</li></ol>" .
 
 :RC-Requirement-Shape
 	a sh:NodeShape ;
@@ -238,10 +276,12 @@ pig:EntityClass
 # No shapes yet for propertyClasses with enumerated dataType: PC-Priority
 
 :RC-Requirement
-	rdfs:subClassOf pig:EntityClass ;
+	owl:subClassOf IREB:Requirement ;
 	rdfs:label "IREB:Requirement" ;
 	pig:Icon "&#8623;" ;
-	rdfs:comment "A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform." .
+	rdfs:comment "A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform." ;
+	pig:Icon "&#8623;" ;
+	dcterms:modified "2021-02-22T08:59:00+02:00" .
 
 #################################################################
 # Statement Classes
@@ -516,7 +556,7 @@ oslc_rm:satisfies
 	a :RC-Folder ;
 	:PC-Name "Modellelemente (Glossar)" ;
 	:PC-Type "Modellelemente (Glossar)" ;
-	dcterms:modified "2025-03-19T01:09:30.185Z" .
+	dcterms:modified "2025-03-19T13:08:41.917Z" .
 
 #################################################################
 # Statements
