@@ -2,6 +2,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sh: <https://www.w3.org/ns/shacl> .
 @prefix W3C: <https://www.w3.org/standards/semanticweb#> .
 @prefix xs: <http://www.w3.org/2001/XMLSchema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -23,11 +24,12 @@
 @prefix bpmn: <https://www.bpmn.org/#> .
 @prefix uml: <https://www.omg.org/spec/UML#> .
 @prefix sysml: <https://www.omg.org/spec/SysML#> .
+@prefix pig: <https://product-information-graph.org> .
 @prefix DDP: <http://www.prostep.org/dictionary/2.0#> .
 @prefix SpecIF: <https://specif.de/v1.1/schema#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 
-@prefix : <https://specif.de/examples/Project%20'Very%20Simple%20Model%20(FMC)%20with%20Requirements'.specifz/> .
+@prefix : <https://specif.de/examples/09_Very-Simple-Model-FMC-with-Requirements.specif.zip/> .
 
 #################################################################
 # Project Metadata
@@ -69,9 +71,9 @@
 # Property Classes
 #################################################################
 
-dcterms:title
+rdfs:label
 	a owl:DatatypeProperty ;
-	rdfs:comment "<p>A name given to the resource. <small>(<i>source: <a href=\"http://purl.org/dc/elements/1.1/title\">DCMI</a></i>)</small></p><p>Title (reference: Dublin Core) of the resource represented as rich text in XHTML content. SHOULD include only content that is valid inside an XHTML 'span' element. <small>(<i>source: <a href=\"http://open-services.net/\">OSLC</a></i>)</small></p>" .
+	rdfs:comment "<div><p><code>rdfs:label</code> is an instance of <code>rdf:Property</code> that may be used to provide a human-readable version of a resource's name.</p><p>A triple of the form:</p><blockquote> <code>R rdfs:label L</code></blockquote><p>states that L is a human readable label for R.</p><p>The <code>rdfs:domain</code> of <code>rdfs:label</code> is <code>rdfs:Resource</code>. The <a href=\"#ch_range\"><code>rdfs:range</code></a> of rdfs:label is <code>rdfs:Literal</code>.</p><p>Multilingual labels are supported using the <a href=\"https://www.w3.org/TR/rdf12-concepts/#section-Graph-Literal\" id=\"ref-for-index-term-literal-2\">language tagging</a> facility of RDF literals.</p></div>" .
 
 :PC-Name-Shape
 	a sh:PropertyShape ;
@@ -81,13 +83,13 @@ dcterms:title
 	sh:maxCount "1" .
 
 :PC-Name
-	owl:subPropertyOf dcterms:title ;
-	rdfs:label "dcterms:title" ;
+	owl:subPropertyOf rdfs:label ;
+	rdfs:label "rdfs:label" ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
 
-dcterms:description
+rdfs:comment
 	a owl:DatatypeProperty ;
-	rdfs:comment "<p>An account of the resource. <small>(<i>source: <a href=\"http://purl.org/dc/elements/1.1/description\">DCMI</a></i>)</small></p><p>Descriptive text (reference: Dublin Core) about resource represented as rich text in XHTML content. SHOULD include only content that is valid and suitable inside an XHTML 'div' element. <small>(<i>source: <a href=\"http://open-services.net/\">OSLC</a></i>)</small></p>" .
+	rdfs:comment "<div><p><code>rdfs:comment</code> is an instance of <code>rdf:Property</code> that may be used to provide a human-readable description of a resource.</p><p>A triple of the form:</p><blockquote> <code>R rdfs:comment L</code></blockquote><p>states that L is a human readable description of R.</p><p>The <code>rdfs:domain</code> of <code>rdfs:comment</code> is <code>rdfs:Resource</code>. The <code>rdfs:range</code> of rdfs:comment is <code>rdfs:Literal</code>.</p><p>A textual comment helps clarify the meaning of RDF classes and properties. Such in-line documentation complements the use of both formal techniques (Ontology and rule languages) and informal (prose documentation, examples, test cases). A variety of documentation forms can be combined to indicate the intended meaning of the classes and properties described in an RDF vocabulary. Since RDF vocabularies are expressed as RDF graphs, vocabularies defined in other namespaces may be used to provide richer documentation.</p><p>Multilingual documentation is supported through use of the <a href=\"https://www.w3.org/TR/rdf12-concepts/#section-Graph-Literal\" id=\"ref-for-index-term-literal-3\">language tagging</a> facility of RDF literals.</p></div>" .
 
 :PC-Description-Shape
 	a sh:PropertyShape ;
@@ -96,8 +98,8 @@ dcterms:description
 	sh:maxCount "1" .
 
 :PC-Description
-	owl:subPropertyOf dcterms:description ;
-	rdfs:label "dcterms:description" ;
+	owl:subPropertyOf rdfs:comment ;
+	rdfs:label "rdfs:comment" ;
 	rdfs:comment "An account of the resource (source: http://dublincore.org/documents/dcmi-terms/). Descriptive text represented in plain or rich text using XHTML or Markdown. SHOULD include only content that is valid and suitable inside an XHTML &lt;div&gt; element (source: http://open-services.net/)." ;
 	dcterms:modified "2021-02-23T08:59:00+02:00" .
 
@@ -152,7 +154,7 @@ pig:EntityClass
 	a owl:Class .
 
 SpecIF:Heading
-	a owl:Class ;
+	owl:subClassOf pig:EntityClass ;
 	rdfs:comment "Eine 'Überschrift' in einem Dokument ist der Titel eines Kapitels. Sie kann eine Beschreibung haben, die als Einleitung oder Zusammenfassung des Kapitels genutzt werden kann." .
 
 :RC-Folder-Shape
@@ -166,11 +168,11 @@ SpecIF:Heading
 :RC-Folder
 	owl:subClassOf SpecIF:Heading ;
 	rdfs:label "SpecIF:Heading" ;
-	rdfs:comment "Eine 'Überschrift' in einem Dokument ist der Titel eines Kapitels. Sie kann eine Beschreibung haben, die als Einleitung oder Zusammenfassung des Kapitels genutzt werden kann." ;
+	rdfs:comment "A 'Heading' is a chapter title at any level with optional description." ;
 	dcterms:modified "2024-03-02T15:28:50.414Z" .
 
 SpecIF:Paragraph
-	a owl:Class ;
+	owl:subClassOf pig:EntityClass ;
 	rdfs:comment "<p>Ein 'Textabschnitt' in einem Dokument auf beliebiger Ebene.</p>" .
 
 :RC-Paragraph-Shape
@@ -184,12 +186,12 @@ SpecIF:Paragraph
 :RC-Paragraph
 	owl:subClassOf SpecIF:Paragraph ;
 	rdfs:label "SpecIF:Paragraph" ;
-	rdfs:comment "<p>Ein 'Textabschnitt' in einem Dokument auf beliebiger Ebene.</p>" ;
+	rdfs:comment "<p>A 'Paragraph' is an unspecified information in a document at any level.</p>" ;
 	dcterms:modified "2023-07-16T09:30:25.850Z" .
 
-SpecIF:View
-	a owl:Class ;
-	rdfs:comment "<p>Ein Modelldiagramm ist eine graphische Modellsicht zur Vermittlung eines bestimmten Sachverhalts, z.B. ein Geschäftsprozess oder Systemaufbau.</p>" .
+pig:View
+	owl:subClassOf pig:OrganizerClass ;
+	rdfs:comment "A PIG organizer class representing a diagram with certain model-elements for a given communication purpose." .
 
 :RC-View-Shape
 	a sh:NodeShape ;
@@ -200,14 +202,14 @@ SpecIF:View
 	sh:property :PC-Type-Shape .
 
 :RC-View
-	owl:subClassOf SpecIF:View ;
-	rdfs:label "SpecIF:View" ;
+	owl:subClassOf pig:View ;
+	rdfs:label "pig:View" ;
 	rdfs:comment "A 'View' is a graphical model view with a specific communication purpose, e.g. a business process or system composition." ;
 	pig:Icon "▣" ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
 
 FMC:Actor
-	a owl:Class ;
+	owl:subClassOf pig:EntityClass ;
 	rdfs:comment "<p>Ein 'Akteur' ist ein fundamentaler Modellelementtyp, der eine aktive Entität darstellt, sei es eine Aktivität, ein Prozessschritt, eine Funktion, eine Systemkomponente oder eine Rolle.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Actor' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[bpmn:timer]].</p>" .
 
 :RC-Actor-Shape
@@ -225,7 +227,7 @@ FMC:Actor
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
 
 FMC:State
-	a owl:Class ;
+	owl:subClassOf pig:EntityClass ;
 	rdfs:comment "<p>Ein 'Zustand' ist ein fundamentaler Modellelementtyp, der eine passive Entität darstellt, sei es ein Wert, ein Dokument, ein Informationsspeicher, eine Bedingung oder eine physische Beschaffenheit.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:State' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[ArchiMate:DataObject]].</p>" .
 
 :RC-State-Shape
@@ -243,7 +245,7 @@ FMC:State
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
 
 FMC:Event
-	a owl:Class ;
+	owl:subClassOf pig:EntityClass ;
 	rdfs:comment "<p>Ein 'Ereignis' ist ein fundamentaler Modellelementtyp, der eine Zeitreferenz, eine Änderung einer Bedingung/eines Wertes oder allgemeiner ein Synchronisationsmittel darstellt.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Event' spezifiziert. Die Werte dieser Eigenschaft sollen Ontologiebegriffe sein, wie z.B. [[bpmn:startEvent]].</p>" .
 
 :RC-Event-Shape
@@ -261,7 +263,7 @@ FMC:Event
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
 
 IREB:Requirement
-	a owl:Class ;
+	owl:subClassOf pig:EntityClass ;
 	rdfs:comment "<p>Eine 'Anforderung' ist ein einzelnes dokumentiertes physisches und funktionales Bedürfnis, das ein bestimmter Entwurf, ein Produkt oder ein Prozess erfüllen muss. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>Eine Bedingung oder Fähigkeit, die ein Benutzer benötigt, um ein Problem zu lösen oder ein Ziel zu erreichen.</li><li>Eine Bedingung oder Fähigkeit, die ein System oder eine Systemkomponente erfüllen oder besitzen muss, um einen Vertrag, eine Norm, eine Spezifikation oder ein anderes formal vorgeschriebenes Dokument zu erfüllen.</li><li>Eine dokumentierte Darstellung einer Bedingung oder Fähigkeit wie in (1) oder (2).</li></ol><p>Anmerkung: Die obige Definition ist die klassische Definition aus IEEE Std 610.12 von 1990. Alternativ geben wir auch eine modernere Definition an:</p><ol><li>Ein von einem Stakeholder wahrgenommener Bedarf.</li><li>Eine Fähigkeit oder Eigenschaft, die ein System haben soll.</li><li>Eine dokumentierte Darstellung eines Bedarfs, einer Fähigkeit oder Eigenschaft.</li></ol>" .
 
 :RC-Requirement-Shape
@@ -295,7 +297,7 @@ dcterms:hasPart
 	a owl:ObjectProperty ;
 	rdfs:comment "General containment relationship" .
 
-pig:organizes
+pig:hasElement
 	owl:subPropertyOf dcterms:hasPart ;
 	rdfs:comment "Containment relationship reserved for use in a hierarchy." .
 
@@ -494,7 +496,7 @@ oslc_rm:satisfies
 :Folder-Introduction
 	a :RC-Folder ;
 	:PC-Name "Introduction" ;
-	:PC-Description "<div><p>This is a minimal showcase for a model with model-elements and related requirements. It covers pretty much all characteristics neeeded in such cases (including 'statements on statements'), so that transformations and expressive power of other data formats can be evaluated. The example and its representation in SpecIF format is discussed in <a href=\"https://specif.de/Tutorials/06_Very-Simple-Model-FMC.html\" target=\"_blank\">Tutorial 6: Very Simple Model (FMC)</a> and <a href=\"https://specif.de/Tutorials/09_Very-Simple-Model-FMC-with-Requirements.html\" target=\"_blank\">Tutorial 9: Very Simple Model (FMC) with Requirements</a>.</p></div>" ;
+	:PC-Description "<p>This is a minimal showcase for a model with model-elements and related requirements. It covers pretty much all characteristics neeeded in such cases (including 'statements on statements'), so that transformations and expressive power of other data formats can be evaluated. The example and its representation in SpecIF format is discussed in <a href=\"https://specif.de/Tutorials/06_Very-Simple-Model-FMC.html\" target=\"_blank\">Tutorial 6: Very Simple Model (FMC)</a> and <a href=\"https://specif.de/Tutorials/09_Very-Simple-Model-FMC-with-Requirements.html\" target=\"_blank\">Tutorial 9: Very Simple Model (FMC) with Requirements</a>.</p>" ;
 	dcterms:modified "2025-02-07T08:32:00+01:00" .
 
 :Folder-Requirements
@@ -505,21 +507,21 @@ oslc_rm:satisfies
 :Req-1a8016e2872e78ecadc50feddc00029b
 	a :RC-Requirement ;
 	:PC-Name "Data Volume" ;
-	:PC-Description "<div><p>The data store MUST support a total volume up to 850 GB.</p></div>" ;
+	:PC-Description "<p>The data store MUST support a total volume up to 850 GB.</p>" ;
 	:PC-Priority :V-Prio-1 ;
 	dcterms:modified "2020-10-17T10:00:00+01:00" .
 
 :Req-0Z7916e2872e78ecadc50feddc00918a
 	a :RC-Requirement ;
 	:PC-Name "Consistency" ;
-	:PC-Description "<div><p>The data store MUST be consistent at all times.</p></div>" ;
+	:PC-Description "<p>The data store MUST be consistent at all times.</p>" ;
 	:PC-Priority :V-Prio-0 ;
 	dcterms:modified "2020-10-17T10:00:00+01:00" .
 
 :Req-2b9016e2872e78ecadc50feddc0013Ac
 	a :RC-Requirement ;
 	:PC-Name "Response Time" ;
-	:PC-Description "<div><p>The system SHOULD respond on user queries within 300 ms.</p></div>" ;
+	:PC-Description "<p>The system SHOULD respond on user queries within 300 ms.</p>" ;
 	:PC-Priority :V-Prio-2 ;
 	dcterms:modified "2020-10-17T10:00:00+01:00" .
 
@@ -531,27 +533,27 @@ oslc_rm:satisfies
 :Diagram-aec0df7900010000017001eaf53e8876
 	a :RC-View ;
 	:PC-Name "IT-Integration: FiCo-Application and FiCo-Data" ;
-	:PC-Diagram "<div><p class=\"inline-label\">Model Diagram:</p><p><object type=\"image/svg+xml\" data=\"files_and_images/Very-Simple-Model-FMC.svg\">Notation: FMC Block Diagram</object></p></div>" ;
+	:PC-Diagram "<p class=\"inline-label\">Model Diagram:</p><p><object type=\"image/svg+xml\" data=\"files_and_images/Very-Simple-Model-FMC.svg\">Notation: FMC Block Diagram</object></p>" ;
 	:PC-Type "FMC Block Diagram" ;
 	dcterms:modified "2020-03-06T08:32:00+01:00" .
 
 :MEl-50fbfe8f0029b1a8016ea86245a9d83a
 	a :RC-Actor ;
 	:PC-Name "FiCo-Application" ;
-	:PC-Description "<div><p>IT-Application for Finance and Controlling.</p></div>" ;
+	:PC-Description "<p>IT-Application for Finance and Controlling.</p>" ;
 	dcterms:modified "2020-03-06T09:04:00+01:00" .
 
 :MEl-50feddc00029b1a8016e2872e78ecadc
 	a :RC-State ;
 	:PC-Name "FiCo-Data" ;
-	:PC-Description "<div><p>Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc.</p></div>" ;
+	:PC-Description "<p>Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc.</p>" ;
 	dcterms:modified "2020-03-06T09:03:00+01:00" .
 
 :FolderGlossary-10875487071
 	a :RC-Folder ;
 	:PC-Name "Modellelemente (Glossar)" ;
 	:PC-Type "Modellelemente (Glossar)" ;
-	dcterms:modified "2025-03-19T13:08:41.917Z" .
+	dcterms:modified "2025-06-06T08:45:56.203Z" .
 
 #################################################################
 # Statements
@@ -561,49 +563,49 @@ oslc_rm:satisfies
 	a :SC-shows ;
 	:SC-shows-hasSubject :Diagram-aec0df7900010000017001eaf53e8876 ;
 	:SC-shows-hasObject :MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
-	:PC-Description "<p>'FMC Block Diagram' shows 'FiCo-Application'</p>" ;
+	:PC-Description "'FMC Block Diagram' shows 'FiCo-Application'" ;
 	dcterms:modified "2020-03-06T08:32:00+01:00" .
 
 :SVis-aec0df7900010000017001eaf53e8876-50feddc00029b1a8016e2872e78ecadc
 	a :SC-shows ;
 	:SC-shows-hasSubject :Diagram-aec0df7900010000017001eaf53e8876 ;
 	:SC-shows-hasObject :MEl-50feddc00029b1a8016e2872e78ecadc ;
-	:PC-Description "<p>'FMC Block Diagram' shows 'FiCo-Data'</p>" ;
+	:PC-Description "'FMC Block Diagram' shows 'FiCo-Data'" ;
 	dcterms:modified "2020-03-06T08:32:00+01:00" .
 
 :SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc
 	a :SC-writes ;
 	:SC-writes-hasSubject :MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
 	:SC-writes-hasObject :MEl-50feddc00029b1a8016e2872e78ecadc ;
-	:PC-Description "<p>'FiCo-Application' writes 'FiCo-Data'</p>" ;
+	:PC-Description "'FiCo-Application' writes 'FiCo-Data'" ;
 	dcterms:modified "2020-03-06T09:05:00+01:00" .
 
 :SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc
 	a :SC-reads ;
 	:SC-reads-hasSubject :MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
 	:SC-reads-hasObject :MEl-50feddc00029b1a8016e2872e78ecadc ;
-	:PC-Description "<p>'FiCo-Application' reads 'FiCo-Data'</p>" ;
+	:PC-Description "'FiCo-Application' reads 'FiCo-Data'" ;
 	dcterms:modified "2020-03-06T09:05:00+01:00" .
 
 :Ssat-50feddc00029b1a8016e2872e78ecadc-1a8016e2872e78ecadc50feddc00029b
 	a :SC-satisfies ;
 	:SC-satisfies-hasSubject :MEl-50feddc00029b1a8016e2872e78ecadc ;
 	:SC-satisfies-hasObject :Req-1a8016e2872e78ecadc50feddc00029b ;
-	:PC-Description "<p>'FiCo-Data' satisfies 'Data Volume'</p>" ;
+	:PC-Description "'FiCo-Data' satisfies 'Data Volume'" ;
 	dcterms:modified "2020-10-17T10:00:00+01:00" .
 
 :Ssat-50feddc00029b1a8016e2872e78ecadc-0Z7916e2872e78ecadc50feddc00918a
 	a :SC-satisfies ;
 	:SC-satisfies-hasSubject :MEl-50feddc00029b1a8016e2872e78ecadc ;
 	:SC-satisfies-hasObject :Req-0Z7916e2872e78ecadc50feddc00918a ;
-	:PC-Description "<p>'FiCo-Data' satisfies 'Consistency'</p>" ;
+	:PC-Description "'FiCo-Data' satisfies 'Consistency'" ;
 	dcterms:modified "2020-10-17T10:00:00+01:00" .
 
 :Ssat-50fbfe8f0029b1a8016ea86245a9d83a-2b9016e2872e78ecadc50feddc0013Ac
 	a :SC-satisfies ;
 	:SC-satisfies-hasSubject :MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
 	:SC-satisfies-hasObject :Req-2b9016e2872e78ecadc50feddc0013Ac ;
-	:PC-Description "<p>'FiCo-Application' satisfies 'Response Time'</p>" ;
+	:PC-Description "'FiCo-Application' satisfies 'Response Time'" ;
 	dcterms:modified "2020-10-17T10:00:00+01:00" .
 
 :SVis-aec0df7900010000017001eaf53e8876-SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc
@@ -611,7 +613,7 @@ oslc_rm:satisfies
 	:SC-shows-hasSubject :Diagram-aec0df7900010000017001eaf53e8876 ;
 	:SC-shows-hasObject :SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc ;
 	:PC-Name "zeigt" ;
-	:PC-Description "<p>'FMC Block Diagram' shows 'FiCo-Application writes FiCo-Data'</p>" ;
+	:PC-Description "'FMC Block Diagram' shows 'FiCo-Application writes FiCo-Data'" ;
 	dcterms:modified "2025-01-26T08:32:00+01:00" .
 
 :SVis-aec0df7900010000017001eaf53e8876-SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc
@@ -619,7 +621,7 @@ oslc_rm:satisfies
 	:SC-shows-hasSubject :Diagram-aec0df7900010000017001eaf53e8876 ;
 	:SC-shows-hasObject :SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc ;
 	:PC-Name "zeigt" ;
-	:PC-Description "<p>'FMC Block Diagram' shows 'FiCo-Application reads FiCo-Data'</p>" ;
+	:PC-Description "'FMC Block Diagram' shows 'FiCo-Application reads FiCo-Data'" ;
 	dcterms:modified "2025-01-26T08:32:00+01:00" .
 
 #################################################################
@@ -629,30 +631,64 @@ oslc_rm:satisfies
 :HierarchyRoot
 	a pig:OrganizerClass ;
 	rdfs:label "Hierarchy Root" ;
-	rdfs:comment "... anchoring all hierarchies of this graph (project)" .
+	rdfs:comment "... anchoring all hierarchies of this graph (project)" ;
+	pig:hasChild N-Folder-Introduction ;
+	pig:hasChild N-Folder-Requirements ;
+	pig:hasChild N-Folder-SystemModel ;
+	pig:hasChild N-FolderGlossary-10875487071 .
 
-:HierarchyRoot
-	pig:organizes :Folder-Introduction ;
-	pig:organizes :Folder-Requirements .
+:N-Folder-Introduction
+	dcterms:modified "2025-02-07T10:00:00+01:00" ;
+	pig:hasElement :Folder-Introduction .
 
-:Folder-Requirements
-	pig:organizes :Req-1a8016e2872e78ecadc50feddc00029b ;
-	pig:organizes :Req-0Z7916e2872e78ecadc50feddc00918a ;
-	pig:organizes :Req-2b9016e2872e78ecadc50feddc0013Ac .
+:N-Folder-Requirements
+	dcterms:modified "2020-10-17T10:00:00+01:00" ;
+	pig:hasElement :Folder-Requirements ;
+	pig:hasChild N-1a8016e2872e78ecadc50feddc00029b ,
+		N-0Z7916e2872e78ecadc50feddc00918a ,
+		N-2b9016e2872e78ecadc50feddc0013Ac .
 
-:HierarchyRoot
-	pig:organizes :Folder-SystemModel .
+:N-1a8016e2872e78ecadc50feddc00029b
+	dcterms:modified "2020-10-17T10:00:00+01:00" ;
+	pig:hasElement :Req-1a8016e2872e78ecadc50feddc00029b .
 
-:Folder-SystemModel
-	pig:organizes :Diagram-aec0df7900010000017001eaf53e8876 .
+:N-0Z7916e2872e78ecadc50feddc00918a
+	dcterms:modified "2020-10-17T10:00:00+01:00" ;
+	pig:hasElement :Req-0Z7916e2872e78ecadc50feddc00918a .
 
-:Diagram-aec0df7900010000017001eaf53e8876
-	pig:organizes :MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
-	pig:organizes :MEl-50feddc00029b1a8016e2872e78ecadc .
+:N-2b9016e2872e78ecadc50feddc0013Ac
+	dcterms:modified "2020-10-17T10:00:00+01:00" ;
+	pig:hasElement :Req-2b9016e2872e78ecadc50feddc0013Ac .
 
-:HierarchyRoot
-	pig:organizes :FolderGlossary-10875487071 .
+:N-Folder-SystemModel
+	dcterms:modified "2020-10-17T10:00:00+01:00" ;
+	pig:hasElement :Folder-SystemModel ;
+	pig:hasChild N-Diagram-aec0df7900010000017001eaf53e8876 .
 
-:FolderGlossary-10875487071
-	pig:organizes :MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
-	pig:organizes :MEl-50feddc00029b1a8016e2872e78ecadc .
+:N-Diagram-aec0df7900010000017001eaf53e8876
+	dcterms:modified "2020-10-17T10:00:00+01:00" ;
+	pig:hasElement :Diagram-aec0df7900010000017001eaf53e8876 ;
+	pig:hasChild N-50fbfe8f0029b1a8016ea86245a9d83a ,
+		N-50feddc00029b1a8016e2872e78ecadc .
+
+:N-50fbfe8f0029b1a8016ea86245a9d83a
+	dcterms:modified "2020-03-06T09:05:00+01:00" ;
+	pig:hasElement :MEl-50fbfe8f0029b1a8016ea86245a9d83a .
+
+:N-50feddc00029b1a8016e2872e78ecadc
+	dcterms:modified "2020-03-06T09:05:00+01:00" ;
+	pig:hasElement :MEl-50feddc00029b1a8016e2872e78ecadc .
+
+:N-FolderGlossary-10875487071
+	dcterms:modified "2025-06-06T08:45:56.203Z" ;
+	pig:hasElement :FolderGlossary-10875487071 ;
+	pig:hasChild N-9559304043 ,
+		N-12075661949 .
+
+:N-9559304043
+	dcterms:modified "2025-06-06T08:45:56.203Z" ;
+	pig:hasElement :MEl-50fbfe8f0029b1a8016ea86245a9d83a .
+
+:N-12075661949
+	dcterms:modified "2025-06-06T08:45:56.203Z" ;
+	pig:hasElement :MEl-50feddc00029b1a8016e2872e78ecadc .
