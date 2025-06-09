@@ -445,7 +445,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2018-05-04T17:18:18+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Folder",
+      "pig:hasClass": "#RC-Folder",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -468,7 +468,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:02+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Folder",
+      "pig:hasClass": "#RC-Folder",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -491,7 +491,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:03+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-View",
+      "pig:hasClass": "#RC-View",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -542,7 +542,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:03+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-View",
+      "pig:hasClass": "#RC-View",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -600,7 +600,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:03+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-View",
+      "pig:hasClass": "#RC-View",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -658,7 +658,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:04+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-View",
+      "pig:hasClass": "#RC-View",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -709,7 +709,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:02+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Folder",
+      "pig:hasClass": "#RC-Folder",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -732,7 +732,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:04+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Folder",
+      "pig:hasClass": "#RC-Folder",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -748,7 +748,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:04+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-View",
+      "pig:hasClass": "#RC-View",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -806,7 +806,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2018-03-15T15:36:31+01:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-View",
+      "pig:hasClass": "#RC-View",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -864,7 +864,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:06+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-View",
+      "pig:hasClass": "#RC-View",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -922,7 +922,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:02+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Folder",
+      "pig:hasClass": "#RC-Folder",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -938,7 +938,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:06+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Folder",
+      "pig:hasClass": "#RC-Folder",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -961,7 +961,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:06+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Requirement",
+      "pig:hasClass": "#RC-Requirement",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -1035,7 +1035,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2018-02-13T12:22:44+01:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Requirement",
+      "pig:hasClass": "#RC-Requirement",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -1094,7 +1094,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:07+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Requirement",
+      "pig:hasClass": "#RC-Requirement",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -1152,7 +1152,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:08+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Requirement",
+      "pig:hasClass": "#RC-Requirement",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -1224,7 +1224,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:08+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Requirement",
+      "pig:hasClass": "#RC-Requirement",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -1296,7 +1296,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:08+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Folder",
+      "pig:hasClass": "#RC-Folder",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -1319,7 +1319,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:09+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Requirement",
+      "pig:hasClass": "#RC-Requirement",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -1385,7 +1385,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2018-03-08T11:59:42+01:00",
       "dcterms:creator": "supplier",
-      "pig.hasClass": "#RC-Requirement",
+      "pig:hasClass": "#RC-Requirement",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -1471,7 +1471,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:10+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Requirement",
+      "pig:hasClass": "#RC-Requirement",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -1530,7 +1530,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:11+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Requirement",
+      "pig:hasClass": "#RC-Requirement",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -1589,7 +1589,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:11+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Requirement",
+      "pig:hasClass": "#RC-Requirement",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -1647,7 +1647,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:11+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Requirement",
+      "pig:hasClass": "#RC-Requirement",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -1705,7 +1705,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:12+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Folder",
+      "pig:hasClass": "#RC-Folder",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -1728,7 +1728,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:12+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Requirement",
+      "pig:hasClass": "#RC-Requirement",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -1788,7 +1788,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:12+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Requirement",
+      "pig:hasClass": "#RC-Requirement",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -1846,7 +1846,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2018-02-16T10:29:48+01:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Requirement",
+      "pig:hasClass": "#RC-Requirement",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -1905,7 +1905,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2018-02-28T13:16:17+01:00",
       "dcterms:creator": "supplier",
-      "pig.hasClass": "#RC-Requirement",
+      "pig:hasClass": "#RC-Requirement",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -1977,7 +1977,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-10-27T11:44:20+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Requirement",
+      "pig:hasClass": "#RC-Requirement",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2035,7 +2035,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:02+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Folder",
+      "pig:hasClass": "#RC-Folder",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2058,7 +2058,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-11-11T16:16:13+01:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Actor",
+      "pig:hasClass": "#RC-Actor",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2081,7 +2081,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:19+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Actor",
+      "pig:hasClass": "#RC-Actor",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2104,7 +2104,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:26+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-State",
+      "pig:hasClass": "#RC-State",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2127,7 +2127,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:23+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-State",
+      "pig:hasClass": "#RC-State",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2150,7 +2150,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:22+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-State",
+      "pig:hasClass": "#RC-State",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2173,7 +2173,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:16+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Actor",
+      "pig:hasClass": "#RC-Actor",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2196,7 +2196,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:22+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-State",
+      "pig:hasClass": "#RC-State",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2212,7 +2212,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:17+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Actor",
+      "pig:hasClass": "#RC-Actor",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2235,7 +2235,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-12-09T10:38:29+01:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Actor",
+      "pig:hasClass": "#RC-Actor",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2258,7 +2258,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:28+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Event",
+      "pig:hasClass": "#RC-Event",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2274,7 +2274,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:29+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Event",
+      "pig:hasClass": "#RC-Event",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2290,7 +2290,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:30+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Event",
+      "pig:hasClass": "#RC-Event",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2306,7 +2306,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:30+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Event",
+      "pig:hasClass": "#RC-Event",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2322,7 +2322,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:30+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Event",
+      "pig:hasClass": "#RC-Event",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2338,7 +2338,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:30+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Event",
+      "pig:hasClass": "#RC-Event",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2354,7 +2354,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:30+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Event",
+      "pig:hasClass": "#RC-Event",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2370,7 +2370,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:30+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Event",
+      "pig:hasClass": "#RC-Event",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2386,7 +2386,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:31+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Event",
+      "pig:hasClass": "#RC-Event",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2402,7 +2402,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:31+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Event",
+      "pig:hasClass": "#RC-Event",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2418,7 +2418,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:19+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Actor",
+      "pig:hasClass": "#RC-Actor",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2434,7 +2434,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:19+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Actor",
+      "pig:hasClass": "#RC-Actor",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2450,7 +2450,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:20+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Actor",
+      "pig:hasClass": "#RC-Actor",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2466,7 +2466,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:20+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Actor",
+      "pig:hasClass": "#RC-Actor",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2482,7 +2482,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:20+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Actor",
+      "pig:hasClass": "#RC-Actor",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2505,7 +2505,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:21+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Actor",
+      "pig:hasClass": "#RC-Actor",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2528,7 +2528,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:32+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Event",
+      "pig:hasClass": "#RC-Event",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2544,7 +2544,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:33+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Event",
+      "pig:hasClass": "#RC-Event",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2560,7 +2560,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:17+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Actor",
+      "pig:hasClass": "#RC-Actor",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2590,7 +2590,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:23+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-State",
+      "pig:hasClass": "#RC-State",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2613,7 +2613,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:18+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Actor",
+      "pig:hasClass": "#RC-Actor",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2636,7 +2636,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:23+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-State",
+      "pig:hasClass": "#RC-State",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2659,7 +2659,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:25+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-State",
+      "pig:hasClass": "#RC-State",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2682,7 +2682,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:25+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-State",
+      "pig:hasClass": "#RC-State",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2705,7 +2705,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:27+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-State",
+      "pig:hasClass": "#RC-State",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2728,7 +2728,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:17+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Actor",
+      "pig:hasClass": "#RC-Actor",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2751,7 +2751,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:18+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Actor",
+      "pig:hasClass": "#RC-Actor",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2774,7 +2774,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:21+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Actor",
+      "pig:hasClass": "#RC-Actor",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2797,7 +2797,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:21+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Actor",
+      "pig:hasClass": "#RC-Actor",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2813,7 +2813,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:22+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-State",
+      "pig:hasClass": "#RC-State",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2836,7 +2836,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:23+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-State",
+      "pig:hasClass": "#RC-State",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2859,7 +2859,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:24+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-State",
+      "pig:hasClass": "#RC-State",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2882,7 +2882,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:24+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-State",
+      "pig:hasClass": "#RC-State",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2905,7 +2905,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:26+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-State",
+      "pig:hasClass": "#RC-State",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2928,7 +2928,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:27+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-State",
+      "pig:hasClass": "#RC-State",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2951,7 +2951,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:28+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-State",
+      "pig:hasClass": "#RC-State",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2974,7 +2974,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:22+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Actor",
+      "pig:hasClass": "#RC-Actor",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -2997,7 +2997,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:28+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-State",
+      "pig:hasClass": "#RC-State",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -3013,7 +3013,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:23+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-State",
+      "pig:hasClass": "#RC-State",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -3029,7 +3029,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:27+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-State",
+      "pig:hasClass": "#RC-State",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -3052,7 +3052,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:28+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-State",
+      "pig:hasClass": "#RC-State",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -3075,7 +3075,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:24+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-State",
+      "pig:hasClass": "#RC-State",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -3098,7 +3098,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:24+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-State",
+      "pig:hasClass": "#RC-State",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -3121,7 +3121,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:26+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-State",
+      "pig:hasClass": "#RC-State",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -3137,7 +3137,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:19+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Actor",
+      "pig:hasClass": "#RC-Actor",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -3160,7 +3160,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:21+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Actor",
+      "pig:hasClass": "#RC-Actor",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -3176,7 +3176,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:16+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Actor",
+      "pig:hasClass": "#RC-Actor",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -3199,7 +3199,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:16+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Actor",
+      "pig:hasClass": "#RC-Actor",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -3222,7 +3222,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:29+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Event",
+      "pig:hasClass": "#RC-Event",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -3238,7 +3238,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:29+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Event",
+      "pig:hasClass": "#RC-Event",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -3254,7 +3254,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:29+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Event",
+      "pig:hasClass": "#RC-Event",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -3270,7 +3270,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:18+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Actor",
+      "pig:hasClass": "#RC-Actor",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -3293,7 +3293,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:18+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Actor",
+      "pig:hasClass": "#RC-Actor",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -3316,7 +3316,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:18+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Actor",
+      "pig:hasClass": "#RC-Actor",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -3332,7 +3332,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:31+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Event",
+      "pig:hasClass": "#RC-Event",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -3348,7 +3348,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:32+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Event",
+      "pig:hasClass": "#RC-Event",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -3364,7 +3364,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:32+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Event",
+      "pig:hasClass": "#RC-Event",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -3380,7 +3380,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:02+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Folder",
+      "pig:hasClass": "#RC-Folder",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -3396,7 +3396,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:14+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Folder",
+      "pig:hasClass": "#RC-Folder",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -3412,7 +3412,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:15+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Issue",
+      "pig:hasClass": "#RC-Issue",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -3463,7 +3463,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:15+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Folder",
+      "pig:hasClass": "#RC-Folder",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -3479,7 +3479,7 @@
       "@type": "pig:Entity",
       "dcterms:modified": "2017-06-19T20:13:15+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#RC-Issue",
+      "pig:hasClass": "#RC-Issue",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -3536,7 +3536,7 @@
       "@id": "#FolderGlossary-8001804519",
       "@type": "pig:Entity",
       "dcterms:modified": "2025-06-09T07:17:18.410Z",
-      "pig.hasClass": "#RC-Folder",
+      "pig:hasClass": "#RC-Folder",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -3559,7 +3559,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:33+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a4755dd0000bca801375293a62c90a8",
       "pig:hasObject": "#MEl-5bd6bd890000bca8013739588a3f43d6"
     },
@@ -3568,7 +3568,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:33+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a4755dd0000bca801375293a62c90a8",
       "pig:hasObject": "#MEl-5a4dd77b0000bca8013736c6912ad291"
     },
@@ -3577,7 +3577,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:33+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a4755dd0000bca801375293a62c90a8",
       "pig:hasObject": "#MEl-5a489c300000bca80137ee1373c16844"
     },
@@ -3586,7 +3586,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:34+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a4755dd0000bca801375293a62c90a8",
       "pig:hasObject": "#MEl-5a4c80c20000bca8013753b6999a4da8"
     },
@@ -3595,7 +3595,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:34+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a4755dd0000bca801375293a62c90a8",
       "pig:hasObject": "#MEl-5bcf35cf0000bca8013776d68023612a"
     },
@@ -3604,7 +3604,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:34+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a4755dd0000bca801375293a62c90a8",
       "pig:hasObject": "#MEl-5a52b50c0000bca801377e3d15255f98"
     },
@@ -3613,7 +3613,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:34+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a4755dd0000bca801375293a62c90a8",
       "pig:hasObject": "#MEl-5a51dd920000bca8013770a4395c83fc"
     },
@@ -3622,7 +3622,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:35+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a4755dd0000bca801375293a62c90a8",
       "pig:hasObject": "#MEl-5a50d5b60000bca8013781532547ce93"
     },
@@ -3631,7 +3631,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:35+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a4755dd0000bca801375293a62c90a8",
       "pig:hasObject": "#MEl-5bcfb01d0000bca80137f303272a5557"
     },
@@ -3640,7 +3640,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:35+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a4755dd0000bca801375293a62c90a8",
       "pig:hasObject": "#MEl-803fd3750000c3a8013cf1fdb3b26d33"
     },
@@ -3649,7 +3649,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:35+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a4755dd0000bca801375293a62c90a8",
       "pig:hasObject": "#MEl-5a4cfa830000bca801370d837f761f3e"
     },
@@ -3658,7 +3658,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:35+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a4755dd0000bca801375293a62c90a8",
       "pig:hasObject": "#MEl-5a4d2bd00000bca80137a3f233cdffeb"
     },
@@ -3667,7 +3667,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:35+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a4755dd0000bca801375293a62c90a8",
       "pig:hasObject": "#MEl-5a4d6dee0000bca80137c1caf2f42349"
     },
@@ -3676,7 +3676,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:36+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a4755dd0000bca801375293a62c90a8",
       "pig:hasObject": "#MEl-5a47935a0000bca801377c17f8cb25b0"
     },
@@ -3685,7 +3685,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:36+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a6cdea50000bca80137d6b2d6e8a3a0",
       "pig:hasObject": "#MEl-5a7776c50000bca8013765ae93af9209"
     },
@@ -3694,7 +3694,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:36+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a6cdea50000bca80137d6b2d6e8a3a0",
       "pig:hasObject": "#MEl-5a76365c0000bca8013776e91afd1e8e"
     },
@@ -3703,7 +3703,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:36+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a6cdea50000bca80137d6b2d6e8a3a0",
       "pig:hasObject": "#MEl-5a9ce0310000bca801378176dc4744e8"
     },
@@ -3712,7 +3712,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:36+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a6cdea50000bca80137d6b2d6e8a3a0",
       "pig:hasObject": "#MEl-5a752ccc0000bca80137479a2e8bab30"
     },
@@ -3721,7 +3721,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:36+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a6cdea50000bca80137d6b2d6e8a3a0",
       "pig:hasObject": "#MEl-5a71c4800000bca80137f2aaa7b63000"
     },
@@ -3730,7 +3730,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:37+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a6cdea50000bca80137d6b2d6e8a3a0",
       "pig:hasObject": "#MEl-5a4dd77b0000bca8013736c6912ad291"
     },
@@ -3739,7 +3739,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:37+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a6cdea50000bca80137d6b2d6e8a3a0",
       "pig:hasObject": "#MEl-5a489c300000bca80137ee1373c16844"
     },
@@ -3748,7 +3748,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:37+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a6cdea50000bca80137d6b2d6e8a3a0",
       "pig:hasObject": "#MEl-5a99c89c0000bca801375d44cf9a50ca"
     },
@@ -3757,7 +3757,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:37+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a6cdea50000bca80137d6b2d6e8a3a0",
       "pig:hasObject": "#MEl-5a9929510000bca80137d23c81f1ca54"
     },
@@ -3766,7 +3766,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:37+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a6cdea50000bca80137d6b2d6e8a3a0",
       "pig:hasObject": "#MEl-5c29fb8e0000bca80137eb9734c99bfd"
     },
@@ -3775,7 +3775,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:38+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a6cdea50000bca80137d6b2d6e8a3a0",
       "pig:hasObject": "#MEl-5a77385f0000bca80137e1c7dc0b1721"
     },
@@ -3784,7 +3784,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:38+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a6cdea50000bca80137d6b2d6e8a3a0",
       "pig:hasObject": "#MEl-5a9888810000bca801375410ce1cc142"
     },
@@ -3793,7 +3793,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:38+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a6cdea50000bca80137d6b2d6e8a3a0",
       "pig:hasObject": "#MEl-5a4d6dee0000bca80137c1caf2f42349"
     },
@@ -3802,7 +3802,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:38+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a6cdea50000bca80137d6b2d6e8a3a0",
       "pig:hasObject": "#MEl-5a9b7a9b0000bca80137d768644696b7"
     },
@@ -3811,7 +3811,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:38+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a6cdea50000bca80137d6b2d6e8a3a0",
       "pig:hasObject": "#MEl-463289cd0000c3a80141be3fc417034a"
     },
@@ -3820,7 +3820,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:39+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a7f99af0000bca8013754f2ef12d3e5",
       "pig:hasObject": "#MEl-5a9ce0310000bca801378176dc4744e8"
     },
@@ -3829,7 +3829,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:39+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a7f99af0000bca8013754f2ef12d3e5",
       "pig:hasObject": "#MEl-5a85347c0000bca80137ad485c7cd330"
     },
@@ -3838,7 +3838,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:39+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a7f99af0000bca8013754f2ef12d3e5",
       "pig:hasObject": "#MEl-5a808e2a0000bca80137bfd74268a84a"
     },
@@ -3847,7 +3847,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:39+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a7f99af0000bca8013754f2ef12d3e5",
       "pig:hasObject": "#MEl-5a752ccc0000bca80137479a2e8bab30"
     },
@@ -3856,7 +3856,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:40+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a7f99af0000bca8013754f2ef12d3e5",
       "pig:hasObject": "#MEl-5a844d820000bca8013750b9a0410b6b"
     },
@@ -3865,7 +3865,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:40+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a7f99af0000bca8013754f2ef12d3e5",
       "pig:hasObject": "#MEl-5a99c89c0000bca801375d44cf9a50ca"
     },
@@ -3874,7 +3874,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:40+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a7f99af0000bca8013754f2ef12d3e5",
       "pig:hasObject": "#MEl-5a8009a00000bca80137ef95bc3f643f"
     },
@@ -3883,7 +3883,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:40+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a7f99af0000bca8013754f2ef12d3e5",
       "pig:hasObject": "#MEl-5a87083e0000bca801379bb412523737"
     },
@@ -3892,7 +3892,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:40+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a7f99af0000bca8013754f2ef12d3e5",
       "pig:hasObject": "#MEl-5a9929510000bca80137d23c81f1ca54"
     },
@@ -3901,7 +3901,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:40+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a7f99af0000bca8013754f2ef12d3e5",
       "pig:hasObject": "#MEl-5c29fb8e0000bca80137eb9734c99bfd"
     },
@@ -3910,7 +3910,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:41+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a7f99af0000bca8013754f2ef12d3e5",
       "pig:hasObject": "#MEl-5a82ec6f0000bca801372ef053a71bdf"
     },
@@ -3919,7 +3919,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:41+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a7f99af0000bca8013754f2ef12d3e5",
       "pig:hasObject": "#MEl-5a86b8980000bca80137ca6fde1a125e"
     },
@@ -3928,7 +3928,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:41+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a7f99af0000bca8013754f2ef12d3e5",
       "pig:hasObject": "#MEl-5a77385f0000bca80137e1c7dc0b1721"
     },
@@ -3937,7 +3937,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:42+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a7f99af0000bca8013754f2ef12d3e5",
       "pig:hasObject": "#MEl-5a9888810000bca801375410ce1cc142"
     },
@@ -3946,7 +3946,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:42+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5a7f99af0000bca8013754f2ef12d3e5",
       "pig:hasObject": "#MEl-5a820a3c0000bca801378c9093fb7d80"
     },
@@ -3955,7 +3955,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:42+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-606e76c70000bca801376ec3133a1181",
       "pig:hasObject": "#MEl-608177820000bca801379179ebf3b6aa"
     },
@@ -3964,7 +3964,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:42+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-606e76c70000bca801376ec3133a1181",
       "pig:hasObject": "#MEl-611366530000bca80137a97f194e96a3"
     },
@@ -3973,7 +3973,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:42+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-606e76c70000bca801376ec3133a1181",
       "pig:hasObject": "#MEl-453862540000c3a801419d91bef48cfd"
     },
@@ -3982,7 +3982,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:42+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-606e76c70000bca801376ec3133a1181",
       "pig:hasObject": "#MEl-45387c0b0000c3a801410aa03f6b9be4"
     },
@@ -3991,7 +3991,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:43+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-606e76c70000bca801376ec3133a1181",
       "pig:hasObject": "#MEl-4538920b0000c3a801415c67e334b8a1"
     },
@@ -4000,7 +4000,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:43+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-606e76c70000bca801376ec3133a1181",
       "pig:hasObject": "#MEl-608239830000bca801373690c7d2af0f"
     },
@@ -4009,7 +4009,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:43+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-606e76c70000bca801376ec3133a1181",
       "pig:hasObject": "#MEl-610b07100000bca80137c10f96c46247"
     },
@@ -4018,7 +4018,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:43+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-606e76c70000bca801376ec3133a1181",
       "pig:hasObject": "#MEl-610e0b010000bca80137ac40800bb1b8"
     },
@@ -4027,7 +4027,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:43+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-606e76c70000bca801376ec3133a1181",
       "pig:hasObject": "#MEl-459b92580000c3a80141cb4acb521ab1"
     },
@@ -4036,7 +4036,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:43+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-606e76c70000bca801376ec3133a1181",
       "pig:hasObject": "#MEl-45384cd10000c3a80141c1f85d7c26e6"
     },
@@ -4045,7 +4045,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:44+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-606e76c70000bca801376ec3133a1181",
       "pig:hasObject": "#MEl-607f13b50000bca80137ba95f11856ab"
     },
@@ -4054,7 +4054,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:44+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-606e76c70000bca801376ec3133a1181",
       "pig:hasObject": "#MEl-5a47935a0000bca801377c17f8cb25b0"
     },
@@ -4063,7 +4063,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:44+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-45a1c8930000c3a801414cd1eaa70b5a",
       "pig:hasObject": "#MEl-606f16ac0000bca801373587fda932b3"
     },
@@ -4072,7 +4072,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:44+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-45a1c8930000c3a801414cd1eaa70b5a",
       "pig:hasObject": "#MEl-45450be80000c3a801414f280f146c71"
     },
@@ -4081,7 +4081,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:45+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-45a1c8930000c3a801414cd1eaa70b5a",
       "pig:hasObject": "#MEl-4536b0350000c3a801415986f8ea806a"
     },
@@ -4090,7 +4090,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:45+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-45a1c8930000c3a801414cd1eaa70b5a",
       "pig:hasObject": "#MEl-453facbb0000c3a80141c43d2fb4f5e2"
     },
@@ -4099,7 +4099,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:45+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-45a1c8930000c3a801414cd1eaa70b5a",
       "pig:hasObject": "#MEl-4543fe900000c3a80141f5253ff13c35"
     },
@@ -4108,7 +4108,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:45+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-45a1c8930000c3a801414cd1eaa70b5a",
       "pig:hasObject": "#MEl-453d34af0000c3a80141918f84641161"
     },
@@ -4117,7 +4117,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:45+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-45a1c8930000c3a801414cd1eaa70b5a",
       "pig:hasObject": "#MEl-45a236e00000c3a801410f6503287e16"
     },
@@ -4126,7 +4126,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:45+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-45a1c8930000c3a801414cd1eaa70b5a",
       "pig:hasObject": "#MEl-45a3b13c0000c3a801415e97f5bc29d1"
     },
@@ -4135,7 +4135,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:46+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5af364560000bca80137b84017f4e832",
       "pig:hasObject": "#MEl-5b2f95ec0000bca8013709bfa81d701f"
     },
@@ -4144,7 +4144,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:46+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5af364560000bca80137b84017f4e832",
       "pig:hasObject": "#MEl-5a85347c0000bca80137ad485c7cd330"
     },
@@ -4153,7 +4153,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:46+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5af364560000bca80137b84017f4e832",
       "pig:hasObject": "#MEl-45450be80000c3a801414f280f146c71"
     },
@@ -4162,7 +4162,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:46+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5af364560000bca80137b84017f4e832",
       "pig:hasObject": "#MEl-4536b0350000c3a801415986f8ea806a"
     },
@@ -4171,7 +4171,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:47+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5af364560000bca80137b84017f4e832",
       "pig:hasObject": "#MEl-5b149eab0000bca80137aad99b6eea7b"
     },
@@ -4180,7 +4180,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:47+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5af364560000bca80137b84017f4e832",
       "pig:hasObject": "#MEl-5b08ed8d0000bca8013719f554353b0e"
     },
@@ -4189,7 +4189,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:47+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5af364560000bca80137b84017f4e832",
       "pig:hasObject": "#MEl-453dfb670000c3a8014191107df4565e"
     },
@@ -4198,7 +4198,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:47+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5af364560000bca80137b84017f4e832",
       "pig:hasObject": "#MEl-5b094f8a0000bca801374c798a6587ad"
     },
@@ -4207,7 +4207,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:47+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5af364560000bca80137b84017f4e832",
       "pig:hasObject": "#MEl-45428b930000c3a80141e28b7d4b5ae5"
     },
@@ -4216,7 +4216,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:47+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5af364560000bca80137b84017f4e832",
       "pig:hasObject": "#MEl-5b078fa50000bca80137f36ed05c43cb"
     },
@@ -4225,7 +4225,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:48+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5af364560000bca80137b84017f4e832",
       "pig:hasObject": "#MEl-453facbb0000c3a80141c43d2fb4f5e2"
     },
@@ -4234,7 +4234,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:48+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5af364560000bca80137b84017f4e832",
       "pig:hasObject": "#MEl-5b2d29070000bca801378a6c020cf8f5"
     },
@@ -4243,7 +4243,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:48+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5af364560000bca80137b84017f4e832",
       "pig:hasObject": "#MEl-5b1750f80000bca801373b2d143d7478"
     },
@@ -4252,7 +4252,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:48+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5af364560000bca80137b84017f4e832",
       "pig:hasObject": "#MEl-5b2ddad80000bca80137c44d62ba97d8"
     },
@@ -4261,7 +4261,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:48+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5af364560000bca80137b84017f4e832",
       "pig:hasObject": "#MEl-5b2449180000bca8013722c01c9d35a5"
     },
@@ -4270,7 +4270,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:49+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5af364560000bca80137b84017f4e832",
       "pig:hasObject": "#MEl-5b0839b90000bca801376dcca41ca7d0"
     },
@@ -4279,7 +4279,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:49+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5af364560000bca80137b84017f4e832",
       "pig:hasObject": "#MEl-5b07e6aa0000bca8013797aad9be69ae"
     },
@@ -4288,7 +4288,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:49+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5af364560000bca80137b84017f4e832",
       "pig:hasObject": "#MEl-4543fe900000c3a80141f5253ff13c35"
     },
@@ -4297,7 +4297,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:49+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasSubject": "#Pln-5af364560000bca80137b84017f4e832",
       "pig:hasObject": "#MEl-453d34af0000c3a80141918f84641161"
     },
@@ -4306,7 +4306,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:49+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasSubject": "#MEl-5a85347c0000bca80137ad485c7cd330",
       "pig:hasObject": "#Req-d1c895230000c3a80150f8afd049f738"
     },
@@ -4315,7 +4315,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:49+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-dependsOn",
+      "pig:hasClass": "#SC-dependsOn",
       "pig:hasSubject": "#Req-d1c895230000c3a80150f8afd049f738",
       "pig:hasObject": "#Req-d1cd7f370000c3a8015095e6ee21aab7"
     },
@@ -4324,7 +4324,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:50+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasSubject": "#MEl-5a752ccc0000bca80137479a2e8bab30",
       "pig:hasObject": "#Req-d1c895230000c3a80150f8afd049f738"
     },
@@ -4333,7 +4333,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:50+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasSubject": "#MEl-5a808e2a0000bca80137bfd74268a84a",
       "pig:hasObject": "#Req-d1c895230000c3a80150f8afd049f738"
     },
@@ -4342,7 +4342,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:50+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasSubject": "#MEl-5a85347c0000bca80137ad485c7cd330",
       "pig:hasObject": "#Req-d1d42a6a0000c3a8015091ec8d149b93"
     },
@@ -4351,7 +4351,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2018-11-15T15:46:00+01:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-concerns",
+      "pig:hasClass": "#SC-concerns",
       "pig:hasSubject": "#Iss-ee2abb630000c3a8013987a750219659",
       "pig:hasObject": "#Req-d1d42a6a0000c3a8015091ec8d149b93"
     },
@@ -4360,7 +4360,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:51+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasSubject": "#MEl-5a85347c0000bca80137ad485c7cd330",
       "pig:hasObject": "#Req-d1cd7f370000c3a8015095e6ee21aab7"
     },
@@ -4369,7 +4369,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:51+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasSubject": "#MEl-5a71c4800000bca80137f2aaa7b63000",
       "pig:hasObject": "#Req-5ba3512b0000bca801371cc0617eb4c1"
     },
@@ -4378,7 +4378,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:51+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasSubject": "#MEl-5a808e2a0000bca80137bfd74268a84a",
       "pig:hasObject": "#Req-5b8fbb300000bca80137c73e3ce4c737"
     },
@@ -4387,7 +4387,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:51+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasSubject": "#MEl-5a47935a0000bca801377c17f8cb25b0",
       "pig:hasObject": "#Req-5b944fc70000bca8013763f44fdc0e03"
     },
@@ -4396,7 +4396,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:51+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-concerns",
+      "pig:hasClass": "#SC-concerns",
       "pig:hasSubject": "#Iss-ee2abb630000c3a8013987a750219659",
       "pig:hasObject": "#Req-5b944fc70000bca8013763f44fdc0e03"
     },
@@ -4405,7 +4405,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:51+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasSubject": "#MEl-5a752ccc0000bca80137479a2e8bab30",
       "pig:hasObject": "#Req-5ba140d60000bca801372b09f9888eca"
     },
@@ -4414,7 +4414,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:52+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasSubject": "#MEl-5a9b7a9b0000bca80137d768644696b7",
       "pig:hasObject": "#Req-5ba140d60000bca801372b09f9888eca"
     },
@@ -4423,7 +4423,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:52+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasSubject": "#MEl-803fd3750000c3a8013cf1fdb3b26d33",
       "pig:hasObject": "#Req-ee452cf20000c3a8014035290669304d"
     },
@@ -4432,7 +4432,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:52+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasSubject": "#MEl-5a752ccc0000bca80137479a2e8bab30",
       "pig:hasObject": "#Req-ee452cf20000c3a8014035290669304d"
     },
@@ -4441,7 +4441,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:52+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasSubject": "#MEl-5a489c300000bca80137ee1373c16844",
       "pig:hasObject": "#Req-ee43fc4c0000c3a8014063d42c77767f"
     },
@@ -4450,7 +4450,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:52+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasSubject": "#MEl-5a4c80c20000bca8013753b6999a4da8",
       "pig:hasObject": "#Req-ee43fc4c0000c3a8014063d42c77767f"
     },
@@ -4459,7 +4459,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:53+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasSubject": "#MEl-5a52b50c0000bca801377e3d15255f98",
       "pig:hasObject": "#Req-ee43fc4c0000c3a8014063d42c77767f"
     },
@@ -4468,7 +4468,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:53+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasSubject": "#MEl-5a50d5b60000bca8013781532547ce93",
       "pig:hasObject": "#Req-ee43fc4c0000c3a8014063d42c77767f"
     },
@@ -4477,7 +4477,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:53+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-dependsOn",
+      "pig:hasClass": "#SC-dependsOn",
       "pig:hasSubject": "#Req-ee43fc4c0000c3a8014063d42c77767f",
       "pig:hasObject": "#Req-5b9c950e0000bca801374f16615247b9"
     },
@@ -4486,7 +4486,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:53+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasSubject": "#MEl-5a808e2a0000bca80137bfd74268a84a",
       "pig:hasObject": "#Req-5b9124bc0000bca80137fa2ce86f5eca"
     },
@@ -4495,7 +4495,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:54+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasSubject": "#MEl-5a52b50c0000bca801377e3d15255f98",
       "pig:hasObject": "#Req-5b9124bc0000bca80137fa2ce86f5eca"
     },
@@ -4504,7 +4504,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:54+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasSubject": "#MEl-5a808e2a0000bca80137bfd74268a84a",
       "pig:hasObject": "#Req-5b9e68530000bca801371362c49d2d08"
     },
@@ -4513,7 +4513,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:54+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasSubject": "#MEl-5a52b50c0000bca801377e3d15255f98",
       "pig:hasObject": "#Req-5b9e68530000bca801371362c49d2d08"
     },
@@ -4522,7 +4522,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:54+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasSubject": "#MEl-803fd3750000c3a8013cf1fdb3b26d33",
       "pig:hasObject": "#Req-eea1cd500000c3a80140fe00109eb7f4"
     },
@@ -4531,7 +4531,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:54+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasSubject": "#MEl-5a752ccc0000bca80137479a2e8bab30",
       "pig:hasObject": "#Req-eea1cd500000c3a80140fe00109eb7f4"
     },
@@ -4540,7 +4540,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:54+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasSubject": "#MEl-5a489c300000bca80137ee1373c16844",
       "pig:hasObject": "#Req-5b95fae40000bca801372becc933682d"
     },
@@ -4549,7 +4549,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:55+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasSubject": "#MEl-5a4c80c20000bca8013753b6999a4da8",
       "pig:hasObject": "#Req-5b95fae40000bca801372becc933682d"
     },
@@ -4558,7 +4558,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:55+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasSubject": "#MEl-5a489c300000bca80137ee1373c16844",
       "pig:hasObject": "#Req-5b9ab8a50000bca801377ad0be3bbc89"
     },
@@ -4567,7 +4567,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:55+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasSubject": "#MEl-5a52b50c0000bca801377e3d15255f98",
       "pig:hasObject": "#Req-5b9ab8a50000bca801377ad0be3bbc89"
     },
@@ -4576,7 +4576,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:55+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasSubject": "#MEl-5a752ccc0000bca80137479a2e8bab30",
       "pig:hasObject": "#Req-5b9ab8a50000bca801377ad0be3bbc89"
     },
@@ -4585,7 +4585,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:55+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasSubject": "#MEl-5a808e2a0000bca80137bfd74268a84a",
       "pig:hasObject": "#Req-728c69c80018b1a8014b974542c36edc"
     },
@@ -4594,7 +4594,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:55+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasSubject": "#MEl-5a85347c0000bca80137ad485c7cd330",
       "pig:hasObject": "#Req-5b9c950e0000bca801374f16615247b9"
     },
@@ -4603,7 +4603,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:56+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-writes",
+      "pig:hasClass": "#SC-writes",
       "pig:hasSubject": "#MEl-5a76365c0000bca8013776e91afd1e8e",
       "pig:hasObject": "#MEl-5a77385f0000bca80137e1c7dc0b1721"
     },
@@ -4612,7 +4612,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:57+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-reads",
+      "pig:hasClass": "#SC-reads",
       "pig:hasSubject": "#MEl-5a76365c0000bca8013776e91afd1e8e",
       "pig:hasObject": "#MEl-5a77385f0000bca80137e1c7dc0b1721"
     },
@@ -4621,7 +4621,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:57+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a489c300000bca80137ee1373c16844",
       "pig:hasObject": "#MEl-5a76365c0000bca8013776e91afd1e8e"
     },
@@ -4630,7 +4630,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:57+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a47935a0000bca801377c17f8cb25b0",
       "pig:hasObject": "#MEl-608177820000bca801379179ebf3b6aa"
     },
@@ -4639,7 +4639,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:57+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a47935a0000bca801377c17f8cb25b0",
       "pig:hasObject": "#MEl-611366530000bca80137a97f194e96a3"
     },
@@ -4648,7 +4648,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:57+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-reads",
+      "pig:hasClass": "#SC-reads",
       "pig:hasSubject": "#MEl-5bd6bd890000bca8013739588a3f43d6",
       "pig:hasObject": "#MEl-5a489c300000bca80137ee1373c16844"
     },
@@ -4657,7 +4657,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:57+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a85347c0000bca80137ad485c7cd330",
       "pig:hasObject": "#MEl-45450be80000c3a801414f280f146c71"
     },
@@ -4666,7 +4666,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:57+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a85347c0000bca80137ad485c7cd330",
       "pig:hasObject": "#MEl-4536b0350000c3a801415986f8ea806a"
     },
@@ -4675,7 +4675,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:58+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a85347c0000bca80137ad485c7cd330",
       "pig:hasObject": "#MEl-5b08ed8d0000bca8013719f554353b0e"
     },
@@ -4684,7 +4684,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:58+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a85347c0000bca80137ad485c7cd330",
       "pig:hasObject": "#MEl-453dfb670000c3a8014191107df4565e"
     },
@@ -4693,7 +4693,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:58+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a85347c0000bca80137ad485c7cd330",
       "pig:hasObject": "#MEl-5b094f8a0000bca801374c798a6587ad"
     },
@@ -4702,7 +4702,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:58+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a85347c0000bca80137ad485c7cd330",
       "pig:hasObject": "#MEl-45428b930000c3a80141e28b7d4b5ae5"
     },
@@ -4711,7 +4711,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:58+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a85347c0000bca80137ad485c7cd330",
       "pig:hasObject": "#MEl-5b078fa50000bca80137f36ed05c43cb"
     },
@@ -4720,7 +4720,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:58+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a85347c0000bca80137ad485c7cd330",
       "pig:hasObject": "#MEl-453facbb0000c3a80141c43d2fb4f5e2"
     },
@@ -4729,7 +4729,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:59+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a85347c0000bca80137ad485c7cd330",
       "pig:hasObject": "#MEl-5b0839b90000bca801376dcca41ca7d0"
     },
@@ -4738,7 +4738,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:59+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a85347c0000bca80137ad485c7cd330",
       "pig:hasObject": "#MEl-5b07e6aa0000bca8013797aad9be69ae"
     },
@@ -4747,7 +4747,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:59+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a85347c0000bca80137ad485c7cd330",
       "pig:hasObject": "#MEl-4543fe900000c3a80141f5253ff13c35"
     },
@@ -4756,7 +4756,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:59+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a85347c0000bca80137ad485c7cd330",
       "pig:hasObject": "#MEl-453d34af0000c3a80141918f84641161"
     },
@@ -4765,7 +4765,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:00+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-reads",
+      "pig:hasClass": "#SC-reads",
       "pig:hasSubject": "#MEl-5a85347c0000bca80137ad485c7cd330",
       "pig:hasObject": "#MEl-5a87083e0000bca801379bb412523737"
     },
@@ -4774,7 +4774,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:00+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-reads",
+      "pig:hasClass": "#SC-reads",
       "pig:hasSubject": "#MEl-5a85347c0000bca80137ad485c7cd330",
       "pig:hasObject": "#MEl-5a86b8980000bca80137ca6fde1a125e"
     },
@@ -4783,7 +4783,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:00+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a752ccc0000bca80137479a2e8bab30",
       "pig:hasObject": "#MEl-5a85347c0000bca80137ad485c7cd330"
     },
@@ -4792,7 +4792,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:00+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-writes",
+      "pig:hasClass": "#SC-writes",
       "pig:hasSubject": "#MEl-5a808e2a0000bca80137bfd74268a84a",
       "pig:hasObject": "#MEl-5a99c89c0000bca801375d44cf9a50ca"
     },
@@ -4801,7 +4801,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:00+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-reads",
+      "pig:hasClass": "#SC-reads",
       "pig:hasSubject": "#MEl-5a808e2a0000bca80137bfd74268a84a",
       "pig:hasObject": "#MEl-5a99c89c0000bca801375d44cf9a50ca"
     },
@@ -4810,7 +4810,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:01+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-writes",
+      "pig:hasClass": "#SC-writes",
       "pig:hasSubject": "#MEl-5a808e2a0000bca80137bfd74268a84a",
       "pig:hasObject": "#MEl-5a9929510000bca80137d23c81f1ca54"
     },
@@ -4819,7 +4819,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:01+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-reads",
+      "pig:hasClass": "#SC-reads",
       "pig:hasSubject": "#MEl-5a808e2a0000bca80137bfd74268a84a",
       "pig:hasObject": "#MEl-5a9929510000bca80137d23c81f1ca54"
     },
@@ -4828,7 +4828,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:01+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-writes",
+      "pig:hasClass": "#SC-writes",
       "pig:hasSubject": "#MEl-5a808e2a0000bca80137bfd74268a84a",
       "pig:hasObject": "#MEl-5c29fb8e0000bca80137eb9734c99bfd"
     },
@@ -4837,7 +4837,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:01+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-reads",
+      "pig:hasClass": "#SC-reads",
       "pig:hasSubject": "#MEl-5a808e2a0000bca80137bfd74268a84a",
       "pig:hasObject": "#MEl-5c29fb8e0000bca80137eb9734c99bfd"
     },
@@ -4846,7 +4846,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:01+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-writes",
+      "pig:hasClass": "#SC-writes",
       "pig:hasSubject": "#MEl-5a808e2a0000bca80137bfd74268a84a",
       "pig:hasObject": "#MEl-5a9888810000bca801375410ce1cc142"
     },
@@ -4855,7 +4855,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:02+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-reads",
+      "pig:hasClass": "#SC-reads",
       "pig:hasSubject": "#MEl-5a808e2a0000bca80137bfd74268a84a",
       "pig:hasObject": "#MEl-5a9888810000bca801375410ce1cc142"
     },
@@ -4864,7 +4864,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:02+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-writes",
+      "pig:hasClass": "#SC-writes",
       "pig:hasSubject": "#MEl-5a808e2a0000bca80137bfd74268a84a",
       "pig:hasObject": "#MEl-5a86b8980000bca80137ca6fde1a125e"
     },
@@ -4873,7 +4873,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:02+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-writes",
+      "pig:hasClass": "#SC-writes",
       "pig:hasSubject": "#MEl-5a808e2a0000bca80137bfd74268a84a",
       "pig:hasObject": "#MEl-5a87083e0000bca801379bb412523737"
     },
@@ -4882,7 +4882,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:02+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-reads",
+      "pig:hasClass": "#SC-reads",
       "pig:hasSubject": "#MEl-5a808e2a0000bca80137bfd74268a84a",
       "pig:hasObject": "#MEl-5a9ce0310000bca801378176dc4744e8"
     },
@@ -4891,7 +4891,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:03+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-reads",
+      "pig:hasClass": "#SC-reads",
       "pig:hasSubject": "#MEl-5a808e2a0000bca80137bfd74268a84a",
       "pig:hasObject": "#MEl-5a820a3c0000bca801378c9093fb7d80"
     },
@@ -4900,7 +4900,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:03+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-reads",
+      "pig:hasClass": "#SC-reads",
       "pig:hasSubject": "#MEl-5a808e2a0000bca80137bfd74268a84a",
       "pig:hasObject": "#MEl-5a844d820000bca8013750b9a0410b6b"
     },
@@ -4909,7 +4909,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:03+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-reads",
+      "pig:hasClass": "#SC-reads",
       "pig:hasSubject": "#MEl-5a808e2a0000bca80137bfd74268a84a",
       "pig:hasObject": "#MEl-5a82ec6f0000bca801372ef053a71bdf"
     },
@@ -4918,7 +4918,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:04+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a752ccc0000bca80137479a2e8bab30",
       "pig:hasObject": "#MEl-5a808e2a0000bca80137bfd74268a84a"
     },
@@ -4927,7 +4927,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:04+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a752ccc0000bca80137479a2e8bab30",
       "pig:hasObject": "#MEl-5a8009a00000bca80137ef95bc3f643f"
     },
@@ -4936,7 +4936,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:04+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a752ccc0000bca80137479a2e8bab30",
       "pig:hasObject": "#MEl-5a844d820000bca8013750b9a0410b6b"
     },
@@ -4945,7 +4945,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:04+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a752ccc0000bca80137479a2e8bab30",
       "pig:hasObject": "#MEl-5a86b8980000bca80137ca6fde1a125e"
     },
@@ -4954,7 +4954,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:04+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a752ccc0000bca80137479a2e8bab30",
       "pig:hasObject": "#MEl-5a87083e0000bca801379bb412523737"
     },
@@ -4963,7 +4963,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:04+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a752ccc0000bca80137479a2e8bab30",
       "pig:hasObject": "#MEl-5a82ec6f0000bca801372ef053a71bdf"
     },
@@ -4972,7 +4972,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:05+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a752ccc0000bca80137479a2e8bab30",
       "pig:hasObject": "#MEl-5a820a3c0000bca801378c9093fb7d80"
     },
@@ -4981,7 +4981,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:05+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-reads",
+      "pig:hasClass": "#SC-reads",
       "pig:hasSubject": "#MEl-5a752ccc0000bca80137479a2e8bab30",
       "pig:hasObject": "#MEl-5a9ce0310000bca801378176dc4744e8"
     },
@@ -4990,7 +4990,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:05+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a489c300000bca80137ee1373c16844",
       "pig:hasObject": "#MEl-5a752ccc0000bca80137479a2e8bab30"
     },
@@ -4999,7 +4999,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:06+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-writes",
+      "pig:hasClass": "#SC-writes",
       "pig:hasSubject": "#MEl-5a71c4800000bca80137f2aaa7b63000",
       "pig:hasObject": "#MEl-5a77385f0000bca80137e1c7dc0b1721"
     },
@@ -5008,7 +5008,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:06+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-reads",
+      "pig:hasClass": "#SC-reads",
       "pig:hasSubject": "#MEl-5a71c4800000bca80137f2aaa7b63000",
       "pig:hasObject": "#MEl-5a77385f0000bca80137e1c7dc0b1721"
     },
@@ -5017,7 +5017,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:06+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-writes",
+      "pig:hasClass": "#SC-writes",
       "pig:hasSubject": "#MEl-5a71c4800000bca80137f2aaa7b63000",
       "pig:hasObject": "#MEl-5a7776c50000bca8013765ae93af9209"
     },
@@ -5026,7 +5026,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:06+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-reads",
+      "pig:hasClass": "#SC-reads",
       "pig:hasSubject": "#MEl-5a71c4800000bca80137f2aaa7b63000",
       "pig:hasObject": "#MEl-5a4dd77b0000bca8013736c6912ad291"
     },
@@ -5035,7 +5035,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:06+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-reads",
+      "pig:hasClass": "#SC-reads",
       "pig:hasSubject": "#MEl-5a71c4800000bca80137f2aaa7b63000",
       "pig:hasObject": "#MEl-5a4d6dee0000bca80137c1caf2f42349"
     },
@@ -5044,7 +5044,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:07+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a489c300000bca80137ee1373c16844",
       "pig:hasObject": "#MEl-5a71c4800000bca80137f2aaa7b63000"
     },
@@ -5053,7 +5053,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:07+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-606f16ac0000bca801373587fda932b3",
       "pig:hasObject": "#MEl-45450be80000c3a801414f280f146c71"
     },
@@ -5062,7 +5062,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:07+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-606f16ac0000bca801373587fda932b3",
       "pig:hasObject": "#MEl-4536b0350000c3a801415986f8ea806a"
     },
@@ -5071,7 +5071,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:07+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-606f16ac0000bca801373587fda932b3",
       "pig:hasObject": "#MEl-453facbb0000c3a80141c43d2fb4f5e2"
     },
@@ -5080,7 +5080,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:08+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-606f16ac0000bca801373587fda932b3",
       "pig:hasObject": "#MEl-4543fe900000c3a80141f5253ff13c35"
     },
@@ -5089,7 +5089,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:08+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-606f16ac0000bca801373587fda932b3",
       "pig:hasObject": "#MEl-453d34af0000c3a80141918f84641161"
     },
@@ -5098,7 +5098,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:08+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-606f16ac0000bca801373587fda932b3",
       "pig:hasObject": "#MEl-45a236e00000c3a801410f6503287e16"
     },
@@ -5107,7 +5107,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:08+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-606f16ac0000bca801373587fda932b3",
       "pig:hasObject": "#MEl-45a3b13c0000c3a801415e97f5bc29d1"
     },
@@ -5116,7 +5116,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:56+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-concerns",
+      "pig:hasClass": "#SC-concerns",
       "pig:hasSubject": "#Iss-ee2abb630000c3a8013987a750219659",
       "pig:hasObject": "#MEl-5a8009a00000bca80137ef95bc3f643f"
     },
@@ -5125,7 +5125,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:08+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-writes",
+      "pig:hasClass": "#SC-writes",
       "pig:hasSubject": "#MEl-5a8009a00000bca80137ef95bc3f643f",
       "pig:hasObject": "#MEl-5a77385f0000bca80137e1c7dc0b1721"
     },
@@ -5134,7 +5134,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:08+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-reads",
+      "pig:hasClass": "#SC-reads",
       "pig:hasSubject": "#MEl-5a8009a00000bca80137ef95bc3f643f",
       "pig:hasObject": "#MEl-5a77385f0000bca80137e1c7dc0b1721"
     },
@@ -5143,7 +5143,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:09+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-writes",
+      "pig:hasClass": "#SC-writes",
       "pig:hasSubject": "#MEl-5a8009a00000bca80137ef95bc3f643f",
       "pig:hasObject": "#MEl-5a844d820000bca8013750b9a0410b6b"
     },
@@ -5152,7 +5152,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:09+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-writes",
+      "pig:hasClass": "#SC-writes",
       "pig:hasSubject": "#MEl-5a8009a00000bca80137ef95bc3f643f",
       "pig:hasObject": "#MEl-5a82ec6f0000bca801372ef053a71bdf"
     },
@@ -5161,7 +5161,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:09+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-writes",
+      "pig:hasClass": "#SC-writes",
       "pig:hasSubject": "#MEl-5a8009a00000bca80137ef95bc3f643f",
       "pig:hasObject": "#MEl-5a820a3c0000bca801378c9093fb7d80"
     },
@@ -5170,7 +5170,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:10+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a47935a0000bca801377c17f8cb25b0",
       "pig:hasObject": "#MEl-608239830000bca801373690c7d2af0f"
     },
@@ -5179,7 +5179,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:10+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a47935a0000bca801377c17f8cb25b0",
       "pig:hasObject": "#MEl-610b07100000bca80137c10f96c46247"
     },
@@ -5188,7 +5188,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:10+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a47935a0000bca801377c17f8cb25b0",
       "pig:hasObject": "#MEl-610e0b010000bca80137ac40800bb1b8"
     },
@@ -5197,7 +5197,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:10+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-reads",
+      "pig:hasClass": "#SC-reads",
       "pig:hasSubject": "#MEl-5bcfb01d0000bca80137f303272a5557",
       "pig:hasObject": "#MEl-5a52b50c0000bca801377e3d15255f98"
     },
@@ -5206,7 +5206,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:10+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-writes",
+      "pig:hasClass": "#SC-writes",
       "pig:hasSubject": "#MEl-5a50d5b60000bca8013781532547ce93",
       "pig:hasObject": "#MEl-5a489c300000bca80137ee1373c16844"
     },
@@ -5215,7 +5215,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:11+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-reads",
+      "pig:hasClass": "#SC-reads",
       "pig:hasSubject": "#MEl-5a50d5b60000bca8013781532547ce93",
       "pig:hasObject": "#MEl-5a489c300000bca80137ee1373c16844"
     },
@@ -5224,7 +5224,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:11+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-writes",
+      "pig:hasClass": "#SC-writes",
       "pig:hasSubject": "#MEl-5a50d5b60000bca8013781532547ce93",
       "pig:hasObject": "#MEl-5a52b50c0000bca801377e3d15255f98"
     },
@@ -5233,7 +5233,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:11+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-reads",
+      "pig:hasClass": "#SC-reads",
       "pig:hasSubject": "#MEl-5a50d5b60000bca8013781532547ce93",
       "pig:hasObject": "#MEl-5a4c80c20000bca8013753b6999a4da8"
     },
@@ -5242,7 +5242,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:11+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-reads",
+      "pig:hasClass": "#SC-reads",
       "pig:hasSubject": "#MEl-5a50d5b60000bca8013781532547ce93",
       "pig:hasObject": "#MEl-5a51dd920000bca8013770a4395c83fc"
     },
@@ -5251,7 +5251,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:11+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-803fd3750000c3a8013cf1fdb3b26d33",
       "pig:hasObject": "#MEl-5a50d5b60000bca8013781532547ce93"
     },
@@ -5260,7 +5260,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:12+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a47935a0000bca801377c17f8cb25b0",
       "pig:hasObject": "#MEl-453862540000c3a801419d91bef48cfd"
     },
@@ -5269,7 +5269,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:12+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a47935a0000bca801377c17f8cb25b0",
       "pig:hasObject": "#MEl-45387c0b0000c3a801410aa03f6b9be4"
     },
@@ -5278,7 +5278,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:12+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a47935a0000bca801377c17f8cb25b0",
       "pig:hasObject": "#MEl-4538920b0000c3a801415c67e334b8a1"
     },
@@ -5287,7 +5287,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:13+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a47935a0000bca801377c17f8cb25b0",
       "pig:hasObject": "#MEl-459b92580000c3a80141cb4acb521ab1"
     },
@@ -5296,7 +5296,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:13+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a47935a0000bca801377c17f8cb25b0",
       "pig:hasObject": "#MEl-607f13b50000bca80137ba95f11856ab"
     },
@@ -5305,7 +5305,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:13+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a47935a0000bca801377c17f8cb25b0",
       "pig:hasObject": "#MEl-45384cd10000c3a80141c1f85d7c26e6"
     },
@@ -5314,7 +5314,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:14+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-writes",
+      "pig:hasClass": "#SC-writes",
       "pig:hasSubject": "#MEl-5a47935a0000bca801377c17f8cb25b0",
       "pig:hasObject": "#MEl-5a51dd920000bca8013770a4395c83fc"
     },
@@ -5323,7 +5323,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:14+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-writes",
+      "pig:hasClass": "#SC-writes",
       "pig:hasSubject": "#MEl-5a47935a0000bca801377c17f8cb25b0",
       "pig:hasObject": "#MEl-5a4c80c20000bca8013753b6999a4da8"
     },
@@ -5332,7 +5332,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:14+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-writes",
+      "pig:hasClass": "#SC-writes",
       "pig:hasSubject": "#MEl-5a47935a0000bca801377c17f8cb25b0",
       "pig:hasObject": "#MEl-5a489c300000bca80137ee1373c16844"
     },
@@ -5341,7 +5341,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:14+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a489c300000bca80137ee1373c16844",
       "pig:hasObject": "#MEl-5a9b7a9b0000bca80137d768644696b7"
     },
@@ -5350,7 +5350,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:14+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-writes",
+      "pig:hasClass": "#SC-writes",
       "pig:hasSubject": "#MEl-5a9b7a9b0000bca80137d768644696b7",
       "pig:hasObject": "#MEl-5a77385f0000bca80137e1c7dc0b1721"
     },
@@ -5359,7 +5359,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:15+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-reads",
+      "pig:hasClass": "#SC-reads",
       "pig:hasSubject": "#MEl-5a9b7a9b0000bca80137d768644696b7",
       "pig:hasObject": "#MEl-5a77385f0000bca80137e1c7dc0b1721"
     },
@@ -5368,7 +5368,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:15+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-writes",
+      "pig:hasClass": "#SC-writes",
       "pig:hasSubject": "#MEl-5a9b7a9b0000bca80137d768644696b7",
       "pig:hasObject": "#MEl-463289cd0000c3a80141be3fc417034a"
     },
@@ -5377,7 +5377,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:15+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-reads",
+      "pig:hasClass": "#SC-reads",
       "pig:hasSubject": "#MEl-5a9b7a9b0000bca80137d768644696b7",
       "pig:hasObject": "#MEl-463289cd0000c3a80141be3fc417034a"
     },
@@ -5386,7 +5386,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:15+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-writes",
+      "pig:hasClass": "#SC-writes",
       "pig:hasSubject": "#MEl-5a9b7a9b0000bca80137d768644696b7",
       "pig:hasObject": "#MEl-5a9ce0310000bca801378176dc4744e8"
     },
@@ -5395,7 +5395,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:16+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-reads",
+      "pig:hasClass": "#SC-reads",
       "pig:hasSubject": "#MEl-5a9b7a9b0000bca80137d768644696b7",
       "pig:hasObject": "#MEl-5a7776c50000bca8013765ae93af9209"
     },
@@ -5404,7 +5404,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:16+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a489c300000bca80137ee1373c16844",
       "pig:hasObject": "#MEl-5a7776c50000bca8013765ae93af9209"
     },
@@ -5413,7 +5413,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:16+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a489c300000bca80137ee1373c16844",
       "pig:hasObject": "#MEl-5a9ce0310000bca801378176dc4744e8"
     },
@@ -5422,7 +5422,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:16+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a489c300000bca80137ee1373c16844",
       "pig:hasObject": "#MEl-5a4dd77b0000bca8013736c6912ad291"
     },
@@ -5431,7 +5431,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:16+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a4c80c20000bca8013753b6999a4da8",
       "pig:hasObject": "#MEl-5a4dd77b0000bca8013736c6912ad291"
     },
@@ -5440,7 +5440,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:16+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a51dd920000bca8013770a4395c83fc",
       "pig:hasObject": "#MEl-5a4dd77b0000bca8013736c6912ad291"
     },
@@ -5449,7 +5449,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:17+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a489c300000bca80137ee1373c16844",
       "pig:hasObject": "#MEl-5a4d6dee0000bca80137c1caf2f42349"
     },
@@ -5458,7 +5458,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:17+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a489c300000bca80137ee1373c16844",
       "pig:hasObject": "#MEl-5a77385f0000bca80137e1c7dc0b1721"
     },
@@ -5467,7 +5467,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:17+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-803fd3750000c3a8013cf1fdb3b26d33",
       "pig:hasObject": "#MEl-5a489c300000bca80137ee1373c16844"
     },
@@ -5476,7 +5476,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:18+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a4c80c20000bca8013753b6999a4da8",
       "pig:hasObject": "#MEl-5a4d6dee0000bca80137c1caf2f42349"
     },
@@ -5485,7 +5485,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:18+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a4c80c20000bca8013753b6999a4da8",
       "pig:hasObject": "#MEl-5a4cfa830000bca801370d837f761f3e"
     },
@@ -5494,7 +5494,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:18+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a4c80c20000bca8013753b6999a4da8",
       "pig:hasObject": "#MEl-5a4d2bd00000bca80137a3f233cdffeb"
     },
@@ -5503,7 +5503,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:19+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-803fd3750000c3a8013cf1fdb3b26d33",
       "pig:hasObject": "#MEl-5a4c80c20000bca8013753b6999a4da8"
     },
@@ -5512,7 +5512,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:19+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a52b50c0000bca801377e3d15255f98",
       "pig:hasObject": "#MEl-5bcf35cf0000bca8013776d68023612a"
     },
@@ -5521,7 +5521,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:19+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-803fd3750000c3a8013cf1fdb3b26d33",
       "pig:hasObject": "#MEl-5a52b50c0000bca801377e3d15255f98"
     },
@@ -5530,7 +5530,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:13:56+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-concerns",
+      "pig:hasClass": "#SC-concerns",
       "pig:hasSubject": "#Iss-eee2d4e00000c3a801394148dcc58a52",
       "pig:hasObject": "#MEl-5a51dd920000bca8013770a4395c83fc"
     },
@@ -5539,7 +5539,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:19+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-5a51dd920000bca8013770a4395c83fc",
       "pig:hasObject": "#MEl-5a4d6dee0000bca80137c1caf2f42349"
     },
@@ -5548,7 +5548,7 @@
       "@type": "pig:Relationship",
       "dcterms:modified": "2017-06-19T20:14:19+02:00",
       "dcterms:creator": "od",
-      "pig.hasClass": "#SC-contains",
+      "pig:hasClass": "#SC-contains",
       "pig:hasSubject": "#MEl-803fd3750000c3a8013cf1fdb3b26d33",
       "pig:hasObject": "#MEl-5a51dd920000bca8013770a4395c83fc"
     },

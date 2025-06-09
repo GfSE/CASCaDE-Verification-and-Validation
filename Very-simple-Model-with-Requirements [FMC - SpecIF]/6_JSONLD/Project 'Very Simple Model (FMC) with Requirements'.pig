@@ -242,7 +242,7 @@
       "@id": "#Folder-Introduction",
       "@type": "pig:Entity",
       "dcterms:modified": "2025-02-07T08:32:00+01:00",
-      "pig.hasClass": "#RC-Folder",
+      "pig:hasClass": "#RC-Folder",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -264,7 +264,7 @@
       "@id": "#Folder-Requirements",
       "@type": "pig:Entity",
       "dcterms:modified": "2020-03-06T08:32:00+01:00",
-      "pig.hasClass": "#RC-Folder",
+      "pig:hasClass": "#RC-Folder",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -279,7 +279,7 @@
       "@id": "#Req-1a8016e2872e78ecadc50feddc00029b",
       "@type": "pig:Entity",
       "dcterms:modified": "2020-10-17T10:00:00+01:00",
-      "pig.hasClass": "#RC-Requirement",
+      "pig:hasClass": "#RC-Requirement",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -308,7 +308,7 @@
       "@id": "#Req-0Z7916e2872e78ecadc50feddc00918a",
       "@type": "pig:Entity",
       "dcterms:modified": "2020-10-17T10:00:00+01:00",
-      "pig.hasClass": "#RC-Requirement",
+      "pig:hasClass": "#RC-Requirement",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -337,7 +337,7 @@
       "@id": "#Req-2b9016e2872e78ecadc50feddc0013Ac",
       "@type": "pig:Entity",
       "dcterms:modified": "2020-10-17T10:00:00+01:00",
-      "pig.hasClass": "#RC-Requirement",
+      "pig:hasClass": "#RC-Requirement",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -366,7 +366,7 @@
       "@id": "#Folder-SystemModel",
       "@type": "pig:Entity",
       "dcterms:modified": "2020-03-06T08:32:00+01:00",
-      "pig.hasClass": "#RC-Folder",
+      "pig:hasClass": "#RC-Folder",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -381,7 +381,7 @@
       "@id": "#Diagram-aec0df7900010000017001eaf53e8876",
       "@type": "pig:Entity",
       "dcterms:modified": "2020-03-06T08:32:00+01:00",
-      "pig.hasClass": "#RC-View",
+      "pig:hasClass": "#RC-View",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -410,7 +410,7 @@
       "@id": "#MEl-50fbfe8f0029b1a8016ea86245a9d83a",
       "@type": "pig:Entity",
       "dcterms:modified": "2020-03-06T09:04:00+01:00",
-      "pig.hasClass": "#RC-Actor",
+      "pig:hasClass": "#RC-Actor",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -432,7 +432,7 @@
       "@id": "#MEl-50feddc00029b1a8016e2872e78ecadc",
       "@type": "pig:Entity",
       "dcterms:modified": "2020-03-06T09:03:00+01:00",
-      "pig.hasClass": "#RC-State",
+      "pig:hasClass": "#RC-State",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -454,7 +454,7 @@
       "@id": "#FolderGlossary-10875487071",
       "@type": "pig:Entity",
       "dcterms:modified": "2025-06-09T07:15:28.492Z",
-      "pig.hasClass": "#RC-Folder",
+      "pig:hasClass": "#RC-Folder",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -476,7 +476,7 @@
       "@id": "#SVis-aec0df7900010000017001eaf53e8876-50fbfe8f0029b1a8016ea86245a9d83a",
       "@type": "pig:Relationship",
       "dcterms:modified": "2020-03-06T08:32:00+01:00",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -493,7 +493,7 @@
       "@id": "#SVis-aec0df7900010000017001eaf53e8876-50feddc00029b1a8016e2872e78ecadc",
       "@type": "pig:Relationship",
       "dcterms:modified": "2020-03-06T08:32:00+01:00",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -510,7 +510,7 @@
       "@id": "#SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc",
       "@type": "pig:Relationship",
       "dcterms:modified": "2020-03-06T09:05:00+01:00",
-      "pig.hasClass": "#SC-writes",
+      "pig:hasClass": "#SC-writes",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -527,7 +527,7 @@
       "@id": "#SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc",
       "@type": "pig:Relationship",
       "dcterms:modified": "2020-03-06T09:05:00+01:00",
-      "pig.hasClass": "#SC-reads",
+      "pig:hasClass": "#SC-reads",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -544,7 +544,7 @@
       "@id": "#Ssat-50feddc00029b1a8016e2872e78ecadc-1a8016e2872e78ecadc50feddc00029b",
       "@type": "pig:Relationship",
       "dcterms:modified": "2020-10-17T10:00:00+01:00",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -561,7 +561,7 @@
       "@id": "#Ssat-50feddc00029b1a8016e2872e78ecadc-0Z7916e2872e78ecadc50feddc00918a",
       "@type": "pig:Relationship",
       "dcterms:modified": "2020-10-17T10:00:00+01:00",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -578,7 +578,7 @@
       "@id": "#Ssat-50fbfe8f0029b1a8016ea86245a9d83a-2b9016e2872e78ecadc50feddc0013Ac",
       "@type": "pig:Relationship",
       "dcterms:modified": "2020-10-17T10:00:00+01:00",
-      "pig.hasClass": "#SC-satisfies",
+      "pig:hasClass": "#SC-satisfies",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -595,7 +595,7 @@
       "@id": "#SVis-aec0df7900010000017001eaf53e8876-SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc",
       "@type": "pig:Relationship",
       "dcterms:modified": "2025-01-26T08:32:00+01:00",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
@@ -619,7 +619,7 @@
       "@id": "#SVis-aec0df7900010000017001eaf53e8876-SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc",
       "@type": "pig:Relationship",
       "dcterms:modified": "2025-01-26T08:32:00+01:00",
-      "pig.hasClass": "#SC-shows",
+      "pig:hasClass": "#SC-shows",
       "pig:hasProperty": [
         {
           "@type": "pig:Property",
