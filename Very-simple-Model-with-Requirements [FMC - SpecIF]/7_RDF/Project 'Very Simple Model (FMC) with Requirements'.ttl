@@ -553,7 +553,7 @@ oslc_rm:satisfies
 	a :RC-Folder ;
 	:PC-Name "Modellelemente (Glossar)" ;
 	:PC-Type "Modellelemente (Glossar)" ;
-	dcterms:modified "2025-06-09T07:15:28.492Z" .
+	dcterms:modified "2025-06-09T12:21:11.036Z" .
 
 #################################################################
 # Statements
@@ -632,10 +632,10 @@ oslc_rm:satisfies
 	a pig:Organizer ;
 	rdfs:label "Hierarchy Root" ;
 	rdfs:comment "... anchoring all hierarchies of this graph (project)" ;
-	pig:hasChild N-Folder-Introduction ;
-	pig:hasChild N-Folder-Requirements ;
-	pig:hasChild N-Folder-SystemModel ;
-	pig:hasChild N-FolderGlossary-10875487071 .
+	pig:hasChild :N-Folder-Introduction ,
+		:N-Folder-Requirements ,
+		:N-Folder-SystemModel ,
+		:N-FolderGlossary-10875487071 .
 
 :N-Folder-Introduction
 	dcterms:modified "2025-02-07T10:00:00+01:00" ;
@@ -644,9 +644,9 @@ oslc_rm:satisfies
 :N-Folder-Requirements
 	dcterms:modified "2020-10-17T10:00:00+01:00" ;
 	pig:hasElement :Folder-Requirements ;
-	pig:hasChild N-1a8016e2872e78ecadc50feddc00029b ,
-		N-0Z7916e2872e78ecadc50feddc00918a ,
-		N-2b9016e2872e78ecadc50feddc0013Ac .
+	pig:hasChild :N-1a8016e2872e78ecadc50feddc00029b ,
+		:N-0Z7916e2872e78ecadc50feddc00918a ,
+		:N-2b9016e2872e78ecadc50feddc0013Ac .
 
 :N-1a8016e2872e78ecadc50feddc00029b
 	dcterms:modified "2020-10-17T10:00:00+01:00" ;
@@ -663,13 +663,13 @@ oslc_rm:satisfies
 :N-Folder-SystemModel
 	dcterms:modified "2020-10-17T10:00:00+01:00" ;
 	pig:hasElement :Folder-SystemModel ;
-	pig:hasChild N-Diagram-aec0df7900010000017001eaf53e8876 .
+	pig:hasChild :N-Diagram-aec0df7900010000017001eaf53e8876 .
 
 :N-Diagram-aec0df7900010000017001eaf53e8876
 	dcterms:modified "2020-10-17T10:00:00+01:00" ;
 	pig:hasElement :Diagram-aec0df7900010000017001eaf53e8876 ;
-	pig:hasChild N-50fbfe8f0029b1a8016ea86245a9d83a ,
-		N-50feddc00029b1a8016e2872e78ecadc .
+	pig:hasChild :N-50fbfe8f0029b1a8016ea86245a9d83a ,
+		:N-50feddc00029b1a8016e2872e78ecadc .
 
 :N-50fbfe8f0029b1a8016ea86245a9d83a
 	dcterms:modified "2020-03-06T09:05:00+01:00" ;
@@ -680,15 +680,15 @@ oslc_rm:satisfies
 	pig:hasElement :MEl-50feddc00029b1a8016e2872e78ecadc .
 
 :N-FolderGlossary-10875487071
-	dcterms:modified "2025-06-09T07:15:28.492Z" ;
+	dcterms:modified "2025-06-09T12:21:11.036Z" ;
 	pig:hasElement :FolderGlossary-10875487071 ;
-	pig:hasChild N-9559304043 ,
-		N-12075661949 .
+	pig:hasChild :N-9559304043 ,
+		:N-12075661949 .
 
 :N-9559304043
-	dcterms:modified "2025-06-09T07:15:28.492Z" ;
+	dcterms:modified "2025-06-09T12:21:11.036Z" ;
 	pig:hasElement :MEl-50fbfe8f0029b1a8016ea86245a9d83a .
 
 :N-12075661949
-	dcterms:modified "2025-06-09T07:15:28.492Z" ;
+	dcterms:modified "2025-06-09T12:21:11.036Z" ;
 	pig:hasElement :MEl-50feddc00029b1a8016e2872e78ecadc .
