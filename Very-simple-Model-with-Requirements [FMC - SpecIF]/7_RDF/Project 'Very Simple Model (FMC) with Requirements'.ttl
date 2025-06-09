@@ -29,7 +29,7 @@
 @prefix SpecIF: <https://specif.de/v1.1/schema#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 
-@prefix : <https://specif.de/examples/09_Very-Simple-Model-FMC-with-Requirements.specif.zip/> .
+@prefix : <https://product-information-graph.org/examples/Project%20'Very%20Simple%20Model%20(FMC)%20with%20Requirements'.specifz/> .
 
 #################################################################
 # Project Metadata
@@ -496,7 +496,7 @@ oslc_rm:satisfies
 :Folder-Introduction
 	a :RC-Folder ;
 	:PC-Name "Introduction" ;
-	:PC-Description "<p>This is a minimal showcase for a model with model-elements and related requirements. It covers pretty much all characteristics neeeded in such cases (including 'statements on statements'), so that transformations and expressive power of other data formats can be evaluated. The example and its representation in SpecIF format is discussed in <a href=\"https://specif.de/Tutorials/06_Very-Simple-Model-FMC.html\" target=\"_blank\">Tutorial 6: Very Simple Model (FMC)</a> and <a href=\"https://specif.de/Tutorials/09_Very-Simple-Model-FMC-with-Requirements.html\" target=\"_blank\">Tutorial 9: Very Simple Model (FMC) with Requirements</a>.</p>" ;
+	:PC-Description "<div><p>This is a minimal showcase for a model with model-elements and related requirements. It covers pretty much all characteristics neeeded in such cases (including 'statements on statements'), so that transformations and expressive power of other data formats can be evaluated. The example and its representation in SpecIF format is discussed in <a href=\"https://specif.de/Tutorials/06_Very-Simple-Model-FMC.html\" target=\"_blank\">Tutorial 6: Very Simple Model (FMC)</a> and <a href=\"https://specif.de/Tutorials/09_Very-Simple-Model-FMC-with-Requirements.html\" target=\"_blank\">Tutorial 9: Very Simple Model (FMC) with Requirements</a>.</p></div>" ;
 	dcterms:modified "2025-02-07T08:32:00+01:00" .
 
 :Folder-Requirements
@@ -507,21 +507,21 @@ oslc_rm:satisfies
 :Req-1a8016e2872e78ecadc50feddc00029b
 	a :RC-Requirement ;
 	:PC-Name "Data Volume" ;
-	:PC-Description "<p>The data store MUST support a total volume up to 850 GB.</p>" ;
+	:PC-Description "<div><p>The data store MUST support a total volume up to 850 GB.</p></div>" ;
 	:PC-Priority :V-Prio-1 ;
 	dcterms:modified "2020-10-17T10:00:00+01:00" .
 
 :Req-0Z7916e2872e78ecadc50feddc00918a
 	a :RC-Requirement ;
 	:PC-Name "Consistency" ;
-	:PC-Description "<p>The data store MUST be consistent at all times.</p>" ;
+	:PC-Description "<div><p>The data store MUST be consistent at all times.</p></div>" ;
 	:PC-Priority :V-Prio-0 ;
 	dcterms:modified "2020-10-17T10:00:00+01:00" .
 
 :Req-2b9016e2872e78ecadc50feddc0013Ac
 	a :RC-Requirement ;
 	:PC-Name "Response Time" ;
-	:PC-Description "<p>The system SHOULD respond on user queries within 300 ms.</p>" ;
+	:PC-Description "<div><p>The system SHOULD respond on user queries within 300 ms.</p></div>" ;
 	:PC-Priority :V-Prio-2 ;
 	dcterms:modified "2020-10-17T10:00:00+01:00" .
 
@@ -533,27 +533,27 @@ oslc_rm:satisfies
 :Diagram-aec0df7900010000017001eaf53e8876
 	a :RC-View ;
 	:PC-Name "IT-Integration: FiCo-Application and FiCo-Data" ;
-	:PC-Diagram "<p class=\"inline-label\">Model Diagram:</p><p><object type=\"image/svg+xml\" data=\"files_and_images/Very-Simple-Model-FMC.svg\">Notation: FMC Block Diagram</object></p>" ;
+	:PC-Diagram "<div><p class=\"inline-label\">Model Diagram:</p><p><object type=\"image/svg+xml\" data=\"files_and_images/Very-Simple-Model-FMC.svg\">Notation: FMC Block Diagram</object></p></div>" ;
 	:PC-Type "FMC Block Diagram" ;
 	dcterms:modified "2020-03-06T08:32:00+01:00" .
 
 :MEl-50fbfe8f0029b1a8016ea86245a9d83a
 	a :RC-Actor ;
 	:PC-Name "FiCo-Application" ;
-	:PC-Description "<p>IT-Application for Finance and Controlling.</p>" ;
+	:PC-Description "<div><p>IT-Application for Finance and Controlling.</p></div>" ;
 	dcterms:modified "2020-03-06T09:04:00+01:00" .
 
 :MEl-50feddc00029b1a8016e2872e78ecadc
 	a :RC-State ;
 	:PC-Name "FiCo-Data" ;
-	:PC-Description "<p>Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc.</p>" ;
+	:PC-Description "<div><p>Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc.</p></div>" ;
 	dcterms:modified "2020-03-06T09:03:00+01:00" .
 
 :FolderGlossary-10875487071
 	a :RC-Folder ;
 	:PC-Name "Modellelemente (Glossar)" ;
 	:PC-Type "Modellelemente (Glossar)" ;
-	dcterms:modified "2025-06-06T08:45:56.203Z" .
+	dcterms:modified "2025-06-09T07:15:28.492Z" .
 
 #################################################################
 # Statements
@@ -628,8 +628,8 @@ oslc_rm:satisfies
 # Hierarchies
 #################################################################
 
-:HierarchyRoot
-	a pig:OrganizerClass ;
+:N-HierarchyRoot
+	a pig:Organizer ;
 	rdfs:label "Hierarchy Root" ;
 	rdfs:comment "... anchoring all hierarchies of this graph (project)" ;
 	pig:hasChild N-Folder-Introduction ;
@@ -680,15 +680,15 @@ oslc_rm:satisfies
 	pig:hasElement :MEl-50feddc00029b1a8016e2872e78ecadc .
 
 :N-FolderGlossary-10875487071
-	dcterms:modified "2025-06-06T08:45:56.203Z" ;
+	dcterms:modified "2025-06-09T07:15:28.492Z" ;
 	pig:hasElement :FolderGlossary-10875487071 ;
 	pig:hasChild N-9559304043 ,
 		N-12075661949 .
 
 :N-9559304043
-	dcterms:modified "2025-06-06T08:45:56.203Z" ;
+	dcterms:modified "2025-06-09T07:15:28.492Z" ;
 	pig:hasElement :MEl-50fbfe8f0029b1a8016ea86245a9d83a .
 
 :N-12075661949
-	dcterms:modified "2025-06-06T08:45:56.203Z" ;
+	dcterms:modified "2025-06-09T07:15:28.492Z" ;
 	pig:hasElement :MEl-50feddc00029b1a8016e2872e78ecadc .

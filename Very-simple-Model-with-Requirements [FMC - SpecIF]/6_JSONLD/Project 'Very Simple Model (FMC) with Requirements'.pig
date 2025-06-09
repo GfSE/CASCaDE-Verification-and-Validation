@@ -1,6 +1,6 @@
 {
   "@context": {
-    "@base": "https://specif.de/examples/09_Very-Simple-Model-FMC-with-Requirements.specif.zip",
+    "@base": "https://product-information-graph.org/examples/Project%20'Very%20Simple%20Model%20(FMC)%20with%20Requirements'.specifz",
     "rdf:": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs:": "http://www.w3.org/2000/01/rdf-schema#",
     "owl:": "http://www.w3.org/2002/07/owl#",
@@ -32,7 +32,13 @@
   },
   "@type": "pig:Product",
   "@id": "#ACP-Very-Simple-Model-FMC-with-Requirements",
-  "dcterms:modified": "2025-06-06T09:26:56.193Z",
+  "dcterms:title": [
+    {
+      "text": "Project 'Very Simple Model (FMC) with Requirements'"
+    }
+  ],
+  "dcterms:description": null,
+  "dcterms:modified": "2025-06-09T07:15:36.076Z",
   "@graph": [
     {
       "@id": "#PC-Name",
@@ -234,30 +240,35 @@
     },
     {
       "@id": "#Folder-Introduction",
-      "@type": "pig:entity",
+      "@type": "pig:Entity",
       "dcterms:modified": "2025-02-07T08:32:00+01:00",
+      "pig.hasClass": "#RC-Folder",
       "pig:hasProperty": [
         {
-          "@type": "#PC-Name",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Name",
           "@value": [
             "Introduction"
           ]
         },
         {
-          "@type": "#PC-Description",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Description",
           "@value": [
-            "<p>This is a minimal showcase for a model with model-elements and related requirements. It covers pretty much all characteristics neeeded in such cases (including 'statements on statements'), so that transformations and expressive power of other data formats can be evaluated. The example and its representation in SpecIF format is discussed in <a href=\"https://specif.de/Tutorials/06_Very-Simple-Model-FMC.html\" target=\"_blank\">Tutorial 6: Very Simple Model (FMC)</a> and <a href=\"https://specif.de/Tutorials/09_Very-Simple-Model-FMC-with-Requirements.html\" target=\"_blank\">Tutorial 9: Very Simple Model (FMC) with Requirements</a>.</p>"
+            "<div><p>This is a minimal showcase for a model with model-elements and related requirements. It covers pretty much all characteristics neeeded in such cases (including 'statements on statements'), so that transformations and expressive power of other data formats can be evaluated. The example and its representation in SpecIF format is discussed in <a href=\"https://specif.de/Tutorials/06_Very-Simple-Model-FMC.html\" target=\"_blank\">Tutorial 6: Very Simple Model (FMC)</a> and <a href=\"https://specif.de/Tutorials/09_Very-Simple-Model-FMC-with-Requirements.html\" target=\"_blank\">Tutorial 9: Very Simple Model (FMC) with Requirements</a>.</p></div>"
           ]
         }
       ]
     },
     {
       "@id": "#Folder-Requirements",
-      "@type": "pig:entity",
+      "@type": "pig:Entity",
       "dcterms:modified": "2020-03-06T08:32:00+01:00",
+      "pig.hasClass": "#RC-Folder",
       "pig:hasProperty": [
         {
-          "@type": "#PC-Name",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Name",
           "@value": [
             "Requirements"
           ]
@@ -266,23 +277,27 @@
     },
     {
       "@id": "#Req-1a8016e2872e78ecadc50feddc00029b",
-      "@type": "pig:entity",
+      "@type": "pig:Entity",
       "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "pig.hasClass": "#RC-Requirement",
       "pig:hasProperty": [
         {
-          "@type": "#PC-Name",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Name",
           "@value": [
             "Data Volume"
           ]
         },
         {
-          "@type": "#PC-Description",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Description",
           "@value": [
-            "<p>The data store MUST support a total volume up to 850 GB.</p>"
+            "<div><p>The data store MUST support a total volume up to 850 GB.</p></div>"
           ]
         },
         {
-          "@type": "#PC-Priority",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Priority",
           "@value": [
             "#V-Prio-1"
           ]
@@ -291,23 +306,27 @@
     },
     {
       "@id": "#Req-0Z7916e2872e78ecadc50feddc00918a",
-      "@type": "pig:entity",
+      "@type": "pig:Entity",
       "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "pig.hasClass": "#RC-Requirement",
       "pig:hasProperty": [
         {
-          "@type": "#PC-Name",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Name",
           "@value": [
             "Consistency"
           ]
         },
         {
-          "@type": "#PC-Description",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Description",
           "@value": [
-            "<p>The data store MUST be consistent at all times.</p>"
+            "<div><p>The data store MUST be consistent at all times.</p></div>"
           ]
         },
         {
-          "@type": "#PC-Priority",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Priority",
           "@value": [
             "#V-Prio-0"
           ]
@@ -316,23 +335,27 @@
     },
     {
       "@id": "#Req-2b9016e2872e78ecadc50feddc0013Ac",
-      "@type": "pig:entity",
+      "@type": "pig:Entity",
       "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "pig.hasClass": "#RC-Requirement",
       "pig:hasProperty": [
         {
-          "@type": "#PC-Name",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Name",
           "@value": [
             "Response Time"
           ]
         },
         {
-          "@type": "#PC-Description",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Description",
           "@value": [
-            "<p>The system SHOULD respond on user queries within 300 ms.</p>"
+            "<div><p>The system SHOULD respond on user queries within 300 ms.</p></div>"
           ]
         },
         {
-          "@type": "#PC-Priority",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Priority",
           "@value": [
             "#V-Prio-2"
           ]
@@ -341,11 +364,13 @@
     },
     {
       "@id": "#Folder-SystemModel",
-      "@type": "pig:entity",
+      "@type": "pig:Entity",
       "dcterms:modified": "2020-03-06T08:32:00+01:00",
+      "pig.hasClass": "#RC-Folder",
       "pig:hasProperty": [
         {
-          "@type": "#PC-Name",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Name",
           "@value": [
             "System Model"
           ]
@@ -354,23 +379,27 @@
     },
     {
       "@id": "#Diagram-aec0df7900010000017001eaf53e8876",
-      "@type": "pig:entity",
+      "@type": "pig:Entity",
       "dcterms:modified": "2020-03-06T08:32:00+01:00",
+      "pig.hasClass": "#RC-View",
       "pig:hasProperty": [
         {
-          "@type": "#PC-Name",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Name",
           "@value": [
             "IT-Integration: FiCo-Application and FiCo-Data"
           ]
         },
         {
-          "@type": "#PC-Diagram",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Diagram",
           "@value": [
-            "<p class=\"inline-label\">Model Diagram:</p><p><object type=\"image/svg+xml\" data=\"files_and_images/Very-Simple-Model-FMC.svg\">Notation: FMC Block Diagram</object></p>"
+            "<div><p class=\"inline-label\">Model Diagram:</p><p><object type=\"image/svg+xml\" data=\"files_and_images/Very-Simple-Model-FMC.svg\">Notation: FMC Block Diagram</object></p></div>"
           ]
         },
         {
-          "@type": "#PC-Type",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Type",
           "@value": [
             "FMC Block Diagram"
           ]
@@ -379,55 +408,64 @@
     },
     {
       "@id": "#MEl-50fbfe8f0029b1a8016ea86245a9d83a",
-      "@type": "pig:entity",
+      "@type": "pig:Entity",
       "dcterms:modified": "2020-03-06T09:04:00+01:00",
+      "pig.hasClass": "#RC-Actor",
       "pig:hasProperty": [
         {
-          "@type": "#PC-Name",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Name",
           "@value": [
             "FiCo-Application"
           ]
         },
         {
-          "@type": "#PC-Description",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Description",
           "@value": [
-            "<p>IT-Application for Finance and Controlling.</p>"
+            "<div><p>IT-Application for Finance and Controlling.</p></div>"
           ]
         }
       ]
     },
     {
       "@id": "#MEl-50feddc00029b1a8016e2872e78ecadc",
-      "@type": "pig:entity",
+      "@type": "pig:Entity",
       "dcterms:modified": "2020-03-06T09:03:00+01:00",
+      "pig.hasClass": "#RC-State",
       "pig:hasProperty": [
         {
-          "@type": "#PC-Name",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Name",
           "@value": [
             "FiCo-Data"
           ]
         },
         {
-          "@type": "#PC-Description",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Description",
           "@value": [
-            "<p>Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc.</p>"
+            "<div><p>Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc.</p></div>"
           ]
         }
       ]
     },
     {
       "@id": "#FolderGlossary-10875487071",
-      "@type": "pig:entity",
-      "dcterms:modified": "2025-06-06T08:45:56.203Z",
+      "@type": "pig:Entity",
+      "dcterms:modified": "2025-06-09T07:15:28.492Z",
+      "pig.hasClass": "#RC-Folder",
       "pig:hasProperty": [
         {
-          "@type": "#PC-Name",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Name",
           "@value": [
             "Model Elements (Glossary)"
           ]
         },
         {
-          "@type": "#PC-Type",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Type",
           "@value": [
             "SpecIF:Glossary"
           ]
@@ -436,214 +474,256 @@
     },
     {
       "@id": "#SVis-aec0df7900010000017001eaf53e8876-50fbfe8f0029b1a8016ea86245a9d83a",
-      "@type": "pig:relationship",
+      "@type": "pig:Relationship",
       "dcterms:modified": "2020-03-06T08:32:00+01:00",
+      "pig.hasClass": "#SC-shows",
       "pig:hasProperty": [
         {
-          "@type": "#PC-Description",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Description",
           "@value": [
             "'FMC Block Diagram' shows 'FiCo-Application'"
           ]
         }
-      ]
+      ],
+      "pig:hasSubject": "#Diagram-aec0df7900010000017001eaf53e8876",
+      "pig:hasObject": "#MEl-50fbfe8f0029b1a8016ea86245a9d83a"
     },
     {
       "@id": "#SVis-aec0df7900010000017001eaf53e8876-50feddc00029b1a8016e2872e78ecadc",
-      "@type": "pig:relationship",
+      "@type": "pig:Relationship",
       "dcterms:modified": "2020-03-06T08:32:00+01:00",
+      "pig.hasClass": "#SC-shows",
       "pig:hasProperty": [
         {
-          "@type": "#PC-Description",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Description",
           "@value": [
             "'FMC Block Diagram' shows 'FiCo-Data'"
           ]
         }
-      ]
+      ],
+      "pig:hasSubject": "#Diagram-aec0df7900010000017001eaf53e8876",
+      "pig:hasObject": "#MEl-50feddc00029b1a8016e2872e78ecadc"
     },
     {
       "@id": "#SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc",
-      "@type": "pig:relationship",
+      "@type": "pig:Relationship",
       "dcterms:modified": "2020-03-06T09:05:00+01:00",
+      "pig.hasClass": "#SC-writes",
       "pig:hasProperty": [
         {
-          "@type": "#PC-Description",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Description",
           "@value": [
             "'FiCo-Application' writes 'FiCo-Data'"
           ]
         }
-      ]
+      ],
+      "pig:hasSubject": "#MEl-50fbfe8f0029b1a8016ea86245a9d83a",
+      "pig:hasObject": "#MEl-50feddc00029b1a8016e2872e78ecadc"
     },
     {
       "@id": "#SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc",
-      "@type": "pig:relationship",
+      "@type": "pig:Relationship",
       "dcterms:modified": "2020-03-06T09:05:00+01:00",
+      "pig.hasClass": "#SC-reads",
       "pig:hasProperty": [
         {
-          "@type": "#PC-Description",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Description",
           "@value": [
             "'FiCo-Application' reads 'FiCo-Data'"
           ]
         }
-      ]
+      ],
+      "pig:hasSubject": "#MEl-50fbfe8f0029b1a8016ea86245a9d83a",
+      "pig:hasObject": "#MEl-50feddc00029b1a8016e2872e78ecadc"
     },
     {
       "@id": "#Ssat-50feddc00029b1a8016e2872e78ecadc-1a8016e2872e78ecadc50feddc00029b",
-      "@type": "pig:relationship",
+      "@type": "pig:Relationship",
       "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "pig.hasClass": "#SC-satisfies",
       "pig:hasProperty": [
         {
-          "@type": "#PC-Description",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Description",
           "@value": [
             "'FiCo-Data' satisfies 'Data Volume'"
           ]
         }
-      ]
+      ],
+      "pig:hasSubject": "#MEl-50feddc00029b1a8016e2872e78ecadc",
+      "pig:hasObject": "#Req-1a8016e2872e78ecadc50feddc00029b"
     },
     {
       "@id": "#Ssat-50feddc00029b1a8016e2872e78ecadc-0Z7916e2872e78ecadc50feddc00918a",
-      "@type": "pig:relationship",
+      "@type": "pig:Relationship",
       "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "pig.hasClass": "#SC-satisfies",
       "pig:hasProperty": [
         {
-          "@type": "#PC-Description",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Description",
           "@value": [
             "'FiCo-Data' satisfies 'Consistency'"
           ]
         }
-      ]
+      ],
+      "pig:hasSubject": "#MEl-50feddc00029b1a8016e2872e78ecadc",
+      "pig:hasObject": "#Req-0Z7916e2872e78ecadc50feddc00918a"
     },
     {
       "@id": "#Ssat-50fbfe8f0029b1a8016ea86245a9d83a-2b9016e2872e78ecadc50feddc0013Ac",
-      "@type": "pig:relationship",
+      "@type": "pig:Relationship",
       "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "pig.hasClass": "#SC-satisfies",
       "pig:hasProperty": [
         {
-          "@type": "#PC-Description",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Description",
           "@value": [
             "'FiCo-Application' satisfies 'Response Time'"
           ]
         }
-      ]
+      ],
+      "pig:hasSubject": "#MEl-50fbfe8f0029b1a8016ea86245a9d83a",
+      "pig:hasObject": "#Req-2b9016e2872e78ecadc50feddc0013Ac"
     },
     {
       "@id": "#SVis-aec0df7900010000017001eaf53e8876-SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc",
-      "@type": "pig:relationship",
+      "@type": "pig:Relationship",
       "dcterms:modified": "2025-01-26T08:32:00+01:00",
+      "pig.hasClass": "#SC-shows",
       "pig:hasProperty": [
         {
-          "@type": "#PC-Name",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Name",
           "@value": [
             "SpecIF:shows"
           ]
         },
         {
-          "@type": "#PC-Description",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Description",
           "@value": [
             "'FMC Block Diagram' shows 'FiCo-Application writes FiCo-Data'"
           ]
         }
-      ]
+      ],
+      "pig:hasSubject": "#Diagram-aec0df7900010000017001eaf53e8876",
+      "pig:hasObject": "#SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc"
     },
     {
       "@id": "#SVis-aec0df7900010000017001eaf53e8876-SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc",
-      "@type": "pig:relationship",
+      "@type": "pig:Relationship",
       "dcterms:modified": "2025-01-26T08:32:00+01:00",
+      "pig.hasClass": "#SC-shows",
       "pig:hasProperty": [
         {
-          "@type": "#PC-Name",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Name",
           "@value": [
             "SpecIF:shows"
           ]
         },
         {
-          "@type": "#PC-Description",
+          "@type": "pig:Property",
+          "pig:hasClass": "#PC-Description",
           "@value": [
             "'FMC Block Diagram' shows 'FiCo-Application reads FiCo-Data'"
           ]
         }
-      ]
+      ],
+      "pig:hasSubject": "#Diagram-aec0df7900010000017001eaf53e8876",
+      "pig:hasObject": "#SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc"
     },
-    [
-      {
-        "@id": "#N-Folder-Introduction",
-        "@type": "pig:Outline",
-        "dcterms:modified": "2025-02-07T10:00:00+01:00",
-        "pig:hasElement": "#Folder-Introduction"
-      },
-      {
-        "@id": "#N-Folder-Requirements",
-        "@type": "pig:Outline",
-        "dcterms:modified": "2020-10-17T10:00:00+01:00",
-        "pig:hasElement": "#Folder-Requirements",
-        "pig:hasChild": [
-          {
-            "@id": "#N-1a8016e2872e78ecadc50feddc00029b",
-            "@type": "pig:Outline",
-            "dcterms:modified": "2020-10-17T10:00:00+01:00",
-            "pig:hasElement": "#Req-1a8016e2872e78ecadc50feddc00029b"
-          },
-          {
-            "@id": "#N-0Z7916e2872e78ecadc50feddc00918a",
-            "@type": "pig:Outline",
-            "dcterms:modified": "2020-10-17T10:00:00+01:00",
-            "pig:hasElement": "#Req-0Z7916e2872e78ecadc50feddc00918a"
-          },
-          {
-            "@id": "#N-2b9016e2872e78ecadc50feddc0013Ac",
-            "@type": "pig:Outline",
-            "dcterms:modified": "2020-10-17T10:00:00+01:00",
-            "pig:hasElement": "#Req-2b9016e2872e78ecadc50feddc0013Ac"
-          }
-        ]
-      },
-      {
-        "@id": "#N-Folder-SystemModel",
-        "@type": "pig:Outline",
-        "dcterms:modified": "2020-10-17T10:00:00+01:00",
-        "pig:hasElement": "#Folder-SystemModel",
-        "pig:hasChild": [
-          {
-            "@id": "#N-Diagram-aec0df7900010000017001eaf53e8876",
-            "@type": "pig:Outline",
-            "dcterms:modified": "2020-10-17T10:00:00+01:00",
-            "pig:hasElement": "#Diagram-aec0df7900010000017001eaf53e8876",
-            "pig:hasChild": [
-              {
-                "@id": "#N-50fbfe8f0029b1a8016ea86245a9d83a",
-                "@type": "pig:Outline",
-                "dcterms:modified": "2020-03-06T09:05:00+01:00",
-                "pig:hasElement": "#MEl-50fbfe8f0029b1a8016ea86245a9d83a"
-              },
-              {
-                "@id": "#N-50feddc00029b1a8016e2872e78ecadc",
-                "@type": "pig:Outline",
-                "dcterms:modified": "2020-03-06T09:05:00+01:00",
-                "pig:hasElement": "#MEl-50feddc00029b1a8016e2872e78ecadc"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "@id": "#N-FolderGlossary-10875487071",
-        "@type": "pig:Outline",
-        "dcterms:modified": "2025-06-06T08:45:56.203Z",
-        "pig:hasElement": "#FolderGlossary-10875487071",
-        "pig:hasChild": [
-          {
-            "@id": "#N-9559304043",
-            "@type": "pig:Outline",
-            "dcterms:modified": "2025-06-06T08:45:56.203Z",
-            "pig:hasElement": "#MEl-50fbfe8f0029b1a8016ea86245a9d83a"
-          },
-          {
-            "@id": "#N-12075661949",
-            "@type": "pig:Outline",
-            "dcterms:modified": "2025-06-06T08:45:56.203Z",
-            "pig:hasElement": "#MEl-50feddc00029b1a8016e2872e78ecadc"
-          }
-        ]
-      }
-    ]
+    {
+      "@id": "#N-HierarchyRoot",
+      "@type": "pig:Organizer",
+      "pig:hasChild": [
+        {
+          "@id": "#N-Folder-Introduction",
+          "@type": "pig:Organizer",
+          "dcterms:modified": "2025-02-07T10:00:00+01:00",
+          "pig:hasElement": "#Folder-Introduction"
+        },
+        {
+          "@id": "#N-Folder-Requirements",
+          "@type": "pig:Organizer",
+          "dcterms:modified": "2020-10-17T10:00:00+01:00",
+          "pig:hasElement": "#Folder-Requirements",
+          "pig:hasChild": [
+            {
+              "@id": "#N-1a8016e2872e78ecadc50feddc00029b",
+              "@type": "pig:Organizer",
+              "dcterms:modified": "2020-10-17T10:00:00+01:00",
+              "pig:hasElement": "#Req-1a8016e2872e78ecadc50feddc00029b"
+            },
+            {
+              "@id": "#N-0Z7916e2872e78ecadc50feddc00918a",
+              "@type": "pig:Organizer",
+              "dcterms:modified": "2020-10-17T10:00:00+01:00",
+              "pig:hasElement": "#Req-0Z7916e2872e78ecadc50feddc00918a"
+            },
+            {
+              "@id": "#N-2b9016e2872e78ecadc50feddc0013Ac",
+              "@type": "pig:Organizer",
+              "dcterms:modified": "2020-10-17T10:00:00+01:00",
+              "pig:hasElement": "#Req-2b9016e2872e78ecadc50feddc0013Ac"
+            }
+          ]
+        },
+        {
+          "@id": "#N-Folder-SystemModel",
+          "@type": "pig:Organizer",
+          "dcterms:modified": "2020-10-17T10:00:00+01:00",
+          "pig:hasElement": "#Folder-SystemModel",
+          "pig:hasChild": [
+            {
+              "@id": "#N-Diagram-aec0df7900010000017001eaf53e8876",
+              "@type": "pig:Organizer",
+              "dcterms:modified": "2020-10-17T10:00:00+01:00",
+              "pig:hasElement": "#Diagram-aec0df7900010000017001eaf53e8876",
+              "pig:hasChild": [
+                {
+                  "@id": "#N-50fbfe8f0029b1a8016ea86245a9d83a",
+                  "@type": "pig:Organizer",
+                  "dcterms:modified": "2020-03-06T09:05:00+01:00",
+                  "pig:hasElement": "#MEl-50fbfe8f0029b1a8016ea86245a9d83a"
+                },
+                {
+                  "@id": "#N-50feddc00029b1a8016e2872e78ecadc",
+                  "@type": "pig:Organizer",
+                  "dcterms:modified": "2020-03-06T09:05:00+01:00",
+                  "pig:hasElement": "#MEl-50feddc00029b1a8016e2872e78ecadc"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "@id": "#N-FolderGlossary-10875487071",
+          "@type": "pig:Organizer",
+          "dcterms:modified": "2025-06-09T07:15:28.492Z",
+          "pig:hasElement": "#FolderGlossary-10875487071",
+          "pig:hasChild": [
+            {
+              "@id": "#N-9559304043",
+              "@type": "pig:Organizer",
+              "dcterms:modified": "2025-06-09T07:15:28.492Z",
+              "pig:hasElement": "#MEl-50fbfe8f0029b1a8016ea86245a9d83a"
+            },
+            {
+              "@id": "#N-12075661949",
+              "@type": "pig:Organizer",
+              "dcterms:modified": "2025-06-09T07:15:28.492Z",
+              "pig:hasElement": "#MEl-50feddc00029b1a8016e2872e78ecadc"
+            }
+          ]
+        }
+      ]
+    }
   ]
 }

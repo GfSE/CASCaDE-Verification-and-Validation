@@ -1677,7 +1677,7 @@ SpecIF:refersTo
 	a :RC-Folder ;
 	:PC-Name "Modellelemente (Glossar)" ;
 	:PC-Type "Modellelemente (Glossar)" ;
-	dcterms:modified "2025-06-06T10:04:17.759Z" .
+	dcterms:modified "2025-06-09T07:17:18.410Z" .
 
 #################################################################
 # Statements
@@ -3019,7 +3019,7 @@ SpecIF:refersTo
 # Hierarchies
 #################################################################
 
-:HierarchyRoot
+:N-HierarchyRoot
 	a pig:Organizer ;
 	rdfs:label "Hierarchy Root" ;
 	rdfs:comment "... anchoring all hierarchies of this graph (project)" ;
@@ -3586,7 +3586,7 @@ SpecIF:refersTo
 	pig:hasElement :Iss-eee2d4e00000c3a801394148dcc58a52 .
 
 :N-FolderGlossary-8001804519
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :FolderGlossary-8001804519 ;
 	pig:hasChild N-11992826682 ,
 		N-11698393655 ,
@@ -3656,265 +3656,265 @@ SpecIF:refersTo
 		N-10031576033 .
 
 :N-11992826682
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5a7776c50000bca8013765ae93af9209 .
 
 :N-11698393655
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5a76365c0000bca8013776e91afd1e8e .
 
 :N-9509306014
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-608177820000bca801379179ebf3b6aa .
 
 :N-11325426083
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-611366530000bca80137a97f194e96a3 .
 
 :N-8496575153
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5bd6bd890000bca8013739588a3f43d6 .
 
 :N-10335555685
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5a9ce0310000bca801378176dc4744e8 .
 
 :N-10246963513
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5b2f95ec0000bca8013709bfa81d701f .
 
 :N-11264518815
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-453862540000c3a801419d91bef48cfd .
 
 :N-9160779324
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-45387c0b0000c3a801410aa03f6b9be4 .
 
 :N-10632367516
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5a85347c0000bca80137ad485c7cd330 .
 
 :N-11985572692
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5a808e2a0000bca80137bfd74268a84a .
 
 :N-11883342810
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5a752ccc0000bca80137479a2e8bab30 .
 
 :N-9244525526
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-4538920b0000c3a801415c67e334b8a1 .
 
 :N-10798294875
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5a71c4800000bca80137f2aaa7b63000 .
 
 :N-11439696753
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-606f16ac0000bca801373587fda932b3 .
 
 :N-11359729878
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5a4dd77b0000bca8013736c6912ad291 .
 
 :N-8149704192
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-45450be80000c3a801414f280f146c71 .
 
 :N-10286201224
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-4536b0350000c3a801415986f8ea806a .
 
 :N-10770729255
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5a844d820000bca8013750b9a0410b6b .
 
 :N-8165948670
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5a489c300000bca80137ee1373c16844 .
 
 :N-12138919772
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5a4c80c20000bca8013753b6999a4da8 .
 
 :N-11028593111
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5a99c89c0000bca801375d44cf9a50ca .
 
 :N-10217328855
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5a8009a00000bca80137ef95bc3f643f .
 
 :N-10525716415
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5a87083e0000bca801379bb412523737 .
 
 :N-11929615658
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5b149eab0000bca80137aad99b6eea7b .
 
 :N-8708504350
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5a52b50c0000bca801377e3d15255f98 .
 
 :N-8947132181
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5b08ed8d0000bca8013719f554353b0e .
 
 :N-11899911847
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5a9929510000bca80137d23c81f1ca54 .
 
 :N-8706154690
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5bcf35cf0000bca8013776d68023612a .
 
 :N-11110633939
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-453dfb670000c3a8014191107df4565e .
 
 :N-10422773061
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5b094f8a0000bca801374c798a6587ad .
 
 :N-9207557458
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-45428b930000c3a80141e28b7d4b5ae5 .
 
 :N-8475769123
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5b078fa50000bca80137f36ed05c43cb .
 
 :N-9488170768
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5c29fb8e0000bca80137eb9734c99bfd .
 
 :N-10961176369
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5a82ec6f0000bca801372ef053a71bdf .
 
 :N-10222646501
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-608239830000bca801373690c7d2af0f .
 
 :N-9870789565
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-610b07100000bca80137c10f96c46247 .
 
 :N-10780505608
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5a86b8980000bca80137ca6fde1a125e .
 
 :N-7987935753
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-610e0b010000bca80137ac40800bb1b8 .
 
 :N-10742722363
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-453facbb0000c3a80141c43d2fb4f5e2 .
 
 :N-11576683570
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5a51dd920000bca8013770a4395c83fc .
 
 :N-12103498960
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5bcfb01d0000bca80137f303272a5557 .
 
 :N-9767419742
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5a50d5b60000bca8013781532547ce93 .
 
 :N-11624385924
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-803fd3750000c3a8013cf1fdb3b26d33 .
 
 :N-10581808145
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5a77385f0000bca80137e1c7dc0b1721 .
 
 :N-12070675378
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5b2d29070000bca801378a6c020cf8f5 .
 
 :N-10254678604
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5b1750f80000bca801373b2d143d7478 .
 
 :N-11318840750
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-459b92580000c3a80141cb4acb521ab1 .
 
 :N-10697245591
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5b2ddad80000bca80137c44d62ba97d8 .
 
 :N-9425292180
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5b2449180000bca8013722c01c9d35a5 .
 
 :N-10690146030
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5a4cfa830000bca801370d837f761f3e .
 
 :N-10305579835
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5a9888810000bca801375410ce1cc142 .
 
 :N-8693729440
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5b0839b90000bca801376dcca41ca7d0 .
 
 :N-9531538611
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-45384cd10000c3a80141c1f85d7c26e6 .
 
 :N-10437899675
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5b07e6aa0000bca8013797aad9be69ae .
 
 :N-11635797126
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-607f13b50000bca80137ba95f11856ab .
 
 :N-8254619229
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5a820a3c0000bca801378c9093fb7d80 .
 
 :N-10074645837
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5a4d2bd00000bca80137a3f233cdffeb .
 
 :N-10455795887
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5a4d6dee0000bca80137c1caf2f42349 .
 
 :N-9563063161
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-4543fe900000c3a80141f5253ff13c35 .
 
 :N-10872481972
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-453d34af0000c3a80141918f84641161 .
 
 :N-11412566754
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5a47935a0000bca801377c17f8cb25b0 .
 
 :N-10637362482
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-45a236e00000c3a801410f6503287e16 .
 
 :N-8326605989
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-45a3b13c0000c3a801415e97f5bc29d1 .
 
 :N-10093957736
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-5a9b7a9b0000bca80137d768644696b7 .
 
 :N-10031576033
-	dcterms:modified "2025-06-06T10:04:17.759Z" ;
+	dcterms:modified "2025-06-09T07:17:18.410Z" ;
 	pig:hasElement :MEl-463289cd0000c3a80141be3fc417034a .
