@@ -1,0 +1,1133 @@
+{
+  "@context": {
+    "0": "https://product-information-graph.org/examples/Project%20'Very%20Simple%20Model%20(FMC)%20with%20Requirements'.specifz/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "sh": "https://www.w3.org/ns/shacl",
+    "W3C": "https://www.w3.org/standards/semanticweb#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "schema": "https://schema.org#",
+    "iana": "https://www.iana.org/assignments/media-types#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "FMC": "http://fmc-modeling.org#",
+    "IR": "https://www.adesso.de/de/impulse/interaction-room/index.jsp#",
+    "IREB": "https://www.ireb.org/en/downloads/#cpre-glossary",
+    "ReqIF": "https://www.prostep.org/fileadmin/downloads/PSI_ImplementationGuide_ReqIF_V1-7.pdf#",
+    "ReqIF-WF": "https://www.prostep.org/fileadmin/downloads/Recommendation_ReqIF_V2_RZ3.pdf#",
+    "HIS": "https://www.itwissen.info/Herstellerinitiative-Software-Automotive-HIS.html#",
+    "oslc": "http://open-services.net/ns/core#",
+    "oslc_rm": "http://open-services.net/ns/rm#",
+    "oslc_cm": "http://open-services.net/ns/cm#",
+    "ArchiMate": "https://pubs.opengroup.org#",
+    "bpmn": "https://www.bpmn.org/#",
+    "uml": "https://www.omg.org/spec/UML#",
+    "sysml": "https://www.omg.org/spec/SysML#",
+    "pig": "https://product-information-graph.org",
+    "DDP": "http://www.prostep.org/dictionary/2.0#",
+    "SpecIF": "https://specif.de/v1.1/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "0:",
+      "@type": "owl:Ontology",
+      "rdfs:label": "Project 'Very Simple Model (FMC) with Requirements'",
+      "owl:imports": [
+        {
+          "@id": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        },
+        {
+          "@id": "http://www.w3.org/2000/01/rdf-schema#"
+        }
+      ]
+    },
+    {
+      "@id": "0:DT-Priority",
+      "@type": "owl:Class",
+      "rdfs:label": "SpecIF:Priority",
+      "rdfs:comment": "Enumerated values for priority",
+      "dcterms:modified": "2016-05-26T08:59:00+02:00",
+      "owl:oneOf": {
+        "@list": [
+          {
+            "@id": "0:V-Prio-0"
+          },
+          {
+            "@id": "0:V-Prio-1"
+          },
+          {
+            "@id": "0:V-Prio-2"
+          },
+          {
+            "@id": "0:V-Prio-3"
+          },
+          {
+            "@id": "0:V-Prio-4"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "0:V-Prio-0",
+      "@type": "0:DT-Priority",
+      "rdfs:label": "SpecIF:priorityHigh"
+    },
+    {
+      "@id": "0:V-Prio-1",
+      "@type": "0:DT-Priority",
+      "rdfs:label": "SpecIF:priorityRatherHigh"
+    },
+    {
+      "@id": "0:V-Prio-2",
+      "@type": "0:DT-Priority",
+      "rdfs:label": "SpecIF:priorityMedium"
+    },
+    {
+      "@id": "0:V-Prio-3",
+      "@type": "0:DT-Priority",
+      "rdfs:label": "SpecIF:priorityRatherLow"
+    },
+    {
+      "@id": "0:V-Prio-4",
+      "@type": "0:DT-Priority",
+      "rdfs:label": "SpecIF:priorityLow"
+    },
+    {
+      "@id": "rdfs:label",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "<div><p><code>rdfs:label</code> is an instance of <code>rdf:Property</code> that may be used to provide a human-readable version of a resource's name.</p><p>A triple of the form:</p><blockquote> <code>R rdfs:label L</code></blockquote><p>states that L is a human readable label for R.</p><p>The <code>rdfs:domain</code> of <code>rdfs:label</code> is <code>rdfs:Resource</code>. The <a href=\"#ch_range\"><code>rdfs:range</code></a> of rdfs:label is <code>rdfs:Literal</code>.</p><p>Multilingual labels are supported using the <a href=\"https://www.w3.org/TR/rdf12-concepts/#section-Graph-Literal\" id=\"ref-for-index-term-literal-2\">language tagging</a> facility of RDF literals.</p></div>"
+    },
+    {
+      "@id": "0:PC-Name-Shape",
+      "@type": "http://www.w3.org/ns/shacl#PropertyShape",
+      "http://www.w3.org/ns/shacl#path": {
+        "@id": "0:PC-Name"
+      },
+      "http://www.w3.org/ns/shacl#datatype": {
+        "@id": "xsd:string"
+      },
+      "http://www.w3.org/ns/shacl#maxLength": "256",
+      "http://www.w3.org/ns/shacl#maxCount": "1"
+    },
+    {
+      "@id": "0:PC-Name",
+      "owl:subPropertyOf": {
+        "@id": "rdfs:label"
+      },
+      "rdfs:label": "rdfs:label",
+      "dcterms:modified": "2018-05-10T11:54:00+01:00"
+    },
+    {
+      "@id": "rdfs:comment",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "<div><p><code>rdfs:comment</code> is an instance of <code>rdf:Property</code> that may be used to provide a human-readable description of a resource.</p><p>A triple of the form:</p><blockquote> <code>R rdfs:comment L</code></blockquote><p>states that L is a human readable description of R.</p><p>The <code>rdfs:domain</code> of <code>rdfs:comment</code> is <code>rdfs:Resource</code>. The <code>rdfs:range</code> of rdfs:comment is <code>rdfs:Literal</code>.</p><p>A textual comment helps clarify the meaning of RDF classes and properties. Such in-line documentation complements the use of both formal techniques (Ontology and rule languages) and informal (prose documentation, examples, test cases). A variety of documentation forms can be combined to indicate the intended meaning of the classes and properties described in an RDF vocabulary. Since RDF vocabularies are expressed as RDF graphs, vocabularies defined in other namespaces may be used to provide richer documentation.</p><p>Multilingual documentation is supported through use of the <a href=\"https://www.w3.org/TR/rdf12-concepts/#section-Graph-Literal\" id=\"ref-for-index-term-literal-3\">language tagging</a> facility of RDF literals.</p></div>"
+    },
+    {
+      "@id": "0:PC-Description-Shape",
+      "@type": "http://www.w3.org/ns/shacl#PropertyShape",
+      "http://www.w3.org/ns/shacl#path": {
+        "@id": "0:PC-Description"
+      },
+      "http://www.w3.org/ns/shacl#datatype": {
+        "@id": "xsd:string"
+      },
+      "http://www.w3.org/ns/shacl#maxCount": "1"
+    },
+    {
+      "@id": "0:PC-Description",
+      "owl:subPropertyOf": {
+        "@id": "rdfs:comment"
+      },
+      "rdfs:label": "rdfs:comment",
+      "rdfs:comment": "An account of the resource (source: http://dublincore.org/documents/dcmi-terms/). Descriptive text represented in plain or rich text using XHTML or Markdown. SHOULD include only content that is valid and suitable inside an XHTML &lt;div&gt; element (source: http://open-services.net/).",
+      "dcterms:modified": "2021-02-23T08:59:00+02:00"
+    },
+    {
+      "@id": "SpecIF:Diagram",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "One or more diagrams illustrating the resource."
+    },
+    {
+      "@id": "0:PC-Diagram-Shape",
+      "@type": "http://www.w3.org/ns/shacl#PropertyShape",
+      "http://www.w3.org/ns/shacl#path": {
+        "@id": "0:PC-Diagram"
+      },
+      "http://www.w3.org/ns/shacl#datatype": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "0:PC-Diagram",
+      "owl:subPropertyOf": {
+        "@id": "SpecIF:Diagram"
+      },
+      "rdfs:label": "SpecIF:Diagram",
+      "rdfs:comment": "One or more diagrams illustrating the resource.",
+      "dcterms:modified": "2023-02-26T14:40:17.601Z"
+    },
+    {
+      "@id": "dcterms:type",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "<p>The nature or genre of the resource. <small>(<i>source: <a href=\"http://purl.org/dc/elements/1.1/type\">DCMI</a></i>)</small></p><p>Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element.</p><p>For example, a [[FMC:Actor]] may represent a <i>System Function</i>, a <i>System Component</i> or a <i>User Role</i>. Similarly, in the context of process modelling, a FMC:Actor may represent a <i>Process Step</i> or again a <i>User Role</i>. So, all of these are meaningful values for a FMC:Actor's property named dcterms:type.</p>"
+    },
+    {
+      "@id": "0:PC-Type-Shape",
+      "@type": "http://www.w3.org/ns/shacl#PropertyShape",
+      "http://www.w3.org/ns/shacl#path": {
+        "@id": "0:PC-Type"
+      },
+      "http://www.w3.org/ns/shacl#datatype": {
+        "@id": "xsd:string"
+      },
+      "http://www.w3.org/ns/shacl#maxLength": "32",
+      "http://www.w3.org/ns/shacl#maxCount": "1"
+    },
+    {
+      "@id": "0:PC-Type",
+      "owl:subPropertyOf": {
+        "@id": "dcterms:type"
+      },
+      "rdfs:label": "dcterms:type",
+      "rdfs:comment": "<p>The nature or genre of the resource. <small>(<i>source: <a href=\"http://purl.org/dc/elements/1.1/type\">DCMI</a></i>)</small></p><p>Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element.</p><p>For example, a [[FMC:Actor]] may represent a <i>System Function</i>, a <i>System Component</i> or a <i>User Role</i>. Similarly, in the context of process modelling, a FMC:Actor may represent a <i>Process Step</i> or again a <i>User Role</i>. So, all of these are meaningful values for a FMC:Actor's property named dcterms:type.</p>",
+      "dcterms:modified": "2023-02-26T20:18:04.451Z"
+    },
+    {
+      "@id": "0:PC-Priority",
+      "@type": "owl:ObjectProperty",
+      "rdfs:label": "SpecIF:Priority",
+      "rdfs:comment": "The 'Priority' of the resource.",
+      "dcterms:modified": "2020-03-26T22:59:00+02:00"
+    },
+    {
+      "@id": "pig:OrganizerClass",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "pig:EntityClass",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "SpecIF:Heading",
+      "owl:subClassOf": {
+        "@id": "pig:EntityClass"
+      },
+      "rdfs:comment": "Eine 'Überschrift' in einem Dokument ist der Titel eines Kapitels. Sie kann eine Beschreibung haben, die als Einleitung oder Zusammenfassung des Kapitels genutzt werden kann."
+    },
+    {
+      "@id": "0:RC-Folder-Shape",
+      "@type": "http://www.w3.org/ns/shacl#NodeShape",
+      "http://www.w3.org/ns/shacl#targetClass": {
+        "@id": "0:RC-Folder"
+      },
+      "http://www.w3.org/ns/shacl#property": [
+        {
+          "@id": "0:PC-Name-Shape"
+        },
+        {
+          "@id": "0:PC-Description-Shape"
+        },
+        {
+          "@id": "0:PC-Diagram-Shape"
+        },
+        {
+          "@id": "0:PC-Type-Shape"
+        }
+      ]
+    },
+    {
+      "@id": "0:RC-Folder",
+      "owl:subClassOf": {
+        "@id": "SpecIF:Heading"
+      },
+      "rdfs:label": "SpecIF:Heading",
+      "rdfs:comment": "A 'Heading' is a chapter title at any level with optional description.",
+      "dcterms:modified": "2024-03-02T15:28:50.414Z"
+    },
+    {
+      "@id": "SpecIF:Paragraph",
+      "owl:subClassOf": {
+        "@id": "pig:EntityClass"
+      },
+      "rdfs:comment": "<p>Ein 'Textabschnitt' in einem Dokument auf beliebiger Ebene.</p>"
+    },
+    {
+      "@id": "0:RC-Paragraph-Shape",
+      "@type": "http://www.w3.org/ns/shacl#NodeShape",
+      "http://www.w3.org/ns/shacl#targetClass": {
+        "@id": "0:RC-Paragraph"
+      },
+      "http://www.w3.org/ns/shacl#property": [
+        {
+          "@id": "0:PC-Name-Shape"
+        },
+        {
+          "@id": "0:PC-Description-Shape"
+        },
+        {
+          "@id": "0:PC-Diagram-Shape"
+        },
+        {
+          "@id": "0:PC-Type-Shape"
+        }
+      ]
+    },
+    {
+      "@id": "0:RC-Paragraph",
+      "owl:subClassOf": {
+        "@id": "SpecIF:Paragraph"
+      },
+      "rdfs:label": "SpecIF:Paragraph",
+      "rdfs:comment": "<p>A 'Paragraph' is an unspecified information in a document at any level.</p>",
+      "dcterms:modified": "2023-07-16T09:30:25.850Z"
+    },
+    {
+      "@id": "pig:View",
+      "owl:subClassOf": {
+        "@id": "pig:OrganizerClass"
+      },
+      "rdfs:comment": "A PIG organizer class representing a diagram with certain model-elements for a given communication purpose."
+    },
+    {
+      "@id": "0:RC-View-Shape",
+      "@type": "http://www.w3.org/ns/shacl#NodeShape",
+      "http://www.w3.org/ns/shacl#targetClass": {
+        "@id": "0:RC-View"
+      },
+      "http://www.w3.org/ns/shacl#property": [
+        {
+          "@id": "0:PC-Name-Shape"
+        },
+        {
+          "@id": "0:PC-Description-Shape"
+        },
+        {
+          "@id": "0:PC-Diagram-Shape"
+        },
+        {
+          "@id": "0:PC-Type-Shape"
+        }
+      ]
+    },
+    {
+      "@id": "0:RC-View",
+      "owl:subClassOf": {
+        "@id": "pig:View"
+      },
+      "rdfs:label": "pig:View",
+      "rdfs:comment": "A 'View' is a graphical model view with a specific communication purpose, e.g. a business process or system composition.",
+      "pig:Icon": "▣",
+      "dcterms:modified": "2018-05-10T11:54:00+01:00"
+    },
+    {
+      "@id": "FMC:Actor",
+      "owl:subClassOf": {
+        "@id": "pig:EntityClass"
+      },
+      "rdfs:comment": "<p>Ein 'Akteur' ist ein fundamentaler Modellelementtyp, der eine aktive Entität darstellt, sei es eine Aktivität, ein Prozessschritt, eine Funktion, eine Systemkomponente oder eine Rolle.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Actor' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[bpmn:timer]].</p>"
+    },
+    {
+      "@id": "0:RC-Actor-Shape",
+      "@type": "http://www.w3.org/ns/shacl#NodeShape",
+      "http://www.w3.org/ns/shacl#targetClass": {
+        "@id": "0:RC-Actor"
+      },
+      "http://www.w3.org/ns/shacl#property": [
+        {
+          "@id": "0:PC-Name-Shape"
+        },
+        {
+          "@id": "0:PC-Description-Shape"
+        },
+        {
+          "@id": "0:PC-Type-Shape"
+        }
+      ]
+    },
+    {
+      "@id": "0:RC-Actor",
+      "owl:subClassOf": {
+        "@id": "FMC:Actor"
+      },
+      "rdfs:label": "FMC:Actor",
+      "rdfs:comment": "An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role.",
+      "pig:Icon": "&#x25A1;",
+      "dcterms:modified": "2018-05-10T11:54:00+01:00"
+    },
+    {
+      "@id": "FMC:State",
+      "owl:subClassOf": {
+        "@id": "pig:EntityClass"
+      },
+      "rdfs:comment": "<p>Ein 'Zustand' ist ein fundamentaler Modellelementtyp, der eine passive Entität darstellt, sei es ein Wert, ein Dokument, ein Informationsspeicher, eine Bedingung oder eine physische Beschaffenheit.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:State' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[ArchiMate:DataObject]].</p>"
+    },
+    {
+      "@id": "0:RC-State-Shape",
+      "@type": "http://www.w3.org/ns/shacl#NodeShape",
+      "http://www.w3.org/ns/shacl#targetClass": {
+        "@id": "0:RC-State"
+      },
+      "http://www.w3.org/ns/shacl#property": [
+        {
+          "@id": "0:PC-Name-Shape"
+        },
+        {
+          "@id": "0:PC-Description-Shape"
+        },
+        {
+          "@id": "0:PC-Type-Shape"
+        }
+      ]
+    },
+    {
+      "@id": "0:RC-State",
+      "owl:subClassOf": {
+        "@id": "FMC:State"
+      },
+      "rdfs:label": "FMC:State",
+      "rdfs:comment": "A 'State' is a fundamental model element type representing a passive entity, be it a value, a document, an information storage or even a physical shape.",
+      "pig:Icon": "&#x25CB;",
+      "dcterms:modified": "2018-05-10T11:54:00+01:00"
+    },
+    {
+      "@id": "FMC:Event",
+      "owl:subClassOf": {
+        "@id": "pig:EntityClass"
+      },
+      "rdfs:comment": "<p>Ein 'Ereignis' ist ein fundamentaler Modellelementtyp, der eine Zeitreferenz, eine Änderung einer Bedingung/eines Wertes oder allgemeiner ein Synchronisationsmittel darstellt.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Event' spezifiziert. Die Werte dieser Eigenschaft sollen Ontologiebegriffe sein, wie z.B. [[bpmn:startEvent]].</p>"
+    },
+    {
+      "@id": "0:RC-Event-Shape",
+      "@type": "http://www.w3.org/ns/shacl#NodeShape",
+      "http://www.w3.org/ns/shacl#targetClass": {
+        "@id": "0:RC-Event"
+      },
+      "http://www.w3.org/ns/shacl#property": [
+        {
+          "@id": "0:PC-Name-Shape"
+        },
+        {
+          "@id": "0:PC-Description-Shape"
+        },
+        {
+          "@id": "0:PC-Type-Shape"
+        }
+      ]
+    },
+    {
+      "@id": "0:RC-Event",
+      "owl:subClassOf": {
+        "@id": "FMC:Event"
+      },
+      "rdfs:label": "FMC:Event",
+      "rdfs:comment": "An 'Event' is a fundamental model element type representing a time reference, a change in condition/value or more generally a synchronisation primitive.",
+      "pig:Icon": "&#x2662;",
+      "dcterms:modified": "2018-05-10T11:54:00+01:00"
+    },
+    {
+      "@id": "IREB:Requirement",
+      "owl:subClassOf": {
+        "@id": "pig:EntityClass"
+      },
+      "rdfs:comment": "<p>Eine 'Anforderung' ist ein einzelnes dokumentiertes physisches und funktionales Bedürfnis, das ein bestimmter Entwurf, ein Produkt oder ein Prozess erfüllen muss. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>Eine Bedingung oder Fähigkeit, die ein Benutzer benötigt, um ein Problem zu lösen oder ein Ziel zu erreichen.</li><li>Eine Bedingung oder Fähigkeit, die ein System oder eine Systemkomponente erfüllen oder besitzen muss, um einen Vertrag, eine Norm, eine Spezifikation oder ein anderes formal vorgeschriebenes Dokument zu erfüllen.</li><li>Eine dokumentierte Darstellung einer Bedingung oder Fähigkeit wie in (1) oder (2).</li></ol><p>Anmerkung: Die obige Definition ist die klassische Definition aus IEEE Std 610.12 von 1990. Alternativ geben wir auch eine modernere Definition an:</p><ol><li>Ein von einem Stakeholder wahrgenommener Bedarf.</li><li>Eine Fähigkeit oder Eigenschaft, die ein System haben soll.</li><li>Eine dokumentierte Darstellung eines Bedarfs, einer Fähigkeit oder Eigenschaft.</li></ol>"
+    },
+    {
+      "@id": "0:RC-Requirement-Shape",
+      "@type": "http://www.w3.org/ns/shacl#NodeShape",
+      "http://www.w3.org/ns/shacl#targetClass": {
+        "@id": "0:RC-Requirement"
+      },
+      "http://www.w3.org/ns/shacl#property": [
+        {
+          "@id": "0:PC-Name-Shape"
+        },
+        {
+          "@id": "0:PC-Description-Shape"
+        }
+      ]
+    },
+    {
+      "@id": "0:RC-Requirement",
+      "owl:subClassOf": {
+        "@id": "IREB:Requirement"
+      },
+      "rdfs:label": "IREB:Requirement",
+      "rdfs:comment": "A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform.",
+      "pig:Icon": "&#8623;",
+      "dcterms:modified": "2021-02-22T08:59:00+02:00"
+    },
+    {
+      "@id": "pig:RelationshipClass",
+      "@type": "owl:Class"
+    },
+    {
+      "@id": "pig:hasSubject",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "pig:hasObject",
+      "@type": "owl:ObjectProperty"
+    },
+    {
+      "@id": "dcterms:hasPart",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "General containment relationship"
+    },
+    {
+      "@id": "pig:hasElement",
+      "owl:subPropertyOf": {
+        "@id": "dcterms:hasPart"
+      },
+      "rdfs:comment": "Containment relationship reserved for use in a hierarchy."
+    },
+    {
+      "@id": "SpecIF:shows",
+      "@type": "owl:Class",
+      "rdfs:comment": "<p>A [[SpecIF:Diagram]] 'shows' a model element, e.g, a [[FMC:Actor]], [[FMC:State]], [[FMC:Event]] or [[SpecIF:Collection]].</p>"
+    },
+    {
+      "@id": "0:SC-shows-Shape",
+      "@type": "http://www.w3.org/ns/shacl#NodeShape",
+      "http://www.w3.org/ns/shacl#targetClass": {
+        "@id": "0:SC-shows"
+      },
+      "http://www.w3.org/ns/shacl#property": [
+        {
+          "@id": "0:PC-Name-Shape"
+        },
+        {
+          "@id": "0:PC-Description-Shape"
+        },
+        {
+          "@id": "0:SC-shows-hasSubject-Shape"
+        },
+        {
+          "@id": "0:SC-shows-hasObject-Shape"
+        }
+      ]
+    },
+    {
+      "@id": "0:SC-shows",
+      "owl:subClassOf": {
+        "@id": "SpecIF:shows"
+      },
+      "rdfs:label": "SpecIF:shows",
+      "rdfs:comment": "'View' shows 'Model-Element'",
+      "dcterms:modified": "2018-05-10T11:54:00+01:00"
+    },
+    {
+      "@id": "0:SC-shows-hasSubject-Shape",
+      "@type": "http://www.w3.org/ns/shacl#PropertyShape",
+      "http://www.w3.org/ns/shacl#path": {
+        "@id": "0:SC-shows-hasSubject"
+      },
+      "http://www.w3.org/ns/shacl#class": {
+        "@id": "0:RC-View"
+      },
+      "http://www.w3.org/ns/shacl#minCount": "1",
+      "http://www.w3.org/ns/shacl#maxCount": "1"
+    },
+    {
+      "@id": "0:SC-shows-hasSubject",
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "pig:hasSubject"
+      },
+      "rdfs:label": "Connects the subject of :SC-shows",
+      "rdfs:domain": {
+        "@id": "0:SC-shows"
+      },
+      "dcterms:modified": "2018-05-10T11:54:00+01:00"
+    },
+    {
+      "@id": "0:SC-shows-hasObject-Shape",
+      "@type": "http://www.w3.org/ns/shacl#PropertyShape",
+      "http://www.w3.org/ns/shacl#path": {
+        "@id": "0:SC-shows-hasObject"
+      },
+      "http://www.w3.org/ns/shacl#minCount": "1",
+      "http://www.w3.org/ns/shacl#maxCount": "1"
+    },
+    {
+      "@id": "0:SC-shows-hasObject",
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "pig:hasObject"
+      },
+      "rdfs:label": "Connects the object of :SC-shows",
+      "rdfs:domain": {
+        "@id": "0:SC-shows"
+      },
+      "dcterms:modified": "2018-05-10T11:54:00+01:00"
+    },
+    {
+      "@id": "SpecIF:writes",
+      "@type": "owl:Class",
+      "rdfs:comment": "A [[FMC:Actor]] 'writes' (changes) a [[FMC:State]]."
+    },
+    {
+      "@id": "0:SC-writes-Shape",
+      "@type": "http://www.w3.org/ns/shacl#NodeShape",
+      "http://www.w3.org/ns/shacl#targetClass": {
+        "@id": "0:SC-writes"
+      },
+      "http://www.w3.org/ns/shacl#property": [
+        {
+          "@id": "0:PC-Description-Shape"
+        },
+        {
+          "@id": "0:SC-writes-hasSubject-Shape"
+        },
+        {
+          "@id": "0:SC-writes-hasObject-Shape"
+        }
+      ]
+    },
+    {
+      "@id": "0:SC-writes",
+      "owl:subClassOf": {
+        "@id": "SpecIF:writes"
+      },
+      "rdfs:label": "SpecIF:writes",
+      "rdfs:comment": "'Actor' (Role, Function) writes 'State' (Information)",
+      "dcterms:modified": "2018-05-10T11:54:00+01:00"
+    },
+    {
+      "@id": "0:SC-writes-hasSubject-Shape",
+      "@type": "http://www.w3.org/ns/shacl#PropertyShape",
+      "http://www.w3.org/ns/shacl#path": {
+        "@id": "0:SC-writes-hasSubject"
+      },
+      "http://www.w3.org/ns/shacl#class": {
+        "@id": "0:RC-Actor"
+      },
+      "http://www.w3.org/ns/shacl#minCount": "1",
+      "http://www.w3.org/ns/shacl#maxCount": "1"
+    },
+    {
+      "@id": "0:SC-writes-hasSubject",
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "pig:hasSubject"
+      },
+      "rdfs:label": "Connects the subject of :SC-writes",
+      "rdfs:domain": {
+        "@id": "0:SC-writes"
+      },
+      "dcterms:modified": "2018-05-10T11:54:00+01:00"
+    },
+    {
+      "@id": "0:SC-writes-hasObject-Shape",
+      "@type": "http://www.w3.org/ns/shacl#PropertyShape",
+      "http://www.w3.org/ns/shacl#path": {
+        "@id": "0:SC-writes-hasObject"
+      },
+      "http://www.w3.org/ns/shacl#class": {
+        "@id": "0:RC-State"
+      },
+      "http://www.w3.org/ns/shacl#minCount": "1",
+      "http://www.w3.org/ns/shacl#maxCount": "1"
+    },
+    {
+      "@id": "0:SC-writes-hasObject",
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "pig:hasObject"
+      },
+      "rdfs:label": "Connects the object of :SC-writes",
+      "rdfs:domain": {
+        "@id": "0:SC-writes"
+      },
+      "dcterms:modified": "2018-05-10T11:54:00+01:00"
+    },
+    {
+      "@id": "SpecIF:reads",
+      "@type": "owl:Class",
+      "rdfs:comment": "A [[FMC:Actor]] 'reads' a [[FMC:State]]."
+    },
+    {
+      "@id": "0:SC-reads-Shape",
+      "@type": "http://www.w3.org/ns/shacl#NodeShape",
+      "http://www.w3.org/ns/shacl#targetClass": {
+        "@id": "0:SC-reads"
+      },
+      "http://www.w3.org/ns/shacl#property": [
+        {
+          "@id": "0:PC-Description-Shape"
+        },
+        {
+          "@id": "0:SC-reads-hasSubject-Shape"
+        },
+        {
+          "@id": "0:SC-reads-hasObject-Shape"
+        }
+      ]
+    },
+    {
+      "@id": "0:SC-reads",
+      "owl:subClassOf": {
+        "@id": "SpecIF:reads"
+      },
+      "rdfs:label": "SpecIF:reads",
+      "rdfs:comment": "'Actor' (Role, Function) reads 'State' (Information)",
+      "dcterms:modified": "2018-05-10T11:54:00+01:00"
+    },
+    {
+      "@id": "0:SC-reads-hasSubject-Shape",
+      "@type": "http://www.w3.org/ns/shacl#PropertyShape",
+      "http://www.w3.org/ns/shacl#path": {
+        "@id": "0:SC-reads-hasSubject"
+      },
+      "http://www.w3.org/ns/shacl#class": {
+        "@id": "0:RC-Actor"
+      },
+      "http://www.w3.org/ns/shacl#minCount": "1",
+      "http://www.w3.org/ns/shacl#maxCount": "1"
+    },
+    {
+      "@id": "0:SC-reads-hasSubject",
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "pig:hasSubject"
+      },
+      "rdfs:label": "Connects the subject of :SC-reads",
+      "rdfs:domain": {
+        "@id": "0:SC-reads"
+      },
+      "dcterms:modified": "2018-05-10T11:54:00+01:00"
+    },
+    {
+      "@id": "0:SC-reads-hasObject-Shape",
+      "@type": "http://www.w3.org/ns/shacl#PropertyShape",
+      "http://www.w3.org/ns/shacl#path": {
+        "@id": "0:SC-reads-hasObject"
+      },
+      "http://www.w3.org/ns/shacl#class": {
+        "@id": "0:RC-State"
+      },
+      "http://www.w3.org/ns/shacl#minCount": "1",
+      "http://www.w3.org/ns/shacl#maxCount": "1"
+    },
+    {
+      "@id": "0:SC-reads-hasObject",
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "pig:hasObject"
+      },
+      "rdfs:label": "Connects the object of :SC-reads",
+      "rdfs:domain": {
+        "@id": "0:SC-reads"
+      },
+      "dcterms:modified": "2018-05-10T11:54:00+01:00"
+    },
+    {
+      "@id": "oslc_rm:satisfies",
+      "@type": "owl:Class",
+      "rdfs:comment": "<p>The object is satisfied by the subject. <small>(<i>source: <a href=\"http://open-services.net/\">OSLC</a></i>)</small></p><p>SpecIF suggests that the subject is confined to a model element, e.g, a [[FMC:Actor]] or [[FMC:State]], and the object is confined to a [[IREB:Requirement]]. More concretely, an example for this type of statement is 'Component-X <em>satisfies</em> 'Requirement-4711'.</p>"
+    },
+    {
+      "@id": "0:SC-satisfies-Shape",
+      "@type": "http://www.w3.org/ns/shacl#NodeShape",
+      "http://www.w3.org/ns/shacl#targetClass": {
+        "@id": "0:SC-satisfies"
+      },
+      "http://www.w3.org/ns/shacl#property": [
+        {
+          "@id": "0:PC-Description-Shape"
+        },
+        {
+          "@id": "0:SC-satisfies-hasSubject-Shape"
+        },
+        {
+          "@id": "0:SC-satisfies-hasObject-Shape"
+        }
+      ]
+    },
+    {
+      "@id": "0:SC-satisfies",
+      "owl:subClassOf": {
+        "@id": "oslc_rm:satisfies"
+      },
+      "rdfs:label": "oslc_rm:satisfies",
+      "rdfs:comment": "Statement: Model-Element satisfies Requirement",
+      "dcterms:modified": "2016-05-26T08:59:00+02:00"
+    },
+    {
+      "@id": "0:SC-satisfies-hasSubject-Shape",
+      "@type": "http://www.w3.org/ns/shacl#PropertyShape",
+      "http://www.w3.org/ns/shacl#path": {
+        "@id": "0:SC-satisfies-hasSubject"
+      },
+      "http://www.w3.org/ns/shacl#class": [
+        {
+          "@id": "0:RC-Actor"
+        },
+        {
+          "@id": "0:RC-State"
+        }
+      ],
+      "http://www.w3.org/ns/shacl#minCount": "1",
+      "http://www.w3.org/ns/shacl#maxCount": "1"
+    },
+    {
+      "@id": "0:SC-satisfies-hasSubject",
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "pig:hasSubject"
+      },
+      "rdfs:label": "Connects the subject of :SC-satisfies",
+      "rdfs:domain": {
+        "@id": "0:SC-satisfies"
+      },
+      "dcterms:modified": "2016-05-26T08:59:00+02:00"
+    },
+    {
+      "@id": "0:SC-satisfies-hasObject-Shape",
+      "@type": "http://www.w3.org/ns/shacl#PropertyShape",
+      "http://www.w3.org/ns/shacl#path": {
+        "@id": "0:SC-satisfies-hasObject"
+      },
+      "http://www.w3.org/ns/shacl#class": {
+        "@id": "0:RC-Requirement"
+      },
+      "http://www.w3.org/ns/shacl#minCount": "1",
+      "http://www.w3.org/ns/shacl#maxCount": "1"
+    },
+    {
+      "@id": "0:SC-satisfies-hasObject",
+      "@type": "owl:ObjectProperty",
+      "rdfs:subPropertyOf": {
+        "@id": "pig:hasObject"
+      },
+      "rdfs:label": "Connects the object of :SC-satisfies",
+      "rdfs:domain": {
+        "@id": "0:SC-satisfies"
+      },
+      "dcterms:modified": "2016-05-26T08:59:00+02:00"
+    },
+    {
+      "@id": "0:Folder-Introduction",
+      "@type": "0:RC-Folder",
+      "0:PC-Name": "Introduction",
+      "0:PC-Description": "<div><p>This is a minimal showcase for a model with model-elements and related requirements. It covers pretty much all characteristics neeeded in such cases (including 'statements on statements'), so that transformations and expressive power of other data formats can be evaluated. The example and its representation in SpecIF format is discussed in <a href=\"https://specif.de/Tutorials/06_Very-Simple-Model-FMC.html\" target=\"_blank\">Tutorial 6: Very Simple Model (FMC)</a> and <a href=\"https://specif.de/Tutorials/09_Very-Simple-Model-FMC-with-Requirements.html\" target=\"_blank\">Tutorial 9: Very Simple Model (FMC) with Requirements</a>.</p></div>",
+      "dcterms:modified": "2025-02-07T08:32:00+01:00"
+    },
+    {
+      "@id": "0:Folder-Requirements",
+      "@type": "0:RC-Folder",
+      "0:PC-Name": "Requirements",
+      "dcterms:modified": "2020-03-06T08:32:00+01:00"
+    },
+    {
+      "@id": "0:Req-1a8016e2872e78ecadc50feddc00029b",
+      "@type": "0:RC-Requirement",
+      "0:PC-Name": "Data Volume",
+      "0:PC-Description": "<div><p>The data store MUST support a total volume up to 850 GB.</p></div>",
+      "0:PC-Priority": {
+        "@id": "0:V-Prio-1"
+      },
+      "dcterms:modified": "2020-10-17T10:00:00+01:00"
+    },
+    {
+      "@id": "0:Req-0Z7916e2872e78ecadc50feddc00918a",
+      "@type": "0:RC-Requirement",
+      "0:PC-Name": "Consistency",
+      "0:PC-Description": "<div><p>The data store MUST be consistent at all times.</p></div>",
+      "0:PC-Priority": {
+        "@id": "0:V-Prio-0"
+      },
+      "dcterms:modified": "2020-10-17T10:00:00+01:00"
+    },
+    {
+      "@id": "0:Req-2b9016e2872e78ecadc50feddc0013Ac",
+      "@type": "0:RC-Requirement",
+      "0:PC-Name": "Response Time",
+      "0:PC-Description": "<div><p>The system SHOULD respond on user queries within 300 ms.</p></div>",
+      "0:PC-Priority": {
+        "@id": "0:V-Prio-2"
+      },
+      "dcterms:modified": "2020-10-17T10:00:00+01:00"
+    },
+    {
+      "@id": "0:Folder-SystemModel",
+      "@type": "0:RC-Folder",
+      "0:PC-Name": "System Model",
+      "dcterms:modified": "2020-03-06T08:32:00+01:00"
+    },
+    {
+      "@id": "0:Diagram-aec0df7900010000017001eaf53e8876",
+      "@type": "0:RC-View",
+      "0:PC-Name": "IT-Integration: FiCo-Application and FiCo-Data",
+      "0:PC-Diagram": "<div><p class=\"inline-label\">Model Diagram:</p><p><object type=\"image/svg+xml\" data=\"files_and_images/Very-Simple-Model-FMC.svg\">Notation: FMC Block Diagram</object></p></div>",
+      "0:PC-Type": "FMC Block Diagram",
+      "dcterms:modified": "2020-03-06T08:32:00+01:00"
+    },
+    {
+      "@id": "0:MEl-50fbfe8f0029b1a8016ea86245a9d83a",
+      "@type": "0:RC-Actor",
+      "0:PC-Name": "FiCo-Application",
+      "0:PC-Description": "<div><p>IT-Application for Finance and Controlling.</p></div>",
+      "dcterms:modified": "2020-03-06T09:04:00+01:00"
+    },
+    {
+      "@id": "0:MEl-50feddc00029b1a8016e2872e78ecadc",
+      "@type": "0:RC-State",
+      "0:PC-Name": "FiCo-Data",
+      "0:PC-Description": "<div><p>Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc.</p></div>",
+      "dcterms:modified": "2020-03-06T09:03:00+01:00"
+    },
+    {
+      "@id": "0:FolderGlossary-10875487071",
+      "@type": "0:RC-Folder",
+      "0:PC-Name": "Modellelemente (Glossar)",
+      "0:PC-Type": "Modellelemente (Glossar)",
+      "dcterms:modified": "2025-06-09T12:21:11.036Z"
+    },
+    {
+      "@id": "0:SVis-aec0df7900010000017001eaf53e8876-50fbfe8f0029b1a8016ea86245a9d83a",
+      "@type": "0:SC-shows",
+      "0:SC-shows-hasSubject": {
+        "@id": "0:Diagram-aec0df7900010000017001eaf53e8876"
+      },
+      "0:SC-shows-hasObject": {
+        "@id": "0:MEl-50fbfe8f0029b1a8016ea86245a9d83a"
+      },
+      "0:PC-Description": "'FMC Block Diagram' shows 'FiCo-Application'",
+      "dcterms:modified": "2020-03-06T08:32:00+01:00"
+    },
+    {
+      "@id": "0:SVis-aec0df7900010000017001eaf53e8876-50feddc00029b1a8016e2872e78ecadc",
+      "@type": "0:SC-shows",
+      "0:SC-shows-hasSubject": {
+        "@id": "0:Diagram-aec0df7900010000017001eaf53e8876"
+      },
+      "0:SC-shows-hasObject": {
+        "@id": "0:MEl-50feddc00029b1a8016e2872e78ecadc"
+      },
+      "0:PC-Description": "'FMC Block Diagram' shows 'FiCo-Data'",
+      "dcterms:modified": "2020-03-06T08:32:00+01:00"
+    },
+    {
+      "@id": "0:SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc",
+      "@type": "0:SC-writes",
+      "0:SC-writes-hasSubject": {
+        "@id": "0:MEl-50fbfe8f0029b1a8016ea86245a9d83a"
+      },
+      "0:SC-writes-hasObject": {
+        "@id": "0:MEl-50feddc00029b1a8016e2872e78ecadc"
+      },
+      "0:PC-Description": "'FiCo-Application' writes 'FiCo-Data'",
+      "dcterms:modified": "2020-03-06T09:05:00+01:00"
+    },
+    {
+      "@id": "0:SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc",
+      "@type": "0:SC-reads",
+      "0:SC-reads-hasSubject": {
+        "@id": "0:MEl-50fbfe8f0029b1a8016ea86245a9d83a"
+      },
+      "0:SC-reads-hasObject": {
+        "@id": "0:MEl-50feddc00029b1a8016e2872e78ecadc"
+      },
+      "0:PC-Description": "'FiCo-Application' reads 'FiCo-Data'",
+      "dcterms:modified": "2020-03-06T09:05:00+01:00"
+    },
+    {
+      "@id": "0:Ssat-50feddc00029b1a8016e2872e78ecadc-1a8016e2872e78ecadc50feddc00029b",
+      "@type": "0:SC-satisfies",
+      "0:SC-satisfies-hasSubject": {
+        "@id": "0:MEl-50feddc00029b1a8016e2872e78ecadc"
+      },
+      "0:SC-satisfies-hasObject": {
+        "@id": "0:Req-1a8016e2872e78ecadc50feddc00029b"
+      },
+      "0:PC-Description": "'FiCo-Data' satisfies 'Data Volume'",
+      "dcterms:modified": "2020-10-17T10:00:00+01:00"
+    },
+    {
+      "@id": "0:Ssat-50feddc00029b1a8016e2872e78ecadc-0Z7916e2872e78ecadc50feddc00918a",
+      "@type": "0:SC-satisfies",
+      "0:SC-satisfies-hasSubject": {
+        "@id": "0:MEl-50feddc00029b1a8016e2872e78ecadc"
+      },
+      "0:SC-satisfies-hasObject": {
+        "@id": "0:Req-0Z7916e2872e78ecadc50feddc00918a"
+      },
+      "0:PC-Description": "'FiCo-Data' satisfies 'Consistency'",
+      "dcterms:modified": "2020-10-17T10:00:00+01:00"
+    },
+    {
+      "@id": "0:Ssat-50fbfe8f0029b1a8016ea86245a9d83a-2b9016e2872e78ecadc50feddc0013Ac",
+      "@type": "0:SC-satisfies",
+      "0:SC-satisfies-hasSubject": {
+        "@id": "0:MEl-50fbfe8f0029b1a8016ea86245a9d83a"
+      },
+      "0:SC-satisfies-hasObject": {
+        "@id": "0:Req-2b9016e2872e78ecadc50feddc0013Ac"
+      },
+      "0:PC-Description": "'FiCo-Application' satisfies 'Response Time'",
+      "dcterms:modified": "2020-10-17T10:00:00+01:00"
+    },
+    {
+      "@id": "0:SVis-aec0df7900010000017001eaf53e8876-SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc",
+      "@type": "0:SC-shows",
+      "0:SC-shows-hasSubject": {
+        "@id": "0:Diagram-aec0df7900010000017001eaf53e8876"
+      },
+      "0:SC-shows-hasObject": {
+        "@id": "0:SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc"
+      },
+      "0:PC-Name": "zeigt",
+      "0:PC-Description": "'FMC Block Diagram' shows 'FiCo-Application writes FiCo-Data'",
+      "dcterms:modified": "2025-01-26T08:32:00+01:00"
+    },
+    {
+      "@id": "0:SVis-aec0df7900010000017001eaf53e8876-SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc",
+      "@type": "0:SC-shows",
+      "0:SC-shows-hasSubject": {
+        "@id": "0:Diagram-aec0df7900010000017001eaf53e8876"
+      },
+      "0:SC-shows-hasObject": {
+        "@id": "0:SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc"
+      },
+      "0:PC-Name": "zeigt",
+      "0:PC-Description": "'FMC Block Diagram' shows 'FiCo-Application reads FiCo-Data'",
+      "dcterms:modified": "2025-01-26T08:32:00+01:00"
+    },
+    {
+      "@id": "0:N-HierarchyRoot",
+      "@type": "pig:Organizer",
+      "rdfs:label": "Hierarchy Root",
+      "rdfs:comment": "... anchoring all hierarchies of this graph (project)",
+      "pig:hasChild": [
+        {
+          "@id": "0:N-Folder-Introduction"
+        },
+        {
+          "@id": "0:N-Folder-Requirements"
+        },
+        {
+          "@id": "0:N-Folder-SystemModel"
+        },
+        {
+          "@id": "0:N-FolderGlossary-10875487071"
+        }
+      ]
+    },
+    {
+      "@id": "0:N-Folder-Introduction",
+      "dcterms:modified": "2025-02-07T10:00:00+01:00",
+      "pig:hasElement": {
+        "@id": "0:Folder-Introduction"
+      }
+    },
+    {
+      "@id": "0:N-Folder-Requirements",
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "pig:hasElement": {
+        "@id": "0:Folder-Requirements"
+      },
+      "pig:hasChild": [
+        {
+          "@id": "0:N-1a8016e2872e78ecadc50feddc00029b"
+        },
+        {
+          "@id": "0:N-0Z7916e2872e78ecadc50feddc00918a"
+        },
+        {
+          "@id": "0:N-2b9016e2872e78ecadc50feddc0013Ac"
+        }
+      ]
+    },
+    {
+      "@id": "0:N-1a8016e2872e78ecadc50feddc00029b",
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "pig:hasElement": {
+        "@id": "0:Req-1a8016e2872e78ecadc50feddc00029b"
+      }
+    },
+    {
+      "@id": "0:N-0Z7916e2872e78ecadc50feddc00918a",
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "pig:hasElement": {
+        "@id": "0:Req-0Z7916e2872e78ecadc50feddc00918a"
+      }
+    },
+    {
+      "@id": "0:N-2b9016e2872e78ecadc50feddc0013Ac",
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "pig:hasElement": {
+        "@id": "0:Req-2b9016e2872e78ecadc50feddc0013Ac"
+      }
+    },
+    {
+      "@id": "0:N-Folder-SystemModel",
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "pig:hasElement": {
+        "@id": "0:Folder-SystemModel"
+      },
+      "pig:hasChild": {
+        "@id": "0:N-Diagram-aec0df7900010000017001eaf53e8876"
+      }
+    },
+    {
+      "@id": "0:N-Diagram-aec0df7900010000017001eaf53e8876",
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "pig:hasElement": {
+        "@id": "0:Diagram-aec0df7900010000017001eaf53e8876"
+      },
+      "pig:hasChild": [
+        {
+          "@id": "0:N-50fbfe8f0029b1a8016ea86245a9d83a"
+        },
+        {
+          "@id": "0:N-50feddc00029b1a8016e2872e78ecadc"
+        }
+      ]
+    },
+    {
+      "@id": "0:N-50fbfe8f0029b1a8016ea86245a9d83a",
+      "dcterms:modified": "2020-03-06T09:05:00+01:00",
+      "pig:hasElement": {
+        "@id": "0:MEl-50fbfe8f0029b1a8016ea86245a9d83a"
+      }
+    },
+    {
+      "@id": "0:N-50feddc00029b1a8016e2872e78ecadc",
+      "dcterms:modified": "2020-03-06T09:05:00+01:00",
+      "pig:hasElement": {
+        "@id": "0:MEl-50feddc00029b1a8016e2872e78ecadc"
+      }
+    },
+    {
+      "@id": "0:N-FolderGlossary-10875487071",
+      "dcterms:modified": "2025-06-09T12:21:11.036Z",
+      "pig:hasElement": {
+        "@id": "0:FolderGlossary-10875487071"
+      },
+      "pig:hasChild": [
+        {
+          "@id": "0:N-9559304043"
+        },
+        {
+          "@id": "0:N-12075661949"
+        }
+      ]
+    },
+    {
+      "@id": "0:N-9559304043",
+      "dcterms:modified": "2025-06-09T12:21:11.036Z",
+      "pig:hasElement": {
+        "@id": "0:MEl-50fbfe8f0029b1a8016ea86245a9d83a"
+      }
+    },
+    {
+      "@id": "0:N-12075661949",
+      "dcterms:modified": "2025-06-09T12:21:11.036Z",
+      "pig:hasElement": {
+        "@id": "0:MEl-50feddc00029b1a8016e2872e78ecadc"
+      }
+    }
+  ]
+}
