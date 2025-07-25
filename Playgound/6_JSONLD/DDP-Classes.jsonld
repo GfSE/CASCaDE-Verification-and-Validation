@@ -353,18 +353,21 @@
     },
     {
       "@id": "https://product-information-graph.org/examples/Dictionary.xsd#R-q0Oh7DFaqgCY5RdaEQWAtBv1MNS",
-      "@type": "DDP:Person",
+      "@type": "pig:Entity",
       "dcterms:modified": "2025-07-25T13:55:57.846Z",
       "DDP:firstname": "Anouk",
       "DDP:lastname": "Aimée",
-      "DDP:phone": "0033 12 345678"
+      "DDP:phone": "0033 12 345678",
+      "pig:hasClass": {
+        "@id": "DDP:Person"
+      }
     },
     {
-      "@id": "pig:EntityClass",
+      "@id": "pig:Entity",
       "@type": "owl:Class"
     },
     {
-      "@id": "pig:OrganizerClass",
+      "@id": "pig:EntityClass",
       "@type": "owl:Class"
     }
   ]

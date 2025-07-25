@@ -46,9 +46,6 @@
 # Resource Classes
 #################################################################
 
-pig:OrganizerClass
-	rdf:type owl:Class .
-
 pig:EntityClass
 	rdf:type owl:Class .
 
@@ -320,8 +317,12 @@ DDP:Configuration
 # Resources
 #################################################################
 
+pig:Entity
+	rdf:type owl:Class .
+
 :R-q0Oh7DFaqgCY5RdaEQWAtBv1MNS
-	rdf:type DDP:Person ;
+	rdf:type pig:Entity ;
+	pig:hasClass DDP:Person ;
 	DDP:firstname "Anouk" ;
 	DDP:lastname "Aimée" ;
 	DDP:phone "0033 12 345678" ;
