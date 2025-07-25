@@ -1,0 +1,328 @@
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sh: <https://www.w3.org/ns/shacl> .
+@prefix W3C: <https://www.w3.org/standards/semanticweb#> .
+@prefix xs: <http://www.w3.org/2001/XMLSchema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix schema: <https://schema.org#> .
+@prefix iana: <https://www.iana.org/assignments/media-types#> .
+@prefix foaf: <http://xmlns.com/foaf/spec/#> .
+@prefix FMC: <http://fmc-modeling.org/#> .
+@prefix IR: <https://www.adesso.de/de/impulse/interaction-room/index.jsp#> .
+@prefix IREB: <https://www.ireb.org/en/downloads/#cpre-glossary> .
+@prefix ReqIF: <https://www.prostep.org/fileadmin/downloads/PSI_ImplementationGuide_ReqIF_V1-7.pdf#> .
+@prefix ReqIF-WF: <https://www.prostep.org/fileadmin/downloads/Recommendation_ReqIF_V2_RZ3.pdf#> .
+@prefix HIS: <https://www.itwissen.info/Herstellerinitiative-Software-Automotive-HIS.html#> .
+@prefix oslc: <http://open-services.net/ns/core#> .
+@prefix oslc_rm: <http://open-services.net/ns/rm#> .
+@prefix oslc_cm: <http://open-services.net/ns/cm#> .
+@prefix ArchiMate: <https://pubs.opengroup.org#> .
+@prefix bpmn: <https://www.bpmn.org/#> .
+@prefix uml: <https://www.omg.org/spec/UML#> .
+@prefix sysml: <https://www.omg.org/spec/SysML#> .
+@prefix pig: <https://product-information-graph.org/schema/#> .
+@prefix DDP: <http://www.prostep.org/dictionary/2.0#> .
+@prefix SpecIF: <https://specif.de/v1.1/schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+@prefix : <https://product-information-graph.org/examples/Dictionary.xsd#> .
+
+#################################################################
+# Project Metadata
+#################################################################
+
+:
+	rdf:type owl:Ontology ;
+	rdfs:label "SpecIF Classes for prostep iViP DDP (Data Model)" ;
+	rdfs:comment "SpecIF Classes derived from DDP Schema Version 2.0 created 10.03.2023 08:09:28 by Michael Kirsch, :em engineering methods AG on behalf of prostep iViP Association" ;
+	owl:imports <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ,
+		<http://www.w3.org/2000/01/rdf-schema#> .
+
+#################################################################
+# Resource Classes
+#################################################################
+
+pig:OrganizerClass
+	rdf:type owl:Class .
+
+pig:EntityClass
+	rdf:type owl:Class .
+
+DDP:Role
+	rdf:type pig:EntityClass ;
+	rdfs:label "Role" ;
+	rdfs:comment "A defined function to be performed by a project team member, such as testing, filing, inspecting, coding.https://intranet.prostep.org/display/PROJ/Glossary" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:Person
+	rdf:type pig:EntityClass ;
+	rdfs:label "Person" ;
+	rdfs:comment "Represents a real person, but may also be a system user that appears in source data. The FOAF (Friend of a Friend) Ontology has been considered, but is not used as it does not provide a structured representation for firstname, lastname and title of a person." ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:OrganizationUnit
+	rdf:type pig:EntityClass ;
+	rdfs:label "OrganizationUnit" ;
+	rdfs:comment "An organization unit is part of a corporate structure. It comprises persons as well as sub-organization units." ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:Task
+	rdf:type pig:EntityClass ;
+	rdfs:label "Task" ;
+	rdfs:comment "A task is a definite piece of work assigned to a person or organisation" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:Project
+	rdf:type pig:EntityClass ;
+	rdfs:label "Project" ;
+	rdfs:comment "Represents a project or sub-project" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:UseCase
+	rdf:type pig:EntityClass ;
+	rdfs:label "UseCase" ;
+	rdfs:comment "Specifies what the user of a product will do in order to achieve a goal" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:Requirement
+	rdf:type pig:EntityClass ;
+	rdfs:label "Requirement" ;
+	rdfs:comment "Characteristics that identify the accomplishment levels needed to achieve specific objectives for a given set of conditions.Requirements can be 'must have', 'can have' and 'nice to have'.A. A condition or capability needed by a user to solve a problem or achieve an objective.B. A condition or capability that must be met or possessed by a system or system component to satisfy a contract, standard, specification, or other formally imposed document.C. A documented representation of a condition or capability as in definition (A:) or (B).https://intranet.prostep.org/display/PROJ/Glossary" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:ProductFunction
+	rdf:type pig:EntityClass ;
+	rdfs:label "ProductFunction" ;
+	rdfs:comment "A product function describes the way a system works or performs a specific task." ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:SystemComponent
+	rdf:type pig:EntityClass ;
+	rdfs:label "SystemComponent" ;
+	rdfs:comment "Represents a generic component of a system" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:ComponentInterface
+	rdf:type pig:EntityClass ;
+	rdfs:label "ComponentInterface" ;
+	rdfs:comment "Represents a generic interface of a system component" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:ComponentConnection
+	rdf:type pig:EntityClass ;
+	rdfs:label "ComponentConnection" ;
+	rdfs:comment "Represents a connection between two components through interfaces" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:ComponentState
+	rdf:type pig:EntityClass ;
+	rdfs:label "ComponentState" ;
+	rdfs:comment "Represents the condition of a system component. Can be it a value, a condition, an information storage or a physical shape." ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:MechanicalComponent
+	rdf:type pig:EntityClass ;
+	rdfs:label "MechanicalComponent" ;
+	rdfs:comment "Represents a single mechanical part, an assembly or the entire product" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:MechanicalComponentInstance
+	rdf:type pig:EntityClass ;
+	rdfs:label "MechanicalComponentInstance" ;
+	rdfs:comment "Represents a specific instance of a mechanical component in a product structure" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:Material
+	rdf:type pig:EntityClass ;
+	rdfs:label "Material" ;
+	rdfs:comment "Material assigned to the mechanical component" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:ModelView
+	rdf:type pig:EntityClass ;
+	rdfs:label "ModelView" ;
+	rdfs:comment "Represents a view of product geometry, including the definition of the viewpoint, and the visibility of components and annotations" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:ModelAnnotation
+	rdf:type pig:EntityClass ;
+	rdfs:label "ModelAnnotation" ;
+	rdfs:comment "A text annotation, dimension, tolerance, surface specification, etc. with relation to product geometry" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:KinematicMechanism
+	rdf:type pig:EntityClass ;
+	rdfs:label "KinematicMechanism" ;
+	rdfs:comment "Represents a kinematic mechanism " ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:KinematicJoint
+	rdf:type pig:EntityClass ;
+	rdfs:label "KinematicJoint" ;
+	rdfs:comment "Represents a kinematic joint between a pair of component instances" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:KinematicSensor
+	rdf:type pig:EntityClass ;
+	rdfs:label "KinematicSensor" ;
+	rdfs:comment "Represents a kinematic sensor" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:KinematicMotion
+	rdf:type pig:EntityClass ;
+	rdfs:label "KinematicMotion" ;
+	rdfs:comment "Represents a kinematic motion" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:JoiningProcess
+	rdf:type pig:EntityClass ;
+	rdfs:label "JoiningProcess" ;
+	rdfs:comment "Represents a joining process type such as welding, riveting, etc." ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:JoiningElement
+	rdf:type pig:EntityClass ;
+	rdfs:label "JoiningElement" ;
+	rdfs:comment "Represents a joining element such as a welding spot, a rivet, etc." ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:ElectricElectronicComponent
+	rdf:type pig:EntityClass ;
+	rdfs:label "ElectricElectronicComponent" ;
+	rdfs:comment "Represents an electric/electronic component" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:ElectricElectronicPort
+	rdf:type pig:EntityClass ;
+	rdfs:label "ElectricElectronicPort" ;
+	rdfs:comment "Represents an electric/electronic port on an electric/electronic component" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:ElectricElectronicConnection
+	rdf:type pig:EntityClass ;
+	rdfs:label "ElectricElectronicConnection" ;
+	rdfs:comment "Represents an electric/electronic connection" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:SoftwareClass
+	rdf:type pig:EntityClass ;
+	rdfs:label "SoftwareClass" ;
+	rdfs:comment "A class in source code that represents a logical collection data and functions" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:SoftwareInterface
+	rdf:type pig:EntityClass ;
+	rdfs:label "SoftwareInterface" ;
+	rdfs:comment "An interface in source code that allows a class to interact with other components of a software" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:SoftwareComponent
+	rdf:type pig:EntityClass ;
+	rdfs:label "SoftwareComponent" ;
+	rdfs:comment "A compiled component of software to be used in a product, i. e. executable or library" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:HydraulicPneumaticConnection
+	rdf:type pig:EntityClass ;
+	rdfs:label "HydraulicPneumaticConnection" ;
+	rdfs:comment "Represents a hydraulic or pneumatic connection, i. e. a tube or hose" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:HydraulicPneumaticPort
+	rdf:type pig:EntityClass ;
+	rdfs:label "HydraulicPneumaticPort" ;
+	rdfs:comment "Represents a hydraulic or pneumatic port on a mechanical component" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:ValidationPlan
+	rdf:type pig:EntityClass ;
+	rdfs:label "ValidationPlan" ;
+	rdfs:comment "A specific executable test that examines all aspects including inputs and outputs of a system and then provides a detailed description of the steps that should be taken, the results that should be achieved, and other elements that should be identified. Steps explained in a test case include all details even if they are assumed to be common knowledge. Test cases are used as a technical explanation and reference guide for systems.https://intranet.prostep.org/display/PROJ/Glossary" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:ValidationBoundaryCondition
+	rdf:type pig:EntityClass ;
+	rdfs:label "ValidationBoundaryCondition" ;
+	rdfs:comment "Validation boundary condition, i. e. force, pressure, temperature or time." ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:ValidationRun
+	rdf:type pig:EntityClass ;
+	rdfs:label "ValidationRun" ;
+	rdfs:comment "Vorgang einer Validierung" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:ValidationResult
+	rdf:type pig:EntityClass ;
+	rdfs:label "ValidationResult" ;
+	rdfs:comment "Ergebnis einer Validierung" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:ManufacturingOperation
+	rdf:type pig:EntityClass ;
+	rdfs:label "ManufacturingOperation" ;
+	rdfs:comment "Represents a single or a group of manufacturing operation that lead to a finished, assembled product." ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:ManufacturingEquipmentComponent
+	rdf:type pig:EntityClass ;
+	rdfs:label "ManufacturingEquipmentComponent" ;
+	rdfs:comment "Represents all kinds of tools and equipment used to manufacture parts and assemble the product." ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:InspectionCharacteristic
+	rdf:type pig:EntityClass ;
+	rdfs:label "InspectionCharacteristic" ;
+	rdfs:comment "Represents a characteristic that must be inspected to ensure product function." ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:InspectionPlan
+	rdf:type pig:EntityClass ;
+	rdfs:label "InspectionPlan" ;
+	rdfs:comment "Specifies what characteristics must be inspected using which equipment for which purpose." ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:InspectionResource
+	rdf:type pig:EntityClass ;
+	rdfs:label "InspectionResource" ;
+	rdfs:comment "Represents a mechanical component used as an inspection resource" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:InspectionRun
+	rdf:type pig:EntityClass ;
+	rdfs:label "InspectionRun" ;
+	rdfs:comment "Represents an inspection run that collects inspection results for each inspection characteristic allocated to an inspection plan." ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:InspectionResult
+	rdf:type pig:EntityClass ;
+	rdfs:label "InspectionResult" ;
+	rdfs:comment "Represents an inspection result for an inspection criterium" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:Revision
+	rdf:type pig:EntityClass ;
+	rdfs:label "Revision" ;
+	rdfs:comment "Represents a revision as a context for other elements to be valid. The datamodel allows selected elements to be related to a revision, i. e. mechanical components." ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:Configuration
+	rdf:type pig:EntityClass ;
+	rdfs:label "Configuration" ;
+	rdfs:comment "Represents a configuration as a context for other elements to be valid. The datamodel allows selected elements to be related to a revision, i. e. mechanical components" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+#################################################################
+# Resources
+#################################################################
+
+:R-q0Oh7DFaqgCY5RdaEQWAtBv1MNS
+	rdf:type DDP:Person ;
+	DDP:firstname "Anouk" ;
+	DDP:lastname "Aimée" ;
+	DDP:phone "0033 12 345678" ;
+	dcterms:modified "2025-07-25T13:55:57.846Z" .
