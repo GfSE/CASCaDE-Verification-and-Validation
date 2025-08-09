@@ -1,0 +1,90 @@
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sh: <https://www.w3.org/ns/shacl> .
+@prefix W3C: <https://www.w3.org/standards/semanticweb#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix pig: <https://product-information-graph.org/schema/#> .
+@prefix DDP: <http://www.prostep.org/dictionary/2.0#> .
+@prefix SpecIF: <https://specif.de/v1.1/schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+@prefix : <https://product-information-graph.org/examples/Dictionary.xsd#> .
+
+#################################################################
+# Project Metadata
+#################################################################
+
+:
+	rdf:type owl:Ontology ;
+	rdfs:label "Ontology as defined by prostep iViP DDP" ;
+	rdfs:comment "Ontology derived from DDP Schema Version 2.0 created 10.03.2023 08:09:28 by Michael Kirsch, :em engineering methods AG on behalf of prostep iViP Association" ;
+	owl:imports <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ,
+		<http://www.w3.org/2000/01/rdf-schema#> .
+
+#################################################################
+# Resource Classes
+#################################################################
+
+pig:EntityClass
+	rdf:type owl:Class .
+
+pig:Entity
+	rdf:type owl:Class .
+	
+pig:itemType
+	rdf:type owl:ObjectProperty ;
+    rdfs:range 
+		pig:OrganizerClass ,
+		pig:Organizer ,
+		pig:EntityClass ,
+		pig:Entity ,
+		pig:RelationshipClass ,
+		pig:Relationship ,
+		pig:PropertyClass ;
+    rdfs:label "has PIG metamodel item type" .
+
+DDP:Person 
+	rdf:type owl:Class ;
+    rdfs:subClassOf owl:Thing ;
+	pig:itemType pig:EntityClass ;
+	rdfs:label "Person" ;
+	rdfs:comment "Represents a real person, but may also be a system user that appears in source data. The FOAF (Friend of a Friend) Ontology has been considered, but is not used as it does not provide a structured representation for firstname, lastname and title of a person." ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:Employee
+	a owl:Class ;
+    rdfs:subClassOf DDP:Person ;
+	pig:itemType pig:EntityClass ;
+	rdfs:label "Employee" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:Role
+	rdf:type owl:Class ;
+    rdfs:subClassOf owl:Thing ;
+	pig:itemType pig:EntityClass ;
+	rdfs:label "Role" ;
+	rdfs:comment "A defined function to be performed by a project team member, such as testing, filing, inspecting, coding.https://intranet.prostep.org/display/PROJ/Glossary" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+DDP:OrganizationUnit
+	a owl:Class ;
+    rdfs:subClassOf owl:Thing ;
+	pig:itemType pig:EntityClass ;
+	rdfs:label "OrganizationUnit" ;
+	rdfs:comment "An organization unit is part of a corporate structure. It comprises persons as well as sub-organization units." ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+
+#################################################################
+# Resources
+#################################################################
+
+:R-q0Oh7DFaqgCY5RdaEQWAtBv1MNS
+	rdf:type DDP:Employee ;
+	pig:itemType pig:Entity ;
+	DDP:firstname "Anouk" ;
+	DDP:lastname "Aimée" ;
+	DDP:phone "0033 12 345678" ;
+	dcterms:modified "2025-07-25T13:55:57.846Z" .
