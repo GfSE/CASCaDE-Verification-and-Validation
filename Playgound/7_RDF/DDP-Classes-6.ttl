@@ -1,0 +1,160 @@
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sh: <https://www.w3.org/ns/shacl> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix W3C: <https://www.w3.org/standards/semanticweb#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix pig: <https://product-information-graph.org/schema/#> .
+@prefix o: <https://product-information-graph.org/ontology#> .
+@prefix d: <http://example.org/data#> .
+
+#################################################################
+# Project Metadata
+#################################################################
+
+d:
+	rdf:type owl:Ontology ;
+	rdfs:label "Ontology as defined by prostep iViP DDP" ;
+	rdfs:comment "Ontology derived from DDP Schema Version 2.0 created 10.03.2023 08:09:28 by Michael Kirsch, :em engineering methods AG on behalf of prostep iViP Association" ;
+	owl:imports <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ,
+		<http://www.w3.org/2000/01/rdf-schema#> .
+
+############################################################
+### META-ONTOLOGY = PIG Metamodel (pig:)
+############################################################
+
+pig:EntityClass
+	rdf:type owl:Class ;
+    rdfs:label "PIG Entity Class" .
+
+pig:RelationshipClass 
+	a owl:Class ;
+    rdfs:label "PIG Relationship Class" .
+
+# pig:eligibleSubjectClass 
+#     a owl:ObjectProperty ;
+#     rdfs:domain pig:RelationshipClass ;
+#     rdfs:range pig:EntityClass ; ;
+#     rdfs:label "has source class" .
+
+# pig:eligibleObjectClass 
+#     a owl:ObjectProperty ;
+#     rdfs:domain pig:RelationshipClass ;
+#     rdfs:range pig:EntityClass ; ;
+#     rdfs:label "has target class" .
+
+# pig:hasSubjectRole 
+#     rdf:type owl:AnnotationProperty ;
+#     rdfs:label "has source role property" .
+
+# pig:hasObjectRole 
+#     rdf:type owl:AnnotationProperty ;
+#     rdfs:label "has target role property" .
+
+pig:itemType
+	rdf:type owl:ObjectProperty ;
+    rdfs:range 
+		pig:OrganizerClass ,
+		pig:Organizer ,
+		pig:EntityClass ,
+		pig:Entity ,
+		pig:RelationshipClass ,
+		pig:Relationship ,
+		pig:PropertyClass ;
+    rdfs:label "has PIG metamodel item type" .
+
+# Instance level abstract elements
+pig:Entity
+	a owl:Class ;
+    rdfs:label "Entity" .
+
+pig:Relationship 
+    a owl:Class ;
+    rdfs:subClassOf owl:Thing ;
+    rdfs:label "Relationship" .
+
+pig:hasSubject 
+    a owl:ObjectProperty ;
+    rdfs:domain pig:Relationship ;
+    rdfs:range pig:Entity ;
+    rdfs:label "has subject" .  
+
+pig:hasObject 
+    a owl:ObjectProperty ;
+    rdfs:domain pig:Relationship ;
+    rdfs:range pig:Entity ;
+    rdfs:label "has object" .
+
+############################################################
+### Ontology (o:)
+############################################################
+
+o:Person 
+	rdf:type owl:Class ;
+    rdfs:subClassOf owl:Thing ;
+	pig:itemType pig:EntityClass ;
+	rdfs:label "Person" ;
+	rdfs:comment "Represents a real person, but may also be a system user that appears in source data. The FOAF (Friend of a Friend) Ontology has been considered, but is not used as it does not provide a structured representation for firstname, lastname and title of a person." ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+# A specialization of 'o:Person' (in terms of ontology, not metamodel):
+o:Employee
+	a owl:Class ;
+    rdfs:subClassOf o:Person ;
+	pig:itemType pig:EntityClass ;
+	rdfs:label "Employee" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+o:Role
+	rdf:type owl:Class ;
+    rdfs:subClassOf owl:Thing ;
+	pig:itemType pig:EntityClass ;
+	rdfs:label "Role" ;
+	rdfs:comment "A defined function to be performed by a project team member, such as testing, filing, inspecting, coding.https://intranet.prostep.org/display/PROJ/Glossary" ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+o:Organization
+	a owl:Class ;
+    rdfs:subClassOf owl:Thing ;
+	pig:itemType pig:EntityClass ;
+	rdfs:label "OrganizationUnit" ;
+	rdfs:comment "An organization unit is part of a corporate structure. It comprises persons as well as sub-organization units." ;
+	dcterms:modified "2025-07-25T13:51:29.486Z" .
+
+o:WorksFor 
+    a owl:Class ;
+    rdfs:subClassOf owl:Thing ;
+    pig:itemType pig:RelationshipClass ;
+    rdfs:label "Employment relationship" .
+
+o:hasEmployee 
+    a owl:ObjectProperty ;
+    rdfs:domain o:WorksFor ;
+    rdfs:range o:Person ;
+    rdfs:label "has employee" .
+
+o:hasEmployer 
+    a owl:ObjectProperty ;
+    rdfs:domain o:WorksFor ;
+    rdfs:range o:Organization ;
+    rdfs:label "has employer" .
+
+############################################################
+### INSTANCE DATA (d:)
+############################################################
+
+d:alice 
+    a o:Employee ;
+    rdfs:label "Alice" .
+
+d:acmeCorp 
+    a o:Organization ;
+    rdfs:label "Acme Corporation" .
+
+d:aliceWorksForAcme a o:WorksFor ;
+    o:hasEmployee d:alice ;
+    o:hasEmployer d:acmeCorp ;
+    rdfs:label "Alice works for Acme Corporation" ;
+    o:startDate "2020-04-01"^^xsd:date .
