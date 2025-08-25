@@ -2,7 +2,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix sh: <https://www.w3.org/ns/shacl> .
+@prefix sh: <https://www.w3.org/ns/shacl#> .
 @prefix W3C: <https://www.w3.org/standards/semanticweb#> .
 @prefix xs: <http://www.w3.org/2001/XMLSchema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -10,10 +10,10 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix schema: <https://schema.org#> .
 @prefix iana: <https://www.iana.org/assignments/media-types#> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix foaf: <http://xmlns.com/foaf/spec/#> .
 @prefix FMC: <http://fmc-modeling.org#> .
 @prefix IR: <https://www.adesso.de/de/impulse/interaction-room/index.jsp#> .
-@prefix IREB: <https://www.ireb.org/en/downloads/#cpre-glossary> .
+@prefix IREB: <https://www.ireb.org/en/downloads#cpre-glossary> .
 @prefix ReqIF: <https://www.prostep.org/fileadmin/downloads/PSI_ImplementationGuide_ReqIF_V1-7.pdf#> .
 @prefix ReqIF-WF: <https://www.prostep.org/fileadmin/downloads/Recommendation_ReqIF_V2_RZ3.pdf#> .
 @prefix HIS: <https://www.itwissen.info/Herstellerinitiative-Software-Automotive-HIS.html#> .
@@ -21,674 +21,586 @@
 @prefix oslc_rm: <http://open-services.net/ns/rm#> .
 @prefix oslc_cm: <http://open-services.net/ns/cm#> .
 @prefix ArchiMate: <https://pubs.opengroup.org#> .
-@prefix bpmn: <https://www.bpmn.org/#> .
+@prefix bpmn: <https://www.bpmn.org#> .
 @prefix uml: <https://www.omg.org/spec/UML#> .
 @prefix sysml: <https://www.omg.org/spec/SysML#> .
-@prefix pig: <https://product-information-graph.org> .
+@prefix pig: <https://product-information-graph.org/schema#> .
 @prefix DDP: <http://www.prostep.org/dictionary/2.0#> .
 @prefix SpecIF: <https://specif.de/v1.1/schema#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 
-@prefix : <https://product-information-graph.org/examples/Project%20'Very%20Simple%20Model%20(FMC)%20with%20Requirements'.specifz/> .
+@prefix d: <https://product-information-graph.org/examples/Project%20'Very%20Simple%20Model%20(FMC)%20with%20Requirements'.specifz#> .
+@prefix o: <https://product-information-graph.org/examples/ontology#> .
 
 #################################################################
 # Project Metadata
 #################################################################
 
-:
-	a owl:Ontology ;
+d:
+	rdf:type owl:Ontology ;
 	rdfs:label "Project 'Very Simple Model (FMC) with Requirements'" ;
 	owl:imports <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ,
-		<http://www.w3.org/2000/01/rdf-schema#> .
+		<http://www.w3.org/2000/01/rdf-schema#> ;
+	dcterms:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+	dcterms:createdAt "2025-08-25T07:40:03.525Z" .
+
+#################################################################
+### META-ONTOLOGY = PIG Metamodel (pig:)
+#################################################################
+
+pig:OrganizerClass
+	rdf:type owl:Class ;
+	rdfs:label "Organizer Class" ;
+	rdfs:comment "A class of organizers." .
+
+pig:Organizer
+	rdf:type owl:Class ;
+	rdfs:subClassOf owl:Thing ;
+	rdfs:label "Organizer" ;
+	rdfs:comment "An organizer." .
+
+pig:EntityClass
+	rdf:type owl:Class ;
+	rdfs:label "Entity Class" ;
+	rdfs:comment "A class of entities." .
+
+pig:Entity
+	rdf:type owl:Class ;
+	rdfs:subClassOf owl:Thing ;
+	rdfs:label "Entity" ;
+	rdfs:comment "An entity." .
+
+pig:RelationshipClass
+	rdf:type owl:Class ;
+	rdfs:label "Relationship Class" ;
+	rdfs:comment "A class of relationship resources." .
+
+pig:Relationship
+	rdf:type owl:Class ;
+	rdfs:subClassOf owl:Thing ;
+	rdfs:label "Relationship" ;
+	rdfs:comment "A relationship resource." .
+
+pig:hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:domain pig:Relationship ;
+	rdfs:range pig:Entity ;
+	rdfs:label "has subject" ;
+	rdfs:comment "Connects the subject of a relationship." .
+
+pig:hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:domain pig:Relationship ;
+	rdfs:range pig:Entity ;
+	rdfs:label "has object" ;
+	rdfs:comment "Connects the object of a relationship." .
 
 #################################################################
 # Data Types with Enumerated Values
 #################################################################
 
-:DT-Priority
-	a owl:Class ;
+o:DT_Priority
+	rdf:type owl:Class ;
 	rdfs:label "SpecIF:Priority" ;
 	rdfs:comment "Enumerated values for priority" ;
 	dcterms:modified "2016-05-26T08:59:00+02:00" ;
-	owl:oneOf ( :V-Prio-0 :V-Prio-1 :V-Prio-2 :V-Prio-3 :V-Prio-4 ) .
-:V-Prio-0
-	a :DT-Priority ;
+	owl:oneOf ( SpecIF:priorityHigh SpecIF:priorityRatherHigh SpecIF:priorityMedium SpecIF:priorityRatherLow SpecIF:priorityLow ) .
+SpecIF:priorityHigh
+	rdf:type o:DT_Priority ;
 	rdfs:label "SpecIF:priorityHigh" .
-:V-Prio-1
-	a :DT-Priority ;
+SpecIF:priorityRatherHigh
+	rdf:type o:DT_Priority ;
 	rdfs:label "SpecIF:priorityRatherHigh" .
-:V-Prio-2
-	a :DT-Priority ;
+SpecIF:priorityMedium
+	rdf:type o:DT_Priority ;
 	rdfs:label "SpecIF:priorityMedium" .
-:V-Prio-3
-	a :DT-Priority ;
+SpecIF:priorityRatherLow
+	rdf:type o:DT_Priority ;
 	rdfs:label "SpecIF:priorityRatherLow" .
-:V-Prio-4
-	a :DT-Priority ;
+SpecIF:priorityLow
+	rdf:type o:DT_Priority ;
 	rdfs:label "SpecIF:priorityLow" .
 
 #################################################################
-# Property Classes
+# Ontology - Property Classes
 #################################################################
 
-rdfs:label
-	a owl:DatatypeProperty ;
-	rdfs:comment "<div><p><code>rdfs:label</code> is an instance of <code>rdf:Property</code> that may be used to provide a human-readable version of a resource's name.</p><p>A triple of the form:</p><blockquote> <code>R rdfs:label L</code></blockquote><p>states that L is a human readable label for R.</p><p>The <code>rdfs:domain</code> of <code>rdfs:label</code> is <code>rdfs:Resource</code>. The <a href=\"#ch_range\"><code>rdfs:range</code></a> of rdfs:label is <code>rdfs:Literal</code>.</p><p>Multilingual labels are supported using the <a href=\"https://www.w3.org/TR/rdf12-concepts/#section-Graph-Literal\" id=\"ref-for-index-term-literal-2\">language tagging</a> facility of RDF literals.</p></div>" .
-
-:PC-Name-Shape
-	a sh:PropertyShape ;
-	sh:path :PC-Name ;
+rdfs:label-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path rdfs:label ;
 	sh:datatype xsd:string ;
 	sh:maxLength "256" ;
 	sh:maxCount "1" .
 
-:PC-Name
-	owl:subPropertyOf rdfs:label ;
-	rdfs:label "rdfs:label" ;
-	dcterms:modified "2018-05-10T11:54:00+01:00" .
-
-rdfs:comment
-	a owl:DatatypeProperty ;
-	rdfs:comment "<div><p><code>rdfs:comment</code> is an instance of <code>rdf:Property</code> that may be used to provide a human-readable description of a resource.</p><p>A triple of the form:</p><blockquote> <code>R rdfs:comment L</code></blockquote><p>states that L is a human readable description of R.</p><p>The <code>rdfs:domain</code> of <code>rdfs:comment</code> is <code>rdfs:Resource</code>. The <code>rdfs:range</code> of rdfs:comment is <code>rdfs:Literal</code>.</p><p>A textual comment helps clarify the meaning of RDF classes and properties. Such in-line documentation complements the use of both formal techniques (Ontology and rule languages) and informal (prose documentation, examples, test cases). A variety of documentation forms can be combined to indicate the intended meaning of the classes and properties described in an RDF vocabulary. Since RDF vocabularies are expressed as RDF graphs, vocabularies defined in other namespaces may be used to provide richer documentation.</p><p>Multilingual documentation is supported through use of the <a href=\"https://www.w3.org/TR/rdf12-concepts/#section-Graph-Literal\" id=\"ref-for-index-term-literal-3\">language tagging</a> facility of RDF literals.</p></div>" .
-
-:PC-Description-Shape
-	a sh:PropertyShape ;
-	sh:path :PC-Description ;
+rdfs:comment-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path rdfs:comment ;
 	sh:datatype xsd:string ;
 	sh:maxCount "1" .
 
-:PC-Description
-	owl:subPropertyOf rdfs:comment ;
-	rdfs:label "rdfs:comment" ;
-	rdfs:comment "An account of the resource (source: http://dublincore.org/documents/dcmi-terms/). Descriptive text represented in plain or rich text using XHTML or Markdown. SHOULD include only content that is valid and suitable inside an XHTML &lt;div&gt; element (source: http://open-services.net/)." ;
-	dcterms:modified "2021-02-23T08:59:00+02:00" .
-
 SpecIF:Diagram
-	a owl:DatatypeProperty ;
-	rdfs:comment "One or more diagrams illustrating the resource." .
-
-:PC-Diagram-Shape
-	a sh:PropertyShape ;
-	sh:path :PC-Diagram ;
-	sh:datatype xsd:string .
-
-:PC-Diagram
-	owl:subPropertyOf SpecIF:Diagram ;
+	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
 	rdfs:label "SpecIF:Diagram" ;
 	rdfs:comment "One or more diagrams illustrating the resource." ;
 	dcterms:modified "2023-02-26T14:40:17.601Z" .
 
+SpecIF:Diagram-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path SpecIF:Diagram ;
+	sh:datatype xsd:string .
+
 dcterms:type
-	a owl:DatatypeProperty ;
-	rdfs:comment "<p>The nature or genre of the resource. <small>(<i>source: <a href=\"http://purl.org/dc/elements/1.1/type\">DCMI</a></i>)</small></p><p>Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element.</p><p>For example, a [[FMC:Actor]] may represent a <i>System Function</i>, a <i>System Component</i> or a <i>User Role</i>. Similarly, in the context of process modelling, a FMC:Actor may represent a <i>Process Step</i> or again a <i>User Role</i>. So, all of these are meaningful values for a FMC:Actor's property named dcterms:type.</p>" .
-
-:PC-Type-Shape
-	a sh:PropertyShape ;
-	sh:path :PC-Type ;
-	sh:datatype xsd:string ;
-	sh:maxLength "32" ;
-	sh:maxCount "1" .
-
-:PC-Type
-	owl:subPropertyOf dcterms:type ;
+	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
 	rdfs:label "dcterms:type" ;
 	rdfs:comment "<p>The nature or genre of the resource. <small>(<i>source: <a href=\"http://purl.org/dc/elements/1.1/type\">DCMI</a></i>)</small></p><p>Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element.</p><p>For example, a [[FMC:Actor]] may represent a <i>System Function</i>, a <i>System Component</i> or a <i>User Role</i>. Similarly, in the context of process modelling, a FMC:Actor may represent a <i>Process Step</i> or again a <i>User Role</i>. So, all of these are meaningful values for a FMC:Actor's property named dcterms:type.</p>" ;
 	dcterms:modified "2023-02-26T20:18:04.451Z" .
 
-# No shape yet for propertyClass with enumerated dataType: PC-Priority
+dcterms:type-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path dcterms:type ;
+	sh:datatype xsd:string ;
+	sh:maxLength "32" ;
+	sh:maxCount "1" .
 
-:PC-Priority
-	a owl:ObjectProperty ;
+SpecIF:Priority
+	rdf:type owl:ObjectProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
 	rdfs:label "SpecIF:Priority" ;
 	rdfs:comment "The 'Priority' of the resource." ;
 	dcterms:modified "2020-03-26T22:59:00+02:00" .
+# ToDo: Shape should restrict the range to the allowed values of the enumerated dataType
+
+SpecIF:Priority-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path SpecIF:Priority ;
+	sh:datatype xsd:string ;
+	sh:maxCount "1" .
 
 #################################################################
-# Resource Classes
+# Ontology - Entity Classes
 #################################################################
-
-pig:OrganizerClass
-	a owl:Class .
-
-pig:EntityClass
-	a owl:Class .
 
 SpecIF:Heading
-	owl:subClassOf pig:EntityClass ;
-	rdfs:comment "Eine 'Überschrift' in einem Dokument ist der Titel eines Kapitels. Sie kann eine Beschreibung haben, die als Einleitung oder Zusammenfassung des Kapitels genutzt werden kann." .
-
-:RC-Folder-Shape
-	a sh:NodeShape ;
-	sh:targetClass :RC-Folder ;
-	sh:property :PC-Name-Shape ;
-	sh:property :PC-Description-Shape ;
-	sh:property :PC-Diagram-Shape ;
-	sh:property :PC-Type-Shape .
-
-:RC-Folder
-	owl:subClassOf SpecIF:Heading ;
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:Paragraph ;
 	rdfs:label "SpecIF:Heading" ;
 	rdfs:comment "A 'Heading' is a chapter title at any level with optional description." ;
 	dcterms:modified "2024-03-02T15:28:50.414Z" .
 
+SpecIF:Heading-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:Heading ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property SpecIF:Diagram-Shape ;
+	sh:property dcterms:type-Shape .
+
 SpecIF:Paragraph
-	owl:subClassOf pig:EntityClass ;
-	rdfs:comment "<p>Ein 'Textabschnitt' in einem Dokument auf beliebiger Ebene.</p>" .
-
-:RC-Paragraph-Shape
-	a sh:NodeShape ;
-	sh:targetClass :RC-Paragraph ;
-	sh:property :PC-Name-Shape ;
-	sh:property :PC-Description-Shape ;
-	sh:property :PC-Diagram-Shape ;
-	sh:property :PC-Type-Shape .
-
-:RC-Paragraph
-	owl:subClassOf SpecIF:Paragraph ;
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:EntityClass ;
 	rdfs:label "SpecIF:Paragraph" ;
 	rdfs:comment "<p>A 'Paragraph' is an unspecified information in a document at any level.</p>" ;
 	dcterms:modified "2023-07-16T09:30:25.850Z" .
 
+SpecIF:Paragraph-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:Paragraph ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property SpecIF:Diagram-Shape ;
+	sh:property dcterms:type-Shape .
+
 pig:View
-	owl:subClassOf pig:OrganizerClass ;
-	rdfs:comment "A PIG organizer class representing a diagram with certain model-elements for a given communication purpose." .
-
-:RC-View-Shape
-	a sh:NodeShape ;
-	sh:targetClass :RC-View ;
-	sh:property :PC-Name-Shape ;
-	sh:property :PC-Description-Shape ;
-	sh:property :PC-Diagram-Shape ;
-	sh:property :PC-Type-Shape .
-
-:RC-View
-	owl:subClassOf pig:View ;
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:OrganizerClass ;
 	rdfs:label "pig:View" ;
 	rdfs:comment "A 'View' is a graphical model view with a specific communication purpose, e.g. a business process or system composition." ;
 	pig:Icon "▣" ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
 
+pig:View-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass pig:View ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property SpecIF:Diagram-Shape ;
+	sh:property dcterms:type-Shape .
+
 FMC:Actor
-	owl:subClassOf pig:EntityClass ;
-	rdfs:comment "<p>Ein 'Akteur' ist ein fundamentaler Modellelementtyp, der eine aktive Entität darstellt, sei es eine Aktivität, ein Prozessschritt, eine Funktion, eine Systemkomponente oder eine Rolle.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Actor' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[bpmn:timer]].</p>" .
-
-:RC-Actor-Shape
-	a sh:NodeShape ;
-	sh:targetClass :RC-Actor ;
-	sh:property :PC-Name-Shape ;
-	sh:property :PC-Description-Shape ;
-	sh:property :PC-Type-Shape .
-
-:RC-Actor
-	owl:subClassOf FMC:Actor ;
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:EntityClass ;
 	rdfs:label "FMC:Actor" ;
 	rdfs:comment "An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role." ;
 	pig:Icon "&#x25A1;" ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
 
+FMC:Actor-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass FMC:Actor ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape .
+
 FMC:State
-	owl:subClassOf pig:EntityClass ;
-	rdfs:comment "<p>Ein 'Zustand' ist ein fundamentaler Modellelementtyp, der eine passive Entität darstellt, sei es ein Wert, ein Dokument, ein Informationsspeicher, eine Bedingung oder eine physische Beschaffenheit.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:State' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[ArchiMate:DataObject]].</p>" .
-
-:RC-State-Shape
-	a sh:NodeShape ;
-	sh:targetClass :RC-State ;
-	sh:property :PC-Name-Shape ;
-	sh:property :PC-Description-Shape ;
-	sh:property :PC-Type-Shape .
-
-:RC-State
-	owl:subClassOf FMC:State ;
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:EntityClass ;
 	rdfs:label "FMC:State" ;
 	rdfs:comment "A 'State' is a fundamental model element type representing a passive entity, be it a value, a document, an information storage or even a physical shape." ;
 	pig:Icon "&#x25CB;" ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
 
+FMC:State-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass FMC:State ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape .
+
 FMC:Event
-	owl:subClassOf pig:EntityClass ;
-	rdfs:comment "<p>Ein 'Ereignis' ist ein fundamentaler Modellelementtyp, der eine Zeitreferenz, eine Änderung einer Bedingung/eines Wertes oder allgemeiner ein Synchronisationsmittel darstellt.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Event' spezifiziert. Die Werte dieser Eigenschaft sollen Ontologiebegriffe sein, wie z.B. [[bpmn:startEvent]].</p>" .
-
-:RC-Event-Shape
-	a sh:NodeShape ;
-	sh:targetClass :RC-Event ;
-	sh:property :PC-Name-Shape ;
-	sh:property :PC-Description-Shape ;
-	sh:property :PC-Type-Shape .
-
-:RC-Event
-	owl:subClassOf FMC:Event ;
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:EntityClass ;
 	rdfs:label "FMC:Event" ;
 	rdfs:comment "An 'Event' is a fundamental model element type representing a time reference, a change in condition/value or more generally a synchronisation primitive." ;
 	pig:Icon "&#x2662;" ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
 
+FMC:Event-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass FMC:Event ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape .
+
 IREB:Requirement
-	owl:subClassOf pig:EntityClass ;
-	rdfs:comment "<p>Eine 'Anforderung' ist ein einzelnes dokumentiertes physisches und funktionales Bedürfnis, das ein bestimmter Entwurf, ein Produkt oder ein Prozess erfüllen muss. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>Eine Bedingung oder Fähigkeit, die ein Benutzer benötigt, um ein Problem zu lösen oder ein Ziel zu erreichen.</li><li>Eine Bedingung oder Fähigkeit, die ein System oder eine Systemkomponente erfüllen oder besitzen muss, um einen Vertrag, eine Norm, eine Spezifikation oder ein anderes formal vorgeschriebenes Dokument zu erfüllen.</li><li>Eine dokumentierte Darstellung einer Bedingung oder Fähigkeit wie in (1) oder (2).</li></ol><p>Anmerkung: Die obige Definition ist die klassische Definition aus IEEE Std 610.12 von 1990. Alternativ geben wir auch eine modernere Definition an:</p><ol><li>Ein von einem Stakeholder wahrgenommener Bedarf.</li><li>Eine Fähigkeit oder Eigenschaft, die ein System haben soll.</li><li>Eine dokumentierte Darstellung eines Bedarfs, einer Fähigkeit oder Eigenschaft.</li></ol>" .
-
-:RC-Requirement-Shape
-	a sh:NodeShape ;
-	sh:targetClass :RC-Requirement ;
-	sh:property :PC-Name-Shape ;
-	sh:property :PC-Description-Shape .
-# No shapes yet for propertyClasses with enumerated dataType: PC-Priority
-
-:RC-Requirement
-	owl:subClassOf IREB:Requirement ;
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:EntityClass ;
 	rdfs:label "IREB:Requirement" ;
 	rdfs:comment "A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform." ;
 	pig:Icon "&#8623;" ;
 	dcterms:modified "2021-02-22T08:59:00+02:00" .
 
+IREB:Requirement-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass IREB:Requirement ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property SpecIF:Priority-Shape .
+
 #################################################################
-# Statement Classes
+# Ontology - Relationship Classes
 #################################################################
-
-pig:RelationshipClass
-	a owl:Class .
-
-pig:hasSubject
-	a owl:ObjectProperty .
-
-pig:hasObject
-	a owl:ObjectProperty .
-
-dcterms:hasPart
-	a owl:ObjectProperty ;
-	rdfs:comment "General containment relationship" .
-
-pig:hasElement
-	owl:subPropertyOf dcterms:hasPart ;
-	rdfs:comment "Containment relationship reserved for use in a hierarchy." .
 
 SpecIF:shows
-	a owl:Class ;
-	rdfs:comment "<p>A [[SpecIF:Diagram]] 'shows' a model element, e.g, a [[FMC:Actor]], [[FMC:State]], [[FMC:Event]] or [[SpecIF:Collection]].</p>" .
-
-:SC-shows-Shape
-	a sh:NodeShape ;
-	sh:targetClass :SC-shows ;
-	sh:property :PC-Name-Shape ;
-	sh:property :PC-Description-Shape ;
-	sh:property :SC-shows-hasSubject-Shape ;
-	sh:property :SC-shows-hasObject-Shape .
-
-:SC-shows
-	owl:subClassOf SpecIF:shows ;
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
 	rdfs:label "SpecIF:shows" ;
 	rdfs:comment "'View' shows 'Model-Element'" ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
 
-# Limit the node classes eligible as subject. Correct this way?
-:SC-shows-hasSubject-Shape
-	a sh:PropertyShape ;
-	sh:path :SC-shows-hasSubject ;
-	sh:class :RC-View ;
-	sh:minCount "1" ;
-	sh:maxCount "1" .
-
-:SC-shows-hasSubject
-	a owl:ObjectProperty ;
+SpecIF:shows-hasSubject
+	rdf:type owl:ObjectProperty ;
 	rdfs:subPropertyOf pig:hasSubject ;
-	rdfs:label "Connects the subject of :SC-shows" ;
-	rdfs:domain :SC-shows ;
+	rdfs:label "Connects the subject of SpecIF:shows" ;
+	rdfs:domain SpecIF:shows ;
+	rdfs:range pig:View ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
 
-# Limit the node classes eligible as object. Correct this way?
-:SC-shows-hasObject-Shape
-	a sh:PropertyShape ;
-	sh:path :SC-shows-hasObject ;
-	sh:minCount "1" ;
-	sh:maxCount "1" .
-
-:SC-shows-hasObject
-	a owl:ObjectProperty ;
+SpecIF:shows-hasObject
+	rdf:type owl:ObjectProperty ;
 	rdfs:subPropertyOf pig:hasObject ;
-	rdfs:label "Connects the object of :SC-shows" ;
-	rdfs:domain :SC-shows ;
+	rdfs:label "Connects the object of SpecIF:shows" ;
+	rdfs:domain SpecIF:shows ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
+
+SpecIF:shows-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:shows ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property [ 
+		sh:path SpecIF:shows-hasSubject ;
+		sh:class pig:View ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path SpecIF:shows-hasObject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
 
 SpecIF:writes
-	a owl:Class ;
-	rdfs:comment "A [[FMC:Actor]] 'writes' (changes) a [[FMC:State]]." .
-
-:SC-writes-Shape
-	a sh:NodeShape ;
-	sh:targetClass :SC-writes ;
-	sh:property :PC-Description-Shape ;
-	sh:property :SC-writes-hasSubject-Shape ;
-	sh:property :SC-writes-hasObject-Shape .
-
-:SC-writes
-	owl:subClassOf SpecIF:writes ;
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
 	rdfs:label "SpecIF:writes" ;
 	rdfs:comment "'Actor' (Role, Function) writes 'State' (Information)" ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
 
-# Limit the node classes eligible as subject. Correct this way?
-:SC-writes-hasSubject-Shape
-	a sh:PropertyShape ;
-	sh:path :SC-writes-hasSubject ;
-	sh:class :RC-Actor ;
-	sh:minCount "1" ;
-	sh:maxCount "1" .
-
-:SC-writes-hasSubject
-	a owl:ObjectProperty ;
+SpecIF:writes-hasSubject
+	rdf:type owl:ObjectProperty ;
 	rdfs:subPropertyOf pig:hasSubject ;
-	rdfs:label "Connects the subject of :SC-writes" ;
-	rdfs:domain :SC-writes ;
+	rdfs:label "Connects the subject of SpecIF:writes" ;
+	rdfs:domain SpecIF:writes ;
+	rdfs:range FMC:Actor ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
 
-# Limit the node classes eligible as object. Correct this way?
-:SC-writes-hasObject-Shape
-	a sh:PropertyShape ;
-	sh:path :SC-writes-hasObject ;
-	sh:class :RC-State ;
-	sh:minCount "1" ;
-	sh:maxCount "1" .
-
-:SC-writes-hasObject
-	a owl:ObjectProperty ;
+SpecIF:writes-hasObject
+	rdf:type owl:ObjectProperty ;
 	rdfs:subPropertyOf pig:hasObject ;
-	rdfs:label "Connects the object of :SC-writes" ;
-	rdfs:domain :SC-writes ;
+	rdfs:label "Connects the object of SpecIF:writes" ;
+	rdfs:domain SpecIF:writes ;
+	rdfs:range FMC:State ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
+
+SpecIF:writes-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:writes ;
+	sh:property rdfs:comment-Shape ;
+	sh:property [ 
+		sh:path SpecIF:writes-hasSubject ;
+		sh:class FMC:Actor ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path SpecIF:writes-hasObject ;
+		sh:class FMC:State ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
 
 SpecIF:reads
-	a owl:Class ;
-	rdfs:comment "A [[FMC:Actor]] 'reads' a [[FMC:State]]." .
-
-:SC-reads-Shape
-	a sh:NodeShape ;
-	sh:targetClass :SC-reads ;
-	sh:property :PC-Description-Shape ;
-	sh:property :SC-reads-hasSubject-Shape ;
-	sh:property :SC-reads-hasObject-Shape .
-
-:SC-reads
-	owl:subClassOf SpecIF:reads ;
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
 	rdfs:label "SpecIF:reads" ;
 	rdfs:comment "'Actor' (Role, Function) reads 'State' (Information)" ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
 
-# Limit the node classes eligible as subject. Correct this way?
-:SC-reads-hasSubject-Shape
-	a sh:PropertyShape ;
-	sh:path :SC-reads-hasSubject ;
-	sh:class :RC-Actor ;
-	sh:minCount "1" ;
-	sh:maxCount "1" .
-
-:SC-reads-hasSubject
-	a owl:ObjectProperty ;
+SpecIF:reads-hasSubject
+	rdf:type owl:ObjectProperty ;
 	rdfs:subPropertyOf pig:hasSubject ;
-	rdfs:label "Connects the subject of :SC-reads" ;
-	rdfs:domain :SC-reads ;
+	rdfs:label "Connects the subject of SpecIF:reads" ;
+	rdfs:domain SpecIF:reads ;
+	rdfs:range FMC:Actor ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
 
-# Limit the node classes eligible as object. Correct this way?
-:SC-reads-hasObject-Shape
-	a sh:PropertyShape ;
-	sh:path :SC-reads-hasObject ;
-	sh:class :RC-State ;
-	sh:minCount "1" ;
-	sh:maxCount "1" .
-
-:SC-reads-hasObject
-	a owl:ObjectProperty ;
+SpecIF:reads-hasObject
+	rdf:type owl:ObjectProperty ;
 	rdfs:subPropertyOf pig:hasObject ;
-	rdfs:label "Connects the object of :SC-reads" ;
-	rdfs:domain :SC-reads ;
+	rdfs:label "Connects the object of SpecIF:reads" ;
+	rdfs:domain SpecIF:reads ;
+	rdfs:range FMC:State ;
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
+
+SpecIF:reads-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:reads ;
+	sh:property rdfs:comment-Shape ;
+	sh:property [ 
+		sh:path SpecIF:reads-hasSubject ;
+		sh:class FMC:Actor ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path SpecIF:reads-hasObject ;
+		sh:class FMC:State ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
 
 oslc_rm:satisfies
-	a owl:Class ;
-	rdfs:comment "<p>The object is satisfied by the subject. <small>(<i>source: <a href=\"http://open-services.net/\">OSLC</a></i>)</small></p><p>SpecIF suggests that the subject is confined to a model element, e.g, a [[FMC:Actor]] or [[FMC:State]], and the object is confined to a [[IREB:Requirement]]. More concretely, an example for this type of statement is 'Component-X <em>satisfies</em> 'Requirement-4711'.</p>" .
-
-:SC-satisfies-Shape
-	a sh:NodeShape ;
-	sh:targetClass :SC-satisfies ;
-	sh:property :PC-Description-Shape ;
-	sh:property :SC-satisfies-hasSubject-Shape ;
-	sh:property :SC-satisfies-hasObject-Shape .
-
-:SC-satisfies
-	owl:subClassOf oslc_rm:satisfies ;
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
 	rdfs:label "oslc_rm:satisfies" ;
 	rdfs:comment "Statement: Model-Element satisfies Requirement" ;
 	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
-# Limit the node classes eligible as subject. Correct this way?
-:SC-satisfies-hasSubject-Shape
-	a sh:PropertyShape ;
-	sh:path :SC-satisfies-hasSubject ;
-	sh:class :RC-Actor, :RC-State ;
-	sh:minCount "1" ;
-	sh:maxCount "1" .
-
-:SC-satisfies-hasSubject
-	a owl:ObjectProperty ;
+oslc_rm:satisfies-hasSubject
+	rdf:type owl:ObjectProperty ;
 	rdfs:subPropertyOf pig:hasSubject ;
-	rdfs:label "Connects the subject of :SC-satisfies" ;
-	rdfs:domain :SC-satisfies ;
+	rdfs:label "Connects the subject of oslc_rm:satisfies" ;
+	rdfs:domain oslc_rm:satisfies ;
+	rdfs:range [ owl:unionOf( FMC:Actor FMC:State )] ;
 	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
-# Limit the node classes eligible as object. Correct this way?
-:SC-satisfies-hasObject-Shape
-	a sh:PropertyShape ;
-	sh:path :SC-satisfies-hasObject ;
-	sh:class :RC-Requirement ;
-	sh:minCount "1" ;
-	sh:maxCount "1" .
-
-:SC-satisfies-hasObject
-	a owl:ObjectProperty ;
+oslc_rm:satisfies-hasObject
+	rdf:type owl:ObjectProperty ;
 	rdfs:subPropertyOf pig:hasObject ;
-	rdfs:label "Connects the object of :SC-satisfies" ;
-	rdfs:domain :SC-satisfies ;
+	rdfs:label "Connects the object of oslc_rm:satisfies" ;
+	rdfs:domain oslc_rm:satisfies ;
+	rdfs:range IREB:Requirement ;
 	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
+oslc_rm:satisfies-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass oslc_rm:satisfies ;
+	sh:property rdfs:comment-Shape ;
+	sh:property [ 
+		sh:path oslc_rm:satisfies-hasSubject ;
+		sh:class [ owl:unionOf( FMC:Actor FMC:State )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path oslc_rm:satisfies-hasObject ;
+		sh:class IREB:Requirement ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
 #################################################################
-# Resources
+# Entities
 #################################################################
 
-:Folder-Introduction
-	a :RC-Folder ;
-	:PC-Name "Introduction" ;
-	:PC-Description "<div><p>This is a minimal showcase for a model with model-elements and related requirements. It covers pretty much all characteristics neeeded in such cases (including 'statements on statements'), so that transformations and expressive power of other data formats can be evaluated. The example and its representation in SpecIF format is discussed in <a href=\"https://specif.de/Tutorials/06_Very-Simple-Model-FMC.html\" target=\"_blank\">Tutorial 6: Very Simple Model (FMC)</a> and <a href=\"https://specif.de/Tutorials/09_Very-Simple-Model-FMC-with-Requirements.html\" target=\"_blank\">Tutorial 9: Very Simple Model (FMC) with Requirements</a>.</p></div>" ;
+d:Folder-Introduction
+	rdf:type SpecIF:Heading ;
+	rdfs:subClassOf pig:Entity ;
+	rdfs:label "Introduction" ;
+	rdfs:comment "<div><p>This is a minimal showcase for a model with model-elements and related requirements. It covers pretty much all characteristics neeeded in such cases (including 'statements on statements'), so that transformations and expressive power of other data formats can be evaluated. The example and its representation in SpecIF format is discussed in <a href=\"https://specif.de/Tutorials/06_Very-Simple-Model-FMC.html\" target=\"_blank\">Tutorial 6: Very Simple Model (FMC)</a> and <a href=\"https://specif.de/Tutorials/09_Very-Simple-Model-FMC-with-Requirements.html\" target=\"_blank\">Tutorial 9: Very Simple Model (FMC) with Requirements</a>.</p></div>" ;
 	dcterms:modified "2025-02-07T08:32:00+01:00" .
 
-:Folder-Requirements
-	a :RC-Folder ;
-	:PC-Name "Requirements" ;
+d:Folder-Requirements
+	rdf:type SpecIF:Heading ;
+	rdfs:subClassOf pig:Entity ;
+	rdfs:label "Requirements" ;
 	dcterms:modified "2020-03-06T08:32:00+01:00" .
 
-:Req-1a8016e2872e78ecadc50feddc00029b
-	a :RC-Requirement ;
-	:PC-Name "Data Volume" ;
-	:PC-Description "<div><p>The data store MUST support a total volume up to 850 GB.</p></div>" ;
-	:PC-Priority :V-Prio-1 ;
+d:Req-1a8016e2872e78ecadc50feddc00029b
+	rdf:type IREB:Requirement ;
+	rdfs:subClassOf pig:Entity ;
+	rdfs:label "Data Volume" ;
+	rdfs:comment "<div><p>The data store MUST support a total volume up to 850 GB.</p></div>" ;
+	SpecIF:Priority SpecIF:priorityRatherHigh ;
 	dcterms:modified "2020-10-17T10:00:00+01:00" .
 
-:Req-0Z7916e2872e78ecadc50feddc00918a
-	a :RC-Requirement ;
-	:PC-Name "Consistency" ;
-	:PC-Description "<div><p>The data store MUST be consistent at all times.</p></div>" ;
-	:PC-Priority :V-Prio-0 ;
+d:Req-0Z7916e2872e78ecadc50feddc00918a
+	rdf:type IREB:Requirement ;
+	rdfs:subClassOf pig:Entity ;
+	rdfs:label "Consistency" ;
+	rdfs:comment "<div><p>The data store MUST be consistent at all times.</p></div>" ;
+	SpecIF:Priority SpecIF:priorityHigh ;
 	dcterms:modified "2020-10-17T10:00:00+01:00" .
 
-:Req-2b9016e2872e78ecadc50feddc0013Ac
-	a :RC-Requirement ;
-	:PC-Name "Response Time" ;
-	:PC-Description "<div><p>The system SHOULD respond on user queries within 300 ms.</p></div>" ;
-	:PC-Priority :V-Prio-2 ;
+d:Req-2b9016e2872e78ecadc50feddc0013Ac
+	rdf:type IREB:Requirement ;
+	rdfs:subClassOf pig:Entity ;
+	rdfs:label "Response Time" ;
+	rdfs:comment "<div><p>The system SHOULD respond on user queries within 300 ms.</p></div>" ;
+	SpecIF:Priority SpecIF:priorityMedium ;
 	dcterms:modified "2020-10-17T10:00:00+01:00" .
 
-:Folder-SystemModel
-	a :RC-Folder ;
-	:PC-Name "System Model" ;
+d:Folder-SystemModel
+	rdf:type SpecIF:Heading ;
+	rdfs:subClassOf pig:Entity ;
+	rdfs:label "System Model" ;
 	dcterms:modified "2020-03-06T08:32:00+01:00" .
 
-:Diagram-aec0df7900010000017001eaf53e8876
-	a :RC-View ;
-	:PC-Name "IT-Integration: FiCo-Application and FiCo-Data" ;
-	:PC-Diagram "<div><p class=\"inline-label\">Model Diagram:</p><p><object type=\"image/svg+xml\" data=\"files_and_images/Very-Simple-Model-FMC.svg\">Notation: FMC Block Diagram</object></p></div>" ;
-	:PC-Type "FMC Block Diagram" ;
+d:Diagram-aec0df7900010000017001eaf53e8876
+	rdf:type pig:View ;
+	rdfs:subClassOf pig:Organizer ;
+	rdfs:label "IT-Integration: FiCo-Application and FiCo-Data" ;
+	SpecIF:Diagram "<div><p class=\"inline-label\">Model Diagram:</p><p><object type=\"image/svg+xml\" data=\"files_and_images/Very-Simple-Model-FMC.svg\">Notation: FMC Block Diagram</object></p></div>" ;
+	dcterms:type "FMC Block Diagram" ;
 	dcterms:modified "2020-03-06T08:32:00+01:00" .
 
-:MEl-50fbfe8f0029b1a8016ea86245a9d83a
-	a :RC-Actor ;
-	:PC-Name "FiCo-Application" ;
-	:PC-Description "<div><p>IT-Application for Finance and Controlling.</p></div>" ;
+d:MEl-50fbfe8f0029b1a8016ea86245a9d83a
+	rdf:type FMC:Actor ;
+	rdfs:subClassOf pig:Entity ;
+	rdfs:label "FiCo-Application" ;
+	rdfs:comment "<div><p>IT-Application for Finance and Controlling.</p></div>" ;
 	dcterms:modified "2020-03-06T09:04:00+01:00" .
 
-:MEl-50feddc00029b1a8016e2872e78ecadc
-	a :RC-State ;
-	:PC-Name "FiCo-Data" ;
-	:PC-Description "<div><p>Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc.</p></div>" ;
+d:MEl-50feddc00029b1a8016e2872e78ecadc
+	rdf:type FMC:State ;
+	rdfs:subClassOf pig:Entity ;
+	rdfs:label "FiCo-Data" ;
+	rdfs:comment "<div><p>Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc.</p></div>" ;
 	dcterms:modified "2020-03-06T09:03:00+01:00" .
 
-:FolderGlossary-10875487071
-	a :RC-Folder ;
-	:PC-Name "Modellelemente (Glossar)" ;
-	:PC-Type "Modellelemente (Glossar)" ;
-	dcterms:modified "2025-06-09T12:21:11.036Z" .
+d:FolderGlossary-10875487071
+	rdf:type SpecIF:Heading ;
+	rdfs:subClassOf pig:Entity ;
+	rdfs:label "Model Elements (Glossary)" ;
+	dcterms:type "Model Elements (Glossary)" ;
+	dcterms:modified "2025-08-25T07:39:50.826Z" .
 
 #################################################################
-# Statements
+# Relationships
 #################################################################
 
-:SVis-aec0df7900010000017001eaf53e8876-50fbfe8f0029b1a8016ea86245a9d83a
-	a :SC-shows ;
-	:SC-shows-hasSubject :Diagram-aec0df7900010000017001eaf53e8876 ;
-	:SC-shows-hasObject :MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
-	:PC-Description "'FMC Block Diagram' shows 'FiCo-Application'" ;
+d:SVis-aec0df7900010000017001eaf53e8876-50fbfe8f0029b1a8016ea86245a9d83a
+	rdf:type SpecIF:shows ;
+	rdfs:subClassOf pig:Relationship ;
+	SpecIF:shows-hasSubject d:Diagram-aec0df7900010000017001eaf53e8876 ;
+	SpecIF:shows-hasObject d:MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
+	rdfs:comment "'FMC Block Diagram' shows 'FiCo-Application'" ;
 	dcterms:modified "2020-03-06T08:32:00+01:00" .
 
-:SVis-aec0df7900010000017001eaf53e8876-50feddc00029b1a8016e2872e78ecadc
-	a :SC-shows ;
-	:SC-shows-hasSubject :Diagram-aec0df7900010000017001eaf53e8876 ;
-	:SC-shows-hasObject :MEl-50feddc00029b1a8016e2872e78ecadc ;
-	:PC-Description "'FMC Block Diagram' shows 'FiCo-Data'" ;
+d:SVis-aec0df7900010000017001eaf53e8876-50feddc00029b1a8016e2872e78ecadc
+	rdf:type SpecIF:shows ;
+	rdfs:subClassOf pig:Relationship ;
+	SpecIF:shows-hasSubject d:Diagram-aec0df7900010000017001eaf53e8876 ;
+	SpecIF:shows-hasObject d:MEl-50feddc00029b1a8016e2872e78ecadc ;
+	rdfs:comment "'FMC Block Diagram' shows 'FiCo-Data'" ;
 	dcterms:modified "2020-03-06T08:32:00+01:00" .
 
-:SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc
-	a :SC-writes ;
-	:SC-writes-hasSubject :MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
-	:SC-writes-hasObject :MEl-50feddc00029b1a8016e2872e78ecadc ;
-	:PC-Description "'FiCo-Application' writes 'FiCo-Data'" ;
+d:SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc
+	rdf:type SpecIF:writes ;
+	rdfs:subClassOf pig:Relationship ;
+	SpecIF:writes-hasSubject d:MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
+	SpecIF:writes-hasObject d:MEl-50feddc00029b1a8016e2872e78ecadc ;
+	rdfs:comment "'FiCo-Application' writes 'FiCo-Data'" ;
 	dcterms:modified "2020-03-06T09:05:00+01:00" .
 
-:SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc
-	a :SC-reads ;
-	:SC-reads-hasSubject :MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
-	:SC-reads-hasObject :MEl-50feddc00029b1a8016e2872e78ecadc ;
-	:PC-Description "'FiCo-Application' reads 'FiCo-Data'" ;
+d:SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc
+	rdf:type SpecIF:reads ;
+	rdfs:subClassOf pig:Relationship ;
+	SpecIF:reads-hasSubject d:MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
+	SpecIF:reads-hasObject d:MEl-50feddc00029b1a8016e2872e78ecadc ;
+	rdfs:comment "'FiCo-Application' reads 'FiCo-Data'" ;
 	dcterms:modified "2020-03-06T09:05:00+01:00" .
 
-:Ssat-50feddc00029b1a8016e2872e78ecadc-1a8016e2872e78ecadc50feddc00029b
-	a :SC-satisfies ;
-	:SC-satisfies-hasSubject :MEl-50feddc00029b1a8016e2872e78ecadc ;
-	:SC-satisfies-hasObject :Req-1a8016e2872e78ecadc50feddc00029b ;
-	:PC-Description "'FiCo-Data' satisfies 'Data Volume'" ;
+d:Ssat-50feddc00029b1a8016e2872e78ecadc-1a8016e2872e78ecadc50feddc00029b
+	rdf:type oslc_rm:satisfies ;
+	rdfs:subClassOf pig:Relationship ;
+	oslc_rm:satisfies-hasSubject d:MEl-50feddc00029b1a8016e2872e78ecadc ;
+	oslc_rm:satisfies-hasObject d:Req-1a8016e2872e78ecadc50feddc00029b ;
+	rdfs:comment "'FiCo-Data' satisfies 'Data Volume'" ;
 	dcterms:modified "2020-10-17T10:00:00+01:00" .
 
-:Ssat-50feddc00029b1a8016e2872e78ecadc-0Z7916e2872e78ecadc50feddc00918a
-	a :SC-satisfies ;
-	:SC-satisfies-hasSubject :MEl-50feddc00029b1a8016e2872e78ecadc ;
-	:SC-satisfies-hasObject :Req-0Z7916e2872e78ecadc50feddc00918a ;
-	:PC-Description "'FiCo-Data' satisfies 'Consistency'" ;
+d:Ssat-50feddc00029b1a8016e2872e78ecadc-0Z7916e2872e78ecadc50feddc00918a
+	rdf:type oslc_rm:satisfies ;
+	rdfs:subClassOf pig:Relationship ;
+	oslc_rm:satisfies-hasSubject d:MEl-50feddc00029b1a8016e2872e78ecadc ;
+	oslc_rm:satisfies-hasObject d:Req-0Z7916e2872e78ecadc50feddc00918a ;
+	rdfs:comment "'FiCo-Data' satisfies 'Consistency'" ;
 	dcterms:modified "2020-10-17T10:00:00+01:00" .
 
-:Ssat-50fbfe8f0029b1a8016ea86245a9d83a-2b9016e2872e78ecadc50feddc0013Ac
-	a :SC-satisfies ;
-	:SC-satisfies-hasSubject :MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
-	:SC-satisfies-hasObject :Req-2b9016e2872e78ecadc50feddc0013Ac ;
-	:PC-Description "'FiCo-Application' satisfies 'Response Time'" ;
+d:Ssat-50fbfe8f0029b1a8016ea86245a9d83a-2b9016e2872e78ecadc50feddc0013Ac
+	rdf:type oslc_rm:satisfies ;
+	rdfs:subClassOf pig:Relationship ;
+	oslc_rm:satisfies-hasSubject d:MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
+	oslc_rm:satisfies-hasObject d:Req-2b9016e2872e78ecadc50feddc0013Ac ;
+	rdfs:comment "'FiCo-Application' satisfies 'Response Time'" ;
 	dcterms:modified "2020-10-17T10:00:00+01:00" .
 
-:SVis-aec0df7900010000017001eaf53e8876-SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc
-	a :SC-shows ;
-	:SC-shows-hasSubject :Diagram-aec0df7900010000017001eaf53e8876 ;
-	:SC-shows-hasObject :SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc ;
-	:PC-Name "zeigt" ;
-	:PC-Description "'FMC Block Diagram' shows 'FiCo-Application writes FiCo-Data'" ;
+d:SVis-aec0df7900010000017001eaf53e8876-SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc
+	rdf:type SpecIF:shows ;
+	rdfs:subClassOf pig:Relationship ;
+	SpecIF:shows-hasSubject d:Diagram-aec0df7900010000017001eaf53e8876 ;
+	SpecIF:shows-hasObject d:SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc ;
+	rdfs:label "zeigt" ;
+	rdfs:comment "'FMC Block Diagram' shows 'FiCo-Application writes FiCo-Data'" ;
 	dcterms:modified "2025-01-26T08:32:00+01:00" .
 
-:SVis-aec0df7900010000017001eaf53e8876-SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc
-	a :SC-shows ;
-	:SC-shows-hasSubject :Diagram-aec0df7900010000017001eaf53e8876 ;
-	:SC-shows-hasObject :SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc ;
-	:PC-Name "zeigt" ;
-	:PC-Description "'FMC Block Diagram' shows 'FiCo-Application reads FiCo-Data'" ;
+d:SVis-aec0df7900010000017001eaf53e8876-SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc
+	rdf:type SpecIF:shows ;
+	rdfs:subClassOf pig:Relationship ;
+	SpecIF:shows-hasSubject d:Diagram-aec0df7900010000017001eaf53e8876 ;
+	SpecIF:shows-hasObject d:SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc ;
+	rdfs:label "zeigt" ;
+	rdfs:comment "'FMC Block Diagram' shows 'FiCo-Application reads FiCo-Data'" ;
 	dcterms:modified "2025-01-26T08:32:00+01:00" .
-
-#################################################################
-# Hierarchies
-#################################################################
-
-:N-HierarchyRoot
-	a pig:Organizer ;
-	rdfs:label "Hierarchy Root" ;
-	rdfs:comment "... anchoring all hierarchies of this graph (project)" ;
-	pig:hasChild :N-Folder-Introduction ,
-		:N-Folder-Requirements ,
-		:N-Folder-SystemModel ,
-		:N-FolderGlossary-10875487071 .
-
-:N-Folder-Introduction
-	dcterms:modified "2025-02-07T10:00:00+01:00" ;
-	pig:hasElement :Folder-Introduction .
-
-:N-Folder-Requirements
-	dcterms:modified "2020-10-17T10:00:00+01:00" ;
-	pig:hasElement :Folder-Requirements ;
-	pig:hasChild :N-1a8016e2872e78ecadc50feddc00029b ,
-		:N-0Z7916e2872e78ecadc50feddc00918a ,
-		:N-2b9016e2872e78ecadc50feddc0013Ac .
-
-:N-1a8016e2872e78ecadc50feddc00029b
-	dcterms:modified "2020-10-17T10:00:00+01:00" ;
-	pig:hasElement :Req-1a8016e2872e78ecadc50feddc00029b .
-
-:N-0Z7916e2872e78ecadc50feddc00918a
-	dcterms:modified "2020-10-17T10:00:00+01:00" ;
-	pig:hasElement :Req-0Z7916e2872e78ecadc50feddc00918a .
-
-:N-2b9016e2872e78ecadc50feddc0013Ac
-	dcterms:modified "2020-10-17T10:00:00+01:00" ;
-	pig:hasElement :Req-2b9016e2872e78ecadc50feddc0013Ac .
-
-:N-Folder-SystemModel
-	dcterms:modified "2020-10-17T10:00:00+01:00" ;
-	pig:hasElement :Folder-SystemModel ;
-	pig:hasChild :N-Diagram-aec0df7900010000017001eaf53e8876 .
-
-:N-Diagram-aec0df7900010000017001eaf53e8876
-	dcterms:modified "2020-10-17T10:00:00+01:00" ;
-	pig:hasElement :Diagram-aec0df7900010000017001eaf53e8876 ;
-	pig:hasChild :N-50fbfe8f0029b1a8016ea86245a9d83a ,
-		:N-50feddc00029b1a8016e2872e78ecadc .
-
-:N-50fbfe8f0029b1a8016ea86245a9d83a
-	dcterms:modified "2020-03-06T09:05:00+01:00" ;
-	pig:hasElement :MEl-50fbfe8f0029b1a8016ea86245a9d83a .
-
-:N-50feddc00029b1a8016e2872e78ecadc
-	dcterms:modified "2020-03-06T09:05:00+01:00" ;
-	pig:hasElement :MEl-50feddc00029b1a8016e2872e78ecadc .
-
-:N-FolderGlossary-10875487071
-	dcterms:modified "2025-06-09T12:21:11.036Z" ;
-	pig:hasElement :FolderGlossary-10875487071 ;
-	pig:hasChild :N-9559304043 ,
-		:N-12075661949 .
-
-:N-9559304043
-	dcterms:modified "2025-06-09T12:21:11.036Z" ;
-	pig:hasElement :MEl-50fbfe8f0029b1a8016ea86245a9d83a .
-
-:N-12075661949
-	dcterms:modified "2025-06-09T12:21:11.036Z" ;
-	pig:hasElement :MEl-50feddc00029b1a8016e2872e78ecadc .

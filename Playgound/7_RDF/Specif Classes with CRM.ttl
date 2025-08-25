@@ -1,0 +1,3316 @@
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sh: <https://www.w3.org/ns/shacl#> .
+@prefix W3C: <https://www.w3.org/standards/semanticweb#> .
+@prefix xs: <http://www.w3.org/2001/XMLSchema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix schema: <https://schema.org#> .
+@prefix iana: <https://www.iana.org/assignments/media-types#> .
+@prefix foaf: <http://xmlns.com/foaf/spec/#> .
+@prefix FMC: <http://fmc-modeling.org#> .
+@prefix IR: <https://www.adesso.de/de/impulse/interaction-room/index.jsp#> .
+@prefix IREB: <https://www.ireb.org/en/downloads#cpre-glossary> .
+@prefix ReqIF: <https://www.prostep.org/fileadmin/downloads/PSI_ImplementationGuide_ReqIF_V1-7.pdf#> .
+@prefix ReqIF-WF: <https://www.prostep.org/fileadmin/downloads/Recommendation_ReqIF_V2_RZ3.pdf#> .
+@prefix HIS: <https://www.itwissen.info/Herstellerinitiative-Software-Automotive-HIS.html#> .
+@prefix oslc: <http://open-services.net/ns/core#> .
+@prefix oslc_rm: <http://open-services.net/ns/rm#> .
+@prefix oslc_cm: <http://open-services.net/ns/cm#> .
+@prefix ArchiMate: <https://pubs.opengroup.org#> .
+@prefix bpmn: <https://www.bpmn.org#> .
+@prefix uml: <https://www.omg.org/spec/UML#> .
+@prefix sysml: <https://www.omg.org/spec/SysML#> .
+@prefix pig: <https://product-information-graph.org/schema#> .
+@prefix DDP: <http://www.prostep.org/dictionary/2.0#> .
+@prefix SpecIF: <https://specif.de/v1.1/schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+@prefix d: <https://product-information-graph.org/examples/Specif%20Classes%20with%20CRM.specif#> .
+@prefix o: <https://product-information-graph.org/examples/ontology#> .
+
+#################################################################
+# Project Metadata
+#################################################################
+
+d:
+	rdf:type owl:Ontology ;
+	rdfs:label "Specif Classes with CRM" ;
+	rdfs:comment "A set of SpecIF Classes derived from a SpecIF Ontology for the domains SpecIF:DomainRequirementsEngineering, SpecIF:DomainSystemsEngineering, SpecIF:DomainSystemModelIntegration ... with two instances as an example." ;
+	owl:imports <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ,
+		<http://www.w3.org/2000/01/rdf-schema#> ;
+	dcterms:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
+	dcterms:createdAt "2025-08-25T06:40:12.393Z" .
+
+#################################################################
+### META-ONTOLOGY = PIG Metamodel (pig:)
+#################################################################
+
+pig:OrganizerClass
+	rdf:type owl:Class ;
+	rdfs:label "Organizer Class" ;
+	rdfs:comment "A class of organizers." .
+
+pig:Organizer
+	rdf:type owl:Class ;
+	rdfs:subClassOf owl:Thing ;
+	rdfs:label "Organizer" ;
+	rdfs:comment "An organizer." .
+
+pig:EntityClass
+	rdf:type owl:Class ;
+	rdfs:label "Entity Class" ;
+	rdfs:comment "A class of entities." .
+
+pig:Entity
+	rdf:type owl:Class ;
+	rdfs:subClassOf owl:Thing ;
+	rdfs:label "Entity" ;
+	rdfs:comment "An entity." .
+
+pig:RelationshipClass
+	rdf:type owl:Class ;
+	rdfs:label "Relationship Class" ;
+	rdfs:comment "A class of relationship resources." .
+
+pig:Relationship
+	rdf:type owl:Class ;
+	rdfs:subClassOf owl:Thing ;
+	rdfs:label "Relationship" ;
+	rdfs:comment "A relationship resource." .
+
+pig:hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:domain pig:Relationship ;
+	rdfs:range pig:Entity ;
+	rdfs:label "has subject" ;
+	rdfs:comment "Connects the subject of a relationship." .
+
+pig:hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:domain pig:Relationship ;
+	rdfs:range pig:Entity ;
+	rdfs:label "has object" ;
+	rdfs:comment "Connects the object of a relationship." .
+
+#################################################################
+# Data Types with Enumerated Values
+################################################################# .
+
+o:DT_LifecycleStatus
+	rdf:type owl:Class ;
+	rdfs:label "SpecIF:LifecycleStatus" ;
+	rdfs:comment "Text string with enumerated values for SpecIF:LifecycleStatus" ;
+	dcterms:modified "2023-08-15T07:44:45.541Z" ;
+	owl:oneOf ( SpecIF:LifecycleStatusInitial SpecIF:LifecycleStatusDrafted SpecIF:LifecycleStatusSubmitted SpecIF:LifecycleStatusApproved SpecIF:LifecycleStatusReady SpecIF:LifecycleStatusDone SpecIF:LifecycleStatusValidated SpecIF:LifecycleStatusReleased SpecIF:LifecycleStatusDeprecated SpecIF:LifecycleStatusWithdrawn SpecIF:LifecycleStatusPostponed SpecIF:LifecycleStatusRejected ) .
+SpecIF:LifecycleStatusInitial
+	rdf:type o:DT_LifecycleStatus ;
+	rdfs:label "SpecIF:LifecycleStatusInitial" .
+SpecIF:LifecycleStatusDrafted
+	rdf:type o:DT_LifecycleStatus ;
+	rdfs:label "SpecIF:LifecycleStatusDrafted" .
+SpecIF:LifecycleStatusSubmitted
+	rdf:type o:DT_LifecycleStatus ;
+	rdfs:label "SpecIF:LifecycleStatusSubmitted" .
+SpecIF:LifecycleStatusApproved
+	rdf:type o:DT_LifecycleStatus ;
+	rdfs:label "SpecIF:LifecycleStatusApproved" .
+SpecIF:LifecycleStatusReady
+	rdf:type o:DT_LifecycleStatus ;
+	rdfs:label "SpecIF:LifecycleStatusReady" .
+SpecIF:LifecycleStatusDone
+	rdf:type o:DT_LifecycleStatus ;
+	rdfs:label "SpecIF:LifecycleStatusDone" .
+SpecIF:LifecycleStatusValidated
+	rdf:type o:DT_LifecycleStatus ;
+	rdfs:label "SpecIF:LifecycleStatusValidated" .
+SpecIF:LifecycleStatusReleased
+	rdf:type o:DT_LifecycleStatus ;
+	rdfs:label "SpecIF:LifecycleStatusReleased" .
+SpecIF:LifecycleStatusDeprecated
+	rdf:type o:DT_LifecycleStatus ;
+	rdfs:label "SpecIF:LifecycleStatusDeprecated" .
+SpecIF:LifecycleStatusWithdrawn
+	rdf:type o:DT_LifecycleStatus ;
+	rdfs:label "SpecIF:LifecycleStatusWithdrawn" .
+SpecIF:LifecycleStatusPostponed
+	rdf:type o:DT_LifecycleStatus ;
+	rdfs:label "SpecIF:LifecycleStatusPostponed" .
+SpecIF:LifecycleStatusRejected
+	rdf:type o:DT_LifecycleStatus ;
+	rdfs:label "SpecIF:LifecycleStatusRejected" .
+
+o:DT_Priority
+	rdf:type owl:Class ;
+	rdfs:label "SpecIF:Priority" ;
+	rdfs:comment "Text string with enumerated values for SpecIF:Priority" ;
+	dcterms:modified "2023-03-06T08:27:49.256Z" ;
+	owl:oneOf ( SpecIF:priorityHigh SpecIF:priorityRatherHigh SpecIF:priorityMedium SpecIF:priorityRatherLow SpecIF:priorityLow ) .
+SpecIF:priorityHigh
+	rdf:type o:DT_Priority ;
+	rdfs:label "SpecIF:priorityHigh" .
+SpecIF:priorityRatherHigh
+	rdf:type o:DT_Priority ;
+	rdfs:label "SpecIF:priorityRatherHigh" .
+SpecIF:priorityMedium
+	rdf:type o:DT_Priority ;
+	rdfs:label "SpecIF:priorityMedium" .
+SpecIF:priorityRatherLow
+	rdf:type o:DT_Priority ;
+	rdfs:label "SpecIF:priorityRatherLow" .
+SpecIF:priorityLow
+	rdf:type o:DT_Priority ;
+	rdfs:label "SpecIF:priorityLow" .
+
+o:DT_SpecifSize
+	rdf:type owl:Class ;
+	rdfs:label "SpecIF:Size" ;
+	rdfs:comment "Text string with enumerated values for SpecIF:Size" ;
+	dcterms:modified "2023-07-17T06:29:46.144Z" ;
+	owl:oneOf ( SpecIF:sizeXL SpecIF:sizeL SpecIF:sizeM SpecIF:sizeS SpecIF:sizeXS ) .
+SpecIF:sizeXL
+	rdf:type o:DT_SpecifSize ;
+	rdfs:label "SpecIF:sizeXL" .
+SpecIF:sizeL
+	rdf:type o:DT_SpecifSize ;
+	rdfs:label "SpecIF:sizeL" .
+SpecIF:sizeM
+	rdf:type o:DT_SpecifSize ;
+	rdfs:label "SpecIF:sizeM" .
+SpecIF:sizeS
+	rdf:type o:DT_SpecifSize ;
+	rdfs:label "SpecIF:sizeS" .
+SpecIF:sizeXS
+	rdf:type o:DT_SpecifSize ;
+	rdfs:label "SpecIF:sizeXS" .
+
+o:DT_Discipline
+	rdf:type owl:Class ;
+	rdfs:label "SpecIF:EngineeringDiscipline" ;
+	rdfs:comment "Text string with enumerated values for SpecIF:EngineeringDiscipline" ;
+	dcterms:modified "2023-03-06T08:27:59.451Z" ;
+	owl:oneOf ( SpecIF:EngineeringDisciplineMechanics SpecIF:EngineeringDisciplineElectronics SpecIF:EngineeringDisciplineSoftware SpecIF:EngineeringDisciplineSafety SpecIF:EngineeringDisciplineSystem ) .
+SpecIF:EngineeringDisciplineMechanics
+	rdf:type o:DT_Discipline ;
+	rdfs:label "SpecIF:EngineeringDisciplineMechanics" .
+SpecIF:EngineeringDisciplineElectronics
+	rdf:type o:DT_Discipline ;
+	rdfs:label "SpecIF:EngineeringDisciplineElectronics" .
+SpecIF:EngineeringDisciplineSoftware
+	rdf:type o:DT_Discipline ;
+	rdfs:label "SpecIF:EngineeringDisciplineSoftware" .
+SpecIF:EngineeringDisciplineSafety
+	rdf:type o:DT_Discipline ;
+	rdfs:label "SpecIF:EngineeringDisciplineSafety" .
+SpecIF:EngineeringDisciplineSystem
+	rdf:type o:DT_Discipline ;
+	rdfs:label "SpecIF:EngineeringDisciplineSystem" .
+
+o:DT_SpecifStakeholdergroup
+	rdf:type owl:Class ;
+	rdfs:label "SpecIF:StakeholderGroup" ;
+	rdfs:comment "Text string with enumerated values for SpecIF:StakeholderGroup" ;
+	dcterms:modified "2023-03-10T07:48:02.442Z" ;
+	owl:oneOf ( SpecIF:StakeholderGroupRegulation SpecIF:StakeholderGroupBusiness SpecIF:StakeholderGroupUser SpecIF:StakeholderGroupSystem SpecIF:StakeholderGroupOperation ) .
+SpecIF:StakeholderGroupRegulation
+	rdf:type o:DT_SpecifStakeholdergroup ;
+	rdfs:label "SpecIF:StakeholderGroupRegulation" .
+SpecIF:StakeholderGroupBusiness
+	rdf:type o:DT_SpecifStakeholdergroup ;
+	rdfs:label "SpecIF:StakeholderGroupBusiness" .
+SpecIF:StakeholderGroupUser
+	rdf:type o:DT_SpecifStakeholdergroup ;
+	rdfs:label "SpecIF:StakeholderGroupUser" .
+SpecIF:StakeholderGroupSystem
+	rdf:type o:DT_SpecifStakeholdergroup ;
+	rdfs:label "SpecIF:StakeholderGroupSystem" .
+SpecIF:StakeholderGroupOperation
+	rdf:type o:DT_SpecifStakeholdergroup ;
+	rdfs:label "SpecIF:StakeholderGroupOperation" .
+
+o:DT_Instantiation
+	rdf:type owl:Class ;
+	rdfs:label "SpecIF:Instantiation" ;
+	rdfs:comment "Text string with enumerated values for SpecIF:Instantiation" ;
+	dcterms:modified "2025-06-28T12:46:58.743Z" ;
+	owl:oneOf ( SpecIF:InstantiationAuto SpecIF:InstantiationUser SpecIF:InstantiationNever ) .
+SpecIF:InstantiationAuto
+	rdf:type o:DT_Instantiation ;
+	rdfs:label "SpecIF:InstantiationAuto" .
+SpecIF:InstantiationUser
+	rdf:type o:DT_Instantiation ;
+	rdfs:label "SpecIF:InstantiationUser" .
+SpecIF:InstantiationNever
+	rdf:type o:DT_Instantiation ;
+	rdfs:label "SpecIF:InstantiationNever" .
+
+o:DT_RequirementType
+	rdf:type owl:Class ;
+	rdfs:label "IREB:RequirementType" ;
+	rdfs:comment "Text string with enumerated values for IREB:RequirementType" ;
+	dcterms:modified "2023-08-08T20:52:31.633Z" ;
+	owl:oneOf ( o:V_RequirementType_0 o:V_RequirementType_1 IREB:FunctionalRequirement IREB:QualityRequirement IREB:Constraint o:V_RequirementType_5 ) .
+o:V_RequirementType_0
+	rdf:type o:DT_RequirementType ;
+	rdfs:label "SpecIF:Feature" .
+o:V_RequirementType_1
+	rdf:type o:DT_RequirementType ;
+	rdfs:label "SpecIF:UserStory" .
+IREB:FunctionalRequirement
+	rdf:type o:DT_RequirementType ;
+	rdfs:label "IREB:FunctionalRequirement" .
+IREB:QualityRequirement
+	rdf:type o:DT_RequirementType ;
+	rdfs:label "IREB:QualityRequirement" .
+IREB:Constraint
+	rdf:type o:DT_RequirementType ;
+	rdfs:label "IREB:Constraint" .
+o:V_RequirementType_5
+	rdf:type o:DT_RequirementType ;
+	rdfs:label "SpecIF:PainPoint" .
+
+o:DT_SupplierStatus
+	rdf:type owl:Class ;
+	rdfs:label "ReqIF-WF:SupplierStatus" ;
+	rdfs:comment "Text string with enumerated values for ReqIF-WF.SupplierStatus" ;
+	dcterms:modified "2023-07-16T11:06:47.817Z" ;
+	owl:oneOf ( ReqIF-WF:SupplierStatus.ToBeClarified ReqIF-WF:SupplierStatus.AgreedWithComment ReqIF-WF:SupplierStatus.Agreed ReqIF-WF:SupplierStatus.NotAgreed ReqIF-WF:SupplierStatus.DiscardedDeployed ) .
+ReqIF-WF:SupplierStatus.ToBeClarified
+	rdf:type o:DT_SupplierStatus ;
+	rdfs:label "ReqIF-WF.SupplierStatus.ToBeClarified" .
+ReqIF-WF:SupplierStatus.AgreedWithComment
+	rdf:type o:DT_SupplierStatus ;
+	rdfs:label "ReqIF-WF.SupplierStatus.AgreedWithComment" .
+ReqIF-WF:SupplierStatus.Agreed
+	rdf:type o:DT_SupplierStatus ;
+	rdfs:label "ReqIF-WF.SupplierStatus.Agreed" .
+ReqIF-WF:SupplierStatus.NotAgreed
+	rdf:type o:DT_SupplierStatus ;
+	rdfs:label "ReqIF-WF.SupplierStatus.NotAgreed" .
+ReqIF-WF:SupplierStatus.DiscardedDeployed
+	rdf:type o:DT_SupplierStatus ;
+	rdfs:label "ReqIF-WF.SupplierStatus.DiscardedDeployed" .
+
+o:DT_CustomerStatus
+	rdf:type owl:Class ;
+	rdfs:label "ReqIF-WF:CustomerStatus" ;
+	rdfs:comment "Text string with enumerated values for ReqIF-WF.CustomerStatus" ;
+	dcterms:modified "2023-07-16T11:06:10.422Z" ;
+	owl:oneOf ( ReqIF-WF:CustomerStatus.ToEvaluate ReqIF-WF:CustomerStatus.ToBeClarified ReqIF-WF:CustomerStatus.NotAccepted ReqIF-WF:CustomerStatus.Accepted ReqIF-WF:CustomerStatus.NotToEvaluate ReqIF-WF:CustomerStatus.ProposedToDiscard ReqIF-WF:CustomerStatus.Discarded ) .
+ReqIF-WF:CustomerStatus.ToEvaluate
+	rdf:type o:DT_CustomerStatus ;
+	rdfs:label "ReqIF-WF.CustomerStatus.ToEvaluate" .
+ReqIF-WF:CustomerStatus.ToBeClarified
+	rdf:type o:DT_CustomerStatus ;
+	rdfs:label "ReqIF-WF.CustomerStatus.ToBeClarified" .
+ReqIF-WF:CustomerStatus.NotAccepted
+	rdf:type o:DT_CustomerStatus ;
+	rdfs:label "ReqIF-WF.CustomerStatus.NotAccepted" .
+ReqIF-WF:CustomerStatus.Accepted
+	rdf:type o:DT_CustomerStatus ;
+	rdfs:label "ReqIF-WF.CustomerStatus.Accepted" .
+ReqIF-WF:CustomerStatus.NotToEvaluate
+	rdf:type o:DT_CustomerStatus ;
+	rdfs:label "ReqIF-WF.CustomerStatus.NotToEvaluate" .
+ReqIF-WF:CustomerStatus.ProposedToDiscard
+	rdf:type o:DT_CustomerStatus ;
+	rdfs:label "ReqIF-WF.CustomerStatus.ProposedToDiscard" .
+ReqIF-WF:CustomerStatus.Discarded
+	rdf:type o:DT_CustomerStatus ;
+	rdfs:label "ReqIF-WF.CustomerStatus.Discarded"
+
+#################################################################
+# Ontology - Property Classes
+#################################################################
+
+SpecIF:Diagram
+	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
+	rdfs:label "SpecIF:Diagram" ;
+	rdfs:comment "One or more diagrams illustrating the resource." ;
+	dcterms:modified "2023-02-26T14:40:17.601Z" .
+
+SpecIF:Diagram-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path SpecIF:Diagram ;
+	sh:datatype xsd:string .
+
+SpecIF:Notation
+	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
+	rdfs:label "SpecIF:Notation" ;
+	rdfs:comment "The notation used by a model diagram, e.g. 'BPMN 2.0', 'SysML Activity Diagram' or 'FMC Block Diagram'." ;
+	dcterms:modified "2023-02-26T21:06:48.930Z" .
+
+SpecIF:Notation-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path SpecIF:Notation ;
+	sh:datatype xsd:string ;
+	sh:maxLength "32" ;
+	sh:maxCount "1" .
+
+SpecIF:Vote
+	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
+	rdfs:label "SpecIF:Vote" ;
+	dcterms:modified "2025-08-15T13:44:57.933Z" .
+
+SpecIF:Vote-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path SpecIF:Vote ;
+	sh:datatype xsd:integer ;
+	sh:minInclusive "-1" ;
+	sh:maxInclusive "1" ;
+	sh:maxCount "1" .
+
+SpecIF:ownedBy
+	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
+	rdfs:label "SpecIF:ownedBy" ;
+	dcterms:modified "2025-06-27T16:58:49.734Z" .
+
+SpecIF:ownedBy-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path SpecIF:ownedBy ;
+	sh:datatype xsd:string ;
+	sh:maxLength "32" ;
+	sh:maxCount "1" .
+
+pig:Motivation
+	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
+	rdfs:label "pig:Motivation" ;
+	dcterms:modified "2025-08-06T12:13:25.602Z" .
+
+pig:Motivation-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path pig:Motivation ;
+	sh:datatype xsd:string ;
+	sh:maxCount "1" .
+
+uml:Stereotype
+	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
+	rdfs:label "uml:Stereotype" ;
+	rdfs:comment "<p>Describes the role or sub-type of a model-element. For example, a [[FMC:Actor]] may represent a <i>System Function</i>, a <i>System Component</i> or a <i>User Role</i>. Similarly, in the context of process modelling, a FMC:Actor may represent a <i>Process Step</i> or again a <i>User Role</i>. So, all of these are meaningful values for a FMC:Actor's property named uml:Stereotype.</p>" ;
+	dcterms:modified "2025-06-28T12:42:43.956Z" .
+
+uml:Stereotype-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path uml:Stereotype ;
+	sh:datatype xsd:string ;
+	sh:maxCount "1" .
+
+uml:is_Service
+	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
+	rdfs:label "uml:is_Service" ;
+	dcterms:modified "2024-07-09T12:03:24.570Z" .
+
+uml:is_Service-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path uml:is_Service ;
+	sh:datatype xsd:boolean ;
+	sh:maxCount "1" .
+
+uml:Flow_Direction
+	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
+	rdfs:label "uml:Flow_Direction" ;
+	dcterms:modified "2024-07-09T05:23:08.410Z" .
+
+uml:Flow_Direction-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path uml:Flow_Direction ;
+	sh:datatype xsd:string ;
+	sh:maxLength "32" ;
+	sh:maxCount "1" .
+
+SpecIF:LifecycleStatus
+	rdf:type owl:ObjectProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
+	rdfs:label "SpecIF:LifecycleStatus" ;
+	rdfs:comment "The 'Lifecycle Status' of the resource." ;
+	dcterms:modified "2023-08-15T07:44:45.541Z" .
+# ToDo: Shape should restrict the range to the allowed values of the enumerated dataType
+
+SpecIF:LifecycleStatus-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path SpecIF:LifecycleStatus ;
+	sh:datatype xsd:string ;
+	sh:maxLength "32" ;
+	sh:maxCount "1" .
+
+SpecIF:Revision
+	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
+	rdfs:label "SpecIF:Revision" ;
+	dcterms:modified "2023-06-20T14:31:22.597Z" .
+
+SpecIF:Revision-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path SpecIF:Revision ;
+	sh:datatype xsd:string ;
+	sh:maxLength "32" ;
+	sh:maxCount "1" .
+
+SpecIF:Priority
+	rdf:type owl:ObjectProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
+	rdfs:label "SpecIF:Priority" ;
+	rdfs:comment "Enumerated values for the 'Priority' of the resource." ;
+	dcterms:modified "2023-03-06T08:27:49.256Z" .
+# ToDo: Shape should restrict the range to the allowed values of the enumerated dataType
+
+SpecIF:Priority-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path SpecIF:Priority ;
+	sh:datatype xsd:string ;
+	sh:maxLength "32" ;
+	sh:maxCount "1" .
+
+SpecIF:Size
+	rdf:type owl:ObjectProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
+	rdfs:label "SpecIF:Size" ;
+	rdfs:comment "Enumerated values for the 'Priority' of the resource." ;
+	dcterms:modified "2023-07-17T06:29:46.144Z" .
+# ToDo: Shape should restrict the range to the allowed values of the enumerated dataType
+
+SpecIF:Size-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path SpecIF:Size ;
+	sh:datatype xsd:string ;
+	sh:maxLength "32" ;
+	sh:maxCount "1" .
+
+SpecIF:Effort
+	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
+	rdfs:label "SpecIF:Effort" ;
+	dcterms:modified "2023-07-16T12:39:52.299Z" .
+
+SpecIF:Effort-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path SpecIF:Effort ;
+	sh:datatype xsd:string ;
+	sh:maxLength "32" ;
+	sh:maxCount "1" .
+
+SpecIF:EngineeringDiscipline
+	rdf:type owl:ObjectProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
+	rdfs:label "SpecIF:EngineeringDiscipline" ;
+	rdfs:comment "The engineering discipline involved by a development artefact." ;
+	dcterms:modified "2023-03-06T08:27:59.451Z" .
+# ToDo: Shape should restrict the range to the allowed values of the enumerated dataType
+
+SpecIF:EngineeringDiscipline-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path SpecIF:EngineeringDiscipline ;
+	sh:datatype xsd:string ;
+	sh:maxLength "32" .
+
+SpecIF:StakeholderGroup
+	rdf:type owl:ObjectProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
+	rdfs:label "SpecIF:StakeholderGroup" ;
+	rdfs:comment "Enumerated values for the 'Stakehoder Group' addressed by the term." ;
+	dcterms:modified "2023-03-10T07:48:02.442Z" .
+# ToDo: Shape should restrict the range to the allowed values of the enumerated dataType
+
+SpecIF:StakeholderGroup-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path SpecIF:StakeholderGroup ;
+	sh:datatype xsd:string ;
+	sh:maxLength "32" ;
+	sh:maxCount "1" .
+
+SpecIF:Damage
+	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
+	rdfs:label "SpecIF:Damage" ;
+	dcterms:modified "2025-06-28T12:44:17.994Z" .
+
+SpecIF:Damage-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path SpecIF:Damage ;
+	sh:datatype xsd:string ;
+	sh:maxCount "1" .
+
+SpecIF:Unit
+	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
+	rdfs:label "SpecIF:Unit" ;
+	rdfs:comment "The unit of a property's numeric value; preferably an SI unit symbol such as 'm^3/kg' (Système international (d'unités)) or a currency symbol." ;
+	dcterms:modified "2024-03-02T22:12:47.853Z" .
+
+SpecIF:Unit-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path SpecIF:Unit ;
+	sh:datatype xsd:string ;
+	sh:maxLength "32" ;
+	sh:maxCount "1" .
+
+SpecIF:Instantiation
+	rdf:type owl:ObjectProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
+	rdfs:label "SpecIF:Instantiation" ;
+	rdfs:comment "Indicates whether an instance of the class is created automatically, manually or both. Manual *and* automatic instantiation is allowed, if the property is omitted. The class is abstract and cannot be instantiated, if the property list is present, but empty.- 'user': a user creates, updates and deletes a resource's or statement's instance manually.- 'auto': a resource's or statement's instance is created, updated or deleted by an algorithm.- 'never': the class is abstract and cannot be instantiated." ;
+	dcterms:modified "2025-06-28T12:46:58.743Z" .
+# ToDo: Shape should restrict the range to the allowed values of the enumerated dataType
+
+SpecIF:Instantiation-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path SpecIF:Instantiation ;
+	sh:datatype xsd:string ;
+	sh:maxLength "32" .
+
+SpecIF:Home
+	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
+	rdfs:label "SpecIF:Home" ;
+	rdfs:comment "The reference location for a schema, a term or other. May be used as namespace in XML, @Context in JSON-LD or prefix in RDF." ;
+	dcterms:modified "2025-07-07T08:13:04.528Z" .
+
+SpecIF:Home-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path SpecIF:Home ;
+	sh:datatype xsd:anyURI ;
+	sh:minCount "1" ;
+	sh:maxCount "1" .
+
+rdfs:label-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path rdfs:label ;
+	sh:datatype xsd:string ;
+	sh:maxLength "256" ;
+	sh:maxCount "1" .
+
+rdfs:comment-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path rdfs:comment ;
+	sh:datatype xsd:string ;
+	sh:maxCount "1" .
+
+dcterms:type
+	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
+	rdfs:label "dcterms:type" ;
+	rdfs:comment "<p>The nature or genre of the resource. <small>(<i>source: <a href=\"http://purl.org/dc/elements/1.1/type\">DCMI</a></i>)</small></p><p>Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element.</p><p>For example, a [[FMC:Actor]] may represent a <i>System Function</i>, a <i>System Component</i> or a <i>User Role</i>. Similarly, in the context of process modelling, a FMC:Actor may represent a <i>Process Step</i> or again a <i>User Role</i>. So, all of these are meaningful values for a FMC:Actor's property named dcterms:type.</p>" ;
+	dcterms:modified "2025-03-06T15:04:02.280Z" .
+
+dcterms:type-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path dcterms:type ;
+	sh:datatype xsd:string ;
+	sh:maxLength "32" ;
+	sh:maxCount "1" .
+
+SpecIF:LocalTerm
+	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
+	rdfs:label "SpecIF:LocalTerm" ;
+	rdfs:comment "<p>A name of the resource used in one or more national languages. Multiple values can be defined so that different local terms can be transformed ('globalized') to the ontology term.</p>" ;
+	dcterms:modified "2023-05-30T06:06:45.673Z" .
+
+SpecIF:LocalTerm-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path SpecIF:LocalTerm ;
+	sh:datatype xsd:string ;
+	sh:maxLength "256" .
+
+IREB:RequirementType
+	rdf:type owl:ObjectProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
+	rdfs:label "IREB:RequirementType" ;
+	rdfs:comment "According to the IREB, requirements are typically classified into functional requirements ([[IREB:FunctionalRequirement]]), quality requirements ([[IREB:QualityRequirement]]) and constraints ([[IREB:Constraint]]). The latter two are also called non-functional requirements." ;
+	dcterms:modified "2023-08-08T20:52:31.633Z" .
+# ToDo: Shape should restrict the range to the allowed values of the enumerated dataType
+
+IREB:RequirementType-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path IREB:RequirementType ;
+	sh:datatype xsd:string ;
+	sh:maxLength "32" ;
+	sh:maxCount "1" .
+
+SpecIF:Probability
+	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
+	rdfs:label "SpecIF:Probability" ;
+	dcterms:modified "2023-07-16T12:49:13.545Z" .
+
+SpecIF:Probability-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path SpecIF:Probability ;
+	sh:datatype xsd:double ;
+	sh:maxInclusive "1" ;
+	sh:maxCount "1" .
+
+SpecIF:Impact
+	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
+	rdfs:label "SpecIF:Impact" ;
+	dcterms:modified "2023-07-16T12:45:04.963Z" .
+
+SpecIF:Impact-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path SpecIF:Impact ;
+	sh:datatype xsd:double ;
+	sh:maxCount "1" .
+
+SpecIF:ModelFile
+	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
+	rdfs:label "SpecIF:ModelFile" ;
+	rdfs:comment "A file with partial model information." ;
+	dcterms:modified "2023-10-21T20:24:43.178Z" .
+
+SpecIF:ModelFile-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path SpecIF:ModelFile ;
+	sh:datatype xsd:string ;
+	sh:maxLength "256" ;
+	sh:maxCount "1" .
+
+ReqIF-WF:SupplierStatus
+	rdf:type owl:ObjectProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
+	rdfs:label "ReqIF-WF:SupplierStatus" ;
+	dcterms:modified "2023-07-16T11:06:47.817Z" .
+# ToDo: Shape should restrict the range to the allowed values of the enumerated dataType
+
+ReqIF-WF:SupplierStatus-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path ReqIF-WF:SupplierStatus ;
+	sh:datatype xsd:string ;
+	sh:maxLength "32" ;
+	sh:maxCount "1" .
+
+ReqIF-WF:SupplierComment
+	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
+	rdfs:label "ReqIF-WF:SupplierComment" ;
+	dcterms:modified "2023-07-16T11:07:03.325Z" .
+
+ReqIF-WF:SupplierComment-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path ReqIF-WF:SupplierComment ;
+	sh:datatype xsd:string .
+
+ReqIF-WF:CustomerStatus
+	rdf:type owl:ObjectProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
+	rdfs:label "ReqIF-WF:CustomerStatus" ;
+	dcterms:modified "2023-07-16T11:06:10.422Z" .
+# ToDo: Shape should restrict the range to the allowed values of the enumerated dataType
+
+ReqIF-WF:CustomerStatus-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path ReqIF-WF:CustomerStatus ;
+	sh:datatype xsd:string ;
+	sh:maxLength "32" ;
+	sh:maxCount "1" .
+
+ReqIF-WF:CustomerComment
+	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:PropertyClass ;
+	rdfs:label "ReqIF-WF:CustomerComment" ;
+	dcterms:modified "2023-07-16T11:06:27.850Z" .
+
+ReqIF-WF:CustomerComment-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path ReqIF-WF:CustomerComment ;
+	sh:datatype xsd:string .
+
+#################################################################
+# Ontology - Entity Classes
+#################################################################
+
+SpecIF:Paragraph
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:EntityClass ;
+	rdfs:label "SpecIF:Paragraph" ;
+	rdfs:comment "<p>A 'Paragraph' is an unspecified information in a document at any level.</p>" ;
+	dcterms:modified "2024-03-02T20:55:23.295Z" .
+
+SpecIF:Paragraph-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:Paragraph ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property SpecIF:Diagram-Shape ;
+	sh:property dcterms:type-Shape .
+
+SpecIF:Hierarchy
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:EntityClass ;
+	rdfs:label "SpecIF:Hierarchy" ;
+	rdfs:comment "A tree-shaped structure with references to [[SpecIF:Resource]]s. Specializations are among others [[SpecIF:Outline]] (a document outline) and [[SpecIF:BillOfMaterials]]. While a graph does not have a start nor an end, a hierarchy gives easy access to relevant content depending on the target group or purpose." ;
+	dcterms:modified "2025-06-17T07:56:45.704Z" .
+
+SpecIF:Hierarchy-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:Hierarchy ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape ;
+	sh:property SpecIF:LifecycleStatus-Shape .
+
+SpecIF:ModelElement
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:EntityClass ;
+	rdfs:label "SpecIF:ModelElement" ;
+	rdfs:comment "Is a generalized type for model elements." ;
+	pig:Icon "&#x2606;" ;
+	dcterms:modified "2025-03-08T20:23:37.245Z" .
+
+SpecIF:ModelElement-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:ModelElement ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape .
+
+SpecIF:Views
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:Hierarchy ;
+	rdfs:label "SpecIF:Views" ;
+	pig:Icon "▣" ;
+	dcterms:modified "2025-06-17T07:43:56.700Z" .
+
+SpecIF:Views-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:Views ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape ;
+	sh:property SpecIF:LifecycleStatus-Shape ;
+	sh:property SpecIF:LocalTerm-Shape .
+
+pig:View
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:Paragraph ;
+	rdfs:label "pig:View" ;
+	rdfs:comment "<p>A 'Model View' is a graphical diagram with a specific communication purpose, e.g. a business process or system composition. A suitable notation is applied.</p>" ;
+	pig:Icon "▣" ;
+	dcterms:modified "2025-06-17T07:43:44.513Z" .
+
+pig:View-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass pig:View ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property SpecIF:Diagram-Shape ;
+	sh:property dcterms:type-Shape ;
+	sh:property SpecIF:Notation-Shape .
+
+FMC:Actor
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:ModelElement ;
+	rdfs:label "FMC:Actor" ;
+	rdfs:comment "<p>An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role.</p><p>The  particular use or original type is specified with a [[dcterms:type]] property of the 'FMC:Actor'. A value of that property should be an ontology-term, such as [[bpmn:processStep]].</p>" ;
+	pig:Icon "&#x25A1;" ;
+	dcterms:modified "2025-03-08T20:21:05.195Z" .
+
+FMC:Actor-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass FMC:Actor ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape .
+
+SpecIF:Collection
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:ModelElement ;
+	rdfs:label "SpecIF:Collection" ;
+	rdfs:comment "<p>A 'Collection' is a logical (often conceptual) group of resources linked with a [[SpecIF:contains]] statement. It corresponds to a <a href=\"https://camunda.com/bpmn/reference/\">'Group'</a> in BPMN Diagrams.</p><p>BPMN: An arbitrary set of objects can be defined as a Group to show that they logically belong together. <small>(<i>source: <a href=\"http://www.bpmn-tool.com/en/tutorial/\">BPMN Tutorial</a></i>)</small></p>" ;
+	pig:Icon "⬚" ;
+	dcterms:modified "2024-06-09T18:27:41.176Z" .
+
+SpecIF:Collection-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:Collection ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape .
+
+FMC:State
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:ModelElement ;
+	rdfs:label "FMC:State" ;
+	rdfs:comment "<p>A 'State' is a fundamental model element type representing a passive entity, be it a value, a condition, an information storage or even a physical shape.</p><p>The particular use or the original type is specified with a [[dcterms:type]] property of the 'FMC:State'. A value of that property should bean  ontology-term, such as [[bpmn:dataObject]].</p>" ;
+	pig:Icon "&#x25CB;" ;
+	dcterms:modified "2025-03-08T20:04:01.555Z" .
+
+FMC:State-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass FMC:State ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape .
+
+FMC:Event
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:ModelElement ;
+	rdfs:label "FMC:Event" ;
+	rdfs:comment "<p>An 'Event' is a fundamental model element type representing a time reference, a change in condition/value or more generally a synchronization primitive.</p><p>The particular use or the original type is specified with a [[dcterms:type]] property of the 'FMC:Event'. A value of that property should be an ontology-term, such as [[bpmn:startEvent]].</p>" ;
+	pig:Icon "&#x2662;" ;
+	dcterms:modified "2025-03-08T19:57:15.384Z" .
+
+FMC:Event-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass FMC:Event ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape .
+
+schema:Role
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:Paragraph ;
+	rdfs:label "schema:Role" ;
+	rdfs:comment "Represents additional information about a relationship or property. For example a Role can be used to say that a &#39;member&#39; role linking some SportsTeam to a player occurred during a particular time period. Or that a Person&#39;s &#39;actor&#39; role in a Movie was for some particular characterName. Such properties can be attached to a Role entity, which is then associated with the main entities using ordinary properties like &#39;member&#39; or &#39;actor&#39;." ;
+	dcterms:modified "2025-06-17T07:55:08.189Z" .
+
+schema:Role-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass schema:Role ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property SpecIF:Diagram-Shape ;
+	sh:property dcterms:type-Shape .
+
+SpecIF:UserRole
+	rdf:type owl:Class ;
+	rdfs:subClassOf schema:Role ;
+	rdfs:label "SpecIF:UserRole" ;
+	rdfs:comment "<p>This is a subclass of [[FMC:Actor]]; more precisely a value of it's property [[dcterms:type]].</p>" ;
+	dcterms:modified "2025-06-28T12:14:55.689Z" .
+
+SpecIF:UserRole-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:UserRole ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property SpecIF:Diagram-Shape ;
+	sh:property dcterms:type-Shape .
+
+pig:Organizer
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:OrganizerClass ;
+	rdfs:label "pig:Organizer" ;
+	rdfs:comment "A PIG meta-model element used for organizing model-elements." ;
+	dcterms:modified "2025-06-03T07:20:06.620Z" .
+
+pig:Organizer-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass pig:Organizer ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape .
+
+SpecIF:Heading
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:Paragraph ;
+	rdfs:label "SpecIF:Heading" ;
+	rdfs:comment "A 'Heading' is a chapter title at any level with optional description." ;
+	dcterms:modified "2024-03-02T15:28:50.414Z" .
+
+SpecIF:Heading-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:Heading ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property SpecIF:Diagram-Shape ;
+	sh:property dcterms:type-Shape .
+
+IREB:Requirement
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:Paragraph ;
+	rdfs:label "IREB:Requirement" ;
+	rdfs:comment "<p>A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>A condition or capability needed by a user to solve a problem or achieve an objective.</li><li>A condition or capability that must be met or possessed by a system or system component to satisfy a contract, standard, specification, or other formally imposed documents.</li><li>A documented representation of a condition or capability as in (1) or (2).</li></ol><p>Note: The definition above is the classic one from IEEE Std 610.12 of 1990. Alternatively, we also give a more modern definition:</p><ol><li>A need perceived by a stakeholder.</li><li>A capability or property that a system shall have.</li><li>A documented representation of a need, capability or property.</li></ol>" ;
+	pig:Icon "&#8623;" ;
+	dcterms:modified "2023-04-01T14:10:11.167Z" .
+
+IREB:Requirement-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass IREB:Requirement ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property SpecIF:Diagram-Shape ;
+	sh:property dcterms:type-Shape ;
+	sh:property SpecIF:Priority-Shape ;
+	sh:property IREB:RequirementType-Shape ;
+	sh:property SpecIF:StakeholderGroup-Shape .
+
+DDP:ProductFunction
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:ModelElement ;
+	rdfs:label "DDP:ProductFunction" ;
+	rdfs:comment "A product function describes the way a system works or performs a specific task." ;
+	dcterms:modified "2025-08-15T14:46:59.971Z" .
+
+DDP:ProductFunction-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass DDP:ProductFunction ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape .
+
+DDP:SystemComponent
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:ModelElement ;
+	rdfs:label "DDP:SystemComponent" ;
+	rdfs:comment "Represents a generic component of a system." ;
+	dcterms:modified "2025-08-15T14:47:23.918Z" .
+
+DDP:SystemComponent-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass DDP:SystemComponent ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape .
+
+DDP:ComponentInterface
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:ModelElement ;
+	rdfs:label "DDP:ComponentInterface" ;
+	rdfs:comment "Represents a generic interface of a system component." ;
+	dcterms:modified "2025-08-15T14:47:33.470Z" .
+
+DDP:ComponentInterface-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass DDP:ComponentInterface ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape .
+
+SpecIF:Comment
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:EntityClass ;
+	rdfs:label "SpecIF:Comment" ;
+	rdfs:comment "A 'Comment' is reader feedback referring to a model element ('resource' or 'statement' in general)." ;
+	pig:Icon "🗅" ;
+	dcterms:modified "2024-03-09T16:59:44.361Z" .
+
+SpecIF:Comment-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:Comment ;
+	sh:property rdfs:comment-Shape .
+
+SpecIF:Note
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:Paragraph ;
+	rdfs:label "SpecIF:Note" ;
+	rdfs:comment "<p>A 'Note' is additional information by the author referring to any resource.</p>" ;
+	dcterms:modified "2025-06-17T07:51:20.290Z" .
+
+SpecIF:Note-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:Note ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property SpecIF:Diagram-Shape ;
+	sh:property dcterms:type-Shape .
+
+SpecIF:Permissions
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:EntityClass ;
+	rdfs:label "SpecIF:Permissions" ;
+	rdfs:comment "Permissions are a set of user rights, each allowing to use a certain function and/or to access a certain data set." ;
+	dcterms:modified "2024-04-12T10:32:51.211Z" .
+
+SpecIF:Permissions-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:Permissions ;
+	sh:property rdfs:label-Shape .
+
+IREB:Risk
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:EntityClass ;
+	rdfs:label "IREB:Risk" ;
+	rdfs:comment "<p>An event that threatens the success of an endeavor, e.g., of developing or operating a system. A risk is typically assessed in terms of its probability and potential damage.</p>" ;
+	dcterms:modified "2025-06-17T07:54:21.582Z" .
+
+IREB:Risk-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass IREB:Risk ;
+	sh:property SpecIF:Probability-Shape ;
+	sh:property SpecIF:Impact-Shape .
+
+SpecIF:HierarchyRoot
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:EntityClass ;
+	rdfs:label "SpecIF:HierarchyRoot" ;
+	rdfs:comment "A node (vertex) in a graph anchoring all instances of [[SpecIF:Hierarchy]]." ;
+	dcterms:modified "2025-03-07T09:32:09.361Z" .
+
+SpecIF:HierarchyRoot-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:HierarchyRoot ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape .
+
+SpecIF:BillOfMaterials
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:Hierarchy ;
+	rdfs:label "SpecIF:BillOfMaterials" ;
+	rdfs:comment "<p>A bill of materials or product structure (sometimes bill of material, BOM or associated list) is a list of the raw materials, sub-assemblies, intermediate assemblies, sub-components, parts and the quantities of each needed to manufacture an end product. A BOM may be used for communication between manufacturing partners, or confined to a single manufacturing plant. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Bill_of_materials\">Wikipedia</a></i>)</small></p>" ;
+	dcterms:modified "2025-08-15T14:07:32.110Z" .
+
+SpecIF:BillOfMaterials-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:BillOfMaterials ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape ;
+	sh:property SpecIF:LifecycleStatus-Shape .
+
+SpecIF:BusinessProcesses
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:Views ;
+	rdfs:label "SpecIF:BusinessProcesses" ;
+	dcterms:modified "2025-06-17T07:57:34.078Z" .
+
+SpecIF:BusinessProcesses-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:BusinessProcesses ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape ;
+	sh:property SpecIF:LifecycleStatus-Shape ;
+	sh:property SpecIF:LocalTerm-Shape .
+
+SpecIF:Glossary
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:Hierarchy ;
+	rdfs:label "SpecIF:Glossary" ;
+	dcterms:modified "2025-06-17T07:57:50.341Z" .
+
+SpecIF:Glossary-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:Glossary ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape ;
+	sh:property SpecIF:LifecycleStatus-Shape .
+
+bpmn:Process
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:View ;
+	rdfs:label "bpmn:Process" ;
+	dcterms:modified "2025-06-17T08:01:09.565Z" .
+
+bpmn:Process-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass bpmn:Process ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property SpecIF:Diagram-Shape ;
+	sh:property dcterms:type-Shape ;
+	sh:property SpecIF:Notation-Shape .
+
+bpmn:Participant
+	rdf:type owl:Class ;
+	rdfs:subClassOf FMC:Actor ;
+	rdfs:label "bpmn:Participant" ;
+	dcterms:modified "2025-06-17T08:01:18.141Z" .
+
+bpmn:Participant-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass bpmn:Participant ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape .
+
+uml:Package
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:Collection ;
+	rdfs:label "uml:Package" ;
+	dcterms:modified "2024-06-13T07:55:07.739Z" .
+
+uml:Package-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass uml:Package ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape .
+
+uml:Actor
+	rdf:type owl:Class ;
+	rdfs:subClassOf FMC:Actor ;
+	rdfs:label "uml:Actor" ;
+	dcterms:modified "2023-09-12T06:33:15.885Z" .
+
+uml:Actor-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass uml:Actor ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape .
+
+uml:Port
+	rdf:type owl:Class ;
+	rdfs:subClassOf FMC:Actor ;
+	rdfs:label "uml:Port" ;
+	dcterms:modified "2024-07-09T05:29:06.284Z" .
+
+uml:Port-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass uml:Port ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape ;
+	sh:property uml:is_Service-Shape ;
+	sh:property uml:Flow_Direction-Shape .
+
+uml:StateMachine
+	rdf:type owl:Class ;
+	rdfs:subClassOf FMC:Actor ;
+	rdfs:label "uml:StateMachine" ;
+	dcterms:modified "2025-04-18T15:01:06.865Z" .
+
+uml:StateMachine-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass uml:StateMachine ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape .
+
+uml:UseCase
+	rdf:type owl:Class ;
+	rdfs:subClassOf FMC:Actor ;
+	rdfs:label "uml:UseCase" ;
+	dcterms:modified "2025-06-28T12:29:38.963Z" .
+
+uml:UseCase-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass uml:UseCase ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape .
+
+uml:Activity
+	rdf:type owl:Class ;
+	rdfs:subClassOf FMC:Actor ;
+	rdfs:label "uml:Activity" ;
+	dcterms:modified "2025-04-23T07:46:20.849Z" .
+
+uml:Activity-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass uml:Activity ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape .
+
+uml:Region
+	rdf:type owl:Class ;
+	rdfs:subClassOf FMC:Actor ;
+	rdfs:label "uml:Region" ;
+	dcterms:modified "2025-04-23T07:46:59.562Z" .
+
+uml:Region-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass uml:Region ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape .
+
+uml:State
+	rdf:type owl:Class ;
+	rdfs:subClassOf FMC:State ;
+	rdfs:label "uml:State" ;
+	dcterms:modified "2025-04-18T15:07:47.101Z" .
+
+uml:State-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass uml:State ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape .
+
+uml:Transition
+	rdf:type owl:Class ;
+	rdfs:subClassOf FMC:Actor ;
+	rdfs:label "uml:Transition" ;
+	dcterms:modified "2025-04-23T07:46:41.649Z" .
+
+uml:Transition-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass uml:Transition ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape .
+
+uml:SignalEvent
+	rdf:type owl:Class ;
+	rdfs:subClassOf FMC:Event ;
+	rdfs:label "uml:SignalEvent" ;
+	dcterms:modified "2025-04-22T09:28:25.620Z" .
+
+uml:SignalEvent-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass uml:SignalEvent ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape .
+
+uml:CallEvent
+	rdf:type owl:Class ;
+	rdfs:subClassOf FMC:Event ;
+	rdfs:label "uml:CallEvent" ;
+	dcterms:modified "2025-04-22T09:29:19.849Z" .
+
+uml:CallEvent-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass uml:CallEvent ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape .
+
+uml:ChangeEvent
+	rdf:type owl:Class ;
+	rdfs:subClassOf FMC:Event ;
+	rdfs:label "uml:ChangeEvent" ;
+	dcterms:modified "2025-04-22T09:30:14.449Z" .
+
+uml:ChangeEvent-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass uml:ChangeEvent ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape .
+
+uml:CallBehaviorAction
+	rdf:type owl:Class ;
+	rdfs:subClassOf FMC:Actor ;
+	rdfs:label "uml:CallBehaviorAction" ;
+	dcterms:modified "2025-04-23T13:55:20.312Z" .
+
+uml:CallBehaviorAction-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass uml:CallBehaviorAction ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape .
+
+uml:ActivityFinalNode
+	rdf:type owl:Class ;
+	rdfs:subClassOf FMC:Actor ;
+	rdfs:label "uml:ActivityFinalNode" ;
+	dcterms:modified "2025-06-28T12:12:58.883Z" .
+
+uml:ActivityFinalNode-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass uml:ActivityFinalNode ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape .
+
+IREB:Stakeholder
+	rdf:type owl:Class ;
+	rdfs:subClassOf schema:Role ;
+	rdfs:label "IREB:Stakeholder" ;
+	rdfs:comment "<p>A person or organization that has a (direct or indirect) influence on a system’s requirements. Indirect influence also includes situations where a person or organization is impacted by the system.</p><p>This is a subclass of [[FMC:Actor]], more precisely a value of it's property [[dcterms:type]].</p>" ;
+	dcterms:modified "2025-06-28T12:13:45.944Z" .
+
+IREB:Stakeholder-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass IREB:Stakeholder ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property SpecIF:Diagram-Shape ;
+	sh:property dcterms:type-Shape .
+
+SpecIF:Reader
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:UserRole ;
+	rdfs:label "SpecIF:Reader" ;
+	dcterms:modified "2024-06-13T07:56:45.423Z" .
+
+SpecIF:Reader-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:Reader ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property SpecIF:Diagram-Shape ;
+	sh:property dcterms:type-Shape .
+
+SpecIF:Editor
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:UserRole ;
+	rdfs:label "SpecIF:Editor" ;
+	dcterms:modified "2024-06-13T07:56:57.045Z" .
+
+SpecIF:Editor-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:Editor ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property SpecIF:Diagram-Shape ;
+	sh:property dcterms:type-Shape .
+
+SpecIF:Feature
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:Paragraph ;
+	rdfs:label "SpecIF:Feature" ;
+	rdfs:comment "<p>A 'Feature' is an intentional distinguishing characteristic of a system, often a unique selling proposition.</p>" ;
+	pig:Icon "✶" ;
+	dcterms:modified "2023-07-16T09:48:41.722Z" .
+
+SpecIF:Feature-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:Feature ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property SpecIF:Diagram-Shape ;
+	sh:property dcterms:type-Shape ;
+	sh:property SpecIF:Priority-Shape .
+
+SpecIF:UserStory
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:Paragraph ;
+	rdfs:label "SpecIF:UserStory" ;
+	rdfs:comment "<p>A user story is an informal, general explanation of a software feature written from the perspective of the end user. Its purpose is to articulate how a software feature will provide value to the customer.</p><p>This is a subclass of [[IREB:Requirement]], more precisely a value of it's property [[dcterms:type]].</p>" ;
+	pig:Icon "&#x263A;" ;
+	dcterms:modified "2024-06-13T07:53:56.470Z" .
+
+SpecIF:UserStory-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:UserStory ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property SpecIF:Diagram-Shape ;
+	sh:property dcterms:type-Shape ;
+	sh:property SpecIF:Priority-Shape .
+
+SpecIF:PainPoint
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:Paragraph ;
+	rdfs:label "SpecIF:PainPoint" ;
+	rdfs:comment "<p>A problem, frustration, or troublesome issue, especially one experienced by consumers, customers, or employees: Getting stuck in a slow checkout line is a major pain point for grocery shoppers.</p><p>This is a subclass of [[IREB:Requirement]], more precisely a value of it's property [[dcterms:type]].</p>" ;
+	pig:Icon "&#x2702;" ;
+	dcterms:modified "2024-06-13T07:54:07.654Z" .
+
+SpecIF:PainPoint-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:PainPoint ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property SpecIF:Diagram-Shape ;
+	sh:property dcterms:type-Shape .
+
+ArchiMate:ApplicationComponent
+	rdf:type owl:Class ;
+	rdfs:subClassOf FMC:Actor ;
+	rdfs:label "ArchiMate:ApplicationComponent" ;
+	rdfs:comment "Definition: An application component represents an encapsulation of application functionality aligned to implementation structure, which is modular and replaceable. It encapsulates its behavior and data, exposes services, and makes them available through interfaces.An application component is a self-contained unit. As such, it is independently deployable, re-usable, and replaceable. An application component performs one or more application functions. It encapsulates its contents: its functionality is only accessible through a set of application interfaces. Cooperating application components are connected via application collaborations.An application component may be assigned to one or more application functions. An application component has one or more application interfaces, which expose its functionality. Application interfaces of other application components may serve an application component. The name of an application component should preferably be a noun.The application component element is used to model entire applications (i.e., deployed and operational IT systems, as defined by the <a href=\"https://www.opengroup.org/bookstore/catalog/g116.htm\">TOGAF framework</a>) and individual parts of such applications, at all relevant levels of detail.<small>Source: <a href=\"https://pubs.opengroup.org/architecture/archimate30-doc/chap09.html\">ArchiMate® 3.0 Specification</a></small>" ;
+	dcterms:modified "2025-06-17T07:43:29.700Z" .
+
+ArchiMate:ApplicationComponent-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass ArchiMate:ApplicationComponent ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape .
+
+ArchiMate:DataObject
+	rdf:type owl:Class ;
+	rdfs:subClassOf FMC:State ;
+	rdfs:label "ArchiMate:DataObject" ;
+	rdfs:comment "Definition: A data object represents data structured for automated processing.A data object should be a self-contained piece of information with a clear meaning to the business, not just to the application level. Typical examples of data objects are a customer record, a client database, or an insurance claim.The ArchiMate language in general focuses on the modeling of types, not instances, since this is the most relevant at the Enterprise Architecture level of description. Hence a data object typically models an object type (cf. a UML class) of which multiple instances may exist in operational applications. An important exception is when a data object is used to model a data collection such as a database, of which only one instance exists.An application function or process can operate on data objects. A data object may be communicated via interactions and used or produced by application services. A data object can be accessed by an application function, application interaction, or application service. A data object may realize a business object, and may be realized by an artifact. A data object may have association, specialization, aggregation, or composition relationships with other data objects. The name of a data object should preferably be a noun.<small>Source: <a href=\"https://pubs.opengroup.org/architecture/archimate30-doc/chap09.html\">ArchiMate® 3.0 Specification</a></small>" ;
+	dcterms:modified "2025-06-17T07:44:55.944Z" .
+
+ArchiMate:DataObject-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass ArchiMate:DataObject ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape .
+
+ArchiMate:BusinessObject
+	rdf:type owl:Class ;
+	rdfs:subClassOf FMC:State ;
+	rdfs:label "ArchiMate:BusinessObject" ;
+	rdfs:comment "Definition: A business object represents a concept used within a particular business domain.The ArchiMate language in general focuses on the modeling of types, not instances, since this is the most relevant at the Enterprise Architecture level of description. Hence a business object typically models an object type (cf. a UML class) of which multiple instances may exist in operations. Only occasionally, business objects represent actual instances of information produced and consumed by behavior elements such as business processes. This is in particular the case for singleton types; i.e., types that have only one instance.A wide variety of types of business objects can be defined. Business objects are passive in the sense that they do not trigger or perform processes. A business object could be used to represent information assets that are relevant from a business point of view and can be realized by data objects.Business objects may be accessed (e.g., in the case of information objects, they may be created, read, written) by a business process, function, business interaction, business event, or business service. A business object may have association, specialization, aggregation, or composition relationships with other business objects. A business object may be realized by a representation or by a data object (or both). The name of a business object should preferably be a noun.<small>Source: <a href=\"https://pubs.opengroup.org/architecture/archimate30-doc/chap08.html\">ArchiMate® 3.0 Specification</a></small>" ;
+	dcterms:modified "2025-06-17T07:45:08.525Z" .
+
+ArchiMate:BusinessObject-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass ArchiMate:BusinessObject ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape .
+
+DDP:Source
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:Paragraph ;
+	rdfs:label "DDP:Source" ;
+	rdfs:comment "A 'Source' is a file containing partial model information created by an authoring system." ;
+	pig:Icon "🗎" ;
+	dcterms:modified "2025-08-15T14:48:46.648Z" .
+
+DDP:Source-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass DDP:Source ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property SpecIF:Diagram-Shape ;
+	sh:property dcterms:type-Shape ;
+	sh:property SpecIF:ModelFile-Shape .
+
+pig:Package
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:Organizer ;
+	rdfs:label "pig:Package" ;
+	rdfs:comment "A PIG organizer class comprising all information of a given package." ;
+	dcterms:modified "2025-06-12T12:20:44.561Z" .
+
+pig:Package-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass pig:Package ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property dcterms:type-Shape .
+
+ReqIF-WF:Requirement
+	rdf:type owl:Class ;
+	rdfs:subClassOf IREB:Requirement ;
+	rdfs:label "ReqIF-WF:Requirement" ;
+	rdfs:comment "<p>A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform.  <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>A condition or capability needed by a user to solve a problem or achieve an objective.</li><li>A condition or capability that must be met or possessed by a system or system component to satisfy a contract, standard, specification, or other formally imposed documents.</li><li>A documented representation of a condition or capability as in (1) or (2).</li></ol><p>Note: The definition above is the classic one from IEEE Std 610.12 of 1990. Alternatively, we also give a more modern definition:</p><ol><li>A need perceived by a stakeholder.</li><li>A capability or property that a system shall have.</li><li>A documented representation of a need, capability or property.</li></ol>" ;
+	pig:Icon "❢" ;
+	dcterms:modified "2025-08-15T14:59:24.802Z" .
+
+ReqIF-WF:Requirement-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass ReqIF-WF:Requirement ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property SpecIF:Diagram-Shape ;
+	sh:property dcterms:type-Shape ;
+	sh:property SpecIF:Priority-Shape ;
+	sh:property IREB:RequirementType-Shape ;
+	sh:property SpecIF:StakeholderGroup-Shape ;
+	sh:property ReqIF-WF:SupplierStatus-Shape ;
+	sh:property ReqIF-WF:SupplierComment-Shape ;
+	sh:property ReqIF-WF:CustomerStatus-Shape ;
+	sh:property ReqIF-WF:CustomerComment-Shape .
+
+uml:Diagram
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:Paragraph ;
+	rdfs:label "uml:Diagram" ;
+	rdfs:comment "<p>A 'Diagram' is a graphical model view with a specific communication purpose, e.g. a business process or system composition.</p>" ;
+	pig:Icon "▣" ;
+	dcterms:modified "2024-08-30T07:51:44.846Z" .
+
+uml:Diagram-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass uml:Diagram ;
+	sh:property rdfs:label-Shape ;
+	sh:property rdfs:comment-Shape ;
+	sh:property SpecIF:Diagram-Shape ;
+	sh:property dcterms:type-Shape .
+
+#################################################################
+# Ontology - Relationship Classes
+#################################################################
+
+SpecIF:relates
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "SpecIF:relates" ;
+	rdfs:comment "Is a generalized type for model relations." ;
+	dcterms:modified "2024-06-09T12:35:33.150Z" .
+
+SpecIF:relates-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of SpecIF:relates" ;
+	rdfs:domain SpecIF:relates ;
+	dcterms:modified "2024-06-09T12:35:33.150Z" .
+
+SpecIF:relates-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of SpecIF:relates" ;
+	rdfs:domain SpecIF:relates ;
+	dcterms:modified "2024-06-09T12:35:33.150Z" .
+
+SpecIF:relates-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:relates ;
+	sh:property dcterms:type-Shape ;
+	sh:property [ 
+		sh:path SpecIF:relates-hasSubject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path SpecIF:relates-hasObject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+SpecIF:handles
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "SpecIF:handles" ;
+	rdfs:comment "<p>The relationship indicates that an element (represented by a [[FMC:Actor]]) provides or consumes material, energy or information (represented by a [[FMC:State]]).</p>" ;
+	dcterms:modified "2024-07-21T14:15:26.547Z" .
+
+SpecIF:handles-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of SpecIF:handles" ;
+	rdfs:domain SpecIF:handles ;
+	rdfs:range [ owl:unionOf( FMC:Actor uml:Port SpecIF:ModelElement )] ;
+	dcterms:modified "2024-07-21T14:15:26.547Z" .
+
+SpecIF:handles-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of SpecIF:handles" ;
+	rdfs:domain SpecIF:handles ;
+	rdfs:range [ owl:unionOf( FMC:State SpecIF:ModelElement )] ;
+	dcterms:modified "2024-07-21T14:15:26.547Z" .
+
+SpecIF:handles-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:handles ;
+	sh:property [ 
+		sh:path SpecIF:handles-hasSubject ;
+		sh:class [ owl:unionOf( FMC:Actor uml:Port SpecIF:ModelElement )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path SpecIF:handles-hasObject ;
+		sh:class [ owl:unionOf( FMC:State SpecIF:ModelElement )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+SpecIF:accesses
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:relates ;
+	rdfs:label "SpecIF:accesses" ;
+	rdfs:comment "A [[FMC:Actor]] 'accesses' (writes and reads) a [[FMC:State]]." ;
+	dcterms:modified "2024-07-14T12:33:42.790Z" .
+
+SpecIF:accesses-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of SpecIF:accesses" ;
+	rdfs:domain SpecIF:accesses ;
+	rdfs:range [ owl:unionOf( FMC:Actor uml:Port )] ;
+	dcterms:modified "2024-07-14T12:33:42.790Z" .
+
+SpecIF:accesses-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of SpecIF:accesses" ;
+	rdfs:domain SpecIF:accesses ;
+	rdfs:range FMC:State ;
+	dcterms:modified "2024-07-14T12:33:42.790Z" .
+
+SpecIF:accesses-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:accesses ;
+	sh:property dcterms:type-Shape ;
+	sh:property [ 
+		sh:path SpecIF:accesses-hasSubject ;
+		sh:class [ owl:unionOf( FMC:Actor uml:Port )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path SpecIF:accesses-hasObject ;
+		sh:class FMC:State ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+FMC:communicatesWith
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "FMC:communicatesWith" ;
+	rdfs:comment "A [[FMC:Actor]] 'communicates' with a [[FMC:Actor]]." ;
+	dcterms:modified "2024-07-14T17:02:13.628Z" .
+
+FMC:communicatesWith-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of FMC:communicatesWith" ;
+	rdfs:domain FMC:communicatesWith ;
+	rdfs:range [ owl:unionOf( FMC:Actor uml:Port )] ;
+	dcterms:modified "2024-07-14T17:02:13.628Z" .
+
+FMC:communicatesWith-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of FMC:communicatesWith" ;
+	rdfs:domain FMC:communicatesWith ;
+	rdfs:range [ owl:unionOf( FMC:Actor uml:Port )] ;
+	dcterms:modified "2024-07-14T17:02:13.628Z" .
+
+FMC:communicatesWith-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass FMC:communicatesWith ;
+	sh:property [ 
+		sh:path FMC:communicatesWith-hasSubject ;
+		sh:class [ owl:unionOf( FMC:Actor uml:Port )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path FMC:communicatesWith-hasObject ;
+		sh:class [ owl:unionOf( FMC:Actor uml:Port )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+SpecIF:shows
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "SpecIF:shows" ;
+	rdfs:comment "<p>A [[SpecIF:Diagram]] 'shows' a model element, e.g, a [[FMC:Actor]], [[FMC:State]], [[FMC:Event]] or [[SpecIF:Collection]].</p>" ;
+	dcterms:modified "2024-05-03T07:46:27.422Z" .
+
+SpecIF:shows-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of SpecIF:shows" ;
+	rdfs:domain SpecIF:shows ;
+	rdfs:range pig:View ;
+	dcterms:modified "2024-05-03T07:46:27.422Z" .
+
+SpecIF:shows-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of SpecIF:shows" ;
+	rdfs:domain SpecIF:shows ;
+	dcterms:modified "2024-05-03T07:46:27.422Z" .
+
+SpecIF:shows-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:shows ;
+	sh:property [ 
+		sh:path SpecIF:shows-hasSubject ;
+		sh:class pig:View ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path SpecIF:shows-hasObject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+SpecIF:contains
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:relates ;
+	rdfs:label "SpecIF:contains" ;
+	rdfs:comment "General containment, such as:- Package-A *contains* Diagram-B- Collection-1 *contains* DataObject-1.1Not to confound with *[[dcterms:hasPart]]*." ;
+	dcterms:modified "2024-06-18T12:56:30.044Z" .
+
+SpecIF:contains-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of SpecIF:contains" ;
+	rdfs:domain SpecIF:contains ;
+	rdfs:range [ owl:unionOf( FMC:Actor FMC:State SpecIF:Collection uml:Package )] ;
+	dcterms:modified "2024-06-18T12:56:30.044Z" .
+
+SpecIF:contains-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of SpecIF:contains" ;
+	rdfs:domain SpecIF:contains ;
+	rdfs:range [ owl:unionOf( FMC:Actor FMC:State FMC:Event SpecIF:Collection uml:Package SpecIF:ModelElement pig:View )] ;
+	dcterms:modified "2024-06-18T12:56:30.044Z" .
+
+SpecIF:contains-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:contains ;
+	sh:property dcterms:type-Shape ;
+	sh:property [ 
+		sh:path SpecIF:contains-hasSubject ;
+		sh:class [ owl:unionOf( FMC:Actor FMC:State SpecIF:Collection uml:Package )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path SpecIF:contains-hasObject ;
+		sh:class [ owl:unionOf( FMC:Actor FMC:State FMC:Event SpecIF:Collection uml:Package SpecIF:ModelElement pig:View )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+dcterms:hasPart
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:relates ;
+	rdfs:label "dcterms:hasPart" ;
+	rdfs:comment "A related resource that is included either physically or logically in the described resource.*Comment: This property is intended to be used with non-literal values. This property is an inverse property of [[dcterms:isPartOf]].*" ;
+	dcterms:modified "2024-08-30T08:33:26.304Z" .
+
+dcterms:hasPart-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of dcterms:hasPart" ;
+	rdfs:domain dcterms:hasPart ;
+	rdfs:range [ owl:unionOf( FMC:Actor FMC:State SpecIF:Collection SpecIF:ModelElement )] ;
+	dcterms:modified "2024-08-30T08:33:26.304Z" .
+
+dcterms:hasPart-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of dcterms:hasPart" ;
+	rdfs:domain dcterms:hasPart ;
+	rdfs:range [ owl:unionOf( FMC:Actor FMC:State SpecIF:Collection SpecIF:ModelElement uml:Port )] ;
+	dcterms:modified "2024-08-30T08:33:26.304Z" .
+
+dcterms:hasPart-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass dcterms:hasPart ;
+	sh:property dcterms:type-Shape ;
+	sh:property [ 
+		sh:path dcterms:hasPart-hasSubject ;
+		sh:class [ owl:unionOf( FMC:Actor FMC:State SpecIF:Collection SpecIF:ModelElement )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path dcterms:hasPart-hasObject ;
+		sh:class [ owl:unionOf( FMC:Actor FMC:State SpecIF:Collection SpecIF:ModelElement uml:Port )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+SpecIF:isResponsibleFor
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "SpecIF:isResponsibleFor" ;
+	rdfs:comment "A person or role may be responsible for (obliged to fulfil) a certain course of action." ;
+	dcterms:modified "2025-06-24T09:04:39.356Z" .
+
+SpecIF:isResponsibleFor-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of SpecIF:isResponsibleFor" ;
+	rdfs:domain SpecIF:isResponsibleFor ;
+	dcterms:modified "2025-06-24T09:04:39.356Z" .
+
+SpecIF:isResponsibleFor-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of SpecIF:isResponsibleFor" ;
+	rdfs:domain SpecIF:isResponsibleFor ;
+	dcterms:modified "2025-06-24T09:04:39.356Z" .
+
+SpecIF:isResponsibleFor-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:isResponsibleFor ;
+	sh:property [ 
+		sh:path SpecIF:isResponsibleFor-hasSubject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path SpecIF:isResponsibleFor-hasObject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+SpecIF:isResponsibilityOf
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "SpecIF:isResponsibilityOf" ;
+	dcterms:modified "2025-06-24T09:04:26.989Z" .
+
+SpecIF:isResponsibilityOf-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of SpecIF:isResponsibilityOf" ;
+	rdfs:domain SpecIF:isResponsibilityOf ;
+	dcterms:modified "2025-06-24T09:04:26.989Z" .
+
+SpecIF:isResponsibilityOf-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of SpecIF:isResponsibilityOf" ;
+	rdfs:domain SpecIF:isResponsibilityOf ;
+	dcterms:modified "2025-06-24T09:04:26.989Z" .
+
+SpecIF:isResponsibilityOf-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:isResponsibilityOf ;
+	sh:property [ 
+		sh:path SpecIF:isResponsibilityOf-hasSubject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path SpecIF:isResponsibilityOf-hasObject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+pig:hasAssignee
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "pig:hasAssignee" ;
+	rdfs:comment "A task has an assignee, i.e. a role that is responsible. ." ;
+	dcterms:modified "2025-08-05T16:55:22.746Z" .
+
+pig:hasAssignee-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of pig:hasAssignee" ;
+	rdfs:domain pig:hasAssignee ;
+	dcterms:modified "2025-08-05T16:55:22.746Z" .
+
+pig:hasAssignee-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of pig:hasAssignee" ;
+	rdfs:domain pig:hasAssignee ;
+	dcterms:modified "2025-08-05T16:55:22.746Z" .
+
+pig:hasAssignee-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass pig:hasAssignee ;
+	sh:property [ 
+		sh:path pig:hasAssignee-hasSubject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path pig:hasAssignee-hasObject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+rdf:type
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "rdf:type" ;
+	rdfs:comment "<p>A triple of the form: <em>R rdf:type C</em> states that C is an instance of <a href=\"https://www.w3.org/TR/rdf-schema/#ch_class\">rdfs:Class</a> and R is an instance of C.</p><p>The <a href=\"https://www.w3.org/TR/rdf-schema/#ch_domain\">rdfs:domain</a> of rdf:type is <a href=\"https://www.w3.org/TR/rdf-schema/#ch_resource\">rdfs:Resource</a>. The <a href=\"https://www.w3.org/TR/rdf-schema/#ch_range\">rdfs:range</a> of rdf:type is <a href=\"https://www.w3.org/TR/rdf-schema/#ch_class\">rdfs:Class</a>.</p>" ;
+	dcterms:modified "2024-06-13T07:57:36.376Z" .
+
+rdf:type-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of rdf:type" ;
+	rdfs:domain rdf:type ;
+	dcterms:modified "2024-06-13T07:57:36.376Z" .
+
+rdf:type-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of rdf:type" ;
+	rdfs:domain rdf:type ;
+	dcterms:modified "2024-06-13T07:57:36.376Z" .
+
+rdf:type-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass rdf:type ;
+	sh:property [ 
+		sh:path rdf:type-hasSubject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path rdf:type-hasObject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+oslc_rm:satisfies
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "oslc_rm:satisfies" ;
+	rdfs:comment "<p>The object is satisfied by the subject. <small>(<i>source: <a href=\"http://open-services.net/\">OSLC</a></i>)</small></p><p>SpecIF suggests that the subject is confined to a model element, e.g, a [[FMC:Actor]] or [[FMC:State]], and the object is confined to a [[IREB:Requirement]]. More concretely, an example for this type of statement is 'Component-X <em>satisfies</em> 'Requirement-4711'.</p>" ;
+	dcterms:modified "2025-08-15T15:16:01.408Z" .
+
+oslc_rm:satisfies-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of oslc_rm:satisfies" ;
+	rdfs:domain oslc_rm:satisfies ;
+	rdfs:range [ owl:unionOf( FMC:Actor FMC:State FMC:Event SpecIF:Collection DDP:ProductFunction DDP:SystemComponent DDP:ComponentInterface )] ;
+	dcterms:modified "2025-08-15T15:16:01.408Z" .
+
+oslc_rm:satisfies-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of oslc_rm:satisfies" ;
+	rdfs:domain oslc_rm:satisfies ;
+	rdfs:range [ owl:unionOf( IREB:Requirement ReqIF-WF:Requirement )] ;
+	dcterms:modified "2025-08-15T15:16:01.408Z" .
+
+oslc_rm:satisfies-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass oslc_rm:satisfies ;
+	sh:property [ 
+		sh:path oslc_rm:satisfies-hasSubject ;
+		sh:class [ owl:unionOf( FMC:Actor FMC:State FMC:Event SpecIF:Collection DDP:ProductFunction DDP:SystemComponent DDP:ComponentInterface )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path oslc_rm:satisfies-hasObject ;
+		sh:class [ owl:unionOf( IREB:Requirement ReqIF-WF:Requirement )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+oslc_rm:satisfiedBy
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "oslc_rm:satisfiedBy" ;
+	rdfs:comment "<p>The subject is satisfied by the object. For example, a user requirement is satisfied by a system requirement. <small>(<i>source: <a href=\"http://open-services.net/\">OSLC</a></i>)</small></p>" ;
+	dcterms:modified "2023-07-16T13:00:08.619Z" .
+
+oslc_rm:satisfiedBy-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of oslc_rm:satisfiedBy" ;
+	rdfs:domain oslc_rm:satisfiedBy ;
+	rdfs:range [ owl:unionOf( IREB:Requirement ReqIF-WF:Requirement )] ;
+	dcterms:modified "2023-07-16T13:00:08.619Z" .
+
+oslc_rm:satisfiedBy-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of oslc_rm:satisfiedBy" ;
+	rdfs:domain oslc_rm:satisfiedBy ;
+	rdfs:range [ owl:unionOf( FMC:Actor FMC:State FMC:Event SpecIF:Collection )] ;
+	dcterms:modified "2023-07-16T13:00:08.619Z" .
+
+oslc_rm:satisfiedBy-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass oslc_rm:satisfiedBy ;
+	sh:property [ 
+		sh:path oslc_rm:satisfiedBy-hasSubject ;
+		sh:class [ owl:unionOf( IREB:Requirement ReqIF-WF:Requirement )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path oslc_rm:satisfiedBy-hasObject ;
+		sh:class [ owl:unionOf( FMC:Actor FMC:State FMC:Event SpecIF:Collection )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+SpecIF:serves
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "SpecIF:serves" ;
+	rdfs:comment "<p>A [[FMC:Actor]] 'serves' a FMC:Actor.</p>" ;
+	dcterms:modified "2024-07-14T19:43:48.563Z" .
+
+SpecIF:serves-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of SpecIF:serves" ;
+	rdfs:domain SpecIF:serves ;
+	rdfs:range [ owl:unionOf( FMC:Actor uml:Port )] ;
+	dcterms:modified "2024-07-14T19:43:48.563Z" .
+
+SpecIF:serves-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of SpecIF:serves" ;
+	rdfs:domain SpecIF:serves ;
+	rdfs:range [ owl:unionOf( FMC:Actor uml:Port )] ;
+	dcterms:modified "2024-07-14T19:43:48.563Z" .
+
+SpecIF:serves-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:serves ;
+	sh:property [ 
+		sh:path SpecIF:serves-hasSubject ;
+		sh:class [ owl:unionOf( FMC:Actor uml:Port )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path SpecIF:serves-hasObject ;
+		sh:class [ owl:unionOf( FMC:Actor uml:Port )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+SpecIF:consumes
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:handles ;
+	rdfs:label "SpecIF:consumes" ;
+	dcterms:modified "2024-07-21T14:12:32.705Z" .
+
+SpecIF:consumes-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of SpecIF:consumes" ;
+	rdfs:domain SpecIF:consumes ;
+	rdfs:range [ owl:unionOf( FMC:Actor uml:Port SpecIF:ModelElement )] ;
+	dcterms:modified "2024-07-21T14:12:32.705Z" .
+
+SpecIF:consumes-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of SpecIF:consumes" ;
+	rdfs:domain SpecIF:consumes ;
+	rdfs:range [ owl:unionOf( FMC:State SpecIF:ModelElement )] ;
+	dcterms:modified "2024-07-21T14:12:32.705Z" .
+
+SpecIF:consumes-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:consumes ;
+	sh:property [ 
+		sh:path SpecIF:consumes-hasSubject ;
+		sh:class [ owl:unionOf( FMC:Actor uml:Port SpecIF:ModelElement )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path SpecIF:consumes-hasObject ;
+		sh:class [ owl:unionOf( FMC:State SpecIF:ModelElement )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+SpecIF:provides
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:handles ;
+	rdfs:label "SpecIF:provides" ;
+	dcterms:modified "2024-07-21T14:13:05.287Z" .
+
+SpecIF:provides-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of SpecIF:provides" ;
+	rdfs:domain SpecIF:provides ;
+	rdfs:range [ owl:unionOf( FMC:Actor uml:Port SpecIF:ModelElement )] ;
+	dcterms:modified "2024-07-21T14:13:05.287Z" .
+
+SpecIF:provides-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of SpecIF:provides" ;
+	rdfs:domain SpecIF:provides ;
+	rdfs:range [ owl:unionOf( FMC:State SpecIF:ModelElement )] ;
+	dcterms:modified "2024-07-21T14:13:05.287Z" .
+
+SpecIF:provides-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:provides ;
+	sh:property [ 
+		sh:path SpecIF:provides-hasSubject ;
+		sh:class [ owl:unionOf( FMC:Actor uml:Port SpecIF:ModelElement )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path SpecIF:provides-hasObject ;
+		sh:class [ owl:unionOf( FMC:State SpecIF:ModelElement )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+SpecIF:reads
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:accesses ;
+	rdfs:label "SpecIF:reads" ;
+	rdfs:comment "A [[FMC:Actor]] 'reads' a [[FMC:State]]." ;
+	dcterms:modified "2024-07-14T12:33:03.155Z" .
+
+SpecIF:reads-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of SpecIF:reads" ;
+	rdfs:domain SpecIF:reads ;
+	rdfs:range [ owl:unionOf( FMC:Actor uml:Port )] ;
+	dcterms:modified "2024-07-14T12:33:03.155Z" .
+
+SpecIF:reads-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of SpecIF:reads" ;
+	rdfs:domain SpecIF:reads ;
+	rdfs:range FMC:State ;
+	dcterms:modified "2024-07-14T12:33:03.155Z" .
+
+SpecIF:reads-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:reads ;
+	sh:property dcterms:type-Shape ;
+	sh:property [ 
+		sh:path SpecIF:reads-hasSubject ;
+		sh:class [ owl:unionOf( FMC:Actor uml:Port )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path SpecIF:reads-hasObject ;
+		sh:class FMC:State ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+SpecIF:writes
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:accesses ;
+	rdfs:label "SpecIF:writes" ;
+	rdfs:comment "A [[FMC:Actor]] 'writes' (changes) a [[FMC:State]]." ;
+	dcterms:modified "2024-07-14T12:33:21.396Z" .
+
+SpecIF:writes-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of SpecIF:writes" ;
+	rdfs:domain SpecIF:writes ;
+	rdfs:range [ owl:unionOf( FMC:Actor uml:Port )] ;
+	dcterms:modified "2024-07-14T12:33:21.396Z" .
+
+SpecIF:writes-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of SpecIF:writes" ;
+	rdfs:domain SpecIF:writes ;
+	rdfs:range FMC:State ;
+	dcterms:modified "2024-07-14T12:33:21.396Z" .
+
+SpecIF:writes-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:writes ;
+	sh:property dcterms:type-Shape ;
+	sh:property [ 
+		sh:path SpecIF:writes-hasSubject ;
+		sh:class [ owl:unionOf( FMC:Actor uml:Port )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path SpecIF:writes-hasObject ;
+		sh:class FMC:State ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+SpecIF:realizedBy
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "SpecIF:realizedBy" ;
+	rdfs:comment "A business capability is realized by a business function or a business function is realized by an application component." ;
+	dcterms:modified "2025-01-16T02:42:49.356Z" .
+
+SpecIF:realizedBy-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of SpecIF:realizedBy" ;
+	rdfs:domain SpecIF:realizedBy ;
+	dcterms:modified "2025-01-16T02:42:49.356Z" .
+
+SpecIF:realizedBy-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of SpecIF:realizedBy" ;
+	rdfs:domain SpecIF:realizedBy ;
+	dcterms:modified "2025-01-16T02:42:49.356Z" .
+
+SpecIF:realizedBy-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:realizedBy ;
+	sh:property [ 
+		sh:path SpecIF:realizedBy-hasSubject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path SpecIF:realizedBy-hasObject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+FMC:sendsTo
+	rdf:type owl:Class ;
+	rdfs:subClassOf FMC:communicatesWith ;
+	rdfs:label "FMC:sendsTo" ;
+	rdfs:comment "A [[FMC:Actor]] 'sends' a message to a [[FMC:Actor]]." ;
+	dcterms:modified "2023-03-15T09:14:09.263Z" .
+
+FMC:sendsTo-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of FMC:sendsTo" ;
+	rdfs:domain FMC:sendsTo ;
+	rdfs:range FMC:Actor ;
+	dcterms:modified "2023-03-15T09:14:09.263Z" .
+
+FMC:sendsTo-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of FMC:sendsTo" ;
+	rdfs:domain FMC:sendsTo ;
+	rdfs:range FMC:Actor ;
+	dcterms:modified "2023-03-15T09:14:09.263Z" .
+
+FMC:sendsTo-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass FMC:sendsTo ;
+	sh:property [ 
+		sh:path FMC:sendsTo-hasSubject ;
+		sh:class FMC:Actor ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path FMC:sendsTo-hasObject ;
+		sh:class FMC:Actor ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+FMC:receivesFrom
+	rdf:type owl:Class ;
+	rdfs:subClassOf FMC:communicatesWith ;
+	rdfs:label "FMC:receivesFrom" ;
+	rdfs:comment "A [[FMC:Actor]] 'receives' a message from a [[FMC:Actor]]." ;
+	dcterms:modified "2023-03-15T09:14:22.685Z" .
+
+FMC:receivesFrom-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of FMC:receivesFrom" ;
+	rdfs:domain FMC:receivesFrom ;
+	rdfs:range FMC:Actor ;
+	dcterms:modified "2023-03-15T09:14:22.685Z" .
+
+FMC:receivesFrom-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of FMC:receivesFrom" ;
+	rdfs:domain FMC:receivesFrom ;
+	rdfs:range FMC:Actor ;
+	dcterms:modified "2023-03-15T09:14:22.685Z" .
+
+FMC:receivesFrom-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass FMC:receivesFrom ;
+	sh:property [ 
+		sh:path FMC:receivesFrom-hasSubject ;
+		sh:class FMC:Actor ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path FMC:receivesFrom-hasObject ;
+		sh:class FMC:Actor ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+SpecIF:follows
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "SpecIF:follows" ;
+	rdfs:comment "A [[FMC:Actor]] 'follows' a [[FMC:Actor]]; e.g. in a business process or activity flow." ;
+	dcterms:modified "2023-07-16T13:09:55.680Z" .
+
+SpecIF:follows-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of SpecIF:follows" ;
+	rdfs:domain SpecIF:follows ;
+	rdfs:range FMC:Actor ;
+	dcterms:modified "2023-07-16T13:09:55.680Z" .
+
+SpecIF:follows-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of SpecIF:follows" ;
+	rdfs:domain SpecIF:follows ;
+	rdfs:range FMC:Actor ;
+	dcterms:modified "2023-07-16T13:09:55.680Z" .
+
+SpecIF:follows-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:follows ;
+	sh:property [ 
+		sh:path SpecIF:follows-hasSubject ;
+		sh:class FMC:Actor ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path SpecIF:follows-hasObject ;
+		sh:class FMC:Actor ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+SpecIF:precedes
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "SpecIF:precedes" ;
+	rdfs:comment "A [[FMC:Actor]] 'precedes' a [[FMC:Actor]]; e.g. in a business process or activity flow." ;
+	dcterms:modified "2023-07-16T13:14:41.553Z" .
+
+SpecIF:precedes-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of SpecIF:precedes" ;
+	rdfs:domain SpecIF:precedes ;
+	rdfs:range FMC:Actor ;
+	dcterms:modified "2023-07-16T13:14:41.553Z" .
+
+SpecIF:precedes-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of SpecIF:precedes" ;
+	rdfs:domain SpecIF:precedes ;
+	rdfs:range FMC:Actor ;
+	dcterms:modified "2023-07-16T13:14:41.553Z" .
+
+SpecIF:precedes-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:precedes ;
+	sh:property [ 
+		sh:path SpecIF:precedes-hasSubject ;
+		sh:class FMC:Actor ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path SpecIF:precedes-hasObject ;
+		sh:class FMC:Actor ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+SpecIF:dependsOn
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "SpecIF:dependsOn" ;
+	rdfs:comment "<p>A [[IREB:Requirement]] 'depends on' another [[IREB:Requirement]].</p>" ;
+	dcterms:modified "2023-07-16T13:15:43.014Z" .
+
+SpecIF:dependsOn-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of SpecIF:dependsOn" ;
+	rdfs:domain SpecIF:dependsOn ;
+	rdfs:range [ owl:unionOf( IREB:Requirement ReqIF-WF:Requirement )] ;
+	dcterms:modified "2023-07-16T13:15:43.014Z" .
+
+SpecIF:dependsOn-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of SpecIF:dependsOn" ;
+	rdfs:domain SpecIF:dependsOn ;
+	rdfs:range [ owl:unionOf( IREB:Requirement ReqIF-WF:Requirement )] ;
+	dcterms:modified "2023-07-16T13:15:43.014Z" .
+
+SpecIF:dependsOn-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:dependsOn ;
+	sh:property [ 
+		sh:path SpecIF:dependsOn-hasSubject ;
+		sh:class [ owl:unionOf( IREB:Requirement ReqIF-WF:Requirement )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path SpecIF:dependsOn-hasObject ;
+		sh:class [ owl:unionOf( IREB:Requirement ReqIF-WF:Requirement )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+sysml:Usage
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "sysml:Usage" ;
+	dcterms:modified "2024-06-18T06:47:42.028Z" .
+
+sysml:Usage-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of sysml:Usage" ;
+	rdfs:domain sysml:Usage ;
+	dcterms:modified "2024-06-18T06:47:42.028Z" .
+
+sysml:Usage-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of sysml:Usage" ;
+	rdfs:domain sysml:Usage ;
+	dcterms:modified "2024-06-18T06:47:42.028Z" .
+
+sysml:Usage-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass sysml:Usage ;
+	sh:property [ 
+		sh:path sysml:Usage-hasSubject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path sysml:Usage-hasObject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+sysml:Derive
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "sysml:Derive" ;
+	rdfs:comment "<p>A [[IREB:Requirement]] 'is derived from' another [[IREB:Requirement]].</p>" ;
+	dcterms:modified "2024-06-18T07:00:44.641Z" .
+
+sysml:Derive-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of sysml:Derive" ;
+	rdfs:domain sysml:Derive ;
+	rdfs:range [ owl:unionOf( IREB:Requirement ReqIF-WF:Requirement )] ;
+	dcterms:modified "2024-06-18T07:00:44.641Z" .
+
+sysml:Derive-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of sysml:Derive" ;
+	rdfs:domain sysml:Derive ;
+	rdfs:range [ owl:unionOf( IREB:Requirement ReqIF-WF:Requirement )] ;
+	dcterms:modified "2024-06-18T07:00:44.641Z" .
+
+sysml:Derive-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass sysml:Derive ;
+	sh:property [ 
+		sh:path sysml:Derive-hasSubject ;
+		sh:class [ owl:unionOf( IREB:Requirement ReqIF-WF:Requirement )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path sysml:Derive-hasObject ;
+		sh:class [ owl:unionOf( IREB:Requirement ReqIF-WF:Requirement )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+sysml:Allocate
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "sysml:Allocate" ;
+	rdfs:comment "<p>An [[FMC:Actor]] is allocated to another [[FMC:Actor]] (e.g. a logical function is allocated to a physical component.</p>" ;
+	dcterms:modified "2024-06-17T10:09:00.737Z" .
+
+sysml:Allocate-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of sysml:Allocate" ;
+	rdfs:domain sysml:Allocate ;
+	rdfs:range SpecIF:ModelElement ;
+	dcterms:modified "2024-06-17T10:09:00.737Z" .
+
+sysml:Allocate-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of sysml:Allocate" ;
+	rdfs:domain sysml:Allocate ;
+	rdfs:range SpecIF:ModelElement ;
+	dcterms:modified "2024-06-17T10:09:00.737Z" .
+
+sysml:Allocate-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass sysml:Allocate ;
+	sh:property [ 
+		sh:path sysml:Allocate-hasSubject ;
+		sh:class SpecIF:ModelElement ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path sysml:Allocate-hasObject ;
+		sh:class SpecIF:ModelElement ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+IREB:refines
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "IREB:refines" ;
+	rdfs:comment "<p>A [[IREB:Requirement]] 'refines' another [[IREB:Requirement]].</p>" ;
+	dcterms:modified "2023-08-08T21:08:32.367Z" .
+
+IREB:refines-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of IREB:refines" ;
+	rdfs:domain IREB:refines ;
+	rdfs:range [ owl:unionOf( IREB:Requirement ReqIF-WF:Requirement )] ;
+	dcterms:modified "2023-08-08T21:08:32.367Z" .
+
+IREB:refines-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of IREB:refines" ;
+	rdfs:domain IREB:refines ;
+	rdfs:range [ owl:unionOf( IREB:Requirement ReqIF-WF:Requirement )] ;
+	dcterms:modified "2023-08-08T21:08:32.367Z" .
+
+IREB:refines-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass IREB:refines ;
+	sh:property [ 
+		sh:path IREB:refines-hasSubject ;
+		sh:class [ owl:unionOf( IREB:Requirement ReqIF-WF:Requirement )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path IREB:refines-hasObject ;
+		sh:class [ owl:unionOf( IREB:Requirement ReqIF-WF:Requirement )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+SpecIF:duplicates
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "SpecIF:duplicates" ;
+	rdfs:comment "<p>A [[IREB:Requirement]] 'duplicates' another [[IREB:Requirement]].</p>" ;
+	dcterms:modified "2023-07-16T15:01:40.623Z" .
+
+SpecIF:duplicates-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of SpecIF:duplicates" ;
+	rdfs:domain SpecIF:duplicates ;
+	rdfs:range [ owl:unionOf( IREB:Requirement ReqIF-WF:Requirement )] ;
+	dcterms:modified "2023-07-16T15:01:40.623Z" .
+
+SpecIF:duplicates-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of SpecIF:duplicates" ;
+	rdfs:domain SpecIF:duplicates ;
+	rdfs:range [ owl:unionOf( IREB:Requirement ReqIF-WF:Requirement )] ;
+	dcterms:modified "2023-07-16T15:01:40.623Z" .
+
+SpecIF:duplicates-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:duplicates ;
+	sh:property [ 
+		sh:path SpecIF:duplicates-hasSubject ;
+		sh:class [ owl:unionOf( IREB:Requirement ReqIF-WF:Requirement )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path SpecIF:duplicates-hasObject ;
+		sh:class [ owl:unionOf( IREB:Requirement ReqIF-WF:Requirement )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+dcterms:replaces
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "dcterms:replaces" ;
+	rdfs:comment "<p>A [[IREB:Requirement]] 'replaces' another [[IREB:Requirement]].</p>" ;
+	dcterms:modified "2024-02-12T16:07:03.611Z" .
+
+dcterms:replaces-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of dcterms:replaces" ;
+	rdfs:domain dcterms:replaces ;
+	rdfs:range [ owl:unionOf( IREB:Requirement ReqIF-WF:Requirement )] ;
+	dcterms:modified "2024-02-12T16:07:03.611Z" .
+
+dcterms:replaces-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of dcterms:replaces" ;
+	rdfs:domain dcterms:replaces ;
+	rdfs:range [ owl:unionOf( IREB:Requirement ReqIF-WF:Requirement )] ;
+	dcterms:modified "2024-02-12T16:07:03.611Z" .
+
+dcterms:replaces-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass dcterms:replaces ;
+	sh:property rdfs:comment-Shape ;
+	sh:property [ 
+		sh:path dcterms:replaces-hasSubject ;
+		sh:class [ owl:unionOf( IREB:Requirement ReqIF-WF:Requirement )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path dcterms:replaces-hasObject ;
+		sh:class [ owl:unionOf( IREB:Requirement ReqIF-WF:Requirement )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+SpecIF:contradicts
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "SpecIF:contradicts" ;
+	rdfs:comment "<p>A [[IREB:Requirement]] 'contradicts' another [[IREB:Requirement]].</p>" ;
+	dcterms:modified "2023-07-16T15:02:23.500Z" .
+
+SpecIF:contradicts-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of SpecIF:contradicts" ;
+	rdfs:domain SpecIF:contradicts ;
+	rdfs:range [ owl:unionOf( IREB:Requirement ReqIF-WF:Requirement )] ;
+	dcterms:modified "2023-07-16T15:02:23.500Z" .
+
+SpecIF:contradicts-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of SpecIF:contradicts" ;
+	rdfs:domain SpecIF:contradicts ;
+	rdfs:range [ owl:unionOf( IREB:Requirement ReqIF-WF:Requirement )] ;
+	dcterms:modified "2023-07-16T15:02:23.500Z" .
+
+SpecIF:contradicts-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:contradicts ;
+	sh:property [ 
+		sh:path SpecIF:contradicts-hasSubject ;
+		sh:class [ owl:unionOf( IREB:Requirement ReqIF-WF:Requirement )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path SpecIF:contradicts-hasObject ;
+		sh:class [ owl:unionOf( IREB:Requirement ReqIF-WF:Requirement )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+SpecIF:isAssociatedWith
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:relates ;
+	rdfs:label "SpecIF:isAssociatedWith" ;
+	rdfs:comment "<p>A [[FMC:State]] is associated with another [[FMC:State]] (e.g. a class is associated with another class, as shown in a UML Class Diagram).</p>" ;
+	dcterms:modified "2024-07-17T14:56:18.430Z" .
+
+SpecIF:isAssociatedWith-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of SpecIF:isAssociatedWith" ;
+	rdfs:domain SpecIF:isAssociatedWith ;
+	dcterms:modified "2024-07-17T14:56:18.430Z" .
+
+SpecIF:isAssociatedWith-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of SpecIF:isAssociatedWith" ;
+	rdfs:domain SpecIF:isAssociatedWith ;
+	dcterms:modified "2024-07-17T14:56:18.430Z" .
+
+SpecIF:isAssociatedWith-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:isAssociatedWith ;
+	sh:property dcterms:type-Shape ;
+	sh:property [ 
+		sh:path SpecIF:isAssociatedWith-hasSubject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path SpecIF:isAssociatedWith-hasObject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+SpecIF:aggregates
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:relates ;
+	rdfs:label "SpecIF:aggregates" ;
+	rdfs:comment "<p>An [[FMC:Actor]] aggregates another [[FMC:Actor]].</p><p>If amounts or things are aggregated, they are added together and considered as a single amount or thing.<i><small>Source: <a href=\"https://www.collinsdictionary.com/dictionary/english/aggregate\">Collins Dictionary</a></small></i></p>" ;
+	dcterms:modified "2024-07-17T15:04:32.344Z" .
+
+SpecIF:aggregates-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of SpecIF:aggregates" ;
+	rdfs:domain SpecIF:aggregates ;
+	dcterms:modified "2024-07-17T15:04:32.344Z" .
+
+SpecIF:aggregates-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of SpecIF:aggregates" ;
+	rdfs:domain SpecIF:aggregates ;
+	dcterms:modified "2024-07-17T15:04:32.344Z" .
+
+SpecIF:aggregates-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:aggregates ;
+	sh:property dcterms:type-Shape ;
+	sh:property [ 
+		sh:path SpecIF:aggregates-hasSubject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path SpecIF:aggregates-hasObject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+uml:extends
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "uml:extends" ;
+	rdfs:comment "<p>An [[FMC:Actor]] «UseCase» extends another [[FMC:Actor]] «UseCase».</p>" ;
+	dcterms:modified "2023-07-16T15:23:43.133Z" .
+
+uml:extends-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of uml:extends" ;
+	rdfs:domain uml:extends ;
+	rdfs:range FMC:Actor ;
+	dcterms:modified "2023-07-16T15:23:43.133Z" .
+
+uml:extends-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of uml:extends" ;
+	rdfs:domain uml:extends ;
+	rdfs:range FMC:Actor ;
+	dcterms:modified "2023-07-16T15:23:43.133Z" .
+
+uml:extends-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass uml:extends ;
+	sh:property [ 
+		sh:path uml:extends-hasSubject ;
+		sh:class FMC:Actor ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path uml:extends-hasObject ;
+		sh:class FMC:Actor ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+sysml:includes
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "sysml:includes" ;
+	rdfs:comment "<p>An [[FMC:Actor]] «UseCase» includes another [[FMC:Actor]] «UseCase».</p>" ;
+	dcterms:modified "2023-07-16T15:20:39.094Z" .
+
+sysml:includes-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of sysml:includes" ;
+	rdfs:domain sysml:includes ;
+	rdfs:range FMC:Actor ;
+	dcterms:modified "2023-07-16T15:20:39.094Z" .
+
+sysml:includes-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of sysml:includes" ;
+	rdfs:domain sysml:includes ;
+	rdfs:range FMC:Actor ;
+	dcterms:modified "2023-07-16T15:20:39.094Z" .
+
+sysml:includes-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass sysml:includes ;
+	sh:property [ 
+		sh:path sysml:includes-hasSubject ;
+		sh:class FMC:Actor ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path sysml:includes-hasObject ;
+		sh:class FMC:Actor ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+uml:Realization
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "uml:Realization" ;
+	rdfs:comment "A component *realizes' a function." ;
+	dcterms:modified "2024-06-19T23:49:22.932Z" .
+
+uml:Realization-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of uml:Realization" ;
+	rdfs:domain uml:Realization ;
+	dcterms:modified "2024-06-19T23:49:22.932Z" .
+
+uml:Realization-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of uml:Realization" ;
+	rdfs:domain uml:Realization ;
+	dcterms:modified "2024-06-19T23:49:22.932Z" .
+
+uml:Realization-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass uml:Realization ;
+	sh:property [ 
+		sh:path uml:Realization-hasSubject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path uml:Realization-hasObject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+uml:ownedBehavior
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "uml:ownedBehavior" ;
+	dcterms:modified "2025-06-28T13:06:07.639Z" .
+
+uml:ownedBehavior-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of uml:ownedBehavior" ;
+	rdfs:domain uml:ownedBehavior ;
+	dcterms:modified "2025-06-28T13:06:07.639Z" .
+
+uml:ownedBehavior-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of uml:ownedBehavior" ;
+	rdfs:domain uml:ownedBehavior ;
+	rdfs:range [ owl:unionOf( uml:StateMachine uml:Activity FMC:Actor uml:UseCase )] ;
+	dcterms:modified "2025-06-28T13:06:07.639Z" .
+
+uml:ownedBehavior-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass uml:ownedBehavior ;
+	sh:property [ 
+		sh:path uml:ownedBehavior-hasSubject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path uml:ownedBehavior-hasObject ;
+		sh:class [ owl:unionOf( uml:StateMachine uml:Activity FMC:Actor uml:UseCase )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+uml:ownedDiagram
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "uml:ownedDiagram" ;
+	dcterms:modified "2025-06-28T15:37:04.692Z" .
+
+uml:ownedDiagram-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of uml:ownedDiagram" ;
+	rdfs:domain uml:ownedDiagram ;
+	dcterms:modified "2025-06-28T15:37:04.692Z" .
+
+uml:ownedDiagram-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of uml:ownedDiagram" ;
+	rdfs:domain uml:ownedDiagram ;
+	rdfs:range [ owl:unionOf( uml:Diagram pig:View )] ;
+	dcterms:modified "2025-06-28T15:37:04.692Z" .
+
+uml:ownedDiagram-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass uml:ownedDiagram ;
+	sh:property [ 
+		sh:path uml:ownedDiagram-hasSubject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path uml:ownedDiagram-hasObject ;
+		sh:class [ owl:unionOf( uml:Diagram pig:View )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+uml:Trigger
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "uml:Trigger" ;
+	dcterms:modified "2025-04-22T09:22:53.072Z" .
+
+uml:Trigger-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of uml:Trigger" ;
+	rdfs:domain uml:Trigger ;
+	dcterms:modified "2025-04-22T09:22:53.072Z" .
+
+uml:Trigger-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of uml:Trigger" ;
+	rdfs:domain uml:Trigger ;
+	dcterms:modified "2025-04-22T09:22:53.072Z" .
+
+uml:Trigger-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass uml:Trigger ;
+	sh:property [ 
+		sh:path uml:Trigger-hasSubject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path uml:Trigger-hasObject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+uml:TransitionSource
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "uml:TransitionSource" ;
+	dcterms:modified "2025-04-22T13:53:55.553Z" .
+
+uml:TransitionSource-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of uml:TransitionSource" ;
+	rdfs:domain uml:TransitionSource ;
+	rdfs:range [ owl:unionOf( uml:Transition FMC:Actor )] ;
+	dcterms:modified "2025-04-22T13:53:55.553Z" .
+
+uml:TransitionSource-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of uml:TransitionSource" ;
+	rdfs:domain uml:TransitionSource ;
+	rdfs:range [ owl:unionOf( uml:State FMC:State )] ;
+	dcterms:modified "2025-04-22T13:53:55.553Z" .
+
+uml:TransitionSource-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass uml:TransitionSource ;
+	sh:property [ 
+		sh:path uml:TransitionSource-hasSubject ;
+		sh:class [ owl:unionOf( uml:Transition FMC:Actor )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path uml:TransitionSource-hasObject ;
+		sh:class [ owl:unionOf( uml:State FMC:State )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+uml:TransitionTarget
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "uml:TransitionTarget" ;
+	dcterms:modified "2025-04-22T13:52:41.508Z" .
+
+uml:TransitionTarget-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of uml:TransitionTarget" ;
+	rdfs:domain uml:TransitionTarget ;
+	rdfs:range [ owl:unionOf( uml:Transition FMC:Actor )] ;
+	dcterms:modified "2025-04-22T13:52:41.508Z" .
+
+uml:TransitionTarget-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of uml:TransitionTarget" ;
+	rdfs:domain uml:TransitionTarget ;
+	rdfs:range [ owl:unionOf( uml:State FMC:State )] ;
+	dcterms:modified "2025-04-22T13:52:41.508Z" .
+
+uml:TransitionTarget-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass uml:TransitionTarget ;
+	sh:property [ 
+		sh:path uml:TransitionTarget-hasSubject ;
+		sh:class [ owl:unionOf( uml:Transition FMC:Actor )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path uml:TransitionTarget-hasObject ;
+		sh:class [ owl:unionOf( uml:State FMC:State )] ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+SpecIF:isSpecializationOf
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "SpecIF:isSpecializationOf" ;
+	rdfs:comment "<p>A FMC:Actor is a specialization of another FMC:Actor; similarly for FMC:State and FMC:Event.</p>" ;
+	dcterms:modified "2024-07-17T15:12:53.003Z" .
+
+SpecIF:isSpecializationOf-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of SpecIF:isSpecializationOf" ;
+	rdfs:domain SpecIF:isSpecializationOf ;
+	dcterms:modified "2024-07-17T15:12:53.003Z" .
+
+SpecIF:isSpecializationOf-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of SpecIF:isSpecializationOf" ;
+	rdfs:domain SpecIF:isSpecializationOf ;
+	dcterms:modified "2024-07-17T15:12:53.003Z" .
+
+SpecIF:isSpecializationOf-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass SpecIF:isSpecializationOf ;
+	sh:property [ 
+		sh:path SpecIF:isSpecializationOf-hasSubject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path SpecIF:isSpecializationOf-hasObject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+uml:Generalization
+	rdf:type owl:Class ;
+	rdfs:subClassOf SpecIF:relates ;
+	rdfs:label "uml:Generalization" ;
+	rdfs:comment "<p>A [[FMC:Actor]] is a generalization of another [[FMC:Actor]]; similarly for [[FMC:State]] and [[FMC:Event]].</p>" ;
+	dcterms:modified "2024-06-17T10:03:39.762Z" .
+
+uml:Generalization-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of uml:Generalization" ;
+	rdfs:domain uml:Generalization ;
+	dcterms:modified "2024-06-17T10:03:39.762Z" .
+
+uml:Generalization-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of uml:Generalization" ;
+	rdfs:domain uml:Generalization ;
+	dcterms:modified "2024-06-17T10:03:39.762Z" .
+
+uml:Generalization-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass uml:Generalization ;
+	sh:property dcterms:type-Shape ;
+	sh:property [ 
+		sh:path uml:Generalization-hasSubject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path uml:Generalization-hasObject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+IR:approves
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "IR:approves" ;
+	dcterms:modified "2023-08-09T21:41:10.856Z" .
+
+IR:approves-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of IR:approves" ;
+	rdfs:domain IR:approves ;
+	dcterms:modified "2023-08-09T21:41:10.856Z" .
+
+IR:approves-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of IR:approves" ;
+	rdfs:domain IR:approves ;
+	rdfs:range SpecIF:Comment ;
+	dcterms:modified "2023-08-09T21:41:10.856Z" .
+
+IR:approves-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass IR:approves ;
+	sh:property [ 
+		sh:path IR:approves-hasSubject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path IR:approves-hasObject ;
+		sh:class SpecIF:Comment ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+IR:opposes
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "IR:opposes" ;
+	dcterms:modified "2023-08-09T21:41:32.075Z" .
+
+IR:opposes-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of IR:opposes" ;
+	rdfs:domain IR:opposes ;
+	dcterms:modified "2023-08-09T21:41:32.075Z" .
+
+IR:opposes-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of IR:opposes" ;
+	rdfs:domain IR:opposes ;
+	rdfs:range SpecIF:Comment ;
+	dcterms:modified "2023-08-09T21:41:32.075Z" .
+
+IR:opposes-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass IR:opposes ;
+	sh:property [ 
+		sh:path IR:opposes-hasSubject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path IR:opposes-hasObject ;
+		sh:class SpecIF:Comment ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+owl:sameAs
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "owl:sameAs" ;
+	rdfs:comment "<p>An <i>owl:sameAs</i> statement indicates that two URI references actually refer to the same thing: the individuals have the same 'identity'. <small>(<i>source: <a href=\"https://www.w3.org/TR/owl-ref/#sameAs-def\">OWL</a></i>)</small></p>" ;
+	dcterms:modified "2023-07-16T15:45:34.533Z" .
+
+owl:sameAs-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of owl:sameAs" ;
+	rdfs:domain owl:sameAs ;
+	dcterms:modified "2023-07-16T15:45:34.533Z" .
+
+owl:sameAs-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of owl:sameAs" ;
+	rdfs:domain owl:sameAs ;
+	dcterms:modified "2023-07-16T15:45:34.533Z" .
+
+owl:sameAs-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass owl:sameAs ;
+	sh:property [ 
+		sh:path owl:sameAs-hasSubject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path owl:sameAs-hasObject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+DDP:definedBy
+	rdf:type owl:Class ;
+	rdfs:subClassOf pig:RelationshipClass ;
+	rdfs:label "DDP:definedBy" ;
+	dcterms:modified "2025-08-15T14:48:20.668Z" .
+
+DDP:definedBy-hasSubject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasSubject ;
+	rdfs:label "Connects the subject of DDP:definedBy" ;
+	rdfs:domain DDP:definedBy ;
+	dcterms:modified "2025-08-15T14:48:20.668Z" .
+
+DDP:definedBy-hasObject
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf pig:hasObject ;
+	rdfs:label "Connects the object of DDP:definedBy" ;
+	rdfs:domain DDP:definedBy ;
+	rdfs:range DDP:Source ;
+	dcterms:modified "2025-08-15T14:48:20.668Z" .
+
+DDP:definedBy-Shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass DDP:definedBy ;
+	sh:property [ 
+		sh:path DDP:definedBy-hasSubject ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] ;
+	sh:property [ 
+		sh:path DDP:definedBy-hasObject ;
+		sh:class DDP:Source ;
+		sh:minCount 1 ;
+		sh:maxCount 1
+	] .
+
+#################################################################
+# Entities
+#################################################################
+
+d:R-oDF7oJItvlwbEXnOQ43WpQEdNk1
+	rdf:type IREB:Requirement ;
+	rdfs:subClassOf pig:Entity ;
+	rdfs:label "App manages customers" ;
+	rdfs:comment "The app MUST provide the ability to create, read, update and delete customer information." ;
+	SpecIF:Priority SpecIF:priorityRatherHigh ;
+	IREB:RequirementType o:V_RequirementType_0 ;
+	SpecIF:StakeholderGroup SpecIF:StakeholderGroupBusiness ;
+	dcterms:modified "2025-08-15T15:26:09.078Z" .
+
+d:R-LBihD2ggSGN6Y6LJBQ18PvI7YNu
+	rdf:type DDP:ProductFunction ;
+	rdfs:subClassOf pig:Entity ;
+	rdfs:label "Customer Relationship Management" ;
+	rdfs:comment "The app The app provide the ability to create, read, update and delete customers with their- contact person (full name)*- postal address- e-mail address*- telephone number- bank account" ;
+	dcterms:modified "2025-08-15T15:28:26.851Z" .
+
+#################################################################
+# Relationships
+#################################################################
+
+d:S-Rl2dXbtYNr274aiHJPCIHnJVgbo
+	rdf:type oslc_rm:satisfies ;
+	rdfs:subClassOf pig:Relationship ;
+	oslc_rm:satisfies-hasSubject d:R-LBihD2ggSGN6Y6LJBQ18PvI7YNu ;
+	oslc_rm:satisfies-hasObject d:R-oDF7oJItvlwbEXnOQ43WpQEdNk1 ;
+	dcterms:modified "2025-08-15T15:28:40.401Z" .

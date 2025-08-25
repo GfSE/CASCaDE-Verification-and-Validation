@@ -1,12 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\OD\\Documents\\GitHub\\CASCaDE\\V\u0026V\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\OD\\Documents\\GitHub\\CASCaDE\\V\u0026V\\Very-simple-Model-with-Requirements [FMC - SpecIF]\\7_RDF\\Project \u0027Very Simple Model (FMC) with Requirements\u0027.ttl||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Very-simple-Model-with-Requirements [FMC - SpecIF]\\7_RDF\\Project \u0027Very Simple Model (FMC) with Requirements\u0027.ttl||{8B382828-6202-11D1-8870-0000F87579D2}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -14,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 13,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -67,19 +62,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:139:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Project \u0027Very Simple Model (FMC) with Requirements\u0027.ttl",
-              "DocumentMoniker": "C:\\Users\\OD\\Documents\\GitHub\\CASCaDE\\V\u0026V\\Very-simple-Model-with-Requirements [FMC - SpecIF]\\7_RDF\\Project \u0027Very Simple Model (FMC) with Requirements\u0027.ttl",
-              "RelativeDocumentMoniker": "Very-simple-Model-with-Requirements [FMC - SpecIF]\\7_RDF\\Project \u0027Very Simple Model (FMC) with Requirements\u0027.ttl",
-              "ToolTip": "C:\\Users\\OD\\Documents\\GitHub\\CASCaDE\\V\u0026V\\Very-simple-Model-with-Requirements [FMC - SpecIF]\\7_RDF\\Project \u0027Very Simple Model (FMC) with Requirements\u0027.ttl",
-              "RelativeToolTip": "Very-simple-Model-with-Requirements [FMC - SpecIF]\\7_RDF\\Project \u0027Very Simple Model (FMC) with Requirements\u0027.ttl",
-              "ViewState": "AgIAAFIAAAAAAAAAAAAAAFYAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-02-28T00:28:53.057Z",
-              "EditorCaption": ""
             }
           ]
         }
