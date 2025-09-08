@@ -3,7 +3,7 @@ Welcome to the Collaboration Repository for the Model Based Enterprise (MBE) Dem
 
 We will develop a plan for 2022/2023 enhancements of the MBE Demonstrator RM that will comprise version 1.2.  
 The purpose of this product is to demonstrate standards based digital twin and digital thread.  
-![MBE Demonstrator RM](mbedemonstratorrm.png)
+![MBE Demonstrator RM](assets/images/mbedemonstratorrm.png)
 
 Using a shell, (or Powershell on Windows), a tree of the current files and folder can be generated using the following commands: 
 ```
