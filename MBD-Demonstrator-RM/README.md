@@ -18,4 +18,6 @@ This file is created in Markdown. Which is a lightweight markup language that yo
 - [The Markdown Guide](https://www.markdownguide.org/)
 - [GitHub Flavored Markdown Spec](https://github.github.com/gfm/)
 
-Contact Timothy Suhr via email at: [timothy.j.suhr@boeing.com](mailto:timothy.j.suhr@boeing.com) or by phone [+1(425)965-6286](tel:1425-965-6286).
+Contact 
+Juan Carlos Mendo juan.c.mendo@boeing.com 
+Timothy Suhr via email at: [timothy.j.suhr@boeing.com](mailto:timothy.j.suhr@boeing.com) or by phone [+1(425)965-6286](tel:1425-965-6286).
