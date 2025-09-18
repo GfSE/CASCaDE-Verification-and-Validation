@@ -19,5 +19,5 @@ This file is created in Markdown. Which is a lightweight markup language that yo
 - [GitHub Flavored Markdown Spec](https://github.github.com/gfm/)
 
 Contact 
-Juan Carlos Mendo juan.c.mendo@boeing.com 
+Juan Carlos Mendo juan.c.mendo@boeing.com or 
 Timothy Suhr via email at: [timothy.j.suhr@boeing.com](mailto:timothy.j.suhr@boeing.com) or by phone [+1(425)965-6286](tel:1425-965-6286).
