@@ -1,7 +1,7 @@
 {
   "@Context": "http://purl.org/dc/terms/",
   "id": "ACP-Very-Simple-Model-FMC-with-Requirements",
-  "$schema": "https://specif.de/v1.1/schema.json",
+  "$schema": "https://specif.de/v1.2/schema",
   "title": [
     {
       "text": "Project 'Very Simple Model (FMC) with Requirements'"
@@ -58,26 +58,10 @@
           ]
         },
         {
-          "id": "V-Prio-1",
-          "value": [
-            {
-              "text": "SpecIF:priorityRatherHigh"
-            }
-          ]
-        },
-        {
           "id": "V-Prio-2",
           "value": [
             {
               "text": "SpecIF:priorityMedium"
-            }
-          ]
-        },
-        {
-          "id": "V-Prio-3",
-          "value": [
-            {
-              "text": "SpecIF:priorityRatherLow"
             }
           ]
         },
@@ -515,7 +499,7 @@
           "values": [
             [
               {
-                "text": "<div><p>This is a minimal showcase for a model with model-elements and related requirements. It covers pretty much all characteristics neeeded in such cases (including 'statements on statements'), so that transformations and expressive power of other data formats can be evaluated. The example and its representation in SpecIF format is discussed in <a href=\"https://specif.de/Tutorials/06_Very-Simple-Model-FMC.html\" target=\"_blank\">Tutorial 6: Very Simple Model (FMC)</a> and <a href=\"https://specif.de/Tutorials/09_Very-Simple-Model-FMC-with-Requirements.html\" target=\"_blank\">Tutorial 9: Very Simple Model (FMC) with Requirements</a>.</p></div>"
+                "text": "<p>This is a minimal showcase for a model with model-elements and related requirements. It covers pretty much all characteristics neeeded in such cases (including 'statements on statements'), so that transformations and expressive power of other data formats can be evaluated. The example and its representation in SpecIF format is discussed in <a href=\"https://specif.de/Tutorials/06_Very-Simple-Model-FMC.html\" target=\"_blank\">Tutorial 6: Very Simple Model (FMC)</a> and <a href=\"https://specif.de/Tutorials/09_Very-Simple-Model-FMC-with-Requirements.html\" target=\"_blank\">Tutorial 9: Very Simple Model (FMC) with Requirements</a>.</p>"
               }
             ]
           ]
@@ -569,7 +553,7 @@
           "values": [
             [
               {
-                "text": "<div><p class=\"inline-label\">Model Diagram:</p><p><object type=\"image/svg+xml\" data=\"files_and_images/Very-Simple-Model-FMC.svg\">Notation: FMC Block Diagram</object></p></div>"
+                "text": "<p class=\"inline-label\">Model Diagram:</p><p><object type=\"image/svg+xml\" data=\"files_and_images/Very-Simple-Model-FMC.svg\">Notation: FMC Block Diagram</object></p>"
               }
             ]
           ]
@@ -614,7 +598,7 @@
           "values": [
             [
               {
-                "text": "<div><p>IT-Application for Finance and Controlling.</p></div>"
+                "text": "<p>IT-Application for Finance and Controlling.</p>"
               }
             ]
           ]
@@ -647,7 +631,7 @@
           "values": [
             [
               {
-                "text": "<div><p>Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc.</p></div>"
+                "text": "<p>Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc.</p>"
               }
             ]
           ]
@@ -701,7 +685,7 @@
           "values": [
             [
               {
-                "text": "<div><p>The data store MUST support a total volume up to 850 GB.</p></div>"
+                "text": "<p>The data store MUST support a total volume up to 850 GB.</p>"
               }
             ]
           ]
@@ -710,7 +694,11 @@
           "class": {
             "id": "PC-Priority"
           },
-          "values": [ "V-Prio-1" ]
+          "values": [
+            {
+              "id": "V-Prio-0"
+            }
+          ]
         }
       ]
     },
@@ -740,7 +728,7 @@
           "values": [
             [
               {
-                "text": "<div><p>The data store MUST be consistent at all times.</p></div>"
+                "text": "<p>The data store MUST be consistent at all times.</p>"
               }
             ]
           ]
@@ -749,7 +737,11 @@
           "class": {
             "id": "PC-Priority"
           },
-          "values": [ "V-Prio-0" ]
+          "values": [
+            {
+              "id": "V-Prio-0"
+            }
+          ]
         }
       ]
     },
@@ -779,7 +771,7 @@
           "values": [
             [
               {
-                "text": "<div><p>The system SHOULD respond on user queries within 300 ms.</p></div>"
+                "text": "<p>The system SHOULD respond on user queries within 300 ms.</p>"
               }
             ]
           ]
@@ -788,7 +780,11 @@
           "class": {
             "id": "PC-Priority"
           },
-          "values": [ "V-Prio-2" ]
+          "values": [
+            {
+              "id": "V-Prio-2"
+            }
+          ]
         }
       ]
     },
@@ -1104,7 +1100,7 @@
       }
     }
   ],
-  "hierarchies": [
+  "nodes": [
     {
       "id": "N-Folder-Introduction",
       "resource": {
