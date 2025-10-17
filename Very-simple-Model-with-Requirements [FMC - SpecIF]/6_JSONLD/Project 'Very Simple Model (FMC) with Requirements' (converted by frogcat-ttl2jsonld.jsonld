@@ -18,7 +18,7 @@ Output JSON-LD
     "foaf": "http://xmlns.com/foaf/spec/#",
     "FMC": "http://fmc-modeling.org#",
     "IR": "https://www.adesso.de/de/impulse/interaction-room/index.jsp#",
-    "IREB": "https://www.ireb.org/en/downloads#cpre-glossary",
+    "IREB": "https://www.ireb.org/cpre-glossary#",
     "ReqIF": "https://www.prostep.org/fileadmin/downloads/PSI_ImplementationGuide_ReqIF_V1-7.pdf#",
     "ReqIF-WF": "https://www.prostep.org/fileadmin/downloads/Recommendation_ReqIF_V2_RZ3.pdf#",
     "HIS": "https://www.itwissen.info/Herstellerinitiative-Software-Automotive-HIS.html#",
@@ -31,7 +31,7 @@ Output JSON-LD
     "sysml": "https://www.omg.org/spec/SysML#",
     "pig": "https://product-information-graph.org/metamodel#",
     "DDP": "http://www.prostep.org/dictionary/2.0#",
-    "SpecIF": "https://specif.de/v1.1/schema#",
+    "SpecIF": "https://specif.de/v1.2/schema#",
     "o": "https://product-information-graph.org/examples/ontology#",
     "d": "https://product-information-graph.org/examples/09_Very-Simple-Model-FMC-with-Requirements.specif.zip#"
   },
@@ -53,7 +53,23 @@ Output JSON-LD
       "dcterms:license": {
         "@id": "https://creativecommons.org/licenses/by-sa/4.0/"
       },
-      "dcterms:createdAt": "2025-09-23T17:04:20.888Z"
+      "dcterms:modified": "2025-10-17T10:55:11.686Z"
+    },
+    {
+      "@id": "pig:Property",
+      "rdf:type": {
+        "@id": "owl:DatatypeProperty"
+      },
+      "rdfs:label": "Literal Property",
+      "rdfs:comment": "A PIG meta-model element used for literal properties."
+    },
+    {
+      "@id": "pig:PropertyEnum",
+      "rdf:type": {
+        "@id": "owl:ObjectProperty"
+      },
+      "rdfs:label": "Enumerated literal Property",
+      "rdfs:comment": "A PIG meta-model element used for enumerated literal properties."
     },
     {
       "@id": "pig:Organizer",
@@ -139,7 +155,19 @@ Output JSON-LD
         "@id": "pig:eligibleElement"
       },
       "rdfs:domain": {
-        "@id": "pig:Outline"
+        "owl:unionOf": {
+          "@list": [
+            {
+              "@id": "pig:HierarchyRoot"
+            },
+            {
+              "@id": "pig:Outline"
+            },
+            {
+              "@id": "SpecIF:Heading"
+            }
+          ]
+        }
       },
       "rdfs:label": "lists",
       "rdfs:comment": "Lists (references) an entity, a relationship or a subordinated organizer."
@@ -200,7 +228,10 @@ Output JSON-LD
           "@language": "fr"
         }
       ],
-      "rdfs:comment": "Enumerated Values for Priorität",
+      "rdfs:comment": {
+        "@value": "Enumerated values for the 'Priority' of the resource.",
+        "@language": "en"
+      },
       "dcterms:modified": "2016-05-26T08:59:00+02:00",
       "owl:oneOf": {
         "@list": [
@@ -234,8 +265,7 @@ Output JSON-LD
           "@value": "haut",
           "@language": "fr"
         }
-      ],
-      "rdfs:comment": "A value for property [[SpecIF:Priority]]."
+      ]
     },
     {
       "@id": "SpecIF:priorityMedium",
@@ -255,8 +285,7 @@ Output JSON-LD
           "@value": "moyen",
           "@language": "fr"
         }
-      ],
-      "rdfs:comment": "A value for property [[SpecIF:Priority]]."
+      ]
     },
     {
       "@id": "SpecIF:priorityLow",
@@ -276,13 +305,39 @@ Output JSON-LD
           "@value": "bas",
           "@language": "fr"
         }
-      ],
-      "rdfs:comment": "A value for property [[SpecIF:Priority]]."
+      ]
+    },
+    {
+      "@id": "rdfs:label-Shape",
+      "rdf:type": {
+        "@id": "http://www.w3.org/ns/shacl#PropertyShape"
+      },
+      "http://www.w3.org/ns/shacl#path": {
+        "@id": "rdfs:label"
+      },
+      "http://www.w3.org/ns/shacl#maxCount": "1",
+      "http://www.w3.org/ns/shacl#datatype": {
+        "@id": "xsd:string"
+      },
+      "http://www.w3.org/ns/shacl#maxLength": "256"
+    },
+    {
+      "@id": "rdfs:comment-Shape",
+      "rdf:type": {
+        "@id": "http://www.w3.org/ns/shacl#PropertyShape"
+      },
+      "http://www.w3.org/ns/shacl#path": {
+        "@id": "rdfs:comment"
+      },
+      "http://www.w3.org/ns/shacl#maxCount": "1",
+      "http://www.w3.org/ns/shacl#datatype": {
+        "@id": "xsd:string"
+      }
     },
     {
       "@id": "SpecIF:Diagram",
-      "rdf:type": {
-        "@id": "owl:DatatypeProperty"
+      "rdfs:subClassOf": {
+        "@id": "pig:Property"
       },
       "rdfs:label": [
         {
@@ -301,7 +356,8 @@ Output JSON-LD
       "rdfs:comment": {
         "@value": "A diagram illustrating the resource or a link to a diagram.",
         "@language": "en"
-      }
+      },
+      "dcterms:modified": "2023-02-26T14:40:17.601Z"
     },
     {
       "@id": "SpecIF:Diagram-Shape",
@@ -317,8 +373,8 @@ Output JSON-LD
     },
     {
       "@id": "dcterms:type",
-      "rdf:type": {
-        "@id": "owl:DatatypeProperty"
+      "rdfs:subClassOf": {
+        "@id": "pig:Property"
       },
       "rdfs:label": [
         {
@@ -337,7 +393,8 @@ Output JSON-LD
       "rdfs:comment": {
         "@value": "<p>The nature or genre of the resource. <small>(<i>source: <a href=\"http://purl.org/dc/elements/1.1/type\">DCMI</a></i>)</small></p><p>Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element.</p><p>For example, a [[FMC:Actor]] may represent a <i>System Function</i>, a <i>System Component</i> or a <i>User Role</i>. Similarly, in the context of process modelling, a FMC:Actor may represent a <i>Process Step</i> or again a <i>User Role</i>. So, all of these are meaningful values for a FMC:Actor's property named dcterms:type.</p>",
         "@language": "en"
-      }
+      },
+      "dcterms:modified": "2023-02-26T20:18:04.451Z"
     },
     {
       "@id": "dcterms:type-Shape",
@@ -355,8 +412,8 @@ Output JSON-LD
     },
     {
       "@id": "SpecIF:Priority",
-      "rdf:type": {
-        "@id": "owl:ObjectProperty"
+      "rdfs:subClassOf": {
+        "@id": "pig:PropertyEnum"
       },
       "rdfs:label": [
         {
@@ -378,7 +435,8 @@ Output JSON-LD
       },
       "rdfs:range": {
         "@id": "SpecIF:Priority-Value"
-      }
+      },
+      "dcterms:modified": "2020-03-26T22:59:00+02:00"
     },
     {
       "@id": "SpecIF:Priority-Shape",
@@ -392,6 +450,45 @@ Output JSON-LD
       "http://www.w3.org/ns/shacl#class": {
         "@id": "SpecIF:Priority-Value"
       }
+    },
+    {
+      "@id": "SpecIF:Icon",
+      "rdfs:subClassOf": {
+        "@id": "pig:Property"
+      },
+      "rdfs:label": [
+        {
+          "@value": "Icon",
+          "@language": "en"
+        },
+        {
+          "@value": "Symbol",
+          "@language": "de"
+        },
+        {
+          "@value": "Symbole",
+          "@language": "fr"
+        }
+      ],
+      "rdfs:comment": {
+        "@value": "A symbol or icon for display as a prefix to titles; applicable to all instances of the class. Is usually a XML-encoded UTF-8 symbol, can be an URL or dataURL.",
+        "@language": "en"
+      },
+      "dcterms:modified": "2025-09-05T12:43:26.716Z"
+    },
+    {
+      "@id": "SpecIF:Icon-Shape",
+      "rdf:type": {
+        "@id": "http://www.w3.org/ns/shacl#PropertyShape"
+      },
+      "http://www.w3.org/ns/shacl#path": {
+        "@id": "SpecIF:Icon"
+      },
+      "http://www.w3.org/ns/shacl#maxCount": "1",
+      "http://www.w3.org/ns/shacl#datatype": {
+        "@id": "xsd:string"
+      },
+      "http://www.w3.org/ns/shacl#maxLength": "256"
     },
     {
       "@id": "SpecIF:Heading",
@@ -426,6 +523,9 @@ Output JSON-LD
     },
     {
       "@id": "SpecIF:Heading-Shape",
+      "rdf:type": {
+        "@id": "http://www.w3.org/ns/shacl#NodeShape"
+      },
       "http://www.w3.org/ns/shacl#targetClass": {
         "@id": "SpecIF:Heading"
       },
@@ -477,6 +577,9 @@ Output JSON-LD
     },
     {
       "@id": "SpecIF:Paragraph-Shape",
+      "rdf:type": {
+        "@id": "http://www.w3.org/ns/shacl#NodeShape"
+      },
       "http://www.w3.org/ns/shacl#targetClass": {
         "@id": "SpecIF:Paragraph"
       },
@@ -498,15 +601,18 @@ Output JSON-LD
     {
       "@id": "pig:View",
       "rdfs:subClassOf": {
-        "@id": "pig:Entity"
+        "@id": "pig:Organizer"
       },
       "rdfs:label": "View",
       "rdfs:comment": "A PIG organizer class representing a diagram with certain model-elements for a given communication purpose.",
-      "pig:Icon": "▣",
+      "pig:icon": "▣",
       "dcterms:modified": "2018-05-10T11:54:00+01:00"
     },
     {
       "@id": "pig:View-Shape",
+      "rdf:type": {
+        "@id": "http://www.w3.org/ns/shacl#NodeShape"
+      },
       "http://www.w3.org/ns/shacl#targetClass": {
         "@id": "pig:View"
       },
@@ -558,11 +664,14 @@ Output JSON-LD
           "@language": "fr"
         }
       ],
-      "pig:Icon": "&#x25A1;",
+      "pig:icon": "&#x25A1;",
       "dcterms:modified": "2018-05-10T11:54:00+01:00"
     },
     {
       "@id": "FMC:Actor-Shape",
+      "rdf:type": {
+        "@id": "http://www.w3.org/ns/shacl#NodeShape"
+      },
       "http://www.w3.org/ns/shacl#targetClass": {
         "@id": "FMC:Actor"
       },
@@ -611,11 +720,14 @@ Output JSON-LD
           "@language": "fr"
         }
       ],
-      "pig:Icon": "&#x25CB;",
+      "pig:icon": "&#x25CB;",
       "dcterms:modified": "2018-05-10T11:54:00+01:00"
     },
     {
       "@id": "FMC:State-Shape",
+      "rdf:type": {
+        "@id": "http://www.w3.org/ns/shacl#NodeShape"
+      },
       "http://www.w3.org/ns/shacl#targetClass": {
         "@id": "FMC:State"
       },
@@ -664,11 +776,14 @@ Output JSON-LD
           "@language": "fr"
         }
       ],
-      "pig:Icon": "&#x2662;",
+      "pig:icon": "&#x2662;",
       "dcterms:modified": "2018-05-10T11:54:00+01:00"
     },
     {
       "@id": "FMC:Event-Shape",
+      "rdf:type": {
+        "@id": "http://www.w3.org/ns/shacl#NodeShape"
+      },
       "http://www.w3.org/ns/shacl#targetClass": {
         "@id": "FMC:Event"
       },
@@ -717,11 +832,14 @@ Output JSON-LD
           "@language": "fr"
         }
       ],
-      "pig:Icon": "&#8623;",
+      "pig:icon": "&#8623;",
       "dcterms:modified": "2021-02-22T08:59:00+02:00"
     },
     {
       "@id": "IREB:Requirement-Shape",
+      "rdf:type": {
+        "@id": "http://www.w3.org/ns/shacl#NodeShape"
+      },
       "http://www.w3.org/ns/shacl#targetClass": {
         "@id": "IREB:Requirement"
       },
@@ -773,8 +891,7 @@ Output JSON-LD
       },
       "rdfs:range": {
         "@id": "FMC:Actor"
-      },
-      "dcterms:modified": "2018-05-10T11:54:00+01:00"
+      }
     },
     {
       "@id": "SpecIF:writes-hasTarget",
@@ -787,11 +904,13 @@ Output JSON-LD
       },
       "rdfs:range": {
         "@id": "FMC:State"
-      },
-      "dcterms:modified": "2018-05-10T11:54:00+01:00"
+      }
     },
     {
       "@id": "SpecIF:writes-Shape",
+      "rdf:type": {
+        "@id": "http://www.w3.org/ns/shacl#NodeShape"
+      },
       "http://www.w3.org/ns/shacl#targetClass": {
         "@id": "SpecIF:writes"
       },
@@ -857,8 +976,7 @@ Output JSON-LD
       },
       "rdfs:range": {
         "@id": "FMC:Actor"
-      },
-      "dcterms:modified": "2018-05-10T11:54:00+01:00"
+      }
     },
     {
       "@id": "SpecIF:reads-hasTarget",
@@ -871,11 +989,13 @@ Output JSON-LD
       },
       "rdfs:range": {
         "@id": "FMC:State"
-      },
-      "dcterms:modified": "2018-05-10T11:54:00+01:00"
+      }
     },
     {
       "@id": "SpecIF:reads-Shape",
+      "rdf:type": {
+        "@id": "http://www.w3.org/ns/shacl#NodeShape"
+      },
       "http://www.w3.org/ns/shacl#targetClass": {
         "@id": "SpecIF:reads"
       },
@@ -950,8 +1070,7 @@ Output JSON-LD
             }
           ]
         }
-      },
-      "dcterms:modified": "2016-05-26T08:59:00+02:00"
+      }
     },
     {
       "@id": "oslc_rm:satisfies-hasTarget",
@@ -964,11 +1083,13 @@ Output JSON-LD
       },
       "rdfs:range": {
         "@id": "IREB:Requirement"
-      },
-      "dcterms:modified": "2016-05-26T08:59:00+02:00"
+      }
     },
     {
       "@id": "oslc_rm:satisfies-Shape",
+      "rdf:type": {
+        "@id": "http://www.w3.org/ns/shacl#NodeShape"
+      },
       "http://www.w3.org/ns/shacl#targetClass": {
         "@id": "oslc_rm:satisfies"
       },
@@ -1008,23 +1129,6 @@ Output JSON-LD
       ]
     },
     {
-      "@id": "d:Folder-Introduction",
-      "rdf:type": {
-        "@id": "SpecIF:Heading"
-      },
-      "rdfs:label": "Introduction",
-      "rdfs:comment": "<p>This is a minimal showcase for a model with model-elements and related requirements. It covers pretty much all characteristics neeeded in such cases (including 'statements on statements'), so that transformations and expressive power of other data formats can be evaluated. The example and its representation in SpecIF format is discussed in <a href=\"https://specif.de/Tutorials/06_Very-Simple-Model-FMC.html\" target=\"_blank\">Tutorial 6: Very Simple Model (FMC)</a> and <a href=\"https://specif.de/Tutorials/09_Very-Simple-Model-FMC-with-Requirements.html\" target=\"_blank\">Tutorial 9: Very Simple Model (FMC) with Requirements</a>.</p>",
-      "dcterms:modified": "2025-02-07T08:32:00+01:00"
-    },
-    {
-      "@id": "d:Folder-Requirements",
-      "rdf:type": {
-        "@id": "SpecIF:Heading"
-      },
-      "rdfs:label": "Requirements",
-      "dcterms:modified": "2020-03-06T08:32:00+01:00"
-    },
-    {
       "@id": "d:Req-1a8016e2872e78ecadc50feddc00029b",
       "rdf:type": {
         "@id": "IREB:Requirement"
@@ -1061,14 +1165,6 @@ Output JSON-LD
       "dcterms:modified": "2020-10-17T10:00:00+01:00"
     },
     {
-      "@id": "d:Folder-SystemModel",
-      "rdf:type": {
-        "@id": "SpecIF:Heading"
-      },
-      "rdfs:label": "System Model",
-      "dcterms:modified": "2020-03-06T08:32:00+01:00"
-    },
-    {
       "@id": "d:Diagram-aec0df7900010000017001eaf53e8876",
       "rdf:type": {
         "@id": "pig:View"
@@ -1095,15 +1191,6 @@ Output JSON-LD
       "rdfs:label": "FiCo-Data",
       "rdfs:comment": "<p>Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc.</p>",
       "dcterms:modified": "2020-03-06T09:03:00+01:00"
-    },
-    {
-      "@id": "d:FolderGlossary-10875487071",
-      "rdf:type": {
-        "@id": "SpecIF:Heading"
-      },
-      "rdfs:label": "Model Elements (Glossary)",
-      "dcterms:type": "Model Elements (Glossary)",
-      "dcterms:modified": "2025-09-23T17:03:48.770Z"
     },
     {
       "@id": "d:Diagram-aec0df7900010000017001eaf53e8876",
@@ -1205,137 +1292,77 @@ Output JSON-LD
         "@id": "pig:HierarchyRoot"
       },
       "rdfs:label": "Hierarchy Root",
-      "rdfs:comment": "... anchoring all hierarchies of this graph (project)",
+      "rdfs:comment": "... anchoring all hierarchies of this graph (package)",
       "pig:lists": [
         {
-          "@id": "d:N-Folder-Introduction"
+          "@id": "d:Folder-Introduction"
         },
-        {
-          "@id": "d:N-Folder-Requirements"
-        },
-        {
-          "@id": "d:N-Folder-SystemModel"
-        },
-        {
-          "@id": "d:N-FolderGlossary-10875487071"
-        }
-      ]
-    },
-    {
-      "@id": "d:N-Folder-Introduction",
-      "dcterms:modified": "2025-02-07T10:00:00+01:00",
-      "pig:lists": {
-        "@id": "d:Folder-Introduction"
-      }
-    },
-    {
-      "@id": "d:N-Folder-Requirements",
-      "dcterms:modified": "2020-10-17T10:00:00+01:00",
-      "pig:lists": [
         {
           "@id": "d:Folder-Requirements"
         },
         {
-          "@id": "d:N-1a8016e2872e78ecadc50feddc00029b"
-        },
-        {
-          "@id": "d:N-0Z7916e2872e78ecadc50feddc00918a"
-        },
-        {
-          "@id": "d:N-2b9016e2872e78ecadc50feddc0013Ac"
-        }
-      ]
-    },
-    {
-      "@id": "d:N-1a8016e2872e78ecadc50feddc00029b",
-      "dcterms:modified": "2020-10-17T10:00:00+01:00",
-      "pig:lists": {
-        "@id": "d:Req-1a8016e2872e78ecadc50feddc00029b"
-      }
-    },
-    {
-      "@id": "d:N-0Z7916e2872e78ecadc50feddc00918a",
-      "dcterms:modified": "2020-10-17T10:00:00+01:00",
-      "pig:lists": {
-        "@id": "d:Req-0Z7916e2872e78ecadc50feddc00918a"
-      }
-    },
-    {
-      "@id": "d:N-2b9016e2872e78ecadc50feddc0013Ac",
-      "dcterms:modified": "2020-10-17T10:00:00+01:00",
-      "pig:lists": {
-        "@id": "d:Req-2b9016e2872e78ecadc50feddc0013Ac"
-      }
-    },
-    {
-      "@id": "d:N-Folder-SystemModel",
-      "dcterms:modified": "2020-10-17T10:00:00+01:00",
-      "pig:lists": [
-        {
           "@id": "d:Folder-SystemModel"
         },
         {
-          "@id": "d:N-Diagram-aec0df7900010000017001eaf53e8876"
-        }
-      ]
-    },
-    {
-      "@id": "d:N-Diagram-aec0df7900010000017001eaf53e8876",
-      "dcterms:modified": "2020-10-17T10:00:00+01:00",
-      "pig:lists": [
-        {
-          "@id": "d:Diagram-aec0df7900010000017001eaf53e8876"
-        },
-        {
-          "@id": "d:N-50fbfe8f0029b1a8016ea86245a9d83a"
-        },
-        {
-          "@id": "d:N-50feddc00029b1a8016e2872e78ecadc"
-        }
-      ]
-    },
-    {
-      "@id": "d:N-50fbfe8f0029b1a8016ea86245a9d83a",
-      "dcterms:modified": "2020-03-06T09:05:00+01:00",
-      "pig:lists": {
-        "@id": "d:MEl-50fbfe8f0029b1a8016ea86245a9d83a"
-      }
-    },
-    {
-      "@id": "d:N-50feddc00029b1a8016e2872e78ecadc",
-      "dcterms:modified": "2020-03-06T09:05:00+01:00",
-      "pig:lists": {
-        "@id": "d:MEl-50feddc00029b1a8016e2872e78ecadc"
-      }
-    },
-    {
-      "@id": "d:N-FolderGlossary-10875487071",
-      "dcterms:modified": "2025-09-23T17:03:48.770Z",
-      "pig:lists": [
-        {
           "@id": "d:FolderGlossary-10875487071"
-        },
-        {
-          "@id": "d:N-9559304043"
-        },
-        {
-          "@id": "d:N-12075661949"
         }
       ]
     },
     {
-      "@id": "d:N-9559304043",
-      "dcterms:modified": "2025-09-23T17:03:48.770Z",
+      "@id": "d:Folder-Introduction",
+      "rdf:type": {
+        "@id": "SpecIF:Heading"
+      },
+      "rdfs:label": "Introduction",
+      "rdfs:comment": "<p>This is a minimal showcase for a model with model-elements and related requirements. It covers pretty much all characteristics neeeded in such cases (including 'statements on statements'), so that transformations and expressive power of other data formats can be evaluated. The example and its representation in SpecIF format is discussed in <a href=\"https://specif.de/Tutorials/06_Very-Simple-Model-FMC.html\" target=\"_blank\">Tutorial 6: Very Simple Model (FMC)</a> and <a href=\"https://specif.de/Tutorials/09_Very-Simple-Model-FMC-with-Requirements.html\" target=\"_blank\">Tutorial 9: Very Simple Model (FMC) with Requirements</a>.</p>",
+      "dcterms:modified": "2025-02-07T08:32:00+01:00"
+    },
+    {
+      "@id": "d:Folder-Requirements",
+      "rdf:type": {
+        "@id": "SpecIF:Heading"
+      },
+      "rdfs:label": "Requirements",
+      "dcterms:modified": "2020-03-06T08:32:00+01:00",
+      "pig:lists": [
+        {
+          "@id": "d:Req-1a8016e2872e78ecadc50feddc00029b"
+        },
+        {
+          "@id": "d:Req-0Z7916e2872e78ecadc50feddc00918a"
+        },
+        {
+          "@id": "d:Req-2b9016e2872e78ecadc50feddc0013Ac"
+        }
+      ]
+    },
+    {
+      "@id": "d:Folder-SystemModel",
+      "rdf:type": {
+        "@id": "SpecIF:Heading"
+      },
+      "rdfs:label": "System Model",
+      "dcterms:modified": "2020-03-06T08:32:00+01:00",
       "pig:lists": {
-        "@id": "d:MEl-50fbfe8f0029b1a8016ea86245a9d83a"
+        "@id": "d:Diagram-aec0df7900010000017001eaf53e8876"
       }
     },
     {
-      "@id": "d:N-12075661949",
-      "dcterms:modified": "2025-09-23T17:03:48.770Z",
-      "pig:lists": {
-        "@id": "d:MEl-50feddc00029b1a8016e2872e78ecadc"
-      }
+      "@id": "d:FolderGlossary-10875487071",
+      "rdf:type": {
+        "@id": "SpecIF:Heading"
+      },
+      "rdfs:label": "Model Elements (Glossary)",
+      "dcterms:type": "Model Elements (Glossary)",
+      "dcterms:modified": "2025-10-17T10:54:49.587Z",
+      "pig:lists": [
+        {
+          "@id": "d:MEl-50fbfe8f0029b1a8016ea86245a9d83a"
+        },
+        {
+          "@id": "d:MEl-50feddc00029b1a8016e2872e78ecadc"
+        }
+      ]
     }
   ]
 }

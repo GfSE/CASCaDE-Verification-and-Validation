@@ -13,7 +13,7 @@
     "iana": "https://www.iana.org/assignments/media-types#",
     "FMC": "http://fmc-modeling.org#",
     "IR": "https://www.adesso.de/de/impulse/interaction-room/index.jsp#",
-    "IREB": "https://www.ireb.org/en/downloads#cpre-glossary",
+    "IREB": "https://www.ireb.org/cpre-glossary#",
     "ReqIF": "https://www.prostep.org/fileadmin/downloads/PSI_ImplementationGuide_ReqIF_V1-7.pdf#",
     "ReqIF-WF": "https://www.prostep.org/fileadmin/downloads/Recommendation_ReqIF_V2_RZ3.pdf#",
     "HIS": "https://www.itwissen.info/Herstellerinitiative-Software-Automotive-HIS.html#",
@@ -26,7 +26,7 @@
     "sysml": "https://www.omg.org/spec/SysML#",
     "pig": "https://product-information-graph.org/metamodel#",
     "DDP": "http://www.prostep.org/dictionary/2.0#",
-    "SpecIF": "https://specif.de/v1.1/schema#",
+    "SpecIF": "https://specif.de/v1.2/schema#",
     "o": "https://product-information-graph.org/examples/ontology#",
     "d": "https://product-information-graph.org/examples/09_Very-Simple-Model-FMC-with-Requirements.specif.zip#"
   },
@@ -48,7 +48,7 @@
       }
     },
     {
-      "@id": "_:g10",
+      "@id": "_:g14",
       "sh:class": {
         "@id": "FMC:Actor"
       },
@@ -65,7 +65,7 @@
       }
     },
     {
-      "@id": "_:g11",
+      "@id": "_:g15",
       "sh:class": {
         "@id": "FMC:State"
       },
@@ -82,7 +82,7 @@
       }
     },
     {
-      "@id": "_:g12",
+      "@id": "_:g16",
       "sh:class": {
         "@id": "FMC:Actor"
       },
@@ -99,7 +99,7 @@
       }
     },
     {
-      "@id": "_:g13",
+      "@id": "_:g17",
       "sh:class": {
         "@id": "FMC:State"
       },
@@ -113,36 +113,6 @@
       },
       "sh:path": {
         "@id": "SpecIF:reads-hasTarget"
-      }
-    },
-    {
-      "@id": "_:g14",
-      "owl:unionOf": {
-        "@list": [
-          {
-            "@id": "FMC:Actor"
-          },
-          {
-            "@id": "FMC:State"
-          }
-        ]
-      }
-    },
-    {
-      "@id": "_:g17",
-      "sh:class": {
-        "@id": "_:g18"
-      },
-      "sh:maxCount": {
-        "@type": "xsd:integer",
-        "@value": "1"
-      },
-      "sh:minCount": {
-        "@type": "xsd:integer",
-        "@value": "1"
-      },
-      "sh:path": {
-        "@id": "oslc_rm:satisfies-hasSource"
       }
     },
     {
@@ -161,7 +131,37 @@
     {
       "@id": "_:g21",
       "sh:class": {
-        "@id": "https://www.ireb.org/en/downloads#cpre-glossaryRequirement"
+        "@id": "_:g22"
+      },
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "oslc_rm:satisfies-hasSource"
+      }
+    },
+    {
+      "@id": "_:g22",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "FMC:Actor"
+          },
+          {
+            "@id": "FMC:State"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "_:g25",
+      "sh:class": {
+        "@id": "IREB:Requirement"
       },
       "sh:maxCount": {
         "@type": "xsd:integer",
@@ -177,6 +177,22 @@
     },
     {
       "@id": "_:g4",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "pig:HierarchyRoot"
+          },
+          {
+            "@id": "pig:Outline"
+          },
+          {
+            "@id": "SpecIF:Heading"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "_:g8",
       "owl:unionOf": {
         "@list": [
           {
@@ -222,10 +238,11 @@
       "rdfs:subClassOf": {
         "@id": "pig:Entity"
       },
-      "pig:Icon": "&#x25A1;"
+      "pig:icon": "&#x25A1;"
     },
     {
       "@id": "FMC:Actor-Shape",
+      "@type": "sh:NodeShape",
       "sh:property": [
         {
           "@id": "rdfs:label-Shape"
@@ -275,10 +292,11 @@
       "rdfs:subClassOf": {
         "@id": "pig:Entity"
       },
-      "pig:Icon": "&#x2662;"
+      "pig:icon": "&#x2662;"
     },
     {
       "@id": "FMC:Event-Shape",
+      "@type": "sh:NodeShape",
       "sh:property": [
         {
           "@id": "rdfs:label-Shape"
@@ -328,10 +346,11 @@
       "rdfs:subClassOf": {
         "@id": "pig:Entity"
       },
-      "pig:Icon": "&#x25CB;"
+      "pig:icon": "&#x25CB;"
     },
     {
       "@id": "FMC:State-Shape",
+      "@type": "sh:NodeShape",
       "sh:property": [
         {
           "@id": "rdfs:label-Shape"
@@ -374,15 +393,16 @@
     },
     {
       "@id": "oslc_rm:satisfies-Shape",
+      "@type": "sh:NodeShape",
       "sh:property": [
         {
           "@id": "rdfs:comment-Shape"
         },
         {
-          "@id": "_:g17"
+          "@id": "_:g21"
         },
         {
-          "@id": "_:g21"
+          "@id": "_:g25"
         }
       ],
       "sh:targetClass": {
@@ -391,13 +411,12 @@
     },
     {
       "@id": "oslc_rm:satisfies-hasSource",
-      "dcterms:modified": "2016-05-26T08:59:00+02:00",
       "rdfs:domain": {
         "@id": "oslc_rm:satisfies"
       },
       "rdfs:label": "Connects the source of oslc_rm:satisfies",
       "rdfs:range": {
-        "@id": "_:g14"
+        "@id": "_:g18"
       },
       "rdfs:subPropertyOf": {
         "@id": "pig:eligibleSource"
@@ -405,13 +424,12 @@
     },
     {
       "@id": "oslc_rm:satisfies-hasTarget",
-      "dcterms:modified": "2016-05-26T08:59:00+02:00",
       "rdfs:domain": {
         "@id": "oslc_rm:satisfies"
       },
       "rdfs:label": "Connects the target of oslc_rm:satisfies",
       "rdfs:range": {
-        "@id": "https://www.ireb.org/en/downloads#cpre-glossaryRequirement"
+        "@id": "IREB:Requirement"
       },
       "rdfs:subPropertyOf": {
         "@id": "pig:eligibleTarget"
@@ -419,7 +437,7 @@
     },
     {
       "@id": "dcterms:type",
-      "@type": "owl:DatatypeProperty",
+      "dcterms:modified": "2023-02-26T20:18:04.451Z",
       "rdfs:comment": {
         "@language": "en",
         "@value": "<p>The nature or genre of the resource. <small>(<i>source: <a href=\"http://purl.org/dc/elements/1.1/type\">DCMI</a></i>)</small></p><p>Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element.</p><p>For example, a [[FMC:Actor]] may represent a <i>System Function</i>, a <i>System Component</i> or a <i>User Role</i>. Similarly, in the context of process modelling, a FMC:Actor may represent a <i>Process Step</i> or again a <i>User Role</i>. So, all of these are meaningful values for a FMC:Actor's property named dcterms:type.</p>"
@@ -437,7 +455,10 @@
           "@language": "fr",
           "@value": "Type d'élément"
         }
-      ]
+      ],
+      "rdfs:subClassOf": {
+        "@id": "pig:Property"
+      }
     },
     {
       "@id": "dcterms:type-Shape",
@@ -452,12 +473,35 @@
       }
     },
     {
+      "@id": "rdfs:comment-Shape",
+      "@type": "sh:PropertyShape",
+      "sh:datatype": {
+        "@id": "xsd:string"
+      },
+      "sh:maxCount": "1",
+      "sh:path": {
+        "@id": "rdfs:comment"
+      }
+    },
+    {
+      "@id": "rdfs:label-Shape",
+      "@type": "sh:PropertyShape",
+      "sh:datatype": {
+        "@id": "xsd:string"
+      },
+      "sh:maxCount": "1",
+      "sh:maxLength": "256",
+      "sh:path": {
+        "@id": "rdfs:label"
+      }
+    },
+    {
       "@id": "https://product-information-graph.org/examples/09_Very-Simple-Model-FMC-with-Requirements.specif.zip#",
       "@type": "owl:Ontology",
-      "dcterms:createdAt": "2025-09-23T17:04:20.888Z",
       "dcterms:license": {
         "@id": "https://creativecommons.org/licenses/by-sa/4.0/"
       },
+      "dcterms:modified": "2025-10-17T10:55:11.686Z",
       "rdfs:label": "Project 'Very Simple Model (FMC) with Requirements'",
       "owl:imports": [
         {
@@ -501,38 +545,60 @@
       "@id": "d:Folder-Requirements",
       "@type": "SpecIF:Heading",
       "dcterms:modified": "2020-03-06T08:32:00+01:00",
-      "rdfs:label": "Requirements"
+      "rdfs:label": "Requirements",
+      "pig:lists": [
+        {
+          "@id": "d:Req-1a8016e2872e78ecadc50feddc00029b"
+        },
+        {
+          "@id": "d:Req-0Z7916e2872e78ecadc50feddc00918a"
+        },
+        {
+          "@id": "d:Req-2b9016e2872e78ecadc50feddc0013Ac"
+        }
+      ]
     },
     {
       "@id": "d:Folder-SystemModel",
       "@type": "SpecIF:Heading",
       "dcterms:modified": "2020-03-06T08:32:00+01:00",
-      "rdfs:label": "System Model"
+      "rdfs:label": "System Model",
+      "pig:lists": {
+        "@id": "d:Diagram-aec0df7900010000017001eaf53e8876"
+      }
     },
     {
       "@id": "d:FolderGlossary-10875487071",
       "@type": "SpecIF:Heading",
-      "dcterms:modified": "2025-09-23T17:03:48.770Z",
+      "dcterms:modified": "2025-10-17T10:54:49.587Z",
       "dcterms:type": "Model Elements (Glossary)",
-      "rdfs:label": "Model Elements (Glossary)"
+      "rdfs:label": "Model Elements (Glossary)",
+      "pig:lists": [
+        {
+          "@id": "d:MEl-50fbfe8f0029b1a8016ea86245a9d83a"
+        },
+        {
+          "@id": "d:MEl-50feddc00029b1a8016e2872e78ecadc"
+        }
+      ]
     },
     {
       "@id": "d:HierarchyRoot",
       "@type": "pig:HierarchyRoot",
-      "rdfs:comment": "... anchoring all hierarchies of this graph (project)",
+      "rdfs:comment": "... anchoring all hierarchies of this graph (package)",
       "rdfs:label": "Hierarchy Root",
       "pig:lists": [
         {
-          "@id": "d:N-Folder-Introduction"
+          "@id": "d:Folder-Introduction"
         },
         {
-          "@id": "d:N-Folder-Requirements"
+          "@id": "d:Folder-Requirements"
         },
         {
-          "@id": "d:N-Folder-SystemModel"
+          "@id": "d:Folder-SystemModel"
         },
         {
-          "@id": "d:N-FolderGlossary-10875487071"
+          "@id": "d:FolderGlossary-10875487071"
         }
       ]
     },
@@ -551,124 +617,8 @@
       "rdfs:label": "FiCo-Data"
     },
     {
-      "@id": "d:N-0Z7916e2872e78ecadc50feddc00918a",
-      "dcterms:modified": "2020-10-17T10:00:00+01:00",
-      "pig:lists": {
-        "@id": "d:Req-0Z7916e2872e78ecadc50feddc00918a"
-      }
-    },
-    {
-      "@id": "d:N-12075661949",
-      "dcterms:modified": "2025-09-23T17:03:48.770Z",
-      "pig:lists": {
-        "@id": "d:MEl-50feddc00029b1a8016e2872e78ecadc"
-      }
-    },
-    {
-      "@id": "d:N-1a8016e2872e78ecadc50feddc00029b",
-      "dcterms:modified": "2020-10-17T10:00:00+01:00",
-      "pig:lists": {
-        "@id": "d:Req-1a8016e2872e78ecadc50feddc00029b"
-      }
-    },
-    {
-      "@id": "d:N-2b9016e2872e78ecadc50feddc0013Ac",
-      "dcterms:modified": "2020-10-17T10:00:00+01:00",
-      "pig:lists": {
-        "@id": "d:Req-2b9016e2872e78ecadc50feddc0013Ac"
-      }
-    },
-    {
-      "@id": "d:N-50fbfe8f0029b1a8016ea86245a9d83a",
-      "dcterms:modified": "2020-03-06T09:05:00+01:00",
-      "pig:lists": {
-        "@id": "d:MEl-50fbfe8f0029b1a8016ea86245a9d83a"
-      }
-    },
-    {
-      "@id": "d:N-50feddc00029b1a8016e2872e78ecadc",
-      "dcterms:modified": "2020-03-06T09:05:00+01:00",
-      "pig:lists": {
-        "@id": "d:MEl-50feddc00029b1a8016e2872e78ecadc"
-      }
-    },
-    {
-      "@id": "d:N-9559304043",
-      "dcterms:modified": "2025-09-23T17:03:48.770Z",
-      "pig:lists": {
-        "@id": "d:MEl-50fbfe8f0029b1a8016ea86245a9d83a"
-      }
-    },
-    {
-      "@id": "d:N-Diagram-aec0df7900010000017001eaf53e8876",
-      "dcterms:modified": "2020-10-17T10:00:00+01:00",
-      "pig:lists": [
-        {
-          "@id": "d:Diagram-aec0df7900010000017001eaf53e8876"
-        },
-        {
-          "@id": "d:N-50fbfe8f0029b1a8016ea86245a9d83a"
-        },
-        {
-          "@id": "d:N-50feddc00029b1a8016e2872e78ecadc"
-        }
-      ]
-    },
-    {
-      "@id": "d:N-Folder-Introduction",
-      "dcterms:modified": "2025-02-07T10:00:00+01:00",
-      "pig:lists": {
-        "@id": "d:Folder-Introduction"
-      }
-    },
-    {
-      "@id": "d:N-Folder-Requirements",
-      "dcterms:modified": "2020-10-17T10:00:00+01:00",
-      "pig:lists": [
-        {
-          "@id": "d:Folder-Requirements"
-        },
-        {
-          "@id": "d:N-1a8016e2872e78ecadc50feddc00029b"
-        },
-        {
-          "@id": "d:N-0Z7916e2872e78ecadc50feddc00918a"
-        },
-        {
-          "@id": "d:N-2b9016e2872e78ecadc50feddc0013Ac"
-        }
-      ]
-    },
-    {
-      "@id": "d:N-Folder-SystemModel",
-      "dcterms:modified": "2020-10-17T10:00:00+01:00",
-      "pig:lists": [
-        {
-          "@id": "d:Folder-SystemModel"
-        },
-        {
-          "@id": "d:N-Diagram-aec0df7900010000017001eaf53e8876"
-        }
-      ]
-    },
-    {
-      "@id": "d:N-FolderGlossary-10875487071",
-      "dcterms:modified": "2025-09-23T17:03:48.770Z",
-      "pig:lists": [
-        {
-          "@id": "d:FolderGlossary-10875487071"
-        },
-        {
-          "@id": "d:N-9559304043"
-        },
-        {
-          "@id": "d:N-12075661949"
-        }
-      ]
-    },
-    {
       "@id": "d:Req-0Z7916e2872e78ecadc50feddc00918a",
-      "@type": "https://www.ireb.org/en/downloads#cpre-glossaryRequirement",
+      "@type": "IREB:Requirement",
       "dcterms:modified": "2020-10-17T10:00:00+01:00",
       "rdfs:comment": "<p>The data store MUST be consistent at all times.</p>",
       "rdfs:label": "Consistency",
@@ -678,7 +628,7 @@
     },
     {
       "@id": "d:Req-1a8016e2872e78ecadc50feddc00029b",
-      "@type": "https://www.ireb.org/en/downloads#cpre-glossaryRequirement",
+      "@type": "IREB:Requirement",
       "dcterms:modified": "2020-10-17T10:00:00+01:00",
       "rdfs:comment": "<p>The data store MUST support a total volume up to 850 GB.</p>",
       "rdfs:label": "Data Volume",
@@ -688,7 +638,7 @@
     },
     {
       "@id": "d:Req-2b9016e2872e78ecadc50feddc0013Ac",
-      "@type": "https://www.ireb.org/en/downloads#cpre-glossaryRequirement",
+      "@type": "IREB:Requirement",
       "dcterms:modified": "2020-10-17T10:00:00+01:00",
       "rdfs:comment": "<p>The system SHOULD respond on user queries within 300 ms.</p>",
       "rdfs:label": "Response Time",
@@ -769,6 +719,18 @@
       "rdfs:label": "Organizer"
     },
     {
+      "@id": "pig:Property",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "A PIG meta-model element used for literal properties.",
+      "rdfs:label": "Literal Property"
+    },
+    {
+      "@id": "pig:PropertyEnum",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "A PIG meta-model element used for enumerated literal properties.",
+      "rdfs:label": "Enumerated literal Property"
+    },
+    {
       "@id": "pig:Relationship",
       "@type": "owl:Class",
       "rdfs:comment": "A PIG meta-model element used for reified relationships (aka predicates).",
@@ -780,12 +742,13 @@
       "rdfs:comment": "A PIG organizer class representing a diagram with certain model-elements for a given communication purpose.",
       "rdfs:label": "View",
       "rdfs:subClassOf": {
-        "@id": "pig:Entity"
+        "@id": "pig:Organizer"
       },
-      "pig:Icon": "▣"
+      "pig:icon": "▣"
     },
     {
       "@id": "pig:View-Shape",
+      "@type": "sh:NodeShape",
       "sh:property": [
         {
           "@id": "rdfs:label-Shape"
@@ -858,7 +821,7 @@
       "@id": "pig:lists",
       "rdfs:comment": "Lists (references) an entity, a relationship or a subordinated organizer.",
       "rdfs:domain": {
-        "@id": "pig:Outline"
+        "@id": "_:g4"
       },
       "rdfs:label": "lists",
       "rdfs:subPropertyOf": {
@@ -873,7 +836,7 @@
       },
       "rdfs:label": "shows",
       "rdfs:range": {
-        "@id": "_:g4"
+        "@id": "_:g8"
       },
       "rdfs:subPropertyOf": {
         "@id": "pig:eligibleElement"
@@ -881,7 +844,7 @@
     },
     {
       "@id": "SpecIF:Diagram",
-      "@type": "owl:DatatypeProperty",
+      "dcterms:modified": "2023-02-26T14:40:17.601Z",
       "rdfs:comment": {
         "@language": "en",
         "@value": "A diagram illustrating the resource or a link to a diagram."
@@ -899,7 +862,10 @@
           "@language": "fr",
           "@value": "Diagramme"
         }
-      ]
+      ],
+      "rdfs:subClassOf": {
+        "@id": "pig:Property"
+      }
     },
     {
       "@id": "SpecIF:Diagram-Shape",
@@ -944,6 +910,7 @@
     },
     {
       "@id": "SpecIF:Heading-Shape",
+      "@type": "sh:NodeShape",
       "sh:property": [
         {
           "@id": "rdfs:label-Shape"
@@ -960,6 +927,43 @@
       ],
       "sh:targetClass": {
         "@id": "SpecIF:Heading"
+      }
+    },
+    {
+      "@id": "SpecIF:Icon",
+      "dcterms:modified": "2025-09-05T12:43:26.716Z",
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "A symbol or icon for display as a prefix to titles; applicable to all instances of the class. Is usually a XML-encoded UTF-8 symbol, can be an URL or dataURL."
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Icon"
+        },
+        {
+          "@language": "de",
+          "@value": "Symbol"
+        },
+        {
+          "@language": "fr",
+          "@value": "Symbole"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "pig:Property"
+      }
+    },
+    {
+      "@id": "SpecIF:Icon-Shape",
+      "@type": "sh:PropertyShape",
+      "sh:datatype": {
+        "@id": "xsd:string"
+      },
+      "sh:maxCount": "1",
+      "sh:maxLength": "256",
+      "sh:path": {
+        "@id": "SpecIF:Icon"
       }
     },
     {
@@ -995,6 +999,7 @@
     },
     {
       "@id": "SpecIF:Paragraph-Shape",
+      "@type": "sh:NodeShape",
       "sh:property": [
         {
           "@id": "rdfs:label-Shape"
@@ -1015,7 +1020,7 @@
     },
     {
       "@id": "SpecIF:Priority",
-      "@type": "owl:ObjectProperty",
+      "dcterms:modified": "2020-03-26T22:59:00+02:00",
       "rdfs:comment": {
         "@language": "en",
         "@value": "Enumerated values for the 'Priority' of the resource."
@@ -1036,6 +1041,9 @@
       ],
       "rdfs:range": {
         "@id": "SpecIF:Priority-Value"
+      },
+      "rdfs:subClassOf": {
+        "@id": "pig:PropertyEnum"
       }
     },
     {
@@ -1053,7 +1061,10 @@
       "@id": "SpecIF:Priority-Value",
       "@type": "owl:Class",
       "dcterms:modified": "2016-05-26T08:59:00+02:00",
-      "rdfs:comment": "Enumerated Values for Priorität",
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "Enumerated values for the 'Priority' of the resource."
+      },
       "rdfs:label": [
         {
           "@language": "en",
@@ -1085,7 +1096,6 @@
     {
       "@id": "SpecIF:priorityHigh",
       "@type": "SpecIF:Priority-Value",
-      "rdfs:comment": "A value for property [[SpecIF:Priority]].",
       "rdfs:label": [
         {
           "@language": "en",
@@ -1104,7 +1114,6 @@
     {
       "@id": "SpecIF:priorityLow",
       "@type": "SpecIF:Priority-Value",
-      "rdfs:comment": "A value for property [[SpecIF:Priority]].",
       "rdfs:label": [
         {
           "@language": "en",
@@ -1123,7 +1132,6 @@
     {
       "@id": "SpecIF:priorityMedium",
       "@type": "SpecIF:Priority-Value",
-      "rdfs:comment": "A value for property [[SpecIF:Priority]].",
       "rdfs:label": [
         {
           "@language": "en",
@@ -1166,15 +1174,16 @@
     },
     {
       "@id": "SpecIF:reads-Shape",
+      "@type": "sh:NodeShape",
       "sh:property": [
         {
           "@id": "rdfs:comment-Shape"
         },
         {
-          "@id": "_:g12"
+          "@id": "_:g16"
         },
         {
-          "@id": "_:g13"
+          "@id": "_:g17"
         }
       ],
       "sh:targetClass": {
@@ -1183,7 +1192,6 @@
     },
     {
       "@id": "SpecIF:reads-hasSource",
-      "dcterms:modified": "2018-05-10T11:54:00+01:00",
       "rdfs:domain": {
         "@id": "SpecIF:reads"
       },
@@ -1197,7 +1205,6 @@
     },
     {
       "@id": "SpecIF:reads-hasTarget",
-      "dcterms:modified": "2018-05-10T11:54:00+01:00",
       "rdfs:domain": {
         "@id": "SpecIF:reads"
       },
@@ -1236,15 +1243,16 @@
     },
     {
       "@id": "SpecIF:writes-Shape",
+      "@type": "sh:NodeShape",
       "sh:property": [
         {
           "@id": "rdfs:comment-Shape"
         },
         {
-          "@id": "_:g10"
+          "@id": "_:g14"
         },
         {
-          "@id": "_:g11"
+          "@id": "_:g15"
         }
       ],
       "sh:targetClass": {
@@ -1253,7 +1261,6 @@
     },
     {
       "@id": "SpecIF:writes-hasSource",
-      "dcterms:modified": "2018-05-10T11:54:00+01:00",
       "rdfs:domain": {
         "@id": "SpecIF:writes"
       },
@@ -1267,7 +1274,6 @@
     },
     {
       "@id": "SpecIF:writes-hasTarget",
-      "dcterms:modified": "2018-05-10T11:54:00+01:00",
       "rdfs:domain": {
         "@id": "SpecIF:writes"
       },
@@ -1280,7 +1286,7 @@
       }
     },
     {
-      "@id": "https://www.ireb.org/en/downloads#cpre-glossaryRequirement",
+      "@id": "IREB:Requirement",
       "dcterms:modified": "2021-02-22T08:59:00+02:00",
       "rdfs:comment": [
         {
@@ -1313,10 +1319,11 @@
       "rdfs:subClassOf": {
         "@id": "pig:Entity"
       },
-      "pig:Icon": "&#8623;"
+      "pig:icon": "&#8623;"
     },
     {
-      "@id": "https://www.ireb.org/en/downloads#cpre-glossaryRequirement-Shape",
+      "@id": "IREB:Requirement-Shape",
+      "@type": "sh:NodeShape",
       "sh:property": [
         {
           "@id": "rdfs:label-Shape"
@@ -1329,7 +1336,7 @@
         }
       ],
       "sh:targetClass": {
-        "@id": "https://www.ireb.org/en/downloads#cpre-glossaryRequirement"
+        "@id": "IREB:Requirement"
       }
     }
   ]

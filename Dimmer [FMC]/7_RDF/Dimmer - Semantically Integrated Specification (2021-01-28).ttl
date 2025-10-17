@@ -13,7 +13,7 @@
 @prefix foaf: <http://xmlns.com/foaf/spec/#> .
 @prefix FMC: <http://fmc-modeling.org#> .
 @prefix IR: <https://www.adesso.de/de/impulse/interaction-room/index.jsp#> .
-@prefix IREB: <https://www.ireb.org/en/downloads#cpre-glossary> .
+@prefix IREB: <https://www.ireb.org/cpre-glossary#> .
 @prefix ReqIF: <https://www.prostep.org/fileadmin/downloads/PSI_ImplementationGuide_ReqIF_V1-7.pdf#> .
 @prefix ReqIF-WF: <https://www.prostep.org/fileadmin/downloads/Recommendation_ReqIF_V2_RZ3.pdf#> .
 @prefix HIS: <https://www.itwissen.info/Herstellerinitiative-Software-Automotive-HIS.html#> .
@@ -26,7 +26,7 @@
 @prefix sysml: <https://www.omg.org/spec/SysML#> .
 @prefix pig: <https://product-information-graph.org/metamodel#> .
 @prefix DDP: <http://www.prostep.org/dictionary/2.0#> .
-@prefix SpecIF: <https://specif.de/v1.1/schema#> .
+@prefix SpecIF: <https://specif.de/v1.2/schema#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 
 @prefix o: <https://product-information-graph.org/examples/ontology#> .
@@ -44,11 +44,21 @@ d:
 		<http://www.w3.org/2000/01/rdf-schema#> ;
 	dcterms:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
 	dcterms:creator <mailto:od@enso-managers.de> ;
-	dcterms:createdAt "2025-09-23T16:55:44.986Z" .
+	dcterms:modified "2025-10-17T14:42:00.110Z" .
 
 #################################################################
-### META-ONTOLOGY = PIG Metamodel (pig:)
+# PIG Metamodel (pig:)
 #################################################################
+
+pig:Property
+	rdf:type owl:DatatypeProperty ;
+	rdfs:label "Literal Property" ;
+	rdfs:comment "A PIG meta-model element used for literal properties." .
+
+pig:PropertyEnum
+	rdf:type owl:ObjectProperty ;
+	rdfs:label "Enumerated literal Property" ;
+	rdfs:comment "A PIG meta-model element used for enumerated literal properties." .
 
 pig:Organizer
 	rdf:type owl:Class ;
@@ -88,7 +98,7 @@ pig:eligibleElement
 
 pig:lists
 	rdfs:subPropertyOf pig:eligibleElement ;
-	rdfs:domain pig:Outline ;
+	rdfs:domain [ owl:unionOf( pig:HierarchyRoot pig:Outline SpecIF:Heading )] ;
 	rdfs:label "lists" ;
 	rdfs:comment "Lists (references) an entity, a relationship or a subordinated organizer." .
 
@@ -115,7 +125,9 @@ SpecIF:LifecycleStatus-Value
 	rdfs:label "Lifecycle"@en ;
 	rdfs:label "Lebenszyklus"@de ;
 	rdfs:label "Cycle de vie"@fr ;
-	rdfs:comment "Enumerated Values for Lebenszyklus" ;
+	rdfs:comment "The 'Lifecycle Status' of the resource."@en ;
+	rdfs:comment "Der 'Lebenszyklusstatus' der Ressource."@de ;
+	rdfs:comment "L'état du cycle de vie de la ressource."@fr ;
 	dcterms:modified "2016-05-26T08:59:00+02:00" ;
 	owl:oneOf ( SpecIF:LifecycleStatusDeprecated SpecIF:LifecycleStatusRejected SpecIF:LifecycleStatusInitial SpecIF:LifecycleStatusDrafted SpecIF:LifecycleStatusSubmitted SpecIF:LifecycleStatusApproved SpecIF:LifecycleStatusDone SpecIF:LifecycleStatusReleased ) .
 SpecIF:LifecycleStatusDeprecated
@@ -149,8 +161,7 @@ SpecIF:LifecycleStatusApproved
 SpecIF:LifecycleStatusDone
 	rdf:type SpecIF:LifecycleStatus-Value ;
 	rdfs:label "done"@en ;
-	rdfs:label "erledigt ('done')"@de ;
-	rdfs:comment "Meets the requirements of the 'Definition of Done' of the agile development method." .
+	rdfs:label "erledigt ('done')"@de .
 SpecIF:LifecycleStatusReleased
 	rdf:type SpecIF:LifecycleStatus-Value ;
 	rdfs:label "released"@en ;
@@ -162,53 +173,47 @@ SpecIF:Priority-Value
 	rdfs:label "Priority"@en ;
 	rdfs:label "Priorität"@de ;
 	rdfs:label "Priorité"@fr ;
-	rdfs:comment "Enumerated Values for Priorität" ;
+	rdfs:comment "Enumerated values for the 'Priority' of the resource."@en ;
 	dcterms:modified "2016-05-26T08:59:00+02:00" ;
 	owl:oneOf ( SpecIF:priorityHigh SpecIF:priorityMedium SpecIF:priorityLow ) .
 SpecIF:priorityHigh
 	rdf:type SpecIF:Priority-Value ;
 	rdfs:label "high"@en ;
 	rdfs:label "hoch"@de ;
-	rdfs:label "haut"@fr ;
-	rdfs:comment "A value for property [[SpecIF:Priority]]." .
+	rdfs:label "haut"@fr .
 SpecIF:priorityMedium
 	rdf:type SpecIF:Priority-Value ;
 	rdfs:label "medium"@en ;
 	rdfs:label "mittel"@de ;
-	rdfs:label "moyen"@fr ;
-	rdfs:comment "A value for property [[SpecIF:Priority]]." .
+	rdfs:label "moyen"@fr .
 SpecIF:priorityLow
 	rdf:type SpecIF:Priority-Value ;
 	rdfs:label "low"@en ;
 	rdfs:label "niedrig"@de ;
-	rdfs:label "bas"@fr ;
-	rdfs:comment "A value for property [[SpecIF:Priority]]." .
+	rdfs:label "bas"@fr .
 
 SpecIF:StakeholderGroup-Value
 	rdf:type owl:Class ;
 	rdfs:label "Stakeholder Group"@en ;
-	rdfs:comment "Enumerated Values for Stakeholder Group" ;
+	rdfs:comment "Enumerated values for the 'Stakehoder Group' addressed by the term."@en ;
 	dcterms:modified "2016-05-26T08:59:00+02:00" ;
 	owl:oneOf ( SpecIF:StakeholderGroupBusiness SpecIF:StakeholderGroupUser SpecIF:StakeholderGroupSystem ) .
 SpecIF:StakeholderGroupBusiness
 	rdf:type SpecIF:StakeholderGroup-Value ;
-	rdfs:label "Business"@en ;
-	rdfs:comment "The stakeholder group 'Business' addressed by a requirement." .
+	rdfs:label "Business"@en .
 SpecIF:StakeholderGroupUser
 	rdf:type SpecIF:StakeholderGroup-Value ;
-	rdfs:label "User"@en ;
-	rdfs:comment "The stakeholder group 'User' addressed by a requirement." .
+	rdfs:label "User"@en .
 SpecIF:StakeholderGroupSystem
 	rdf:type SpecIF:StakeholderGroup-Value ;
-	rdfs:label "System"@en ;
-	rdfs:comment "The stakeholder group 'System' addressed by a requirement." .
+	rdfs:label "System"@en .
 
 SpecIF:EngineeringDiscipline-Value
 	rdf:type owl:Class ;
 	rdfs:label "Engineering Discipline"@en ;
 	rdfs:label "Ingenieurdisziplin"@de ;
 	rdfs:label "Discipline d'ingénierie"@fr ;
-	rdfs:comment "Enumerated Values for Ingenieurdisziplin" ;
+	rdfs:comment "The engineering discipline involved by a development artefact."@en ;
 	dcterms:modified "2016-05-26T08:59:00+02:00" ;
 	owl:oneOf ( SpecIF:EngineeringDisciplineMechanics SpecIF:EngineeringDisciplineElectronics SpecIF:EngineeringDisciplineSoftware SpecIF:EngineeringDisciplineSafety ) .
 SpecIF:EngineeringDisciplineMechanics
@@ -236,7 +241,6 @@ ReqIF-WF:SupplierStatus-Value
 	rdfs:label "Supplier Status"@en ;
 	rdfs:label "Zustand Lieferant"@de ;
 	rdfs:label "Statut coté Fournisseur"@fr ;
-	rdfs:comment "Enumerated Values for Zustand Lieferant" ;
 	dcterms:modified "2016-05-26T08:59:00+02:00" ;
 	owl:oneOf ( SpecIF:NotApplicable ReqIF-WF:CustomerStatus.ToBeClarified ReqIF-WF:SupplierStatus.Agreed ReqIF-WF:SupplierStatus.AgreedWithComment ReqIF-WF:SupplierStatus.NotAgreed ) .
 SpecIF:NotApplicable
@@ -270,7 +274,6 @@ ReqIF-WF:CustomerStatus-Value
 	rdfs:label "Customer Status"@en ;
 	rdfs:label "Zustand Kunde"@de ;
 	rdfs:label "Statut coté Client"@fr ;
-	rdfs:comment "Enumerated Values for Zustand Kunde" ;
 	dcterms:modified "2016-05-26T08:59:00+02:00" ;
 	owl:oneOf ( ReqIF-WF:CustomerStatus.NotToEvaluate ReqIF-WF:CustomerStatus.ToEvaluate ReqIF-WF:CustomerStatus.Accepted ReqIF-WF:CustomerStatus.NotAccepted ) .
 ReqIF-WF:CustomerStatus.NotToEvaluate
@@ -297,7 +300,7 @@ ReqIF-WF:CustomerStatus.NotAccepted
 o:DT_IssueStatus
 	rdf:type owl:Class ;
 	rdfs:label "SpecIF:LifecycleStatus" ;
-	rdfs:comment "Enumerated Values for SpecIF:LifecycleStatus" ;
+	rdfs:comment "Enumerated values for issue status" ;
 	dcterms:modified "2016-05-26T08:59:00+02:00" ;
 	owl:oneOf ( o:V_Iss_Status_0 o:V_Iss_Status_1 o:V_Iss_Status_2 oslc_cm:Inprogress oslc_cm:Closed o:V_Iss_Status_5 o:V_Iss_Status_6 ) .
 o:V_Iss_Status_0
@@ -311,12 +314,10 @@ o:V_Iss_Status_2
 	rdfs:label "assigned" .
 oslc_cm:Inprogress
 	rdf:type o:DT_IssueStatus ;
-	rdfs:label "in progress"@en ;
-	rdfs:comment "Active work is occurring."@en .
+	rdfs:label "in progress"@en .
 oslc_cm:Closed
 	rdf:type o:DT_IssueStatus ;
-	rdfs:label "closed"@en ;
-	rdfs:comment "Completely done, no further fixes or fix verification is needed."@en .
+	rdfs:label "closed"@en .
 o:V_Iss_Status_5
 	rdf:type o:DT_IssueStatus ;
 	rdfs:label "reopened" .
@@ -328,12 +329,30 @@ o:V_Iss_Status_6
 # Ontology - Property Classes
 #################################################################
 
+# Skipping implicit property: rdfs:label
+
+rdfs:label-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path rdfs:label ;
+	sh:maxCount "1" ;
+	sh:datatype xsd:string ;
+	sh:maxLength "256" .
+
+# Skipping implicit property: rdfs:comment
+
+rdfs:comment-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path rdfs:comment ;
+	sh:maxCount "1" ;
+	sh:datatype xsd:string .
+
 SpecIF:Diagram
-	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:Property ;
 	rdfs:label "Diagram"@en ;
 	rdfs:label "Diagramm"@de ;
 	rdfs:label "Diagramme"@fr ;
-	rdfs:comment "A diagram illustrating the resource or a link to a diagram."@en .
+	rdfs:comment "A diagram illustrating the resource or a link to a diagram."@en ;
+	dcterms:modified "2023-02-26T14:40:17.601Z" .
 
 SpecIF:Diagram-Shape
 	rdf:type sh:PropertyShape ;
@@ -341,9 +360,10 @@ SpecIF:Diagram-Shape
 	sh:datatype xsd:string .
 
 SpecIF:Notation
-	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:Property ;
 	rdfs:label "Notation"@en ;
-	rdfs:comment "The notation used by a model diagram, e.g. 'BPMN 2.0', 'SysML Activity Diagram' or 'FMC Block Diagram'."@en .
+	rdfs:comment "The notation used by a model diagram, e.g. 'BPMN 2.0', 'SysML Activity Diagram' or 'FMC Block Diagram'."@en ;
+	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
 SpecIF:Notation-Shape
 	rdf:type sh:PropertyShape ;
@@ -353,12 +373,13 @@ SpecIF:Notation-Shape
 	sh:maxLength "256" .
 
 SpecIF:Priority
-	rdf:type owl:ObjectProperty ;
+	rdfs:subClassOf pig:PropertyEnum ;
 	rdfs:label "Priority"@en ;
 	rdfs:label "Priorität"@de ;
 	rdfs:label "Priorité"@fr ;
 	rdfs:comment "Enumerated values for the 'Priority' of the resource."@en ;
-	rdfs:range SpecIF:Priority-Value .
+	rdfs:range SpecIF:Priority-Value ;
+	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
 SpecIF:Priority-Shape
 	rdf:type sh:PropertyShape ;
@@ -367,14 +388,15 @@ SpecIF:Priority-Shape
 	sh:class SpecIF:Priority-Value .
 
 SpecIF:LifecycleStatus
-	rdf:type owl:ObjectProperty ;
+	rdfs:subClassOf pig:PropertyEnum ;
 	rdfs:label "Lifecycle"@en ;
 	rdfs:label "Lebenszyklus"@de ;
 	rdfs:label "Cycle de vie"@fr ;
 	rdfs:comment "The 'Lifecycle Status' of the resource."@en ;
 	rdfs:comment "Der 'Lebenszyklusstatus' der Ressource."@de ;
 	rdfs:comment "L'état du cycle de vie de la ressource."@fr ;
-	rdfs:range SpecIF:LifecycleStatus-Value .
+	rdfs:range SpecIF:LifecycleStatus-Value ;
+	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
 SpecIF:LifecycleStatus-Shape
 	rdf:type sh:PropertyShape ;
@@ -383,11 +405,12 @@ SpecIF:LifecycleStatus-Shape
 	sh:class SpecIF:LifecycleStatus-Value .
 
 ReqIF-WF:SupplierStatus
-	rdf:type owl:ObjectProperty ;
+	rdfs:subClassOf pig:PropertyEnum ;
 	rdfs:label "Supplier Status"@en ;
 	rdfs:label "Zustand Lieferant"@de ;
 	rdfs:label "Statut coté Fournisseur"@fr ;
-	rdfs:range ReqIF-WF:SupplierStatus-Value .
+	rdfs:range ReqIF-WF:SupplierStatus-Value ;
+	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
 ReqIF-WF:SupplierStatus-Shape
 	rdf:type sh:PropertyShape ;
@@ -396,10 +419,11 @@ ReqIF-WF:SupplierStatus-Shape
 	sh:class ReqIF-WF:SupplierStatus-Value .
 
 ReqIF-WF:SupplierComment
-	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:Property ;
 	rdfs:label "Supplier Comment"@en ;
 	rdfs:label "Kommentar Lieferant"@de ;
-	rdfs:label "Commentaire du Client"@fr .
+	rdfs:label "Commentaire du Client"@fr ;
+	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
 ReqIF-WF:SupplierComment-Shape
 	rdf:type sh:PropertyShape ;
@@ -408,11 +432,12 @@ ReqIF-WF:SupplierComment-Shape
 	sh:datatype xsd:string .
 
 ReqIF-WF:CustomerStatus
-	rdf:type owl:ObjectProperty ;
+	rdfs:subClassOf pig:PropertyEnum ;
 	rdfs:label "Customer Status"@en ;
 	rdfs:label "Zustand Kunde"@de ;
 	rdfs:label "Statut coté Client"@fr ;
-	rdfs:range ReqIF-WF:CustomerStatus-Value .
+	rdfs:range ReqIF-WF:CustomerStatus-Value ;
+	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
 ReqIF-WF:CustomerStatus-Shape
 	rdf:type sh:PropertyShape ;
@@ -421,10 +446,11 @@ ReqIF-WF:CustomerStatus-Shape
 	sh:class ReqIF-WF:CustomerStatus-Value .
 
 ReqIF-WF:CustomerComment
-	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:Property ;
 	rdfs:label "Customer Comment"@en ;
 	rdfs:label "Kommentar Kunde"@de ;
-	rdfs:label "Commentaire du Client"@fr .
+	rdfs:label "Commentaire du Client"@fr ;
+	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
 ReqIF-WF:CustomerComment-Shape
 	rdf:type sh:PropertyShape ;
@@ -433,11 +459,12 @@ ReqIF-WF:CustomerComment-Shape
 	sh:datatype xsd:string .
 
 dcterms:identifier
-	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:Property ;
 	rdfs:label "Identifier"@en ;
 	rdfs:label "Bezeichner"@de ;
 	rdfs:label "Identifiant"@fr ;
-	rdfs:comment "<p>A unique reference to the resource within a given context. <small>(<i>source: <a href=\"http://purl.org/dc/elements/1.1/identifier\">DCMI</a></i>)</small></p><p>An identifier for a resource. This identifier may be unique with a scope that is defined by the RM provider. Assigned by the service provider when a resource is created. Not intended for end-user display. <small>(<i>source: <a href=\"http://open-services.net/\">OSLC</a></i>)</small></p>"@en .
+	rdfs:comment "<p>A unique reference to the resource within a given context. <small>(<i>source: <a href=\"http://purl.org/dc/elements/1.1/identifier\">DCMI</a></i>)</small></p><p>An identifier for a resource. This identifier may be unique with a scope that is defined by the RM provider. Assigned by the service provider when a resource is created. Not intended for end-user display. <small>(<i>source: <a href=\"http://open-services.net/\">OSLC</a></i>)</small></p>"@en ;
+	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
 dcterms:identifier-Shape
 	rdf:type sh:PropertyShape ;
@@ -447,10 +474,11 @@ dcterms:identifier-Shape
 	sh:maxLength "256" .
 
 SpecIF:StakeholderGroup
-	rdf:type owl:ObjectProperty ;
+	rdfs:subClassOf pig:PropertyEnum ;
 	rdfs:label "Stakeholder Group"@en ;
 	rdfs:comment "Enumerated values for the 'Stakehoder Group' addressed by the term."@en ;
-	rdfs:range SpecIF:StakeholderGroup-Value .
+	rdfs:range SpecIF:StakeholderGroup-Value ;
+	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
 SpecIF:StakeholderGroup-Shape
 	rdf:type sh:PropertyShape ;
@@ -459,12 +487,13 @@ SpecIF:StakeholderGroup-Shape
 	sh:class SpecIF:StakeholderGroup-Value .
 
 SpecIF:EngineeringDiscipline
-	rdf:type owl:ObjectProperty ;
+	rdfs:subClassOf pig:PropertyEnum ;
 	rdfs:label "Engineering Discipline"@en ;
 	rdfs:label "Ingenieurdisziplin"@de ;
 	rdfs:label "Discipline d'ingénierie"@fr ;
 	rdfs:comment "The engineering discipline involved by a development artefact."@en ;
-	rdfs:range SpecIF:EngineeringDiscipline-Value .
+	rdfs:range SpecIF:EngineeringDiscipline-Value ;
+	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
 SpecIF:EngineeringDiscipline-Shape
 	rdf:type sh:PropertyShape ;
@@ -472,9 +501,10 @@ SpecIF:EngineeringDiscipline-Shape
 	sh:class SpecIF:EngineeringDiscipline-Value .
 
 o:PC_IssueStatus
-	rdf:type owl:ObjectProperty ;
+	rdfs:subClassOf pig:PropertyEnum ;
 	rdfs:label "SpecIF:LifecycleStatus" ;
-	rdfs:range o:DT_IssueStatus .
+	rdfs:range o:DT_IssueStatus ;
+	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
 o:PC_IssueStatus-Shape
 	rdf:type sh:PropertyShape ;
@@ -483,11 +513,12 @@ o:PC_IssueStatus-Shape
 	sh:class o:DT_IssueStatus .
 
 SpecIF:Responsible
-	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:Property ;
 	rdfs:label "Responsible"@en ;
 	rdfs:label "Verantwortliche(r)"@de ;
 	rdfs:label "Responsable"@fr ;
-	rdfs:comment "The 'Person' being responsible for the resource."@en .
+	rdfs:comment "The 'Person' being responsible for the resource."@en ;
+	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
 SpecIF:Responsible-Shape
 	rdf:type sh:PropertyShape ;
@@ -497,11 +528,12 @@ SpecIF:Responsible-Shape
 	sh:maxLength "256" .
 
 SpecIF:DueDate
-	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:Property ;
 	rdfs:label "Due Date"@en ;
 	rdfs:label "Termin"@de ;
 	rdfs:label "Date limite"@fr ;
-	rdfs:comment "A 'Due Date' for the resource."@en .
+	rdfs:comment "A 'Due Date' for the resource."@en ;
+	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
 SpecIF:DueDate-Shape
 	rdf:type sh:PropertyShape ;
@@ -510,11 +542,12 @@ SpecIF:DueDate-Shape
 	sh:datatype xsd:dateTime .
 
 dcterms:type
-	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:Property ;
 	rdfs:label "Element Type"@en ;
 	rdfs:label "Element-Typ"@de ;
 	rdfs:label "Type d'élément"@fr ;
-	rdfs:comment "<p>The nature or genre of the resource. <small>(<i>source: <a href=\"http://purl.org/dc/elements/1.1/type\">DCMI</a></i>)</small></p><p>Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element.</p><p>For example, a [[FMC:Actor]] may represent a <i>System Function</i>, a <i>System Component</i> or a <i>User Role</i>. Similarly, in the context of process modelling, a FMC:Actor may represent a <i>Process Step</i> or again a <i>User Role</i>. So, all of these are meaningful values for a FMC:Actor's property named dcterms:type.</p>"@en .
+	rdfs:comment "<p>The nature or genre of the resource. <small>(<i>source: <a href=\"http://purl.org/dc/elements/1.1/type\">DCMI</a></i>)</small></p><p>Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element.</p><p>For example, a [[FMC:Actor]] may represent a <i>System Function</i>, a <i>System Component</i> or a <i>User Role</i>. Similarly, in the context of process modelling, a FMC:Actor may represent a <i>Process Step</i> or again a <i>User Role</i>. So, all of these are meaningful values for a FMC:Actor's property named dcterms:type.</p>"@en ;
+	dcterms:modified "2023-02-26T20:18:04.451Z" .
 
 dcterms:type-Shape
 	rdf:type sh:PropertyShape ;
@@ -522,6 +555,21 @@ dcterms:type-Shape
 	sh:maxCount "1" ;
 	sh:datatype xsd:string ;
 	sh:maxLength "32" .
+
+SpecIF:Icon
+	rdfs:subClassOf pig:Property ;
+	rdfs:label "Icon"@en ;
+	rdfs:label "Symbol"@de ;
+	rdfs:label "Symbole"@fr ;
+	rdfs:comment "A symbol or icon for display as a prefix to titles; applicable to all instances of the class. Is usually a XML-encoded UTF-8 symbol, can be an URL or dataURL."@en ;
+	dcterms:modified "2025-09-05T12:43:26.716Z" .
+
+SpecIF:Icon-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path SpecIF:Icon ;
+	sh:maxCount "1" ;
+	sh:datatype xsd:string ;
+	sh:maxLength "256" .
 
 #################################################################
 # Ontology - Entity Classes
@@ -537,30 +585,32 @@ SpecIF:Heading
 	dcterms:modified "2024-03-02T15:28:50.414Z" .
 
 SpecIF:Heading-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:Heading ;
-	sh:property rdfs:label-Shape ;
-	sh:property rdfs:comment-Shape ;
-	sh:property SpecIF:Diagram-Shape ;
-	sh:property dcterms:type-Shape .
+	sh:property rdfs:label-Shape ,
+		rdfs:comment-Shape ,
+		SpecIF:Diagram-Shape ,
+		dcterms:type-Shape .
 
 pig:View
-	rdfs:subClassOf pig:Entity ;
+	rdfs:subClassOf pig:Organizer ;
 	rdfs:label "View" ;
 	rdfs:comment "A PIG organizer class representing a diagram with certain model-elements for a given communication purpose." ;
-	pig:Icon "▣" ;
+	pig:icon "▣" ;
 	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
 pig:View-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass pig:View ;
-	sh:property rdfs:label-Shape ;
-	sh:property rdfs:comment-Shape ;
-	sh:property SpecIF:Diagram-Shape ;
-	sh:property SpecIF:Notation-Shape ;
-	sh:property SpecIF:LifecycleStatus-Shape ;
-	sh:property ReqIF-WF:SupplierStatus-Shape ;
-	sh:property ReqIF-WF:SupplierComment-Shape ;
-	sh:property ReqIF-WF:CustomerStatus-Shape ;
-	sh:property ReqIF-WF:CustomerComment-Shape .
+	sh:property rdfs:label-Shape ,
+		rdfs:comment-Shape ,
+		SpecIF:Diagram-Shape ,
+		SpecIF:Notation-Shape ,
+		SpecIF:LifecycleStatus-Shape ,
+		ReqIF-WF:SupplierStatus-Shape ,
+		ReqIF-WF:SupplierComment-Shape ,
+		ReqIF-WF:CustomerStatus-Shape ,
+		ReqIF-WF:CustomerComment-Shape .
 
 FMC:Actor
 	rdfs:subClassOf pig:Entity ;
@@ -570,14 +620,15 @@ FMC:Actor
 	rdfs:comment "<p>An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role.</p><p>The  particular use or original type is specified with a [[dcterms:type]] property of the 'FMC:Actor'. A value of that property should be an ontology-term, such as [[bpmn:processStep]].</p>"@en ;
 	rdfs:comment "<p>Ein 'Akteur' ist ein fundamentaler Modellelementtyp, der eine aktive Entität darstellt, sei es eine Aktivität, ein Prozessschritt, eine Funktion, eine Systemkomponente oder eine Rolle.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Actor' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[bpmn:timer]].</p>"@de ;
 	rdfs:comment "<p>Un 'Acteur' est un type d'élément de modèle fondamental représentant une entité active, qu'il s'agisse d'une activité, d'une étape de processus, d'une fonction, d'un composant de système ou d'un rôle.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:Actor'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[bpmn:timer]].</p>"@fr ;
-	pig:Icon "&#x25A1;" ;
+	pig:icon "&#x25A1;" ;
 	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
 FMC:Actor-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass FMC:Actor ;
-	sh:property rdfs:label-Shape ;
-	sh:property rdfs:comment-Shape ;
-	sh:property SpecIF:Diagram-Shape .
+	sh:property rdfs:label-Shape ,
+		rdfs:comment-Shape ,
+		SpecIF:Diagram-Shape .
 
 FMC:State
 	rdfs:subClassOf pig:Entity ;
@@ -587,13 +638,14 @@ FMC:State
 	rdfs:comment "<p>A 'State' is a fundamental model element type representing a passive entity, be it a value, a condition, an information storage or even a physical shape.</p><p>The particular use or the original type is specified with a [[dcterms:type]] property of the 'FMC:State'. A value of that property should bean  ontology-term, such as [[bpmn:dataObject]].</p>"@en ;
 	rdfs:comment "<p>Ein 'Zustand' ist ein fundamentaler Modellelementtyp, der eine passive Entität darstellt, sei es ein Wert, ein Dokument, ein Informationsspeicher, eine Bedingung oder eine physische Beschaffenheit.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:State' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[ArchiMate:DataObject]].</p>"@de ;
 	rdfs:comment "<p>Un 'État' est un type d'élément de modèle fondamental représentant une entité passive, qu'il s'agisse d'une valeur, d'une condition, d'un stockage d'informations ou même d'une forme physique.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:State'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[ArchiMate:DataObject]].</p>"@fr ;
-	pig:Icon "&#x25CB;" ;
+	pig:icon "&#x25CB;" ;
 	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
 FMC:State-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass FMC:State ;
-	sh:property rdfs:label-Shape ;
-	sh:property rdfs:comment-Shape .
+	sh:property rdfs:label-Shape ,
+		rdfs:comment-Shape .
 
 FMC:Event
 	rdfs:subClassOf pig:Entity ;
@@ -603,13 +655,14 @@ FMC:Event
 	rdfs:comment "<p>An 'Event' is a fundamental model element type representing a time reference, a change in condition/value or more generally a synchronization primitive.</p><p>The particular use or the original type is specified with a [[dcterms:type]] property of the 'FMC:Event'. A value of that property should be an ontology-term, such as [[bpmn:startEvent]].</p>"@en ;
 	rdfs:comment "<p>Ein 'Ereignis' ist ein fundamentaler Modellelementtyp, der eine Zeitreferenz, eine Änderung einer Bedingung/eines Wertes oder allgemeiner ein Synchronisationsmittel darstellt.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Event' spezifiziert. Die Werte dieser Eigenschaft sollen Ontologiebegriffe sein, wie z.B. [[bpmn:startEvent]].</p>"@de ;
 	rdfs:comment "<p>Un 'Événement' est un type d'élément de modèle fondamental représentant une référence temporelle, un changement de condition/valeur ou plus généralement une primitive de synchronisation.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:Event'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[bpmn:startEvent]].</p>"@fr ;
-	pig:Icon "&#x2662;" ;
+	pig:icon "&#x2662;" ;
 	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
 FMC:Event-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass FMC:Event ;
-	sh:property rdfs:label-Shape ;
-	sh:property rdfs:comment-Shape .
+	sh:property rdfs:label-Shape ,
+		rdfs:comment-Shape .
 
 IREB:Requirement
 	rdfs:subClassOf pig:Entity ;
@@ -619,22 +672,23 @@ IREB:Requirement
 	rdfs:comment "<p>A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>A condition or capability needed by a user to solve a problem or achieve an objective.</li><li>A condition or capability that must be met or possessed by a system or system component to satisfy a contract, standard, specification, or other formally imposed documents.</li><li>A documented representation of a condition or capability as in (1) or (2).</li></ol><p>Note: The definition above is the classic one from IEEE Std 610.12 of 1990. Alternatively, we also give a more modern definition:</p><ol><li>A need perceived by a stakeholder.</li><li>A capability or property that a system shall have.</li><li>A documented representation of a need, capability or property.</li></ol>"@en ;
 	rdfs:comment "<p>Eine 'Anforderung' ist ein einzelnes dokumentiertes physisches und funktionales Bedürfnis, das ein bestimmter Entwurf, ein Produkt oder ein Prozess erfüllen muss. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>Eine Bedingung oder Fähigkeit, die ein Benutzer benötigt, um ein Problem zu lösen oder ein Ziel zu erreichen.</li><li>Eine Bedingung oder Fähigkeit, die ein System oder eine Systemkomponente erfüllen oder besitzen muss, um einen Vertrag, eine Norm, eine Spezifikation oder ein anderes formal vorgeschriebenes Dokument zu erfüllen.</li><li>Eine dokumentierte Darstellung einer Bedingung oder Fähigkeit wie in (1) oder (2).</li></ol><p>Anmerkung: Die obige Definition ist die klassische Definition aus IEEE Std 610.12 von 1990. Alternativ geben wir auch eine modernere Definition an:</p><ol><li>Ein von einem Stakeholder wahrgenommener Bedarf.</li><li>Eine Fähigkeit oder Eigenschaft, die ein System haben soll.</li><li>Eine dokumentierte Darstellung eines Bedarfs, einer Fähigkeit oder Eigenschaft.</li></ol>"@de ;
 	rdfs:comment "<p>Une 'Exigence' est un besoin physique et fonctionnel unique et documenté qu'une conception, un produit ou un processus particulier doit pouvoir satisfaire. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Définition:</p><ol><li>Condition ou capacité dont un utilisateur a besoin pour résoudre un problème ou atteindre un objectif.</li><li>Condition ou capacité qui doit être remplie ou possédée par un système ou un composant de système pour satisfaire à un contrat, à une norme, à une spécification ou à d'autres documents imposés officiellement.</li><li>Une représentation documentée d'une condition ou d'une capacité comme dans (1) ou (2).</li></ol><p>Remarque: La définition ci-dessus est la définition classique de la norme IEEE 610.12 de 1990. Nous donnons également une définition plus moderne:</p><ol><li>Un besoin perçu par une partie prenante;</li><li>Une capacité ou une propriété qu'un système doit avoir.</li><li>Une représentation documentée d'un besoin, d'une capacité ou d'une propriété.</li></ol>"@fr ;
-	pig:Icon "&#8623;" ;
+	pig:icon "&#8623;" ;
 	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
 IREB:Requirement-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass IREB:Requirement ;
-	sh:property dcterms:identifier-Shape ;
-	sh:property rdfs:label-Shape ;
-	sh:property rdfs:comment-Shape ;
-	sh:property SpecIF:LifecycleStatus-Shape ;
-	sh:property SpecIF:Priority-Shape ;
-	sh:property SpecIF:StakeholderGroup-Shape ;
-	sh:property SpecIF:EngineeringDiscipline-Shape ;
-	sh:property ReqIF-WF:SupplierStatus-Shape ;
-	sh:property ReqIF-WF:SupplierComment-Shape ;
-	sh:property ReqIF-WF:CustomerStatus-Shape ;
-	sh:property ReqIF-WF:CustomerComment-Shape .
+	sh:property dcterms:identifier-Shape ,
+		rdfs:label-Shape ,
+		rdfs:comment-Shape ,
+		SpecIF:LifecycleStatus-Shape ,
+		SpecIF:Priority-Shape ,
+		SpecIF:StakeholderGroup-Shape ,
+		SpecIF:EngineeringDiscipline-Shape ,
+		ReqIF-WF:SupplierStatus-Shape ,
+		ReqIF-WF:SupplierComment-Shape ,
+		ReqIF-WF:CustomerStatus-Shape ,
+		ReqIF-WF:CustomerComment-Shape .
 
 SpecIF:Issue
 	rdfs:subClassOf pig:Entity ;
@@ -647,14 +701,15 @@ SpecIF:Issue
 	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
 SpecIF:Issue-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:Issue ;
-	sh:property dcterms:identifier-Shape ;
-	sh:property rdfs:label-Shape ;
-	sh:property rdfs:comment-Shape ;
-	sh:property o:PC_IssueStatus-Shape ;
-	sh:property SpecIF:Priority-Shape ;
-	sh:property SpecIF:Responsible-Shape ;
-	sh:property SpecIF:DueDate-Shape .
+	sh:property dcterms:identifier-Shape ,
+		rdfs:label-Shape ,
+		rdfs:comment-Shape ,
+		o:PC_IssueStatus-Shape ,
+		SpecIF:Priority-Shape ,
+		SpecIF:Responsible-Shape ,
+		SpecIF:DueDate-Shape .
 
 SpecIF:Paragraph
 	rdfs:subClassOf pig:Entity ;
@@ -666,11 +721,12 @@ SpecIF:Paragraph
 	dcterms:modified "2023-07-16T09:30:25.850Z" .
 
 SpecIF:Paragraph-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:Paragraph ;
-	sh:property rdfs:label-Shape ;
-	sh:property rdfs:comment-Shape ;
-	sh:property SpecIF:Diagram-Shape ;
-	sh:property dcterms:type-Shape .
+	sh:property rdfs:label-Shape ,
+		rdfs:comment-Shape ,
+		SpecIF:Diagram-Shape ,
+		dcterms:type-Shape .
 
 #################################################################
 # Ontology - Relationship Classes
@@ -688,17 +744,16 @@ SpecIF:contains-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
 	rdfs:label "Connects the source of SpecIF:contains" ;
 	rdfs:domain SpecIF:contains ;
-	rdfs:range [ owl:unionOf( FMC:Actor FMC:State FMC:Event )] ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:range [ owl:unionOf( FMC:Actor FMC:State FMC:Event )] .
 
 SpecIF:contains-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
 	rdfs:label "Connects the target of SpecIF:contains" ;
 	rdfs:domain SpecIF:contains ;
-	rdfs:range [ owl:unionOf( FMC:Actor FMC:State FMC:Event )] ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:range [ owl:unionOf( FMC:Actor FMC:State FMC:Event )] .
 
 SpecIF:contains-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:contains ;
 	sh:property [ 
 		sh:path SpecIF:contains-hasSource ;
@@ -723,17 +778,16 @@ o:SC_stores-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
 	rdfs:label "Connects the source of o:SC_stores" ;
 	rdfs:domain o:SC_stores ;
-	rdfs:range FMC:Actor ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:range FMC:Actor .
 
 o:SC_stores-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
 	rdfs:label "Connects the target of o:SC_stores" ;
 	rdfs:domain o:SC_stores ;
-	rdfs:range FMC:State ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:range FMC:State .
 
 o:SC_stores-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass o:SC_stores ;
 	sh:property [ 
 		sh:path o:SC_stores-hasSource ;
@@ -760,17 +814,16 @@ SpecIF:writes-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
 	rdfs:label "Connects the source of SpecIF:writes" ;
 	rdfs:domain SpecIF:writes ;
-	rdfs:range FMC:Actor ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:range FMC:Actor .
 
 SpecIF:writes-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
 	rdfs:label "Connects the target of SpecIF:writes" ;
 	rdfs:domain SpecIF:writes ;
-	rdfs:range FMC:State ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:range FMC:State .
 
 SpecIF:writes-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:writes ;
 	sh:property [ 
 		sh:path SpecIF:writes-hasSource ;
@@ -797,17 +850,16 @@ SpecIF:reads-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
 	rdfs:label "Connects the source of SpecIF:reads" ;
 	rdfs:domain SpecIF:reads ;
-	rdfs:range FMC:Actor ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:range FMC:Actor .
 
 SpecIF:reads-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
 	rdfs:label "Connects the target of SpecIF:reads" ;
 	rdfs:domain SpecIF:reads ;
-	rdfs:range FMC:State ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:range FMC:State .
 
 SpecIF:reads-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:reads ;
 	sh:property [ 
 		sh:path SpecIF:reads-hasSource ;
@@ -834,17 +886,16 @@ SpecIF:dependsOn-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
 	rdfs:label "Connects the source of SpecIF:dependsOn" ;
 	rdfs:domain SpecIF:dependsOn ;
-	rdfs:range IREB:Requirement ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:range IREB:Requirement .
 
 SpecIF:dependsOn-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
 	rdfs:label "Connects the target of SpecIF:dependsOn" ;
 	rdfs:domain SpecIF:dependsOn ;
-	rdfs:range IREB:Requirement ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:range IREB:Requirement .
 
 SpecIF:dependsOn-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:dependsOn ;
 	sh:property [ 
 		sh:path SpecIF:dependsOn-hasSource ;
@@ -871,17 +922,16 @@ oslc_rm:satisfies-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
 	rdfs:label "Connects the source of oslc_rm:satisfies" ;
 	rdfs:domain oslc_rm:satisfies ;
-	rdfs:range [ owl:unionOf( FMC:Actor FMC:State FMC:Event )] ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:range [ owl:unionOf( FMC:Actor FMC:State FMC:Event )] .
 
 oslc_rm:satisfies-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
 	rdfs:label "Connects the target of oslc_rm:satisfies" ;
 	rdfs:domain oslc_rm:satisfies ;
-	rdfs:range IREB:Requirement ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:range IREB:Requirement .
 
 oslc_rm:satisfies-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass oslc_rm:satisfies ;
 	sh:property [ 
 		sh:path oslc_rm:satisfies-hasSource ;
@@ -908,17 +958,16 @@ SpecIF:refersTo-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
 	rdfs:label "Connects the source of SpecIF:refersTo" ;
 	rdfs:domain SpecIF:refersTo ;
-	rdfs:range SpecIF:Issue ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:range SpecIF:Issue .
 
 SpecIF:refersTo-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
 	rdfs:label "Connects the target of SpecIF:refersTo" ;
 	rdfs:domain SpecIF:refersTo ;
-	rdfs:range [ owl:unionOf( pig:View FMC:Actor FMC:State FMC:Event IREB:Requirement )] ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:range [ owl:unionOf( pig:View FMC:Actor FMC:State FMC:Event IREB:Requirement )] .
 
 SpecIF:refersTo-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:refersTo ;
 	sh:property [ 
 		sh:path SpecIF:refersTo-hasSource ;
@@ -937,18 +986,6 @@ SpecIF:refersTo-Shape
 # Entities
 #################################################################
 
-d:Fld-59c8a7730000bca80137509a49b1218b-info
-	rdf:type SpecIF:Heading ;
-	rdfs:label "Project Information" ;
-	rdfs:comment "<div> <p> <a href=\"https://enso-managers.de\" ><object data=\"files_and_images/enso-logo.png\" type=\"image/png\" >enso managers gmbh</object></a> </p> <p> This is a small show-case illustrating the basic concepts for integrated mechatronic system specification. In addition to the original text and diagrams you will find logical relations between the information elements. Most relations are derived automatically from the diagrams; the resulting semantic net lends itself for navigation, search and audit. </p> <p> The specification integrates and represents: </p><ul><li>processes, system composition and requirements (dynamic, static and detail views) </li><li>mechanic, electric and software components with their interfaces. </li></ul><p>It is an important characteristic, that all plans (diagrams) are views of a common system engineering model, sometimes called 'system repository'. Thus, consistency is always maintained. </p><p>The model elements are connected with relations, most of which are defined by positioning graph elements. For example, if a system component is drawn within another, a relationship 'contains' is created in the logic representation of the engineering model. Other relations, such as a system component 'satisfies' a requirement are created manually. </p><p>Also, the documents are generated from the system engineering model. The ordering is in most projects (it can be rearranged, however, if appropriate): </p><ul><li> All plans </li><li> A glossary with descriptions of all model elements appearing on one or more plans </li><li> A hierarchically ordered list of requirements </li> <li> A list of open issues. </li></ul><p> Please note that plans list related model elements and model elements list related requirements .. and vice versa. Active hyper-links are used, so that it is easy to jump between related model elements. </p><p><br/></p><p><strong>Stakeholders:</strong></p><table class=\"stdInlineWithBorder\"> <tbody> <tr> <th> Name </th><th>Organisation</th><th> Telephone </th> <th> Email </th> </tr> <tr> <td> Dr. Oskar v. Dungern </td> <td>enso managers GmbH</td> <td> </td> <td><a href=\"mailto:od@enso-managers.de\" >od@enso-managers.de</a></td> </tr> </tbody> </table> <p> <br /> </p> <p><strong>Legend:</strong> </p> <p> To distinguish their type, element names are preceded by one of the following symbols: </p> <table class=\"stdInlineWithBorder\"> <tbody> <tr> <td> ▣ </td><td> Plan </td> <td> A 'Diagram' is a graphical model view with a specific communication purpose, e.g. a business process or system composition. </td></tr><tr> <td> ■ </td><td> Actor (Role, Function) </td> <td> An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role. </td> </tr> <tr> <td> ● </td> <td> State (Information) </td> <td> A 'State' is a fundamental model element type representing a passive entity, be it a value, a condition, an information storage or even a physical shape. </td> </tr> <tr> <td> ♦ </td> <td> Event </td> <td> An 'Event' is a fundamental model element type representing a time reference, a change in condition/value or more generally a synchronisation primitive. </td> </tr> <tr> <td> ✶ </td> <td> Feature </td> <td> A 'Feature' is an intentional distinguishing characteristic of a system, often a unique selling proposition. </td> </tr> <tr> <td> ↯ </td> <td> Requirement </td> <td> A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform. </td> </tr> </tbody> </table> <p class=\"sceditor-nlf\"> <br /> </p></div>" ;
-	dcterms:modified "2018-05-04T17:18:18+02:00" .
-
-d:Fld-5a5f54090000bca801375b04a668f1a7
-	rdf:type SpecIF:Heading ;
-	rdfs:label "System Composition" ;
-	rdfs:comment "<div><p>.. showing the system and its composition of modules (at a higher level) and components (at a lower level). The relevant interfaces between the disciplines mechanical, electrical and software engineering are shown.</p> </div>" ;
-	dcterms:modified "2017-06-19T20:13:02+02:00" .
-
 d:Pln-27420ffc0000c3a8013ab527ca1b71f5
 	rdf:type pig:View ;
 	rdfs:label "Color coding" ;
@@ -957,7 +994,8 @@ d:Pln-27420ffc0000c3a8013ab527ca1b71f5
 	SpecIF:LifecycleStatus SpecIF:LifecycleStatusApproved ;
 	ReqIF-WF:SupplierStatus SpecIF:NotApplicable ;
 	ReqIF-WF:CustomerStatus ReqIF-WF:CustomerStatus.NotToEvaluate ;
-	dcterms:modified "2017-06-19T20:13:03+02:00" .
+	dcterms:modified "2017-06-19T20:13:03+02:00" ;
+	dcterms:creator "od" .
 
 d:Pln-5a4755dd0000bca801375293a62c90a8
 	rdf:type pig:View ;
@@ -968,7 +1006,8 @@ d:Pln-5a4755dd0000bca801375293a62c90a8
 	SpecIF:LifecycleStatus SpecIF:LifecycleStatusInitial ;
 	ReqIF-WF:SupplierStatus ReqIF-WF:CustomerStatus.ToBeClarified ;
 	ReqIF-WF:CustomerStatus ReqIF-WF:CustomerStatus.ToEvaluate ;
-	dcterms:modified "2017-06-19T20:13:03+02:00" .
+	dcterms:modified "2017-06-19T20:13:03+02:00" ;
+	dcterms:creator "od" .
 
 d:Pln-5a6cdea50000bca80137d6b2d6e8a3a0
 	rdf:type pig:View ;
@@ -979,7 +1018,8 @@ d:Pln-5a6cdea50000bca80137d6b2d6e8a3a0
 	SpecIF:LifecycleStatus SpecIF:LifecycleStatusInitial ;
 	ReqIF-WF:SupplierStatus ReqIF-WF:SupplierStatus.NotAgreed ;
 	ReqIF-WF:CustomerStatus ReqIF-WF:CustomerStatus.NotAccepted ;
-	dcterms:modified "2017-06-19T20:13:03+02:00" .
+	dcterms:modified "2017-06-19T20:13:03+02:00" ;
+	dcterms:creator "od" .
 
 d:Pln-5a7f99af0000bca8013754f2ef12d3e5
 	rdf:type pig:View ;
@@ -989,18 +1029,8 @@ d:Pln-5a7f99af0000bca8013754f2ef12d3e5
 	SpecIF:LifecycleStatus SpecIF:LifecycleStatusInitial ;
 	ReqIF-WF:SupplierStatus ReqIF-WF:SupplierStatus.AgreedWithComment ;
 	ReqIF-WF:CustomerStatus ReqIF-WF:CustomerStatus.ToEvaluate ;
-	dcterms:modified "2017-06-19T20:13:04+02:00" .
-
-d:Fld-5af3154d0000bca801379748537d7388
-	rdf:type SpecIF:Heading ;
-	rdfs:label "Scenarios" ;
-	rdfs:comment "<div><p>.. showing the behavioral aspects of system design, both from external user perspective ('black box') and from internal perspective ('white box').</p> </div>" ;
-	dcterms:modified "2017-06-19T20:13:02+02:00" .
-
-d:Fld-5b6a99f10000bca80137b78cda65fc07
-	rdf:type SpecIF:Heading ;
-	rdfs:label "Dimming" ;
-	dcterms:modified "2017-06-19T20:13:04+02:00" .
+	dcterms:modified "2017-06-19T20:13:04+02:00" ;
+	dcterms:creator "od" .
 
 d:Pln-606e76c70000bca801376ec3133a1181
 	rdf:type pig:View ;
@@ -1011,7 +1041,8 @@ d:Pln-606e76c70000bca801376ec3133a1181
 	SpecIF:LifecycleStatus SpecIF:LifecycleStatusDrafted ;
 	ReqIF-WF:SupplierStatus ReqIF-WF:SupplierStatus.Agreed ;
 	ReqIF-WF:CustomerStatus ReqIF-WF:CustomerStatus.Accepted ;
-	dcterms:modified "2017-06-19T20:13:04+02:00" .
+	dcterms:modified "2017-06-19T20:13:04+02:00" ;
+	dcterms:creator "od" .
 
 d:Pln-45a1c8930000c3a801414cd1eaa70b5a
 	rdf:type pig:View ;
@@ -1022,7 +1053,8 @@ d:Pln-45a1c8930000c3a801414cd1eaa70b5a
 	SpecIF:LifecycleStatus SpecIF:LifecycleStatusDrafted ;
 	ReqIF-WF:SupplierStatus ReqIF-WF:SupplierStatus.Agreed ;
 	ReqIF-WF:CustomerStatus ReqIF-WF:CustomerStatus.Accepted ;
-	dcterms:modified "2018-03-15T15:36:31+01:00" .
+	dcterms:modified "2018-03-15T15:36:31+01:00" ;
+	dcterms:creator "od" .
 
 d:Pln-5af364560000bca80137b84017f4e832
 	rdf:type pig:View ;
@@ -1033,18 +1065,8 @@ d:Pln-5af364560000bca80137b84017f4e832
 	SpecIF:LifecycleStatus SpecIF:LifecycleStatusDrafted ;
 	ReqIF-WF:SupplierStatus ReqIF-WF:SupplierStatus.Agreed ;
 	ReqIF-WF:CustomerStatus ReqIF-WF:CustomerStatus.Accepted ;
-	dcterms:modified "2017-06-19T20:13:06+02:00" .
-
-d:Fld-5b8e98550000bca801371afb0c7b671b
-	rdf:type SpecIF:Heading ;
-	rdfs:label "Requirements" ;
-	dcterms:modified "2017-06-19T20:13:02+02:00" .
-
-d:Fld-d1b1698a0000c3a801505b1b5698b7a1
-	rdf:type SpecIF:Heading ;
-	rdfs:label "Function" ;
-	rdfs:comment "<div><p>The requirements related to the product function.</p> </div>" ;
-	dcterms:modified "2017-06-19T20:13:06+02:00" .
+	dcterms:modified "2017-06-19T20:13:06+02:00" ;
+	dcterms:creator "od" .
 
 d:Req-d1c895230000c3a80150f8afd049f738
 	rdf:type IREB:Requirement ;
@@ -1057,7 +1079,8 @@ d:Req-d1c895230000c3a80150f8afd049f738
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineMechanics ;
 	ReqIF-WF:SupplierStatus ReqIF-WF:SupplierStatus.Agreed ;
 	ReqIF-WF:SupplierComment "Our solution does this perfectly." ;
-	dcterms:modified "2017-06-19T20:13:06+02:00" .
+	dcterms:modified "2017-06-19T20:13:06+02:00" ;
+	dcterms:creator "od" .
 
 d:Req-d1d42a6a0000c3a8015091ec8d149b93
 	rdf:type IREB:Requirement ;
@@ -1068,7 +1091,8 @@ d:Req-d1d42a6a0000c3a8015091ec8d149b93
 	SpecIF:Priority SpecIF:priorityMedium ;
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupUser ;
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineElectronics ;
-	dcterms:modified "2018-02-13T12:22:44+01:00" .
+	dcterms:modified "2018-02-13T12:22:44+01:00" ;
+	dcterms:creator "od" .
 
 d:Req-d1cd7f370000c3a8015095e6ee21aab7
 	rdf:type IREB:Requirement ;
@@ -1079,7 +1103,8 @@ d:Req-d1cd7f370000c3a8015095e6ee21aab7
 	SpecIF:Priority SpecIF:priorityMedium ;
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupUser ;
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineSoftware ;
-	dcterms:modified "2017-06-19T20:13:07+02:00" .
+	dcterms:modified "2017-06-19T20:13:07+02:00" ;
+	dcterms:creator "od" .
 
 d:Req-5ba3512b0000bca801371cc0617eb4c1
 	rdf:type IREB:Requirement ;
@@ -1092,7 +1117,8 @@ d:Req-5ba3512b0000bca801371cc0617eb4c1
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineMechanics ;
 	ReqIF-WF:SupplierStatus ReqIF-WF:CustomerStatus.ToBeClarified ;
 	ReqIF-WF:SupplierComment "We did not find the actual minimum dimensions of the buttons." ;
-	dcterms:modified "2017-06-19T20:13:08+02:00" .
+	dcterms:modified "2017-06-19T20:13:08+02:00" ;
+	dcterms:creator "od" .
 
 d:Req-5b8fbb300000bca80137c73e3ce4c737
 	rdf:type IREB:Requirement ;
@@ -1105,13 +1131,8 @@ d:Req-5b8fbb300000bca80137c73e3ce4c737
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineElectronics ;
 	ReqIF-WF:SupplierStatus ReqIF-WF:CustomerStatus.ToBeClarified ;
 	ReqIF-WF:SupplierComment "For which time period?  Permanent load?" ;
-	dcterms:modified "2017-06-19T20:13:08+02:00" .
-
-d:Fld-d1b1d6c60000c3a80150fe9ce40e6588
-	rdf:type SpecIF:Heading ;
-	rdfs:label "Quality" ;
-	rdfs:comment "<div><p>The requirements related to quality characteristics of the product.</p> </div>" ;
-	dcterms:modified "2017-06-19T20:13:08+02:00" .
+	dcterms:modified "2017-06-19T20:13:08+02:00" ;
+	dcterms:creator "od" .
 
 d:Req-5b944fc70000bca8013763f44fdc0e03
 	rdf:type IREB:Requirement ;
@@ -1123,7 +1144,8 @@ d:Req-5b944fc70000bca8013763f44fdc0e03
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupUser ;
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineMechanics ;
 	ReqIF-WF:SupplierStatus ReqIF-WF:SupplierStatus.Agreed ;
-	dcterms:modified "2017-06-19T20:13:09+02:00" .
+	dcterms:modified "2017-06-19T20:13:09+02:00" ;
+	dcterms:creator "od" .
 
 d:Req-5ba140d60000bca801372b09f9888eca
 	rdf:type IREB:Requirement ;
@@ -1138,7 +1160,8 @@ d:Req-5ba140d60000bca801372b09f9888eca
 	ReqIF-WF:SupplierComment "Mais bien sûr." ;
 	ReqIF-WF:CustomerStatus ReqIF-WF:CustomerStatus.ToEvaluate ;
 	ReqIF-WF:CustomerComment "Das ist ganz wichtig für uns." ;
-	dcterms:modified "2018-03-08T11:59:42+01:00" .
+	dcterms:modified "2018-03-08T11:59:42+01:00" ;
+	dcterms:creator "supplier" .
 
 d:Req-ee452cf20000c3a8014035290669304d
 	rdf:type IREB:Requirement ;
@@ -1149,7 +1172,8 @@ d:Req-ee452cf20000c3a8014035290669304d
 	SpecIF:Priority SpecIF:priorityMedium ;
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupUser ;
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineMechanics ;
-	dcterms:modified "2017-06-19T20:13:10+02:00" .
+	dcterms:modified "2017-06-19T20:13:10+02:00" ;
+	dcterms:creator "od" .
 
 d:Req-ee43fc4c0000c3a8014063d42c77767f
 	rdf:type IREB:Requirement ;
@@ -1160,7 +1184,8 @@ d:Req-ee43fc4c0000c3a8014063d42c77767f
 	SpecIF:Priority SpecIF:priorityHigh ;
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupSystem ;
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineElectronics ;
-	dcterms:modified "2017-06-19T20:13:11+02:00" .
+	dcterms:modified "2017-06-19T20:13:11+02:00" ;
+	dcterms:creator "od" .
 
 d:Req-5b9124bc0000bca80137fa2ce86f5eca
 	rdf:type IREB:Requirement ;
@@ -1171,7 +1196,8 @@ d:Req-5b9124bc0000bca80137fa2ce86f5eca
 	SpecIF:Priority SpecIF:priorityMedium ;
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupUser ;
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineElectronics ;
-	dcterms:modified "2017-06-19T20:13:11+02:00" .
+	dcterms:modified "2017-06-19T20:13:11+02:00" ;
+	dcterms:creator "od" .
 
 d:Req-5b9e68530000bca801371362c49d2d08
 	rdf:type IREB:Requirement ;
@@ -1182,13 +1208,8 @@ d:Req-5b9e68530000bca801371362c49d2d08
 	SpecIF:Priority SpecIF:priorityMedium ;
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupSystem ;
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineElectronics ;
-	dcterms:modified "2017-06-19T20:13:11+02:00" .
-
-d:Fld-d1b314890000c3a80150b71a1473d374
-	rdf:type SpecIF:Heading ;
-	rdfs:label "Constraints" ;
-	rdfs:comment "<div><p>The requirements related to constraints for product conception, such as regulations or technical choices made upfront.</p> </div>" ;
-	dcterms:modified "2017-06-19T20:13:12+02:00" .
+	dcterms:modified "2017-06-19T20:13:11+02:00" ;
+	dcterms:creator "od" .
 
 d:Req-eea1cd500000c3a80140fe00109eb7f4
 	rdf:type IREB:Requirement ;
@@ -1199,7 +1220,8 @@ d:Req-eea1cd500000c3a80140fe00109eb7f4
 	SpecIF:Priority SpecIF:priorityMedium ;
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupUser ;
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineMechanics ;
-	dcterms:modified "2017-06-19T20:13:12+02:00" .
+	dcterms:modified "2017-06-19T20:13:12+02:00" ;
+	dcterms:creator "od" .
 
 d:Req-5b95fae40000bca801372becc933682d
 	rdf:type IREB:Requirement ;
@@ -1210,7 +1232,8 @@ d:Req-5b95fae40000bca801372becc933682d
 	SpecIF:Priority SpecIF:priorityHigh ;
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupSystem ;
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineMechanics ;
-	dcterms:modified "2017-06-19T20:13:12+02:00" .
+	dcterms:modified "2017-06-19T20:13:12+02:00" ;
+	dcterms:creator "od" .
 
 d:Req-5b9ab8a50000bca801377ad0be3bbc89
 	rdf:type IREB:Requirement ;
@@ -1221,7 +1244,8 @@ d:Req-5b9ab8a50000bca801377ad0be3bbc89
 	SpecIF:Priority SpecIF:priorityHigh ;
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupUser ;
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineMechanics ;
-	dcterms:modified "2018-02-16T10:29:48+01:00" .
+	dcterms:modified "2018-02-16T10:29:48+01:00" ;
+	dcterms:creator "od" .
 
 d:Req-728c69c80018b1a8014b974542c36edc
 	rdf:type IREB:Requirement ;
@@ -1234,7 +1258,8 @@ d:Req-728c69c80018b1a8014b974542c36edc
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineElectronics ;
 	ReqIF-WF:SupplierComment "This is standard for all our products: expensive, but effective." ;
 	ReqIF-WF:CustomerStatus ReqIF-WF:CustomerStatus.ToEvaluate ;
-	dcterms:modified "2018-02-28T13:16:17+01:00" .
+	dcterms:modified "2018-02-28T13:16:17+01:00" ;
+	dcterms:creator "supplier" .
 
 d:Req-5b9c950e0000bca801374f16615247b9
 	rdf:type IREB:Requirement ;
@@ -1245,391 +1270,442 @@ d:Req-5b9c950e0000bca801374f16615247b9
 	SpecIF:Priority SpecIF:priorityMedium ;
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupSystem ;
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineSoftware ;
-	dcterms:modified "2017-10-27T11:44:20+02:00" .
-
-d:Fld-59c8a7730000bca80137509a49b1218b
-	rdf:type SpecIF:Heading ;
-	rdfs:label "Parts List" ;
-	rdfs:comment "<div>This Parts List has been automatically generated from the model. </div>" ;
-	dcterms:modified "2017-06-19T20:13:02+02:00" .
+	dcterms:modified "2017-10-27T11:44:20+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5bd6bd890000bca8013739588a3f43d6
 	rdf:type FMC:Actor ;
 	rdfs:label "Bulb" ;
 	rdfs:comment "<div><p> Dimmable candescent light-bulb 230V.</p></div>" ;
-	dcterms:modified "2017-11-11T16:16:13+01:00" .
+	dcterms:modified "2017-11-11T16:16:13+01:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5bcfb01d0000bca80137f303272a5557
 	rdf:type FMC:Actor ;
 	rdfs:label "Shading" ;
 	rdfs:comment "<div><p>Window-shade with 2 degrees of freedom: It can be moved up/down and the elements can be set straight/tilted. Both movements can be made proportionally with an electric drive.</p> </div>" ;
-	dcterms:modified "2017-06-19T20:13:19+02:00" .
+	dcterms:modified "2017-06-19T20:13:19+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-803fd3750000c3a8013cf1fdb3b26d33
 	rdf:type FMC:State ;
 	rdfs:label "SmartHome System" ;
 	rdfs:comment "<div><p>The new system for controlling all major functions of the private home:</p> <ul> <li>light/illumination</li> <li>window shades</li> <li>heating</li> <li>consumption meters for electricity, heat, gas and water.</li></ul> </div>" ;
-	dcterms:modified "2017-06-19T20:13:26+02:00" .
+	dcterms:modified "2017-06-19T20:13:26+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5a489c300000bca80137ee1373c16844
 	rdf:type FMC:State ;
 	rdfs:label "Flush-mounted Dimmer" ;
 	rdfs:comment "<p>A dimmer for electric loads in an industry-standard mounting frame which is flush with the wall surface. In other words, the dimmer is sitting in the wall and just the buttons are visible.</p>" ;
-	dcterms:modified "2017-06-19T20:13:23+02:00" .
+	dcterms:modified "2017-06-19T20:13:23+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5a7776c50000bca8013765ae93af9209
 	rdf:type FMC:State ;
 	rdfs:label "Actuator Rods" ;
 	rdfs:comment "<div><p>Up to four actuator rods connecting the buttons to electrical contacts.</p> </div>" ;
-	dcterms:modified "2017-06-19T20:13:22+02:00" .
+	dcterms:modified "2017-06-19T20:13:22+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5a76365c0000bca8013776e91afd1e8e
 	rdf:type FMC:Actor ;
 	rdfs:label "Assembly Frame" ;
 	rdfs:comment "<div><p> Mounting frame screwed to or into a wall.</p></div>" ;
-	dcterms:modified "2017-06-19T20:13:16+02:00" .
+	dcterms:modified "2017-06-19T20:13:16+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5a9ce0310000bca801378176dc4744e8
 	rdf:type FMC:State ;
 	rdfs:label "Control Signals" ;
-	dcterms:modified "2017-06-19T20:13:22+02:00" .
+	dcterms:modified "2017-06-19T20:13:22+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5a752ccc0000bca80137479a2e8bab30
 	rdf:type FMC:Actor ;
 	rdfs:label "Dimmer Module" ;
 	rdfs:comment "<div><p>The actuator module with dimmer function for resistive loads.</p> </div>" ;
-	dcterms:modified "2017-06-19T20:13:17+02:00" .
+	dcterms:modified "2017-06-19T20:13:17+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5a85347c0000bca80137ad485c7cd330
 	rdf:type FMC:Actor ;
 	rdfs:label "Dimmer Controller Software" ;
 	rdfs:comment "<div><p> Input commands (events):</p><ul> <li> up-long → increase brightness </li> <li> down-long → decrease brightness </li> <li> release → stop dimming, keep brightness </li> <li> up-short → switch to maximum </li> <li> down-short → switch to minimum </li> <li> inappropriate commands are ignored (e.g. up-long when maximum is set). </li> <li> set parameters </li></ul><p> Four parameters influence the behavior of the particular device:</p><ul> <li> minimum value (default: 0%) </li> <li> maximum value (default: 100%) </li> <li> ramp-up speed (default: 10% per sec) </li> <li> ramp-down speed (default: 10% per sec) </li></ul></div>" ;
-	dcterms:modified "2017-12-09T10:38:29+01:00" .
+	dcterms:modified "2017-12-09T10:38:29+01:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5b2f95ec0000bca8013709bfa81d701f
 	rdf:type FMC:Event ;
 	rdfs:label "Decreasing" ;
-	dcterms:modified "2017-06-19T20:13:28+02:00" .
+	dcterms:modified "2017-06-19T20:13:28+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-45450be80000c3a801414f280f146c71
 	rdf:type FMC:Event ;
 	rdfs:label "down-long!" ;
-	dcterms:modified "2017-06-19T20:13:29+02:00" .
+	dcterms:modified "2017-06-19T20:13:29+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-4536b0350000c3a801415986f8ea806a
 	rdf:type FMC:Event ;
 	rdfs:label "down-short!" ;
-	dcterms:modified "2017-06-19T20:13:30+02:00" .
+	dcterms:modified "2017-06-19T20:13:30+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5b149eab0000bca80137aad99b6eea7b
 	rdf:type FMC:Event ;
 	rdfs:label "Increasing" ;
-	dcterms:modified "2017-06-19T20:13:30+02:00" .
+	dcterms:modified "2017-06-19T20:13:30+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5b08ed8d0000bca8013719f554353b0e
 	rdf:type FMC:Event ;
 	rdfs:label "Intermediate" ;
-	dcterms:modified "2017-06-19T20:13:30+02:00" .
+	dcterms:modified "2017-06-19T20:13:30+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-453dfb670000c3a8014191107df4565e
 	rdf:type FMC:Event ;
 	rdfs:label "max-reached!" ;
-	dcterms:modified "2017-06-19T20:13:30+02:00" .
+	dcterms:modified "2017-06-19T20:13:30+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5b094f8a0000bca801374c798a6587ad
 	rdf:type FMC:Event ;
 	rdfs:label "Maximum" ;
-	dcterms:modified "2017-06-19T20:13:30+02:00" .
+	dcterms:modified "2017-06-19T20:13:30+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-45428b930000c3a80141e28b7d4b5ae5
 	rdf:type FMC:Event ;
 	rdfs:label "min-reached!" ;
-	dcterms:modified "2017-06-19T20:13:30+02:00" .
+	dcterms:modified "2017-06-19T20:13:30+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5b078fa50000bca80137f36ed05c43cb
 	rdf:type FMC:Event ;
 	rdfs:label "Minimum" ;
-	dcterms:modified "2017-06-19T20:13:31+02:00" .
+	dcterms:modified "2017-06-19T20:13:31+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-453facbb0000c3a80141c43d2fb4f5e2
 	rdf:type FMC:Event ;
 	rdfs:label "released!" ;
-	dcterms:modified "2017-06-19T20:13:31+02:00" .
+	dcterms:modified "2017-06-19T20:13:31+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5b2d29070000bca801378a6c020cf8f5
 	rdf:type FMC:Actor ;
 	rdfs:label "Start-decreasing" ;
-	dcterms:modified "2017-06-19T20:13:19+02:00" .
+	dcterms:modified "2017-06-19T20:13:19+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5b1750f80000bca801373b2d143d7478
 	rdf:type FMC:Actor ;
 	rdfs:label "Start-increasing" ;
-	dcterms:modified "2017-06-19T20:13:19+02:00" .
+	dcterms:modified "2017-06-19T20:13:19+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5b2ddad80000bca80137c44d62ba97d8
 	rdf:type FMC:Actor ;
 	rdfs:label "Stop-decreasing" ;
-	dcterms:modified "2017-06-19T20:13:20+02:00" .
+	dcterms:modified "2017-06-19T20:13:20+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5b2449180000bca8013722c01c9d35a5
 	rdf:type FMC:Actor ;
 	rdfs:label "Stop-increasing" ;
-	dcterms:modified "2017-06-19T20:13:20+02:00" .
+	dcterms:modified "2017-06-19T20:13:20+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5b0839b90000bca801376dcca41ca7d0
 	rdf:type FMC:Actor ;
 	rdfs:label "Switch-off" ;
 	rdfs:comment "<div><p>Switch to programmed min-value.</p> </div>" ;
-	dcterms:modified "2017-06-19T20:13:20+02:00" .
+	dcterms:modified "2017-06-19T20:13:20+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5b07e6aa0000bca8013797aad9be69ae
 	rdf:type FMC:Actor ;
 	rdfs:label "Switch-on" ;
 	rdfs:comment "<div><p>Switch to programmed max-value.</p> </div>" ;
-	dcterms:modified "2017-06-19T20:13:21+02:00" .
+	dcterms:modified "2017-06-19T20:13:21+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-4543fe900000c3a80141f5253ff13c35
 	rdf:type FMC:Event ;
 	rdfs:label "up-long!" ;
-	dcterms:modified "2017-06-19T20:13:32+02:00" .
+	dcterms:modified "2017-06-19T20:13:32+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-453d34af0000c3a80141918f84641161
 	rdf:type FMC:Event ;
 	rdfs:label "up-short!" ;
-	dcterms:modified "2017-06-19T20:13:33+02:00" .
+	dcterms:modified "2017-06-19T20:13:33+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5a808e2a0000bca80137bfd74268a84a
 	rdf:type FMC:Actor ;
 	rdfs:label "Dimmer Electronics" ;
 	rdfs:comment "<div><p>The Dimmer Electronics is a printed circuit board with low-power micro-processor, memory, binary as well as analog I/O signals and a power stage supporting the specified electric load.</p></div>" ;
 	SpecIF:Diagram "<div><p class=\"inline-label\">Diagramm:</p><p><object data=\"files_and_images/Schaltplan.gif\" name=\"Schaltplan.gif\" type=\"image/gif\"/></p> </div>" ;
-	dcterms:modified "2017-06-19T20:13:17+02:00" .
+	dcterms:modified "2017-06-19T20:13:17+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5a844d820000bca8013750b9a0410b6b
 	rdf:type FMC:State ;
 	rdfs:label "Electro-Magnetic Resistance" ;
 	rdfs:comment "<div><p>Electromagnetic characteristics, especially EM-shielding.</p> </div>" ;
-	dcterms:modified "2017-06-19T20:13:23+02:00" .
+	dcterms:modified "2017-06-19T20:13:23+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5a8009a00000bca80137ef95bc3f643f
 	rdf:type FMC:Actor ;
 	rdfs:label "Housing" ;
 	SpecIF:Diagram "<div> <p class=\"inline-label\">Diagramm:</p><p><object data=\"files_and_images/UP-Dose.png\" name=\"UP-Dose.png\" type=\"image/png\"/></p> </div>" ;
-	dcterms:modified "2017-06-19T20:13:18+02:00" .
+	dcterms:modified "2017-06-19T20:13:18+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5a87083e0000bca801379bb412523737
 	rdf:type FMC:State ;
 	rdfs:label "I/O Pins" ;
 	rdfs:comment "<div><p>per input and output signal:</p> <ul> <li>hardware-address</li> <li>number of significant bits</li></ul> </div>" ;
-	dcterms:modified "2017-06-19T20:13:23+02:00" .
+	dcterms:modified "2017-06-19T20:13:23+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5a82ec6f0000bca801372ef053a71bdf
 	rdf:type FMC:State ;
 	rdfs:label "Physical Space" ;
 	rdfs:comment "<div><p>Effective 3D interior space and mounting for electronics.</p> </div>" ;
-	dcterms:modified "2017-06-19T20:13:25+02:00" .
+	dcterms:modified "2017-06-19T20:13:25+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5a86b8980000bca80137ca6fde1a125e
 	rdf:type FMC:State ;
 	rdfs:label "Processor RAM ROM" ;
 	rdfs:comment "<div><p>EPROM-Size</p> <p>RAM-Size</p> <p>Processor type with instruction set and speed (MIPS)</p> </div>" ;
-	dcterms:modified "2017-06-19T20:13:25+02:00" .
+	dcterms:modified "2017-06-19T20:13:25+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5a820a3c0000bca801378c9093fb7d80
 	rdf:type FMC:State ;
 	rdfs:label "Thermal Resistance" ;
 	rdfs:comment "<div><p> Thermal resistance and thermal capacity of the [[housing]].</p></div>" ;
-	dcterms:modified "2017-06-19T20:13:27+02:00" .
+	dcterms:modified "2017-06-19T20:13:27+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5a71c4800000bca80137f2aaa7b63000
 	rdf:type FMC:Actor ;
 	rdfs:label "Double Button" ;
 	rdfs:comment "<div><p>The Double Button (a sensor unit) is a versatile all-mechanical unit used for multiple purposes. The mechanical position is transferred with a rod per button to the next unit where it is converted to an electrical signal.</p> </div>" ;
-	dcterms:modified "2017-06-19T20:13:17+02:00" .
+	dcterms:modified "2017-06-19T20:13:17+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-606f16ac0000bca801373587fda932b3
 	rdf:type FMC:Actor ;
 	rdfs:label "Double-Button Observer Software" ;
 	rdfs:comment "<div><p>This is an observer of the double-button sensor. It distinguishes short and long pressing in the 'up' and 'down' directions. A discriminator may send five events:</p> <ul> <li>up-short</li> <li>down-short</li> <li>up-long</li> <li>down-long and </li> <li>release.</li> </ul><p>The events are interpreted and actions are initiated accordingly by the target actuator unit. The double button sensor and the observer have no notion of the underlying function.</p> </div>" ;
-	dcterms:modified "2017-06-19T20:13:18+02:00" .
+	dcterms:modified "2017-06-19T20:13:18+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-45a236e00000c3a801410f6503287e16
 	rdf:type FMC:Actor ;
 	rdfs:label "Wait for Activation" ;
 	rdfs:comment "<div><p>The kind of activation is determined:</p> <ul> <li>Up- or Down-Button</li> <li>Short or long activation: 'Short' is &lt; 0,4 sec.</li> <li>Do only wait until the distinction between 'short' or 'long' can be made!</li></ul> </div>" ;
-	dcterms:modified "2017-06-19T20:13:21+02:00" .
+	dcterms:modified "2017-06-19T20:13:21+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-45a3b13c0000c3a801415e97f5bc29d1
 	rdf:type FMC:Actor ;
 	rdfs:label "Wait for Deactivation" ;
-	dcterms:modified "2017-06-19T20:13:21+02:00" .
+	dcterms:modified "2017-06-19T20:13:21+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5a4dd77b0000bca8013736c6912ad291
 	rdf:type FMC:State ;
 	rdfs:label "down" ;
 	rdfs:comment "<div><p>The button to drive down the dimmer, shading or similar devices.</p> </div>" ;
-	dcterms:modified "2017-06-19T20:13:22+02:00" .
+	dcterms:modified "2017-06-19T20:13:22+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5a99c89c0000bca801375d44cf9a50ca
 	rdf:type FMC:State ;
 	rdfs:label "Ground Cable" ;
 	rdfs:comment "<div><ul> <li>Cable-diameter</li> <li>Wire-diameter</li> <li>Max-current</li></ul> </div>" ;
-	dcterms:modified "2017-06-19T20:13:23+02:00" .
+	dcterms:modified "2017-06-19T20:13:23+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5a9929510000bca80137d23c81f1ca54
 	rdf:type FMC:State ;
 	rdfs:label "Load Cable" ;
 	rdfs:comment "<div><ul> <li>Cable-diameter</li> <li>Wire-diameter</li> <li>Max-current</li></ul> </div>" ;
-	dcterms:modified "2017-06-19T20:13:24+02:00" .
+	dcterms:modified "2017-06-19T20:13:24+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5c29fb8e0000bca80137eb9734c99bfd
 	rdf:type FMC:State ;
 	rdfs:label "Neutral Cable" ;
 	rdfs:comment "<div><ul> <li>Cable-diameter</li> <li>Wire-diameter</li> <li>Max-current</li></ul> </div>" ;
-	dcterms:modified "2017-06-19T20:13:24+02:00" .
+	dcterms:modified "2017-06-19T20:13:24+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5a77385f0000bca80137e1c7dc0b1721
 	rdf:type FMC:State ;
 	rdfs:label "Spring Clips" ;
 	rdfs:comment "<div><p>Spring clips for mechanical connection.</p> </div>" ;
-	dcterms:modified "2017-06-19T20:13:26+02:00" .
+	dcterms:modified "2017-06-19T20:13:26+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5a9888810000bca801375410ce1cc142
 	rdf:type FMC:State ;
 	rdfs:label "Supply Cable" ;
 	rdfs:comment "<div><ul> <li>Cable-diameter</li> <li>Wire-diameter</li> <li>Max-current</li></ul> </div>" ;
-	dcterms:modified "2017-06-19T20:13:27+02:00" .
+	dcterms:modified "2017-06-19T20:13:27+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5a4d6dee0000bca80137c1caf2f42349
 	rdf:type FMC:State ;
 	rdfs:label "up" ;
 	rdfs:comment "<div><p>The button to drive up the dimmer, shading or similar devices.</p> </div>" ;
-	dcterms:modified "2017-06-19T20:13:28+02:00" .
+	dcterms:modified "2017-06-19T20:13:28+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5a9b7a9b0000bca80137d768644696b7
 	rdf:type FMC:Actor ;
 	rdfs:label "Wireless Module" ;
 	rdfs:comment "<div><p>Receives control commands via radio signal or the mechanical position of a mounted sensor unit. Sends electrical control signals to the mounted actuator module.</p> </div>" ;
-	dcterms:modified "2017-06-19T20:13:22+02:00" .
+	dcterms:modified "2017-06-19T20:13:22+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-463289cd0000c3a80141be3fc417034a
 	rdf:type FMC:State ;
 	rdfs:label "Wireless Network" ;
-	dcterms:modified "2017-06-19T20:13:28+02:00" .
+	dcterms:modified "2017-06-19T20:13:28+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5a4c80c20000bca8013753b6999a4da8
 	rdf:type FMC:State ;
 	rdfs:label "Flush-mounted Shading Control" ;
-	dcterms:modified "2017-06-19T20:13:23+02:00" .
+	dcterms:modified "2017-06-19T20:13:23+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5a4cfa830000bca801370d837f761f3e
 	rdf:type FMC:State ;
 	rdfs:label "straighten" ;
 	rdfs:comment "<div><p>The button to straighten the shading elements.</p> </div>" ;
-	dcterms:modified "2017-06-19T20:13:27+02:00" .
+	dcterms:modified "2017-06-19T20:13:27+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5a4d2bd00000bca80137a3f233cdffeb
 	rdf:type FMC:State ;
 	rdfs:label "tilt" ;
 	rdfs:comment "<div><p>The button to tilt the shading elements.</p> </div>" ;
-	dcterms:modified "2017-06-19T20:13:28+02:00" .
+	dcterms:modified "2017-06-19T20:13:28+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5a52b50c0000bca801377e3d15255f98
 	rdf:type FMC:State ;
 	rdfs:label "Intelligent Shading Drive" ;
 	rdfs:comment "<div><p>An intelligent shading actuator with 2 drives for up/down straight/tilt motion. The unit comprises the control unit and the motors.</p> </div>" ;
-	dcterms:modified "2017-06-19T20:13:24+02:00" .
+	dcterms:modified "2017-06-19T20:13:24+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5bcf35cf0000bca8013776d68023612a
 	rdf:type FMC:State ;
 	rdfs:label "M" ;
 	rdfs:comment "<div><p>Actuator Motor 230V.</p> </div>" ;
-	dcterms:modified "2017-06-19T20:13:24+02:00" .
+	dcterms:modified "2017-06-19T20:13:24+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5a51dd920000bca8013770a4395c83fc
 	rdf:type FMC:State ;
 	rdfs:label "Remote Control" ;
-	dcterms:modified "2017-06-19T20:13:26+02:00" .
+	dcterms:modified "2017-06-19T20:13:26+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5a50d5b60000bca8013781532547ce93
 	rdf:type FMC:Actor ;
 	rdfs:label "SmartHome Controller" ;
 	rdfs:comment "<div><p>The controller </p> <ul> <li>interconnects locally distributed sensors and actuators, </li> <li>coordinates different actuators where appropriate and </li> <li>performes automatic functions, such as switching external lamps dependend on ambient light.</li></ul> </div>" ;
-	dcterms:modified "2017-06-19T20:13:19+02:00" .
+	dcterms:modified "2017-06-19T20:13:19+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-5a47935a0000bca801377c17f8cb25b0
 	rdf:type FMC:Actor ;
 	rdfs:label "User" ;
-	dcterms:modified "2017-06-19T20:13:21+02:00" .
+	dcterms:modified "2017-06-19T20:13:21+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-608177820000bca801379179ebf3b6aa
 	rdf:type FMC:Actor ;
 	rdfs:label "Briefly press Down-button" ;
 	rdfs:comment "<div><p>Press down-button &lt;400 ms.</p> </div>" ;
-	dcterms:modified "2017-06-19T20:13:16+02:00" .
+	dcterms:modified "2017-06-19T20:13:16+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-611366530000bca80137a97f194e96a3
 	rdf:type FMC:Actor ;
 	rdfs:label "Briefly press Up-button" ;
 	rdfs:comment "<div><p>Press up-button &lt;400 ms.</p> </div>" ;
-	dcterms:modified "2017-06-19T20:13:16+02:00" .
+	dcterms:modified "2017-06-19T20:13:16+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-453862540000c3a801419d91bef48cfd
 	rdf:type FMC:Event ;
 	rdfs:label "Dim-down!" ;
-	dcterms:modified "2017-06-19T20:13:29+02:00" .
+	dcterms:modified "2017-06-19T20:13:29+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-45387c0b0000c3a801410aa03f6b9be4
 	rdf:type FMC:Event ;
 	rdfs:label "Dim-up!" ;
-	dcterms:modified "2017-06-19T20:13:29+02:00" .
+	dcterms:modified "2017-06-19T20:13:29+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-4538920b0000c3a801415c67e334b8a1
 	rdf:type FMC:Event ;
 	rdfs:label "Done!" ;
-	dcterms:modified "2017-06-19T20:13:29+02:00" .
+	dcterms:modified "2017-06-19T20:13:29+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-608239830000bca801373690c7d2af0f
 	rdf:type FMC:Actor ;
 	rdfs:label "Press and hold Down-button" ;
 	rdfs:comment "<div><p>Press down-button &gt;400 ms.</p> </div>" ;
-	dcterms:modified "2017-06-19T20:13:18+02:00" .
+	dcterms:modified "2017-06-19T20:13:18+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-610b07100000bca80137c10f96c46247
 	rdf:type FMC:Actor ;
 	rdfs:label "Press and hold Up-button" ;
 	rdfs:comment "<div><p>Press up-button &gt;400 ms.</p> </div>" ;
-	dcterms:modified "2017-06-19T20:13:18+02:00" .
+	dcterms:modified "2017-06-19T20:13:18+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-610e0b010000bca80137ac40800bb1b8
 	rdf:type FMC:Actor ;
 	rdfs:label "Release button" ;
-	dcterms:modified "2017-06-19T20:13:18+02:00" .
+	dcterms:modified "2017-06-19T20:13:18+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-459b92580000c3a80141cb4acb521ab1
 	rdf:type FMC:Event ;
 	rdfs:label "Stop dimming!" ;
-	dcterms:modified "2017-06-19T20:13:31+02:00" .
+	dcterms:modified "2017-06-19T20:13:31+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-45384cd10000c3a80141c1f85d7c26e6
 	rdf:type FMC:Event ;
 	rdfs:label "Switch-off!" ;
-	dcterms:modified "2017-06-19T20:13:32+02:00" .
+	dcterms:modified "2017-06-19T20:13:32+02:00" ;
+	dcterms:creator "od" .
 
 d:MEl-607f13b50000bca80137ba95f11856ab
 	rdf:type FMC:Event ;
 	rdfs:label "Switch-on!" ;
-	dcterms:modified "2017-06-19T20:13:32+02:00" .
-
-d:Fld-ef47e6970000c3a80139dc747c5df319
-	rdf:type SpecIF:Heading ;
-	rdfs:label "Open Issues" ;
-	dcterms:modified "2017-06-19T20:13:02+02:00" .
-
-d:Fld-ee29463e0000c3a80139627bbced50ae
-	rdf:type SpecIF:Heading ;
-	rdfs:label "Mechanical" ;
-	dcterms:modified "2017-06-19T20:13:14+02:00" .
+	dcterms:modified "2017-06-19T20:13:32+02:00" ;
+	dcterms:creator "od" .
 
 d:Iss-ee2abb630000c3a8013987a750219659
 	rdf:type SpecIF:Issue ;
@@ -1639,12 +1715,8 @@ d:Iss-ee2abb630000c3a8013987a750219659
 	o:PC_IssueStatus oslc_cm:Inprogress ;
 	SpecIF:Priority SpecIF:priorityLow ;
 	SpecIF:DueDate "2012-09-30T12:00:00+02:00" ;
-	dcterms:modified "2017-06-19T20:13:15+02:00" .
-
-d:Fld-ee2a15040000c3a80139d27de6704f15
-	rdf:type SpecIF:Heading ;
-	rdfs:label "Software" ;
-	dcterms:modified "2017-06-19T20:13:15+02:00" .
+	dcterms:modified "2017-06-19T20:13:15+02:00" ;
+	dcterms:creator "od" .
 
 d:Iss-eee2d4e00000c3a801394148dcc58a52
 	rdf:type SpecIF:Issue ;
@@ -1655,13 +1727,8 @@ d:Iss-eee2d4e00000c3a801394148dcc58a52
 	SpecIF:Priority SpecIF:priorityMedium ;
 	SpecIF:Responsible "Vorname Nachname" ;
 	SpecIF:DueDate "2012-09-30T12:00:00+02:00" ;
-	dcterms:modified "2017-06-19T20:13:15+02:00" .
-
-d:FolderGlossary-8001804519
-	rdf:type SpecIF:Heading ;
-	rdfs:label "Model Elements (Glossary)" ;
-	dcterms:type "Model Elements (Glossary)" ;
-	dcterms:modified "2025-09-23T16:55:37.980Z" .
+	dcterms:modified "2017-06-19T20:13:15+02:00" ;
+	dcterms:creator "od" .
 
 #################################################################
 # Relationships
@@ -1920,1736 +1987,1173 @@ d:RSat-MEl-5a85347c0000bca80137ad485c7cd330-Req-d1c895230000c3a80150f8afd049f738
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
 	oslc_rm:satisfies-hasTarget d:Req-d1c895230000c3a80150f8afd049f738 ;
-	dcterms:modified "2017-06-19T20:13:49+02:00" .
+	dcterms:modified "2017-06-19T20:13:49+02:00" ;
+	dcterms:creator "od" .
 
 d:R-RpgwxaijQtHjsE71uYHiTJyJW79
 	rdf:type SpecIF:dependsOn ;
 	SpecIF:dependsOn-hasSource d:Req-d1c895230000c3a80150f8afd049f738 ;
 	SpecIF:dependsOn-hasTarget d:Req-d1cd7f370000c3a8015095e6ee21aab7 ;
-	dcterms:modified "2017-06-19T20:13:49+02:00" .
+	dcterms:modified "2017-06-19T20:13:49+02:00" ;
+	dcterms:creator "od" .
 
 d:R-tA5fx5sgbN3nJReiqqzE6PvBhbt
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
 	oslc_rm:satisfies-hasTarget d:Req-d1c895230000c3a80150f8afd049f738 ;
-	dcterms:modified "2017-06-19T20:13:50+02:00" .
+	dcterms:modified "2017-06-19T20:13:50+02:00" ;
+	dcterms:creator "od" .
 
 d:R-2hkTtbuV2BjIYernvDaRZXDFV1Q
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
 	oslc_rm:satisfies-hasTarget d:Req-d1c895230000c3a80150f8afd049f738 ;
-	dcterms:modified "2017-06-19T20:13:50+02:00" .
+	dcterms:modified "2017-06-19T20:13:50+02:00" ;
+	dcterms:creator "od" .
 
 d:RSat-MEl-5a85347c0000bca80137ad485c7cd330-Req-d1d42a6a0000c3a8015091ec8d149b93
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
 	oslc_rm:satisfies-hasTarget d:Req-d1d42a6a0000c3a8015091ec8d149b93 ;
-	dcterms:modified "2017-06-19T20:13:50+02:00" .
+	dcterms:modified "2017-06-19T20:13:50+02:00" ;
+	dcterms:creator "od" .
 
 d:R-Ch6fs9eKiVNhSacQ72yIBhF0Q3W
 	rdf:type SpecIF:refersTo ;
 	SpecIF:refersTo-hasSource d:Iss-ee2abb630000c3a8013987a750219659 ;
 	SpecIF:refersTo-hasTarget d:Req-d1d42a6a0000c3a8015091ec8d149b93 ;
-	dcterms:modified "2018-11-15T15:46:00+01:00" .
+	dcterms:modified "2018-11-15T15:46:00+01:00" ;
+	dcterms:creator "od" .
 
 d:RSat-MEl-5a85347c0000bca80137ad485c7cd330-Req-d1cd7f370000c3a8015095e6ee21aab7
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
 	oslc_rm:satisfies-hasTarget d:Req-d1cd7f370000c3a8015095e6ee21aab7 ;
-	dcterms:modified "2017-06-19T20:13:51+02:00" .
+	dcterms:modified "2017-06-19T20:13:51+02:00" ;
+	dcterms:creator "od" .
 
 d:RSat-MEl-5a71c4800000bca80137f2aaa7b63000-Req-5ba3512b0000bca801371cc0617eb4c1
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:MEl-5a71c4800000bca80137f2aaa7b63000 ;
 	oslc_rm:satisfies-hasTarget d:Req-5ba3512b0000bca801371cc0617eb4c1 ;
-	dcterms:modified "2017-06-19T20:13:51+02:00" .
+	dcterms:modified "2017-06-19T20:13:51+02:00" ;
+	dcterms:creator "od" .
 
 d:RSat-MEl-5a808e2a0000bca80137bfd74268a84a-Req-5b8fbb300000bca80137c73e3ce4c737
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
 	oslc_rm:satisfies-hasTarget d:Req-5b8fbb300000bca80137c73e3ce4c737 ;
-	dcterms:modified "2017-06-19T20:13:51+02:00" .
+	dcterms:modified "2017-06-19T20:13:51+02:00" ;
+	dcterms:creator "od" .
 
 d:RSat-MEl-5a47935a0000bca801377c17f8cb25b0-Req-5b944fc70000bca8013763f44fdc0e03
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
 	oslc_rm:satisfies-hasTarget d:Req-5b944fc70000bca8013763f44fdc0e03 ;
-	dcterms:modified "2017-06-19T20:13:51+02:00" .
+	dcterms:modified "2017-06-19T20:13:51+02:00" ;
+	dcterms:creator "od" .
 
 d:RCnc-Iss-ee2abb630000c3a8013987a750219659-Req-5b944fc70000bca8013763f44fdc0e03
 	rdf:type SpecIF:refersTo ;
 	SpecIF:refersTo-hasSource d:Iss-ee2abb630000c3a8013987a750219659 ;
 	SpecIF:refersTo-hasTarget d:Req-5b944fc70000bca8013763f44fdc0e03 ;
-	dcterms:modified "2017-06-19T20:13:51+02:00" .
+	dcterms:modified "2017-06-19T20:13:51+02:00" ;
+	dcterms:creator "od" .
 
 d:RSat-MEl-5a752ccc0000bca80137479a2e8bab30-Req-5ba140d60000bca801372b09f9888eca
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
 	oslc_rm:satisfies-hasTarget d:Req-5ba140d60000bca801372b09f9888eca ;
-	dcterms:modified "2017-06-19T20:13:51+02:00" .
+	dcterms:modified "2017-06-19T20:13:51+02:00" ;
+	dcterms:creator "od" .
 
 d:RSat-MEl-5a9b7a9b0000bca80137d768644696b7-Req-5ba140d60000bca801372b09f9888eca
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:MEl-5a9b7a9b0000bca80137d768644696b7 ;
 	oslc_rm:satisfies-hasTarget d:Req-5ba140d60000bca801372b09f9888eca ;
-	dcterms:modified "2017-06-19T20:13:52+02:00" .
+	dcterms:modified "2017-06-19T20:13:52+02:00" ;
+	dcterms:creator "od" .
 
 d:RSat-MEl-803fd3750000c3a8013cf1fdb3b26d33-Req-ee452cf20000c3a8014035290669304d
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:MEl-803fd3750000c3a8013cf1fdb3b26d33 ;
 	oslc_rm:satisfies-hasTarget d:Req-ee452cf20000c3a8014035290669304d ;
-	dcterms:modified "2017-06-19T20:13:52+02:00" .
+	dcterms:modified "2017-06-19T20:13:52+02:00" ;
+	dcterms:creator "od" .
 
 d:R-UZD4SQ8jYghL2Tsb4tZjoXDSYoM
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
 	oslc_rm:satisfies-hasTarget d:Req-ee452cf20000c3a8014035290669304d ;
-	dcterms:modified "2017-06-19T20:13:52+02:00" .
+	dcterms:modified "2017-06-19T20:13:52+02:00" ;
+	dcterms:creator "od" .
 
 d:RSat-MEl-5a489c300000bca80137ee1373c16844-Req-ee43fc4c0000c3a8014063d42c77767f
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:MEl-5a489c300000bca80137ee1373c16844 ;
 	oslc_rm:satisfies-hasTarget d:Req-ee43fc4c0000c3a8014063d42c77767f ;
-	dcterms:modified "2017-06-19T20:13:52+02:00" .
+	dcterms:modified "2017-06-19T20:13:52+02:00" ;
+	dcterms:creator "od" .
 
 d:RSat-MEl-5a4c80c20000bca8013753b6999a4da8-Req-ee43fc4c0000c3a8014063d42c77767f
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:MEl-5a4c80c20000bca8013753b6999a4da8 ;
 	oslc_rm:satisfies-hasTarget d:Req-ee43fc4c0000c3a8014063d42c77767f ;
-	dcterms:modified "2017-06-19T20:13:52+02:00" .
+	dcterms:modified "2017-06-19T20:13:52+02:00" ;
+	dcterms:creator "od" .
 
 d:RSat-MEl-5a52b50c0000bca801377e3d15255f98-Req-ee43fc4c0000c3a8014063d42c77767f
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:MEl-5a52b50c0000bca801377e3d15255f98 ;
 	oslc_rm:satisfies-hasTarget d:Req-ee43fc4c0000c3a8014063d42c77767f ;
-	dcterms:modified "2017-06-19T20:13:53+02:00" .
+	dcterms:modified "2017-06-19T20:13:53+02:00" ;
+	dcterms:creator "od" .
 
 d:RSat-MEl-5a50d5b60000bca8013781532547ce93-Req-ee43fc4c0000c3a8014063d42c77767f
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:MEl-5a50d5b60000bca8013781532547ce93 ;
 	oslc_rm:satisfies-hasTarget d:Req-ee43fc4c0000c3a8014063d42c77767f ;
-	dcterms:modified "2017-06-19T20:13:53+02:00" .
+	dcterms:modified "2017-06-19T20:13:53+02:00" ;
+	dcterms:creator "od" .
 
 d:RDep-Req-ee43fc4c0000c3a8014063d42c77767f-Req-5b9c950e0000bca801374f16615247b9
 	rdf:type SpecIF:dependsOn ;
 	SpecIF:dependsOn-hasSource d:Req-ee43fc4c0000c3a8014063d42c77767f ;
 	SpecIF:dependsOn-hasTarget d:Req-5b9c950e0000bca801374f16615247b9 ;
-	dcterms:modified "2017-06-19T20:13:53+02:00" .
+	dcterms:modified "2017-06-19T20:13:53+02:00" ;
+	dcterms:creator "od" .
 
 d:RSat-MEl-5a808e2a0000bca80137bfd74268a84a-Req-5b9124bc0000bca80137fa2ce86f5eca
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
 	oslc_rm:satisfies-hasTarget d:Req-5b9124bc0000bca80137fa2ce86f5eca ;
-	dcterms:modified "2017-06-19T20:13:53+02:00" .
+	dcterms:modified "2017-06-19T20:13:53+02:00" ;
+	dcterms:creator "od" .
 
 d:RSat-MEl-5a52b50c0000bca801377e3d15255f98-Req-5b9124bc0000bca80137fa2ce86f5eca
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:MEl-5a52b50c0000bca801377e3d15255f98 ;
 	oslc_rm:satisfies-hasTarget d:Req-5b9124bc0000bca80137fa2ce86f5eca ;
-	dcterms:modified "2017-06-19T20:13:54+02:00" .
+	dcterms:modified "2017-06-19T20:13:54+02:00" ;
+	dcterms:creator "od" .
 
 d:RSat-MEl-5a808e2a0000bca80137bfd74268a84a-Req-5b9e68530000bca801371362c49d2d08
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
 	oslc_rm:satisfies-hasTarget d:Req-5b9e68530000bca801371362c49d2d08 ;
-	dcterms:modified "2017-06-19T20:13:54+02:00" .
+	dcterms:modified "2017-06-19T20:13:54+02:00" ;
+	dcterms:creator "od" .
 
 d:RSat-MEl-5a52b50c0000bca801377e3d15255f98-Req-5b9e68530000bca801371362c49d2d08
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:MEl-5a52b50c0000bca801377e3d15255f98 ;
 	oslc_rm:satisfies-hasTarget d:Req-5b9e68530000bca801371362c49d2d08 ;
-	dcterms:modified "2017-06-19T20:13:54+02:00" .
+	dcterms:modified "2017-06-19T20:13:54+02:00" ;
+	dcterms:creator "od" .
 
 d:RSat-MEl-803fd3750000c3a8013cf1fdb3b26d33-Req-eea1cd500000c3a80140fe00109eb7f4
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:MEl-803fd3750000c3a8013cf1fdb3b26d33 ;
 	oslc_rm:satisfies-hasTarget d:Req-eea1cd500000c3a80140fe00109eb7f4 ;
-	dcterms:modified "2017-06-19T20:13:54+02:00" .
+	dcterms:modified "2017-06-19T20:13:54+02:00" ;
+	dcterms:creator "od" .
 
 d:R-lELLVnNbbagfomwYyTBgGfXSalj
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
 	oslc_rm:satisfies-hasTarget d:Req-eea1cd500000c3a80140fe00109eb7f4 ;
-	dcterms:modified "2017-06-19T20:13:54+02:00" .
+	dcterms:modified "2017-06-19T20:13:54+02:00" ;
+	dcterms:creator "od" .
 
 d:RSat-MEl-5a489c300000bca80137ee1373c16844-Req-5b95fae40000bca801372becc933682d
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:MEl-5a489c300000bca80137ee1373c16844 ;
 	oslc_rm:satisfies-hasTarget d:Req-5b95fae40000bca801372becc933682d ;
-	dcterms:modified "2017-06-19T20:13:54+02:00" .
+	dcterms:modified "2017-06-19T20:13:54+02:00" ;
+	dcterms:creator "od" .
 
 d:RSat-MEl-5a4c80c20000bca8013753b6999a4da8-Req-5b95fae40000bca801372becc933682d
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:MEl-5a4c80c20000bca8013753b6999a4da8 ;
 	oslc_rm:satisfies-hasTarget d:Req-5b95fae40000bca801372becc933682d ;
-	dcterms:modified "2017-06-19T20:13:55+02:00" .
+	dcterms:modified "2017-06-19T20:13:55+02:00" ;
+	dcterms:creator "od" .
 
 d:RSat-MEl-5a489c300000bca80137ee1373c16844-Req-5b9ab8a50000bca801377ad0be3bbc89
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:MEl-5a489c300000bca80137ee1373c16844 ;
 	oslc_rm:satisfies-hasTarget d:Req-5b9ab8a50000bca801377ad0be3bbc89 ;
-	dcterms:modified "2017-06-19T20:13:55+02:00" .
+	dcterms:modified "2017-06-19T20:13:55+02:00" ;
+	dcterms:creator "od" .
 
 d:RSat-MEl-5a52b50c0000bca801377e3d15255f98-Req-5b9ab8a50000bca801377ad0be3bbc89
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:MEl-5a52b50c0000bca801377e3d15255f98 ;
 	oslc_rm:satisfies-hasTarget d:Req-5b9ab8a50000bca801377ad0be3bbc89 ;
-	dcterms:modified "2017-06-19T20:13:55+02:00" .
+	dcterms:modified "2017-06-19T20:13:55+02:00" ;
+	dcterms:creator "od" .
 
 d:R-NJ2iOLwt4CEpcf8IidN1z0P4d0m
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
 	oslc_rm:satisfies-hasTarget d:Req-5b9ab8a50000bca801377ad0be3bbc89 ;
-	dcterms:modified "2017-06-19T20:13:55+02:00" .
+	dcterms:modified "2017-06-19T20:13:55+02:00" ;
+	dcterms:creator "od" .
 
 d:RSat-MEl-5a808e2a0000bca80137bfd74268a84a-Req-728c69c80018b1a8014b974542c36edc
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
 	oslc_rm:satisfies-hasTarget d:Req-728c69c80018b1a8014b974542c36edc ;
-	dcterms:modified "2017-06-19T20:13:55+02:00" .
+	dcterms:modified "2017-06-19T20:13:55+02:00" ;
+	dcterms:creator "od" .
 
 d:RSat-MEl-5a85347c0000bca80137ad485c7cd330-Req-5b9c950e0000bca801374f16615247b9
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
 	oslc_rm:satisfies-hasTarget d:Req-5b9c950e0000bca801374f16615247b9 ;
-	dcterms:modified "2017-06-19T20:13:55+02:00" .
+	dcterms:modified "2017-06-19T20:13:55+02:00" ;
+	dcterms:creator "od" .
 
 d:RWri-MEl-5a76365c0000bca8013776e91afd1e8e-MEl-5a77385f0000bca80137e1c7dc0b1721
 	rdf:type SpecIF:writes ;
 	SpecIF:writes-hasSource d:MEl-5a76365c0000bca8013776e91afd1e8e ;
 	SpecIF:writes-hasTarget d:MEl-5a77385f0000bca80137e1c7dc0b1721 ;
-	dcterms:modified "2017-06-19T20:13:56+02:00" .
+	dcterms:modified "2017-06-19T20:13:56+02:00" ;
+	dcterms:creator "od" .
 
 d:RRea-MEl-5a76365c0000bca8013776e91afd1e8e-MEl-5a77385f0000bca80137e1c7dc0b1721
 	rdf:type SpecIF:reads ;
 	SpecIF:reads-hasSource d:MEl-5a76365c0000bca8013776e91afd1e8e ;
 	SpecIF:reads-hasTarget d:MEl-5a77385f0000bca80137e1c7dc0b1721 ;
-	dcterms:modified "2017-06-19T20:13:57+02:00" .
+	dcterms:modified "2017-06-19T20:13:57+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a489c300000bca80137ee1373c16844-MEl-5a76365c0000bca8013776e91afd1e8e
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a489c300000bca80137ee1373c16844 ;
 	SpecIF:contains-hasTarget d:MEl-5a76365c0000bca8013776e91afd1e8e ;
-	dcterms:modified "2017-06-19T20:13:57+02:00" .
+	dcterms:modified "2017-06-19T20:13:57+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a47935a0000bca801377c17f8cb25b0-MEl-608177820000bca801379179ebf3b6aa
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
 	SpecIF:contains-hasTarget d:MEl-608177820000bca801379179ebf3b6aa ;
-	dcterms:modified "2017-06-19T20:13:57+02:00" .
+	dcterms:modified "2017-06-19T20:13:57+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a47935a0000bca801377c17f8cb25b0-MEl-611366530000bca80137a97f194e96a3
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
 	SpecIF:contains-hasTarget d:MEl-611366530000bca80137a97f194e96a3 ;
-	dcterms:modified "2017-06-19T20:13:57+02:00" .
+	dcterms:modified "2017-06-19T20:13:57+02:00" ;
+	dcterms:creator "od" .
 
 d:RRea-MEl-5bd6bd890000bca8013739588a3f43d6-MEl-5a489c300000bca80137ee1373c16844
 	rdf:type SpecIF:reads ;
 	SpecIF:reads-hasSource d:MEl-5bd6bd890000bca8013739588a3f43d6 ;
 	SpecIF:reads-hasTarget d:MEl-5a489c300000bca80137ee1373c16844 ;
-	dcterms:modified "2017-06-19T20:13:57+02:00" .
+	dcterms:modified "2017-06-19T20:13:57+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a85347c0000bca80137ad485c7cd330-MEl-45450be80000c3a801414f280f146c71
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
 	SpecIF:contains-hasTarget d:MEl-45450be80000c3a801414f280f146c71 ;
-	dcterms:modified "2017-06-19T20:13:57+02:00" .
+	dcterms:modified "2017-06-19T20:13:57+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a85347c0000bca80137ad485c7cd330-MEl-4536b0350000c3a801415986f8ea806a
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
 	SpecIF:contains-hasTarget d:MEl-4536b0350000c3a801415986f8ea806a ;
-	dcterms:modified "2017-06-19T20:13:57+02:00" .
+	dcterms:modified "2017-06-19T20:13:57+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a85347c0000bca80137ad485c7cd330-MEl-5b08ed8d0000bca8013719f554353b0e
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
 	SpecIF:contains-hasTarget d:MEl-5b08ed8d0000bca8013719f554353b0e ;
-	dcterms:modified "2017-06-19T20:13:58+02:00" .
+	dcterms:modified "2017-06-19T20:13:58+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a85347c0000bca80137ad485c7cd330-MEl-453dfb670000c3a8014191107df4565e
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
 	SpecIF:contains-hasTarget d:MEl-453dfb670000c3a8014191107df4565e ;
-	dcterms:modified "2017-06-19T20:13:58+02:00" .
+	dcterms:modified "2017-06-19T20:13:58+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a85347c0000bca80137ad485c7cd330-MEl-5b094f8a0000bca801374c798a6587ad
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
 	SpecIF:contains-hasTarget d:MEl-5b094f8a0000bca801374c798a6587ad ;
-	dcterms:modified "2017-06-19T20:13:58+02:00" .
+	dcterms:modified "2017-06-19T20:13:58+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a85347c0000bca80137ad485c7cd330-MEl-45428b930000c3a80141e28b7d4b5ae5
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
 	SpecIF:contains-hasTarget d:MEl-45428b930000c3a80141e28b7d4b5ae5 ;
-	dcterms:modified "2017-06-19T20:13:58+02:00" .
+	dcterms:modified "2017-06-19T20:13:58+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a85347c0000bca80137ad485c7cd330-MEl-5b078fa50000bca80137f36ed05c43cb
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
 	SpecIF:contains-hasTarget d:MEl-5b078fa50000bca80137f36ed05c43cb ;
-	dcterms:modified "2017-06-19T20:13:58+02:00" .
+	dcterms:modified "2017-06-19T20:13:58+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a85347c0000bca80137ad485c7cd330-MEl-453facbb0000c3a80141c43d2fb4f5e2
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
 	SpecIF:contains-hasTarget d:MEl-453facbb0000c3a80141c43d2fb4f5e2 ;
-	dcterms:modified "2017-06-19T20:13:58+02:00" .
+	dcterms:modified "2017-06-19T20:13:58+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a85347c0000bca80137ad485c7cd330-MEl-5b0839b90000bca801376dcca41ca7d0
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
 	SpecIF:contains-hasTarget d:MEl-5b0839b90000bca801376dcca41ca7d0 ;
-	dcterms:modified "2017-06-19T20:13:59+02:00" .
+	dcterms:modified "2017-06-19T20:13:59+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a85347c0000bca80137ad485c7cd330-MEl-5b07e6aa0000bca8013797aad9be69ae
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
 	SpecIF:contains-hasTarget d:MEl-5b07e6aa0000bca8013797aad9be69ae ;
-	dcterms:modified "2017-06-19T20:13:59+02:00" .
+	dcterms:modified "2017-06-19T20:13:59+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a85347c0000bca80137ad485c7cd330-MEl-4543fe900000c3a80141f5253ff13c35
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
 	SpecIF:contains-hasTarget d:MEl-4543fe900000c3a80141f5253ff13c35 ;
-	dcterms:modified "2017-06-19T20:13:59+02:00" .
+	dcterms:modified "2017-06-19T20:13:59+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a85347c0000bca80137ad485c7cd330-MEl-453d34af0000c3a80141918f84641161
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
 	SpecIF:contains-hasTarget d:MEl-453d34af0000c3a80141918f84641161 ;
-	dcterms:modified "2017-06-19T20:13:59+02:00" .
+	dcterms:modified "2017-06-19T20:13:59+02:00" ;
+	dcterms:creator "od" .
 
 d:RRea-MEl-5a85347c0000bca80137ad485c7cd330-MEl-5a87083e0000bca801379bb412523737
 	rdf:type SpecIF:reads ;
 	SpecIF:reads-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
 	SpecIF:reads-hasTarget d:MEl-5a87083e0000bca801379bb412523737 ;
-	dcterms:modified "2017-06-19T20:14:00+02:00" .
+	dcterms:modified "2017-06-19T20:14:00+02:00" ;
+	dcterms:creator "od" .
 
 d:RRea-MEl-5a85347c0000bca80137ad485c7cd330-MEl-5a86b8980000bca80137ca6fde1a125e
 	rdf:type SpecIF:reads ;
 	SpecIF:reads-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
 	SpecIF:reads-hasTarget d:MEl-5a86b8980000bca80137ca6fde1a125e ;
-	dcterms:modified "2017-06-19T20:14:00+02:00" .
+	dcterms:modified "2017-06-19T20:14:00+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a752ccc0000bca80137479a2e8bab30-MEl-5a85347c0000bca80137ad485c7cd330
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
 	SpecIF:contains-hasTarget d:MEl-5a85347c0000bca80137ad485c7cd330 ;
-	dcterms:modified "2017-06-19T20:14:00+02:00" .
+	dcterms:modified "2017-06-19T20:14:00+02:00" ;
+	dcterms:creator "od" .
 
 d:RWri-MEl-5a808e2a0000bca80137bfd74268a84a-MEl-5a99c89c0000bca801375d44cf9a50ca
 	rdf:type SpecIF:writes ;
 	SpecIF:writes-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
 	SpecIF:writes-hasTarget d:MEl-5a99c89c0000bca801375d44cf9a50ca ;
-	dcterms:modified "2017-06-19T20:14:00+02:00" .
+	dcterms:modified "2017-06-19T20:14:00+02:00" ;
+	dcterms:creator "od" .
 
 d:RRea-MEl-5a808e2a0000bca80137bfd74268a84a-MEl-5a99c89c0000bca801375d44cf9a50ca
 	rdf:type SpecIF:reads ;
 	SpecIF:reads-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
 	SpecIF:reads-hasTarget d:MEl-5a99c89c0000bca801375d44cf9a50ca ;
-	dcterms:modified "2017-06-19T20:14:00+02:00" .
+	dcterms:modified "2017-06-19T20:14:00+02:00" ;
+	dcterms:creator "od" .
 
 d:RWri-MEl-5a808e2a0000bca80137bfd74268a84a-MEl-5a9929510000bca80137d23c81f1ca54
 	rdf:type SpecIF:writes ;
 	SpecIF:writes-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
 	SpecIF:writes-hasTarget d:MEl-5a9929510000bca80137d23c81f1ca54 ;
-	dcterms:modified "2017-06-19T20:14:01+02:00" .
+	dcterms:modified "2017-06-19T20:14:01+02:00" ;
+	dcterms:creator "od" .
 
 d:RRea-MEl-5a808e2a0000bca80137bfd74268a84a-MEl-5a9929510000bca80137d23c81f1ca54
 	rdf:type SpecIF:reads ;
 	SpecIF:reads-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
 	SpecIF:reads-hasTarget d:MEl-5a9929510000bca80137d23c81f1ca54 ;
-	dcterms:modified "2017-06-19T20:14:01+02:00" .
+	dcterms:modified "2017-06-19T20:14:01+02:00" ;
+	dcterms:creator "od" .
 
 d:RWri-MEl-5a808e2a0000bca80137bfd74268a84a-MEl-5c29fb8e0000bca80137eb9734c99bfd
 	rdf:type SpecIF:writes ;
 	SpecIF:writes-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
 	SpecIF:writes-hasTarget d:MEl-5c29fb8e0000bca80137eb9734c99bfd ;
-	dcterms:modified "2017-06-19T20:14:01+02:00" .
+	dcterms:modified "2017-06-19T20:14:01+02:00" ;
+	dcterms:creator "od" .
 
 d:RRea-MEl-5a808e2a0000bca80137bfd74268a84a-MEl-5c29fb8e0000bca80137eb9734c99bfd
 	rdf:type SpecIF:reads ;
 	SpecIF:reads-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
 	SpecIF:reads-hasTarget d:MEl-5c29fb8e0000bca80137eb9734c99bfd ;
-	dcterms:modified "2017-06-19T20:14:01+02:00" .
+	dcterms:modified "2017-06-19T20:14:01+02:00" ;
+	dcterms:creator "od" .
 
 d:RWri-MEl-5a808e2a0000bca80137bfd74268a84a-MEl-5a9888810000bca801375410ce1cc142
 	rdf:type SpecIF:writes ;
 	SpecIF:writes-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
 	SpecIF:writes-hasTarget d:MEl-5a9888810000bca801375410ce1cc142 ;
-	dcterms:modified "2017-06-19T20:14:01+02:00" .
+	dcterms:modified "2017-06-19T20:14:01+02:00" ;
+	dcterms:creator "od" .
 
 d:RRea-MEl-5a808e2a0000bca80137bfd74268a84a-MEl-5a9888810000bca801375410ce1cc142
 	rdf:type SpecIF:reads ;
 	SpecIF:reads-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
 	SpecIF:reads-hasTarget d:MEl-5a9888810000bca801375410ce1cc142 ;
-	dcterms:modified "2017-06-19T20:14:02+02:00" .
+	dcterms:modified "2017-06-19T20:14:02+02:00" ;
+	dcterms:creator "od" .
 
 d:RWri-MEl-5a808e2a0000bca80137bfd74268a84a-MEl-5a86b8980000bca80137ca6fde1a125e
 	rdf:type SpecIF:writes ;
 	SpecIF:writes-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
 	SpecIF:writes-hasTarget d:MEl-5a86b8980000bca80137ca6fde1a125e ;
-	dcterms:modified "2017-06-19T20:14:02+02:00" .
+	dcterms:modified "2017-06-19T20:14:02+02:00" ;
+	dcterms:creator "od" .
 
 d:RWri-MEl-5a808e2a0000bca80137bfd74268a84a-MEl-5a87083e0000bca801379bb412523737
 	rdf:type SpecIF:writes ;
 	SpecIF:writes-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
 	SpecIF:writes-hasTarget d:MEl-5a87083e0000bca801379bb412523737 ;
-	dcterms:modified "2017-06-19T20:14:02+02:00" .
+	dcterms:modified "2017-06-19T20:14:02+02:00" ;
+	dcterms:creator "od" .
 
 d:RRea-MEl-5a808e2a0000bca80137bfd74268a84a-MEl-5a9ce0310000bca801378176dc4744e8
 	rdf:type SpecIF:reads ;
 	SpecIF:reads-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
 	SpecIF:reads-hasTarget d:MEl-5a9ce0310000bca801378176dc4744e8 ;
-	dcterms:modified "2017-06-19T20:14:02+02:00" .
+	dcterms:modified "2017-06-19T20:14:02+02:00" ;
+	dcterms:creator "od" .
 
 d:RRea-MEl-5a808e2a0000bca80137bfd74268a84a-MEl-5a820a3c0000bca801378c9093fb7d80
 	rdf:type SpecIF:reads ;
 	SpecIF:reads-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
 	SpecIF:reads-hasTarget d:MEl-5a820a3c0000bca801378c9093fb7d80 ;
-	dcterms:modified "2017-06-19T20:14:03+02:00" .
+	dcterms:modified "2017-06-19T20:14:03+02:00" ;
+	dcterms:creator "od" .
 
 d:RRea-MEl-5a808e2a0000bca80137bfd74268a84a-MEl-5a844d820000bca8013750b9a0410b6b
 	rdf:type SpecIF:reads ;
 	SpecIF:reads-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
 	SpecIF:reads-hasTarget d:MEl-5a844d820000bca8013750b9a0410b6b ;
-	dcterms:modified "2017-06-19T20:14:03+02:00" .
+	dcterms:modified "2017-06-19T20:14:03+02:00" ;
+	dcterms:creator "od" .
 
 d:RRea-MEl-5a808e2a0000bca80137bfd74268a84a-MEl-5a82ec6f0000bca801372ef053a71bdf
 	rdf:type SpecIF:reads ;
 	SpecIF:reads-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
 	SpecIF:reads-hasTarget d:MEl-5a82ec6f0000bca801372ef053a71bdf ;
-	dcterms:modified "2017-06-19T20:14:03+02:00" .
+	dcterms:modified "2017-06-19T20:14:03+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a752ccc0000bca80137479a2e8bab30-MEl-5a808e2a0000bca80137bfd74268a84a
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
 	SpecIF:contains-hasTarget d:MEl-5a808e2a0000bca80137bfd74268a84a ;
-	dcterms:modified "2017-06-19T20:14:04+02:00" .
+	dcterms:modified "2017-06-19T20:14:04+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a752ccc0000bca80137479a2e8bab30-MEl-5a8009a00000bca80137ef95bc3f643f
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
 	SpecIF:contains-hasTarget d:MEl-5a8009a00000bca80137ef95bc3f643f ;
-	dcterms:modified "2017-06-19T20:14:04+02:00" .
+	dcterms:modified "2017-06-19T20:14:04+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a752ccc0000bca80137479a2e8bab30-MEl-5a844d820000bca8013750b9a0410b6b
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
 	SpecIF:contains-hasTarget d:MEl-5a844d820000bca8013750b9a0410b6b ;
-	dcterms:modified "2017-06-19T20:14:04+02:00" .
+	dcterms:modified "2017-06-19T20:14:04+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a752ccc0000bca80137479a2e8bab30-MEl-5a86b8980000bca80137ca6fde1a125e
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
 	SpecIF:contains-hasTarget d:MEl-5a86b8980000bca80137ca6fde1a125e ;
-	dcterms:modified "2017-06-19T20:14:04+02:00" .
+	dcterms:modified "2017-06-19T20:14:04+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a752ccc0000bca80137479a2e8bab30-MEl-5a87083e0000bca801379bb412523737
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
 	SpecIF:contains-hasTarget d:MEl-5a87083e0000bca801379bb412523737 ;
-	dcterms:modified "2017-06-19T20:14:04+02:00" .
+	dcterms:modified "2017-06-19T20:14:04+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a752ccc0000bca80137479a2e8bab30-MEl-5a82ec6f0000bca801372ef053a71bdf
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
 	SpecIF:contains-hasTarget d:MEl-5a82ec6f0000bca801372ef053a71bdf ;
-	dcterms:modified "2017-06-19T20:14:04+02:00" .
+	dcterms:modified "2017-06-19T20:14:04+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a752ccc0000bca80137479a2e8bab30-MEl-5a820a3c0000bca801378c9093fb7d80
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
 	SpecIF:contains-hasTarget d:MEl-5a820a3c0000bca801378c9093fb7d80 ;
-	dcterms:modified "2017-06-19T20:14:05+02:00" .
+	dcterms:modified "2017-06-19T20:14:05+02:00" ;
+	dcterms:creator "od" .
 
 d:RRea-MEl-5a752ccc0000bca80137479a2e8bab30-MEl-5a9ce0310000bca801378176dc4744e8
 	rdf:type SpecIF:reads ;
 	SpecIF:reads-hasSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
 	SpecIF:reads-hasTarget d:MEl-5a9ce0310000bca801378176dc4744e8 ;
-	dcterms:modified "2017-06-19T20:14:05+02:00" .
+	dcterms:modified "2017-06-19T20:14:05+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a489c300000bca80137ee1373c16844-MEl-5a752ccc0000bca80137479a2e8bab30
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a489c300000bca80137ee1373c16844 ;
 	SpecIF:contains-hasTarget d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
-	dcterms:modified "2017-06-19T20:14:05+02:00" .
+	dcterms:modified "2017-06-19T20:14:05+02:00" ;
+	dcterms:creator "od" .
 
 d:RWri-MEl-5a71c4800000bca80137f2aaa7b63000-MEl-5a77385f0000bca80137e1c7dc0b1721
 	rdf:type SpecIF:writes ;
 	SpecIF:writes-hasSource d:MEl-5a71c4800000bca80137f2aaa7b63000 ;
 	SpecIF:writes-hasTarget d:MEl-5a77385f0000bca80137e1c7dc0b1721 ;
-	dcterms:modified "2017-06-19T20:14:06+02:00" .
+	dcterms:modified "2017-06-19T20:14:06+02:00" ;
+	dcterms:creator "od" .
 
 d:RRea-MEl-5a71c4800000bca80137f2aaa7b63000-MEl-5a77385f0000bca80137e1c7dc0b1721
 	rdf:type SpecIF:reads ;
 	SpecIF:reads-hasSource d:MEl-5a71c4800000bca80137f2aaa7b63000 ;
 	SpecIF:reads-hasTarget d:MEl-5a77385f0000bca80137e1c7dc0b1721 ;
-	dcterms:modified "2017-06-19T20:14:06+02:00" .
+	dcterms:modified "2017-06-19T20:14:06+02:00" ;
+	dcterms:creator "od" .
 
 d:RWri-MEl-5a71c4800000bca80137f2aaa7b63000-MEl-5a7776c50000bca8013765ae93af9209
 	rdf:type SpecIF:writes ;
 	SpecIF:writes-hasSource d:MEl-5a71c4800000bca80137f2aaa7b63000 ;
 	SpecIF:writes-hasTarget d:MEl-5a7776c50000bca8013765ae93af9209 ;
-	dcterms:modified "2017-06-19T20:14:06+02:00" .
+	dcterms:modified "2017-06-19T20:14:06+02:00" ;
+	dcterms:creator "od" .
 
 d:RRea-MEl-5a71c4800000bca80137f2aaa7b63000-MEl-5a4dd77b0000bca8013736c6912ad291
 	rdf:type SpecIF:reads ;
 	SpecIF:reads-hasSource d:MEl-5a71c4800000bca80137f2aaa7b63000 ;
 	SpecIF:reads-hasTarget d:MEl-5a4dd77b0000bca8013736c6912ad291 ;
-	dcterms:modified "2017-06-19T20:14:06+02:00" .
+	dcterms:modified "2017-06-19T20:14:06+02:00" ;
+	dcterms:creator "od" .
 
 d:RRea-MEl-5a71c4800000bca80137f2aaa7b63000-MEl-5a4d6dee0000bca80137c1caf2f42349
 	rdf:type SpecIF:reads ;
 	SpecIF:reads-hasSource d:MEl-5a71c4800000bca80137f2aaa7b63000 ;
 	SpecIF:reads-hasTarget d:MEl-5a4d6dee0000bca80137c1caf2f42349 ;
-	dcterms:modified "2017-06-19T20:14:06+02:00" .
+	dcterms:modified "2017-06-19T20:14:06+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a489c300000bca80137ee1373c16844-MEl-5a71c4800000bca80137f2aaa7b63000
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a489c300000bca80137ee1373c16844 ;
 	SpecIF:contains-hasTarget d:MEl-5a71c4800000bca80137f2aaa7b63000 ;
-	dcterms:modified "2017-06-19T20:14:07+02:00" .
+	dcterms:modified "2017-06-19T20:14:07+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-606f16ac0000bca801373587fda932b3-MEl-45450be80000c3a801414f280f146c71
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-606f16ac0000bca801373587fda932b3 ;
 	SpecIF:contains-hasTarget d:MEl-45450be80000c3a801414f280f146c71 ;
-	dcterms:modified "2017-06-19T20:14:07+02:00" .
+	dcterms:modified "2017-06-19T20:14:07+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-606f16ac0000bca801373587fda932b3-MEl-4536b0350000c3a801415986f8ea806a
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-606f16ac0000bca801373587fda932b3 ;
 	SpecIF:contains-hasTarget d:MEl-4536b0350000c3a801415986f8ea806a ;
-	dcterms:modified "2017-06-19T20:14:07+02:00" .
+	dcterms:modified "2017-06-19T20:14:07+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-606f16ac0000bca801373587fda932b3-MEl-453facbb0000c3a80141c43d2fb4f5e2
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-606f16ac0000bca801373587fda932b3 ;
 	SpecIF:contains-hasTarget d:MEl-453facbb0000c3a80141c43d2fb4f5e2 ;
-	dcterms:modified "2017-06-19T20:14:07+02:00" .
+	dcterms:modified "2017-06-19T20:14:07+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-606f16ac0000bca801373587fda932b3-MEl-4543fe900000c3a80141f5253ff13c35
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-606f16ac0000bca801373587fda932b3 ;
 	SpecIF:contains-hasTarget d:MEl-4543fe900000c3a80141f5253ff13c35 ;
-	dcterms:modified "2017-06-19T20:14:08+02:00" .
+	dcterms:modified "2017-06-19T20:14:08+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-606f16ac0000bca801373587fda932b3-MEl-453d34af0000c3a80141918f84641161
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-606f16ac0000bca801373587fda932b3 ;
 	SpecIF:contains-hasTarget d:MEl-453d34af0000c3a80141918f84641161 ;
-	dcterms:modified "2017-06-19T20:14:08+02:00" .
+	dcterms:modified "2017-06-19T20:14:08+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-606f16ac0000bca801373587fda932b3-MEl-45a236e00000c3a801410f6503287e16
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-606f16ac0000bca801373587fda932b3 ;
 	SpecIF:contains-hasTarget d:MEl-45a236e00000c3a801410f6503287e16 ;
-	dcterms:modified "2017-06-19T20:14:08+02:00" .
+	dcterms:modified "2017-06-19T20:14:08+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-606f16ac0000bca801373587fda932b3-MEl-45a3b13c0000c3a801415e97f5bc29d1
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-606f16ac0000bca801373587fda932b3 ;
 	SpecIF:contains-hasTarget d:MEl-45a3b13c0000c3a801415e97f5bc29d1 ;
-	dcterms:modified "2017-06-19T20:14:08+02:00" .
+	dcterms:modified "2017-06-19T20:14:08+02:00" ;
+	dcterms:creator "od" .
 
 d:RCnc-Iss-ee2abb630000c3a8013987a750219659-MEl-5a8009a00000bca80137ef95bc3f643f
 	rdf:type SpecIF:refersTo ;
 	SpecIF:refersTo-hasSource d:Iss-ee2abb630000c3a8013987a750219659 ;
 	SpecIF:refersTo-hasTarget d:MEl-5a8009a00000bca80137ef95bc3f643f ;
-	dcterms:modified "2017-06-19T20:13:56+02:00" .
+	dcterms:modified "2017-06-19T20:13:56+02:00" ;
+	dcterms:creator "od" .
 
 d:RWri-MEl-5a8009a00000bca80137ef95bc3f643f-MEl-5a77385f0000bca80137e1c7dc0b1721
 	rdf:type SpecIF:writes ;
 	SpecIF:writes-hasSource d:MEl-5a8009a00000bca80137ef95bc3f643f ;
 	SpecIF:writes-hasTarget d:MEl-5a77385f0000bca80137e1c7dc0b1721 ;
-	dcterms:modified "2017-06-19T20:14:08+02:00" .
+	dcterms:modified "2017-06-19T20:14:08+02:00" ;
+	dcterms:creator "od" .
 
 d:RRea-MEl-5a8009a00000bca80137ef95bc3f643f-MEl-5a77385f0000bca80137e1c7dc0b1721
 	rdf:type SpecIF:reads ;
 	SpecIF:reads-hasSource d:MEl-5a8009a00000bca80137ef95bc3f643f ;
 	SpecIF:reads-hasTarget d:MEl-5a77385f0000bca80137e1c7dc0b1721 ;
-	dcterms:modified "2017-06-19T20:14:08+02:00" .
+	dcterms:modified "2017-06-19T20:14:08+02:00" ;
+	dcterms:creator "od" .
 
 d:RWri-MEl-5a8009a00000bca80137ef95bc3f643f-MEl-5a844d820000bca8013750b9a0410b6b
 	rdf:type SpecIF:writes ;
 	SpecIF:writes-hasSource d:MEl-5a8009a00000bca80137ef95bc3f643f ;
 	SpecIF:writes-hasTarget d:MEl-5a844d820000bca8013750b9a0410b6b ;
-	dcterms:modified "2017-06-19T20:14:09+02:00" .
+	dcterms:modified "2017-06-19T20:14:09+02:00" ;
+	dcterms:creator "od" .
 
 d:RWri-MEl-5a8009a00000bca80137ef95bc3f643f-MEl-5a82ec6f0000bca801372ef053a71bdf
 	rdf:type SpecIF:writes ;
 	SpecIF:writes-hasSource d:MEl-5a8009a00000bca80137ef95bc3f643f ;
 	SpecIF:writes-hasTarget d:MEl-5a82ec6f0000bca801372ef053a71bdf ;
-	dcterms:modified "2017-06-19T20:14:09+02:00" .
+	dcterms:modified "2017-06-19T20:14:09+02:00" ;
+	dcterms:creator "od" .
 
 d:RWri-MEl-5a8009a00000bca80137ef95bc3f643f-MEl-5a820a3c0000bca801378c9093fb7d80
 	rdf:type SpecIF:writes ;
 	SpecIF:writes-hasSource d:MEl-5a8009a00000bca80137ef95bc3f643f ;
 	SpecIF:writes-hasTarget d:MEl-5a820a3c0000bca801378c9093fb7d80 ;
-	dcterms:modified "2017-06-19T20:14:09+02:00" .
+	dcterms:modified "2017-06-19T20:14:09+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a47935a0000bca801377c17f8cb25b0-MEl-608239830000bca801373690c7d2af0f
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
 	SpecIF:contains-hasTarget d:MEl-608239830000bca801373690c7d2af0f ;
-	dcterms:modified "2017-06-19T20:14:10+02:00" .
+	dcterms:modified "2017-06-19T20:14:10+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a47935a0000bca801377c17f8cb25b0-MEl-610b07100000bca80137c10f96c46247
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
 	SpecIF:contains-hasTarget d:MEl-610b07100000bca80137c10f96c46247 ;
-	dcterms:modified "2017-06-19T20:14:10+02:00" .
+	dcterms:modified "2017-06-19T20:14:10+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a47935a0000bca801377c17f8cb25b0-MEl-610e0b010000bca80137ac40800bb1b8
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
 	SpecIF:contains-hasTarget d:MEl-610e0b010000bca80137ac40800bb1b8 ;
-	dcterms:modified "2017-06-19T20:14:10+02:00" .
+	dcterms:modified "2017-06-19T20:14:10+02:00" ;
+	dcterms:creator "od" .
 
 d:RRea-MEl-5bcfb01d0000bca80137f303272a5557-MEl-5a52b50c0000bca801377e3d15255f98
 	rdf:type SpecIF:reads ;
 	SpecIF:reads-hasSource d:MEl-5bcfb01d0000bca80137f303272a5557 ;
 	SpecIF:reads-hasTarget d:MEl-5a52b50c0000bca801377e3d15255f98 ;
-	dcterms:modified "2017-06-19T20:14:10+02:00" .
+	dcterms:modified "2017-06-19T20:14:10+02:00" ;
+	dcterms:creator "od" .
 
 d:RWri-MEl-5a50d5b60000bca8013781532547ce93-MEl-5a489c300000bca80137ee1373c16844
 	rdf:type SpecIF:writes ;
 	SpecIF:writes-hasSource d:MEl-5a50d5b60000bca8013781532547ce93 ;
 	SpecIF:writes-hasTarget d:MEl-5a489c300000bca80137ee1373c16844 ;
-	dcterms:modified "2017-06-19T20:14:10+02:00" .
+	dcterms:modified "2017-06-19T20:14:10+02:00" ;
+	dcterms:creator "od" .
 
 d:RRea-MEl-5a50d5b60000bca8013781532547ce93-MEl-5a489c300000bca80137ee1373c16844
 	rdf:type SpecIF:reads ;
 	SpecIF:reads-hasSource d:MEl-5a50d5b60000bca8013781532547ce93 ;
 	SpecIF:reads-hasTarget d:MEl-5a489c300000bca80137ee1373c16844 ;
-	dcterms:modified "2017-06-19T20:14:11+02:00" .
+	dcterms:modified "2017-06-19T20:14:11+02:00" ;
+	dcterms:creator "od" .
 
 d:RWri-MEl-5a50d5b60000bca8013781532547ce93-MEl-5a52b50c0000bca801377e3d15255f98
 	rdf:type SpecIF:writes ;
 	SpecIF:writes-hasSource d:MEl-5a50d5b60000bca8013781532547ce93 ;
 	SpecIF:writes-hasTarget d:MEl-5a52b50c0000bca801377e3d15255f98 ;
-	dcterms:modified "2017-06-19T20:14:11+02:00" .
+	dcterms:modified "2017-06-19T20:14:11+02:00" ;
+	dcterms:creator "od" .
 
 d:RRea-MEl-5a50d5b60000bca8013781532547ce93-MEl-5a4c80c20000bca8013753b6999a4da8
 	rdf:type SpecIF:reads ;
 	SpecIF:reads-hasSource d:MEl-5a50d5b60000bca8013781532547ce93 ;
 	SpecIF:reads-hasTarget d:MEl-5a4c80c20000bca8013753b6999a4da8 ;
-	dcterms:modified "2017-06-19T20:14:11+02:00" .
+	dcterms:modified "2017-06-19T20:14:11+02:00" ;
+	dcterms:creator "od" .
 
 d:RRea-MEl-5a50d5b60000bca8013781532547ce93-MEl-5a51dd920000bca8013770a4395c83fc
 	rdf:type SpecIF:reads ;
 	SpecIF:reads-hasSource d:MEl-5a50d5b60000bca8013781532547ce93 ;
 	SpecIF:reads-hasTarget d:MEl-5a51dd920000bca8013770a4395c83fc ;
-	dcterms:modified "2017-06-19T20:14:11+02:00" .
+	dcterms:modified "2017-06-19T20:14:11+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-803fd3750000c3a8013cf1fdb3b26d33-MEl-5a50d5b60000bca8013781532547ce93
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-803fd3750000c3a8013cf1fdb3b26d33 ;
 	SpecIF:contains-hasTarget d:MEl-5a50d5b60000bca8013781532547ce93 ;
-	dcterms:modified "2017-06-19T20:14:11+02:00" .
+	dcterms:modified "2017-06-19T20:14:11+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a47935a0000bca801377c17f8cb25b0-MEl-453862540000c3a801419d91bef48cfd
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
 	SpecIF:contains-hasTarget d:MEl-453862540000c3a801419d91bef48cfd ;
-	dcterms:modified "2017-06-19T20:14:12+02:00" .
+	dcterms:modified "2017-06-19T20:14:12+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a47935a0000bca801377c17f8cb25b0-MEl-45387c0b0000c3a801410aa03f6b9be4
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
 	SpecIF:contains-hasTarget d:MEl-45387c0b0000c3a801410aa03f6b9be4 ;
-	dcterms:modified "2017-06-19T20:14:12+02:00" .
+	dcterms:modified "2017-06-19T20:14:12+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a47935a0000bca801377c17f8cb25b0-MEl-4538920b0000c3a801415c67e334b8a1
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
 	SpecIF:contains-hasTarget d:MEl-4538920b0000c3a801415c67e334b8a1 ;
-	dcterms:modified "2017-06-19T20:14:12+02:00" .
+	dcterms:modified "2017-06-19T20:14:12+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a47935a0000bca801377c17f8cb25b0-MEl-459b92580000c3a80141cb4acb521ab1
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
 	SpecIF:contains-hasTarget d:MEl-459b92580000c3a80141cb4acb521ab1 ;
-	dcterms:modified "2017-06-19T20:14:13+02:00" .
+	dcterms:modified "2017-06-19T20:14:13+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a47935a0000bca801377c17f8cb25b0-MEl-607f13b50000bca80137ba95f11856ab
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
 	SpecIF:contains-hasTarget d:MEl-607f13b50000bca80137ba95f11856ab ;
-	dcterms:modified "2017-06-19T20:14:13+02:00" .
+	dcterms:modified "2017-06-19T20:14:13+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a47935a0000bca801377c17f8cb25b0-MEl-45384cd10000c3a80141c1f85d7c26e6
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
 	SpecIF:contains-hasTarget d:MEl-45384cd10000c3a80141c1f85d7c26e6 ;
-	dcterms:modified "2017-06-19T20:14:13+02:00" .
+	dcterms:modified "2017-06-19T20:14:13+02:00" ;
+	dcterms:creator "od" .
 
 d:RWri-MEl-5a47935a0000bca801377c17f8cb25b0-MEl-5a51dd920000bca8013770a4395c83fc
 	rdf:type SpecIF:writes ;
 	SpecIF:writes-hasSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
 	SpecIF:writes-hasTarget d:MEl-5a51dd920000bca8013770a4395c83fc ;
-	dcterms:modified "2017-06-19T20:14:14+02:00" .
+	dcterms:modified "2017-06-19T20:14:14+02:00" ;
+	dcterms:creator "od" .
 
 d:RWri-MEl-5a47935a0000bca801377c17f8cb25b0-MEl-5a4c80c20000bca8013753b6999a4da8
 	rdf:type SpecIF:writes ;
 	SpecIF:writes-hasSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
 	SpecIF:writes-hasTarget d:MEl-5a4c80c20000bca8013753b6999a4da8 ;
-	dcterms:modified "2017-06-19T20:14:14+02:00" .
+	dcterms:modified "2017-06-19T20:14:14+02:00" ;
+	dcterms:creator "od" .
 
 d:RWri-MEl-5a47935a0000bca801377c17f8cb25b0-MEl-5a489c300000bca80137ee1373c16844
 	rdf:type SpecIF:writes ;
 	SpecIF:writes-hasSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
 	SpecIF:writes-hasTarget d:MEl-5a489c300000bca80137ee1373c16844 ;
-	dcterms:modified "2017-06-19T20:14:14+02:00" .
+	dcterms:modified "2017-06-19T20:14:14+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a489c300000bca80137ee1373c16844-MEl-5a9b7a9b0000bca80137d768644696b7
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a489c300000bca80137ee1373c16844 ;
 	SpecIF:contains-hasTarget d:MEl-5a9b7a9b0000bca80137d768644696b7 ;
-	dcterms:modified "2017-06-19T20:14:14+02:00" .
+	dcterms:modified "2017-06-19T20:14:14+02:00" ;
+	dcterms:creator "od" .
 
 d:RWri-MEl-5a9b7a9b0000bca80137d768644696b7-MEl-5a77385f0000bca80137e1c7dc0b1721
 	rdf:type SpecIF:writes ;
 	SpecIF:writes-hasSource d:MEl-5a9b7a9b0000bca80137d768644696b7 ;
 	SpecIF:writes-hasTarget d:MEl-5a77385f0000bca80137e1c7dc0b1721 ;
-	dcterms:modified "2017-06-19T20:14:14+02:00" .
+	dcterms:modified "2017-06-19T20:14:14+02:00" ;
+	dcterms:creator "od" .
 
 d:RRea-MEl-5a9b7a9b0000bca80137d768644696b7-MEl-5a77385f0000bca80137e1c7dc0b1721
 	rdf:type SpecIF:reads ;
 	SpecIF:reads-hasSource d:MEl-5a9b7a9b0000bca80137d768644696b7 ;
 	SpecIF:reads-hasTarget d:MEl-5a77385f0000bca80137e1c7dc0b1721 ;
-	dcterms:modified "2017-06-19T20:14:15+02:00" .
+	dcterms:modified "2017-06-19T20:14:15+02:00" ;
+	dcterms:creator "od" .
 
 d:RWri-MEl-5a9b7a9b0000bca80137d768644696b7-MEl-463289cd0000c3a80141be3fc417034a
 	rdf:type SpecIF:writes ;
 	SpecIF:writes-hasSource d:MEl-5a9b7a9b0000bca80137d768644696b7 ;
 	SpecIF:writes-hasTarget d:MEl-463289cd0000c3a80141be3fc417034a ;
-	dcterms:modified "2017-06-19T20:14:15+02:00" .
+	dcterms:modified "2017-06-19T20:14:15+02:00" ;
+	dcterms:creator "od" .
 
 d:RRea-MEl-5a9b7a9b0000bca80137d768644696b7-MEl-463289cd0000c3a80141be3fc417034a
 	rdf:type SpecIF:reads ;
 	SpecIF:reads-hasSource d:MEl-5a9b7a9b0000bca80137d768644696b7 ;
 	SpecIF:reads-hasTarget d:MEl-463289cd0000c3a80141be3fc417034a ;
-	dcterms:modified "2017-06-19T20:14:15+02:00" .
+	dcterms:modified "2017-06-19T20:14:15+02:00" ;
+	dcterms:creator "od" .
 
 d:RWri-MEl-5a9b7a9b0000bca80137d768644696b7-MEl-5a9ce0310000bca801378176dc4744e8
 	rdf:type SpecIF:writes ;
 	SpecIF:writes-hasSource d:MEl-5a9b7a9b0000bca80137d768644696b7 ;
 	SpecIF:writes-hasTarget d:MEl-5a9ce0310000bca801378176dc4744e8 ;
-	dcterms:modified "2017-06-19T20:14:15+02:00" .
+	dcterms:modified "2017-06-19T20:14:15+02:00" ;
+	dcterms:creator "od" .
 
 d:RRea-MEl-5a9b7a9b0000bca80137d768644696b7-MEl-5a7776c50000bca8013765ae93af9209
 	rdf:type SpecIF:reads ;
 	SpecIF:reads-hasSource d:MEl-5a9b7a9b0000bca80137d768644696b7 ;
 	SpecIF:reads-hasTarget d:MEl-5a7776c50000bca8013765ae93af9209 ;
-	dcterms:modified "2017-06-19T20:14:16+02:00" .
+	dcterms:modified "2017-06-19T20:14:16+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a489c300000bca80137ee1373c16844-MEl-5a7776c50000bca8013765ae93af9209
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a489c300000bca80137ee1373c16844 ;
 	SpecIF:contains-hasTarget d:MEl-5a7776c50000bca8013765ae93af9209 ;
-	dcterms:modified "2017-06-19T20:14:16+02:00" .
+	dcterms:modified "2017-06-19T20:14:16+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a489c300000bca80137ee1373c16844-MEl-5a9ce0310000bca801378176dc4744e8
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a489c300000bca80137ee1373c16844 ;
 	SpecIF:contains-hasTarget d:MEl-5a9ce0310000bca801378176dc4744e8 ;
-	dcterms:modified "2017-06-19T20:14:16+02:00" .
+	dcterms:modified "2017-06-19T20:14:16+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a489c300000bca80137ee1373c16844-MEl-5a4dd77b0000bca8013736c6912ad291
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a489c300000bca80137ee1373c16844 ;
 	SpecIF:contains-hasTarget d:MEl-5a4dd77b0000bca8013736c6912ad291 ;
-	dcterms:modified "2017-06-19T20:14:16+02:00" .
+	dcterms:modified "2017-06-19T20:14:16+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a4c80c20000bca8013753b6999a4da8-MEl-5a4dd77b0000bca8013736c6912ad291
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a4c80c20000bca8013753b6999a4da8 ;
 	SpecIF:contains-hasTarget d:MEl-5a4dd77b0000bca8013736c6912ad291 ;
-	dcterms:modified "2017-06-19T20:14:16+02:00" .
+	dcterms:modified "2017-06-19T20:14:16+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a51dd920000bca8013770a4395c83fc-MEl-5a4dd77b0000bca8013736c6912ad291
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a51dd920000bca8013770a4395c83fc ;
 	SpecIF:contains-hasTarget d:MEl-5a4dd77b0000bca8013736c6912ad291 ;
-	dcterms:modified "2017-06-19T20:14:16+02:00" .
+	dcterms:modified "2017-06-19T20:14:16+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a489c300000bca80137ee1373c16844-MEl-5a4d6dee0000bca80137c1caf2f42349
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a489c300000bca80137ee1373c16844 ;
 	SpecIF:contains-hasTarget d:MEl-5a4d6dee0000bca80137c1caf2f42349 ;
-	dcterms:modified "2017-06-19T20:14:17+02:00" .
+	dcterms:modified "2017-06-19T20:14:17+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a489c300000bca80137ee1373c16844-MEl-5a77385f0000bca80137e1c7dc0b1721
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a489c300000bca80137ee1373c16844 ;
 	SpecIF:contains-hasTarget d:MEl-5a77385f0000bca80137e1c7dc0b1721 ;
-	dcterms:modified "2017-06-19T20:14:17+02:00" .
+	dcterms:modified "2017-06-19T20:14:17+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-803fd3750000c3a8013cf1fdb3b26d33-MEl-5a489c300000bca80137ee1373c16844
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-803fd3750000c3a8013cf1fdb3b26d33 ;
 	SpecIF:contains-hasTarget d:MEl-5a489c300000bca80137ee1373c16844 ;
-	dcterms:modified "2017-06-19T20:14:17+02:00" .
+	dcterms:modified "2017-06-19T20:14:17+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a4c80c20000bca8013753b6999a4da8-MEl-5a4d6dee0000bca80137c1caf2f42349
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a4c80c20000bca8013753b6999a4da8 ;
 	SpecIF:contains-hasTarget d:MEl-5a4d6dee0000bca80137c1caf2f42349 ;
-	dcterms:modified "2017-06-19T20:14:18+02:00" .
+	dcterms:modified "2017-06-19T20:14:18+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a4c80c20000bca8013753b6999a4da8-MEl-5a4cfa830000bca801370d837f761f3e
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a4c80c20000bca8013753b6999a4da8 ;
 	SpecIF:contains-hasTarget d:MEl-5a4cfa830000bca801370d837f761f3e ;
-	dcterms:modified "2017-06-19T20:14:18+02:00" .
+	dcterms:modified "2017-06-19T20:14:18+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a4c80c20000bca8013753b6999a4da8-MEl-5a4d2bd00000bca80137a3f233cdffeb
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a4c80c20000bca8013753b6999a4da8 ;
 	SpecIF:contains-hasTarget d:MEl-5a4d2bd00000bca80137a3f233cdffeb ;
-	dcterms:modified "2017-06-19T20:14:18+02:00" .
+	dcterms:modified "2017-06-19T20:14:18+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-803fd3750000c3a8013cf1fdb3b26d33-MEl-5a4c80c20000bca8013753b6999a4da8
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-803fd3750000c3a8013cf1fdb3b26d33 ;
 	SpecIF:contains-hasTarget d:MEl-5a4c80c20000bca8013753b6999a4da8 ;
-	dcterms:modified "2017-06-19T20:14:19+02:00" .
+	dcterms:modified "2017-06-19T20:14:19+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a52b50c0000bca801377e3d15255f98-MEl-5bcf35cf0000bca8013776d68023612a
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a52b50c0000bca801377e3d15255f98 ;
 	SpecIF:contains-hasTarget d:MEl-5bcf35cf0000bca8013776d68023612a ;
-	dcterms:modified "2017-06-19T20:14:19+02:00" .
+	dcterms:modified "2017-06-19T20:14:19+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-803fd3750000c3a8013cf1fdb3b26d33-MEl-5a52b50c0000bca801377e3d15255f98
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-803fd3750000c3a8013cf1fdb3b26d33 ;
 	SpecIF:contains-hasTarget d:MEl-5a52b50c0000bca801377e3d15255f98 ;
-	dcterms:modified "2017-06-19T20:14:19+02:00" .
+	dcterms:modified "2017-06-19T20:14:19+02:00" ;
+	dcterms:creator "od" .
 
 d:R-vxkoenpgAX6s6PxskSWlYPN8e4y
 	rdf:type SpecIF:refersTo ;
 	SpecIF:refersTo-hasSource d:Iss-eee2d4e00000c3a801394148dcc58a52 ;
 	SpecIF:refersTo-hasTarget d:MEl-5a51dd920000bca8013770a4395c83fc ;
-	dcterms:modified "2017-06-19T20:13:56+02:00" .
+	dcterms:modified "2017-06-19T20:13:56+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-5a51dd920000bca8013770a4395c83fc-MEl-5a4d6dee0000bca80137c1caf2f42349
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-5a51dd920000bca8013770a4395c83fc ;
 	SpecIF:contains-hasTarget d:MEl-5a4d6dee0000bca80137c1caf2f42349 ;
-	dcterms:modified "2017-06-19T20:14:19+02:00" .
+	dcterms:modified "2017-06-19T20:14:19+02:00" ;
+	dcterms:creator "od" .
 
 d:RCtn-MEl-803fd3750000c3a8013cf1fdb3b26d33-MEl-5a51dd920000bca8013770a4395c83fc
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:MEl-803fd3750000c3a8013cf1fdb3b26d33 ;
 	SpecIF:contains-hasTarget d:MEl-5a51dd920000bca8013770a4395c83fc ;
-	dcterms:modified "2017-06-19T20:14:19+02:00" .
+	dcterms:modified "2017-06-19T20:14:19+02:00" ;
+	dcterms:creator "od" .
 
 #################################################################
-# Hierarchies
+# Hierarchy
 #################################################################
 
 d:HierarchyRoot
 	rdf:type pig:HierarchyRoot ;
 	rdfs:label "Hierarchy Root" ;
-	rdfs:comment "... anchoring all hierarchies of this graph (project)" ;
-	pig:lists d:SH-Fld-59c8a7730000bca80137509a49b1218b-info ,
-		d:SH-Fld-5a5f54090000bca801375b04a668f1a7 ,
-		d:SH-Fld-5af3154d0000bca801379748537d7388 ,
-		d:SH-Fld-5b8e98550000bca801371afb0c7b671b ,
-		d:SH-Fld-59c8a7730000bca80137509a49b1218b ,
-		d:N-k9qMB6fnxPTk942dvPKdyvnwnoQ ,
-		d:N-FolderGlossary-8001804519 .
-
-d:SH-Fld-59c8a7730000bca80137509a49b1218b-info
-	dcterms:modified "2017-06-19T20:14:48+02:00" ;
-	pig:lists d:Fld-59c8a7730000bca80137509a49b1218b-info .
-
-d:SH-Fld-5a5f54090000bca801375b04a668f1a7
-	dcterms:modified "2017-06-19T20:14:47+02:00" ;
-	pig:lists d:Fld-5a5f54090000bca801375b04a668f1a7 ;
-	pig:lists d:SH-Pln-27420ffc0000c3a8013ab527ca1b71f5 ,
-		d:SH-Pln-5a4755dd0000bca801375293a62c90a8 ,
-		d:SH-Pln-5a6cdea50000bca80137d6b2d6e8a3a0 ,
-		d:SH-Pln-5a7f99af0000bca8013754f2ef12d3e5 .
-
-d:SH-Pln-27420ffc0000c3a8013ab527ca1b71f5
-	dcterms:modified "2017-06-19T20:14:47+02:00" ;
-	pig:lists d:Pln-27420ffc0000c3a8013ab527ca1b71f5 .
-
-d:SH-Pln-5a4755dd0000bca801375293a62c90a8
-	dcterms:modified "2017-06-19T20:14:47+02:00" ;
-	pig:lists d:Pln-5a4755dd0000bca801375293a62c90a8 .
-
-d:SH-Pln-5a6cdea50000bca80137d6b2d6e8a3a0
-	dcterms:modified "2017-06-19T20:14:47+02:00" ;
-	pig:lists d:Pln-5a6cdea50000bca80137d6b2d6e8a3a0 .
-
-d:SH-Pln-5a7f99af0000bca8013754f2ef12d3e5
-	dcterms:modified "2017-06-19T20:14:47+02:00" ;
-	pig:lists d:Pln-5a7f99af0000bca8013754f2ef12d3e5 .
-
-d:SH-Fld-5af3154d0000bca801379748537d7388
-	dcterms:modified "2017-06-19T20:14:46+02:00" ;
-	pig:lists d:Fld-5af3154d0000bca801379748537d7388 ;
-	pig:lists d:SH-Fld-5b6a99f10000bca80137b78cda65fc07 .
-
-d:SH-Fld-5b6a99f10000bca80137b78cda65fc07
-	dcterms:modified "2017-06-19T20:14:46+02:00" ;
-	pig:lists d:Fld-5b6a99f10000bca80137b78cda65fc07 ;
-	pig:lists d:SH-Pln-606e76c70000bca801376ec3133a1181 ,
-		d:SH-Pln-45a1c8930000c3a801414cd1eaa70b5a ,
-		d:SH-Pln-5af364560000bca80137b84017f4e832 .
-
-d:SH-Pln-606e76c70000bca801376ec3133a1181
-	dcterms:modified "2017-06-19T20:14:46+02:00" ;
-	pig:lists d:Pln-606e76c70000bca801376ec3133a1181 .
-
-d:SH-Pln-45a1c8930000c3a801414cd1eaa70b5a
-	dcterms:modified "2017-06-19T20:14:46+02:00" ;
-	pig:lists d:Pln-45a1c8930000c3a801414cd1eaa70b5a .
-
-d:SH-Pln-5af364560000bca80137b84017f4e832
-	dcterms:modified "2017-06-19T20:14:46+02:00" ;
-	pig:lists d:Pln-5af364560000bca80137b84017f4e832 .
-
-d:SH-Fld-5b8e98550000bca801371afb0c7b671b
-	dcterms:modified "2017-06-19T20:14:43+02:00" ;
-	pig:lists d:Fld-5b8e98550000bca801371afb0c7b671b ;
-	pig:lists d:SH-Fld-d1b1698a0000c3a801505b1b5698b7a1 ,
-		d:SH-Fld-d1b1d6c60000c3a80150fe9ce40e6588 ,
-		d:SH-Fld-d1b314890000c3a80150b71a1473d374 .
-
-d:SH-Fld-d1b1698a0000c3a801505b1b5698b7a1
-	dcterms:modified "2017-06-19T20:14:43+02:00" ;
-	pig:lists d:Fld-d1b1698a0000c3a801505b1b5698b7a1 ;
-	pig:lists d:SH-Req-d1c895230000c3a80150f8afd049f738 ,
-		d:SH-Req-d1d42a6a0000c3a8015091ec8d149b93 ,
-		d:SH-Req-d1cd7f370000c3a8015095e6ee21aab7 ,
-		d:SH-Req-5ba3512b0000bca801371cc0617eb4c1 ,
-		d:SH-Req-5b8fbb300000bca80137c73e3ce4c737 .
-
-d:SH-Req-d1c895230000c3a80150f8afd049f738
-	dcterms:modified "2017-06-19T20:14:43+02:00" ;
-	pig:lists d:Req-d1c895230000c3a80150f8afd049f738 .
-
-d:SH-Req-d1d42a6a0000c3a8015091ec8d149b93
-	dcterms:modified "2017-06-19T20:14:43+02:00" ;
-	pig:lists d:Req-d1d42a6a0000c3a8015091ec8d149b93 .
-
-d:SH-Req-d1cd7f370000c3a8015095e6ee21aab7
-	dcterms:modified "2017-06-19T20:14:43+02:00" ;
-	pig:lists d:Req-d1cd7f370000c3a8015095e6ee21aab7 .
-
-d:SH-Req-5ba3512b0000bca801371cc0617eb4c1
-	dcterms:modified "2017-06-19T20:14:43+02:00" ;
-	pig:lists d:Req-5ba3512b0000bca801371cc0617eb4c1 .
-
-d:SH-Req-5b8fbb300000bca80137c73e3ce4c737
-	dcterms:modified "2017-06-19T20:14:43+02:00" ;
-	pig:lists d:Req-5b8fbb300000bca80137c73e3ce4c737 .
-
-d:SH-Fld-d1b1d6c60000c3a80150fe9ce40e6588
-	dcterms:modified "2017-06-19T20:14:43+02:00" ;
-	pig:lists d:Fld-d1b1d6c60000c3a80150fe9ce40e6588 ;
-	pig:lists d:SH-Req-5b944fc70000bca8013763f44fdc0e03 ,
-		d:SH-Req-5ba140d60000bca801372b09f9888eca ,
-		d:SH-Req-ee452cf20000c3a8014035290669304d ,
-		d:SH-Req-ee43fc4c0000c3a8014063d42c77767f ,
-		d:SH-Req-5b9124bc0000bca80137fa2ce86f5eca ,
-		d:SH-Req-5b9e68530000bca801371362c49d2d08 .
-
-d:SH-Req-5b944fc70000bca8013763f44fdc0e03
-	dcterms:modified "2017-06-19T20:14:43+02:00" ;
-	pig:lists d:Req-5b944fc70000bca8013763f44fdc0e03 .
-
-d:SH-Req-5ba140d60000bca801372b09f9888eca
-	dcterms:modified "2017-06-19T20:14:43+02:00" ;
-	pig:lists d:Req-5ba140d60000bca801372b09f9888eca .
-
-d:SH-Req-ee452cf20000c3a8014035290669304d
-	dcterms:modified "2017-06-19T20:14:43+02:00" ;
-	pig:lists d:Req-ee452cf20000c3a8014035290669304d .
-
-d:SH-Req-ee43fc4c0000c3a8014063d42c77767f
-	dcterms:modified "2017-06-19T20:14:43+02:00" ;
-	pig:lists d:Req-ee43fc4c0000c3a8014063d42c77767f .
-
-d:SH-Req-5b9124bc0000bca80137fa2ce86f5eca
-	dcterms:modified "2017-06-19T20:14:43+02:00" ;
-	pig:lists d:Req-5b9124bc0000bca80137fa2ce86f5eca .
-
-d:SH-Req-5b9e68530000bca801371362c49d2d08
-	dcterms:modified "2017-06-19T20:14:43+02:00" ;
-	pig:lists d:Req-5b9e68530000bca801371362c49d2d08 .
-
-d:SH-Fld-d1b314890000c3a80150b71a1473d374
-	dcterms:modified "2017-06-19T20:14:43+02:00" ;
-	pig:lists d:Fld-d1b314890000c3a80150b71a1473d374 ;
-	pig:lists d:SH-Req-eea1cd500000c3a80140fe00109eb7f4 ,
-		d:SH-Req-5b95fae40000bca801372becc933682d ,
-		d:SH-Req-5b9ab8a50000bca801377ad0be3bbc89 ,
-		d:SH-Req-728c69c80018b1a8014b974542c36edc ,
-		d:SH-Req-5b9c950e0000bca801374f16615247b9 .
-
-d:SH-Req-eea1cd500000c3a80140fe00109eb7f4
-	dcterms:modified "2017-06-19T20:14:43+02:00" ;
-	pig:lists d:Req-eea1cd500000c3a80140fe00109eb7f4 .
-
-d:SH-Req-5b95fae40000bca801372becc933682d
-	dcterms:modified "2017-06-19T20:14:43+02:00" ;
-	pig:lists d:Req-5b95fae40000bca801372becc933682d .
-
-d:SH-Req-5b9ab8a50000bca801377ad0be3bbc89
-	dcterms:modified "2017-06-19T20:14:43+02:00" ;
-	pig:lists d:Req-5b9ab8a50000bca801377ad0be3bbc89 .
-
-d:SH-Req-728c69c80018b1a8014b974542c36edc
-	dcterms:modified "2017-06-19T20:14:43+02:00" ;
-	pig:lists d:Req-728c69c80018b1a8014b974542c36edc .
-
-d:SH-Req-5b9c950e0000bca801374f16615247b9
-	dcterms:modified "2017-06-19T20:14:43+02:00" ;
-	pig:lists d:Req-5b9c950e0000bca801374f16615247b9 .
-
-d:SH-Fld-59c8a7730000bca80137509a49b1218b
-	dcterms:modified "2017-06-19T20:14:20+02:00" ;
-	pig:lists d:Fld-59c8a7730000bca80137509a49b1218b ;
-	pig:lists d:SH-MEl-5bd6bd890000bca8013739588a3f43d6-1 ,
-		d:SH-MEl-5bcfb01d0000bca80137f303272a5557-10 ,
-		d:SH-MEl-803fd3750000c3a8013cf1fdb3b26d33-11 ,
-		d:SH-MEl-5a47935a0000bca801377c17f8cb25b0-64 .
-
-d:SH-MEl-5bd6bd890000bca8013739588a3f43d6-1
-	dcterms:modified "2017-06-19T20:14:20+02:00" ;
-	pig:lists d:MEl-5bd6bd890000bca8013739588a3f43d6 .
-
-d:SH-MEl-5bcfb01d0000bca80137f303272a5557-10
-	dcterms:modified "2017-06-19T20:14:20+02:00" ;
-	pig:lists d:MEl-5bcfb01d0000bca80137f303272a5557 .
-
-d:SH-MEl-803fd3750000c3a8013cf1fdb3b26d33-11
-	dcterms:modified "2017-06-19T20:14:20+02:00" ;
-	pig:lists d:MEl-803fd3750000c3a8013cf1fdb3b26d33 ;
-	pig:lists d:SH-MEl-5a489c300000bca80137ee1373c16844-12 ,
-		d:SH-MEl-5a4c80c20000bca8013753b6999a4da8-53 ,
-		d:SH-MEl-5a52b50c0000bca801377e3d15255f98-58 ,
-		d:SH-MEl-5a51dd920000bca8013770a4395c83fc-60 ,
-		d:SH-MEl-5a50d5b60000bca8013781532547ce93-63 .
-
-d:SH-MEl-5a489c300000bca80137ee1373c16844-12
-	dcterms:modified "2017-06-19T20:14:20+02:00" ;
-	pig:lists d:MEl-5a489c300000bca80137ee1373c16844 ;
-	pig:lists d:SH-MEl-5a7776c50000bca8013765ae93af9209-13 ,
-		d:SH-MEl-5a76365c0000bca8013776e91afd1e8e-14 ,
-		d:SH-MEl-5a9ce0310000bca801378176dc4744e8-15 ,
-		d:SH-MEl-5a752ccc0000bca80137479a2e8bab30-16 ,
-		d:SH-MEl-5a71c4800000bca80137f2aaa7b63000-43 ,
-		d:SH-MEl-5a4dd77b0000bca8013736c6912ad291-44 ,
-		d:SH-MEl-5a99c89c0000bca801375d44cf9a50ca-45 ,
-		d:SH-MEl-5a9929510000bca80137d23c81f1ca54-46 ,
-		d:SH-MEl-5c29fb8e0000bca80137eb9734c99bfd-47 ,
-		d:SH-MEl-5a77385f0000bca80137e1c7dc0b1721-48 ,
-		d:SH-MEl-5a9888810000bca801375410ce1cc142-49 ,
-		d:SH-MEl-5a4d6dee0000bca80137c1caf2f42349-50 ,
-		d:SH-MEl-5a9b7a9b0000bca80137d768644696b7-51 ,
-		d:SH-MEl-463289cd0000c3a80141be3fc417034a-52 .
-
-d:SH-MEl-5a7776c50000bca8013765ae93af9209-13
-	dcterms:modified "2017-06-19T20:14:20+02:00" ;
-	pig:lists d:MEl-5a7776c50000bca8013765ae93af9209 .
-
-d:SH-MEl-5a76365c0000bca8013776e91afd1e8e-14
-	dcterms:modified "2017-06-19T20:14:20+02:00" ;
-	pig:lists d:MEl-5a76365c0000bca8013776e91afd1e8e .
-
-d:SH-MEl-5a9ce0310000bca801378176dc4744e8-15
-	dcterms:modified "2017-06-19T20:14:20+02:00" ;
-	pig:lists d:MEl-5a9ce0310000bca801378176dc4744e8 .
-
-d:SH-MEl-5a752ccc0000bca80137479a2e8bab30-16
-	dcterms:modified "2017-06-19T20:14:20+02:00" ;
-	pig:lists d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
-	pig:lists d:SH-MEl-5a85347c0000bca80137ad485c7cd330-17 ,
-		d:SH-MEl-5a808e2a0000bca80137bfd74268a84a-36 ,
-		d:SH-MEl-5a844d820000bca8013750b9a0410b6b-37 ,
-		d:SH-MEl-5a8009a00000bca80137ef95bc3f643f-38 ,
-		d:SH-MEl-5a87083e0000bca801379bb412523737-39 ,
-		d:SH-MEl-5a82ec6f0000bca801372ef053a71bdf-40 ,
-		d:SH-MEl-5a86b8980000bca80137ca6fde1a125e-41 ,
-		d:SH-MEl-5a820a3c0000bca801378c9093fb7d80-42 .
-
-d:SH-MEl-5a85347c0000bca80137ad485c7cd330-17
-	dcterms:modified "2017-06-19T20:14:20+02:00" ;
-	pig:lists d:MEl-5a85347c0000bca80137ad485c7cd330 ;
-	pig:lists d:SH-MEl-5b2f95ec0000bca8013709bfa81d701f-18 ,
-		d:SH-MEl-45450be80000c3a801414f280f146c71-19 ,
-		d:SH-MEl-4536b0350000c3a801415986f8ea806a-20 ,
-		d:SH-MEl-5b149eab0000bca80137aad99b6eea7b-21 ,
-		d:SH-MEl-5b08ed8d0000bca8013719f554353b0e-22 ,
-		d:SH-MEl-453dfb670000c3a8014191107df4565e-23 ,
-		d:SH-MEl-5b094f8a0000bca801374c798a6587ad-24 ,
-		d:SH-MEl-45428b930000c3a80141e28b7d4b5ae5-25 ,
-		d:SH-MEl-5b078fa50000bca80137f36ed05c43cb-26 ,
-		d:SH-MEl-453facbb0000c3a80141c43d2fb4f5e2-27 ,
-		d:SH-MEl-5b2d29070000bca801378a6c020cf8f5-28 ,
-		d:SH-MEl-5b1750f80000bca801373b2d143d7478-29 ,
-		d:SH-MEl-5b2ddad80000bca80137c44d62ba97d8-30 ,
-		d:SH-MEl-5b2449180000bca8013722c01c9d35a5-31 ,
-		d:SH-MEl-5b0839b90000bca801376dcca41ca7d0-32 ,
-		d:SH-MEl-5b07e6aa0000bca8013797aad9be69ae-33 ,
-		d:SH-MEl-4543fe900000c3a80141f5253ff13c35-34 ,
-		d:SH-MEl-453d34af0000c3a80141918f84641161-35 .
-
-d:SH-MEl-5b2f95ec0000bca8013709bfa81d701f-18
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5b2f95ec0000bca8013709bfa81d701f .
-
-d:SH-MEl-45450be80000c3a801414f280f146c71-19
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-45450be80000c3a801414f280f146c71 .
-
-d:SH-MEl-4536b0350000c3a801415986f8ea806a-20
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-4536b0350000c3a801415986f8ea806a .
-
-d:SH-MEl-5b149eab0000bca80137aad99b6eea7b-21
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5b149eab0000bca80137aad99b6eea7b .
-
-d:SH-MEl-5b08ed8d0000bca8013719f554353b0e-22
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5b08ed8d0000bca8013719f554353b0e .
-
-d:SH-MEl-453dfb670000c3a8014191107df4565e-23
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-453dfb670000c3a8014191107df4565e .
-
-d:SH-MEl-5b094f8a0000bca801374c798a6587ad-24
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5b094f8a0000bca801374c798a6587ad .
-
-d:SH-MEl-45428b930000c3a80141e28b7d4b5ae5-25
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-45428b930000c3a80141e28b7d4b5ae5 .
-
-d:SH-MEl-5b078fa50000bca80137f36ed05c43cb-26
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5b078fa50000bca80137f36ed05c43cb .
-
-d:SH-MEl-453facbb0000c3a80141c43d2fb4f5e2-27
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-453facbb0000c3a80141c43d2fb4f5e2 .
-
-d:SH-MEl-5b2d29070000bca801378a6c020cf8f5-28
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5b2d29070000bca801378a6c020cf8f5 .
-
-d:SH-MEl-5b1750f80000bca801373b2d143d7478-29
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5b1750f80000bca801373b2d143d7478 .
-
-d:SH-MEl-5b2ddad80000bca80137c44d62ba97d8-30
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5b2ddad80000bca80137c44d62ba97d8 .
-
-d:SH-MEl-5b2449180000bca8013722c01c9d35a5-31
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5b2449180000bca8013722c01c9d35a5 .
-
-d:SH-MEl-5b0839b90000bca801376dcca41ca7d0-32
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5b0839b90000bca801376dcca41ca7d0 .
-
-d:SH-MEl-5b07e6aa0000bca8013797aad9be69ae-33
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5b07e6aa0000bca8013797aad9be69ae .
-
-d:SH-MEl-4543fe900000c3a80141f5253ff13c35-34
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-4543fe900000c3a80141f5253ff13c35 .
-
-d:SH-MEl-453d34af0000c3a80141918f84641161-35
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-453d34af0000c3a80141918f84641161 .
-
-d:SH-MEl-5a808e2a0000bca80137bfd74268a84a-36
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5a808e2a0000bca80137bfd74268a84a .
-
-d:SH-MEl-5a844d820000bca8013750b9a0410b6b-37
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5a844d820000bca8013750b9a0410b6b .
-
-d:SH-MEl-5a8009a00000bca80137ef95bc3f643f-38
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5a8009a00000bca80137ef95bc3f643f .
-
-d:SH-MEl-5a87083e0000bca801379bb412523737-39
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5a87083e0000bca801379bb412523737 .
-
-d:SH-MEl-5a82ec6f0000bca801372ef053a71bdf-40
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5a82ec6f0000bca801372ef053a71bdf .
-
-d:SH-MEl-5a86b8980000bca80137ca6fde1a125e-41
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5a86b8980000bca80137ca6fde1a125e .
-
-d:SH-MEl-5a820a3c0000bca801378c9093fb7d80-42
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5a820a3c0000bca801378c9093fb7d80 .
-
-d:SH-MEl-5a71c4800000bca80137f2aaa7b63000-43
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5a71c4800000bca80137f2aaa7b63000 ;
-	pig:lists d:SH-FQgXJn1XkNFtoJfzE9INisIYifq .
-
-d:SH-FQgXJn1XkNFtoJfzE9INisIYifq
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-606f16ac0000bca801373587fda932b3 ;
-	pig:lists d:SH-uCdHBtCyX6hvm29RQnGo9zcd3OI ,
-		d:SH-O797STWMNt59GjyRpy8CQgp6Deo ,
-		d:SH-pkrTYLvHEXGE5n3XT3kwOzWpRPr ,
-		d:SH-wRzqOjw6Ob6TAfaCorCQ2BicqM3 ,
-		d:SH-pRuyfnegfxL7Pfq3S4HyInkjJLS ,
-		d:SH-54q5IJNgLaHAFR03snGsSWwcCfm ,
-		d:SH-dUbVcCseAuR93ODSCP2VFObou2U .
-
-d:SH-uCdHBtCyX6hvm29RQnGo9zcd3OI
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-45450be80000c3a801414f280f146c71 .
-
-d:SH-O797STWMNt59GjyRpy8CQgp6Deo
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-4536b0350000c3a801415986f8ea806a .
-
-d:SH-pkrTYLvHEXGE5n3XT3kwOzWpRPr
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-453facbb0000c3a80141c43d2fb4f5e2 .
-
-d:SH-wRzqOjw6Ob6TAfaCorCQ2BicqM3
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-4543fe900000c3a80141f5253ff13c35 .
-
-d:SH-pRuyfnegfxL7Pfq3S4HyInkjJLS
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-453d34af0000c3a80141918f84641161 .
-
-d:SH-54q5IJNgLaHAFR03snGsSWwcCfm
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-45a236e00000c3a801410f6503287e16 .
-
-d:SH-dUbVcCseAuR93ODSCP2VFObou2U
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-45a3b13c0000c3a801415e97f5bc29d1 .
-
-d:SH-MEl-5a4dd77b0000bca8013736c6912ad291-44
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5a4dd77b0000bca8013736c6912ad291 .
-
-d:SH-MEl-5a99c89c0000bca801375d44cf9a50ca-45
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5a99c89c0000bca801375d44cf9a50ca .
-
-d:SH-MEl-5a9929510000bca80137d23c81f1ca54-46
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5a9929510000bca80137d23c81f1ca54 .
-
-d:SH-MEl-5c29fb8e0000bca80137eb9734c99bfd-47
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5c29fb8e0000bca80137eb9734c99bfd .
-
-d:SH-MEl-5a77385f0000bca80137e1c7dc0b1721-48
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5a77385f0000bca80137e1c7dc0b1721 .
-
-d:SH-MEl-5a9888810000bca801375410ce1cc142-49
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5a9888810000bca801375410ce1cc142 .
-
-d:SH-MEl-5a4d6dee0000bca80137c1caf2f42349-50
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5a4d6dee0000bca80137c1caf2f42349 .
-
-d:SH-MEl-5a9b7a9b0000bca80137d768644696b7-51
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5a9b7a9b0000bca80137d768644696b7 .
-
-d:SH-MEl-463289cd0000c3a80141be3fc417034a-52
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-463289cd0000c3a80141be3fc417034a .
-
-d:SH-MEl-5a4c80c20000bca8013753b6999a4da8-53
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5a4c80c20000bca8013753b6999a4da8 ;
-	pig:lists d:SH-MEl-5a4dd77b0000bca8013736c6912ad291-54 ,
-		d:SH-MEl-5a4cfa830000bca801370d837f761f3e-55 ,
-		d:SH-MEl-5a4d2bd00000bca80137a3f233cdffeb-56 ,
-		d:SH-MEl-5a4d6dee0000bca80137c1caf2f42349-57 .
-
-d:SH-MEl-5a4dd77b0000bca8013736c6912ad291-54
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5a4dd77b0000bca8013736c6912ad291 .
-
-d:SH-MEl-5a4cfa830000bca801370d837f761f3e-55
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5a4cfa830000bca801370d837f761f3e .
-
-d:SH-MEl-5a4d2bd00000bca80137a3f233cdffeb-56
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5a4d2bd00000bca80137a3f233cdffeb .
-
-d:SH-MEl-5a4d6dee0000bca80137c1caf2f42349-57
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5a4d6dee0000bca80137c1caf2f42349 .
-
-d:SH-MEl-5a52b50c0000bca801377e3d15255f98-58
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5a52b50c0000bca801377e3d15255f98 ;
-	pig:lists d:SH-MEl-5bcf35cf0000bca8013776d68023612a-59 .
-
-d:SH-MEl-5bcf35cf0000bca8013776d68023612a-59
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5bcf35cf0000bca8013776d68023612a .
-
-d:SH-MEl-5a51dd920000bca8013770a4395c83fc-60
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5a51dd920000bca8013770a4395c83fc ;
-	pig:lists d:SH-MEl-5a4dd77b0000bca8013736c6912ad291-61 ,
-		d:SH-MEl-5a4d6dee0000bca80137c1caf2f42349-62 .
-
-d:SH-MEl-5a4dd77b0000bca8013736c6912ad291-61
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5a4dd77b0000bca8013736c6912ad291 .
-
-d:SH-MEl-5a4d6dee0000bca80137c1caf2f42349-62
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5a4d6dee0000bca80137c1caf2f42349 .
-
-d:SH-MEl-5a50d5b60000bca8013781532547ce93-63
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5a50d5b60000bca8013781532547ce93 .
-
-d:SH-MEl-5a47935a0000bca801377c17f8cb25b0-64
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
-	pig:lists d:SH-MEl-608177820000bca801379179ebf3b6aa-65 ,
-		d:SH-MEl-611366530000bca80137a97f194e96a3-66 ,
-		d:SH-MEl-453862540000c3a801419d91bef48cfd-67 ,
-		d:SH-MEl-45387c0b0000c3a801410aa03f6b9be4-68 ,
-		d:SH-MEl-4538920b0000c3a801415c67e334b8a1-69 ,
-		d:SH-MEl-608239830000bca801373690c7d2af0f-70 ,
-		d:SH-MEl-610b07100000bca80137c10f96c46247-71 ,
-		d:SH-MEl-610e0b010000bca80137ac40800bb1b8-72 ,
-		d:SH-MEl-459b92580000c3a80141cb4acb521ab1-73 ,
-		d:SH-MEl-45384cd10000c3a80141c1f85d7c26e6-74 ,
-		d:SH-MEl-607f13b50000bca80137ba95f11856ab-75 .
-
-d:SH-MEl-608177820000bca801379179ebf3b6aa-65
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-608177820000bca801379179ebf3b6aa .
-
-d:SH-MEl-611366530000bca80137a97f194e96a3-66
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-611366530000bca80137a97f194e96a3 .
-
-d:SH-MEl-453862540000c3a801419d91bef48cfd-67
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-453862540000c3a801419d91bef48cfd .
-
-d:SH-MEl-45387c0b0000c3a801410aa03f6b9be4-68
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-45387c0b0000c3a801410aa03f6b9be4 .
-
-d:SH-MEl-4538920b0000c3a801415c67e334b8a1-69
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-4538920b0000c3a801415c67e334b8a1 .
-
-d:SH-MEl-608239830000bca801373690c7d2af0f-70
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-608239830000bca801373690c7d2af0f .
-
-d:SH-MEl-610b07100000bca80137c10f96c46247-71
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-610b07100000bca80137c10f96c46247 .
-
-d:SH-MEl-610e0b010000bca80137ac40800bb1b8-72
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-610e0b010000bca80137ac40800bb1b8 .
-
-d:SH-MEl-459b92580000c3a80141cb4acb521ab1-73
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-459b92580000c3a80141cb4acb521ab1 .
-
-d:SH-MEl-45384cd10000c3a80141c1f85d7c26e6-74
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-45384cd10000c3a80141c1f85d7c26e6 .
-
-d:SH-MEl-607f13b50000bca80137ba95f11856ab-75
-	dcterms:modified "2017-06-19T20:14:21+02:00" ;
-	pig:lists d:MEl-607f13b50000bca80137ba95f11856ab .
-
-d:N-k9qMB6fnxPTk942dvPKdyvnwnoQ
-	dcterms:modified "2018-05-08T13:06:13+02:00" ;
-	pig:lists d:Fld-ef47e6970000c3a80139dc747c5df319 ;
-	pig:lists d:N-MEqCD8nv2O5KMxX6aRPiL1yvFjO ,
-		d:N-6WphHL275dOAkBU1GxMTrKQ83rV .
-
-d:N-MEqCD8nv2O5KMxX6aRPiL1yvFjO
-	dcterms:modified "2018-05-08T13:06:13+02:00" ;
-	pig:lists d:Fld-ee29463e0000c3a80139627bbced50ae ;
-	pig:lists d:N-dFKUyr9Ol35NJuTx6Eru1xqUQoP .
-
-d:N-dFKUyr9Ol35NJuTx6Eru1xqUQoP
-	dcterms:modified "2018-05-08T13:06:13+02:00" ;
+	rdfs:comment "... anchoring all hierarchies of this graph (package)" ;
+	pig:lists d:Fld-59c8a7730000bca80137509a49b1218b-info ,
+		d:Fld-5a5f54090000bca801375b04a668f1a7 ,
+		d:Fld-5af3154d0000bca801379748537d7388 ,
+		d:Fld-5b8e98550000bca801371afb0c7b671b ,
+		d:Fld-59c8a7730000bca80137509a49b1218b ,
+		d:Fld-ef47e6970000c3a80139dc747c5df319 ,
+		d:FolderGlossary-8001804519 .
+
+d:Fld-59c8a7730000bca80137509a49b1218b-info
+	rdf:type SpecIF:Heading ;
+	rdfs:label "Project Information" ;
+	rdfs:comment "<div> <p> <a href=\"https://enso-managers.de\" ><object data=\"files_and_images/enso-logo.png\" type=\"image/png\" >enso managers gmbh</object></a> </p> <p> This is a small show-case illustrating the basic concepts for integrated mechatronic system specification. In addition to the original text and diagrams you will find logical relations between the information elements. Most relations are derived automatically from the diagrams; the resulting semantic net lends itself for navigation, search and audit. </p> <p> The specification integrates and represents: </p><ul><li>processes, system composition and requirements (dynamic, static and detail views) </li><li>mechanic, electric and software components with their interfaces. </li></ul><p>It is an important characteristic, that all plans (diagrams) are views of a common system engineering model, sometimes called 'system repository'. Thus, consistency is always maintained. </p><p>The model elements are connected with relations, most of which are defined by positioning graph elements. For example, if a system component is drawn within another, a relationship 'contains' is created in the logic representation of the engineering model. Other relations, such as a system component 'satisfies' a requirement are created manually. </p><p>Also, the documents are generated from the system engineering model. The ordering is in most projects (it can be rearranged, however, if appropriate): </p><ul><li> All plans </li><li> A glossary with descriptions of all model elements appearing on one or more plans </li><li> A hierarchically ordered list of requirements </li> <li> A list of open issues. </li></ul><p> Please note that plans list related model elements and model elements list related requirements .. and vice versa. Active hyper-links are used, so that it is easy to jump between related model elements. </p><p><br/></p><p><strong>Stakeholders:</strong></p><table class=\"stdInlineWithBorder\"> <tbody> <tr> <th> Name </th><th>Organisation</th><th> Telephone </th> <th> Email </th> </tr> <tr> <td> Dr. Oskar v. Dungern </td> <td>enso managers GmbH</td> <td> </td> <td><a href=\"mailto:od@enso-managers.de\" >od@enso-managers.de</a></td> </tr> </tbody> </table> <p> <br /> </p> <p><strong>Legend:</strong> </p> <p> To distinguish their type, element names are preceded by one of the following symbols: </p> <table class=\"stdInlineWithBorder\"> <tbody> <tr> <td> ▣ </td><td> Plan </td> <td> A 'Diagram' is a graphical model view with a specific communication purpose, e.g. a business process or system composition. </td></tr><tr> <td> ■ </td><td> Actor (Role, Function) </td> <td> An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role. </td> </tr> <tr> <td> ● </td> <td> State (Information) </td> <td> A 'State' is a fundamental model element type representing a passive entity, be it a value, a condition, an information storage or even a physical shape. </td> </tr> <tr> <td> ♦ </td> <td> Event </td> <td> An 'Event' is a fundamental model element type representing a time reference, a change in condition/value or more generally a synchronisation primitive. </td> </tr> <tr> <td> ✶ </td> <td> Feature </td> <td> A 'Feature' is an intentional distinguishing characteristic of a system, often a unique selling proposition. </td> </tr> <tr> <td> ↯ </td> <td> Requirement </td> <td> A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform. </td> </tr> </tbody> </table> <p class=\"sceditor-nlf\"> <br /> </p></div>" ;
+	dcterms:modified "2018-05-04T17:18:18+02:00" ;
+	dcterms:creator "od" .
+
+d:Fld-5a5f54090000bca801375b04a668f1a7
+	rdf:type SpecIF:Heading ;
+	rdfs:label "System Composition" ;
+	rdfs:comment "<div><p>.. showing the system and its composition of modules (at a higher level) and components (at a lower level). The relevant interfaces between the disciplines mechanical, electrical and software engineering are shown.</p> </div>" ;
+	dcterms:modified "2017-06-19T20:13:02+02:00" ;
+	dcterms:creator "od" ;
+	pig:lists d:Pln-27420ffc0000c3a8013ab527ca1b71f5 ,
+		d:Pln-5a4755dd0000bca801375293a62c90a8 ,
+		d:Pln-5a6cdea50000bca80137d6b2d6e8a3a0 ,
+		d:Pln-5a7f99af0000bca8013754f2ef12d3e5 .
+
+d:Fld-5af3154d0000bca801379748537d7388
+	rdf:type SpecIF:Heading ;
+	rdfs:label "Scenarios" ;
+	rdfs:comment "<div><p>.. showing the behavioral aspects of system design, both from external user perspective ('black box') and from internal perspective ('white box').</p> </div>" ;
+	dcterms:modified "2017-06-19T20:13:02+02:00" ;
+	dcterms:creator "od" ;
+	pig:lists d:Fld-5b6a99f10000bca80137b78cda65fc07 .
+
+d:Fld-5b6a99f10000bca80137b78cda65fc07
+	rdf:type SpecIF:Heading ;
+	rdfs:label "Dimming" ;
+	dcterms:modified "2017-06-19T20:13:04+02:00" ;
+	dcterms:creator "od" ;
+	pig:lists d:Pln-606e76c70000bca801376ec3133a1181 ,
+		d:Pln-45a1c8930000c3a801414cd1eaa70b5a ,
+		d:Pln-5af364560000bca80137b84017f4e832 .
+
+d:Fld-5b8e98550000bca801371afb0c7b671b
+	rdf:type SpecIF:Heading ;
+	rdfs:label "Requirements" ;
+	dcterms:modified "2017-06-19T20:13:02+02:00" ;
+	dcterms:creator "od" ;
+	pig:lists d:Fld-d1b1698a0000c3a801505b1b5698b7a1 ,
+		d:Fld-d1b1d6c60000c3a80150fe9ce40e6588 ,
+		d:Fld-d1b314890000c3a80150b71a1473d374 .
+
+d:Fld-d1b1698a0000c3a801505b1b5698b7a1
+	rdf:type SpecIF:Heading ;
+	rdfs:label "Function" ;
+	rdfs:comment "<div><p>The requirements related to the product function.</p> </div>" ;
+	dcterms:modified "2017-06-19T20:13:06+02:00" ;
+	dcterms:creator "od" ;
+	pig:lists d:Req-d1c895230000c3a80150f8afd049f738 ,
+		d:Req-d1d42a6a0000c3a8015091ec8d149b93 ,
+		d:Req-d1cd7f370000c3a8015095e6ee21aab7 ,
+		d:Req-5ba3512b0000bca801371cc0617eb4c1 ,
+		d:Req-5b8fbb300000bca80137c73e3ce4c737 .
+
+d:Fld-d1b1d6c60000c3a80150fe9ce40e6588
+	rdf:type SpecIF:Heading ;
+	rdfs:label "Quality" ;
+	rdfs:comment "<div><p>The requirements related to quality characteristics of the product.</p> </div>" ;
+	dcterms:modified "2017-06-19T20:13:08+02:00" ;
+	dcterms:creator "od" ;
+	pig:lists d:Req-5b944fc70000bca8013763f44fdc0e03 ,
+		d:Req-5ba140d60000bca801372b09f9888eca ,
+		d:Req-ee452cf20000c3a8014035290669304d ,
+		d:Req-ee43fc4c0000c3a8014063d42c77767f ,
+		d:Req-5b9124bc0000bca80137fa2ce86f5eca ,
+		d:Req-5b9e68530000bca801371362c49d2d08 .
+
+d:Fld-d1b314890000c3a80150b71a1473d374
+	rdf:type SpecIF:Heading ;
+	rdfs:label "Constraints" ;
+	rdfs:comment "<div><p>The requirements related to constraints for product conception, such as regulations or technical choices made upfront.</p> </div>" ;
+	dcterms:modified "2017-06-19T20:13:12+02:00" ;
+	dcterms:creator "od" ;
+	pig:lists d:Req-eea1cd500000c3a80140fe00109eb7f4 ,
+		d:Req-5b95fae40000bca801372becc933682d ,
+		d:Req-5b9ab8a50000bca801377ad0be3bbc89 ,
+		d:Req-728c69c80018b1a8014b974542c36edc ,
+		d:Req-5b9c950e0000bca801374f16615247b9 .
+
+d:Fld-59c8a7730000bca80137509a49b1218b
+	rdf:type SpecIF:Heading ;
+	rdfs:label "Parts List" ;
+	rdfs:comment "<div>This Parts List has been automatically generated from the model. </div>" ;
+	dcterms:modified "2017-06-19T20:13:02+02:00" ;
+	dcterms:creator "od" ;
+	pig:lists d:MEl-5bd6bd890000bca8013739588a3f43d6 ,
+		d:MEl-5bcfb01d0000bca80137f303272a5557 ,
+		d:MEl-803fd3750000c3a8013cf1fdb3b26d33 ,
+		d:MEl-5a47935a0000bca801377c17f8cb25b0 .
+
+d:Fld-ef47e6970000c3a80139dc747c5df319
+	rdf:type SpecIF:Heading ;
+	rdfs:label "Open Issues" ;
+	dcterms:modified "2017-06-19T20:13:02+02:00" ;
+	dcterms:creator "od" ;
+	pig:lists d:Fld-ee29463e0000c3a80139627bbced50ae ,
+		d:Fld-ee2a15040000c3a80139d27de6704f15 .
+
+d:Fld-ee29463e0000c3a80139627bbced50ae
+	rdf:type SpecIF:Heading ;
+	rdfs:label "Mechanical" ;
+	dcterms:modified "2017-06-19T20:13:14+02:00" ;
+	dcterms:creator "od" ;
 	pig:lists d:Iss-ee2abb630000c3a8013987a750219659 .
 
-d:N-6WphHL275dOAkBU1GxMTrKQ83rV
-	dcterms:modified "2018-05-08T13:06:13+02:00" ;
-	pig:lists d:Fld-ee2a15040000c3a80139d27de6704f15 ;
-	pig:lists d:N-0YdQoA5LUWfaG8QElShFdROs667 .
-
-d:N-0YdQoA5LUWfaG8QElShFdROs667
-	dcterms:modified "2018-05-08T13:06:13+02:00" ;
+d:Fld-ee2a15040000c3a80139d27de6704f15
+	rdf:type SpecIF:Heading ;
+	rdfs:label "Software" ;
+	dcterms:modified "2017-06-19T20:13:15+02:00" ;
+	dcterms:creator "od" ;
 	pig:lists d:Iss-eee2d4e00000c3a801394148dcc58a52 .
 
-d:N-FolderGlossary-8001804519
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:FolderGlossary-8001804519 ;
-	pig:lists d:N-11992826682 ,
-		d:N-11698393655 ,
-		d:N-9509306014 ,
-		d:N-11325426083 ,
-		d:N-8496575153 ,
-		d:N-10335555685 ,
-		d:N-10246963513 ,
-		d:N-11264518815 ,
-		d:N-9160779324 ,
-		d:N-10632367516 ,
-		d:N-11985572692 ,
-		d:N-11883342810 ,
-		d:N-9244525526 ,
-		d:N-10798294875 ,
-		d:N-11439696753 ,
-		d:N-11359729878 ,
-		d:N-8149704192 ,
-		d:N-10286201224 ,
-		d:N-10770729255 ,
-		d:N-8165948670 ,
-		d:N-12138919772 ,
-		d:N-11028593111 ,
-		d:N-10217328855 ,
-		d:N-10525716415 ,
-		d:N-11929615658 ,
-		d:N-8708504350 ,
-		d:N-8947132181 ,
-		d:N-11899911847 ,
-		d:N-8706154690 ,
-		d:N-11110633939 ,
-		d:N-10422773061 ,
-		d:N-9207557458 ,
-		d:N-8475769123 ,
-		d:N-9488170768 ,
-		d:N-10961176369 ,
-		d:N-10222646501 ,
-		d:N-9870789565 ,
-		d:N-10780505608 ,
-		d:N-7987935753 ,
-		d:N-10742722363 ,
-		d:N-11576683570 ,
-		d:N-12103498960 ,
-		d:N-9767419742 ,
-		d:N-11624385924 ,
-		d:N-10581808145 ,
-		d:N-12070675378 ,
-		d:N-10254678604 ,
-		d:N-11318840750 ,
-		d:N-10697245591 ,
-		d:N-9425292180 ,
-		d:N-10690146030 ,
-		d:N-10305579835 ,
-		d:N-8693729440 ,
-		d:N-9531538611 ,
-		d:N-10437899675 ,
-		d:N-11635797126 ,
-		d:N-8254619229 ,
-		d:N-10074645837 ,
-		d:N-10455795887 ,
-		d:N-9563063161 ,
-		d:N-10872481972 ,
-		d:N-11412566754 ,
-		d:N-10637362482 ,
-		d:N-8326605989 ,
-		d:N-10093957736 ,
-		d:N-10031576033 .
-
-d:N-11992826682
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5a7776c50000bca8013765ae93af9209 .
-
-d:N-11698393655
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5a76365c0000bca8013776e91afd1e8e .
-
-d:N-9509306014
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-608177820000bca801379179ebf3b6aa .
-
-d:N-11325426083
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-611366530000bca80137a97f194e96a3 .
-
-d:N-8496575153
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5bd6bd890000bca8013739588a3f43d6 .
-
-d:N-10335555685
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5a9ce0310000bca801378176dc4744e8 .
-
-d:N-10246963513
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5b2f95ec0000bca8013709bfa81d701f .
-
-d:N-11264518815
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-453862540000c3a801419d91bef48cfd .
-
-d:N-9160779324
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-45387c0b0000c3a801410aa03f6b9be4 .
-
-d:N-10632367516
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5a85347c0000bca80137ad485c7cd330 .
-
-d:N-11985572692
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5a808e2a0000bca80137bfd74268a84a .
-
-d:N-11883342810
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5a752ccc0000bca80137479a2e8bab30 .
-
-d:N-9244525526
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-4538920b0000c3a801415c67e334b8a1 .
-
-d:N-10798294875
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5a71c4800000bca80137f2aaa7b63000 .
-
-d:N-11439696753
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-606f16ac0000bca801373587fda932b3 .
-
-d:N-11359729878
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5a4dd77b0000bca8013736c6912ad291 .
-
-d:N-8149704192
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-45450be80000c3a801414f280f146c71 .
-
-d:N-10286201224
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-4536b0350000c3a801415986f8ea806a .
-
-d:N-10770729255
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5a844d820000bca8013750b9a0410b6b .
-
-d:N-8165948670
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5a489c300000bca80137ee1373c16844 .
-
-d:N-12138919772
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5a4c80c20000bca8013753b6999a4da8 .
-
-d:N-11028593111
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5a99c89c0000bca801375d44cf9a50ca .
-
-d:N-10217328855
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5a8009a00000bca80137ef95bc3f643f .
-
-d:N-10525716415
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5a87083e0000bca801379bb412523737 .
-
-d:N-11929615658
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5b149eab0000bca80137aad99b6eea7b .
-
-d:N-8708504350
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5a52b50c0000bca801377e3d15255f98 .
-
-d:N-8947132181
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5b08ed8d0000bca8013719f554353b0e .
-
-d:N-11899911847
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5a9929510000bca80137d23c81f1ca54 .
-
-d:N-8706154690
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5bcf35cf0000bca8013776d68023612a .
-
-d:N-11110633939
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-453dfb670000c3a8014191107df4565e .
-
-d:N-10422773061
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5b094f8a0000bca801374c798a6587ad .
-
-d:N-9207557458
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-45428b930000c3a80141e28b7d4b5ae5 .
-
-d:N-8475769123
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5b078fa50000bca80137f36ed05c43cb .
-
-d:N-9488170768
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5c29fb8e0000bca80137eb9734c99bfd .
-
-d:N-10961176369
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5a82ec6f0000bca801372ef053a71bdf .
-
-d:N-10222646501
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-608239830000bca801373690c7d2af0f .
-
-d:N-9870789565
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-610b07100000bca80137c10f96c46247 .
-
-d:N-10780505608
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5a86b8980000bca80137ca6fde1a125e .
-
-d:N-7987935753
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-610e0b010000bca80137ac40800bb1b8 .
-
-d:N-10742722363
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-453facbb0000c3a80141c43d2fb4f5e2 .
-
-d:N-11576683570
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5a51dd920000bca8013770a4395c83fc .
-
-d:N-12103498960
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5bcfb01d0000bca80137f303272a5557 .
-
-d:N-9767419742
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5a50d5b60000bca8013781532547ce93 .
-
-d:N-11624385924
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-803fd3750000c3a8013cf1fdb3b26d33 .
-
-d:N-10581808145
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5a77385f0000bca80137e1c7dc0b1721 .
-
-d:N-12070675378
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5b2d29070000bca801378a6c020cf8f5 .
-
-d:N-10254678604
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5b1750f80000bca801373b2d143d7478 .
-
-d:N-11318840750
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-459b92580000c3a80141cb4acb521ab1 .
-
-d:N-10697245591
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5b2ddad80000bca80137c44d62ba97d8 .
-
-d:N-9425292180
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5b2449180000bca8013722c01c9d35a5 .
-
-d:N-10690146030
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5a4cfa830000bca801370d837f761f3e .
-
-d:N-10305579835
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5a9888810000bca801375410ce1cc142 .
-
-d:N-8693729440
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5b0839b90000bca801376dcca41ca7d0 .
-
-d:N-9531538611
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-45384cd10000c3a80141c1f85d7c26e6 .
-
-d:N-10437899675
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5b07e6aa0000bca8013797aad9be69ae .
-
-d:N-11635797126
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-607f13b50000bca80137ba95f11856ab .
-
-d:N-8254619229
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5a820a3c0000bca801378c9093fb7d80 .
-
-d:N-10074645837
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5a4d2bd00000bca80137a3f233cdffeb .
-
-d:N-10455795887
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5a4d6dee0000bca80137c1caf2f42349 .
-
-d:N-9563063161
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-4543fe900000c3a80141f5253ff13c35 .
-
-d:N-10872481972
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-453d34af0000c3a80141918f84641161 .
-
-d:N-11412566754
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5a47935a0000bca801377c17f8cb25b0 .
-
-d:N-10637362482
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-45a236e00000c3a801410f6503287e16 .
-
-d:N-8326605989
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-45a3b13c0000c3a801415e97f5bc29d1 .
-
-d:N-10093957736
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-5a9b7a9b0000bca80137d768644696b7 .
-
-d:N-10031576033
-	dcterms:modified "2025-09-23T16:55:37.980Z" ;
-	pig:lists d:MEl-463289cd0000c3a80141be3fc417034a .
+d:FolderGlossary-8001804519
+	rdf:type SpecIF:Heading ;
+	rdfs:label "Model Elements (Glossary)" ;
+	dcterms:type "Model Elements (Glossary)" ;
+	dcterms:modified "2025-10-17T14:41:47.844Z" ;
+	pig:lists d:MEl-5a7776c50000bca8013765ae93af9209 ,
+		d:MEl-5a76365c0000bca8013776e91afd1e8e ,
+		d:MEl-608177820000bca801379179ebf3b6aa ,
+		d:MEl-611366530000bca80137a97f194e96a3 ,
+		d:MEl-5bd6bd890000bca8013739588a3f43d6 ,
+		d:MEl-5a9ce0310000bca801378176dc4744e8 ,
+		d:MEl-5b2f95ec0000bca8013709bfa81d701f ,
+		d:MEl-453862540000c3a801419d91bef48cfd ,
+		d:MEl-45387c0b0000c3a801410aa03f6b9be4 ,
+		d:MEl-5a85347c0000bca80137ad485c7cd330 ,
+		d:MEl-5a808e2a0000bca80137bfd74268a84a ,
+		d:MEl-5a752ccc0000bca80137479a2e8bab30 ,
+		d:MEl-4538920b0000c3a801415c67e334b8a1 ,
+		d:MEl-5a71c4800000bca80137f2aaa7b63000 ,
+		d:MEl-606f16ac0000bca801373587fda932b3 ,
+		d:MEl-5a4dd77b0000bca8013736c6912ad291 ,
+		d:MEl-45450be80000c3a801414f280f146c71 ,
+		d:MEl-4536b0350000c3a801415986f8ea806a ,
+		d:MEl-5a844d820000bca8013750b9a0410b6b ,
+		d:MEl-5a489c300000bca80137ee1373c16844 ,
+		d:MEl-5a4c80c20000bca8013753b6999a4da8 ,
+		d:MEl-5a99c89c0000bca801375d44cf9a50ca ,
+		d:MEl-5a8009a00000bca80137ef95bc3f643f ,
+		d:MEl-5a87083e0000bca801379bb412523737 ,
+		d:MEl-5b149eab0000bca80137aad99b6eea7b ,
+		d:MEl-5a52b50c0000bca801377e3d15255f98 ,
+		d:MEl-5b08ed8d0000bca8013719f554353b0e ,
+		d:MEl-5a9929510000bca80137d23c81f1ca54 ,
+		d:MEl-5bcf35cf0000bca8013776d68023612a ,
+		d:MEl-453dfb670000c3a8014191107df4565e ,
+		d:MEl-5b094f8a0000bca801374c798a6587ad ,
+		d:MEl-45428b930000c3a80141e28b7d4b5ae5 ,
+		d:MEl-5b078fa50000bca80137f36ed05c43cb ,
+		d:MEl-5c29fb8e0000bca80137eb9734c99bfd ,
+		d:MEl-5a82ec6f0000bca801372ef053a71bdf ,
+		d:MEl-608239830000bca801373690c7d2af0f ,
+		d:MEl-610b07100000bca80137c10f96c46247 ,
+		d:MEl-5a86b8980000bca80137ca6fde1a125e ,
+		d:MEl-610e0b010000bca80137ac40800bb1b8 ,
+		d:MEl-453facbb0000c3a80141c43d2fb4f5e2 ,
+		d:MEl-5a51dd920000bca8013770a4395c83fc ,
+		d:MEl-5bcfb01d0000bca80137f303272a5557 ,
+		d:MEl-5a50d5b60000bca8013781532547ce93 ,
+		d:MEl-803fd3750000c3a8013cf1fdb3b26d33 ,
+		d:MEl-5a77385f0000bca80137e1c7dc0b1721 ,
+		d:MEl-5b2d29070000bca801378a6c020cf8f5 ,
+		d:MEl-5b1750f80000bca801373b2d143d7478 ,
+		d:MEl-459b92580000c3a80141cb4acb521ab1 ,
+		d:MEl-5b2ddad80000bca80137c44d62ba97d8 ,
+		d:MEl-5b2449180000bca8013722c01c9d35a5 ,
+		d:MEl-5a4cfa830000bca801370d837f761f3e ,
+		d:MEl-5a9888810000bca801375410ce1cc142 ,
+		d:MEl-5b0839b90000bca801376dcca41ca7d0 ,
+		d:MEl-45384cd10000c3a80141c1f85d7c26e6 ,
+		d:MEl-5b07e6aa0000bca8013797aad9be69ae ,
+		d:MEl-607f13b50000bca80137ba95f11856ab ,
+		d:MEl-5a820a3c0000bca801378c9093fb7d80 ,
+		d:MEl-5a4d2bd00000bca80137a3f233cdffeb ,
+		d:MEl-5a4d6dee0000bca80137c1caf2f42349 ,
+		d:MEl-4543fe900000c3a80141f5253ff13c35 ,
+		d:MEl-453d34af0000c3a80141918f84641161 ,
+		d:MEl-5a47935a0000bca801377c17f8cb25b0 ,
+		d:MEl-45a236e00000c3a801410f6503287e16 ,
+		d:MEl-45a3b13c0000c3a801415e97f5bc29d1 ,
+		d:MEl-5a9b7a9b0000bca80137d768644696b7 ,
+		d:MEl-463289cd0000c3a80141be3fc417034a .

@@ -13,7 +13,7 @@
 @prefix foaf: <http://xmlns.com/foaf/spec/#> .
 @prefix FMC: <http://fmc-modeling.org#> .
 @prefix IR: <https://www.adesso.de/de/impulse/interaction-room/index.jsp#> .
-@prefix IREB: <https://www.ireb.org/en/downloads#cpre-glossary> .
+@prefix IREB: <https://www.ireb.org/cpre-glossary#> .
 @prefix ReqIF: <https://www.prostep.org/fileadmin/downloads/PSI_ImplementationGuide_ReqIF_V1-7.pdf#> .
 @prefix ReqIF-WF: <https://www.prostep.org/fileadmin/downloads/Recommendation_ReqIF_V2_RZ3.pdf#> .
 @prefix HIS: <https://www.itwissen.info/Herstellerinitiative-Software-Automotive-HIS.html#> .
@@ -26,11 +26,11 @@
 @prefix sysml: <https://www.omg.org/spec/SysML#> .
 @prefix pig: <https://product-information-graph.org/metamodel#> .
 @prefix DDP: <http://www.prostep.org/dictionary/2.0#> .
-@prefix SpecIF: <https://specif.de/v1.1/schema#> .
+@prefix SpecIF: <https://specif.de/v1.2/schema#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 
 @prefix o: <https://product-information-graph.org/examples/ontology#> .
-@prefix d: <https://product-information-graph.org/examples/SmaV%20v6.mdzip#> .
+@prefix d: <https://product-information-graph.org/examples/Small%20Autonomous%20Vehicle.specif.zip#> .
 
 #################################################################
 # Project Metadata
@@ -43,11 +43,21 @@ d:
 	owl:imports <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ,
 		<http://www.w3.org/2000/01/rdf-schema#> ;
 	dcterms:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
-	dcterms:createdAt "2025-09-23T17:14:55.103Z" .
+	dcterms:modified "2025-10-17T11:05:15.037Z" .
 
 #################################################################
-### META-ONTOLOGY = PIG Metamodel (pig:)
+# PIG Metamodel (pig:)
 #################################################################
+
+pig:Property
+	rdf:type owl:DatatypeProperty ;
+	rdfs:label "Literal Property" ;
+	rdfs:comment "A PIG meta-model element used for literal properties." .
+
+pig:PropertyEnum
+	rdf:type owl:ObjectProperty ;
+	rdfs:label "Enumerated literal Property" ;
+	rdfs:comment "A PIG meta-model element used for enumerated literal properties." .
 
 pig:Organizer
 	rdf:type owl:Class ;
@@ -87,7 +97,7 @@ pig:eligibleElement
 
 pig:lists
 	rdfs:subPropertyOf pig:eligibleElement ;
-	rdfs:domain pig:Outline ;
+	rdfs:domain [ owl:unionOf( pig:HierarchyRoot pig:Outline SpecIF:Heading )] ;
 	rdfs:label "lists" ;
 	rdfs:comment "Lists (references) an entity, a relationship or a subordinated organizer." .
 
@@ -114,72 +124,64 @@ SpecIF:Priority-Value
 	rdfs:label "Priority"@en ;
 	rdfs:label "Priorität"@de ;
 	rdfs:label "Priorité"@fr ;
-	rdfs:comment "Enumerated Values for Priorität" ;
+	rdfs:comment "Enumerated values for the 'Priority' of the resource."@en ;
 	dcterms:modified "2025-09-05T12:40:27.574Z" ;
 	owl:oneOf ( SpecIF:priorityHigh SpecIF:priorityRatherHigh SpecIF:priorityMedium SpecIF:priorityRatherLow SpecIF:priorityLow ) .
 SpecIF:priorityHigh
 	rdf:type SpecIF:Priority-Value ;
 	rdfs:label "high"@en ;
 	rdfs:label "hoch"@de ;
-	rdfs:label "haut"@fr ;
-	rdfs:comment "A value for property [[SpecIF:Priority]]." .
+	rdfs:label "haut"@fr .
 SpecIF:priorityRatherHigh
 	rdf:type SpecIF:Priority-Value ;
 	rdfs:label "rather high"@en ;
 	rdfs:label "eher hoch"@de ;
-	rdfs:label "plutôt haut"@fr ;
-	rdfs:comment "A value for property [[SpecIF:Priority]]." .
+	rdfs:label "plutôt haut"@fr .
 SpecIF:priorityMedium
 	rdf:type SpecIF:Priority-Value ;
 	rdfs:label "medium"@en ;
 	rdfs:label "mittel"@de ;
-	rdfs:label "moyen"@fr ;
-	rdfs:comment "A value for property [[SpecIF:Priority]]." .
+	rdfs:label "moyen"@fr .
 SpecIF:priorityRatherLow
 	rdf:type SpecIF:Priority-Value ;
 	rdfs:label "rather low"@en ;
 	rdfs:label "eher niedrig"@de ;
-	rdfs:label "plutôt bas"@fr ;
-	rdfs:comment "A value for property [[SpecIF:Priority]]." .
+	rdfs:label "plutôt bas"@fr .
 SpecIF:priorityLow
 	rdf:type SpecIF:Priority-Value ;
 	rdfs:label "low"@en ;
 	rdfs:label "niedrig"@de ;
-	rdfs:label "bas"@fr ;
-	rdfs:comment "A value for property [[SpecIF:Priority]]." .
+	rdfs:label "bas"@fr .
 
 SpecIF:StakeholderGroup-Value
 	rdf:type owl:Class ;
 	rdfs:label "Stakeholder Group"@en ;
-	rdfs:comment "Enumerated Values for Stakeholder Group" ;
+	rdfs:comment "Enumerated values for the 'Stakehoder Group' addressed by the term."@en ;
 	dcterms:modified "2023-03-10T07:48:02.442Z" ;
 	owl:oneOf ( SpecIF:StakeholderGroupRegulation SpecIF:StakeholderGroupBusiness SpecIF:StakeholderGroupUser SpecIF:StakeholderGroupSystem SpecIF:StakeholderGroupOperation ) .
 SpecIF:StakeholderGroupRegulation
 	rdf:type SpecIF:StakeholderGroup-Value ;
-	rdfs:label "Regulation"@en ;
-	rdfs:comment "The stakeholder group 'Regulation' addressed by a requirement." .
+	rdfs:label "Regulation"@en .
 SpecIF:StakeholderGroupBusiness
 	rdf:type SpecIF:StakeholderGroup-Value ;
-	rdfs:label "Business"@en ;
-	rdfs:comment "The stakeholder group 'Business' addressed by a requirement." .
+	rdfs:label "Business"@en .
 SpecIF:StakeholderGroupUser
 	rdf:type SpecIF:StakeholderGroup-Value ;
-	rdfs:label "User"@en ;
-	rdfs:comment "The stakeholder group 'User' addressed by a requirement." .
+	rdfs:label "User"@en .
 SpecIF:StakeholderGroupSystem
 	rdf:type SpecIF:StakeholderGroup-Value ;
-	rdfs:label "System"@en ;
-	rdfs:comment "The stakeholder group 'System' addressed by a requirement." .
+	rdfs:label "System"@en .
 SpecIF:StakeholderGroupOperation
 	rdf:type SpecIF:StakeholderGroup-Value ;
-	rdfs:label "Operation"@en ;
-	rdfs:comment "The stakeholder group 'Operation' addressed by a requirement." .
+	rdfs:label "Operation"@en .
 
 IREB:RequirementType-Value
 	rdf:type owl:Class ;
 	rdfs:label "Type"@en ;
 	rdfs:label "Art"@de ;
-	rdfs:comment "Enumerated Values for Art" ;
+	rdfs:comment "According to the IREB, requirements are typically classified into functional requirements ([[IREB:FunctionalRequirement]]), quality requirements ([[IREB:QualityRequirement]]) and constraints ([[IREB:Constraint]]). The latter two are also called non-functional requirements."@en ;
+	rdfs:comment "Nach dem IREB werden Anforderungen üblicherweise nach 'Art' in funktionale Anforderungen ([[IREB:FunctionalRequirement]]), Qualitätsanforderungen ([[IREB:QualityRequirement]]) und Randbedingungen ([[IREB:Constraint]]) unterteilt. Die beiden letzteren werden auch nicht-funktionale Anforderungen genannt."@de ;
+	rdfs:comment "Selon l'IREB, les exigences sont généralement classées en exigences fonctionnelles ([[IREB:FunctionalRequirement]]), en exigences de qualité ([[IREB:QualityRequirement]]) et en contraintes ([[IREB:Constraint]]). Ces deux dernières sont également appelées exigences non fonctionnelles."@fr ;
 	dcterms:modified "2023-08-08T20:52:31.633Z" ;
 	owl:oneOf ( o:V_RequirementType_0 o:V_RequirementType_1 IREB:FunctionalRequirement IREB:QualityRequirement IREB:Constraint o:V_RequirementType_5 ) .
 o:V_RequirementType_0
@@ -192,20 +194,17 @@ IREB:FunctionalRequirement
 	rdf:type IREB:RequirementType-Value ;
 	rdfs:label "Functional Requirement"@en ;
 	rdfs:label "Funktionsanforderung"@de ;
-	rdfs:label "Exigence de function"@fr ;
-	rdfs:comment "A [[IREB:Requirement]] concerning a result of behavior that shall be provided by a function of a system (or of a component or service)."@en .
+	rdfs:label "Exigence de function"@fr .
 IREB:QualityRequirement
 	rdf:type IREB:RequirementType-Value ;
 	rdfs:label "Quality Requirement"@en ;
 	rdfs:label "Qualitätsanforderung"@de ;
-	rdfs:label "Exigence de qualité"@fr ;
-	rdfs:comment "A [[IREB:Requirement]] that pertains to a quality concern that is not covered by functional requirements."@en .
+	rdfs:label "Exigence de qualité"@fr .
 IREB:Constraint
 	rdf:type IREB:RequirementType-Value ;
 	rdfs:label "Constraint"@en ;
 	rdfs:label "Randbedingung"@de ;
-	rdfs:label "Contrainte"@fr ;
-	rdfs:comment "A [[IREB:Requirement]] that limits the solution space beyond what is necessary for meeting the given functional requirements and quality requirements."@en .
+	rdfs:label "Contrainte"@fr .
 o:V_RequirementType_5
 	rdf:type IREB:RequirementType-Value ;
 	rdfs:label "SpecIF:PainPoint" .
@@ -214,12 +213,30 @@ o:V_RequirementType_5
 # Ontology - Property Classes
 #################################################################
 
+# Skipping implicit property: rdfs:label
+
+rdfs:label-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path rdfs:label ;
+	sh:maxCount "1" ;
+	sh:datatype xsd:string ;
+	sh:maxLength "256" .
+
+# Skipping implicit property: rdfs:comment
+
+rdfs:comment-Shape
+	rdf:type sh:PropertyShape ;
+	sh:path rdfs:comment ;
+	sh:maxCount "1" ;
+	sh:datatype xsd:string .
+
 dcterms:type
-	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:Property ;
 	rdfs:label "Element Type"@en ;
 	rdfs:label "Element-Typ"@de ;
 	rdfs:label "Type d'élément"@fr ;
-	rdfs:comment "<p>The nature or genre of the resource. <small>(<i>source: <a href=\"http://purl.org/dc/elements/1.1/type\">DCMI</a></i>)</small></p><p>Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element.</p><p>For example, a [[FMC:Actor]] may represent a <i>System Function</i>, a <i>System Component</i> or a <i>User Role</i>. Similarly, in the context of process modelling, a FMC:Actor may represent a <i>Process Step</i> or again a <i>User Role</i>. So, all of these are meaningful values for a FMC:Actor's property named dcterms:type.</p>"@en .
+	rdfs:comment "<p>The nature or genre of the resource. <small>(<i>source: <a href=\"http://purl.org/dc/elements/1.1/type\">DCMI</a></i>)</small></p><p>Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element.</p><p>For example, a [[FMC:Actor]] may represent a <i>System Function</i>, a <i>System Component</i> or a <i>User Role</i>. Similarly, in the context of process modelling, a FMC:Actor may represent a <i>Process Step</i> or again a <i>User Role</i>. So, all of these are meaningful values for a FMC:Actor's property named dcterms:type.</p>"@en ;
+	dcterms:modified "2025-03-06T15:04:02.280Z" .
 
 dcterms:type-Shape
 	rdf:type sh:PropertyShape ;
@@ -229,11 +246,12 @@ dcterms:type-Shape
 	sh:maxLength "32" .
 
 SpecIF:Diagram
-	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:Property ;
 	rdfs:label "Diagram"@en ;
 	rdfs:label "Diagramm"@de ;
 	rdfs:label "Diagramme"@fr ;
-	rdfs:comment "A diagram illustrating the resource or a link to a diagram."@en .
+	rdfs:comment "A diagram illustrating the resource or a link to a diagram."@en ;
+	dcterms:modified "2023-02-26T14:40:17.601Z" .
 
 SpecIF:Diagram-Shape
 	rdf:type sh:PropertyShape ;
@@ -241,9 +259,10 @@ SpecIF:Diagram-Shape
 	sh:datatype xsd:string .
 
 SpecIF:Notation
-	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:Property ;
 	rdfs:label "Notation"@en ;
-	rdfs:comment "The notation used by a model diagram, e.g. 'BPMN 2.0', 'SysML Activity Diagram' or 'FMC Block Diagram'."@en .
+	rdfs:comment "The notation used by a model diagram, e.g. 'BPMN 2.0', 'SysML Activity Diagram' or 'FMC Block Diagram'."@en ;
+	dcterms:modified "2023-02-26T21:06:48.930Z" .
 
 SpecIF:Notation-Shape
 	rdf:type sh:PropertyShape ;
@@ -253,8 +272,9 @@ SpecIF:Notation-Shape
 	sh:maxLength "32" .
 
 uml:is_Service
-	rdf:type owl:DatatypeProperty ;
-	rdfs:label "is server"@en .
+	rdfs:subClassOf pig:Property ;
+	rdfs:label "is server"@en ;
+	dcterms:modified "2024-07-09T12:03:24.570Z" .
 
 uml:is_Service-Shape
 	rdf:type sh:PropertyShape ;
@@ -263,8 +283,9 @@ uml:is_Service-Shape
 	sh:datatype xsd:boolean .
 
 uml:Flow_Direction
-	rdf:type owl:DatatypeProperty ;
-	rdfs:label "Flow Direction"@en .
+	rdfs:subClassOf pig:Property ;
+	rdfs:label "Flow Direction"@en ;
+	dcterms:modified "2024-07-09T05:23:08.410Z" .
 
 uml:Flow_Direction-Shape
 	rdf:type sh:PropertyShape ;
@@ -274,12 +295,13 @@ uml:Flow_Direction-Shape
 	sh:maxLength "32" .
 
 SpecIF:Priority
-	rdf:type owl:ObjectProperty ;
+	rdfs:subClassOf pig:PropertyEnum ;
 	rdfs:label "Priority"@en ;
 	rdfs:label "Priorität"@de ;
 	rdfs:label "Priorité"@fr ;
 	rdfs:comment "Enumerated values for the 'Priority' of the resource."@en ;
-	rdfs:range SpecIF:Priority-Value .
+	rdfs:range SpecIF:Priority-Value ;
+	dcterms:modified "2025-09-05T12:40:27.574Z" .
 
 SpecIF:Priority-Shape
 	rdf:type sh:PropertyShape ;
@@ -288,10 +310,11 @@ SpecIF:Priority-Shape
 	sh:class SpecIF:Priority-Value .
 
 SpecIF:StakeholderGroup
-	rdf:type owl:ObjectProperty ;
+	rdfs:subClassOf pig:PropertyEnum ;
 	rdfs:label "Stakeholder Group"@en ;
 	rdfs:comment "Enumerated values for the 'Stakehoder Group' addressed by the term."@en ;
-	rdfs:range SpecIF:StakeholderGroup-Value .
+	rdfs:range SpecIF:StakeholderGroup-Value ;
+	dcterms:modified "2023-03-10T07:48:02.442Z" .
 
 SpecIF:StakeholderGroup-Shape
 	rdf:type sh:PropertyShape ;
@@ -300,11 +323,12 @@ SpecIF:StakeholderGroup-Shape
 	sh:class SpecIF:StakeholderGroup-Value .
 
 SpecIF:Icon
-	rdf:type owl:DatatypeProperty ;
+	rdfs:subClassOf pig:Property ;
 	rdfs:label "Icon"@en ;
 	rdfs:label "Symbol"@de ;
 	rdfs:label "Symbole"@fr ;
-	rdfs:comment "A symbol or icon for display as a prefix to titles; applicable to all instances of the class. Is usually a XML-encoded UTF-8 symbol, can be an URL or dataURL."@en .
+	rdfs:comment "A symbol or icon for display as a prefix to titles; applicable to all instances of the class. Is usually a XML-encoded UTF-8 symbol, can be an URL or dataURL."@en ;
+	dcterms:modified "2025-09-05T12:43:26.716Z" .
 
 SpecIF:Icon-Shape
 	rdf:type sh:PropertyShape ;
@@ -314,13 +338,14 @@ SpecIF:Icon-Shape
 	sh:maxLength "256" .
 
 IREB:RequirementType
-	rdf:type owl:ObjectProperty ;
+	rdfs:subClassOf pig:PropertyEnum ;
 	rdfs:label "Type"@en ;
 	rdfs:label "Art"@de ;
 	rdfs:comment "According to the IREB, requirements are typically classified into functional requirements ([[IREB:FunctionalRequirement]]), quality requirements ([[IREB:QualityRequirement]]) and constraints ([[IREB:Constraint]]). The latter two are also called non-functional requirements."@en ;
 	rdfs:comment "Nach dem IREB werden Anforderungen üblicherweise nach 'Art' in funktionale Anforderungen ([[IREB:FunctionalRequirement]]), Qualitätsanforderungen ([[IREB:QualityRequirement]]) und Randbedingungen ([[IREB:Constraint]]) unterteilt. Die beiden letzteren werden auch nicht-funktionale Anforderungen genannt."@de ;
 	rdfs:comment "Selon l'IREB, les exigences sont généralement classées en exigences fonctionnelles ([[IREB:FunctionalRequirement]]), en exigences de qualité ([[IREB:QualityRequirement]]) et en contraintes ([[IREB:Constraint]]). Ces deux dernières sont également appelées exigences non fonctionnelles."@fr ;
-	rdfs:range IREB:RequirementType-Value .
+	rdfs:range IREB:RequirementType-Value ;
+	dcterms:modified "2023-08-08T20:52:31.633Z" .
 
 IREB:RequirementType-Shape
 	rdf:type sh:PropertyShape ;
@@ -342,11 +367,12 @@ SpecIF:Paragraph
 	dcterms:modified "2024-03-02T20:55:23.295Z" .
 
 SpecIF:Paragraph-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:Paragraph ;
-	sh:property rdfs:label-Shape ;
-	sh:property rdfs:comment-Shape ;
-	sh:property SpecIF:Diagram-Shape ;
-	sh:property dcterms:type-Shape .
+	sh:property rdfs:label-Shape ,
+		rdfs:comment-Shape ,
+		SpecIF:Diagram-Shape ,
+		dcterms:type-Shape .
 
 SpecIF:ModelElement
 	rdfs:subClassOf pig:Entity ;
@@ -354,29 +380,31 @@ SpecIF:ModelElement
 	rdfs:label "Modellelement"@de ;
 	rdfs:comment "Is a generalized type for model elements."@en ;
 	rdfs:comment "Ist ein generalisierter Typ für Modellelemente."@de ;
-	pig:Icon "&#x2606;" ;
+	pig:icon "&#x2606;" ;
 	dcterms:modified "2025-03-08T20:23:37.245Z" .
 
 SpecIF:ModelElement-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:ModelElement ;
-	sh:property rdfs:label-Shape ;
-	sh:property rdfs:comment-Shape ;
-	sh:property dcterms:type-Shape .
+	sh:property rdfs:label-Shape ,
+		rdfs:comment-Shape ,
+		dcterms:type-Shape .
 
 pig:View
 	rdfs:subClassOf SpecIF:Paragraph ;
 	rdfs:label "View" ;
 	rdfs:comment "A PIG organizer class representing a diagram with certain model-elements for a given communication purpose." ;
-	pig:Icon "▣" ;
+	pig:icon "▣" ;
 	dcterms:modified "2025-08-15T19:41:37.282Z" .
 
 pig:View-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass pig:View ;
-	sh:property rdfs:label-Shape ;
-	sh:property rdfs:comment-Shape ;
-	sh:property SpecIF:Diagram-Shape ;
-	sh:property dcterms:type-Shape ;
-	sh:property SpecIF:Notation-Shape .
+	sh:property rdfs:label-Shape ,
+		rdfs:comment-Shape ,
+		SpecIF:Diagram-Shape ,
+		dcterms:type-Shape ,
+		SpecIF:Notation-Shape .
 
 FMC:Actor
 	rdfs:subClassOf SpecIF:ModelElement ;
@@ -386,14 +414,15 @@ FMC:Actor
 	rdfs:comment "<p>An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role.</p><p>The  particular use or original type is specified with a [[dcterms:type]] property of the 'FMC:Actor'. A value of that property should be an ontology-term, such as [[bpmn:processStep]].</p>"@en ;
 	rdfs:comment "<p>Ein 'Akteur' ist ein fundamentaler Modellelementtyp, der eine aktive Entität darstellt, sei es eine Aktivität, ein Prozessschritt, eine Funktion, eine Systemkomponente oder eine Rolle.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Actor' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[bpmn:timer]].</p>"@de ;
 	rdfs:comment "<p>Un 'Acteur' est un type d'élément de modèle fondamental représentant une entité active, qu'il s'agisse d'une activité, d'une étape de processus, d'une fonction, d'un composant de système ou d'un rôle.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:Actor'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[bpmn:timer]].</p>"@fr ;
-	pig:Icon "&#x25A1;" ;
+	pig:icon "&#x25A1;" ;
 	dcterms:modified "2025-03-08T20:21:05.195Z" .
 
 FMC:Actor-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass FMC:Actor ;
-	sh:property rdfs:label-Shape ;
-	sh:property rdfs:comment-Shape ;
-	sh:property dcterms:type-Shape .
+	sh:property rdfs:label-Shape ,
+		rdfs:comment-Shape ,
+		dcterms:type-Shape .
 
 SpecIF:Collection
 	rdfs:subClassOf SpecIF:ModelElement ;
@@ -403,14 +432,15 @@ SpecIF:Collection
 	rdfs:comment "<p>A 'Collection' is a logical (often conceptual) group of resources linked with a [[SpecIF:contains]] statement. It corresponds to a <a href=\"https://camunda.com/bpmn/reference/\">'Group'</a> in BPMN Diagrams.</p><p>BPMN: An arbitrary set of objects can be defined as a Group to show that they logically belong together. <small>(<i>source: <a href=\"http://www.bpmn-tool.com/en/tutorial/\">BPMN Tutorial</a></i>)</small></p>"@en ;
 	rdfs:comment "<p>Eine 'Kollektion' ist eine logische Gruppierung bestimmter Modellelemente, die per [[SpecIF:contains]] Relation zusammen gefasst sind. Sie entspricht einer <a href=\"https://camunda.com/bpmn/reference/\">'Gruppe'</a> in BPMN Diagrammen. <small>(<i>source: <a href=\"http://www.bpmn-tool.com/en/tutorial/\">BPMN Tutorial</a></i>)</small></p>"@de ;
 	rdfs:comment "<p>Une 'collection' est un groupe logique (souvent conceptuel) de ressources liées par une déclaration [[SpecIF:contains]]. Elle correspond à un <a href=\"https://camunda.com/bpmn/reference/\">'groupe'</a> dans les diagrammes BPMN. <small>(<i>source: <a href=\"http://www.bpmn-tool.com/en/tutorial/\">BPMN Tutoriel</a></i>)</small></p>"@fr ;
-	pig:Icon "⬚" ;
+	pig:icon "⬚" ;
 	dcterms:modified "2024-06-09T18:27:41.176Z" .
 
 SpecIF:Collection-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:Collection ;
-	sh:property rdfs:label-Shape ;
-	sh:property rdfs:comment-Shape ;
-	sh:property dcterms:type-Shape .
+	sh:property rdfs:label-Shape ,
+		rdfs:comment-Shape ,
+		dcterms:type-Shape .
 
 FMC:State
 	rdfs:subClassOf SpecIF:ModelElement ;
@@ -420,14 +450,15 @@ FMC:State
 	rdfs:comment "<p>A 'State' is a fundamental model element type representing a passive entity, be it a value, a condition, an information storage or even a physical shape.</p><p>The particular use or the original type is specified with a [[dcterms:type]] property of the 'FMC:State'. A value of that property should bean  ontology-term, such as [[bpmn:dataObject]].</p>"@en ;
 	rdfs:comment "<p>Ein 'Zustand' ist ein fundamentaler Modellelementtyp, der eine passive Entität darstellt, sei es ein Wert, ein Dokument, ein Informationsspeicher, eine Bedingung oder eine physische Beschaffenheit.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:State' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[ArchiMate:DataObject]].</p>"@de ;
 	rdfs:comment "<p>Un 'État' est un type d'élément de modèle fondamental représentant une entité passive, qu'il s'agisse d'une valeur, d'une condition, d'un stockage d'informations ou même d'une forme physique.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:State'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[ArchiMate:DataObject]].</p>"@fr ;
-	pig:Icon "&#x25CB;" ;
+	pig:icon "&#x25CB;" ;
 	dcterms:modified "2025-03-08T20:04:01.555Z" .
 
 FMC:State-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass FMC:State ;
-	sh:property rdfs:label-Shape ;
-	sh:property rdfs:comment-Shape ;
-	sh:property dcterms:type-Shape .
+	sh:property rdfs:label-Shape ,
+		rdfs:comment-Shape ,
+		dcterms:type-Shape .
 
 FMC:Event
 	rdfs:subClassOf SpecIF:ModelElement ;
@@ -437,14 +468,15 @@ FMC:Event
 	rdfs:comment "<p>An 'Event' is a fundamental model element type representing a time reference, a change in condition/value or more generally a synchronization primitive.</p><p>The particular use or the original type is specified with a [[dcterms:type]] property of the 'FMC:Event'. A value of that property should be an ontology-term, such as [[bpmn:startEvent]].</p>"@en ;
 	rdfs:comment "<p>Ein 'Ereignis' ist ein fundamentaler Modellelementtyp, der eine Zeitreferenz, eine Änderung einer Bedingung/eines Wertes oder allgemeiner ein Synchronisationsmittel darstellt.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Event' spezifiziert. Die Werte dieser Eigenschaft sollen Ontologiebegriffe sein, wie z.B. [[bpmn:startEvent]].</p>"@de ;
 	rdfs:comment "<p>Un 'Événement' est un type d'élément de modèle fondamental représentant une référence temporelle, un changement de condition/valeur ou plus généralement une primitive de synchronisation.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:Event'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[bpmn:startEvent]].</p>"@fr ;
-	pig:Icon "&#x2662;" ;
+	pig:icon "&#x2662;" ;
 	dcterms:modified "2025-03-08T19:57:15.384Z" .
 
 FMC:Event-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass FMC:Event ;
-	sh:property rdfs:label-Shape ;
-	sh:property rdfs:comment-Shape ;
-	sh:property dcterms:type-Shape .
+	sh:property rdfs:label-Shape ,
+		rdfs:comment-Shape ,
+		dcterms:type-Shape .
 
 IREB:Requirement
 	rdfs:subClassOf SpecIF:Paragraph ;
@@ -454,18 +486,19 @@ IREB:Requirement
 	rdfs:comment "<p>A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>A condition or capability needed by a user to solve a problem or achieve an objective.</li><li>A condition or capability that must be met or possessed by a system or system component to satisfy a contract, standard, specification, or other formally imposed documents.</li><li>A documented representation of a condition or capability as in (1) or (2).</li></ol><p>Note: The definition above is the classic one from IEEE Std 610.12 of 1990. Alternatively, we also give a more modern definition:</p><ol><li>A need perceived by a stakeholder.</li><li>A capability or property that a system shall have.</li><li>A documented representation of a need, capability or property.</li></ol>"@en ;
 	rdfs:comment "<p>Eine 'Anforderung' ist ein einzelnes dokumentiertes physisches und funktionales Bedürfnis, das ein bestimmter Entwurf, ein Produkt oder ein Prozess erfüllen muss. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>Eine Bedingung oder Fähigkeit, die ein Benutzer benötigt, um ein Problem zu lösen oder ein Ziel zu erreichen.</li><li>Eine Bedingung oder Fähigkeit, die ein System oder eine Systemkomponente erfüllen oder besitzen muss, um einen Vertrag, eine Norm, eine Spezifikation oder ein anderes formal vorgeschriebenes Dokument zu erfüllen.</li><li>Eine dokumentierte Darstellung einer Bedingung oder Fähigkeit wie in (1) oder (2).</li></ol><p>Anmerkung: Die obige Definition ist die klassische Definition aus IEEE Std 610.12 von 1990. Alternativ geben wir auch eine modernere Definition an:</p><ol><li>Ein von einem Stakeholder wahrgenommener Bedarf.</li><li>Eine Fähigkeit oder Eigenschaft, die ein System haben soll.</li><li>Eine dokumentierte Darstellung eines Bedarfs, einer Fähigkeit oder Eigenschaft.</li></ol>"@de ;
 	rdfs:comment "<p>Une 'Exigence' est un besoin physique et fonctionnel unique et documenté qu'une conception, un produit ou un processus particulier doit pouvoir satisfaire. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Définition:</p><ol><li>Condition ou capacité dont un utilisateur a besoin pour résoudre un problème ou atteindre un objectif.</li><li>Condition ou capacité qui doit être remplie ou possédée par un système ou un composant de système pour satisfaire à un contrat, à une norme, à une spécification ou à d'autres documents imposés officiellement.</li><li>Une représentation documentée d'une condition ou d'une capacité comme dans (1) ou (2).</li></ol><p>Remarque: La définition ci-dessus est la définition classique de la norme IEEE 610.12 de 1990. Nous donnons également une définition plus moderne:</p><ol><li>Un besoin perçu par une partie prenante;</li><li>Une capacité ou une propriété qu'un système doit avoir.</li><li>Une représentation documentée d'un besoin, d'une capacité ou d'une propriété.</li></ol>"@fr ;
-	pig:Icon "&#8623;" ;
+	pig:icon "&#8623;" ;
 	dcterms:modified "2023-04-01T14:10:11.167Z" .
 
 IREB:Requirement-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass IREB:Requirement ;
-	sh:property rdfs:label-Shape ;
-	sh:property rdfs:comment-Shape ;
-	sh:property SpecIF:Diagram-Shape ;
-	sh:property dcterms:type-Shape ;
-	sh:property SpecIF:Priority-Shape ;
-	sh:property IREB:RequirementType-Shape ;
-	sh:property SpecIF:StakeholderGroup-Shape .
+	sh:property rdfs:label-Shape ,
+		rdfs:comment-Shape ,
+		SpecIF:Diagram-Shape ,
+		dcterms:type-Shape ,
+		SpecIF:Priority-Shape ,
+		IREB:RequirementType-Shape ,
+		SpecIF:StakeholderGroup-Shape .
 
 SpecIF:Heading
 	rdfs:subClassOf SpecIF:Paragraph ;
@@ -477,11 +510,12 @@ SpecIF:Heading
 	dcterms:modified "2024-03-02T15:28:50.414Z" .
 
 SpecIF:Heading-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:Heading ;
-	sh:property rdfs:label-Shape ;
-	sh:property rdfs:comment-Shape ;
-	sh:property SpecIF:Diagram-Shape ;
-	sh:property dcterms:type-Shape .
+	sh:property rdfs:label-Shape ,
+		rdfs:comment-Shape ,
+		SpecIF:Diagram-Shape ,
+		dcterms:type-Shape .
 
 o:RC_UmlDiagram
 	rdfs:subClassOf SpecIF:Paragraph ;
@@ -491,25 +525,27 @@ o:RC_UmlDiagram
 	dcterms:modified "2024-08-30T07:51:44.846Z" .
 
 o:RC_UmlDiagram-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass o:RC_UmlDiagram ;
-	sh:property rdfs:label-Shape ;
-	sh:property rdfs:comment-Shape ;
-	sh:property SpecIF:Diagram-Shape ;
-	sh:property dcterms:type-Shape .
+	sh:property rdfs:label-Shape ,
+		rdfs:comment-Shape ,
+		SpecIF:Diagram-Shape ,
+		dcterms:type-Shape .
 
 o:RC_UmlClass
 	rdfs:subClassOf SpecIF:ModelElement ;
 	rdfs:label "SpecIF:ModelElement" ;
 	rdfs:comment "Is a generalized type for model elements."@en ;
 	rdfs:comment "Ist ein generalisierter Typ für Modellelemente."@de ;
-	pig:Icon "&#x2606;" ;
+	pig:icon "&#x2606;" ;
 	dcterms:modified "2024-08-29T13:56:10.140Z" .
 
 o:RC_UmlClass-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass o:RC_UmlClass ;
-	sh:property rdfs:label-Shape ;
-	sh:property rdfs:comment-Shape ;
-	sh:property dcterms:type-Shape .
+	sh:property rdfs:label-Shape ,
+		rdfs:comment-Shape ,
+		dcterms:type-Shape .
 
 uml:Package
 	rdfs:subClassOf SpecIF:Collection ;
@@ -517,10 +553,11 @@ uml:Package
 	dcterms:modified "2024-06-13T07:55:07.739Z" .
 
 uml:Package-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass uml:Package ;
-	sh:property rdfs:label-Shape ;
-	sh:property rdfs:comment-Shape ;
-	sh:property dcterms:type-Shape .
+	sh:property rdfs:label-Shape ,
+		rdfs:comment-Shape ,
+		dcterms:type-Shape .
 
 uml:Port
 	rdfs:subClassOf FMC:Actor ;
@@ -529,12 +566,13 @@ uml:Port
 	dcterms:modified "2024-07-09T05:29:06.284Z" .
 
 uml:Port-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass uml:Port ;
-	sh:property rdfs:label-Shape ;
-	sh:property rdfs:comment-Shape ;
-	sh:property dcterms:type-Shape ;
-	sh:property uml:is_Service-Shape ;
-	sh:property uml:Flow_Direction-Shape .
+	sh:property rdfs:label-Shape ,
+		rdfs:comment-Shape ,
+		dcterms:type-Shape ,
+		uml:is_Service-Shape ,
+		uml:Flow_Direction-Shape .
 
 uml:StateMachine
 	rdfs:subClassOf FMC:Actor ;
@@ -542,10 +580,11 @@ uml:StateMachine
 	dcterms:modified "2025-04-18T15:01:06.865Z" .
 
 uml:StateMachine-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass uml:StateMachine ;
-	sh:property rdfs:label-Shape ;
-	sh:property rdfs:comment-Shape ;
-	sh:property dcterms:type-Shape .
+	sh:property rdfs:label-Shape ,
+		rdfs:comment-Shape ,
+		dcterms:type-Shape .
 
 uml:UseCase
 	rdfs:subClassOf FMC:Actor ;
@@ -553,10 +592,11 @@ uml:UseCase
 	dcterms:modified "2025-06-28T12:29:38.963Z" .
 
 uml:UseCase-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass uml:UseCase ;
-	sh:property rdfs:label-Shape ;
-	sh:property rdfs:comment-Shape ;
-	sh:property dcterms:type-Shape .
+	sh:property rdfs:label-Shape ,
+		rdfs:comment-Shape ,
+		dcterms:type-Shape .
 
 uml:Activity
 	rdfs:subClassOf FMC:Actor ;
@@ -564,10 +604,11 @@ uml:Activity
 	dcterms:modified "2025-04-23T07:46:20.849Z" .
 
 uml:Activity-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass uml:Activity ;
-	sh:property rdfs:label-Shape ;
-	sh:property rdfs:comment-Shape ;
-	sh:property dcterms:type-Shape .
+	sh:property rdfs:label-Shape ,
+		rdfs:comment-Shape ,
+		dcterms:type-Shape .
 
 uml:State
 	rdfs:subClassOf FMC:State ;
@@ -575,10 +616,11 @@ uml:State
 	dcterms:modified "2025-04-18T15:07:47.101Z" .
 
 uml:State-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass uml:State ;
-	sh:property rdfs:label-Shape ;
-	sh:property rdfs:comment-Shape ;
-	sh:property dcterms:type-Shape .
+	sh:property rdfs:label-Shape ,
+		rdfs:comment-Shape ,
+		dcterms:type-Shape .
 
 uml:Transition
 	rdfs:subClassOf FMC:Actor ;
@@ -586,26 +628,28 @@ uml:Transition
 	dcterms:modified "2025-04-23T07:46:41.649Z" .
 
 uml:Transition-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass uml:Transition ;
-	sh:property rdfs:label-Shape ;
-	sh:property rdfs:comment-Shape ;
-	sh:property dcterms:type-Shape .
+	sh:property rdfs:label-Shape ,
+		rdfs:comment-Shape ,
+		dcterms:type-Shape .
 
 o:RC_SysmlRequirement
 	rdfs:subClassOf IREB:Requirement ;
 	rdfs:label "IREB:Requirement" ;
-	pig:Icon "&#8623;" ;
+	pig:icon "&#8623;" ;
 	dcterms:modified "2025-05-18T14:23:27.016Z" .
 
 o:RC_SysmlRequirement-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass o:RC_SysmlRequirement ;
-	sh:property rdfs:label-Shape ;
-	sh:property rdfs:comment-Shape ;
-	sh:property SpecIF:Diagram-Shape ;
-	sh:property dcterms:type-Shape ;
-	sh:property SpecIF:Priority-Shape ;
-	sh:property IREB:RequirementType-Shape ;
-	sh:property SpecIF:StakeholderGroup-Shape .
+	sh:property rdfs:label-Shape ,
+		rdfs:comment-Shape ,
+		SpecIF:Diagram-Shape ,
+		dcterms:type-Shape ,
+		SpecIF:Priority-Shape ,
+		IREB:RequirementType-Shape ,
+		SpecIF:StakeholderGroup-Shape .
 
 #################################################################
 # Ontology - Relationship Classes
@@ -623,16 +667,15 @@ SpecIF:relates
 SpecIF:relates-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
 	rdfs:label "Connects the source of SpecIF:relates" ;
-	rdfs:domain SpecIF:relates ;
-	dcterms:modified "2024-06-09T12:35:33.150Z" .
+	rdfs:domain SpecIF:relates .
 
 SpecIF:relates-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
 	rdfs:label "Connects the target of SpecIF:relates" ;
-	rdfs:domain SpecIF:relates ;
-	dcterms:modified "2024-06-09T12:35:33.150Z" .
+	rdfs:domain SpecIF:relates .
 
 SpecIF:relates-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:relates ;
 	sh:property dcterms:type-Shape ;
 	sh:property [ 
@@ -658,17 +701,16 @@ dcterms:hasPart-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
 	rdfs:label "Connects the source of dcterms:hasPart" ;
 	rdfs:domain dcterms:hasPart ;
-	rdfs:range [ owl:unionOf( FMC:Actor FMC:State SpecIF:Collection SpecIF:ModelElement o:RC_UmlClass )] ;
-	dcterms:modified "2024-06-18T12:23:12.163Z" .
+	rdfs:range [ owl:unionOf( FMC:Actor FMC:State SpecIF:Collection SpecIF:ModelElement o:RC_UmlClass )] .
 
 dcterms:hasPart-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
 	rdfs:label "Connects the target of dcterms:hasPart" ;
 	rdfs:domain dcterms:hasPart ;
-	rdfs:range [ owl:unionOf( FMC:Actor FMC:State SpecIF:Collection SpecIF:ModelElement uml:Port o:RC_UmlClass )] ;
-	dcterms:modified "2024-06-18T12:23:12.163Z" .
+	rdfs:range [ owl:unionOf( FMC:Actor FMC:State SpecIF:Collection SpecIF:ModelElement uml:Port o:RC_UmlClass )] .
 
 dcterms:hasPart-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass dcterms:hasPart ;
 	sh:property dcterms:type-Shape ;
 	sh:property [ 
@@ -696,17 +738,16 @@ SpecIF:contains-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
 	rdfs:label "Connects the source of SpecIF:contains" ;
 	rdfs:domain SpecIF:contains ;
-	rdfs:range [ owl:unionOf( FMC:Actor FMC:State SpecIF:Collection uml:Package )] ;
-	dcterms:modified "2024-06-18T12:22:11.959Z" .
+	rdfs:range [ owl:unionOf( FMC:Actor FMC:State SpecIF:Collection uml:Package )] .
 
 SpecIF:contains-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
 	rdfs:label "Connects the target of SpecIF:contains" ;
 	rdfs:domain SpecIF:contains ;
-	rdfs:range [ owl:unionOf( FMC:Actor FMC:State FMC:Event SpecIF:Collection uml:Package SpecIF:ModelElement pig:View )] ;
-	dcterms:modified "2024-06-18T12:22:11.959Z" .
+	rdfs:range [ owl:unionOf( FMC:Actor FMC:State FMC:Event SpecIF:Collection uml:Package SpecIF:ModelElement pig:View )] .
 
 SpecIF:contains-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:contains ;
 	sh:property dcterms:type-Shape ;
 	sh:property [ 
@@ -733,16 +774,15 @@ oslc_rm:satisfies
 oslc_rm:satisfies-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
 	rdfs:label "Connects the source of oslc_rm:satisfies" ;
-	rdfs:domain oslc_rm:satisfies ;
-	dcterms:modified "2024-06-14T06:49:03.417Z" .
+	rdfs:domain oslc_rm:satisfies .
 
 oslc_rm:satisfies-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
 	rdfs:label "Connects the target of oslc_rm:satisfies" ;
-	rdfs:domain oslc_rm:satisfies ;
-	dcterms:modified "2024-06-14T06:49:03.417Z" .
+	rdfs:domain oslc_rm:satisfies .
 
 oslc_rm:satisfies-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass oslc_rm:satisfies ;
 	sh:property [ 
 		sh:path oslc_rm:satisfies-hasSource ;
@@ -766,16 +806,15 @@ IREB:refines
 IREB:refines-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
 	rdfs:label "Connects the source of IREB:refines" ;
-	rdfs:domain IREB:refines ;
-	dcterms:modified "2024-06-14T06:40:52.155Z" .
+	rdfs:domain IREB:refines .
 
 IREB:refines-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
 	rdfs:label "Connects the target of IREB:refines" ;
-	rdfs:domain IREB:refines ;
-	dcterms:modified "2024-06-14T06:40:52.155Z" .
+	rdfs:domain IREB:refines .
 
 IREB:refines-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass IREB:refines ;
 	sh:property [ 
 		sh:path IREB:refines-hasSource ;
@@ -800,17 +839,16 @@ sysml:Allocate-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
 	rdfs:label "Connects the source of sysml:Allocate" ;
 	rdfs:domain sysml:Allocate ;
-	rdfs:range SpecIF:ModelElement ;
-	dcterms:modified "2025-09-06T14:59:03.739Z" .
+	rdfs:range SpecIF:ModelElement .
 
 sysml:Allocate-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
 	rdfs:label "Connects the target of sysml:Allocate" ;
 	rdfs:domain sysml:Allocate ;
-	rdfs:range SpecIF:ModelElement ;
-	dcterms:modified "2025-09-06T14:59:03.739Z" .
+	rdfs:range SpecIF:ModelElement .
 
 sysml:Allocate-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass sysml:Allocate ;
 	sh:property [ 
 		sh:path sysml:Allocate-hasSource ;
@@ -833,17 +871,16 @@ uml:ownedBehavior
 uml:ownedBehavior-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
 	rdfs:label "Connects the source of uml:ownedBehavior" ;
-	rdfs:domain uml:ownedBehavior ;
-	dcterms:modified "2025-04-21T17:40:00.590Z" .
+	rdfs:domain uml:ownedBehavior .
 
 uml:ownedBehavior-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
 	rdfs:label "Connects the target of uml:ownedBehavior" ;
 	rdfs:domain uml:ownedBehavior ;
-	rdfs:range [ owl:unionOf( uml:StateMachine uml:Activity FMC:Actor uml:UseCase )] ;
-	dcterms:modified "2025-04-21T17:40:00.590Z" .
+	rdfs:range [ owl:unionOf( uml:StateMachine uml:Activity FMC:Actor uml:UseCase )] .
 
 uml:ownedBehavior-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass uml:ownedBehavior ;
 	sh:property [ 
 		sh:path uml:ownedBehavior-hasSource ;
@@ -865,16 +902,15 @@ uml:Trigger
 uml:Trigger-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
 	rdfs:label "Connects the source of uml:Trigger" ;
-	rdfs:domain uml:Trigger ;
-	dcterms:modified "2025-04-22T09:22:53.072Z" .
+	rdfs:domain uml:Trigger .
 
 uml:Trigger-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
 	rdfs:label "Connects the target of uml:Trigger" ;
-	rdfs:domain uml:Trigger ;
-	dcterms:modified "2025-04-22T09:22:53.072Z" .
+	rdfs:domain uml:Trigger .
 
 uml:Trigger-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass uml:Trigger ;
 	sh:property [ 
 		sh:path uml:Trigger-hasSource ;
@@ -896,17 +932,16 @@ uml:TransitionSource-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
 	rdfs:label "Connects the source of uml:TransitionSource" ;
 	rdfs:domain uml:TransitionSource ;
-	rdfs:range [ owl:unionOf( uml:Transition FMC:Actor )] ;
-	dcterms:modified "2025-04-22T13:49:51.249Z" .
+	rdfs:range [ owl:unionOf( uml:Transition FMC:Actor )] .
 
 uml:TransitionSource-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
 	rdfs:label "Connects the target of uml:TransitionSource" ;
 	rdfs:domain uml:TransitionSource ;
-	rdfs:range [ owl:unionOf( uml:State FMC:State )] ;
-	dcterms:modified "2025-04-22T13:49:51.249Z" .
+	rdfs:range [ owl:unionOf( uml:State FMC:State )] .
 
 uml:TransitionSource-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass uml:TransitionSource ;
 	sh:property [ 
 		sh:path uml:TransitionSource-hasSource ;
@@ -930,17 +965,16 @@ uml:TransitionTarget-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
 	rdfs:label "Connects the source of uml:TransitionTarget" ;
 	rdfs:domain uml:TransitionTarget ;
-	rdfs:range [ owl:unionOf( uml:Transition FMC:Actor )] ;
-	dcterms:modified "2025-04-22T13:50:34.458Z" .
+	rdfs:range [ owl:unionOf( uml:Transition FMC:Actor )] .
 
 uml:TransitionTarget-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
 	rdfs:label "Connects the target of uml:TransitionTarget" ;
 	rdfs:domain uml:TransitionTarget ;
-	rdfs:range [ owl:unionOf( uml:State FMC:State )] ;
-	dcterms:modified "2025-04-22T13:50:34.458Z" .
+	rdfs:range [ owl:unionOf( uml:State FMC:State )] .
 
 uml:TransitionTarget-Shape
+	rdf:type sh:NodeShape ;
 	sh:targetClass uml:TransitionTarget ;
 	sh:property [ 
 		sh:path uml:TransitionTarget-hasSource ;
@@ -958,12 +992,6 @@ uml:TransitionTarget-Shape
 #################################################################
 # Entities
 #################################################################
-
-d:eee_1045467100313_135436_1
-	rdf:type SpecIF:Heading ;
-	rdfs:label "Small Autonomous Vehicle" ;
-	dcterms:type "uml:Model" ;
-	dcterms:modified "2025-09-23T17:11:19.706Z" .
 
 d:_19_0_3_71e0233_1746001337727_31616_14119
 	rdf:type uml:Package ;
@@ -1290,12 +1318,6 @@ d:_19_0_3_bc402f4_1604360793737_196507_13523
 	rdfs:label "Collision Alarm Sensor" ;
 	dcterms:type "RFLP:Logical_System" ;
 	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:FolderGlossary-10391243923
-	rdf:type SpecIF:Heading ;
-	rdfs:label "Model Elements (Glossary)" ;
-	dcterms:type "Model Elements (Glossary)" ;
-	dcterms:modified "2025-09-23T17:14:33.865Z" .
 
 d:_19_0_3_71e0233_1746027630942_863638_14801
 	rdf:type FMC:Actor ;
@@ -2655,625 +2677,98 @@ d:_19_0_3_71e0233_1746027287147_82140_14431
 	pig:shows d:_18_5_3_bc402f4_1552811653332_976698_14708 .
 
 #################################################################
-# Hierarchies
+# Hierarchy
 #################################################################
 
 d:HierarchyRoot
 	rdf:type pig:HierarchyRoot ;
 	rdfs:label "Hierarchy Root" ;
-	rdfs:comment "... anchoring all hierarchies of this graph (project)" ;
-	pig:lists d:N-9052885961 ,
-		d:N-FolderGlossary-10391243923 .
-
-d:N-9052885961
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:eee_1045467100313_135436_1 ;
-	pig:lists d:N-9977762942 ,
-		d:N-10598743616 ,
-		d:N-12046813692 .
-
-d:N-9977762942
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_19_0_3_71e0233_1746001337727_31616_14119 ;
-	pig:lists d:N-9217718610 ,
-		d:N-9147807467 ,
-		d:N-9470522249 ,
-		d:N-10744889577 ,
-		d:N-11994701793 ,
-		d:N-9601311473 ,
-		d:N-9763303196 ,
-		d:N-10225131950 .
-
-d:N-9217718610
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552810549321_335902_14037 .
-
-d:N-9147807467
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552810776263_894029_14121 .
-
-d:N-9470522249
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552810869277_586147_14175 .
-
-d:N-10744889577
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552810644650_650036_14079 .
-
-d:N-11994701793
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552812370943_152244_14924 .
-
-d:N-9601311473
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552813199775_830344_15281 .
-
-d:N-9763303196
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552810948738_707540_14217 .
-
-d:N-10225131950
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552812437056_257578_14975 .
-
-d:N-10598743616
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_19_0_3_71e0233_1746001480225_327746_14120 ;
-	pig:lists d:N-8951569513 ,
-		d:N-9857486555 ,
-		d:N-8966476478 ,
-		d:N-8394287897 ,
-		d:N-10716749671 ,
-		d:N-8954653965 ,
-		d:N-11933213455 ,
-		d:N-10278096463 ,
-		d:N-11529470390 ,
-		d:N-9487370416 ,
-		d:N-9198148295 ,
-		d:N-10606297356 ,
-		d:N-9003435268 ,
-		d:N-8713292222 .
-
-d:N-8951569513
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552811870216_105923_14824 .
-
-d:N-9857486555
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552813556602_820961_15353 .
-
-d:N-8966476478
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552814212889_663150_15729 .
-
-d:N-8394287897
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_18_5_3_bc402f4_1556615164506_303870_14975 .
-
-d:N-10716749671
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552814194319_862392_15683 .
-
-d:N-8954653965
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552812663506_709974_15011 .
-
-d:N-11933213455
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552814523707_628151_15988 .
-
-d:N-10278096463
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_18_5_3_bc402f4_1556615212765_548060_15021 .
-
-d:N-11529470390
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552811937697_690731_14862 .
-
-d:N-9487370416
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552814246502_629251_15775 .
-
-d:N-9198148295
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552813038602_222864_15129 .
-
-d:N-10606297356
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552815791106_548984_16360 .
-
-d:N-9003435268
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552812805784_548404_15062 .
-
-d:N-8713292222
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552814266523_206006_15821 .
-
-d:N-12046813692
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_19_0_3_71e0233_1746001561119_779379_14121 ;
-	pig:lists d:N-11777609043 ,
-		d:N-8433932798 ,
-		d:N-10695738210 ,
-		d:N-8138219853 ,
-		d:N-11997645350 ,
-		d:N-11774574242 ,
-		d:N-11528707940 ,
-		d:N-12044109204 ,
-		d:N-11778315812 ,
-		d:N-9565488638 ,
-		d:N-9559172511 .
-
-d:N-11777609043
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_19_0_3_71e0233_1746027287147_82140_14431 .
-
-d:N-8433932798
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_19_0_3_e40094_1718632293724_754873_14112 .
-
-d:N-10695738210
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552827771600_60767_16481 .
-
-d:N-8138219853
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552811469014_293642_14411 .
-
-d:N-11997645350
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552811510062_903764_14503 .
-
-d:N-11774574242
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552811412605_640145_14319 .
-
-d:N-11528707940
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552811538626_715866_14549 .
-
-d:N-12044109204
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552814104357_719492_15607 ;
-	pig:lists d:N-8932838652 ,
-		d:N-8304008149 ,
-		d:N-9846796697 ,
-		d:N-9177870088 ,
-		d:N-9290036964 ,
-		d:N-9248030319 ,
-		d:N-11732168003 ,
-		d:N-11531716479 ,
-		d:N-9656450799 ,
-		d:N-10288916115 ,
-		d:N-11538245371 ,
-		d:N-10075124872 ,
-		d:N-10653620373 ,
-		d:N-10991945887 .
-
-d:N-8932838652
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_19_0_3_71e0233_1746027630926_778269_14800 .
-
-d:N-8304008149
-	dcterms:modified "2025-09-23T17:13:02.795Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028483612_410592_15014 .
-
-d:N-9846796697
-	dcterms:modified "2025-09-23T17:13:07.388Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028540160_854095_15021 .
-
-d:N-9177870088
-	dcterms:modified "2025-09-23T17:13:19.473Z" ;
-	pig:lists d:_19_0_3_71e0233_1746029024681_691401_15066 .
-
-d:N-9290036964
-	dcterms:modified "2025-09-23T17:13:25.602Z" ;
-	pig:lists d:_19_0_3_71e0233_1746029056197_950529_15073 .
-
-d:N-9248030319
-	dcterms:modified "2025-09-23T17:13:39.843Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028118776_36360_14979 .
-
-d:N-11732168003
-	dcterms:modified "2025-09-23T17:13:47.139Z" ;
-	pig:lists d:_19_0_3_71e0233_1746029726958_589946_15078 .
-
-d:N-11531716479
-	dcterms:modified "2025-09-23T17:13:56.122Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028954791_356054_15062 .
-
-d:N-9656450799
-	dcterms:modified "2025-09-23T17:13:59.845Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028899054_101006_15058 .
-
-d:N-10288916115
-	dcterms:modified "2025-09-23T17:14:10.197Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028884803_562591_15054 .
-
-d:N-11538245371
-	dcterms:modified "2025-09-23T17:14:20.227Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028195311_519257_14989 .
-
-d:N-10075124872
-	dcterms:modified "2025-09-23T17:14:24.029Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028216231_986687_14993 .
-
-d:N-10653620373
-	dcterms:modified "2025-09-23T17:14:29.772Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028282302_943711_15000 .
-
-d:N-10991945887
-	dcterms:modified "2025-09-23T17:14:33.861Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028313498_548385_15007 .
-
-d:N-11778315812
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552811554859_819240_14595 .
-
-d:N-9565488638
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552811454014_108965_14365 .
-
-d:N-9559172511
-	dcterms:modified "2025-09-22T21:56:44.503Z" ;
-	pig:lists d:_19_0_3_bc402f4_1604360793737_196507_13523 .
-
-d:N-FolderGlossary-10391243923
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:FolderGlossary-10391243923 ;
-	pig:lists d:N-10000209025 ,
-		d:N-9448401364 ,
-		d:N-10985947934 ,
-		d:N-11320171858 ,
-		d:N-9565752837 ,
-		d:N-9055417638 ,
-		d:N-10689977370 ,
-		d:N-9054507675 ,
-		d:N-8645243699 ,
-		d:N-9690941989 ,
-		d:N-10642183799 ,
-		d:N-9727852077 ,
-		d:N-11075242877 ,
-		d:N-9411874937 ,
-		d:N-10224494342 ,
-		d:N-11718877640 ,
-		d:N-8608788267 ,
-		d:N-9981343075 ,
-		d:N-10354607200 ,
-		d:N-8776531143 ,
-		d:N-10602393645 ,
-		d:N-8181074752 ,
-		d:N-8148046078 ,
-		d:N-10029447649 ,
-		d:N-8920286089 ,
-		d:N-10624172563 ,
-		d:N-9766299254 ,
-		d:N-11276440745 ,
-		d:N-9045220019 ,
-		d:N-8900069222 ,
-		d:N-8130771024 ,
-		d:N-8334057999 ,
-		d:N-10885042918 ,
-		d:N-10681552864 ,
-		d:N-10730441072 ,
-		d:N-10778303467 ,
-		d:N-11762664054 ,
-		d:N-12120214384 ,
-		d:N-10118593315 ,
-		d:N-9558460655 ,
-		d:N-9735998154 ,
-		d:N-8238024462 ,
-		d:N-7924859169 ,
-		d:N-8655190282 ,
-		d:N-11636427379 ,
-		d:N-7916467407 ,
-		d:N-11770555818 ,
-		d:N-8662932865 ,
-		d:N-12049828038 ,
-		d:N-9064602334 ,
-		d:N-10758876760 ,
-		d:N-9398927032 ,
-		d:N-8911802222 ,
-		d:N-10619389035 ,
-		d:N-9246235435 ,
-		d:N-9483908128 ,
-		d:N-11427143772 ,
-		d:N-8591500001 ,
-		d:N-10583663726 ,
-		d:N-11931576466 ,
-		d:N-11793682524 ,
-		d:N-11395677468 ,
-		d:N-9659279490 ,
-		d:N-11831842854 ,
-		d:N-9634047887 ,
-		d:N-10766068453 ,
-		d:N-9495030237 ,
-		d:N-11888780067 ,
-		d:N-10045694210 ,
-		d:N-9833691313 ,
-		d:N-11161326633 .
-
-d:N-10000209025
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552814266523_206006_15821 .
-
-d:N-9448401364
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552811469014_293642_14411 .
-
-d:N-10985947934
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552813556602_820961_15353 .
-
-d:N-11320171858
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552814523707_628151_15988 .
-
-d:N-9565752837
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552811454014_108965_14365 .
-
-d:N-9055417638
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_bc402f4_1604360793737_196507_13523 .
-
-d:N-10689977370
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028884803_562591_15054 .
-
-d:N-9054507675
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552814104357_719492_15607 .
-
-d:N-8645243699
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746027630942_863638_14801 .
-
-d:N-9690941989
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746027804266_719052_14896 .
-
-d:N-10642183799
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746027847324_539644_14916 .
-
-d:N-9727852077
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552811510062_903764_14503 .
-
-d:N-11075242877
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_e40094_1718632293724_754873_14112 .
-
-d:N-9411874937
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552811937697_690731_14862 .
-
-d:N-10224494342
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028954791_356054_15062 .
-
-d:N-11718877640
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746027631039_116153_14834 .
-
-d:N-8608788267
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746027731735_863978_14871 .
-
-d:N-9981343075
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746027837044_867827_14913 .
-
-d:N-10354607200
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746027631056_691503_14836 .
-
-d:N-8776531143
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552812805784_548404_15062 .
-
-d:N-10602393645
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746027882482_912182_14918 .
-
-d:N-8181074752
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028073773_979720_14974 .
-
-d:N-8148046078
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028822501_191804_15047 .
-
-d:N-10029447649
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028827712_739888_15050 .
-
-d:N-8920286089
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028275862_880382_14999 .
-
-d:N-10624172563
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028149871_266697_14985 .
-
-d:N-9766299254
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028899054_101006_15058 .
-
-d:N-11276440745
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552811412605_640145_14319 .
-
-d:N-9045220019
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552812437056_257578_14975 .
-
-d:N-8900069222
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552812370943_152244_14924 .
-
-d:N-8130771024
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552812663506_709974_15011 .
-
-d:N-8334057999
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746029024681_691401_15066 .
-
-d:N-10885042918
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746027747207_605800_14880 .
-
-d:N-10681552864
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028061993_960870_14971 .
-
-d:N-10730441072
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552810776263_894029_14121 .
-
-d:N-10778303467
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746029056197_950529_15073 .
-
-d:N-11762664054
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552813199775_830344_15281 .
-
-d:N-12120214384
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746027631053_836894_14835 .
-
-d:N-10118593315
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028442990_717820_15013 .
-
-d:N-9558460655
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746027704287_746273_14855 .
-
-d:N-9735998154
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746029726958_589946_15078 .
-
-d:N-8238024462
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552810869277_586147_14175 .
-
-d:N-7924859169
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552810948738_707540_14217 .
-
-d:N-8655190282
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552813038602_222864_15129 .
-
-d:N-11636427379
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552814246502_629251_15775 .
-
-d:N-7916467407
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552815791106_548984_16360 .
-
-d:N-11770555818
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552814194319_862392_15683 .
-
-d:N-8662932865
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552814212889_663150_15729 .
-
-d:N-12049828038
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028605370_466818_15028 .
-
-d:N-9064602334
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746029049431_401220_15072 .
-
-d:N-10758876760
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028839192_503107_15053 .
-
-d:N-9398927032
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028508430_363448_15020 .
-
-d:N-8911802222
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028118776_36360_14979 .
-
-d:N-10619389035
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552811538626_715866_14549 .
-
-d:N-9246235435
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552811554859_819240_14595 .
-
-d:N-9483908128
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028540160_854095_15021 .
-
-d:N-11427143772
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028483612_410592_15014 .
-
-d:N-8591500001
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552827771600_60767_16481 .
-
-d:N-10583663726
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552810644650_650036_14079 .
-
-d:N-11931576466
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_18_5_3_bc402f4_1556615212765_548060_15021 .
-
-d:N-11793682524
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_18_5_3_bc402f4_1556615164506_303870_14975 .
-
-d:N-11395677468
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028282302_943711_15000 .
-
-d:N-9659279490
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028195311_519257_14989 .
-
-d:N-11831842854
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028313498_548385_15007 .
-
-d:N-9634047887
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028216231_986687_14993 .
-
-d:N-10766068453
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746027967661_707482_14950 .
-
-d:N-9495030237
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028306923_558192_15006 .
-
-d:N-11888780067
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746027920180_215768_14934 .
-
-d:N-10045694210
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746028183413_413266_14988 .
-
-d:N-9833691313
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746027630942_464786_14802 .
-
-d:N-11161326633
-	dcterms:modified "2025-09-23T17:14:33.865Z" ;
-	pig:lists d:_19_0_3_71e0233_1746027731735_371186_14872 .
+	rdfs:comment "... anchoring all hierarchies of this graph (package)" ;
+	pig:lists d:eee_1045467100313_135436_1 ,
+		d:FolderGlossary-10391243923 .
+
+d:eee_1045467100313_135436_1
+	rdf:type SpecIF:Heading ;
+	rdfs:label "Small Autonomous Vehicle" ;
+	dcterms:type "uml:Model" ;
+	dcterms:modified "2025-09-23T17:11:19.706Z" ;
+	pig:lists d:_19_0_3_71e0233_1746001337727_31616_14119 ,
+		d:_19_0_3_71e0233_1746001480225_327746_14120 ,
+		d:_19_0_3_71e0233_1746001561119_779379_14121 .
+
+d:FolderGlossary-10391243923
+	rdf:type SpecIF:Heading ;
+	rdfs:label "Model Elements (Glossary)" ;
+	dcterms:type "Model Elements (Glossary)" ;
+	dcterms:modified "2025-10-17T11:04:54.308Z" ;
+	pig:lists d:_18_5_3_bc402f4_1552814266523_206006_15821 ,
+		d:_18_5_3_bc402f4_1552811469014_293642_14411 ,
+		d:_18_5_3_bc402f4_1552813556602_820961_15353 ,
+		d:_18_5_3_bc402f4_1552814523707_628151_15988 ,
+		d:_18_5_3_bc402f4_1552811454014_108965_14365 ,
+		d:_19_0_3_bc402f4_1604360793737_196507_13523 ,
+		d:_19_0_3_71e0233_1746028884803_562591_15054 ,
+		d:_18_5_3_bc402f4_1552814104357_719492_15607 ,
+		d:_19_0_3_71e0233_1746027630942_863638_14801 ,
+		d:_19_0_3_71e0233_1746027804266_719052_14896 ,
+		d:_19_0_3_71e0233_1746027847324_539644_14916 ,
+		d:_18_5_3_bc402f4_1552811510062_903764_14503 ,
+		d:_19_0_3_e40094_1718632293724_754873_14112 ,
+		d:_18_5_3_bc402f4_1552811937697_690731_14862 ,
+		d:_19_0_3_71e0233_1746028954791_356054_15062 ,
+		d:_19_0_3_71e0233_1746027631039_116153_14834 ,
+		d:_19_0_3_71e0233_1746027731735_863978_14871 ,
+		d:_19_0_3_71e0233_1746027837044_867827_14913 ,
+		d:_19_0_3_71e0233_1746027631056_691503_14836 ,
+		d:_18_5_3_bc402f4_1552812805784_548404_15062 ,
+		d:_19_0_3_71e0233_1746027882482_912182_14918 ,
+		d:_19_0_3_71e0233_1746028073773_979720_14974 ,
+		d:_19_0_3_71e0233_1746028822501_191804_15047 ,
+		d:_19_0_3_71e0233_1746028827712_739888_15050 ,
+		d:_19_0_3_71e0233_1746028275862_880382_14999 ,
+		d:_19_0_3_71e0233_1746028149871_266697_14985 ,
+		d:_19_0_3_71e0233_1746028899054_101006_15058 ,
+		d:_18_5_3_bc402f4_1552811412605_640145_14319 ,
+		d:_18_5_3_bc402f4_1552812437056_257578_14975 ,
+		d:_18_5_3_bc402f4_1552812370943_152244_14924 ,
+		d:_18_5_3_bc402f4_1552812663506_709974_15011 ,
+		d:_19_0_3_71e0233_1746029024681_691401_15066 ,
+		d:_19_0_3_71e0233_1746027747207_605800_14880 ,
+		d:_19_0_3_71e0233_1746028061993_960870_14971 ,
+		d:_18_5_3_bc402f4_1552810776263_894029_14121 ,
+		d:_19_0_3_71e0233_1746029056197_950529_15073 ,
+		d:_18_5_3_bc402f4_1552813199775_830344_15281 ,
+		d:_19_0_3_71e0233_1746027631053_836894_14835 ,
+		d:_19_0_3_71e0233_1746028442990_717820_15013 ,
+		d:_19_0_3_71e0233_1746027704287_746273_14855 ,
+		d:_19_0_3_71e0233_1746029726958_589946_15078 ,
+		d:_18_5_3_bc402f4_1552810869277_586147_14175 ,
+		d:_18_5_3_bc402f4_1552810948738_707540_14217 ,
+		d:_18_5_3_bc402f4_1552813038602_222864_15129 ,
+		d:_18_5_3_bc402f4_1552814246502_629251_15775 ,
+		d:_18_5_3_bc402f4_1552815791106_548984_16360 ,
+		d:_18_5_3_bc402f4_1552814194319_862392_15683 ,
+		d:_18_5_3_bc402f4_1552814212889_663150_15729 ,
+		d:_19_0_3_71e0233_1746028605370_466818_15028 ,
+		d:_19_0_3_71e0233_1746029049431_401220_15072 ,
+		d:_19_0_3_71e0233_1746028839192_503107_15053 ,
+		d:_19_0_3_71e0233_1746028508430_363448_15020 ,
+		d:_19_0_3_71e0233_1746028118776_36360_14979 ,
+		d:_18_5_3_bc402f4_1552811538626_715866_14549 ,
+		d:_18_5_3_bc402f4_1552811554859_819240_14595 ,
+		d:_19_0_3_71e0233_1746028540160_854095_15021 ,
+		d:_19_0_3_71e0233_1746028483612_410592_15014 ,
+		d:_18_5_3_bc402f4_1552827771600_60767_16481 ,
+		d:_18_5_3_bc402f4_1552810644650_650036_14079 ,
+		d:_18_5_3_bc402f4_1556615212765_548060_15021 ,
+		d:_18_5_3_bc402f4_1556615164506_303870_14975 ,
+		d:_19_0_3_71e0233_1746028282302_943711_15000 ,
+		d:_19_0_3_71e0233_1746028195311_519257_14989 ,
+		d:_19_0_3_71e0233_1746028313498_548385_15007 ,
+		d:_19_0_3_71e0233_1746028216231_986687_14993 ,
+		d:_19_0_3_71e0233_1746027967661_707482_14950 ,
+		d:_19_0_3_71e0233_1746028306923_558192_15006 ,
+		d:_19_0_3_71e0233_1746027920180_215768_14934 ,
+		d:_19_0_3_71e0233_1746028183413_413266_14988 ,
+		d:_19_0_3_71e0233_1746027630942_464786_14802 ,
+		d:_19_0_3_71e0233_1746027731735_371186_14872 .
