@@ -416,7 +416,7 @@
     {
       "id": "DT-IssueStatus",
       "changedAt": "2016-05-26T08:59:00+02:00",
-      "title": "SpecIF:LifecycleStatus",
+      "title": "SpecIF:LifecycleStatusIssue",
       "description": [
         {
           "text": "Enumerated values for issue status"
@@ -640,7 +640,7 @@
     {
       "id": "PC-IssueStatus",
       "changedAt": "2016-05-26T08:59:00+02:00",
-      "title": "SpecIF:LifecycleStatus",
+      "title": "SpecIF:LifecycleStatusIssue",
       "revision": "1",
       "dataType": {
         "id": "DT-IssueStatus"

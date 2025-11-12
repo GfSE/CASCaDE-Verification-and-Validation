@@ -2,7 +2,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix sh: <https://www.w3.org/ns/shacl#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix W3C: <https://www.w3.org/standards/semanticweb#> .
 @prefix xs: <http://www.w3.org/2001/XMLSchema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -12,8 +12,9 @@
 @prefix iana: <https://www.iana.org/assignments/media-types#> .
 @prefix foaf: <http://xmlns.com/foaf/spec/#> .
 @prefix FMC: <http://fmc-modeling.org#> .
+@prefix RFLP: <https://product-information-graph.org/v0.2/ontology/RFLP#> .
 @prefix IR: <https://www.adesso.de/de/impulse/interaction-room/index.jsp#> .
-@prefix IREB: <https://www.ireb.org/cpre-glossary#> .
+@prefix IREB: <https://cpre.ireb.org/en/downloads-and-resources/glossary#> .
 @prefix ReqIF: <https://www.prostep.org/fileadmin/downloads/PSI_ImplementationGuide_ReqIF_V1-7.pdf#> .
 @prefix ReqIF-WF: <https://www.prostep.org/fileadmin/downloads/Recommendation_ReqIF_V2_RZ3.pdf#> .
 @prefix HIS: <https://www.itwissen.info/Herstellerinitiative-Software-Automotive-HIS.html#> .
@@ -27,9 +28,21 @@
 @prefix pig: <https://product-information-graph.org/metamodel#> .
 @prefix DDP: <http://www.prostep.org/dictionary/2.0#> .
 @prefix SpecIF: <https://specif.de/v1.2/schema#> .
-@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix pigShapes_dcterms: <https://product-information-graph.org/v0.2/ontology/shapes/dcterms:#> .
+@prefix pigShapes_rdfs: <https://product-information-graph.org/v0.2/ontology/shapes/rdfs:#> .
+@prefix pigShapes_uml: <https://product-information-graph.org/v0.2/ontology/shapes/uml:#> .
+@prefix pigShapes_sysml: <https://product-information-graph.org/v0.2/ontology/shapes/sysml:#> .
+@prefix pigShapes_FMC: <https://product-information-graph.org/v0.2/ontology/shapes/FMC:#> .
+@prefix pigShapes_RFLP: <https://product-information-graph.org/v0.2/ontology/shapes/RFLP:#> .
+@prefix pigShapes_IREB: <https://product-information-graph.org/v0.2/ontology/shapes/IREB:#> .
+@prefix pigShapes_oslc_rm: <https://product-information-graph.org/v0.2/ontology/shapes/oslc_rm:#> .
+@prefix pigShapes_oslc_cm: <https://product-information-graph.org/v0.2/ontology/shapes/oslc_cm:#> .
+@prefix pigShapes_ReqIF: <https://product-information-graph.org/v0.2/ontology/shapes/ReqIF:#> .
+@prefix pigShapes_ReqIF-WF: <https://product-information-graph.org/v0.2/ontology/shapes/ReqIF-WF:#> .
+@prefix pigShapes_SpecIF: <https://product-information-graph.org/v0.2/ontology/shapes/SpecIF:#> .
+@prefix pigShapes_pig: <https://product-information-graph.org/v0.2/ontology/shapes/pig:#> .
 
-@prefix o: <https://product-information-graph.org/examples/ontology#> .
+@prefix o: <https://product-information-graph.org/v0.2/ontology#> .
 @prefix d: <https://product-information-graph.org/examples/Small%20Autonomous%20Vehicle.specif.zip#> .
 
 #################################################################
@@ -43,171 +56,201 @@ d:
 	owl:imports <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ,
 		<http://www.w3.org/2000/01/rdf-schema#> ;
 	dcterms:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
-	dcterms:modified "2025-10-17T11:05:15.037Z" .
+	dcterms:modified "2025-11-12T14:47:15.831Z" .
 
 #################################################################
 # PIG Metamodel (pig:)
 #################################################################
-
-pig:Property
-	rdf:type owl:DatatypeProperty ;
-	rdfs:label "Literal Property" ;
-	rdfs:comment "A PIG meta-model element used for literal properties." .
-
-pig:PropertyEnum
-	rdf:type owl:ObjectProperty ;
-	rdfs:label "Enumerated literal Property" ;
-	rdfs:comment "A PIG meta-model element used for enumerated literal properties." .
-
-pig:Organizer
-	rdf:type owl:Class ;
-	rdfs:label "Organizer" ;
-	rdfs:comment "A PIG meta-model element used for organizing model-elements." .
 
 pig:Entity
 	rdf:type owl:Class ;
 	rdfs:label "Entity" ;
 	rdfs:comment "A PIG meta-model element used for entities (aka resources or artifacts)." .
 
+pigShapes_pig:Entity
+	rdf:type sh:NodeShape ;
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		pigShapes_pig:category ,
+		pigShapes_pig:icon ;
+	sh:targetClass pig:Entity .
+
 pig:Relationship
 	rdf:type owl:Class ;
 	rdfs:label "Relationship" ;
 	rdfs:comment "A PIG meta-model element used for reified relationships (aka predicates)." .
 
+pigShapes_pig:Relationship
+	rdf:type sh:NodeShape ;
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		pigShapes_pig:category ,
+		pigShapes_pig:icon ,
+		pigShapes_pig:eligibleSource ,
+		pigShapes_pig:eligibleTarget ;
+	sh:targetClass pig:Relationship .
+
+pig:Organizer
+	rdf:type owl:Class ;
+	rdfs:label "Organizer" ;
+	rdfs:comment "An element organizing model elements. An example is a list of requirements or a diagram using a certain notation which depicts selected model elements." .
+
+pigShapes_pig:Organizer
+	rdf:type sh:NodeShape ;
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		pigShapes_pig:category ,
+		pigShapes_pig:eligibleElement ;
+	sh:targetClass pig:Organizer .
+
+pig:HierarchyRoot
+	rdfs:subClassOf pig:Organizer ;
+	rdfs:label "Hierarchy Root" ;
+	rdfs:comment "A subclass of PIG organizer serving as a root for hierarchically organized graph elements." .
+
+pigShapes_pig:HierarchyRoot
+	rdf:type sh:NodeShape ;
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		pigShapes_pig:lists ;
+	sh:targetClass pig:HierarchyRoot .
+
+pig:Outline
+	rdfs:subClassOf pig:Organizer ;
+	rdfs:label "Outline" ;
+	rdfs:comment "A subclass of PIG organizer comprising all information items of a human-readable document. As usual, the outline is hierarchically organized." .
+
+pigShapes_pig:Outline
+	rdf:type sh:NodeShape ;
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		pigShapes_pig:category ,
+		pigShapes_pig:lists ;
+	sh:targetClass pig:Outline .
+
 pig:eligibleSource
 	rdf:type owl:ObjectProperty ;
-	rdfs:domain pig:Relationship ;
-	rdfs:range pig:Entity ;
+	rdfs:range [ owl:unionOf(
+			pig:Entity
+			pig:Relationship
+		)] ;
 	rdfs:label "has source" ;
 	rdfs:comment "Connects the source of a reified relationship." .
 
+pigShapes_pig:eligibleSource
+	rdf:type sh:PropertyShape ;
+	sh:path pig:eligibleSource ;
+	sh:or (
+			[ sh:class pig:Entity ]
+			[ sh:class pig:Relationship ]
+		) .
+
 pig:eligibleTarget
 	rdf:type owl:ObjectProperty ;
-	rdfs:domain pig:Relationship ;
-	rdfs:range pig:Entity ;
+	rdfs:range [ owl:unionOf(
+			pig:Entity
+			pig:Relationship
+		)] ;
 	rdfs:label "has target" ;
 	rdfs:comment "Connects the target of a reified relationship." .
 
+pigShapes_pig:eligibleTarget
+	rdf:type sh:PropertyShape ;
+	sh:path pig:eligibleTarget ;
+	sh:or (
+			[ sh:class pig:Entity ]
+			[ sh:class pig:Relationship ]
+		) .
+
 pig:eligibleElement
 	rdf:type owl:ObjectProperty ;
-	rdfs:domain pig:Organizer ;
-	rdfs:range [ owl:unionOf( pig:Entity pig:Relationship pig:Organizer )] ;
+	rdfs:range [ owl:unionOf(
+			pig:Entity
+			pig:Relationship
+			pig:Organizer
+		)] ;
 	rdfs:label "has element" ;
 	rdfs:comment "References an entity, a relationship or a subordinated organizer." .
 
+pigShapes_pig:eligibleElement
+	rdf:type sh:PropertyShape ;
+	sh:path pig:eligibleElement ;
+	sh:or (
+			[ sh:class pig:Entity ]
+			[ sh:class pig:Relationship ]
+			[ sh:class pig:Organizer ]
+		) .
+
 pig:lists
 	rdfs:subPropertyOf pig:eligibleElement ;
-	rdfs:domain [ owl:unionOf( pig:HierarchyRoot pig:Outline SpecIF:Heading )] ;
+	rdfs:range [ owl:unionOf(
+			pig:Entity
+			pig:Relationship
+			pig:Organizer
+		)] ;
 	rdfs:label "lists" ;
 	rdfs:comment "Lists (references) an entity, a relationship or a subordinated organizer." .
 
+pigShapes_pig:lists
+	rdf:type sh:PropertyShape ;
+	sh:path pig:lists ;
+	sh:or (
+			[ sh:class pig:Entity ]
+			[ sh:class pig:Relationship ]
+			[ sh:class pig:Organizer ]
+		) .
+
 pig:shows
 	rdfs:subPropertyOf pig:eligibleElement ;
-	rdfs:domain pig:View ;
-	rdfs:range [ owl:unionOf( pig:Entity pig:Relationship )] ;
+	rdfs:range [ owl:unionOf(
+			pig:Entity
+			pig:Relationship
+		)] ;
 	rdfs:label "shows" ;
 	rdfs:comment "Shows (references) an entity or a relationship." .
 
+pigShapes_pig:shows
+	rdf:type sh:PropertyShape ;
+	sh:path pig:shows ;
+	sh:or (
+			[ sh:class pig:Entity ]
+			[ sh:class pig:Relationship ]
+		) .
+
 pig:depicts
 	rdfs:subPropertyOf pig:eligibleElement ;
-	rdfs:domain pig:View ;
 	rdfs:range pig:Entity ;
 	rdfs:label "depicts" ;
 	rdfs:comment "Depicts an entity; inverse of uml:ownedDiagram." .
 
-#################################################################
-# Data Types with Enumerated Values
-#################################################################
+pigShapes_pig:depicts
+	rdf:type sh:PropertyShape ;
+	sh:path pig:depicts ;
+	sh:or (
+			[ sh:class pig:Entity ]
+		) .
 
-SpecIF:Priority-Value
-	rdf:type owl:Class ;
-	rdfs:label "Priority"@en ;
-	rdfs:label "Priorität"@de ;
-	rdfs:label "Priorité"@fr ;
-	rdfs:comment "Enumerated values for the 'Priority' of the resource."@en ;
-	dcterms:modified "2025-09-05T12:40:27.574Z" ;
-	owl:oneOf ( SpecIF:priorityHigh SpecIF:priorityRatherHigh SpecIF:priorityMedium SpecIF:priorityRatherLow SpecIF:priorityLow ) .
-SpecIF:priorityHigh
-	rdf:type SpecIF:Priority-Value ;
-	rdfs:label "high"@en ;
-	rdfs:label "hoch"@de ;
-	rdfs:label "haut"@fr .
-SpecIF:priorityRatherHigh
-	rdf:type SpecIF:Priority-Value ;
-	rdfs:label "rather high"@en ;
-	rdfs:label "eher hoch"@de ;
-	rdfs:label "plutôt haut"@fr .
-SpecIF:priorityMedium
-	rdf:type SpecIF:Priority-Value ;
-	rdfs:label "medium"@en ;
-	rdfs:label "mittel"@de ;
-	rdfs:label "moyen"@fr .
-SpecIF:priorityRatherLow
-	rdf:type SpecIF:Priority-Value ;
-	rdfs:label "rather low"@en ;
-	rdfs:label "eher niedrig"@de ;
-	rdfs:label "plutôt bas"@fr .
-SpecIF:priorityLow
-	rdf:type SpecIF:Priority-Value ;
-	rdfs:label "low"@en ;
-	rdfs:label "niedrig"@de ;
-	rdfs:label "bas"@fr .
+pig:icon
+	rdf:type owl:DatatypeProperty ;
+	rdfs:range xsd:string ;
+	rdfs:label "has icon" ;
+	rdfs:comment "Specifies an icon for a model element (entity or relationship)." .
 
-SpecIF:StakeholderGroup-Value
-	rdf:type owl:Class ;
-	rdfs:label "Stakeholder Group"@en ;
-	rdfs:comment "Enumerated values for the 'Stakehoder Group' addressed by the term."@en ;
-	dcterms:modified "2023-03-10T07:48:02.442Z" ;
-	owl:oneOf ( SpecIF:StakeholderGroupRegulation SpecIF:StakeholderGroupBusiness SpecIF:StakeholderGroupUser SpecIF:StakeholderGroupSystem SpecIF:StakeholderGroupOperation ) .
-SpecIF:StakeholderGroupRegulation
-	rdf:type SpecIF:StakeholderGroup-Value ;
-	rdfs:label "Regulation"@en .
-SpecIF:StakeholderGroupBusiness
-	rdf:type SpecIF:StakeholderGroup-Value ;
-	rdfs:label "Business"@en .
-SpecIF:StakeholderGroupUser
-	rdf:type SpecIF:StakeholderGroup-Value ;
-	rdfs:label "User"@en .
-SpecIF:StakeholderGroupSystem
-	rdf:type SpecIF:StakeholderGroup-Value ;
-	rdfs:label "System"@en .
-SpecIF:StakeholderGroupOperation
-	rdf:type SpecIF:StakeholderGroup-Value ;
-	rdfs:label "Operation"@en .
+pigShapes_pig:icon
+	rdf:type sh:PropertyShape ;
+	sh:path pig:icon ;
+	sh:datatype xsd:string .
 
-IREB:RequirementType-Value
-	rdf:type owl:Class ;
-	rdfs:label "Type"@en ;
-	rdfs:label "Art"@de ;
-	rdfs:comment "According to the IREB, requirements are typically classified into functional requirements ([[IREB:FunctionalRequirement]]), quality requirements ([[IREB:QualityRequirement]]) and constraints ([[IREB:Constraint]]). The latter two are also called non-functional requirements."@en ;
-	rdfs:comment "Nach dem IREB werden Anforderungen üblicherweise nach 'Art' in funktionale Anforderungen ([[IREB:FunctionalRequirement]]), Qualitätsanforderungen ([[IREB:QualityRequirement]]) und Randbedingungen ([[IREB:Constraint]]) unterteilt. Die beiden letzteren werden auch nicht-funktionale Anforderungen genannt."@de ;
-	rdfs:comment "Selon l'IREB, les exigences sont généralement classées en exigences fonctionnelles ([[IREB:FunctionalRequirement]]), en exigences de qualité ([[IREB:QualityRequirement]]) et en contraintes ([[IREB:Constraint]]). Ces deux dernières sont également appelées exigences non fonctionnelles."@fr ;
-	dcterms:modified "2023-08-08T20:52:31.633Z" ;
-	owl:oneOf ( o:V_RequirementType_0 o:V_RequirementType_1 IREB:FunctionalRequirement IREB:QualityRequirement IREB:Constraint o:V_RequirementType_5 ) .
-o:V_RequirementType_0
-	rdf:type IREB:RequirementType-Value ;
-	rdfs:label "SpecIF:Feature" .
-o:V_RequirementType_1
-	rdf:type IREB:RequirementType-Value ;
-	rdfs:label "SpecIF:UserStory" .
-IREB:FunctionalRequirement
-	rdf:type IREB:RequirementType-Value ;
-	rdfs:label "Functional Requirement"@en ;
-	rdfs:label "Funktionsanforderung"@de ;
-	rdfs:label "Exigence de function"@fr .
-IREB:QualityRequirement
-	rdf:type IREB:RequirementType-Value ;
-	rdfs:label "Quality Requirement"@en ;
-	rdfs:label "Qualitätsanforderung"@de ;
-	rdfs:label "Exigence de qualité"@fr .
-IREB:Constraint
-	rdf:type IREB:RequirementType-Value ;
-	rdfs:label "Constraint"@en ;
-	rdfs:label "Randbedingung"@de ;
-	rdfs:label "Contrainte"@fr .
-o:V_RequirementType_5
-	rdf:type IREB:RequirementType-Value ;
-	rdfs:label "SpecIF:PainPoint" .
+pig:category
+	rdfs:subPropertyOf dcterms:type ;
+	rdfs:range xsd:string ;
+	rdfs:label "has category" ;
+	rdfs:comment "Specifies a category for an element (entity, relationship or organizer)." .
+
+pigShapes_pig:category
+	rdf:type sh:PropertyShape ;
+	sh:path pig:category ;
+	sh:datatype xsd:string .
 
 #################################################################
 # Ontology - Property Classes
@@ -215,7 +258,7 @@ o:V_RequirementType_5
 
 # Skipping implicit property: rdfs:label
 
-rdfs:label-Shape
+pigShapes_rdfs:label
 	rdf:type sh:PropertyShape ;
 	sh:path rdfs:label ;
 	sh:maxCount "1" ;
@@ -224,134 +267,44 @@ rdfs:label-Shape
 
 # Skipping implicit property: rdfs:comment
 
-rdfs:comment-Shape
+pigShapes_rdfs:comment
 	rdf:type sh:PropertyShape ;
 	sh:path rdfs:comment ;
 	sh:maxCount "1" ;
 	sh:datatype xsd:string .
 
-dcterms:type
-	rdfs:subClassOf pig:Property ;
-	rdfs:label "Element Type"@en ;
-	rdfs:label "Element-Typ"@de ;
-	rdfs:label "Type d'élément"@fr ;
-	rdfs:comment "<p>The nature or genre of the resource. <small>(<i>source: <a href=\"http://purl.org/dc/elements/1.1/type\">DCMI</a></i>)</small></p><p>Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element.</p><p>For example, a [[FMC:Actor]] may represent a <i>System Function</i>, a <i>System Component</i> or a <i>User Role</i>. Similarly, in the context of process modelling, a FMC:Actor may represent a <i>Process Step</i> or again a <i>User Role</i>. So, all of these are meaningful values for a FMC:Actor's property named dcterms:type.</p>"@en ;
-	dcterms:modified "2025-03-06T15:04:02.280Z" .
+# Skipping implicit property: pig:category
 
-dcterms:type-Shape
+pigShapes_pig:category
 	rdf:type sh:PropertyShape ;
-	sh:path dcterms:type ;
+	sh:path pig:category ;
 	sh:maxCount "1" ;
 	sh:datatype xsd:string ;
 	sh:maxLength "32" .
 
 SpecIF:Diagram
-	rdfs:subClassOf pig:Property ;
+	rdf:type owl:DatatypeProperty ;
 	rdfs:label "Diagram"@en ;
 	rdfs:label "Diagramm"@de ;
 	rdfs:label "Diagramme"@fr ;
-	rdfs:comment "A diagram illustrating the resource or a link to a diagram."@en ;
-	dcterms:modified "2023-02-26T14:40:17.601Z" .
+	rdfs:comment "A diagram illustrating the resource or a link to a diagram."@en .
 
-SpecIF:Diagram-Shape
+pigShapes_SpecIF:Diagram
 	rdf:type sh:PropertyShape ;
 	sh:path SpecIF:Diagram ;
 	sh:datatype xsd:string .
 
 SpecIF:Notation
-	rdfs:subClassOf pig:Property ;
+	rdf:type owl:DatatypeProperty ;
 	rdfs:label "Notation"@en ;
-	rdfs:comment "The notation used by a model diagram, e.g. 'BPMN 2.0', 'SysML Activity Diagram' or 'FMC Block Diagram'."@en ;
-	dcterms:modified "2023-02-26T21:06:48.930Z" .
+	rdfs:comment "The notation used by a model diagram, e.g. 'BPMN 2.0', 'SysML Activity Diagram' or 'FMC Block Diagram'."@en .
 
-SpecIF:Notation-Shape
+pigShapes_SpecIF:Notation
 	rdf:type sh:PropertyShape ;
 	sh:path SpecIF:Notation ;
 	sh:maxCount "1" ;
 	sh:datatype xsd:string ;
 	sh:maxLength "32" .
-
-uml:is_Service
-	rdfs:subClassOf pig:Property ;
-	rdfs:label "is server"@en ;
-	dcterms:modified "2024-07-09T12:03:24.570Z" .
-
-uml:is_Service-Shape
-	rdf:type sh:PropertyShape ;
-	sh:path uml:is_Service ;
-	sh:maxCount "1" ;
-	sh:datatype xsd:boolean .
-
-uml:Flow_Direction
-	rdfs:subClassOf pig:Property ;
-	rdfs:label "Flow Direction"@en ;
-	dcterms:modified "2024-07-09T05:23:08.410Z" .
-
-uml:Flow_Direction-Shape
-	rdf:type sh:PropertyShape ;
-	sh:path uml:Flow_Direction ;
-	sh:maxCount "1" ;
-	sh:datatype xsd:string ;
-	sh:maxLength "32" .
-
-SpecIF:Priority
-	rdfs:subClassOf pig:PropertyEnum ;
-	rdfs:label "Priority"@en ;
-	rdfs:label "Priorität"@de ;
-	rdfs:label "Priorité"@fr ;
-	rdfs:comment "Enumerated values for the 'Priority' of the resource."@en ;
-	rdfs:range SpecIF:Priority-Value ;
-	dcterms:modified "2025-09-05T12:40:27.574Z" .
-
-SpecIF:Priority-Shape
-	rdf:type sh:PropertyShape ;
-	sh:path SpecIF:Priority ;
-	sh:maxCount "1" ;
-	sh:class SpecIF:Priority-Value .
-
-SpecIF:StakeholderGroup
-	rdfs:subClassOf pig:PropertyEnum ;
-	rdfs:label "Stakeholder Group"@en ;
-	rdfs:comment "Enumerated values for the 'Stakehoder Group' addressed by the term."@en ;
-	rdfs:range SpecIF:StakeholderGroup-Value ;
-	dcterms:modified "2023-03-10T07:48:02.442Z" .
-
-SpecIF:StakeholderGroup-Shape
-	rdf:type sh:PropertyShape ;
-	sh:path SpecIF:StakeholderGroup ;
-	sh:maxCount "1" ;
-	sh:class SpecIF:StakeholderGroup-Value .
-
-SpecIF:Icon
-	rdfs:subClassOf pig:Property ;
-	rdfs:label "Icon"@en ;
-	rdfs:label "Symbol"@de ;
-	rdfs:label "Symbole"@fr ;
-	rdfs:comment "A symbol or icon for display as a prefix to titles; applicable to all instances of the class. Is usually a XML-encoded UTF-8 symbol, can be an URL or dataURL."@en ;
-	dcterms:modified "2025-09-05T12:43:26.716Z" .
-
-SpecIF:Icon-Shape
-	rdf:type sh:PropertyShape ;
-	sh:path SpecIF:Icon ;
-	sh:maxCount "1" ;
-	sh:datatype xsd:string ;
-	sh:maxLength "256" .
-
-IREB:RequirementType
-	rdfs:subClassOf pig:PropertyEnum ;
-	rdfs:label "Type"@en ;
-	rdfs:label "Art"@de ;
-	rdfs:comment "According to the IREB, requirements are typically classified into functional requirements ([[IREB:FunctionalRequirement]]), quality requirements ([[IREB:QualityRequirement]]) and constraints ([[IREB:Constraint]]). The latter two are also called non-functional requirements."@en ;
-	rdfs:comment "Nach dem IREB werden Anforderungen üblicherweise nach 'Art' in funktionale Anforderungen ([[IREB:FunctionalRequirement]]), Qualitätsanforderungen ([[IREB:QualityRequirement]]) und Randbedingungen ([[IREB:Constraint]]) unterteilt. Die beiden letzteren werden auch nicht-funktionale Anforderungen genannt."@de ;
-	rdfs:comment "Selon l'IREB, les exigences sont généralement classées en exigences fonctionnelles ([[IREB:FunctionalRequirement]]), en exigences de qualité ([[IREB:QualityRequirement]]) et en contraintes ([[IREB:Constraint]]). Ces deux dernières sont également appelées exigences non fonctionnelles."@fr ;
-	rdfs:range IREB:RequirementType-Value ;
-	dcterms:modified "2023-08-08T20:52:31.633Z" .
-
-IREB:RequirementType-Shape
-	rdf:type sh:PropertyShape ;
-	sh:path IREB:RequirementType ;
-	sh:maxCount "1" ;
-	sh:class IREB:RequirementType-Value .
 
 #################################################################
 # Ontology - Entity Classes
@@ -363,16 +316,15 @@ SpecIF:Paragraph
 	rdfs:label "Textabsatz"@de ;
 	rdfs:label "Paragraphe"@fr ;
 	rdfs:comment "<p>A 'Paragraph' is an unspecified information in a document at any level.</p>"@en ;
-	rdfs:comment "<p>Ein 'Textabschnitt' in einem Dokument auf beliebiger Ebene.</p>"@de ;
-	dcterms:modified "2024-03-02T20:55:23.295Z" .
+	rdfs:comment "<p>Ein 'Textabschnitt' in einem Dokument auf beliebiger Ebene.</p>"@de .
 
-SpecIF:Paragraph-Shape
+pigShapes_SpecIF:Paragraph
 	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:Paragraph ;
-	sh:property rdfs:label-Shape ,
-		rdfs:comment-Shape ,
-		SpecIF:Diagram-Shape ,
-		dcterms:type-Shape .
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		pigShapes_SpecIF:Diagram ,
+		pigShapes_pig:category .
 
 SpecIF:ModelElement
 	rdfs:subClassOf pig:Entity ;
@@ -380,31 +332,14 @@ SpecIF:ModelElement
 	rdfs:label "Modellelement"@de ;
 	rdfs:comment "Is a generalized type for model elements."@en ;
 	rdfs:comment "Ist ein generalisierter Typ für Modellelemente."@de ;
-	pig:icon "&#x2606;" ;
-	dcterms:modified "2025-03-08T20:23:37.245Z" .
+	pig:icon "&#x2606;" .
 
-SpecIF:ModelElement-Shape
+pigShapes_SpecIF:ModelElement
 	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:ModelElement ;
-	sh:property rdfs:label-Shape ,
-		rdfs:comment-Shape ,
-		dcterms:type-Shape .
-
-pig:View
-	rdfs:subClassOf SpecIF:Paragraph ;
-	rdfs:label "View" ;
-	rdfs:comment "A PIG organizer class representing a diagram with certain model-elements for a given communication purpose." ;
-	pig:icon "▣" ;
-	dcterms:modified "2025-08-15T19:41:37.282Z" .
-
-pig:View-Shape
-	rdf:type sh:NodeShape ;
-	sh:targetClass pig:View ;
-	sh:property rdfs:label-Shape ,
-		rdfs:comment-Shape ,
-		SpecIF:Diagram-Shape ,
-		dcterms:type-Shape ,
-		SpecIF:Notation-Shape .
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		pigShapes_pig:category .
 
 FMC:Actor
 	rdfs:subClassOf SpecIF:ModelElement ;
@@ -414,15 +349,14 @@ FMC:Actor
 	rdfs:comment "<p>An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role.</p><p>The  particular use or original type is specified with a [[dcterms:type]] property of the 'FMC:Actor'. A value of that property should be an ontology-term, such as [[bpmn:processStep]].</p>"@en ;
 	rdfs:comment "<p>Ein 'Akteur' ist ein fundamentaler Modellelementtyp, der eine aktive Entität darstellt, sei es eine Aktivität, ein Prozessschritt, eine Funktion, eine Systemkomponente oder eine Rolle.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Actor' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[bpmn:timer]].</p>"@de ;
 	rdfs:comment "<p>Un 'Acteur' est un type d'élément de modèle fondamental représentant une entité active, qu'il s'agisse d'une activité, d'une étape de processus, d'une fonction, d'un composant de système ou d'un rôle.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:Actor'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[bpmn:timer]].</p>"@fr ;
-	pig:icon "&#x25A1;" ;
-	dcterms:modified "2025-03-08T20:21:05.195Z" .
+	pig:icon "&#x25A1;" .
 
-FMC:Actor-Shape
+pigShapes_FMC:Actor
 	rdf:type sh:NodeShape ;
 	sh:targetClass FMC:Actor ;
-	sh:property rdfs:label-Shape ,
-		rdfs:comment-Shape ,
-		dcterms:type-Shape .
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		pigShapes_pig:category .
 
 SpecIF:Collection
 	rdfs:subClassOf SpecIF:ModelElement ;
@@ -432,15 +366,14 @@ SpecIF:Collection
 	rdfs:comment "<p>A 'Collection' is a logical (often conceptual) group of resources linked with a [[SpecIF:contains]] statement. It corresponds to a <a href=\"https://camunda.com/bpmn/reference/\">'Group'</a> in BPMN Diagrams.</p><p>BPMN: An arbitrary set of objects can be defined as a Group to show that they logically belong together. <small>(<i>source: <a href=\"http://www.bpmn-tool.com/en/tutorial/\">BPMN Tutorial</a></i>)</small></p>"@en ;
 	rdfs:comment "<p>Eine 'Kollektion' ist eine logische Gruppierung bestimmter Modellelemente, die per [[SpecIF:contains]] Relation zusammen gefasst sind. Sie entspricht einer <a href=\"https://camunda.com/bpmn/reference/\">'Gruppe'</a> in BPMN Diagrammen. <small>(<i>source: <a href=\"http://www.bpmn-tool.com/en/tutorial/\">BPMN Tutorial</a></i>)</small></p>"@de ;
 	rdfs:comment "<p>Une 'collection' est un groupe logique (souvent conceptuel) de ressources liées par une déclaration [[SpecIF:contains]]. Elle correspond à un <a href=\"https://camunda.com/bpmn/reference/\">'groupe'</a> dans les diagrammes BPMN. <small>(<i>source: <a href=\"http://www.bpmn-tool.com/en/tutorial/\">BPMN Tutoriel</a></i>)</small></p>"@fr ;
-	pig:icon "⬚" ;
-	dcterms:modified "2024-06-09T18:27:41.176Z" .
+	pig:icon "⬚" .
 
-SpecIF:Collection-Shape
+pigShapes_SpecIF:Collection
 	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:Collection ;
-	sh:property rdfs:label-Shape ,
-		rdfs:comment-Shape ,
-		dcterms:type-Shape .
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		pigShapes_pig:category .
 
 FMC:State
 	rdfs:subClassOf SpecIF:ModelElement ;
@@ -450,15 +383,14 @@ FMC:State
 	rdfs:comment "<p>A 'State' is a fundamental model element type representing a passive entity, be it a value, a condition, an information storage or even a physical shape.</p><p>The particular use or the original type is specified with a [[dcterms:type]] property of the 'FMC:State'. A value of that property should bean  ontology-term, such as [[bpmn:dataObject]].</p>"@en ;
 	rdfs:comment "<p>Ein 'Zustand' ist ein fundamentaler Modellelementtyp, der eine passive Entität darstellt, sei es ein Wert, ein Dokument, ein Informationsspeicher, eine Bedingung oder eine physische Beschaffenheit.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:State' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[ArchiMate:DataObject]].</p>"@de ;
 	rdfs:comment "<p>Un 'État' est un type d'élément de modèle fondamental représentant une entité passive, qu'il s'agisse d'une valeur, d'une condition, d'un stockage d'informations ou même d'une forme physique.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:State'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[ArchiMate:DataObject]].</p>"@fr ;
-	pig:icon "&#x25CB;" ;
-	dcterms:modified "2025-03-08T20:04:01.555Z" .
+	pig:icon "&#x25CB;" .
 
-FMC:State-Shape
+pigShapes_FMC:State
 	rdf:type sh:NodeShape ;
 	sh:targetClass FMC:State ;
-	sh:property rdfs:label-Shape ,
-		rdfs:comment-Shape ,
-		dcterms:type-Shape .
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		pigShapes_pig:category .
 
 FMC:Event
 	rdfs:subClassOf SpecIF:ModelElement ;
@@ -468,188 +400,57 @@ FMC:Event
 	rdfs:comment "<p>An 'Event' is a fundamental model element type representing a time reference, a change in condition/value or more generally a synchronization primitive.</p><p>The particular use or the original type is specified with a [[dcterms:type]] property of the 'FMC:Event'. A value of that property should be an ontology-term, such as [[bpmn:startEvent]].</p>"@en ;
 	rdfs:comment "<p>Ein 'Ereignis' ist ein fundamentaler Modellelementtyp, der eine Zeitreferenz, eine Änderung einer Bedingung/eines Wertes oder allgemeiner ein Synchronisationsmittel darstellt.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Event' spezifiziert. Die Werte dieser Eigenschaft sollen Ontologiebegriffe sein, wie z.B. [[bpmn:startEvent]].</p>"@de ;
 	rdfs:comment "<p>Un 'Événement' est un type d'élément de modèle fondamental représentant une référence temporelle, un changement de condition/valeur ou plus généralement une primitive de synchronisation.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:Event'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[bpmn:startEvent]].</p>"@fr ;
-	pig:icon "&#x2662;" ;
-	dcterms:modified "2025-03-08T19:57:15.384Z" .
+	pig:icon "&#x2662;" .
 
-FMC:Event-Shape
+pigShapes_FMC:Event
 	rdf:type sh:NodeShape ;
 	sh:targetClass FMC:Event ;
-	sh:property rdfs:label-Shape ,
-		rdfs:comment-Shape ,
-		dcterms:type-Shape .
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		pigShapes_pig:category .
+
+pig:View
+	rdfs:subClassOf pig:Organizer ;
+	rdfs:label "View" ;
+	rdfs:comment "A PIG organizer class representing a diagram with certain model-elements for a given communication purpose." ;
+	pig:icon "▣" .
+
+pigShapes_pig:View
+	rdf:type sh:NodeShape ;
+	sh:targetClass pig:View ;
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		pigShapes_SpecIF:Diagram ,
+		pigShapes_pig:category ,
+		pigShapes_SpecIF:Notation .
+
+uml:Package
+	rdfs:subClassOf SpecIF:Collection ;
+	rdfs:label "Package"@en .
+
+pigShapes_uml:Package
+	rdf:type sh:NodeShape ;
+	sh:targetClass uml:Package ;
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		pigShapes_pig:category .
 
 IREB:Requirement
-	rdfs:subClassOf SpecIF:Paragraph ;
+	rdfs:subClassOf pig:Entity ;
 	rdfs:label "Requirement"@en ;
 	rdfs:label "Anforderung"@de ;
 	rdfs:label "Exigence"@fr ;
 	rdfs:comment "<p>A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>A condition or capability needed by a user to solve a problem or achieve an objective.</li><li>A condition or capability that must be met or possessed by a system or system component to satisfy a contract, standard, specification, or other formally imposed documents.</li><li>A documented representation of a condition or capability as in (1) or (2).</li></ol><p>Note: The definition above is the classic one from IEEE Std 610.12 of 1990. Alternatively, we also give a more modern definition:</p><ol><li>A need perceived by a stakeholder.</li><li>A capability or property that a system shall have.</li><li>A documented representation of a need, capability or property.</li></ol>"@en ;
 	rdfs:comment "<p>Eine 'Anforderung' ist ein einzelnes dokumentiertes physisches und funktionales Bedürfnis, das ein bestimmter Entwurf, ein Produkt oder ein Prozess erfüllen muss. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>Eine Bedingung oder Fähigkeit, die ein Benutzer benötigt, um ein Problem zu lösen oder ein Ziel zu erreichen.</li><li>Eine Bedingung oder Fähigkeit, die ein System oder eine Systemkomponente erfüllen oder besitzen muss, um einen Vertrag, eine Norm, eine Spezifikation oder ein anderes formal vorgeschriebenes Dokument zu erfüllen.</li><li>Eine dokumentierte Darstellung einer Bedingung oder Fähigkeit wie in (1) oder (2).</li></ol><p>Anmerkung: Die obige Definition ist die klassische Definition aus IEEE Std 610.12 von 1990. Alternativ geben wir auch eine modernere Definition an:</p><ol><li>Ein von einem Stakeholder wahrgenommener Bedarf.</li><li>Eine Fähigkeit oder Eigenschaft, die ein System haben soll.</li><li>Eine dokumentierte Darstellung eines Bedarfs, einer Fähigkeit oder Eigenschaft.</li></ol>"@de ;
 	rdfs:comment "<p>Une 'Exigence' est un besoin physique et fonctionnel unique et documenté qu'une conception, un produit ou un processus particulier doit pouvoir satisfaire. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Définition:</p><ol><li>Condition ou capacité dont un utilisateur a besoin pour résoudre un problème ou atteindre un objectif.</li><li>Condition ou capacité qui doit être remplie ou possédée par un système ou un composant de système pour satisfaire à un contrat, à une norme, à une spécification ou à d'autres documents imposés officiellement.</li><li>Une représentation documentée d'une condition ou d'une capacité comme dans (1) ou (2).</li></ol><p>Remarque: La définition ci-dessus est la définition classique de la norme IEEE 610.12 de 1990. Nous donnons également une définition plus moderne:</p><ol><li>Un besoin perçu par une partie prenante;</li><li>Une capacité ou une propriété qu'un système doit avoir.</li><li>Une représentation documentée d'un besoin, d'une capacité ou d'une propriété.</li></ol>"@fr ;
-	pig:icon "&#8623;" ;
-	dcterms:modified "2023-04-01T14:10:11.167Z" .
+	pig:icon "&#8623;" .
 
-IREB:Requirement-Shape
+pigShapes_IREB:Requirement
 	rdf:type sh:NodeShape ;
 	sh:targetClass IREB:Requirement ;
-	sh:property rdfs:label-Shape ,
-		rdfs:comment-Shape ,
-		SpecIF:Diagram-Shape ,
-		dcterms:type-Shape ,
-		SpecIF:Priority-Shape ,
-		IREB:RequirementType-Shape ,
-		SpecIF:StakeholderGroup-Shape .
-
-SpecIF:Heading
-	rdfs:subClassOf SpecIF:Paragraph ;
-	rdfs:label "Heading"@en ;
-	rdfs:label "Überschrift"@de ;
-	rdfs:label "Intitulé"@fr ;
-	rdfs:comment "A 'Heading' is a chapter title at any level with optional description."@en ;
-	rdfs:comment "Eine 'Überschrift' in einem Dokument ist der Titel eines Kapitels. Sie kann eine Beschreibung haben, die als Einleitung oder Zusammenfassung des Kapitels genutzt werden kann."@de ;
-	dcterms:modified "2024-03-02T15:28:50.414Z" .
-
-SpecIF:Heading-Shape
-	rdf:type sh:NodeShape ;
-	sh:targetClass SpecIF:Heading ;
-	sh:property rdfs:label-Shape ,
-		rdfs:comment-Shape ,
-		SpecIF:Diagram-Shape ,
-		dcterms:type-Shape .
-
-o:RC_UmlDiagram
-	rdfs:subClassOf SpecIF:Paragraph ;
-	rdfs:label "pig:View" ;
-	rdfs:comment "<p>A 'Diagram' is a graphical model view with a specific communication purpose, e.g. a business process or system composition.</p>"@en ;
-	rdfs:comment "<p>Ein 'Diagramm' ist eine graphische Modellsicht zur Vermittlung eines bestimmten Sachverhalts, z.B. ein Geschäftsprozess oder Systemaufbau.</p>"@de ;
-	dcterms:modified "2024-08-30T07:51:44.846Z" .
-
-o:RC_UmlDiagram-Shape
-	rdf:type sh:NodeShape ;
-	sh:targetClass o:RC_UmlDiagram ;
-	sh:property rdfs:label-Shape ,
-		rdfs:comment-Shape ,
-		SpecIF:Diagram-Shape ,
-		dcterms:type-Shape .
-
-o:RC_UmlClass
-	rdfs:subClassOf SpecIF:ModelElement ;
-	rdfs:label "SpecIF:ModelElement" ;
-	rdfs:comment "Is a generalized type for model elements."@en ;
-	rdfs:comment "Ist ein generalisierter Typ für Modellelemente."@de ;
-	pig:icon "&#x2606;" ;
-	dcterms:modified "2024-08-29T13:56:10.140Z" .
-
-o:RC_UmlClass-Shape
-	rdf:type sh:NodeShape ;
-	sh:targetClass o:RC_UmlClass ;
-	sh:property rdfs:label-Shape ,
-		rdfs:comment-Shape ,
-		dcterms:type-Shape .
-
-uml:Package
-	rdfs:subClassOf SpecIF:Collection ;
-	rdfs:label "Package"@en ;
-	dcterms:modified "2024-06-13T07:55:07.739Z" .
-
-uml:Package-Shape
-	rdf:type sh:NodeShape ;
-	sh:targetClass uml:Package ;
-	sh:property rdfs:label-Shape ,
-		rdfs:comment-Shape ,
-		dcterms:type-Shape .
-
-uml:Port
-	rdfs:subClassOf FMC:Actor ;
-	rdfs:label "Port"@en ;
-	rdfs:label "Schnittstelle"@de ;
-	dcterms:modified "2024-07-09T05:29:06.284Z" .
-
-uml:Port-Shape
-	rdf:type sh:NodeShape ;
-	sh:targetClass uml:Port ;
-	sh:property rdfs:label-Shape ,
-		rdfs:comment-Shape ,
-		dcterms:type-Shape ,
-		uml:is_Service-Shape ,
-		uml:Flow_Direction-Shape .
-
-uml:StateMachine
-	rdfs:subClassOf FMC:Actor ;
-	rdfs:label "UML State Machine" ;
-	dcterms:modified "2025-04-18T15:01:06.865Z" .
-
-uml:StateMachine-Shape
-	rdf:type sh:NodeShape ;
-	sh:targetClass uml:StateMachine ;
-	sh:property rdfs:label-Shape ,
-		rdfs:comment-Shape ,
-		dcterms:type-Shape .
-
-uml:UseCase
-	rdfs:subClassOf FMC:Actor ;
-	rdfs:label "Use Case" ;
-	dcterms:modified "2025-06-28T12:29:38.963Z" .
-
-uml:UseCase-Shape
-	rdf:type sh:NodeShape ;
-	sh:targetClass uml:UseCase ;
-	sh:property rdfs:label-Shape ,
-		rdfs:comment-Shape ,
-		dcterms:type-Shape .
-
-uml:Activity
-	rdfs:subClassOf FMC:Actor ;
-	rdfs:label "UML Activity" ;
-	dcterms:modified "2025-04-23T07:46:20.849Z" .
-
-uml:Activity-Shape
-	rdf:type sh:NodeShape ;
-	sh:targetClass uml:Activity ;
-	sh:property rdfs:label-Shape ,
-		rdfs:comment-Shape ,
-		dcterms:type-Shape .
-
-uml:State
-	rdfs:subClassOf FMC:State ;
-	rdfs:label "UML State" ;
-	dcterms:modified "2025-04-18T15:07:47.101Z" .
-
-uml:State-Shape
-	rdf:type sh:NodeShape ;
-	sh:targetClass uml:State ;
-	sh:property rdfs:label-Shape ,
-		rdfs:comment-Shape ,
-		dcterms:type-Shape .
-
-uml:Transition
-	rdfs:subClassOf FMC:Actor ;
-	rdfs:label "UML Transition" ;
-	dcterms:modified "2025-04-23T07:46:41.649Z" .
-
-uml:Transition-Shape
-	rdf:type sh:NodeShape ;
-	sh:targetClass uml:Transition ;
-	sh:property rdfs:label-Shape ,
-		rdfs:comment-Shape ,
-		dcterms:type-Shape .
-
-o:RC_SysmlRequirement
-	rdfs:subClassOf IREB:Requirement ;
-	rdfs:label "IREB:Requirement" ;
-	pig:icon "&#8623;" ;
-	dcterms:modified "2025-05-18T14:23:27.016Z" .
-
-o:RC_SysmlRequirement-Shape
-	rdf:type sh:NodeShape ;
-	sh:targetClass o:RC_SysmlRequirement ;
-	sh:property rdfs:label-Shape ,
-		rdfs:comment-Shape ,
-		SpecIF:Diagram-Shape ,
-		dcterms:type-Shape ,
-		SpecIF:Priority-Shape ,
-		IREB:RequirementType-Shape ,
-		SpecIF:StakeholderGroup-Shape .
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		pigShapes_pig:category .
 
 #################################################################
 # Ontology - Relationship Classes
@@ -661,23 +462,22 @@ SpecIF:relates
 	rdfs:label "verbindet"@de ;
 	rdfs:label "relie"@fr ;
 	rdfs:comment "Is a generalized type for model relations."@en ;
-	rdfs:comment "Ist ein generalisierter Typ für Modellrelationen."@de ;
-	dcterms:modified "2024-06-09T12:35:33.150Z" .
+	rdfs:comment "Ist ein generalisierter Typ für Modellrelationen."@de .
 
 SpecIF:relates-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
-	rdfs:label "Connects the source of SpecIF:relates" ;
+	rdfs:comment "Connects the source of SpecIF:relates" ;
 	rdfs:domain SpecIF:relates .
 
 SpecIF:relates-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
-	rdfs:label "Connects the target of SpecIF:relates" ;
+	rdfs:comment "Connects the target of SpecIF:relates" ;
 	rdfs:domain SpecIF:relates .
 
-SpecIF:relates-Shape
+pigShapes_SpecIF:relates
 	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:relates ;
-	sh:property dcterms:type-Shape ;
+	sh:property pigShapes_pig:category ;
 	sh:property [ 
 		sh:path SpecIF:relates-hasSource ;
 		sh:minCount 1 ;
@@ -694,34 +494,59 @@ dcterms:hasPart
 	rdfs:label "has part"@en ;
 	rdfs:label "enthält"@de ;
 	rdfs:label "contient"@fr ;
-	rdfs:comment "A related resource that is included either physically or logically in the described resource.*Comment: This property is intended to be used with non-literal values. This property is an inverse property of [[dcterms:isPartOf]].*"@en ;
-	dcterms:modified "2024-06-18T12:23:12.163Z" .
+	rdfs:comment "A related resource that is included either physically or logically in the described resource.\n\n*Comment: This property is intended to be used with non-literal values. This property is an inverse property of [[dcterms:isPartOf]].*"@en .
 
 dcterms:hasPart-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
-	rdfs:label "Connects the source of dcterms:hasPart" ;
+	rdfs:comment "Connects the source of dcterms:hasPart" ;
 	rdfs:domain dcterms:hasPart ;
-	rdfs:range [ owl:unionOf( FMC:Actor FMC:State SpecIF:Collection SpecIF:ModelElement o:RC_UmlClass )] .
+	rdfs:range [ owl:unionOf(
+			FMC:Actor
+			FMC:State
+			SpecIF:Collection
+			SpecIF:ModelElement
+			o:RC-UmlClass
+		)] .
 
 dcterms:hasPart-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
-	rdfs:label "Connects the target of dcterms:hasPart" ;
+	rdfs:comment "Connects the target of dcterms:hasPart" ;
 	rdfs:domain dcterms:hasPart ;
-	rdfs:range [ owl:unionOf( FMC:Actor FMC:State SpecIF:Collection SpecIF:ModelElement uml:Port o:RC_UmlClass )] .
+	rdfs:range [ owl:unionOf(
+			FMC:Actor
+			FMC:State
+			SpecIF:Collection
+			SpecIF:ModelElement
+			o:RC-UmlPort
+			o:RC-UmlClass
+		)] .
 
-dcterms:hasPart-Shape
+pigShapes_dcterms:hasPart
 	rdf:type sh:NodeShape ;
 	sh:targetClass dcterms:hasPart ;
-	sh:property dcterms:type-Shape ;
+	sh:property pigShapes_pig:category ;
 	sh:property [ 
 		sh:path dcterms:hasPart-hasSource ;
-		sh:class [ owl:unionOf( FMC:Actor FMC:State SpecIF:Collection SpecIF:ModelElement o:RC_UmlClass )] ;
+		sh:or (
+			[ sh:class FMC:Actor ]
+			[ sh:class FMC:State ]
+			[ sh:class SpecIF:Collection ]
+			[ sh:class SpecIF:ModelElement ]
+			[ sh:class o:RC-UmlClass ]
+		) ;
 		sh:minCount 1 ;
 		sh:maxCount 1
 	] ;
 	sh:property [ 
 		sh:path dcterms:hasPart-hasTarget ;
-		sh:class [ owl:unionOf( FMC:Actor FMC:State SpecIF:Collection SpecIF:ModelElement uml:Port o:RC_UmlClass )] ;
+		sh:or (
+			[ sh:class FMC:Actor ]
+			[ sh:class FMC:State ]
+			[ sh:class SpecIF:Collection ]
+			[ sh:class SpecIF:ModelElement ]
+			[ sh:class o:RC-UmlPort ]
+			[ sh:class o:RC-UmlClass ]
+		) ;
 		sh:minCount 1 ;
 		sh:maxCount 1
 	] .
@@ -731,34 +556,65 @@ SpecIF:contains
 	rdfs:label "contains"@en ;
 	rdfs:label "enthält"@de ;
 	rdfs:label "contient"@fr ;
-	rdfs:comment "General containment, such as:- Package-A *contains* Diagram-B- Collection-1 *contains* DataObject-1.1Not to confound with *[[dcterms:hasPart]]*."@en ;
-	dcterms:modified "2024-06-18T12:22:11.959Z" .
+	rdfs:comment "General containment, such as:\n- Package-A *contains* Diagram-B\n- Collection-1 *contains* DataObject-1.1\n\nNot to confound with *[[dcterms:hasPart]]*."@en .
 
 SpecIF:contains-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
-	rdfs:label "Connects the source of SpecIF:contains" ;
+	rdfs:comment "Connects the source of SpecIF:contains" ;
 	rdfs:domain SpecIF:contains ;
-	rdfs:range [ owl:unionOf( FMC:Actor FMC:State SpecIF:Collection uml:Package )] .
+	rdfs:range [ owl:unionOf(
+			FMC:Actor
+			FMC:State
+			SpecIF:Collection
+			uml:Package
+		)] .
 
 SpecIF:contains-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
-	rdfs:label "Connects the target of SpecIF:contains" ;
+	rdfs:comment "Connects the target of SpecIF:contains" ;
 	rdfs:domain SpecIF:contains ;
-	rdfs:range [ owl:unionOf( FMC:Actor FMC:State FMC:Event SpecIF:Collection uml:Package SpecIF:ModelElement pig:View )] .
+	rdfs:range [ owl:unionOf(
+			FMC:Actor
+			FMC:State
+			FMC:Event
+			SpecIF:Collection
+			uml:Package
+			SpecIF:ModelElement
+			o:RC-SpecifView
+			o:RC-PigView
+			pig:View
+			IREB:Requirement
+		)] .
 
-SpecIF:contains-Shape
+pigShapes_SpecIF:contains
 	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:contains ;
-	sh:property dcterms:type-Shape ;
+	sh:property pigShapes_pig:category ;
 	sh:property [ 
 		sh:path SpecIF:contains-hasSource ;
-		sh:class [ owl:unionOf( FMC:Actor FMC:State SpecIF:Collection uml:Package )] ;
+		sh:or (
+			[ sh:class FMC:Actor ]
+			[ sh:class FMC:State ]
+			[ sh:class SpecIF:Collection ]
+			[ sh:class uml:Package ]
+		) ;
 		sh:minCount 1 ;
 		sh:maxCount 1
 	] ;
 	sh:property [ 
 		sh:path SpecIF:contains-hasTarget ;
-		sh:class [ owl:unionOf( FMC:Actor FMC:State FMC:Event SpecIF:Collection uml:Package SpecIF:ModelElement pig:View )] ;
+		sh:or (
+			[ sh:class FMC:Actor ]
+			[ sh:class FMC:State ]
+			[ sh:class FMC:Event ]
+			[ sh:class SpecIF:Collection ]
+			[ sh:class uml:Package ]
+			[ sh:class SpecIF:ModelElement ]
+			[ sh:class o:RC-SpecifView ]
+			[ sh:class o:RC-PigView ]
+			[ sh:class pig:View ]
+			[ sh:class IREB:Requirement ]
+		) ;
 		sh:minCount 1 ;
 		sh:maxCount 1
 	] .
@@ -768,20 +624,19 @@ oslc_rm:satisfies
 	rdfs:label "satisfies"@en ;
 	rdfs:label "erfüllt"@de ;
 	rdfs:label "satisfait"@fr ;
-	rdfs:comment "<p>The object is satisfied by the subject. <small>(<i>source: <a href=\"http://open-services.net/\">OSLC</a></i>)</small></p><p>SpecIF suggests that the subject is confined to a model element, e.g, a [[FMC:Actor]] or [[FMC:State]], and the object is confined to a [[IREB:Requirement]]. More concretely, an example for this type of statement is 'Component-X <em>satisfies</em> 'Requirement-4711'.</p>"@en ;
-	dcterms:modified "2024-06-14T06:49:03.417Z" .
+	rdfs:comment "<p>The object is satisfied by the subject. <small>(<i>source: <a href=\"http://open-services.net/\">OSLC</a></i>)</small></p><p>SpecIF suggests that the subject is confined to a model element, e.g, a [[FMC:Actor]] or [[FMC:State]], and the object is confined to a [[IREB:Requirement]]. More concretely, an example for this type of statement is 'Component-X <em>satisfies</em> 'Requirement-4711'.</p>"@en .
 
 oslc_rm:satisfies-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
-	rdfs:label "Connects the source of oslc_rm:satisfies" ;
+	rdfs:comment "Connects the source of oslc_rm:satisfies" ;
 	rdfs:domain oslc_rm:satisfies .
 
 oslc_rm:satisfies-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
-	rdfs:label "Connects the target of oslc_rm:satisfies" ;
+	rdfs:comment "Connects the target of oslc_rm:satisfies" ;
 	rdfs:domain oslc_rm:satisfies .
 
-oslc_rm:satisfies-Shape
+pigShapes_oslc_rm:satisfies
 	rdf:type sh:NodeShape ;
 	sh:targetClass oslc_rm:satisfies ;
 	sh:property [ 
@@ -800,20 +655,19 @@ IREB:refines
 	rdfs:label "refines"@en ;
 	rdfs:label "verfeinert"@de ;
 	rdfs:label "affine"@fr ;
-	rdfs:comment "<p>A [[IREB:Requirement]] 'refines' another [[IREB:Requirement]].</p>"@en ;
-	dcterms:modified "2024-06-14T06:40:52.155Z" .
+	rdfs:comment "<p>A [[IREB:Requirement]] 'refines' another [[IREB:Requirement]].</p>"@en .
 
 IREB:refines-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
-	rdfs:label "Connects the source of IREB:refines" ;
+	rdfs:comment "Connects the source of IREB:refines" ;
 	rdfs:domain IREB:refines .
 
 IREB:refines-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
-	rdfs:label "Connects the target of IREB:refines" ;
+	rdfs:comment "Connects the target of IREB:refines" ;
 	rdfs:domain IREB:refines .
 
-IREB:refines-Shape
+pigShapes_IREB:refines
 	rdf:type sh:NodeShape ;
 	sh:targetClass IREB:refines ;
 	sh:property [ 
@@ -832,54 +686,61 @@ sysml:Allocate
 	rdfs:label "is allocated to"@en ;
 	rdfs:label "zugeordnet zu"@de ;
 	rdfs:label "allouée à"@fr ;
-	rdfs:comment "<p>An [[FMC:Actor]] is allocated to another [[FMC:Actor]] (e.g. a logical function is allocated to a physical component.</p>"@en ;
-	dcterms:modified "2025-09-06T14:59:03.739Z" .
+	rdfs:comment "<p>An [[FMC:Actor]] is allocated to another [[FMC:Actor]] (e.g. a logical function is allocated to a physical component.</p>"@en .
 
 sysml:Allocate-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
-	rdfs:label "Connects the source of sysml:Allocate" ;
+	rdfs:comment "Connects the source of sysml:Allocate" ;
 	rdfs:domain sysml:Allocate ;
 	rdfs:range SpecIF:ModelElement .
 
 sysml:Allocate-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
-	rdfs:label "Connects the target of sysml:Allocate" ;
+	rdfs:comment "Connects the target of sysml:Allocate" ;
 	rdfs:domain sysml:Allocate ;
 	rdfs:range SpecIF:ModelElement .
 
-sysml:Allocate-Shape
+pigShapes_sysml:Allocate
 	rdf:type sh:NodeShape ;
 	sh:targetClass sysml:Allocate ;
 	sh:property [ 
 		sh:path sysml:Allocate-hasSource ;
-		sh:class SpecIF:ModelElement ;
+		sh:or (
+			[ sh:class SpecIF:ModelElement ]
+		) ;
 		sh:minCount 1 ;
 		sh:maxCount 1
 	] ;
 	sh:property [ 
 		sh:path sysml:Allocate-hasTarget ;
-		sh:class SpecIF:ModelElement ;
+		sh:or (
+			[ sh:class SpecIF:ModelElement ]
+		) ;
 		sh:minCount 1 ;
 		sh:maxCount 1
 	] .
 
 uml:ownedBehavior
 	rdfs:subClassOf pig:Relationship ;
-	rdfs:label "has Behavior" ;
-	dcterms:modified "2025-04-21T17:40:00.590Z" .
+	rdfs:label "has Behavior" .
 
 uml:ownedBehavior-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
-	rdfs:label "Connects the source of uml:ownedBehavior" ;
+	rdfs:comment "Connects the source of uml:ownedBehavior" ;
 	rdfs:domain uml:ownedBehavior .
 
 uml:ownedBehavior-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
-	rdfs:label "Connects the target of uml:ownedBehavior" ;
+	rdfs:comment "Connects the target of uml:ownedBehavior" ;
 	rdfs:domain uml:ownedBehavior ;
-	rdfs:range [ owl:unionOf( uml:StateMachine uml:Activity FMC:Actor uml:UseCase )] .
+	rdfs:range [ owl:unionOf(
+			o:RC-UmlStatemachine
+			o:RC-UmlActivity
+			FMC:Actor
+			o:RC-UmlUsecase
+		)] .
 
-uml:ownedBehavior-Shape
+pigShapes_uml:ownedBehavior
 	rdf:type sh:NodeShape ;
 	sh:targetClass uml:ownedBehavior ;
 	sh:property [ 
@@ -889,27 +750,31 @@ uml:ownedBehavior-Shape
 	] ;
 	sh:property [ 
 		sh:path uml:ownedBehavior-hasTarget ;
-		sh:class [ owl:unionOf( uml:StateMachine uml:Activity FMC:Actor uml:UseCase )] ;
+		sh:or (
+			[ sh:class o:RC-UmlStatemachine ]
+			[ sh:class o:RC-UmlActivity ]
+			[ sh:class FMC:Actor ]
+			[ sh:class o:RC-UmlUsecase ]
+		) ;
 		sh:minCount 1 ;
 		sh:maxCount 1
 	] .
 
 uml:Trigger
 	rdfs:subClassOf pig:Relationship ;
-	rdfs:label "triggers" ;
-	dcterms:modified "2025-04-22T09:22:53.072Z" .
+	rdfs:label "triggers" .
 
 uml:Trigger-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
-	rdfs:label "Connects the source of uml:Trigger" ;
+	rdfs:comment "Connects the source of uml:Trigger" ;
 	rdfs:domain uml:Trigger .
 
 uml:Trigger-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
-	rdfs:label "Connects the target of uml:Trigger" ;
+	rdfs:comment "Connects the target of uml:Trigger" ;
 	rdfs:domain uml:Trigger .
 
-uml:Trigger-Shape
+pigShapes_uml:Trigger
 	rdf:type sh:NodeShape ;
 	sh:targetClass uml:Trigger ;
 	sh:property [ 
@@ -925,66 +790,88 @@ uml:Trigger-Shape
 
 uml:TransitionSource
 	rdfs:subClassOf pig:Relationship ;
-	rdfs:label "starts from" ;
-	dcterms:modified "2025-04-22T13:49:51.249Z" .
+	rdfs:label "starts from" .
 
 uml:TransitionSource-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
-	rdfs:label "Connects the source of uml:TransitionSource" ;
+	rdfs:comment "Connects the source of uml:TransitionSource" ;
 	rdfs:domain uml:TransitionSource ;
-	rdfs:range [ owl:unionOf( uml:Transition FMC:Actor )] .
+	rdfs:range [ owl:unionOf(
+			o:RC-UmlTransition
+			FMC:Actor
+		)] .
 
 uml:TransitionSource-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
-	rdfs:label "Connects the target of uml:TransitionSource" ;
+	rdfs:comment "Connects the target of uml:TransitionSource" ;
 	rdfs:domain uml:TransitionSource ;
-	rdfs:range [ owl:unionOf( uml:State FMC:State )] .
+	rdfs:range [ owl:unionOf(
+			o:RC-UmlState
+			FMC:State
+		)] .
 
-uml:TransitionSource-Shape
+pigShapes_uml:TransitionSource
 	rdf:type sh:NodeShape ;
 	sh:targetClass uml:TransitionSource ;
 	sh:property [ 
 		sh:path uml:TransitionSource-hasSource ;
-		sh:class [ owl:unionOf( uml:Transition FMC:Actor )] ;
+		sh:or (
+			[ sh:class o:RC-UmlTransition ]
+			[ sh:class FMC:Actor ]
+		) ;
 		sh:minCount 1 ;
 		sh:maxCount 1
 	] ;
 	sh:property [ 
 		sh:path uml:TransitionSource-hasTarget ;
-		sh:class [ owl:unionOf( uml:State FMC:State )] ;
+		sh:or (
+			[ sh:class o:RC-UmlState ]
+			[ sh:class FMC:State ]
+		) ;
 		sh:minCount 1 ;
 		sh:maxCount 1
 	] .
 
 uml:TransitionTarget
 	rdfs:subClassOf pig:Relationship ;
-	rdfs:label "ends at" ;
-	dcterms:modified "2025-04-22T13:50:34.458Z" .
+	rdfs:label "ends at" .
 
 uml:TransitionTarget-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
-	rdfs:label "Connects the source of uml:TransitionTarget" ;
+	rdfs:comment "Connects the source of uml:TransitionTarget" ;
 	rdfs:domain uml:TransitionTarget ;
-	rdfs:range [ owl:unionOf( uml:Transition FMC:Actor )] .
+	rdfs:range [ owl:unionOf(
+			o:RC-UmlTransition
+			FMC:Actor
+		)] .
 
 uml:TransitionTarget-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
-	rdfs:label "Connects the target of uml:TransitionTarget" ;
+	rdfs:comment "Connects the target of uml:TransitionTarget" ;
 	rdfs:domain uml:TransitionTarget ;
-	rdfs:range [ owl:unionOf( uml:State FMC:State )] .
+	rdfs:range [ owl:unionOf(
+			o:RC-UmlState
+			FMC:State
+		)] .
 
-uml:TransitionTarget-Shape
+pigShapes_uml:TransitionTarget
 	rdf:type sh:NodeShape ;
 	sh:targetClass uml:TransitionTarget ;
 	sh:property [ 
 		sh:path uml:TransitionTarget-hasSource ;
-		sh:class [ owl:unionOf( uml:Transition FMC:Actor )] ;
+		sh:or (
+			[ sh:class o:RC-UmlTransition ]
+			[ sh:class FMC:Actor ]
+		) ;
 		sh:minCount 1 ;
 		sh:maxCount 1
 	] ;
 	sh:property [ 
 		sh:path uml:TransitionTarget-hasTarget ;
-		sh:class [ owl:unionOf( uml:State FMC:State )] ;
+		sh:or (
+			[ sh:class o:RC-UmlState ]
+			[ sh:class FMC:State ]
+		) ;
 		sh:minCount 1 ;
 		sh:maxCount 1
 	] .
@@ -996,496 +883,629 @@ uml:TransitionTarget-Shape
 d:_19_0_3_71e0233_1746001337727_31616_14119
 	rdf:type uml:Package ;
 	rdfs:label "1. Requirements" ;
-	dcterms:type "Package" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	pig:category uml:Package ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552810549321_335902_14037
 	rdf:type pig:View ;
 	rdfs:label "Original Requirement Specification" ;
 	SpecIF:Diagram "<object data=\"files_and_images/Original Requirement Specification.png\" type=\"image/png\">files_and_images/Original Requirement Specification.png</object>" ;
-	dcterms:type "Diagramm" ;
+	pig:category uml:Diagram ;
 	SpecIF:Notation "UML Requirement Diagram" ;
-	dcterms:modified "2025-09-23T17:11:37.800Z" .
+	pig:revision "rev-9405830621" ;
+	dcterms:modified "2025-11-12T09:28:04.871Z" ;
+	pig:shows (
+			d:_18_5_3_bc402f4_1552810869277_586147_14175
+			d:_18_5_3_bc402f4_1552810948738_707540_14217
+			d:_18_5_3_bc402f4_1552810776263_894029_14121
+			d:_18_5_3_bc402f4_1552813199775_830344_15281
+			d:_18_5_3_bc402f4_1552810644650_650036_14079
+			d:_18_5_3_bc402f4_1552812437056_257578_14975
+			d:_18_5_3_bc402f4_1552812370943_152244_14924
+			d:_18_5_3_bc402f4_1552811136575_459751_14253
+			d:_18_5_3_bc402f4_1552811141795_384989_14263
+			d:_18_5_3_bc402f4_1552813433937_279860_15327
+			d:_18_5_3_bc402f4_1552810808641_447672_14157
+			d:_18_5_3_bc402f4_1552813334959_22842_15317
+			d:_18_5_3_bc402f4_1552813438857_436917_15337
+		) .
 
 d:_18_5_3_bc402f4_1552810776263_894029_14121
-	rdf:type o:RC_SysmlRequirement ;
+	rdf:type IREB:Requirement ;
 	rdfs:label "Navigation" ;
-	dcterms:type "Klasse" ;
+	pig:category uml:Class ;
 	rdfs:comment "The Vehicle shall autonomously choose the best route from the current location C to the target location T by means of a road map and actual traffic conditions." ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552810869277_586147_14175
-	rdf:type o:RC_SysmlRequirement ;
+	rdf:type IREB:Requirement ;
 	rdfs:label "Road Driving" ;
-	dcterms:type "Klasse" ;
+	pig:category uml:Class ;
 	rdfs:comment "The vehicle shall be able to follow a selected road." ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552810644650_650036_14079
-	rdf:type o:RC_SysmlRequirement ;
+	rdf:type IREB:Requirement ;
 	rdfs:label "Transport to Target" ;
-	dcterms:type "Klasse" ;
+	pig:category uml:Class ;
 	rdfs:comment "As a customer I would like to get a parcel delivered from the current location C to a target location T. " ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552812370943_152244_14924
-	rdf:type o:RC_SysmlRequirement ;
+	rdf:type IREB:Requirement ;
 	rdfs:label "Location as Postal Address" ;
-	dcterms:type "Klasse" ;
+	pig:category uml:Class ;
 	rdfs:comment "A location may be specified as a postal address." ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552813199775_830344_15281
-	rdf:type o:RC_SysmlRequirement ;
+	rdf:type IREB:Requirement ;
 	rdfs:label "Obstacle Avoidance" ;
-	dcterms:type "Klasse" ;
+	pig:category uml:Class ;
 	rdfs:comment "The vehicle shall not hit a person or an obstacle on the road." ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552810948738_707540_14217
-	rdf:type o:RC_SysmlRequirement ;
+	rdf:type IREB:Requirement ;
 	rdfs:label "Safe Driving" ;
-	dcterms:type "Klasse" ;
+	pig:category uml:Class ;
 	rdfs:comment "The vehicle shall drive no faster than allowed or adequate for the actual road condition." ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552812437056_257578_14975
-	rdf:type o:RC_SysmlRequirement ;
+	rdf:type IREB:Requirement ;
 	rdfs:label "Loacation as GPS Coordinate" ;
-	dcterms:type "Klasse" ;
+	pig:category uml:Class ;
 	rdfs:comment "A location may be specified as GPS Coordinate with Longitude and Latitude in Degrees." ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746001480225_327746_14120
 	rdf:type uml:Package ;
 	rdfs:label "2. Functional Layer" ;
-	dcterms:type "Package" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	pig:category uml:Package ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552811870216_105923_14824
 	rdf:type pig:View ;
 	rdfs:label "Functional Decomposition" ;
 	SpecIF:Diagram "<object data=\"files_and_images/Functional Decomposition.png\" type=\"image/png\">files_and_images/Functional Decomposition.png</object>" ;
-	dcterms:type "Diagramm" ;
+	pig:category uml:Diagram ;
 	SpecIF:Notation "SysML Block Definition Diagram" ;
-	dcterms:modified "2025-09-23T17:12:03.161Z" .
+	pig:revision "rev-11094738149" ;
+	dcterms:modified "2025-11-12T09:28:21.131Z" ;
+	pig:shows (
+			d:_18_5_3_bc402f4_1552814104357_719492_15607
+			d:_18_5_3_bc402f4_1552812805784_548404_15062
+			d:_18_5_3_bc402f4_1552815791106_548984_16360
+			d:_18_5_3_bc402f4_1552814523707_628151_15988
+			d:_18_5_3_bc402f4_1556615164506_303870_14975
+			d:_18_5_3_bc402f4_1552811937697_690731_14862
+			d:_18_5_3_bc402f4_1552812663506_709974_15011
+			d:_18_5_3_bc402f4_1552813556602_820961_15353
+			d:_18_5_3_bc402f4_1552810948738_707540_14217
+			d:_18_5_3_bc402f4_1552810776263_894029_14121
+			d:_18_5_3_bc402f4_1556615212765_548060_15021
+			d:_18_5_3_bc402f4_1552814194319_862392_15683
+			d:_18_5_3_bc402f4_1552814246502_629251_15775
+			d:_19_0_3_e40094_1718632293724_754873_14112
+			d:_18_5_3_bc402f4_1552810869277_586147_14175
+			d:_18_5_3_bc402f4_1552814212889_663150_15729
+			d:_18_5_3_bc402f4_1552813038602_222864_15129
+			d:_18_5_3_bc402f4_1552811510062_903764_14503
+			d:_18_5_3_bc402f4_1552814266523_206006_15821
+			d:_18_5_3_bc402f4_1552813818846_218375_15548
+			d:_19_0_3_e40094_1718632569345_311906_14190
+			d:_19_0_3_bc402f4_1604324293194_85516_13666
+			d:_19_0_3_e40094_1718632549973_831908_14172
+			d:_19_0_3_bc402f4_1604324214402_6480_13631
+			d:_19_0_3_bc402f4_1604324487193_60359_13731
+			d:_19_0_3_bc402f4_1604323867629_562362_13452
+			d:_18_5_3_bc402f4_1552813096475_160687_15177
+			d:_18_5_3_bc402f4_1556615683513_411874_15073
+			d:_18_5_3_bc402f4_1556615721418_831605_15106
+			d:_19_0_3_bc402f4_1604323821792_371188_13426
+			d:_18_5_3_bc402f4_1552813723040_381289_15401
+			d:_18_5_3_bc402f4_1552813102494_993665_15207
+			d:_19_0_3_bc402f4_1604324465452_775050_13715
+			d:_19_0_3_bc402f4_1604324188817_384398_13615
+			d:_18_5_3_bc402f4_1552815590348_672436_16293
+			d:_18_5_3_bc402f4_1552815653359_771130_16352
+			d:_19_0_3_bc402f4_1604323888993_530325_13468
+			d:_18_5_3_bc402f4_1552813795106_879353_15508
+			d:_19_0_3_bc402f4_1604324636141_429081_13763
+			d:_19_0_3_bc402f4_1604324764626_856811_13779
+			d:_19_0_3_bc402f4_1604324512097_628722_13747
+			d:_18_5_3_bc402f4_1552813870706_981259_15588
+			d:_19_0_3_bc402f4_1604324447693_373448_13698
+			d:_19_0_3_bc402f4_1604324321433_274293_13682
+			d:_18_5_3_bc402f4_1552815541056_996851_16231
+		) .
 
 d:_18_5_3_bc402f4_1552813556602_820961_15353
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Brake in an Emergency" ;
-	dcterms:type "RFLP:Function" ;
+	pig:category RFLP:Function ;
 	rdfs:comment "Take the vehicle to a full stop in the shortest time possible without loosing control over the trajectory." ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552814212889_663150_15729
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Set Speed" ;
-	dcterms:type "RFLP:Function" ;
+	pig:category RFLP:Function ;
 	rdfs:comment "The (autonomous) driver's speed command (gas pedal position)." ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1556615164506_303870_14975
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Turn Right" ;
-	dcterms:type "RFLP:Function" ;
+	pig:category RFLP:Function ;
 	rdfs:comment "Take a right turn at a road intersection. Observe the traffic entering the same lane and avoid a collision, if another vehicle does not observe the priority rules." ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552814194319_862392_15683
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Set Radius" ;
-	dcterms:type "RFLP:Function" ;
+	pig:category RFLP:Function ;
 	rdfs:comment "The (autonomous) driver's steering command (steering wheel position)." ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552812663506_709974_15011
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Navigate" ;
-	dcterms:type "RFLP:Function" ;
+	pig:category RFLP:Function ;
 	rdfs:comment "Select a path to get from the current position to the target." ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552814523707_628151_15988
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Calculate Accelerations" ;
-	dcterms:type "RFLP:Function" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	pig:category RFLP:Function ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1556615212765_548060_15021
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Turn Left" ;
-	dcterms:type "RFLP:Function" ;
+	pig:category RFLP:Function ;
 	rdfs:comment "Take a left turn in a road intersection. Observe the priority rules and avoid traffic on the two lanes you are crossing." ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552811937697_690731_14862
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Drive to Target" ;
-	dcterms:type "RFLP:Function" ;
+	pig:category RFLP:Function ;
 	rdfs:comment "Manoevre the vehicle from the current position to the selected target." ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552814246502_629251_15775
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Set Acceleration Left" ;
-	dcterms:type "RFLP:Function" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	pig:category RFLP:Function ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552813038602_222864_15129
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Select an adequate Speed" ;
-	dcterms:type "RFLP:Function" ;
+	pig:category RFLP:Function ;
 	rdfs:comment "Taking into account road condition and weather, select a safe speed." ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552815791106_548984_16360
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Set Acceleration Right" ;
-	dcterms:type "RFLP:Function" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	pig:category RFLP:Function ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552812805784_548404_15062
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Follow the Road" ;
-	dcterms:type "RFLP:Function" ;
+	pig:category RFLP:Function ;
 	rdfs:comment "Keep the vehicle on the selected road." ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552814266523_206006_15821
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Apply Brake" ;
-	dcterms:type "RFLP:Function" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	pig:category RFLP:Function ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746001561119_779379_14121
 	rdf:type uml:Package ;
 	rdfs:label "3. Logical Layer" ;
-	dcterms:type "Package" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	pig:category uml:Package ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746027287147_82140_14431
 	rdf:type pig:View ;
 	rdfs:label "Logical Decomposition" ;
 	SpecIF:Diagram "<object data=\"files_and_images/Logical Decomposition.png\" type=\"image/png\">files_and_images/Logical Decomposition.png</object>" ;
-	dcterms:type "Diagramm" ;
+	pig:category uml:Diagram ;
 	SpecIF:Notation "SysML Block Definition Diagram" ;
-	dcterms:modified "2025-09-23T17:12:20.931Z" .
+	pig:revision "rev-7887707545" ;
+	dcterms:modified "2025-11-12T09:28:38.225Z" ;
+	pig:shows (
+			d:_18_5_3_bc402f4_1552814104357_719492_15607
+			d:_18_5_3_bc402f4_1552811538626_715866_14549
+			d:_19_0_3_e40094_1718632293724_754873_14112
+			d:_19_0_3_bc402f4_1604360793737_196507_13523
+			d:_18_5_3_bc402f4_1552811469014_293642_14411
+			d:_18_5_3_bc402f4_1552811454014_108965_14365
+			d:_18_5_3_bc402f4_1552827771600_60767_16481
+			d:_18_5_3_bc402f4_1552811554859_819240_14595
+			d:_18_5_3_bc402f4_1552811412605_640145_14319
+			d:_18_5_3_bc402f4_1552811510062_903764_14503
+			d:_18_5_3_bc402f4_1552811672063_243990_14798
+			d:_19_0_3_e40094_1718634030433_51877_14234
+			d:_19_0_3_bc402f4_1604360962045_534106_13570
+			d:_18_5_3_bc402f4_1552814131280_1190_15654
+			d:_18_5_3_bc402f4_1552811613008_58411_14648
+			d:_18_5_3_bc402f4_1552811666192_832840_14768
+			d:_18_5_3_bc402f4_1552827804167_216283_16528
+			d:_18_5_3_bc402f4_1552811619502_982677_14678
+			d:_18_5_3_bc402f4_1552811653332_976698_14708
+		) .
 
 d:_19_0_3_e40094_1718632293724_754873_14112
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Drive Right" ;
-	dcterms:type "RFLP:Logical_System" ;
+	pig:category RFLP:Logical_System ;
 	rdfs:comment "The wheel with motor and brake on the right side. The motor can accelerate and decelerate. The motor controller is \"4-quadrant\" and can supply electrical current for recharging the batteries." ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552827771600_60767_16481
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Track Sensor" ;
-	dcterms:type "RFLP:Logical_System" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	pig:category RFLP:Logical_System ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552811469014_293642_14411
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Body" ;
-	dcterms:type "RFLP:Logical_System" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	pig:category RFLP:Logical_System ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552811510062_903764_14503
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Drive Left" ;
-	dcterms:type "RFLP:Logical_System" ;
+	pig:category RFLP:Logical_System ;
 	rdfs:comment "The wheel with motor and brake on the left side. The motor can accelerate and decelerate. The motor controller is \"4-quadrant\" and can supply electrical current for recharging the batteries." ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552811412605_640145_14319
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "LEGO Mindstorms Vehicle" ;
-	dcterms:type "RFLP:Logical_System" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	pig:category RFLP:Logical_System ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552811538626_715866_14549
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Support Front" ;
-	dcterms:type "RFLP:Logical_System" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	pig:category RFLP:Logical_System ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552814104357_719492_15607
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Controller" ;
-	dcterms:type "RFLP:Logical_System" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	pig:category RFLP:Logical_System ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746027630926_778269_14800
 	rdf:type pig:View ;
 	rdfs:label "Controller State Machine" ;
 	SpecIF:Diagram "<object data=\"files_and_images/Controller State Machine.png\" type=\"image/png\">files_and_images/Controller State Machine.png</object>" ;
-	dcterms:type "Diagramm" ;
+	pig:category uml:Diagram ;
 	SpecIF:Notation "SysML State Machine Diagram" ;
-	dcterms:modified "2025-09-23T17:12:36.685Z" .
-
-d:_19_0_3_71e0233_1746028483612_410592_15014
-	rdf:type FMC:Event ;
-	rdfs:label "switch_on!" ;
-	dcterms:type "Signal-Event" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746028540160_854095_15021
-	rdf:type FMC:Event ;
-	rdfs:label "switch_off!" ;
-	dcterms:type "Signal-Event" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746029024681_691401_15066
-	rdf:type FMC:Event ;
-	rdfs:label "navigate!" ;
-	dcterms:type "Signal-Event" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746029056197_950529_15073
-	rdf:type FMC:Event ;
-	rdfs:label "new_target!" ;
-	dcterms:type "Signal-Event" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746028118776_36360_14979
-	rdf:type FMC:Event ;
-	rdfs:label "start_driving!" ;
-	dcterms:type "Signal-Event" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746029726958_589946_15078
-	rdf:type FMC:Event ;
-	rdfs:label "re-navigate!" ;
-	dcterms:type "Call-Event" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746028954791_356054_15062
-	rdf:type FMC:Event ;
-	rdfs:label "emergency_brake!" ;
-	dcterms:type "Signal-Event" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746028899054_101006_15058
-	rdf:type FMC:Event ;
-	rdfs:label "halt!" ;
-	dcterms:type "Signal-Event" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746028884803_562591_15054
-	rdf:type FMC:Event ;
-	rdfs:label "continue_driving!" ;
-	dcterms:type "Signal-Event" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746028195311_519257_14989
-	rdf:type FMC:Event ;
-	rdfs:label "turn_right!" ;
-	dcterms:type "Signal-Event" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746028216231_986687_14993
-	rdf:type FMC:Event ;
-	rdfs:label "turned_right!" ;
-	dcterms:type "Signal-Event" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746028282302_943711_15000
-	rdf:type FMC:Event ;
-	rdfs:label "turn_left!" ;
-	dcterms:type "Signal-Event" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746028313498_548385_15007
-	rdf:type FMC:Event ;
-	rdfs:label "turned_left!" ;
-	dcterms:type "Signal-Event" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_18_5_3_bc402f4_1552811554859_819240_14595
-	rdf:type SpecIF:ModelElement ;
-	rdfs:label "Support Rear" ;
-	dcterms:type "RFLP:Logical_System" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_18_5_3_bc402f4_1552811454014_108965_14365
-	rdf:type SpecIF:ModelElement ;
-	rdfs:label "Chassis" ;
-	dcterms:type "RFLP:Logical_System" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_bc402f4_1604360793737_196507_13523
-	rdf:type SpecIF:ModelElement ;
-	rdfs:label "Collision Alarm Sensor" ;
-	dcterms:type "RFLP:Logical_System" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746027630942_863638_14801
-	rdf:type FMC:Actor ;
-	rdfs:label "Controller State Machine" ;
-	dcterms:type "UML State Machine" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746027804266_719052_14896
-	rdf:type FMC:State ;
-	rdfs:label "Defining Target" ;
-	dcterms:type "UML State" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746027847324_539644_14916
-	rdf:type FMC:Actor ;
-	rdfs:label "Defining Target→Navigating" ;
-	dcterms:type "UML Transition" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	pig:revision "rev-11807243868" ;
+	dcterms:modified "2025-11-12T09:29:01.139Z" ;
+	pig:shows (
+			d:_19_0_3_71e0233_1746027747207_605800_14880
+			d:_19_0_3_71e0233_1746028306923_558192_15006
+			d:_19_0_3_71e0233_1746027631039_116153_14834
+			d:_19_0_3_71e0233_1746027847324_539644_14916
+			d:_19_0_3_71e0233_1746028149871_266697_14985
+			d:_19_0_3_71e0233_1746028183413_413266_14988
+			d:_19_0_3_71e0233_1746028605370_466818_15028
+			d:_19_0_3_71e0233_1746027920180_215768_14934
+			d:_19_0_3_71e0233_1746027631053_836894_14835
+			d:_19_0_3_71e0233_1746028442990_717820_15013
+			d:_19_0_3_71e0233_1746028275862_880382_14999
+			d:_19_0_3_71e0233_1746027631056_691503_14836
+			d:_19_0_3_71e0233_1746027731735_863978_14871
+			d:_19_0_3_71e0233_1746027704287_746273_14855
+			d:_19_0_3_71e0233_1746029049431_401220_15072
+			d:_19_0_3_71e0233_1746027837044_867827_14913
+			d:_19_0_3_71e0233_1746027882482_912182_14918
+			d:_19_0_3_71e0233_1746028839192_503107_15053
+			d:_19_0_3_71e0233_1746028827712_739888_15050
+			d:_19_0_3_71e0233_1746028061993_960870_14971
+			d:_19_0_3_71e0233_1746028073773_979720_14974
+			d:_19_0_3_71e0233_1746027804266_719052_14896
+			d:_19_0_3_71e0233_1746028508430_363448_15020
+			d:_19_0_3_71e0233_1746028822501_191804_15047
+			d:_19_0_3_71e0233_1746027731735_371186_14872
+			d:_19_0_3_71e0233_1746027967661_707482_14950
+			d:_19_0_3_71e0233_1746027630942_863638_14801
+			d:_19_0_3_71e0233_1746027630942_464786_14802
+			d:_19_0_3_71e0233_1746029024681_691401_15066
+			d:_19_0_3_71e0233_1746028118776_36360_14979
+			d:_19_0_3_71e0233_1746029726958_589946_15078
+			d:_19_0_3_71e0233_1746028195311_519257_14989
+			d:_19_0_3_71e0233_1746028216231_986687_14993
+			d:_19_0_3_71e0233_1746028282302_943711_15000
+			d:_19_0_3_71e0233_1746028313498_548385_15007
+			d:_19_0_3_71e0233_1746028899054_101006_15058
+			d:_19_0_3_71e0233_1746028954791_356054_15062
+			d:_19_0_3_71e0233_1746028884803_562591_15054
+			d:_19_0_3_71e0233_1746029056197_950529_15073
+			d:_19_0_3_71e0233_1746028540160_854095_15021
+			d:_19_0_3_71e0233_1746028483612_410592_15014
+		) ;
+	pig:depicts (
+			d:_19_0_3_71e0233_1746027630942_863638_14801
+		) .
 
 d:_19_0_3_71e0233_1746027631039_116153_14834
 	rdf:type FMC:State ;
 	rdfs:label "entry" ;
-	dcterms:type "uml:Pseudostate" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	pig:category uml:Pseudostate ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746027631053_836894_14835
+	rdf:type FMC:State ;
+	rdfs:label "Off" ;
+	pig:category uml:State ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746027731735_863978_14871
 	rdf:type FMC:State ;
 	rdfs:label "entry" ;
-	dcterms:type "uml:Pseudostate" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746027837044_867827_14913
-	rdf:type FMC:Actor ;
-	rdfs:label "entry→Defining Target" ;
-	dcterms:type "UML Transition" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746027631056_691503_14836
-	rdf:type FMC:Actor ;
-	rdfs:label "entry→off" ;
-	dcterms:type "UML Transition" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746027882482_912182_14918
-	rdf:type FMC:State ;
-	rdfs:label "Following the Road" ;
-	dcterms:type "UML State" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746028073773_979720_14974
-	rdf:type FMC:Actor ;
-	rdfs:label "Following the Road→Navigating" ;
-	dcterms:type "UML Transition" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746028822501_191804_15047
-	rdf:type FMC:Actor ;
-	rdfs:label "Following the Road→standing" ;
-	dcterms:type "UML Transition" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746028827712_739888_15050
-	rdf:type FMC:Actor ;
-	rdfs:label "Following the Road→standing" ;
-	dcterms:type "UML Transition" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746028275862_880382_14999
-	rdf:type FMC:Actor ;
-	rdfs:label "Following the Road→Turning Left" ;
-	dcterms:type "UML Transition" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746028149871_266697_14985
-	rdf:type FMC:Actor ;
-	rdfs:label "Following the Road→Turning Right" ;
-	dcterms:type "UML Transition" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	pig:category uml:Pseudostate ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746027747207_605800_14880
 	rdf:type FMC:State ;
 	rdfs:label "Navigating" ;
-	dcterms:type "UML State" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	pig:category uml:State ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
-d:_19_0_3_71e0233_1746028061993_960870_14971
-	rdf:type FMC:Actor ;
-	rdfs:label "Navigating→Following the Road" ;
-	dcterms:type "UML Transition" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746027631053_836894_14835
+d:_19_0_3_71e0233_1746027804266_719052_14896
 	rdf:type FMC:State ;
-	rdfs:label "off" ;
-	dcterms:type "UML State" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	rdfs:label "Defining Target" ;
+	pig:category uml:State ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
-d:_19_0_3_71e0233_1746028442990_717820_15013
-	rdf:type FMC:Actor ;
-	rdfs:label "off→on" ;
-	dcterms:type "UML Transition" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746027704287_746273_14855
+d:_19_0_3_71e0233_1746027882482_912182_14918
 	rdf:type FMC:State ;
-	rdfs:label "on" ;
-	dcterms:type "UML State" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746028605370_466818_15028
-	rdf:type FMC:State ;
-	rdfs:label "standing" ;
-	dcterms:type "UML State" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746029049431_401220_15072
-	rdf:type FMC:Actor ;
-	rdfs:label "standing→Defining Target" ;
-	dcterms:type "UML Transition" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746028839192_503107_15053
-	rdf:type FMC:Actor ;
-	rdfs:label "standing→Following the Road" ;
-	dcterms:type "UML Transition" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746028508430_363448_15020
-	rdf:type FMC:Actor ;
-	rdfs:label "standing→off" ;
-	dcterms:type "UML Transition" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746027967661_707482_14950
-	rdf:type FMC:State ;
-	rdfs:label "Turning Left" ;
-	dcterms:type "UML State" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746028306923_558192_15006
-	rdf:type FMC:Actor ;
-	rdfs:label "Turning Left→Following the Road" ;
-	dcterms:type "UML Transition" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	rdfs:label "Following the Road" ;
+	pig:category uml:State ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746027920180_215768_14934
 	rdf:type FMC:State ;
 	rdfs:label "Turning Right" ;
-	dcterms:type "UML State" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	pig:category uml:State ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746027967661_707482_14950
+	rdf:type FMC:State ;
+	rdfs:label "Turning Left" ;
+	pig:category uml:State ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746028605370_466818_15028
+	rdf:type FMC:State ;
+	rdfs:label "Standing" ;
+	pig:category uml:State ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746027837044_867827_14913
+	rdf:type FMC:Actor ;
+	rdfs:label "entry→Defining Target" ;
+	pig:category uml:Transition ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746027847324_539644_14916
+	rdf:type FMC:Actor ;
+	rdfs:label "Defining Target→Navigating" ;
+	pig:category uml:Transition ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746028061993_960870_14971
+	rdf:type FMC:Actor ;
+	rdfs:label "Navigating→Following the Road" ;
+	pig:category uml:Transition ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746028073773_979720_14974
+	rdf:type FMC:Actor ;
+	rdfs:label "Following the Road→Navigating" ;
+	pig:category uml:Transition ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746028149871_266697_14985
+	rdf:type FMC:Actor ;
+	rdfs:label "Following the Road→Turning Right" ;
+	pig:category uml:Transition ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746028183413_413266_14988
 	rdf:type FMC:Actor ;
 	rdfs:label "Turning Right→Following the Road" ;
-	dcterms:type "UML Transition" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	pig:category uml:Transition ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746028275862_880382_14999
+	rdf:type FMC:Actor ;
+	rdfs:label "Following the Road→Turning Left" ;
+	pig:category uml:Transition ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746028306923_558192_15006
+	rdf:type FMC:Actor ;
+	rdfs:label "Turning Left→Following the Road" ;
+	pig:category uml:Transition ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746028822501_191804_15047
+	rdf:type FMC:Actor ;
+	rdfs:label "Following the Road→Standing" ;
+	pig:category uml:Transition ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746028827712_739888_15050
+	rdf:type FMC:Actor ;
+	rdfs:label "Following the Road→Standing" ;
+	pig:category uml:Transition ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746028839192_503107_15053
+	rdf:type FMC:Actor ;
+	rdfs:label "Standing→Following the Road" ;
+	pig:category uml:Transition ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746029049431_401220_15072
+	rdf:type FMC:Actor ;
+	rdfs:label "Standing→Defining Target" ;
+	pig:category uml:Transition ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746028508430_363448_15020
+	rdf:type FMC:Actor ;
+	rdfs:label "Standing→Off" ;
+	pig:category uml:Transition ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746027704287_746273_14855
+	rdf:type FMC:State ;
+	rdfs:label "On" ;
+	pig:category uml:State ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746027631056_691503_14836
+	rdf:type FMC:Actor ;
+	rdfs:label "entry→Off" ;
+	pig:category uml:Transition ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746028442990_717820_15013
+	rdf:type FMC:Actor ;
+	rdfs:label "Off→On" ;
+	pig:category uml:Transition ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_18_5_3_bc402f4_1552811554859_819240_14595
+	rdf:type SpecIF:ModelElement ;
+	rdfs:label "Support Rear" ;
+	pig:category RFLP:Logical_System ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_18_5_3_bc402f4_1552811454014_108965_14365
+	rdf:type SpecIF:ModelElement ;
+	rdfs:label "Chassis" ;
+	pig:category RFLP:Logical_System ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_bc402f4_1604360793737_196507_13523
+	rdf:type SpecIF:ModelElement ;
+	rdfs:label "Collision Alarm \nSensor" ;
+	pig:category RFLP:Logical_System ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746028118776_36360_14979
+	rdf:type FMC:Event ;
+	rdfs:label "start_driving!" ;
+	pig:category uml:SignalEvent ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746028195311_519257_14989
+	rdf:type FMC:Event ;
+	rdfs:label "turn_right!" ;
+	pig:category uml:SignalEvent ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746028216231_986687_14993
+	rdf:type FMC:Event ;
+	rdfs:label "turned_right!" ;
+	pig:category uml:SignalEvent ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746028282302_943711_15000
+	rdf:type FMC:Event ;
+	rdfs:label "turn_left!" ;
+	pig:category uml:SignalEvent ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746028313498_548385_15007
+	rdf:type FMC:Event ;
+	rdfs:label "turned_left!" ;
+	pig:category uml:SignalEvent ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746028483612_410592_15014
+	rdf:type FMC:Event ;
+	rdfs:label "switch_on!" ;
+	pig:category uml:SignalEvent ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746028540160_854095_15021
+	rdf:type FMC:Event ;
+	rdfs:label "switch_off!" ;
+	pig:category uml:SignalEvent ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746028884803_562591_15054
+	rdf:type FMC:Event ;
+	rdfs:label "continue_driving!" ;
+	pig:category uml:SignalEvent ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746028899054_101006_15058
+	rdf:type FMC:Event ;
+	rdfs:label "halt!" ;
+	pig:category uml:SignalEvent ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746028954791_356054_15062
+	rdf:type FMC:Event ;
+	rdfs:label "emergency_brake!" ;
+	pig:category uml:SignalEvent ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746029024681_691401_15066
+	rdf:type FMC:Event ;
+	rdfs:label "navigate!" ;
+	pig:category uml:SignalEvent ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746029056197_950529_15073
+	rdf:type FMC:Event ;
+	rdfs:label "new_target!" ;
+	pig:category uml:SignalEvent ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746029726958_589946_15078
+	rdf:type FMC:Event ;
+	rdfs:label "re-navigate!" ;
+	pig:category uml:CallEvent ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:_19_0_3_71e0233_1746027630942_863638_14801
+	rdf:type FMC:Actor ;
+	rdfs:label "Controller State Machine" ;
+	pig:category uml:StateMachine ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746027630942_464786_14802
 	rdf:type FMC:Actor ;
 	rdfs:label "unnamed uml:Region" ;
-	dcterms:type "UML Region" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	pig:category uml:Region ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746027731735_371186_14872
 	rdf:type FMC:Actor ;
 	rdfs:label "unnamed uml:Region" ;
-	dcterms:type "UML Region" ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	pig:category uml:Region ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 #################################################################
 # Relationships
@@ -1495,1186 +1515,871 @@ d:S-contains-10399921810
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001337727_31616_14119 ;
 	SpecIF:contains-hasTarget d:_18_5_3_bc402f4_1552810549321_335902_14037 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:S-contains-10330010667
+	rdf:type SpecIF:contains ;
+	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001337727_31616_14119 ;
+	SpecIF:contains-hasTarget d:_18_5_3_bc402f4_1552810776263_894029_14121 ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:S-contains-10652725449
+	rdf:type SpecIF:contains ;
+	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001337727_31616_14119 ;
+	SpecIF:contains-hasTarget d:_18_5_3_bc402f4_1552810869277_586147_14175 ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:S-contains-11927092777
+	rdf:type SpecIF:contains ;
+	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001337727_31616_14119 ;
+	SpecIF:contains-hasTarget d:_18_5_3_bc402f4_1552810644650_650036_14079 ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:S-contains-8881937697
+	rdf:type SpecIF:contains ;
+	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001337727_31616_14119 ;
+	SpecIF:contains-hasTarget d:_18_5_3_bc402f4_1552812370943_152244_14924 ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:S-contains-10783514673
+	rdf:type SpecIF:contains ;
+	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001337727_31616_14119 ;
+	SpecIF:contains-hasTarget d:_18_5_3_bc402f4_1552813199775_830344_15281 ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:S-contains-10945506396
+	rdf:type SpecIF:contains ;
+	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001337727_31616_14119 ;
+	SpecIF:contains-hasTarget d:_18_5_3_bc402f4_1552810948738_707540_14217 ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:S-contains-11407335150
+	rdf:type SpecIF:contains ;
+	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001337727_31616_14119 ;
+	SpecIF:contains-hasTarget d:_18_5_3_bc402f4_1552812437056_257578_14975 ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-9116397029
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001480225_327746_14120 ;
 	SpecIF:contains-hasTarget d:_18_5_3_bc402f4_1552811870216_105923_14824 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-10022314071
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001480225_327746_14120 ;
 	SpecIF:contains-hasTarget d:_18_5_3_bc402f4_1552813556602_820961_15353 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-9131303994
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001480225_327746_14120 ;
 	SpecIF:contains-hasTarget d:_18_5_3_bc402f4_1552814212889_663150_15729 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-8559115413
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001480225_327746_14120 ;
 	SpecIF:contains-hasTarget d:_18_5_3_bc402f4_1556615164506_303870_14975 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-10881577187
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001480225_327746_14120 ;
 	SpecIF:contains-hasTarget d:_18_5_3_bc402f4_1552814194319_862392_15683 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-9119481481
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001480225_327746_14120 ;
 	SpecIF:contains-hasTarget d:_18_5_3_bc402f4_1552812663506_709974_15011 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-12098040971
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001480225_327746_14120 ;
 	SpecIF:contains-hasTarget d:_18_5_3_bc402f4_1552814523707_628151_15988 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-10442923979
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001480225_327746_14120 ;
 	SpecIF:contains-hasTarget d:_18_5_3_bc402f4_1556615212765_548060_15021 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-11694297906
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001480225_327746_14120 ;
 	SpecIF:contains-hasTarget d:_18_5_3_bc402f4_1552811937697_690731_14862 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-9652197932
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001480225_327746_14120 ;
 	SpecIF:contains-hasTarget d:_18_5_3_bc402f4_1552814246502_629251_15775 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-9362975811
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001480225_327746_14120 ;
 	SpecIF:contains-hasTarget d:_18_5_3_bc402f4_1552813038602_222864_15129 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-10771124872
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001480225_327746_14120 ;
 	SpecIF:contains-hasTarget d:_18_5_3_bc402f4_1552815791106_548984_16360 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-9168262784
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001480225_327746_14120 ;
 	SpecIF:contains-hasTarget d:_18_5_3_bc402f4_1552812805784_548404_15062 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-8878119738
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001480225_327746_14120 ;
 	SpecIF:contains-hasTarget d:_18_5_3_bc402f4_1552814266523_206006_15821 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_bc402f4_1604324487193_60359_13731
 	rdf:type dcterms:hasPart ;
 	dcterms:hasPart-hasSource d:_18_5_3_bc402f4_1552812805784_548404_15062 ;
 	dcterms:hasPart-hasTarget d:_18_5_3_bc402f4_1552814194319_862392_15683 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_bc402f4_1604323888993_530325_13468
 	rdf:type dcterms:hasPart ;
 	dcterms:hasPart-hasSource d:_18_5_3_bc402f4_1552813556602_820961_15353 ;
 	dcterms:hasPart-hasTarget d:_18_5_3_bc402f4_1552814523707_628151_15988 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_bc402f4_1604324214402_6480_13631
 	rdf:type dcterms:hasPart ;
 	dcterms:hasPart-hasSource d:_18_5_3_bc402f4_1552814523707_628151_15988 ;
 	dcterms:hasPart-hasTarget d:_18_5_3_bc402f4_1552815791106_548984_16360 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_bc402f4_1604324447693_373448_13698
 	rdf:type dcterms:hasPart ;
 	dcterms:hasPart-hasSource d:_18_5_3_bc402f4_1556615212765_548060_15021 ;
 	dcterms:hasPart-hasTarget d:_18_5_3_bc402f4_1552814194319_862392_15683 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1556615721418_831605_15106
 	rdf:type dcterms:hasPart ;
 	dcterms:hasPart-hasSource d:_18_5_3_bc402f4_1552811937697_690731_14862 ;
 	dcterms:hasPart-hasTarget d:_18_5_3_bc402f4_1556615212765_548060_15021 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1556615683513_411874_15073
 	rdf:type dcterms:hasPart ;
 	dcterms:hasPart-hasSource d:_18_5_3_bc402f4_1552811937697_690731_14862 ;
 	dcterms:hasPart-hasTarget d:_18_5_3_bc402f4_1556615164506_303870_14975 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552813723040_381289_15401
 	rdf:type dcterms:hasPart ;
 	dcterms:hasPart-hasSource d:_18_5_3_bc402f4_1552811937697_690731_14862 ;
 	dcterms:hasPart-hasTarget d:_18_5_3_bc402f4_1552813556602_820961_15353 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_bc402f4_1604324465452_775050_13715
 	rdf:type dcterms:hasPart ;
 	dcterms:hasPart-hasSource d:_18_5_3_bc402f4_1556615164506_303870_14975 ;
 	dcterms:hasPart-hasTarget d:_18_5_3_bc402f4_1552814194319_862392_15683 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_bc402f4_1604324512097_628722_13747
 	rdf:type dcterms:hasPart ;
 	dcterms:hasPart-hasSource d:_18_5_3_bc402f4_1556615164506_303870_14975 ;
 	dcterms:hasPart-hasTarget d:_18_5_3_bc402f4_1552813038602_222864_15129 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_bc402f4_1604323867629_562362_13452
 	rdf:type dcterms:hasPart ;
 	dcterms:hasPart-hasSource d:_18_5_3_bc402f4_1552814212889_663150_15729 ;
 	dcterms:hasPart-hasTarget d:_18_5_3_bc402f4_1552814523707_628151_15988 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_bc402f4_1604324293194_85516_13666
 	rdf:type dcterms:hasPart ;
 	dcterms:hasPart-hasSource d:_18_5_3_bc402f4_1552814523707_628151_15988 ;
 	dcterms:hasPart-hasTarget d:_18_5_3_bc402f4_1552814266523_206006_15821 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_bc402f4_1604324321433_274293_13682
 	rdf:type dcterms:hasPart ;
 	dcterms:hasPart-hasSource d:_18_5_3_bc402f4_1556615212765_548060_15021 ;
 	dcterms:hasPart-hasTarget d:_18_5_3_bc402f4_1552813038602_222864_15129 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_bc402f4_1604324636141_429081_13763
 	rdf:type dcterms:hasPart ;
 	dcterms:hasPart-hasSource d:_18_5_3_bc402f4_1552812805784_548404_15062 ;
 	dcterms:hasPart-hasTarget d:_18_5_3_bc402f4_1552813038602_222864_15129 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552813096475_160687_15177
 	rdf:type dcterms:hasPart ;
 	dcterms:hasPart-hasSource d:_18_5_3_bc402f4_1552811937697_690731_14862 ;
 	dcterms:hasPart-hasTarget d:_18_5_3_bc402f4_1552812663506_709974_15011 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_bc402f4_1604324764626_856811_13779
 	rdf:type dcterms:hasPart ;
 	dcterms:hasPart-hasSource d:_18_5_3_bc402f4_1552813038602_222864_15129 ;
 	dcterms:hasPart-hasTarget d:_18_5_3_bc402f4_1552814212889_663150_15729 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_bc402f4_1604323821792_371188_13426
 	rdf:type dcterms:hasPart ;
 	dcterms:hasPart-hasSource d:_18_5_3_bc402f4_1552814194319_862392_15683 ;
 	dcterms:hasPart-hasTarget d:_18_5_3_bc402f4_1552814523707_628151_15988 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552813102494_993665_15207
 	rdf:type dcterms:hasPart ;
 	dcterms:hasPart-hasSource d:_18_5_3_bc402f4_1552811937697_690731_14862 ;
 	dcterms:hasPart-hasTarget d:_18_5_3_bc402f4_1552812805784_548404_15062 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_bc402f4_1604324188817_384398_13615
 	rdf:type dcterms:hasPart ;
 	dcterms:hasPart-hasSource d:_18_5_3_bc402f4_1552814523707_628151_15988 ;
 	dcterms:hasPart-hasTarget d:_18_5_3_bc402f4_1552814246502_629251_15775 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-10564266575
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001561119_779379_14121 ;
 	SpecIF:contains-hasTarget d:_19_0_3_71e0233_1746027287147_82140_14431 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-11515557626
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001561119_779379_14121 ;
 	SpecIF:contains-hasTarget d:_19_0_3_e40094_1718632293724_754873_14112 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-9482395742
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001561119_779379_14121 ;
 	SpecIF:contains-hasTarget d:_18_5_3_bc402f4_1552827771600_60767_16481 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-9179309009
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001561119_779379_14121 ;
 	SpecIF:contains-hasTarget d:_18_5_3_bc402f4_1552811469014_293642_14411 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-8743767210
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001561119_779379_14121 ;
 	SpecIF:contains-hasTarget d:_18_5_3_bc402f4_1552811510062_903764_14503 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-8520696102
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001561119_779379_14121 ;
 	SpecIF:contains-hasTarget d:_18_5_3_bc402f4_1552811412605_640145_14319 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-8274829800
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001561119_779379_14121 ;
 	SpecIF:contains-hasTarget d:_18_5_3_bc402f4_1552811538626_715866_14549 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-8790231064
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001561119_779379_14121 ;
 	SpecIF:contains-hasTarget d:_18_5_3_bc402f4_1552814104357_719492_15607 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-ownedBehavior-10906203416
 	rdf:type uml:ownedBehavior ;
 	uml:ownedBehavior-hasSource d:_18_5_3_bc402f4_1552814104357_719492_15607 ;
 	uml:ownedBehavior-hasTarget d:_19_0_3_71e0233_1746027630942_863638_14801 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-8869082288
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001561119_779379_14121 ;
 	SpecIF:contains-hasTarget d:_19_0_3_71e0233_1746027630942_863638_14801 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-9973927808
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001561119_779379_14121 ;
 	SpecIF:contains-hasTarget d:_19_0_3_71e0233_1746027630926_778269_14800 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:depicts d:_19_0_3_71e0233_1746027630942_863638_14801 .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-11028317306
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746027630942_863638_14801 ;
 	SpecIF:contains-hasTarget d:_19_0_3_71e0233_1746027630942_464786_14802 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-10256822099
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746027630942_464786_14802 ;
 	SpecIF:contains-hasTarget d:_19_0_3_71e0233_1746027631039_116153_14834 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-8821517563
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746027630942_464786_14802 ;
 	SpecIF:contains-hasTarget d:_19_0_3_71e0233_1746027631053_836894_14835 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-8168210938
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746027630942_464786_14802 ;
 	SpecIF:contains-hasTarget d:_19_0_3_71e0233_1746027704287_746273_14855 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-11015906742
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746027704287_746273_14855 ;
 	SpecIF:contains-hasTarget d:_19_0_3_71e0233_1746027731735_371186_14872 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-10159638974
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746027731735_371186_14872 ;
 	SpecIF:contains-hasTarget d:_19_0_3_71e0233_1746027731735_863978_14871 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-11234558713
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746027731735_371186_14872 ;
 	SpecIF:contains-hasTarget d:_19_0_3_71e0233_1746027747207_605800_14880 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-8004350392
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746027731735_371186_14872 ;
 	SpecIF:contains-hasTarget d:_19_0_3_71e0233_1746027804266_719052_14896 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-10687126464
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746027731735_371186_14872 ;
 	SpecIF:contains-hasTarget d:_19_0_3_71e0233_1746027882482_912182_14918 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-9457711542
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746027731735_371186_14872 ;
 	SpecIF:contains-hasTarget d:_19_0_3_71e0233_1746027920180_215768_14934 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-10206589560
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746027731735_371186_14872 ;
 	SpecIF:contains-hasTarget d:_19_0_3_71e0233_1746027967661_707482_14950 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-11254687961
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746027731735_371186_14872 ;
 	SpecIF:contains-hasTarget d:_19_0_3_71e0233_1746028605370_466818_15028 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-startsFrom-10764992335
 	rdf:type uml:TransitionSource ;
 	uml:TransitionSource-hasSource d:_19_0_3_71e0233_1746027837044_867827_14913 ;
 	uml:TransitionSource-hasTarget d:_19_0_3_71e0233_1746027731735_863978_14871 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-endsAt-10266389823
 	rdf:type uml:TransitionTarget ;
 	uml:TransitionTarget-hasSource d:_19_0_3_71e0233_1746027837044_867827_14913 ;
 	uml:TransitionTarget-hasTarget d:_19_0_3_71e0233_1746027804266_719052_14896 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-startsFrom-9736561245
 	rdf:type uml:TransitionSource ;
 	uml:TransitionSource-hasSource d:_19_0_3_71e0233_1746027847324_539644_14916 ;
 	uml:TransitionSource-hasTarget d:_19_0_3_71e0233_1746027804266_719052_14896 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-endsAt-11306959252
 	rdf:type uml:TransitionTarget ;
 	uml:TransitionTarget-hasSource d:_19_0_3_71e0233_1746027847324_539644_14916 ;
 	uml:TransitionTarget-hasTarget d:_19_0_3_71e0233_1746027747207_605800_14880 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-triggers-11057421225
 	rdf:type uml:Trigger ;
 	uml:Trigger-hasSource d:_19_0_3_71e0233_1746029024681_691401_15066 ;
 	uml:Trigger-hasTarget d:_19_0_3_71e0233_1746027847324_539644_14916 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-startsFrom-10753048967
 	rdf:type uml:TransitionSource ;
 	uml:TransitionSource-hasSource d:_19_0_3_71e0233_1746028061993_960870_14971 ;
 	uml:TransitionSource-hasTarget d:_19_0_3_71e0233_1746027747207_605800_14880 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-endsAt-10164860996
 	rdf:type uml:TransitionTarget ;
 	uml:TransitionTarget-hasSource d:_19_0_3_71e0233_1746028061993_960870_14971 ;
 	uml:TransitionTarget-hasTarget d:_19_0_3_71e0233_1746027882482_912182_14918 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-triggers-9989729747
 	rdf:type uml:Trigger ;
 	uml:Trigger-hasSource d:_19_0_3_71e0233_1746028118776_36360_14979 ;
 	uml:Trigger-hasTarget d:_19_0_3_71e0233_1746028061993_960870_14971 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-startsFrom-8258457006
 	rdf:type uml:TransitionSource ;
 	uml:TransitionSource-hasSource d:_19_0_3_71e0233_1746028073773_979720_14974 ;
 	uml:TransitionSource-hasTarget d:_19_0_3_71e0233_1746027882482_912182_14918 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-endsAt-8326005469
 	rdf:type uml:TransitionTarget ;
 	uml:TransitionTarget-hasSource d:_19_0_3_71e0233_1746028073773_979720_14974 ;
 	uml:TransitionTarget-hasTarget d:_19_0_3_71e0233_1746027747207_605800_14880 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-triggers-11586041943
 	rdf:type uml:Trigger ;
 	uml:Trigger-hasSource d:_19_0_3_71e0233_1746029726958_589946_15078 ;
 	uml:Trigger-hasTarget d:_19_0_3_71e0233_1746028073773_979720_14974 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-startsFrom-10663437825
 	rdf:type uml:TransitionSource ;
 	uml:TransitionSource-hasSource d:_19_0_3_71e0233_1746028149871_266697_14985 ;
 	uml:TransitionSource-hasTarget d:_19_0_3_71e0233_1746027882482_912182_14918 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-endsAt-10827655661
 	rdf:type uml:TransitionTarget ;
 	uml:TransitionTarget-hasSource d:_19_0_3_71e0233_1746028149871_266697_14985 ;
 	uml:TransitionTarget-hasTarget d:_19_0_3_71e0233_1746027920180_215768_14934 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-triggers-11897440242
 	rdf:type uml:Trigger ;
 	uml:Trigger-hasSource d:_19_0_3_71e0233_1746028195311_519257_14989 ;
 	uml:Trigger-hasTarget d:_19_0_3_71e0233_1746028149871_266697_14985 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-startsFrom-10501816934
 	rdf:type uml:TransitionSource ;
 	uml:TransitionSource-hasSource d:_19_0_3_71e0233_1746028183413_413266_14988 ;
 	uml:TransitionSource-hasTarget d:_19_0_3_71e0233_1746027920180_215768_14934 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-endsAt-9816959590
 	rdf:type uml:TransitionTarget ;
 	uml:TransitionTarget-hasSource d:_19_0_3_71e0233_1746028183413_413266_14988 ;
 	uml:TransitionTarget-hasTarget d:_19_0_3_71e0233_1746027882482_912182_14918 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-triggers-8400858676
 	rdf:type uml:Trigger ;
 	uml:Trigger-hasSource d:_19_0_3_71e0233_1746028216231_986687_14993 ;
 	uml:Trigger-hasTarget d:_19_0_3_71e0233_1746028183413_413266_14988 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-startsFrom-9888010871
 	rdf:type uml:TransitionSource ;
 	uml:TransitionSource-hasSource d:_19_0_3_71e0233_1746028275862_880382_14999 ;
 	uml:TransitionSource-hasTarget d:_19_0_3_71e0233_1746027882482_912182_14918 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-endsAt-7971585829
 	rdf:type uml:TransitionTarget ;
 	uml:TransitionTarget-hasSource d:_19_0_3_71e0233_1746028275862_880382_14999 ;
 	uml:TransitionTarget-hasTarget d:_19_0_3_71e0233_1746027967661_707482_14950 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-triggers-8791358862
 	rdf:type uml:Trigger ;
 	uml:Trigger-hasSource d:_19_0_3_71e0233_1746028282302_943711_15000 ;
 	uml:Trigger-hasTarget d:_19_0_3_71e0233_1746028275862_880382_14999 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-startsFrom-8873253251
 	rdf:type uml:TransitionSource ;
 	uml:TransitionSource-hasSource d:_19_0_3_71e0233_1746028306923_558192_15006 ;
 	uml:TransitionSource-hasTarget d:_19_0_3_71e0233_1746027967661_707482_14950 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-endsAt-10269038785
 	rdf:type uml:TransitionTarget ;
 	uml:TransitionTarget-hasSource d:_19_0_3_71e0233_1746028306923_558192_15006 ;
 	uml:TransitionTarget-hasTarget d:_19_0_3_71e0233_1746027882482_912182_14918 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-triggers-8710683288
 	rdf:type uml:Trigger ;
 	uml:Trigger-hasSource d:_19_0_3_71e0233_1746028313498_548385_15007 ;
 	uml:Trigger-hasTarget d:_19_0_3_71e0233_1746028306923_558192_15006 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-startsFrom-8996430444
 	rdf:type uml:TransitionSource ;
 	uml:TransitionSource-hasSource d:_19_0_3_71e0233_1746028822501_191804_15047 ;
 	uml:TransitionSource-hasTarget d:_19_0_3_71e0233_1746027882482_912182_14918 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-endsAt-11699322235
 	rdf:type uml:TransitionTarget ;
 	uml:TransitionTarget-hasSource d:_19_0_3_71e0233_1746028822501_191804_15047 ;
 	uml:TransitionTarget-hasTarget d:_19_0_3_71e0233_1746028605370_466818_15028 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-triggers-9704245737
 	rdf:type uml:Trigger ;
 	uml:Trigger-hasSource d:_19_0_3_71e0233_1746028899054_101006_15058 ;
 	uml:Trigger-hasTarget d:_19_0_3_71e0233_1746028822501_191804_15047 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-startsFrom-8860759247
 	rdf:type uml:TransitionSource ;
 	uml:TransitionSource-hasSource d:_19_0_3_71e0233_1746028827712_739888_15050 ;
 	uml:TransitionSource-hasTarget d:_19_0_3_71e0233_1746027882482_912182_14918 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-endsAt-11563651038
 	rdf:type uml:TransitionTarget ;
 	uml:TransitionTarget-hasSource d:_19_0_3_71e0233_1746028827712_739888_15050 ;
 	uml:TransitionTarget-hasTarget d:_19_0_3_71e0233_1746028605370_466818_15028 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-triggers-8483779004
 	rdf:type uml:Trigger ;
 	uml:Trigger-hasSource d:_19_0_3_71e0233_1746028954791_356054_15062 ;
 	uml:Trigger-hasTarget d:_19_0_3_71e0233_1746028827712_739888_15050 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-startsFrom-11316265439
 	rdf:type uml:TransitionSource ;
 	uml:TransitionSource-hasSource d:_19_0_3_71e0233_1746028839192_503107_15053 ;
 	uml:TransitionSource-hasTarget d:_19_0_3_71e0233_1746028605370_466818_15028 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-endsAt-8092734140
 	rdf:type uml:TransitionTarget ;
 	uml:TransitionTarget-hasSource d:_19_0_3_71e0233_1746028839192_503107_15053 ;
 	uml:TransitionTarget-hasTarget d:_19_0_3_71e0233_1746027882482_912182_14918 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-triggers-9344676895
 	rdf:type uml:Trigger ;
 	uml:Trigger-hasSource d:_19_0_3_71e0233_1746028884803_562591_15054 ;
 	uml:Trigger-hasTarget d:_19_0_3_71e0233_1746028839192_503107_15053 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-startsFrom-10914308453
 	rdf:type uml:TransitionSource ;
 	uml:TransitionSource-hasSource d:_19_0_3_71e0233_1746029049431_401220_15072 ;
 	uml:TransitionSource-hasTarget d:_19_0_3_71e0233_1746028605370_466818_15028 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-endsAt-10482894906
 	rdf:type uml:TransitionTarget ;
 	uml:TransitionTarget-hasSource d:_19_0_3_71e0233_1746029049431_401220_15072 ;
 	uml:TransitionTarget-hasTarget d:_19_0_3_71e0233_1746027804266_719052_14896 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-triggers-10198907956
 	rdf:type uml:Trigger ;
 	uml:Trigger-hasSource d:_19_0_3_71e0233_1746029056197_950529_15073 ;
 	uml:Trigger-hasTarget d:_19_0_3_71e0233_1746029049431_401220_15072 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-startsFrom-10203202111
 	rdf:type uml:TransitionSource ;
 	uml:TransitionSource-hasSource d:_19_0_3_71e0233_1746028508430_363448_15020 ;
 	uml:TransitionSource-hasTarget d:_19_0_3_71e0233_1746028605370_466818_15028 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-endsAt-10388500447
 	rdf:type uml:TransitionTarget ;
 	uml:TransitionTarget-hasSource d:_19_0_3_71e0233_1746028508430_363448_15020 ;
 	uml:TransitionTarget-hasTarget d:_19_0_3_71e0233_1746027631053_836894_14835 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-triggers-8226880185
 	rdf:type uml:Trigger ;
 	uml:Trigger-hasSource d:_19_0_3_71e0233_1746028540160_854095_15021 ;
 	uml:Trigger-hasTarget d:_19_0_3_71e0233_1746028508430_363448_15020 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-startsFrom-10505811433
 	rdf:type uml:TransitionSource ;
 	uml:TransitionSource-hasSource d:_19_0_3_71e0233_1746027631056_691503_14836 ;
 	uml:TransitionSource-hasTarget d:_19_0_3_71e0233_1746027631039_116153_14834 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-endsAt-11750312327
 	rdf:type uml:TransitionTarget ;
 	uml:TransitionTarget-hasSource d:_19_0_3_71e0233_1746027631056_691503_14836 ;
 	uml:TransitionTarget-hasTarget d:_19_0_3_71e0233_1746027631053_836894_14835 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-startsFrom-9662251988
 	rdf:type uml:TransitionSource ;
 	uml:TransitionSource-hasSource d:_19_0_3_71e0233_1746028442990_717820_15013 ;
 	uml:TransitionSource-hasTarget d:_19_0_3_71e0233_1746027631053_836894_14835 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-endsAt-10042078921
 	rdf:type uml:TransitionTarget ;
 	uml:TransitionTarget-hasSource d:_19_0_3_71e0233_1746028442990_717820_15013 ;
 	uml:TransitionTarget-hasTarget d:_19_0_3_71e0233_1746027704287_746273_14855 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-triggers-11689502440
 	rdf:type uml:Trigger ;
 	uml:Trigger-hasSource d:_19_0_3_71e0233_1746028483612_410592_15014 ;
 	uml:Trigger-hasTarget d:_19_0_3_71e0233_1746028442990_717820_15013 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-8524437672
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001561119_779379_14121 ;
 	SpecIF:contains-hasTarget d:_18_5_3_bc402f4_1552811554859_819240_14595 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-10606577794
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001561119_779379_14121 ;
 	SpecIF:contains-hasTarget d:_18_5_3_bc402f4_1552811454014_108965_14365 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-10600261667
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001561119_779379_14121 ;
 	SpecIF:contains-hasTarget d:_19_0_3_bc402f4_1604360793737_196507_13523 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-8034687851
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001561119_779379_14121 ;
 	SpecIF:contains-hasTarget d:_19_0_3_71e0233_1746028118776_36360_14979 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-8284367231
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001561119_779379_14121 ;
 	SpecIF:contains-hasTarget d:_19_0_3_71e0233_1746028195311_519257_14989 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-11116214028
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001561119_779379_14121 ;
 	SpecIF:contains-hasTarget d:_19_0_3_71e0233_1746028216231_986687_14993 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-11694709529
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001561119_779379_14121 ;
 	SpecIF:contains-hasTarget d:_19_0_3_71e0233_1746028282302_943711_15000 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-12033035043
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001561119_779379_14121 ;
 	SpecIF:contains-hasTarget d:_19_0_3_71e0233_1746028313498_548385_15007 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-9345097305
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001561119_779379_14121 ;
 	SpecIF:contains-hasTarget d:_19_0_3_71e0233_1746028483612_410592_15014 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-10887885853
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001561119_779379_14121 ;
 	SpecIF:contains-hasTarget d:_19_0_3_71e0233_1746028540160_854095_15021 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-11330005271
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001561119_779379_14121 ;
 	SpecIF:contains-hasTarget d:_19_0_3_71e0233_1746028884803_562591_15054 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-10697539955
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001561119_779379_14121 ;
 	SpecIF:contains-hasTarget d:_19_0_3_71e0233_1746028899054_101006_15058 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-8277838339
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001561119_779379_14121 ;
 	SpecIF:contains-hasTarget d:_19_0_3_71e0233_1746028954791_356054_15062 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-10218959244
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001561119_779379_14121 ;
 	SpecIF:contains-hasTarget d:_19_0_3_71e0233_1746029024681_691401_15066 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-10331126120
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001561119_779379_14121 ;
 	SpecIF:contains-hasTarget d:_19_0_3_71e0233_1746029056197_950529_15073 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-8478289863
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-hasSource d:_19_0_3_71e0233_1746001561119_779379_14121 ;
 	SpecIF:contains-hasTarget d:_19_0_3_71e0233_1746029726958_589946_15078 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552814131280_1190_15654
 	rdf:type dcterms:hasPart ;
 	dcterms:hasPart-hasSource d:_18_5_3_bc402f4_1552811412605_640145_14319 ;
 	dcterms:hasPart-hasTarget d:_18_5_3_bc402f4_1552814104357_719492_15607 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_bc402f4_1604360962045_534106_13570
 	rdf:type dcterms:hasPart ;
 	dcterms:hasPart-hasSource d:_18_5_3_bc402f4_1552811412605_640145_14319 ;
 	dcterms:hasPart-hasTarget d:_19_0_3_bc402f4_1604360793737_196507_13523 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552811613008_58411_14648
 	rdf:type dcterms:hasPart ;
 	dcterms:hasPart-hasSource d:_18_5_3_bc402f4_1552811412605_640145_14319 ;
 	dcterms:hasPart-hasTarget d:_18_5_3_bc402f4_1552811454014_108965_14365 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_e40094_1718634030433_51877_14234
 	rdf:type dcterms:hasPart ;
 	dcterms:hasPart-hasSource d:_18_5_3_bc402f4_1552811412605_640145_14319 ;
 	dcterms:hasPart-hasTarget d:_19_0_3_e40094_1718632293724_754873_14112 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552811619502_982677_14678
 	rdf:type dcterms:hasPart ;
 	dcterms:hasPart-hasSource d:_18_5_3_bc402f4_1552811412605_640145_14319 ;
 	dcterms:hasPart-hasTarget d:_18_5_3_bc402f4_1552811469014_293642_14411 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552827804167_216283_16528
 	rdf:type dcterms:hasPart ;
 	dcterms:hasPart-hasSource d:_18_5_3_bc402f4_1552811412605_640145_14319 ;
 	dcterms:hasPart-hasTarget d:_18_5_3_bc402f4_1552827771600_60767_16481 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552811666192_832840_14768
 	rdf:type dcterms:hasPart ;
 	dcterms:hasPart-hasSource d:_18_5_3_bc402f4_1552811412605_640145_14319 ;
 	dcterms:hasPart-hasTarget d:_18_5_3_bc402f4_1552811538626_715866_14549 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552811672063_243990_14798
 	rdf:type dcterms:hasPart ;
 	dcterms:hasPart-hasSource d:_18_5_3_bc402f4_1552811412605_640145_14319 ;
 	dcterms:hasPart-hasTarget d:_18_5_3_bc402f4_1552811554859_819240_14595 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552811653332_976698_14708
 	rdf:type dcterms:hasPart ;
 	dcterms:hasPart-hasSource d:_18_5_3_bc402f4_1552811412605_640145_14319 ;
 	dcterms:hasPart-hasTarget d:_18_5_3_bc402f4_1552811510062_903764_14503 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552810808641_447672_14157
 	rdf:type IREB:refines ;
 	IREB:refines-hasSource d:_18_5_3_bc402f4_1552810776263_894029_14121 ;
 	IREB:refines-hasTarget d:_18_5_3_bc402f4_1552810644650_650036_14079 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552811141795_384989_14263
 	rdf:type IREB:refines ;
 	IREB:refines-hasSource d:_18_5_3_bc402f4_1552810948738_707540_14217 ;
 	IREB:refines-hasTarget d:_18_5_3_bc402f4_1552810644650_650036_14079 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552813438857_436917_15337
 	rdf:type IREB:refines ;
 	IREB:refines-hasSource d:_18_5_3_bc402f4_1552812370943_152244_14924 ;
 	IREB:refines-hasTarget d:_18_5_3_bc402f4_1552810644650_650036_14079 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552813334959_22842_15317
 	rdf:type IREB:refines ;
 	IREB:refines-hasSource d:_18_5_3_bc402f4_1552813199775_830344_15281 ;
 	IREB:refines-hasTarget d:_18_5_3_bc402f4_1552810644650_650036_14079 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552813433937_279860_15327
 	rdf:type IREB:refines ;
 	IREB:refines-hasSource d:_18_5_3_bc402f4_1552812437056_257578_14975 ;
 	IREB:refines-hasTarget d:_18_5_3_bc402f4_1552810644650_650036_14079 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552811136575_459751_14253
 	rdf:type IREB:refines ;
 	IREB:refines-hasSource d:_18_5_3_bc402f4_1552810869277_586147_14175 ;
 	IREB:refines-hasTarget d:_18_5_3_bc402f4_1552810644650_650036_14079 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552813795106_879353_15508
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:_18_5_3_bc402f4_1552812805784_548404_15062 ;
 	oslc_rm:satisfies-hasTarget d:_18_5_3_bc402f4_1552810869277_586147_14175 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552813870706_981259_15588
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:_18_5_3_bc402f4_1552812663506_709974_15011 ;
 	oslc_rm:satisfies-hasTarget d:_18_5_3_bc402f4_1552810776263_894029_14121 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552815653359_771130_16352
 	rdf:type sysml:Allocate ;
 	sysml:Allocate-hasSource d:_18_5_3_bc402f4_1552814523707_628151_15988 ;
 	sysml:Allocate-hasTarget d:_18_5_3_bc402f4_1552814104357_719492_15607 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552815590348_672436_16293
 	rdf:type sysml:Allocate ;
 	sysml:Allocate-hasSource d:_18_5_3_bc402f4_1552814266523_206006_15821 ;
 	sysml:Allocate-hasTarget d:_18_5_3_bc402f4_1552811510062_903764_14503 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_e40094_1718632549973_831908_14172
 	rdf:type sysml:Allocate ;
 	sysml:Allocate-hasSource d:_18_5_3_bc402f4_1552815791106_548984_16360 ;
 	sysml:Allocate-hasTarget d:_19_0_3_e40094_1718632293724_754873_14112 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552815541056_996851_16231
 	rdf:type sysml:Allocate ;
 	sysml:Allocate-hasSource d:_18_5_3_bc402f4_1552814246502_629251_15775 ;
 	sysml:Allocate-hasTarget d:_18_5_3_bc402f4_1552811510062_903764_14503 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552813818846_218375_15548
 	rdf:type oslc_rm:satisfies ;
 	oslc_rm:satisfies-hasSource d:_18_5_3_bc402f4_1552813038602_222864_15129 ;
 	oslc_rm:satisfies-hasTarget d:_18_5_3_bc402f4_1552810948738_707540_14217 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_e40094_1718632569345_311906_14190
 	rdf:type sysml:Allocate ;
 	sysml:Allocate-hasSource d:_18_5_3_bc402f4_1552814266523_206006_15821 ;
 	sysml:Allocate-hasTarget d:_19_0_3_e40094_1718632293724_754873_14112 ;
-	dcterms:modified "2025-09-22T21:56:44.503Z" .
-
-d:_18_5_3_bc402f4_1552810549321_335902_14037
-	pig:shows d:_18_5_3_bc402f4_1552810869277_586147_14175 .
-
-d:_18_5_3_bc402f4_1552810549321_335902_14037
-	pig:shows d:_18_5_3_bc402f4_1552810948738_707540_14217 .
-
-d:_18_5_3_bc402f4_1552810549321_335902_14037
-	pig:shows d:_18_5_3_bc402f4_1552810776263_894029_14121 .
-
-d:_18_5_3_bc402f4_1552810549321_335902_14037
-	pig:shows d:_18_5_3_bc402f4_1552813199775_830344_15281 .
-
-d:_18_5_3_bc402f4_1552810549321_335902_14037
-	pig:shows d:_18_5_3_bc402f4_1552810644650_650036_14079 .
-
-d:_18_5_3_bc402f4_1552810549321_335902_14037
-	pig:shows d:_18_5_3_bc402f4_1552812437056_257578_14975 .
-
-d:_18_5_3_bc402f4_1552810549321_335902_14037
-	pig:shows d:_18_5_3_bc402f4_1552812370943_152244_14924 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_18_5_3_bc402f4_1552814104357_719492_15607 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_18_5_3_bc402f4_1552812805784_548404_15062 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_18_5_3_bc402f4_1552815791106_548984_16360 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_18_5_3_bc402f4_1552814523707_628151_15988 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_18_5_3_bc402f4_1556615164506_303870_14975 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_18_5_3_bc402f4_1552811937697_690731_14862 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_18_5_3_bc402f4_1552812663506_709974_15011 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_18_5_3_bc402f4_1552813556602_820961_15353 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_18_5_3_bc402f4_1552810948738_707540_14217 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_18_5_3_bc402f4_1552810776263_894029_14121 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_18_5_3_bc402f4_1556615212765_548060_15021 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_18_5_3_bc402f4_1552814194319_862392_15683 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_18_5_3_bc402f4_1552814246502_629251_15775 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_19_0_3_e40094_1718632293724_754873_14112 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_18_5_3_bc402f4_1552810869277_586147_14175 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_18_5_3_bc402f4_1552814212889_663150_15729 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_18_5_3_bc402f4_1552813038602_222864_15129 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_18_5_3_bc402f4_1552811510062_903764_14503 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_18_5_3_bc402f4_1552814266523_206006_15821 .
-
-d:_19_0_3_71e0233_1746027287147_82140_14431
-	pig:shows d:_18_5_3_bc402f4_1552814104357_719492_15607 .
-
-d:_19_0_3_71e0233_1746027287147_82140_14431
-	pig:shows d:_18_5_3_bc402f4_1552811538626_715866_14549 .
-
-d:_19_0_3_71e0233_1746027287147_82140_14431
-	pig:shows d:_19_0_3_e40094_1718632293724_754873_14112 .
-
-d:_19_0_3_71e0233_1746027287147_82140_14431
-	pig:shows d:_19_0_3_bc402f4_1604360793737_196507_13523 .
-
-d:_19_0_3_71e0233_1746027287147_82140_14431
-	pig:shows d:_18_5_3_bc402f4_1552811469014_293642_14411 .
-
-d:_19_0_3_71e0233_1746027287147_82140_14431
-	pig:shows d:_18_5_3_bc402f4_1552811454014_108965_14365 .
-
-d:_19_0_3_71e0233_1746027287147_82140_14431
-	pig:shows d:_18_5_3_bc402f4_1552827771600_60767_16481 .
-
-d:_19_0_3_71e0233_1746027287147_82140_14431
-	pig:shows d:_18_5_3_bc402f4_1552811554859_819240_14595 .
-
-d:_19_0_3_71e0233_1746027287147_82140_14431
-	pig:shows d:_18_5_3_bc402f4_1552811412605_640145_14319 .
-
-d:_19_0_3_71e0233_1746027287147_82140_14431
-	pig:shows d:_18_5_3_bc402f4_1552811510062_903764_14503 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746027747207_605800_14880 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746028306923_558192_15006 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746027631039_116153_14834 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746027847324_539644_14916 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746028149871_266697_14985 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746028183413_413266_14988 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746028605370_466818_15028 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746027920180_215768_14934 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746027631053_836894_14835 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746028442990_717820_15013 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746028275862_880382_14999 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746027631056_691503_14836 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746027731735_863978_14871 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746027704287_746273_14855 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746029049431_401220_15072 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746027837044_867827_14913 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746027882482_912182_14918 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746028839192_503107_15053 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746028827712_739888_15050 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746028061993_960870_14971 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746028073773_979720_14974 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746027804266_719052_14896 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746028508430_363448_15020 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746028822501_191804_15047 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746027731735_371186_14872 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746027967661_707482_14950 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746027630942_863638_14801 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746027630942_464786_14802 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746029024681_691401_15066 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746028118776_36360_14979 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746029726958_589946_15078 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746028195311_519257_14989 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746028216231_986687_14993 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746028282302_943711_15000 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746028313498_548385_15007 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746028899054_101006_15058 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746028954791_356054_15062 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746028884803_562591_15054 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746029056197_950529_15073 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746028540160_854095_15021 .
-
-d:_19_0_3_71e0233_1746027630926_778269_14800
-	pig:shows d:_19_0_3_71e0233_1746028483612_410592_15014 .
-
-d:_18_5_3_bc402f4_1552810549321_335902_14037
-	pig:shows d:_18_5_3_bc402f4_1552811136575_459751_14253 .
-
-d:_18_5_3_bc402f4_1552810549321_335902_14037
-	pig:shows d:_18_5_3_bc402f4_1552811141795_384989_14263 .
-
-d:_18_5_3_bc402f4_1552810549321_335902_14037
-	pig:shows d:_18_5_3_bc402f4_1552813433937_279860_15327 .
-
-d:_18_5_3_bc402f4_1552810549321_335902_14037
-	pig:shows d:_18_5_3_bc402f4_1552810808641_447672_14157 .
-
-d:_18_5_3_bc402f4_1552810549321_335902_14037
-	pig:shows d:_18_5_3_bc402f4_1552813334959_22842_15317 .
-
-d:_18_5_3_bc402f4_1552810549321_335902_14037
-	pig:shows d:_18_5_3_bc402f4_1552813438857_436917_15337 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_18_5_3_bc402f4_1552813818846_218375_15548 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_19_0_3_e40094_1718632569345_311906_14190 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_19_0_3_bc402f4_1604324293194_85516_13666 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_19_0_3_e40094_1718632549973_831908_14172 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_19_0_3_bc402f4_1604324214402_6480_13631 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_19_0_3_bc402f4_1604324487193_60359_13731 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_19_0_3_bc402f4_1604323867629_562362_13452 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_18_5_3_bc402f4_1552813096475_160687_15177 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_18_5_3_bc402f4_1556615683513_411874_15073 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_18_5_3_bc402f4_1556615721418_831605_15106 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_19_0_3_bc402f4_1604323821792_371188_13426 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_18_5_3_bc402f4_1552813723040_381289_15401 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_18_5_3_bc402f4_1552813102494_993665_15207 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_19_0_3_bc402f4_1604324465452_775050_13715 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_19_0_3_bc402f4_1604324188817_384398_13615 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_18_5_3_bc402f4_1552815590348_672436_16293 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_18_5_3_bc402f4_1552815653359_771130_16352 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_19_0_3_bc402f4_1604323888993_530325_13468 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_18_5_3_bc402f4_1552813795106_879353_15508 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_19_0_3_bc402f4_1604324636141_429081_13763 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_19_0_3_bc402f4_1604324764626_856811_13779 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_19_0_3_bc402f4_1604324512097_628722_13747 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_18_5_3_bc402f4_1552813870706_981259_15588 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_19_0_3_bc402f4_1604324447693_373448_13698 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_19_0_3_bc402f4_1604324321433_274293_13682 .
-
-d:_18_5_3_bc402f4_1552811870216_105923_14824
-	pig:shows d:_18_5_3_bc402f4_1552815541056_996851_16231 .
-
-d:_19_0_3_71e0233_1746027287147_82140_14431
-	pig:shows d:_18_5_3_bc402f4_1552811672063_243990_14798 .
-
-d:_19_0_3_71e0233_1746027287147_82140_14431
-	pig:shows d:_19_0_3_e40094_1718634030433_51877_14234 .
-
-d:_19_0_3_71e0233_1746027287147_82140_14431
-	pig:shows d:_19_0_3_bc402f4_1604360962045_534106_13570 .
-
-d:_19_0_3_71e0233_1746027287147_82140_14431
-	pig:shows d:_18_5_3_bc402f4_1552814131280_1190_15654 .
-
-d:_19_0_3_71e0233_1746027287147_82140_14431
-	pig:shows d:_18_5_3_bc402f4_1552811613008_58411_14648 .
-
-d:_19_0_3_71e0233_1746027287147_82140_14431
-	pig:shows d:_18_5_3_bc402f4_1552811666192_832840_14768 .
-
-d:_19_0_3_71e0233_1746027287147_82140_14431
-	pig:shows d:_18_5_3_bc402f4_1552827804167_216283_16528 .
-
-d:_19_0_3_71e0233_1746027287147_82140_14431
-	pig:shows d:_18_5_3_bc402f4_1552811619502_982677_14678 .
-
-d:_19_0_3_71e0233_1746027287147_82140_14431
-	pig:shows d:_18_5_3_bc402f4_1552811653332_976698_14708 .
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 #################################################################
 # Hierarchy
@@ -2684,91 +2389,108 @@ d:HierarchyRoot
 	rdf:type pig:HierarchyRoot ;
 	rdfs:label "Hierarchy Root" ;
 	rdfs:comment "... anchoring all hierarchies of this graph (package)" ;
-	pig:lists d:eee_1045467100313_135436_1 ,
-		d:FolderGlossary-10391243923 .
+	pig:lists (
+			d:O-P-eee_1045467100313_135436_1
+		) .
+
+d:O-P-eee_1045467100313_135436_1
+	rdf:type pig:Outline ;
+	rdfs:label "Small Autonomous Vehicle" ;
+	rdfs:comment "A set of SpecIF Classes derived from a SpecIF Ontology for the domains SpecIF:DomainBase, SpecIF:DomainSystemsEngineering, SpecIF:DomainSystemModelIntegration."@en ;
+	pig:category SpecIF:Heading ;
+	dcterms:modified "2025-11-12T09:29:08.097Z" ;
+	pig:lists (
+			d:eee_1045467100313_135436_1
+			d:FolderGlossary-10391243923
+		) .
 
 d:eee_1045467100313_135436_1
-	rdf:type SpecIF:Heading ;
+	rdf:type pig:Outline ;
 	rdfs:label "Small Autonomous Vehicle" ;
-	dcterms:type "uml:Model" ;
-	dcterms:modified "2025-09-23T17:11:19.706Z" ;
-	pig:lists d:_19_0_3_71e0233_1746001337727_31616_14119 ,
-		d:_19_0_3_71e0233_1746001480225_327746_14120 ,
-		d:_19_0_3_71e0233_1746001561119_779379_14121 .
+	pig:category uml:Model ;
+	pig:revision "rev-10410861023" ;
+	dcterms:modified "2025-11-12T09:27:42.126Z" ;
+	pig:lists (
+			d:_19_0_3_71e0233_1746001337727_31616_14119
+			d:_19_0_3_71e0233_1746001480225_327746_14120
+			d:_19_0_3_71e0233_1746001561119_779379_14121
+		) .
 
 d:FolderGlossary-10391243923
-	rdf:type SpecIF:Heading ;
+	rdf:type pig:Outline ;
 	rdfs:label "Model Elements (Glossary)" ;
-	dcterms:type "Model Elements (Glossary)" ;
-	dcterms:modified "2025-10-17T11:04:54.308Z" ;
-	pig:lists d:_18_5_3_bc402f4_1552814266523_206006_15821 ,
-		d:_18_5_3_bc402f4_1552811469014_293642_14411 ,
-		d:_18_5_3_bc402f4_1552813556602_820961_15353 ,
-		d:_18_5_3_bc402f4_1552814523707_628151_15988 ,
-		d:_18_5_3_bc402f4_1552811454014_108965_14365 ,
-		d:_19_0_3_bc402f4_1604360793737_196507_13523 ,
-		d:_19_0_3_71e0233_1746028884803_562591_15054 ,
-		d:_18_5_3_bc402f4_1552814104357_719492_15607 ,
-		d:_19_0_3_71e0233_1746027630942_863638_14801 ,
-		d:_19_0_3_71e0233_1746027804266_719052_14896 ,
-		d:_19_0_3_71e0233_1746027847324_539644_14916 ,
-		d:_18_5_3_bc402f4_1552811510062_903764_14503 ,
-		d:_19_0_3_e40094_1718632293724_754873_14112 ,
-		d:_18_5_3_bc402f4_1552811937697_690731_14862 ,
-		d:_19_0_3_71e0233_1746028954791_356054_15062 ,
-		d:_19_0_3_71e0233_1746027631039_116153_14834 ,
-		d:_19_0_3_71e0233_1746027731735_863978_14871 ,
-		d:_19_0_3_71e0233_1746027837044_867827_14913 ,
-		d:_19_0_3_71e0233_1746027631056_691503_14836 ,
-		d:_18_5_3_bc402f4_1552812805784_548404_15062 ,
-		d:_19_0_3_71e0233_1746027882482_912182_14918 ,
-		d:_19_0_3_71e0233_1746028073773_979720_14974 ,
-		d:_19_0_3_71e0233_1746028822501_191804_15047 ,
-		d:_19_0_3_71e0233_1746028827712_739888_15050 ,
-		d:_19_0_3_71e0233_1746028275862_880382_14999 ,
-		d:_19_0_3_71e0233_1746028149871_266697_14985 ,
-		d:_19_0_3_71e0233_1746028899054_101006_15058 ,
-		d:_18_5_3_bc402f4_1552811412605_640145_14319 ,
-		d:_18_5_3_bc402f4_1552812437056_257578_14975 ,
-		d:_18_5_3_bc402f4_1552812370943_152244_14924 ,
-		d:_18_5_3_bc402f4_1552812663506_709974_15011 ,
-		d:_19_0_3_71e0233_1746029024681_691401_15066 ,
-		d:_19_0_3_71e0233_1746027747207_605800_14880 ,
-		d:_19_0_3_71e0233_1746028061993_960870_14971 ,
-		d:_18_5_3_bc402f4_1552810776263_894029_14121 ,
-		d:_19_0_3_71e0233_1746029056197_950529_15073 ,
-		d:_18_5_3_bc402f4_1552813199775_830344_15281 ,
-		d:_19_0_3_71e0233_1746027631053_836894_14835 ,
-		d:_19_0_3_71e0233_1746028442990_717820_15013 ,
-		d:_19_0_3_71e0233_1746027704287_746273_14855 ,
-		d:_19_0_3_71e0233_1746029726958_589946_15078 ,
-		d:_18_5_3_bc402f4_1552810869277_586147_14175 ,
-		d:_18_5_3_bc402f4_1552810948738_707540_14217 ,
-		d:_18_5_3_bc402f4_1552813038602_222864_15129 ,
-		d:_18_5_3_bc402f4_1552814246502_629251_15775 ,
-		d:_18_5_3_bc402f4_1552815791106_548984_16360 ,
-		d:_18_5_3_bc402f4_1552814194319_862392_15683 ,
-		d:_18_5_3_bc402f4_1552814212889_663150_15729 ,
-		d:_19_0_3_71e0233_1746028605370_466818_15028 ,
-		d:_19_0_3_71e0233_1746029049431_401220_15072 ,
-		d:_19_0_3_71e0233_1746028839192_503107_15053 ,
-		d:_19_0_3_71e0233_1746028508430_363448_15020 ,
-		d:_19_0_3_71e0233_1746028118776_36360_14979 ,
-		d:_18_5_3_bc402f4_1552811538626_715866_14549 ,
-		d:_18_5_3_bc402f4_1552811554859_819240_14595 ,
-		d:_19_0_3_71e0233_1746028540160_854095_15021 ,
-		d:_19_0_3_71e0233_1746028483612_410592_15014 ,
-		d:_18_5_3_bc402f4_1552827771600_60767_16481 ,
-		d:_18_5_3_bc402f4_1552810644650_650036_14079 ,
-		d:_18_5_3_bc402f4_1556615212765_548060_15021 ,
-		d:_18_5_3_bc402f4_1556615164506_303870_14975 ,
-		d:_19_0_3_71e0233_1746028282302_943711_15000 ,
-		d:_19_0_3_71e0233_1746028195311_519257_14989 ,
-		d:_19_0_3_71e0233_1746028313498_548385_15007 ,
-		d:_19_0_3_71e0233_1746028216231_986687_14993 ,
-		d:_19_0_3_71e0233_1746027967661_707482_14950 ,
-		d:_19_0_3_71e0233_1746028306923_558192_15006 ,
-		d:_19_0_3_71e0233_1746027920180_215768_14934 ,
-		d:_19_0_3_71e0233_1746028183413_413266_14988 ,
-		d:_19_0_3_71e0233_1746027630942_464786_14802 ,
-		d:_19_0_3_71e0233_1746027731735_371186_14872 .
+	pig:category SpecIF:Glossary ;
+	dcterms:modified "2025-11-12T14:47:03.282Z" ;
+	pig:lists (
+			d:_18_5_3_bc402f4_1552814266523_206006_15821
+			d:_18_5_3_bc402f4_1552811469014_293642_14411
+			d:_18_5_3_bc402f4_1552813556602_820961_15353
+			d:_18_5_3_bc402f4_1552814523707_628151_15988
+			d:_18_5_3_bc402f4_1552811454014_108965_14365
+			d:_19_0_3_bc402f4_1604360793737_196507_13523
+			d:_19_0_3_71e0233_1746028884803_562591_15054
+			d:_18_5_3_bc402f4_1552814104357_719492_15607
+			d:_19_0_3_71e0233_1746027630942_863638_14801
+			d:_19_0_3_71e0233_1746027804266_719052_14896
+			d:_19_0_3_71e0233_1746027847324_539644_14916
+			d:_18_5_3_bc402f4_1552811510062_903764_14503
+			d:_19_0_3_e40094_1718632293724_754873_14112
+			d:_18_5_3_bc402f4_1552811937697_690731_14862
+			d:_19_0_3_71e0233_1746028954791_356054_15062
+			d:_19_0_3_71e0233_1746027631039_116153_14834
+			d:_19_0_3_71e0233_1746027731735_863978_14871
+			d:_19_0_3_71e0233_1746027837044_867827_14913
+			d:_19_0_3_71e0233_1746027631056_691503_14836
+			d:_18_5_3_bc402f4_1552812805784_548404_15062
+			d:_19_0_3_71e0233_1746027882482_912182_14918
+			d:_19_0_3_71e0233_1746028073773_979720_14974
+			d:_19_0_3_71e0233_1746028822501_191804_15047
+			d:_19_0_3_71e0233_1746028827712_739888_15050
+			d:_19_0_3_71e0233_1746028275862_880382_14999
+			d:_19_0_3_71e0233_1746028149871_266697_14985
+			d:_19_0_3_71e0233_1746028899054_101006_15058
+			d:_18_5_3_bc402f4_1552811412605_640145_14319
+			d:_18_5_3_bc402f4_1552812437056_257578_14975
+			d:_18_5_3_bc402f4_1552812370943_152244_14924
+			d:_18_5_3_bc402f4_1552812663506_709974_15011
+			d:_19_0_3_71e0233_1746029024681_691401_15066
+			d:_19_0_3_71e0233_1746027747207_605800_14880
+			d:_19_0_3_71e0233_1746028061993_960870_14971
+			d:_18_5_3_bc402f4_1552810776263_894029_14121
+			d:_19_0_3_71e0233_1746029056197_950529_15073
+			d:_18_5_3_bc402f4_1552813199775_830344_15281
+			d:_19_0_3_71e0233_1746027631053_836894_14835
+			d:_19_0_3_71e0233_1746028442990_717820_15013
+			d:_19_0_3_71e0233_1746027704287_746273_14855
+			d:_19_0_3_71e0233_1746029726958_589946_15078
+			d:_18_5_3_bc402f4_1552810869277_586147_14175
+			d:_18_5_3_bc402f4_1552810948738_707540_14217
+			d:_18_5_3_bc402f4_1552813038602_222864_15129
+			d:_18_5_3_bc402f4_1552814246502_629251_15775
+			d:_18_5_3_bc402f4_1552815791106_548984_16360
+			d:_18_5_3_bc402f4_1552814194319_862392_15683
+			d:_18_5_3_bc402f4_1552814212889_663150_15729
+			d:_19_0_3_71e0233_1746028605370_466818_15028
+			d:_19_0_3_71e0233_1746029049431_401220_15072
+			d:_19_0_3_71e0233_1746028839192_503107_15053
+			d:_19_0_3_71e0233_1746028508430_363448_15020
+			d:_19_0_3_71e0233_1746028118776_36360_14979
+			d:_18_5_3_bc402f4_1552811538626_715866_14549
+			d:_18_5_3_bc402f4_1552811554859_819240_14595
+			d:_19_0_3_71e0233_1746028540160_854095_15021
+			d:_19_0_3_71e0233_1746028483612_410592_15014
+			d:_18_5_3_bc402f4_1552827771600_60767_16481
+			d:_18_5_3_bc402f4_1552810644650_650036_14079
+			d:_18_5_3_bc402f4_1556615212765_548060_15021
+			d:_18_5_3_bc402f4_1556615164506_303870_14975
+			d:_19_0_3_71e0233_1746028282302_943711_15000
+			d:_19_0_3_71e0233_1746028195311_519257_14989
+			d:_19_0_3_71e0233_1746028313498_548385_15007
+			d:_19_0_3_71e0233_1746028216231_986687_14993
+			d:_19_0_3_71e0233_1746027967661_707482_14950
+			d:_19_0_3_71e0233_1746028306923_558192_15006
+			d:_19_0_3_71e0233_1746027920180_215768_14934
+			d:_19_0_3_71e0233_1746028183413_413266_14988
+			d:_19_0_3_71e0233_1746027630942_464786_14802
+			d:_19_0_3_71e0233_1746027731735_371186_14872
+		) .

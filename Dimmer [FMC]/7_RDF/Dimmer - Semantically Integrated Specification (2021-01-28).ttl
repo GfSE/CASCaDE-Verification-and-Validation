@@ -2,7 +2,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix sh: <https://www.w3.org/ns/shacl#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix W3C: <https://www.w3.org/standards/semanticweb#> .
 @prefix xs: <http://www.w3.org/2001/XMLSchema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -12,8 +12,9 @@
 @prefix iana: <https://www.iana.org/assignments/media-types#> .
 @prefix foaf: <http://xmlns.com/foaf/spec/#> .
 @prefix FMC: <http://fmc-modeling.org#> .
+@prefix RFLP: <https://product-information-graph.org/v0.2/ontology/RFLP#> .
 @prefix IR: <https://www.adesso.de/de/impulse/interaction-room/index.jsp#> .
-@prefix IREB: <https://www.ireb.org/cpre-glossary#> .
+@prefix IREB: <https://cpre.ireb.org/en/downloads-and-resources/glossary#> .
 @prefix ReqIF: <https://www.prostep.org/fileadmin/downloads/PSI_ImplementationGuide_ReqIF_V1-7.pdf#> .
 @prefix ReqIF-WF: <https://www.prostep.org/fileadmin/downloads/Recommendation_ReqIF_V2_RZ3.pdf#> .
 @prefix HIS: <https://www.itwissen.info/Herstellerinitiative-Software-Automotive-HIS.html#> .
@@ -27,9 +28,21 @@
 @prefix pig: <https://product-information-graph.org/metamodel#> .
 @prefix DDP: <http://www.prostep.org/dictionary/2.0#> .
 @prefix SpecIF: <https://specif.de/v1.2/schema#> .
-@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix pigShapes_dcterms: <https://product-information-graph.org/v0.2/ontology/shapes/dcterms:#> .
+@prefix pigShapes_rdfs: <https://product-information-graph.org/v0.2/ontology/shapes/rdfs:#> .
+@prefix pigShapes_uml: <https://product-information-graph.org/v0.2/ontology/shapes/uml:#> .
+@prefix pigShapes_sysml: <https://product-information-graph.org/v0.2/ontology/shapes/sysml:#> .
+@prefix pigShapes_FMC: <https://product-information-graph.org/v0.2/ontology/shapes/FMC:#> .
+@prefix pigShapes_RFLP: <https://product-information-graph.org/v0.2/ontology/shapes/RFLP:#> .
+@prefix pigShapes_IREB: <https://product-information-graph.org/v0.2/ontology/shapes/IREB:#> .
+@prefix pigShapes_oslc_rm: <https://product-information-graph.org/v0.2/ontology/shapes/oslc_rm:#> .
+@prefix pigShapes_oslc_cm: <https://product-information-graph.org/v0.2/ontology/shapes/oslc_cm:#> .
+@prefix pigShapes_ReqIF: <https://product-information-graph.org/v0.2/ontology/shapes/ReqIF:#> .
+@prefix pigShapes_ReqIF-WF: <https://product-information-graph.org/v0.2/ontology/shapes/ReqIF-WF:#> .
+@prefix pigShapes_SpecIF: <https://product-information-graph.org/v0.2/ontology/shapes/SpecIF:#> .
+@prefix pigShapes_pig: <https://product-information-graph.org/v0.2/ontology/shapes/pig:#> .
 
-@prefix o: <https://product-information-graph.org/examples/ontology#> .
+@prefix o: <https://product-information-graph.org/v0.2/ontology#> .
 @prefix d: <https://product-information-graph.org/examples/Dimmer.specifz#> .
 
 #################################################################
@@ -39,82 +52,206 @@
 d:
 	rdf:type owl:Ontology ;
 	rdfs:label "Dimmer - Semantically Integrated Specification (2021-01-28)" ;
-	rdfs:comment "This specification method integrates and represents:- processes, system composition and requirements (dynamic, static and detail views)- mechanic, electric and software components with their interfaces.It is important to understand, that all plans (diagrams) are views of a common system engineering model, sometimes called 'system repository'. Thus, consistency is always maintained.The model elements are connected with relations, most of which are defined by positioning graph elements. For example, if a system component is drawn within another, a relationship 'contains' is created in the logic representation of the engineering model. Other relations, such as a system component 'satisfies' a requirement are created manually.  Also, the documents are generated from the system engineering model. The ordering is in most projects (it can be rearranged, however, if appropriate):- All plans- A glossary with descriptions of all model elements appearing on one or more plans- A hierarchically ordered list of requirements- A list of open issues.Please note that plans list related model elements and model elements list related requirements .. and vice versa. Active hyper-links are used, so that it is easy to jump between related model elements.Further information is given in Appendix 'Method'." ;
+	rdfs:comment "This specification method integrates and represents:\n- processes, system composition and requirements (dynamic, static and detail views)\n- mechanic, electric and software components with their interfaces.\n\nIt is important to understand, that all plans (diagrams) are views of a common system engineering model, sometimes called 'system repository'. Thus, consistency is always maintained.\n\nThe model elements are connected with relations, most of which are defined by positioning graph elements. For example, if a system component is drawn within another, a relationship 'contains' is created in the logic representation of the engineering model. Other relations, such as a system component 'satisfies' a requirement are created manually.  \n\nAlso, the documents are generated from the system engineering model. The ordering is in most projects (it can be rearranged, however, if appropriate):\n- All plans\n- A glossary with descriptions of all model elements appearing on one or more plans\n- A hierarchically ordered list of requirements\n- A list of open issues.\nPlease note that plans list related model elements and model elements list related requirements .. and vice versa. Active hyper-links are used, so that it is easy to jump between related model elements.\n\nFurther information is given in Appendix 'Method'." ;
 	owl:imports <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ,
 		<http://www.w3.org/2000/01/rdf-schema#> ;
 	dcterms:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
-	dcterms:creator <mailto:od@enso-managers.de> ;
-	dcterms:modified "2025-10-17T14:42:00.110Z" .
+	dcterms:creator "<mailto:od@enso-managers.de>" ;
+	dcterms:modified "2025-11-12T14:00:28.621Z" .
 
 #################################################################
 # PIG Metamodel (pig:)
 #################################################################
-
-pig:Property
-	rdf:type owl:DatatypeProperty ;
-	rdfs:label "Literal Property" ;
-	rdfs:comment "A PIG meta-model element used for literal properties." .
-
-pig:PropertyEnum
-	rdf:type owl:ObjectProperty ;
-	rdfs:label "Enumerated literal Property" ;
-	rdfs:comment "A PIG meta-model element used for enumerated literal properties." .
-
-pig:Organizer
-	rdf:type owl:Class ;
-	rdfs:label "Organizer" ;
-	rdfs:comment "A PIG meta-model element used for organizing model-elements." .
 
 pig:Entity
 	rdf:type owl:Class ;
 	rdfs:label "Entity" ;
 	rdfs:comment "A PIG meta-model element used for entities (aka resources or artifacts)." .
 
+pigShapes_pig:Entity
+	rdf:type sh:NodeShape ;
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		pigShapes_pig:category ,
+		pigShapes_pig:icon ;
+	sh:targetClass pig:Entity .
+
 pig:Relationship
 	rdf:type owl:Class ;
 	rdfs:label "Relationship" ;
 	rdfs:comment "A PIG meta-model element used for reified relationships (aka predicates)." .
 
+pigShapes_pig:Relationship
+	rdf:type sh:NodeShape ;
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		pigShapes_pig:category ,
+		pigShapes_pig:icon ,
+		pigShapes_pig:eligibleSource ,
+		pigShapes_pig:eligibleTarget ;
+	sh:targetClass pig:Relationship .
+
+pig:Organizer
+	rdf:type owl:Class ;
+	rdfs:label "Organizer" ;
+	rdfs:comment "An element organizing model elements. An example is a list of requirements or a diagram using a certain notation which depicts selected model elements." .
+
+pigShapes_pig:Organizer
+	rdf:type sh:NodeShape ;
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		pigShapes_pig:category ,
+		pigShapes_pig:eligibleElement ;
+	sh:targetClass pig:Organizer .
+
+pig:HierarchyRoot
+	rdfs:subClassOf pig:Organizer ;
+	rdfs:label "Hierarchy Root" ;
+	rdfs:comment "A subclass of PIG organizer serving as a root for hierarchically organized graph elements." .
+
+pigShapes_pig:HierarchyRoot
+	rdf:type sh:NodeShape ;
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		pigShapes_pig:lists ;
+	sh:targetClass pig:HierarchyRoot .
+
+pig:Outline
+	rdfs:subClassOf pig:Organizer ;
+	rdfs:label "Outline" ;
+	rdfs:comment "A subclass of PIG organizer comprising all information items of a human-readable document. As usual, the outline is hierarchically organized." .
+
+pigShapes_pig:Outline
+	rdf:type sh:NodeShape ;
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		pigShapes_pig:category ,
+		pigShapes_pig:lists ;
+	sh:targetClass pig:Outline .
+
 pig:eligibleSource
 	rdf:type owl:ObjectProperty ;
-	rdfs:domain pig:Relationship ;
-	rdfs:range pig:Entity ;
+	rdfs:range [ owl:unionOf(
+			pig:Entity
+			pig:Relationship
+		)] ;
 	rdfs:label "has source" ;
 	rdfs:comment "Connects the source of a reified relationship." .
 
+pigShapes_pig:eligibleSource
+	rdf:type sh:PropertyShape ;
+	sh:path pig:eligibleSource ;
+	sh:or (
+			[ sh:class pig:Entity ]
+			[ sh:class pig:Relationship ]
+		) .
+
 pig:eligibleTarget
 	rdf:type owl:ObjectProperty ;
-	rdfs:domain pig:Relationship ;
-	rdfs:range pig:Entity ;
+	rdfs:range [ owl:unionOf(
+			pig:Entity
+			pig:Relationship
+		)] ;
 	rdfs:label "has target" ;
 	rdfs:comment "Connects the target of a reified relationship." .
 
+pigShapes_pig:eligibleTarget
+	rdf:type sh:PropertyShape ;
+	sh:path pig:eligibleTarget ;
+	sh:or (
+			[ sh:class pig:Entity ]
+			[ sh:class pig:Relationship ]
+		) .
+
 pig:eligibleElement
 	rdf:type owl:ObjectProperty ;
-	rdfs:domain pig:Organizer ;
-	rdfs:range [ owl:unionOf( pig:Entity pig:Relationship pig:Organizer )] ;
+	rdfs:range [ owl:unionOf(
+			pig:Entity
+			pig:Relationship
+			pig:Organizer
+		)] ;
 	rdfs:label "has element" ;
 	rdfs:comment "References an entity, a relationship or a subordinated organizer." .
 
+pigShapes_pig:eligibleElement
+	rdf:type sh:PropertyShape ;
+	sh:path pig:eligibleElement ;
+	sh:or (
+			[ sh:class pig:Entity ]
+			[ sh:class pig:Relationship ]
+			[ sh:class pig:Organizer ]
+		) .
+
 pig:lists
 	rdfs:subPropertyOf pig:eligibleElement ;
-	rdfs:domain [ owl:unionOf( pig:HierarchyRoot pig:Outline SpecIF:Heading )] ;
+	rdfs:range [ owl:unionOf(
+			pig:Entity
+			pig:Relationship
+			pig:Organizer
+		)] ;
 	rdfs:label "lists" ;
 	rdfs:comment "Lists (references) an entity, a relationship or a subordinated organizer." .
 
+pigShapes_pig:lists
+	rdf:type sh:PropertyShape ;
+	sh:path pig:lists ;
+	sh:or (
+			[ sh:class pig:Entity ]
+			[ sh:class pig:Relationship ]
+			[ sh:class pig:Organizer ]
+		) .
+
 pig:shows
 	rdfs:subPropertyOf pig:eligibleElement ;
-	rdfs:domain pig:View ;
-	rdfs:range [ owl:unionOf( pig:Entity pig:Relationship )] ;
+	rdfs:range [ owl:unionOf(
+			pig:Entity
+			pig:Relationship
+		)] ;
 	rdfs:label "shows" ;
 	rdfs:comment "Shows (references) an entity or a relationship." .
 
+pigShapes_pig:shows
+	rdf:type sh:PropertyShape ;
+	sh:path pig:shows ;
+	sh:or (
+			[ sh:class pig:Entity ]
+			[ sh:class pig:Relationship ]
+		) .
+
 pig:depicts
 	rdfs:subPropertyOf pig:eligibleElement ;
-	rdfs:domain pig:View ;
 	rdfs:range pig:Entity ;
 	rdfs:label "depicts" ;
 	rdfs:comment "Depicts an entity; inverse of uml:ownedDiagram." .
+
+pigShapes_pig:depicts
+	rdf:type sh:PropertyShape ;
+	sh:path pig:depicts ;
+	sh:or (
+			[ sh:class pig:Entity ]
+		) .
+
+pig:icon
+	rdf:type owl:DatatypeProperty ;
+	rdfs:range xsd:string ;
+	rdfs:label "has icon" ;
+	rdfs:comment "Specifies an icon for a model element (entity or relationship)." .
+
+pigShapes_pig:icon
+	rdf:type sh:PropertyShape ;
+	sh:path pig:icon ;
+	sh:datatype xsd:string .
+
+pig:category
+	rdfs:subPropertyOf dcterms:type ;
+	rdfs:range xsd:string ;
+	rdfs:label "has category" ;
+	rdfs:comment "Specifies a category for an element (entity, relationship or organizer)." .
+
+pigShapes_pig:category
+	rdf:type sh:PropertyShape ;
+	sh:path pig:category ;
+	sh:datatype xsd:string .
 
 #################################################################
 # Data Types with Enumerated Values
@@ -128,8 +265,16 @@ SpecIF:LifecycleStatus-Value
 	rdfs:comment "The 'Lifecycle Status' of the resource."@en ;
 	rdfs:comment "Der 'Lebenszyklusstatus' der Ressource."@de ;
 	rdfs:comment "L'état du cycle de vie de la ressource."@fr ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" ;
-	owl:oneOf ( SpecIF:LifecycleStatusDeprecated SpecIF:LifecycleStatusRejected SpecIF:LifecycleStatusInitial SpecIF:LifecycleStatusDrafted SpecIF:LifecycleStatusSubmitted SpecIF:LifecycleStatusApproved SpecIF:LifecycleStatusDone SpecIF:LifecycleStatusReleased ) .
+	owl:oneOf (
+			SpecIF:LifecycleStatusDeprecated
+			SpecIF:LifecycleStatusRejected
+			SpecIF:LifecycleStatusInitial
+			SpecIF:LifecycleStatusDrafted
+			SpecIF:LifecycleStatusSubmitted
+			SpecIF:LifecycleStatusApproved
+			SpecIF:LifecycleStatusDone
+			SpecIF:LifecycleStatusReleased
+		) .
 SpecIF:LifecycleStatusDeprecated
 	rdf:type SpecIF:LifecycleStatus-Value ;
 	rdfs:label "deprecated"@en ;
@@ -174,8 +319,11 @@ SpecIF:Priority-Value
 	rdfs:label "Priorität"@de ;
 	rdfs:label "Priorité"@fr ;
 	rdfs:comment "Enumerated values for the 'Priority' of the resource."@en ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" ;
-	owl:oneOf ( SpecIF:priorityHigh SpecIF:priorityMedium SpecIF:priorityLow ) .
+	owl:oneOf (
+			SpecIF:priorityHigh
+			SpecIF:priorityMedium
+			SpecIF:priorityLow
+		) .
 SpecIF:priorityHigh
 	rdf:type SpecIF:Priority-Value ;
 	rdfs:label "high"@en ;
@@ -196,8 +344,11 @@ SpecIF:StakeholderGroup-Value
 	rdf:type owl:Class ;
 	rdfs:label "Stakeholder Group"@en ;
 	rdfs:comment "Enumerated values for the 'Stakehoder Group' addressed by the term."@en ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" ;
-	owl:oneOf ( SpecIF:StakeholderGroupBusiness SpecIF:StakeholderGroupUser SpecIF:StakeholderGroupSystem ) .
+	owl:oneOf (
+			SpecIF:StakeholderGroupBusiness
+			SpecIF:StakeholderGroupUser
+			SpecIF:StakeholderGroupSystem
+		) .
 SpecIF:StakeholderGroupBusiness
 	rdf:type SpecIF:StakeholderGroup-Value ;
 	rdfs:label "Business"@en .
@@ -214,8 +365,12 @@ SpecIF:EngineeringDiscipline-Value
 	rdfs:label "Ingenieurdisziplin"@de ;
 	rdfs:label "Discipline d'ingénierie"@fr ;
 	rdfs:comment "The engineering discipline involved by a development artefact."@en ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" ;
-	owl:oneOf ( SpecIF:EngineeringDisciplineMechanics SpecIF:EngineeringDisciplineElectronics SpecIF:EngineeringDisciplineSoftware SpecIF:EngineeringDisciplineSafety ) .
+	owl:oneOf (
+			SpecIF:EngineeringDisciplineMechanics
+			SpecIF:EngineeringDisciplineElectronics
+			SpecIF:EngineeringDisciplineSoftware
+			SpecIF:EngineeringDisciplineSafety
+		) .
 SpecIF:EngineeringDisciplineMechanics
 	rdf:type SpecIF:EngineeringDiscipline-Value ;
 	rdfs:label "Mechanics"@en ;
@@ -241,8 +396,13 @@ ReqIF-WF:SupplierStatus-Value
 	rdfs:label "Supplier Status"@en ;
 	rdfs:label "Zustand Lieferant"@de ;
 	rdfs:label "Statut coté Fournisseur"@fr ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" ;
-	owl:oneOf ( SpecIF:NotApplicable ReqIF-WF:CustomerStatus.ToBeClarified ReqIF-WF:SupplierStatus.Agreed ReqIF-WF:SupplierStatus.AgreedWithComment ReqIF-WF:SupplierStatus.NotAgreed ) .
+	owl:oneOf (
+			SpecIF:NotApplicable
+			ReqIF-WF:CustomerStatus.ToBeClarified
+			ReqIF-WF:SupplierStatus.Agreed
+			ReqIF-WF:SupplierStatus.AgreedWithComment
+			ReqIF-WF:SupplierStatus.NotAgreed
+		) .
 SpecIF:NotApplicable
 	rdf:type ReqIF-WF:SupplierStatus-Value ;
 	rdfs:label "not applicable"@en ;
@@ -274,8 +434,12 @@ ReqIF-WF:CustomerStatus-Value
 	rdfs:label "Customer Status"@en ;
 	rdfs:label "Zustand Kunde"@de ;
 	rdfs:label "Statut coté Client"@fr ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" ;
-	owl:oneOf ( ReqIF-WF:CustomerStatus.NotToEvaluate ReqIF-WF:CustomerStatus.ToEvaluate ReqIF-WF:CustomerStatus.Accepted ReqIF-WF:CustomerStatus.NotAccepted ) .
+	owl:oneOf (
+			ReqIF-WF:CustomerStatus.NotToEvaluate
+			ReqIF-WF:CustomerStatus.ToEvaluate
+			ReqIF-WF:CustomerStatus.Accepted
+			ReqIF-WF:CustomerStatus.NotAccepted
+		) .
 ReqIF-WF:CustomerStatus.NotToEvaluate
 	rdf:type ReqIF-WF:CustomerStatus-Value ;
 	rdfs:label "not to evaluate"@en ;
@@ -297,33 +461,40 @@ ReqIF-WF:CustomerStatus.NotAccepted
 	rdfs:label "nicht akzeptiert"@de ;
 	rdfs:label "non accepté"@fr .
 
-o:DT_IssueStatus
+o:DT-IssueStatus
 	rdf:type owl:Class ;
-	rdfs:label "SpecIF:LifecycleStatus" ;
+	rdfs:label SpecIF:LifecycleStatusIssue ;
 	rdfs:comment "Enumerated values for issue status" ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" ;
-	owl:oneOf ( o:V_Iss_Status_0 o:V_Iss_Status_1 o:V_Iss_Status_2 oslc_cm:Inprogress oslc_cm:Closed o:V_Iss_Status_5 o:V_Iss_Status_6 ) .
-o:V_Iss_Status_0
-	rdf:type o:DT_IssueStatus ;
+	owl:oneOf (
+			o:V-Iss-Status-0
+			o:V-Iss-Status-1
+			o:V-Iss-Status-2
+			oslc_cm:Inprogress
+			oslc_cm:Closed
+			o:V-Iss-Status-5
+			o:V-Iss-Status-6
+		) .
+o:V-Iss-Status-0
+	rdf:type o:DT-IssueStatus ;
 	rdfs:label "undefined" .
-o:V_Iss_Status_1
-	rdf:type o:DT_IssueStatus ;
+o:V-Iss-Status-1
+	rdf:type o:DT-IssueStatus ;
 	rdfs:label "open" .
-o:V_Iss_Status_2
-	rdf:type o:DT_IssueStatus ;
+o:V-Iss-Status-2
+	rdf:type o:DT-IssueStatus ;
 	rdfs:label "assigned" .
 oslc_cm:Inprogress
-	rdf:type o:DT_IssueStatus ;
+	rdf:type o:DT-IssueStatus ;
 	rdfs:label "in progress"@en .
 oslc_cm:Closed
-	rdf:type o:DT_IssueStatus ;
+	rdf:type o:DT-IssueStatus ;
 	rdfs:label "closed"@en .
-o:V_Iss_Status_5
-	rdf:type o:DT_IssueStatus ;
+o:V-Iss-Status-5
+	rdf:type o:DT-IssueStatus ;
 	rdfs:label "reopened" .
-o:V_Iss_Status_6
-	rdf:type o:DT_IssueStatus ;
-	rdfs:label "SpecIF:LifecycleStatusRejected" .
+o:V-Iss-Status-6
+	rdf:type o:DT-IssueStatus ;
+	rdfs:label SpecIF:LifecycleStatusRejected .
 
 #################################################################
 # Ontology - Property Classes
@@ -331,7 +502,7 @@ o:V_Iss_Status_6
 
 # Skipping implicit property: rdfs:label
 
-rdfs:label-Shape
+pigShapes_rdfs:label
 	rdf:type sh:PropertyShape ;
 	sh:path rdfs:label ;
 	sh:maxCount "1" ;
@@ -340,32 +511,30 @@ rdfs:label-Shape
 
 # Skipping implicit property: rdfs:comment
 
-rdfs:comment-Shape
+pigShapes_rdfs:comment
 	rdf:type sh:PropertyShape ;
 	sh:path rdfs:comment ;
 	sh:maxCount "1" ;
 	sh:datatype xsd:string .
 
 SpecIF:Diagram
-	rdfs:subClassOf pig:Property ;
+	rdf:type owl:DatatypeProperty ;
 	rdfs:label "Diagram"@en ;
 	rdfs:label "Diagramm"@de ;
 	rdfs:label "Diagramme"@fr ;
-	rdfs:comment "A diagram illustrating the resource or a link to a diagram."@en ;
-	dcterms:modified "2023-02-26T14:40:17.601Z" .
+	rdfs:comment "A diagram illustrating the resource or a link to a diagram."@en .
 
-SpecIF:Diagram-Shape
+pigShapes_SpecIF:Diagram
 	rdf:type sh:PropertyShape ;
 	sh:path SpecIF:Diagram ;
 	sh:datatype xsd:string .
 
 SpecIF:Notation
-	rdfs:subClassOf pig:Property ;
+	rdf:type owl:DatatypeProperty ;
 	rdfs:label "Notation"@en ;
-	rdfs:comment "The notation used by a model diagram, e.g. 'BPMN 2.0', 'SysML Activity Diagram' or 'FMC Block Diagram'."@en ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:comment "The notation used by a model diagram, e.g. 'BPMN 2.0', 'SysML Activity Diagram' or 'FMC Block Diagram'."@en .
 
-SpecIF:Notation-Shape
+pigShapes_SpecIF:Notation
 	rdf:type sh:PropertyShape ;
 	sh:path SpecIF:Notation ;
 	sh:maxCount "1" ;
@@ -373,100 +542,93 @@ SpecIF:Notation-Shape
 	sh:maxLength "256" .
 
 SpecIF:Priority
-	rdfs:subClassOf pig:PropertyEnum ;
+	rdf:type owl:ObjectProperty ;
 	rdfs:label "Priority"@en ;
 	rdfs:label "Priorität"@de ;
 	rdfs:label "Priorité"@fr ;
 	rdfs:comment "Enumerated values for the 'Priority' of the resource."@en ;
-	rdfs:range SpecIF:Priority-Value ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:range SpecIF:Priority-Value .
 
-SpecIF:Priority-Shape
+pigShapes_SpecIF:Priority
 	rdf:type sh:PropertyShape ;
 	sh:path SpecIF:Priority ;
 	sh:maxCount "1" ;
 	sh:class SpecIF:Priority-Value .
 
 SpecIF:LifecycleStatus
-	rdfs:subClassOf pig:PropertyEnum ;
+	rdf:type owl:ObjectProperty ;
 	rdfs:label "Lifecycle"@en ;
 	rdfs:label "Lebenszyklus"@de ;
 	rdfs:label "Cycle de vie"@fr ;
 	rdfs:comment "The 'Lifecycle Status' of the resource."@en ;
 	rdfs:comment "Der 'Lebenszyklusstatus' der Ressource."@de ;
 	rdfs:comment "L'état du cycle de vie de la ressource."@fr ;
-	rdfs:range SpecIF:LifecycleStatus-Value ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:range SpecIF:LifecycleStatus-Value .
 
-SpecIF:LifecycleStatus-Shape
+pigShapes_SpecIF:LifecycleStatus
 	rdf:type sh:PropertyShape ;
 	sh:path SpecIF:LifecycleStatus ;
 	sh:maxCount "1" ;
 	sh:class SpecIF:LifecycleStatus-Value .
 
 ReqIF-WF:SupplierStatus
-	rdfs:subClassOf pig:PropertyEnum ;
+	rdf:type owl:ObjectProperty ;
 	rdfs:label "Supplier Status"@en ;
 	rdfs:label "Zustand Lieferant"@de ;
 	rdfs:label "Statut coté Fournisseur"@fr ;
-	rdfs:range ReqIF-WF:SupplierStatus-Value ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:range ReqIF-WF:SupplierStatus-Value .
 
-ReqIF-WF:SupplierStatus-Shape
+pigShapes_ReqIF-WF:SupplierStatus
 	rdf:type sh:PropertyShape ;
 	sh:path ReqIF-WF:SupplierStatus ;
 	sh:maxCount "1" ;
 	sh:class ReqIF-WF:SupplierStatus-Value .
 
 ReqIF-WF:SupplierComment
-	rdfs:subClassOf pig:Property ;
+	rdf:type owl:DatatypeProperty ;
 	rdfs:label "Supplier Comment"@en ;
 	rdfs:label "Kommentar Lieferant"@de ;
-	rdfs:label "Commentaire du Client"@fr ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:label "Commentaire du Client"@fr .
 
-ReqIF-WF:SupplierComment-Shape
+pigShapes_ReqIF-WF:SupplierComment
 	rdf:type sh:PropertyShape ;
 	sh:path ReqIF-WF:SupplierComment ;
 	sh:maxCount "1" ;
 	sh:datatype xsd:string .
 
 ReqIF-WF:CustomerStatus
-	rdfs:subClassOf pig:PropertyEnum ;
+	rdf:type owl:ObjectProperty ;
 	rdfs:label "Customer Status"@en ;
 	rdfs:label "Zustand Kunde"@de ;
 	rdfs:label "Statut coté Client"@fr ;
-	rdfs:range ReqIF-WF:CustomerStatus-Value ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:range ReqIF-WF:CustomerStatus-Value .
 
-ReqIF-WF:CustomerStatus-Shape
+pigShapes_ReqIF-WF:CustomerStatus
 	rdf:type sh:PropertyShape ;
 	sh:path ReqIF-WF:CustomerStatus ;
 	sh:maxCount "1" ;
 	sh:class ReqIF-WF:CustomerStatus-Value .
 
 ReqIF-WF:CustomerComment
-	rdfs:subClassOf pig:Property ;
+	rdf:type owl:DatatypeProperty ;
 	rdfs:label "Customer Comment"@en ;
 	rdfs:label "Kommentar Kunde"@de ;
-	rdfs:label "Commentaire du Client"@fr ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:label "Commentaire du Client"@fr .
 
-ReqIF-WF:CustomerComment-Shape
+pigShapes_ReqIF-WF:CustomerComment
 	rdf:type sh:PropertyShape ;
 	sh:path ReqIF-WF:CustomerComment ;
 	sh:maxCount "1" ;
 	sh:datatype xsd:string .
 
 dcterms:identifier
-	rdfs:subClassOf pig:Property ;
+	rdf:type owl:DatatypeProperty ;
 	rdfs:label "Identifier"@en ;
 	rdfs:label "Bezeichner"@de ;
 	rdfs:label "Identifiant"@fr ;
-	rdfs:comment "<p>A unique reference to the resource within a given context. <small>(<i>source: <a href=\"http://purl.org/dc/elements/1.1/identifier\">DCMI</a></i>)</small></p><p>An identifier for a resource. This identifier may be unique with a scope that is defined by the RM provider. Assigned by the service provider when a resource is created. Not intended for end-user display. <small>(<i>source: <a href=\"http://open-services.net/\">OSLC</a></i>)</small></p>"@en ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:comment "<p>A unique reference to the resource within a given context. <small>(<i>source: <a href=\"http://purl.org/dc/elements/1.1/identifier\">DCMI</a></i>)</small></p><p>An identifier for a resource. This identifier may be unique with a scope that is defined by the RM provider. Assigned by the service provider when a resource is created. Not intended for end-user display. <small>(<i>source: <a href=\"http://open-services.net/\">OSLC</a></i>)</small></p>"@en .
 
-dcterms:identifier-Shape
+pigShapes_dcterms:identifier
 	rdf:type sh:PropertyShape ;
 	sh:path dcterms:identifier ;
 	sh:maxCount "1" ;
@@ -474,53 +636,49 @@ dcterms:identifier-Shape
 	sh:maxLength "256" .
 
 SpecIF:StakeholderGroup
-	rdfs:subClassOf pig:PropertyEnum ;
+	rdf:type owl:ObjectProperty ;
 	rdfs:label "Stakeholder Group"@en ;
 	rdfs:comment "Enumerated values for the 'Stakehoder Group' addressed by the term."@en ;
-	rdfs:range SpecIF:StakeholderGroup-Value ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:range SpecIF:StakeholderGroup-Value .
 
-SpecIF:StakeholderGroup-Shape
+pigShapes_SpecIF:StakeholderGroup
 	rdf:type sh:PropertyShape ;
 	sh:path SpecIF:StakeholderGroup ;
 	sh:maxCount "1" ;
 	sh:class SpecIF:StakeholderGroup-Value .
 
 SpecIF:EngineeringDiscipline
-	rdfs:subClassOf pig:PropertyEnum ;
+	rdf:type owl:ObjectProperty ;
 	rdfs:label "Engineering Discipline"@en ;
 	rdfs:label "Ingenieurdisziplin"@de ;
 	rdfs:label "Discipline d'ingénierie"@fr ;
 	rdfs:comment "The engineering discipline involved by a development artefact."@en ;
-	rdfs:range SpecIF:EngineeringDiscipline-Value ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:range SpecIF:EngineeringDiscipline-Value .
 
-SpecIF:EngineeringDiscipline-Shape
+pigShapes_SpecIF:EngineeringDiscipline
 	rdf:type sh:PropertyShape ;
 	sh:path SpecIF:EngineeringDiscipline ;
 	sh:class SpecIF:EngineeringDiscipline-Value .
 
-o:PC_IssueStatus
-	rdfs:subClassOf pig:PropertyEnum ;
-	rdfs:label "SpecIF:LifecycleStatus" ;
-	rdfs:range o:DT_IssueStatus ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+o:PC-IssueStatus
+	rdf:type owl:ObjectProperty ;
+	rdfs:label SpecIF:LifecycleStatusIssue ;
+	rdfs:range o:DT-IssueStatus .
 
-o:PC_IssueStatus-Shape
+o:PC-IssueStatus_shape
 	rdf:type sh:PropertyShape ;
-	sh:path o:PC_IssueStatus ;
+	sh:path o:PC-IssueStatus ;
 	sh:maxCount "1" ;
-	sh:class o:DT_IssueStatus .
+	sh:class o:DT-IssueStatus .
 
 SpecIF:Responsible
-	rdfs:subClassOf pig:Property ;
+	rdf:type owl:DatatypeProperty ;
 	rdfs:label "Responsible"@en ;
 	rdfs:label "Verantwortliche(r)"@de ;
 	rdfs:label "Responsable"@fr ;
-	rdfs:comment "The 'Person' being responsible for the resource."@en ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:comment "The 'Person' being responsible for the resource."@en .
 
-SpecIF:Responsible-Shape
+pigShapes_SpecIF:Responsible
 	rdf:type sh:PropertyShape ;
 	sh:path SpecIF:Responsible ;
 	sh:maxCount "1" ;
@@ -528,89 +686,49 @@ SpecIF:Responsible-Shape
 	sh:maxLength "256" .
 
 SpecIF:DueDate
-	rdfs:subClassOf pig:Property ;
+	rdf:type owl:DatatypeProperty ;
 	rdfs:label "Due Date"@en ;
 	rdfs:label "Termin"@de ;
 	rdfs:label "Date limite"@fr ;
-	rdfs:comment "A 'Due Date' for the resource."@en ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:comment "A 'Due Date' for the resource."@en .
 
-SpecIF:DueDate-Shape
+pigShapes_SpecIF:DueDate
 	rdf:type sh:PropertyShape ;
 	sh:path SpecIF:DueDate ;
 	sh:maxCount "1" ;
 	sh:datatype xsd:dateTime .
 
-dcterms:type
-	rdfs:subClassOf pig:Property ;
-	rdfs:label "Element Type"@en ;
-	rdfs:label "Element-Typ"@de ;
-	rdfs:label "Type d'élément"@fr ;
-	rdfs:comment "<p>The nature or genre of the resource. <small>(<i>source: <a href=\"http://purl.org/dc/elements/1.1/type\">DCMI</a></i>)</small></p><p>Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element.</p><p>For example, a [[FMC:Actor]] may represent a <i>System Function</i>, a <i>System Component</i> or a <i>User Role</i>. Similarly, in the context of process modelling, a FMC:Actor may represent a <i>Process Step</i> or again a <i>User Role</i>. So, all of these are meaningful values for a FMC:Actor's property named dcterms:type.</p>"@en ;
-	dcterms:modified "2023-02-26T20:18:04.451Z" .
+# Skipping implicit property: pig:category
 
-dcterms:type-Shape
+pigShapes_pig:category
 	rdf:type sh:PropertyShape ;
-	sh:path dcterms:type ;
+	sh:path pig:category ;
 	sh:maxCount "1" ;
 	sh:datatype xsd:string ;
 	sh:maxLength "32" .
-
-SpecIF:Icon
-	rdfs:subClassOf pig:Property ;
-	rdfs:label "Icon"@en ;
-	rdfs:label "Symbol"@de ;
-	rdfs:label "Symbole"@fr ;
-	rdfs:comment "A symbol or icon for display as a prefix to titles; applicable to all instances of the class. Is usually a XML-encoded UTF-8 symbol, can be an URL or dataURL."@en ;
-	dcterms:modified "2025-09-05T12:43:26.716Z" .
-
-SpecIF:Icon-Shape
-	rdf:type sh:PropertyShape ;
-	sh:path SpecIF:Icon ;
-	sh:maxCount "1" ;
-	sh:datatype xsd:string ;
-	sh:maxLength "256" .
 
 #################################################################
 # Ontology - Entity Classes
 #################################################################
 
-SpecIF:Heading
-	rdfs:subClassOf SpecIF:Paragraph ;
-	rdfs:label "Heading"@en ;
-	rdfs:label "Überschrift"@de ;
-	rdfs:label "Intitulé"@fr ;
-	rdfs:comment "A 'Heading' is a chapter title at any level with optional description."@en ;
-	rdfs:comment "Eine 'Überschrift' in einem Dokument ist der Titel eines Kapitels. Sie kann eine Beschreibung haben, die als Einleitung oder Zusammenfassung des Kapitels genutzt werden kann."@de ;
-	dcterms:modified "2024-03-02T15:28:50.414Z" .
-
-SpecIF:Heading-Shape
-	rdf:type sh:NodeShape ;
-	sh:targetClass SpecIF:Heading ;
-	sh:property rdfs:label-Shape ,
-		rdfs:comment-Shape ,
-		SpecIF:Diagram-Shape ,
-		dcterms:type-Shape .
-
 pig:View
 	rdfs:subClassOf pig:Organizer ;
 	rdfs:label "View" ;
 	rdfs:comment "A PIG organizer class representing a diagram with certain model-elements for a given communication purpose." ;
-	pig:icon "▣" ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	pig:icon "▣" .
 
-pig:View-Shape
+pigShapes_pig:View
 	rdf:type sh:NodeShape ;
 	sh:targetClass pig:View ;
-	sh:property rdfs:label-Shape ,
-		rdfs:comment-Shape ,
-		SpecIF:Diagram-Shape ,
-		SpecIF:Notation-Shape ,
-		SpecIF:LifecycleStatus-Shape ,
-		ReqIF-WF:SupplierStatus-Shape ,
-		ReqIF-WF:SupplierComment-Shape ,
-		ReqIF-WF:CustomerStatus-Shape ,
-		ReqIF-WF:CustomerComment-Shape .
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		pigShapes_SpecIF:Diagram ,
+		pigShapes_SpecIF:Notation ,
+		pigShapes_SpecIF:LifecycleStatus ,
+		pigShapes_ReqIF-WF:SupplierStatus ,
+		pigShapes_ReqIF-WF:SupplierComment ,
+		pigShapes_ReqIF-WF:CustomerStatus ,
+		pigShapes_ReqIF-WF:CustomerComment .
 
 FMC:Actor
 	rdfs:subClassOf pig:Entity ;
@@ -620,15 +738,14 @@ FMC:Actor
 	rdfs:comment "<p>An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role.</p><p>The  particular use or original type is specified with a [[dcterms:type]] property of the 'FMC:Actor'. A value of that property should be an ontology-term, such as [[bpmn:processStep]].</p>"@en ;
 	rdfs:comment "<p>Ein 'Akteur' ist ein fundamentaler Modellelementtyp, der eine aktive Entität darstellt, sei es eine Aktivität, ein Prozessschritt, eine Funktion, eine Systemkomponente oder eine Rolle.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Actor' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[bpmn:timer]].</p>"@de ;
 	rdfs:comment "<p>Un 'Acteur' est un type d'élément de modèle fondamental représentant une entité active, qu'il s'agisse d'une activité, d'une étape de processus, d'une fonction, d'un composant de système ou d'un rôle.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:Actor'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[bpmn:timer]].</p>"@fr ;
-	pig:icon "&#x25A1;" ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	pig:icon "&#x25A1;" .
 
-FMC:Actor-Shape
+pigShapes_FMC:Actor
 	rdf:type sh:NodeShape ;
 	sh:targetClass FMC:Actor ;
-	sh:property rdfs:label-Shape ,
-		rdfs:comment-Shape ,
-		SpecIF:Diagram-Shape .
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		pigShapes_SpecIF:Diagram .
 
 FMC:State
 	rdfs:subClassOf pig:Entity ;
@@ -638,14 +755,13 @@ FMC:State
 	rdfs:comment "<p>A 'State' is a fundamental model element type representing a passive entity, be it a value, a condition, an information storage or even a physical shape.</p><p>The particular use or the original type is specified with a [[dcterms:type]] property of the 'FMC:State'. A value of that property should bean  ontology-term, such as [[bpmn:dataObject]].</p>"@en ;
 	rdfs:comment "<p>Ein 'Zustand' ist ein fundamentaler Modellelementtyp, der eine passive Entität darstellt, sei es ein Wert, ein Dokument, ein Informationsspeicher, eine Bedingung oder eine physische Beschaffenheit.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:State' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[ArchiMate:DataObject]].</p>"@de ;
 	rdfs:comment "<p>Un 'État' est un type d'élément de modèle fondamental représentant une entité passive, qu'il s'agisse d'une valeur, d'une condition, d'un stockage d'informations ou même d'une forme physique.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:State'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[ArchiMate:DataObject]].</p>"@fr ;
-	pig:icon "&#x25CB;" ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	pig:icon "&#x25CB;" .
 
-FMC:State-Shape
+pigShapes_FMC:State
 	rdf:type sh:NodeShape ;
 	sh:targetClass FMC:State ;
-	sh:property rdfs:label-Shape ,
-		rdfs:comment-Shape .
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment .
 
 FMC:Event
 	rdfs:subClassOf pig:Entity ;
@@ -655,14 +771,13 @@ FMC:Event
 	rdfs:comment "<p>An 'Event' is a fundamental model element type representing a time reference, a change in condition/value or more generally a synchronization primitive.</p><p>The particular use or the original type is specified with a [[dcterms:type]] property of the 'FMC:Event'. A value of that property should be an ontology-term, such as [[bpmn:startEvent]].</p>"@en ;
 	rdfs:comment "<p>Ein 'Ereignis' ist ein fundamentaler Modellelementtyp, der eine Zeitreferenz, eine Änderung einer Bedingung/eines Wertes oder allgemeiner ein Synchronisationsmittel darstellt.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Event' spezifiziert. Die Werte dieser Eigenschaft sollen Ontologiebegriffe sein, wie z.B. [[bpmn:startEvent]].</p>"@de ;
 	rdfs:comment "<p>Un 'Événement' est un type d'élément de modèle fondamental représentant une référence temporelle, un changement de condition/valeur ou plus généralement une primitive de synchronisation.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:Event'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[bpmn:startEvent]].</p>"@fr ;
-	pig:icon "&#x2662;" ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	pig:icon "&#x2662;" .
 
-FMC:Event-Shape
+pigShapes_FMC:Event
 	rdf:type sh:NodeShape ;
 	sh:targetClass FMC:Event ;
-	sh:property rdfs:label-Shape ,
-		rdfs:comment-Shape .
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment .
 
 IREB:Requirement
 	rdfs:subClassOf pig:Entity ;
@@ -672,23 +787,22 @@ IREB:Requirement
 	rdfs:comment "<p>A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>A condition or capability needed by a user to solve a problem or achieve an objective.</li><li>A condition or capability that must be met or possessed by a system or system component to satisfy a contract, standard, specification, or other formally imposed documents.</li><li>A documented representation of a condition or capability as in (1) or (2).</li></ol><p>Note: The definition above is the classic one from IEEE Std 610.12 of 1990. Alternatively, we also give a more modern definition:</p><ol><li>A need perceived by a stakeholder.</li><li>A capability or property that a system shall have.</li><li>A documented representation of a need, capability or property.</li></ol>"@en ;
 	rdfs:comment "<p>Eine 'Anforderung' ist ein einzelnes dokumentiertes physisches und funktionales Bedürfnis, das ein bestimmter Entwurf, ein Produkt oder ein Prozess erfüllen muss. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>Eine Bedingung oder Fähigkeit, die ein Benutzer benötigt, um ein Problem zu lösen oder ein Ziel zu erreichen.</li><li>Eine Bedingung oder Fähigkeit, die ein System oder eine Systemkomponente erfüllen oder besitzen muss, um einen Vertrag, eine Norm, eine Spezifikation oder ein anderes formal vorgeschriebenes Dokument zu erfüllen.</li><li>Eine dokumentierte Darstellung einer Bedingung oder Fähigkeit wie in (1) oder (2).</li></ol><p>Anmerkung: Die obige Definition ist die klassische Definition aus IEEE Std 610.12 von 1990. Alternativ geben wir auch eine modernere Definition an:</p><ol><li>Ein von einem Stakeholder wahrgenommener Bedarf.</li><li>Eine Fähigkeit oder Eigenschaft, die ein System haben soll.</li><li>Eine dokumentierte Darstellung eines Bedarfs, einer Fähigkeit oder Eigenschaft.</li></ol>"@de ;
 	rdfs:comment "<p>Une 'Exigence' est un besoin physique et fonctionnel unique et documenté qu'une conception, un produit ou un processus particulier doit pouvoir satisfaire. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Définition:</p><ol><li>Condition ou capacité dont un utilisateur a besoin pour résoudre un problème ou atteindre un objectif.</li><li>Condition ou capacité qui doit être remplie ou possédée par un système ou un composant de système pour satisfaire à un contrat, à une norme, à une spécification ou à d'autres documents imposés officiellement.</li><li>Une représentation documentée d'une condition ou d'une capacité comme dans (1) ou (2).</li></ol><p>Remarque: La définition ci-dessus est la définition classique de la norme IEEE 610.12 de 1990. Nous donnons également une définition plus moderne:</p><ol><li>Un besoin perçu par une partie prenante;</li><li>Une capacité ou une propriété qu'un système doit avoir.</li><li>Une représentation documentée d'un besoin, d'une capacité ou d'une propriété.</li></ol>"@fr ;
-	pig:icon "&#8623;" ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	pig:icon "&#8623;" .
 
-IREB:Requirement-Shape
+pigShapes_IREB:Requirement
 	rdf:type sh:NodeShape ;
 	sh:targetClass IREB:Requirement ;
-	sh:property dcterms:identifier-Shape ,
-		rdfs:label-Shape ,
-		rdfs:comment-Shape ,
-		SpecIF:LifecycleStatus-Shape ,
-		SpecIF:Priority-Shape ,
-		SpecIF:StakeholderGroup-Shape ,
-		SpecIF:EngineeringDiscipline-Shape ,
-		ReqIF-WF:SupplierStatus-Shape ,
-		ReqIF-WF:SupplierComment-Shape ,
-		ReqIF-WF:CustomerStatus-Shape ,
-		ReqIF-WF:CustomerComment-Shape .
+	sh:property pigShapes_dcterms:identifier ,
+		pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		pigShapes_SpecIF:LifecycleStatus ,
+		pigShapes_SpecIF:Priority ,
+		pigShapes_SpecIF:StakeholderGroup ,
+		pigShapes_SpecIF:EngineeringDiscipline ,
+		pigShapes_ReqIF-WF:SupplierStatus ,
+		pigShapes_ReqIF-WF:SupplierComment ,
+		pigShapes_ReqIF-WF:CustomerStatus ,
+		pigShapes_ReqIF-WF:CustomerComment .
 
 SpecIF:Issue
 	rdfs:subClassOf pig:Entity ;
@@ -697,19 +811,18 @@ SpecIF:Issue
 	rdfs:label "Problème"@fr ;
 	rdfs:comment "An 'Issue' is a question to answer or decision to take which is worth tracking."@en ;
 	rdfs:comment "Ein 'Offener Punkt ist eine zu beantwortende Frage oder eine zu treffende Entscheidung."@de ;
-	rdfs:comment "Un 'problème' est une question à laquelle il faut répondre ou une décision à prendre qui mérite d'être suivie."@fr ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:comment "Un 'problème' est une question à laquelle il faut répondre ou une décision à prendre qui mérite d'être suivie."@fr .
 
-SpecIF:Issue-Shape
+pigShapes_SpecIF:Issue
 	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:Issue ;
-	sh:property dcterms:identifier-Shape ,
-		rdfs:label-Shape ,
-		rdfs:comment-Shape ,
-		o:PC_IssueStatus-Shape ,
-		SpecIF:Priority-Shape ,
-		SpecIF:Responsible-Shape ,
-		SpecIF:DueDate-Shape .
+	sh:property pigShapes_dcterms:identifier ,
+		pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		o:PC-IssueStatus_shape ,
+		pigShapes_SpecIF:Priority ,
+		pigShapes_SpecIF:Responsible ,
+		pigShapes_SpecIF:DueDate .
 
 SpecIF:Paragraph
 	rdfs:subClassOf pig:Entity ;
@@ -717,16 +830,15 @@ SpecIF:Paragraph
 	rdfs:label "Textabsatz"@de ;
 	rdfs:label "Paragraphe"@fr ;
 	rdfs:comment "<p>A 'Paragraph' is an unspecified information in a document at any level.</p>"@en ;
-	rdfs:comment "<p>Ein 'Textabschnitt' in einem Dokument auf beliebiger Ebene.</p>"@de ;
-	dcterms:modified "2023-07-16T09:30:25.850Z" .
+	rdfs:comment "<p>Ein 'Textabschnitt' in einem Dokument auf beliebiger Ebene.</p>"@de .
 
-SpecIF:Paragraph-Shape
+pigShapes_SpecIF:Paragraph
 	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:Paragraph ;
-	sh:property rdfs:label-Shape ,
-		rdfs:comment-Shape ,
-		SpecIF:Diagram-Shape ,
-		dcterms:type-Shape .
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		pigShapes_SpecIF:Diagram ,
+		pigShapes_pig:category .
 
 #################################################################
 # Ontology - Relationship Classes
@@ -737,67 +849,85 @@ SpecIF:contains
 	rdfs:label "contains"@en ;
 	rdfs:label "enthält"@de ;
 	rdfs:label "contient"@fr ;
-	rdfs:comment "General containment, such as:- Package-A *contains* Diagram-B- Collection-1 *contains* DataObject-1.1Not to confound with *[[dcterms:hasPart]]*."@en ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:comment "General containment, such as:\n- Package-A *contains* Diagram-B\n- Collection-1 *contains* DataObject-1.1\n\nNot to confound with *[[dcterms:hasPart]]*."@en .
 
 SpecIF:contains-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
-	rdfs:label "Connects the source of SpecIF:contains" ;
+	rdfs:comment "Connects the source of SpecIF:contains" ;
 	rdfs:domain SpecIF:contains ;
-	rdfs:range [ owl:unionOf( FMC:Actor FMC:State FMC:Event )] .
+	rdfs:range [ owl:unionOf(
+			FMC:Actor
+			FMC:State
+			FMC:Event
+		)] .
 
 SpecIF:contains-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
-	rdfs:label "Connects the target of SpecIF:contains" ;
+	rdfs:comment "Connects the target of SpecIF:contains" ;
 	rdfs:domain SpecIF:contains ;
-	rdfs:range [ owl:unionOf( FMC:Actor FMC:State FMC:Event )] .
+	rdfs:range [ owl:unionOf(
+			FMC:Actor
+			FMC:State
+			FMC:Event
+		)] .
 
-SpecIF:contains-Shape
+pigShapes_SpecIF:contains
 	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:contains ;
 	sh:property [ 
 		sh:path SpecIF:contains-hasSource ;
-		sh:class [ owl:unionOf( FMC:Actor FMC:State FMC:Event )] ;
+		sh:or (
+			[ sh:class FMC:Actor ]
+			[ sh:class FMC:State ]
+			[ sh:class FMC:Event ]
+		) ;
 		sh:minCount 1 ;
 		sh:maxCount 1
 	] ;
 	sh:property [ 
 		sh:path SpecIF:contains-hasTarget ;
-		sh:class [ owl:unionOf( FMC:Actor FMC:State FMC:Event )] ;
+		sh:or (
+			[ sh:class FMC:Actor ]
+			[ sh:class FMC:State ]
+			[ sh:class FMC:Event ]
+		) ;
 		sh:minCount 1 ;
 		sh:maxCount 1
 	] .
 
-o:SC_stores
+o:SC-stores
 	rdfs:subClassOf pig:Relationship ;
-	rdfs:label "SpecIF:modifies" ;
-	rdfs:comment "Relation: Actor (Role, Function) writes and reads State (Information)" ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:label SpecIF:modifies ;
+	rdfs:comment "Relation: Actor (Role, Function) writes and reads State (Information)" .
 
-o:SC_stores-hasSource
+o:SC-stores-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
-	rdfs:label "Connects the source of o:SC_stores" ;
-	rdfs:domain o:SC_stores ;
+	rdfs:comment "Connects the source of o:SC-stores" ;
+	rdfs:domain o:SC-stores ;
 	rdfs:range FMC:Actor .
 
-o:SC_stores-hasTarget
+o:SC-stores-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
-	rdfs:label "Connects the target of o:SC_stores" ;
-	rdfs:domain o:SC_stores ;
+	rdfs:comment "Connects the target of o:SC-stores" ;
+	rdfs:domain o:SC-stores ;
 	rdfs:range FMC:State .
 
-o:SC_stores-Shape
+o:SC-stores_shape
 	rdf:type sh:NodeShape ;
-	sh:targetClass o:SC_stores ;
+	sh:targetClass o:SC-stores ;
 	sh:property [ 
-		sh:path o:SC_stores-hasSource ;
-		sh:class FMC:Actor ;
+		sh:path o:SC-stores-hasSource ;
+		sh:or (
+			[ sh:class FMC:Actor ]
+		) ;
 		sh:minCount 1 ;
 		sh:maxCount 1
 	] ;
 	sh:property [ 
-		sh:path o:SC_stores-hasTarget ;
-		sh:class FMC:State ;
+		sh:path o:SC-stores-hasTarget ;
+		sh:or (
+			[ sh:class FMC:State ]
+		) ;
 		sh:minCount 1 ;
 		sh:maxCount 1
 	] .
@@ -807,33 +937,36 @@ SpecIF:writes
 	rdfs:label "writes"@en ;
 	rdfs:label "schreibt"@de ;
 	rdfs:label "écrit"@fr ;
-	rdfs:comment "A [[FMC:Actor]] 'writes' (changes) a [[FMC:State]]."@en ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:comment "A [[FMC:Actor]] 'writes' (changes) a [[FMC:State]]."@en .
 
 SpecIF:writes-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
-	rdfs:label "Connects the source of SpecIF:writes" ;
+	rdfs:comment "Connects the source of SpecIF:writes" ;
 	rdfs:domain SpecIF:writes ;
 	rdfs:range FMC:Actor .
 
 SpecIF:writes-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
-	rdfs:label "Connects the target of SpecIF:writes" ;
+	rdfs:comment "Connects the target of SpecIF:writes" ;
 	rdfs:domain SpecIF:writes ;
 	rdfs:range FMC:State .
 
-SpecIF:writes-Shape
+pigShapes_SpecIF:writes
 	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:writes ;
 	sh:property [ 
 		sh:path SpecIF:writes-hasSource ;
-		sh:class FMC:Actor ;
+		sh:or (
+			[ sh:class FMC:Actor ]
+		) ;
 		sh:minCount 1 ;
 		sh:maxCount 1
 	] ;
 	sh:property [ 
 		sh:path SpecIF:writes-hasTarget ;
-		sh:class FMC:State ;
+		sh:or (
+			[ sh:class FMC:State ]
+		) ;
 		sh:minCount 1 ;
 		sh:maxCount 1
 	] .
@@ -843,33 +976,36 @@ SpecIF:reads
 	rdfs:label "reads"@en ;
 	rdfs:label "liest"@de ;
 	rdfs:label "lit"@fr ;
-	rdfs:comment "A [[FMC:Actor]] 'reads' a [[FMC:State]]."@en ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:comment "A [[FMC:Actor]] 'reads' a [[FMC:State]]."@en .
 
 SpecIF:reads-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
-	rdfs:label "Connects the source of SpecIF:reads" ;
+	rdfs:comment "Connects the source of SpecIF:reads" ;
 	rdfs:domain SpecIF:reads ;
 	rdfs:range FMC:Actor .
 
 SpecIF:reads-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
-	rdfs:label "Connects the target of SpecIF:reads" ;
+	rdfs:comment "Connects the target of SpecIF:reads" ;
 	rdfs:domain SpecIF:reads ;
 	rdfs:range FMC:State .
 
-SpecIF:reads-Shape
+pigShapes_SpecIF:reads
 	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:reads ;
 	sh:property [ 
 		sh:path SpecIF:reads-hasSource ;
-		sh:class FMC:Actor ;
+		sh:or (
+			[ sh:class FMC:Actor ]
+		) ;
 		sh:minCount 1 ;
 		sh:maxCount 1
 	] ;
 	sh:property [ 
 		sh:path SpecIF:reads-hasTarget ;
-		sh:class FMC:State ;
+		sh:or (
+			[ sh:class FMC:State ]
+		) ;
 		sh:minCount 1 ;
 		sh:maxCount 1
 	] .
@@ -879,33 +1015,36 @@ SpecIF:dependsOn
 	rdfs:label "depends on"@en ;
 	rdfs:label "hängt ab von"@de ;
 	rdfs:label "depend de"@fr ;
-	rdfs:comment "<p>A [[IREB:Requirement]] 'depends on' another [[IREB:Requirement]].</p>"@en ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:comment "<p>A [[IREB:Requirement]] 'depends on' another [[IREB:Requirement]].</p>"@en .
 
 SpecIF:dependsOn-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
-	rdfs:label "Connects the source of SpecIF:dependsOn" ;
+	rdfs:comment "Connects the source of SpecIF:dependsOn" ;
 	rdfs:domain SpecIF:dependsOn ;
 	rdfs:range IREB:Requirement .
 
 SpecIF:dependsOn-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
-	rdfs:label "Connects the target of SpecIF:dependsOn" ;
+	rdfs:comment "Connects the target of SpecIF:dependsOn" ;
 	rdfs:domain SpecIF:dependsOn ;
 	rdfs:range IREB:Requirement .
 
-SpecIF:dependsOn-Shape
+pigShapes_SpecIF:dependsOn
 	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:dependsOn ;
 	sh:property [ 
 		sh:path SpecIF:dependsOn-hasSource ;
-		sh:class IREB:Requirement ;
+		sh:or (
+			[ sh:class IREB:Requirement ]
+		) ;
 		sh:minCount 1 ;
 		sh:maxCount 1
 	] ;
 	sh:property [ 
 		sh:path SpecIF:dependsOn-hasTarget ;
-		sh:class IREB:Requirement ;
+		sh:or (
+			[ sh:class IREB:Requirement ]
+		) ;
 		sh:minCount 1 ;
 		sh:maxCount 1
 	] .
@@ -915,33 +1054,42 @@ oslc_rm:satisfies
 	rdfs:label "satisfies"@en ;
 	rdfs:label "erfüllt"@de ;
 	rdfs:label "satisfait"@fr ;
-	rdfs:comment "<p>The object is satisfied by the subject. <small>(<i>source: <a href=\"http://open-services.net/\">OSLC</a></i>)</small></p><p>SpecIF suggests that the subject is confined to a model element, e.g, a [[FMC:Actor]] or [[FMC:State]], and the object is confined to a [[IREB:Requirement]]. More concretely, an example for this type of statement is 'Component-X <em>satisfies</em> 'Requirement-4711'.</p>"@en ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:comment "<p>The object is satisfied by the subject. <small>(<i>source: <a href=\"http://open-services.net/\">OSLC</a></i>)</small></p><p>SpecIF suggests that the subject is confined to a model element, e.g, a [[FMC:Actor]] or [[FMC:State]], and the object is confined to a [[IREB:Requirement]]. More concretely, an example for this type of statement is 'Component-X <em>satisfies</em> 'Requirement-4711'.</p>"@en .
 
 oslc_rm:satisfies-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
-	rdfs:label "Connects the source of oslc_rm:satisfies" ;
+	rdfs:comment "Connects the source of oslc_rm:satisfies" ;
 	rdfs:domain oslc_rm:satisfies ;
-	rdfs:range [ owl:unionOf( FMC:Actor FMC:State FMC:Event )] .
+	rdfs:range [ owl:unionOf(
+			FMC:Actor
+			FMC:State
+			FMC:Event
+		)] .
 
 oslc_rm:satisfies-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
-	rdfs:label "Connects the target of oslc_rm:satisfies" ;
+	rdfs:comment "Connects the target of oslc_rm:satisfies" ;
 	rdfs:domain oslc_rm:satisfies ;
 	rdfs:range IREB:Requirement .
 
-oslc_rm:satisfies-Shape
+pigShapes_oslc_rm:satisfies
 	rdf:type sh:NodeShape ;
 	sh:targetClass oslc_rm:satisfies ;
 	sh:property [ 
 		sh:path oslc_rm:satisfies-hasSource ;
-		sh:class [ owl:unionOf( FMC:Actor FMC:State FMC:Event )] ;
+		sh:or (
+			[ sh:class FMC:Actor ]
+			[ sh:class FMC:State ]
+			[ sh:class FMC:Event ]
+		) ;
 		sh:minCount 1 ;
 		sh:maxCount 1
 	] ;
 	sh:property [ 
 		sh:path oslc_rm:satisfies-hasTarget ;
-		sh:class IREB:Requirement ;
+		sh:or (
+			[ sh:class IREB:Requirement ]
+		) ;
 		sh:minCount 1 ;
 		sh:maxCount 1
 	] .
@@ -951,33 +1099,46 @@ SpecIF:refersTo
 	rdfs:label "refers to"@en ;
 	rdfs:label "bezieht sich auf"@de ;
 	rdfs:label "concerne"@fr ;
-	rdfs:comment "<p>A resource 'refers to' any other resource.</p>"@en ;
-	dcterms:modified "2016-05-26T08:59:00+02:00" .
+	rdfs:comment "<p>A resource 'refers to' any other resource.</p>"@en .
 
 SpecIF:refersTo-hasSource
 	rdfs:subPropertyOf pig:eligibleSource ;
-	rdfs:label "Connects the source of SpecIF:refersTo" ;
+	rdfs:comment "Connects the source of SpecIF:refersTo" ;
 	rdfs:domain SpecIF:refersTo ;
 	rdfs:range SpecIF:Issue .
 
 SpecIF:refersTo-hasTarget
 	rdfs:subPropertyOf pig:eligibleTarget ;
-	rdfs:label "Connects the target of SpecIF:refersTo" ;
+	rdfs:comment "Connects the target of SpecIF:refersTo" ;
 	rdfs:domain SpecIF:refersTo ;
-	rdfs:range [ owl:unionOf( pig:View FMC:Actor FMC:State FMC:Event IREB:Requirement )] .
+	rdfs:range [ owl:unionOf(
+			pig:View
+			FMC:Actor
+			FMC:State
+			FMC:Event
+			IREB:Requirement
+		)] .
 
-SpecIF:refersTo-Shape
+pigShapes_SpecIF:refersTo
 	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:refersTo ;
 	sh:property [ 
 		sh:path SpecIF:refersTo-hasSource ;
-		sh:class SpecIF:Issue ;
+		sh:or (
+			[ sh:class SpecIF:Issue ]
+		) ;
 		sh:minCount 1 ;
 		sh:maxCount 1
 	] ;
 	sh:property [ 
 		sh:path SpecIF:refersTo-hasTarget ;
-		sh:class [ owl:unionOf( pig:View FMC:Actor FMC:State FMC:Event IREB:Requirement )] ;
+		sh:or (
+			[ sh:class pig:View ]
+			[ sh:class FMC:Actor ]
+			[ sh:class FMC:State ]
+			[ sh:class FMC:Event ]
+			[ sh:class IREB:Requirement ]
+		) ;
 		sh:minCount 1 ;
 		sh:maxCount 1
 	] .
@@ -994,6 +1155,7 @@ d:Pln-27420ffc0000c3a8013ab527ca1b71f5
 	SpecIF:LifecycleStatus SpecIF:LifecycleStatusApproved ;
 	ReqIF-WF:SupplierStatus SpecIF:NotApplicable ;
 	ReqIF-WF:CustomerStatus ReqIF-WF:CustomerStatus.NotToEvaluate ;
+	pig:revision "18" ;
 	dcterms:modified "2017-06-19T20:13:03+02:00" ;
 	dcterms:creator "od" .
 
@@ -1006,8 +1168,25 @@ d:Pln-5a4755dd0000bca801375293a62c90a8
 	SpecIF:LifecycleStatus SpecIF:LifecycleStatusInitial ;
 	ReqIF-WF:SupplierStatus ReqIF-WF:CustomerStatus.ToBeClarified ;
 	ReqIF-WF:CustomerStatus ReqIF-WF:CustomerStatus.ToEvaluate ;
+	pig:revision "19" ;
 	dcterms:modified "2017-06-19T20:13:03+02:00" ;
-	dcterms:creator "od" .
+	dcterms:creator "od" ;
+	pig:shows (
+			d:MEl-5bd6bd890000bca8013739588a3f43d6
+			d:MEl-5a4dd77b0000bca8013736c6912ad291
+			d:MEl-5a489c300000bca80137ee1373c16844
+			d:MEl-5a4c80c20000bca8013753b6999a4da8
+			d:MEl-5bcf35cf0000bca8013776d68023612a
+			d:MEl-5a52b50c0000bca801377e3d15255f98
+			d:MEl-5a51dd920000bca8013770a4395c83fc
+			d:MEl-5a50d5b60000bca8013781532547ce93
+			d:MEl-5bcfb01d0000bca80137f303272a5557
+			d:MEl-803fd3750000c3a8013cf1fdb3b26d33
+			d:MEl-5a4cfa830000bca801370d837f761f3e
+			d:MEl-5a4d2bd00000bca80137a3f233cdffeb
+			d:MEl-5a4d6dee0000bca80137c1caf2f42349
+			d:MEl-5a47935a0000bca801377c17f8cb25b0
+		) .
 
 d:Pln-5a6cdea50000bca80137d6b2d6e8a3a0
 	rdf:type pig:View ;
@@ -1018,8 +1197,26 @@ d:Pln-5a6cdea50000bca80137d6b2d6e8a3a0
 	SpecIF:LifecycleStatus SpecIF:LifecycleStatusInitial ;
 	ReqIF-WF:SupplierStatus ReqIF-WF:SupplierStatus.NotAgreed ;
 	ReqIF-WF:CustomerStatus ReqIF-WF:CustomerStatus.NotAccepted ;
+	pig:revision "19" ;
 	dcterms:modified "2017-06-19T20:13:03+02:00" ;
-	dcterms:creator "od" .
+	dcterms:creator "od" ;
+	pig:shows (
+			d:MEl-5a7776c50000bca8013765ae93af9209
+			d:MEl-5a76365c0000bca8013776e91afd1e8e
+			d:MEl-5a9ce0310000bca801378176dc4744e8
+			d:MEl-5a752ccc0000bca80137479a2e8bab30
+			d:MEl-5a71c4800000bca80137f2aaa7b63000
+			d:MEl-5a4dd77b0000bca8013736c6912ad291
+			d:MEl-5a489c300000bca80137ee1373c16844
+			d:MEl-5a99c89c0000bca801375d44cf9a50ca
+			d:MEl-5a9929510000bca80137d23c81f1ca54
+			d:MEl-5c29fb8e0000bca80137eb9734c99bfd
+			d:MEl-5a77385f0000bca80137e1c7dc0b1721
+			d:MEl-5a9888810000bca801375410ce1cc142
+			d:MEl-5a4d6dee0000bca80137c1caf2f42349
+			d:MEl-5a9b7a9b0000bca80137d768644696b7
+			d:MEl-463289cd0000c3a80141be3fc417034a
+		) .
 
 d:Pln-5a7f99af0000bca8013754f2ef12d3e5
 	rdf:type pig:View ;
@@ -1029,8 +1226,26 @@ d:Pln-5a7f99af0000bca8013754f2ef12d3e5
 	SpecIF:LifecycleStatus SpecIF:LifecycleStatusInitial ;
 	ReqIF-WF:SupplierStatus ReqIF-WF:SupplierStatus.AgreedWithComment ;
 	ReqIF-WF:CustomerStatus ReqIF-WF:CustomerStatus.ToEvaluate ;
+	pig:revision "20" ;
 	dcterms:modified "2017-06-19T20:13:04+02:00" ;
-	dcterms:creator "od" .
+	dcterms:creator "od" ;
+	pig:shows (
+			d:MEl-5a9ce0310000bca801378176dc4744e8
+			d:MEl-5a85347c0000bca80137ad485c7cd330
+			d:MEl-5a808e2a0000bca80137bfd74268a84a
+			d:MEl-5a752ccc0000bca80137479a2e8bab30
+			d:MEl-5a844d820000bca8013750b9a0410b6b
+			d:MEl-5a99c89c0000bca801375d44cf9a50ca
+			d:MEl-5a8009a00000bca80137ef95bc3f643f
+			d:MEl-5a87083e0000bca801379bb412523737
+			d:MEl-5a9929510000bca80137d23c81f1ca54
+			d:MEl-5c29fb8e0000bca80137eb9734c99bfd
+			d:MEl-5a82ec6f0000bca801372ef053a71bdf
+			d:MEl-5a86b8980000bca80137ca6fde1a125e
+			d:MEl-5a77385f0000bca80137e1c7dc0b1721
+			d:MEl-5a9888810000bca801375410ce1cc142
+			d:MEl-5a820a3c0000bca801378c9093fb7d80
+		) .
 
 d:Pln-606e76c70000bca801376ec3133a1181
 	rdf:type pig:View ;
@@ -1041,8 +1256,23 @@ d:Pln-606e76c70000bca801376ec3133a1181
 	SpecIF:LifecycleStatus SpecIF:LifecycleStatusDrafted ;
 	ReqIF-WF:SupplierStatus ReqIF-WF:SupplierStatus.Agreed ;
 	ReqIF-WF:CustomerStatus ReqIF-WF:CustomerStatus.Accepted ;
+	pig:revision "20" ;
 	dcterms:modified "2017-06-19T20:13:04+02:00" ;
-	dcterms:creator "od" .
+	dcterms:creator "od" ;
+	pig:shows (
+			d:MEl-608177820000bca801379179ebf3b6aa
+			d:MEl-611366530000bca80137a97f194e96a3
+			d:MEl-453862540000c3a801419d91bef48cfd
+			d:MEl-45387c0b0000c3a801410aa03f6b9be4
+			d:MEl-4538920b0000c3a801415c67e334b8a1
+			d:MEl-608239830000bca801373690c7d2af0f
+			d:MEl-610b07100000bca80137c10f96c46247
+			d:MEl-610e0b010000bca80137ac40800bb1b8
+			d:MEl-459b92580000c3a80141cb4acb521ab1
+			d:MEl-45384cd10000c3a80141c1f85d7c26e6
+			d:MEl-607f13b50000bca80137ba95f11856ab
+			d:MEl-5a47935a0000bca801377c17f8cb25b0
+		) .
 
 d:Pln-45a1c8930000c3a801414cd1eaa70b5a
 	rdf:type pig:View ;
@@ -1053,8 +1283,19 @@ d:Pln-45a1c8930000c3a801414cd1eaa70b5a
 	SpecIF:LifecycleStatus SpecIF:LifecycleStatusDrafted ;
 	ReqIF-WF:SupplierStatus ReqIF-WF:SupplierStatus.Agreed ;
 	ReqIF-WF:CustomerStatus ReqIF-WF:CustomerStatus.Accepted ;
+	pig:revision "253" ;
 	dcterms:modified "2018-03-15T15:36:31+01:00" ;
-	dcterms:creator "od" .
+	dcterms:creator "od" ;
+	pig:shows (
+			d:MEl-606f16ac0000bca801373587fda932b3
+			d:MEl-45450be80000c3a801414f280f146c71
+			d:MEl-4536b0350000c3a801415986f8ea806a
+			d:MEl-453facbb0000c3a80141c43d2fb4f5e2
+			d:MEl-4543fe900000c3a80141f5253ff13c35
+			d:MEl-453d34af0000c3a80141918f84641161
+			d:MEl-45a236e00000c3a801410f6503287e16
+			d:MEl-45a3b13c0000c3a801415e97f5bc29d1
+		) .
 
 d:Pln-5af364560000bca80137b84017f4e832
 	rdf:type pig:View ;
@@ -1065,8 +1306,30 @@ d:Pln-5af364560000bca80137b84017f4e832
 	SpecIF:LifecycleStatus SpecIF:LifecycleStatusDrafted ;
 	ReqIF-WF:SupplierStatus ReqIF-WF:SupplierStatus.Agreed ;
 	ReqIF-WF:CustomerStatus ReqIF-WF:CustomerStatus.Accepted ;
+	pig:revision "22" ;
 	dcterms:modified "2017-06-19T20:13:06+02:00" ;
-	dcterms:creator "od" .
+	dcterms:creator "od" ;
+	pig:shows (
+			d:MEl-5b2f95ec0000bca8013709bfa81d701f
+			d:MEl-5a85347c0000bca80137ad485c7cd330
+			d:MEl-45450be80000c3a801414f280f146c71
+			d:MEl-4536b0350000c3a801415986f8ea806a
+			d:MEl-5b149eab0000bca80137aad99b6eea7b
+			d:MEl-5b08ed8d0000bca8013719f554353b0e
+			d:MEl-453dfb670000c3a8014191107df4565e
+			d:MEl-5b094f8a0000bca801374c798a6587ad
+			d:MEl-45428b930000c3a80141e28b7d4b5ae5
+			d:MEl-5b078fa50000bca80137f36ed05c43cb
+			d:MEl-453facbb0000c3a80141c43d2fb4f5e2
+			d:MEl-5b2d29070000bca801378a6c020cf8f5
+			d:MEl-5b1750f80000bca801373b2d143d7478
+			d:MEl-5b2ddad80000bca80137c44d62ba97d8
+			d:MEl-5b2449180000bca8013722c01c9d35a5
+			d:MEl-5b0839b90000bca801376dcca41ca7d0
+			d:MEl-5b07e6aa0000bca8013797aad9be69ae
+			d:MEl-4543fe900000c3a80141f5253ff13c35
+			d:MEl-453d34af0000c3a80141918f84641161
+		) .
 
 d:Req-d1c895230000c3a80150f8afd049f738
 	rdf:type IREB:Requirement ;
@@ -1076,9 +1339,12 @@ d:Req-d1c895230000c3a80150f8afd049f738
 	SpecIF:LifecycleStatus SpecIF:LifecycleStatusApproved ;
 	SpecIF:Priority SpecIF:priorityMedium ;
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupUser ;
-	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineMechanics ;
+	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineMechanics ,
+		SpecIF:EngineeringDisciplineElectronics ,
+		SpecIF:EngineeringDisciplineSoftware ;
 	ReqIF-WF:SupplierStatus ReqIF-WF:SupplierStatus.Agreed ;
 	ReqIF-WF:SupplierComment "Our solution does this perfectly." ;
+	pig:revision "23" ;
 	dcterms:modified "2017-06-19T20:13:06+02:00" ;
 	dcterms:creator "od" .
 
@@ -1090,7 +1356,9 @@ d:Req-d1d42a6a0000c3a8015091ec8d149b93
 	SpecIF:LifecycleStatus SpecIF:LifecycleStatusApproved ;
 	SpecIF:Priority SpecIF:priorityMedium ;
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupUser ;
-	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineElectronics ;
+	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineElectronics ,
+		SpecIF:EngineeringDisciplineSoftware ;
+	pig:revision "243" ;
 	dcterms:modified "2018-02-13T12:22:44+01:00" ;
 	dcterms:creator "od" .
 
@@ -1103,6 +1371,7 @@ d:Req-d1cd7f370000c3a8015095e6ee21aab7
 	SpecIF:Priority SpecIF:priorityMedium ;
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupUser ;
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineSoftware ;
+	pig:revision "24" ;
 	dcterms:modified "2017-06-19T20:13:07+02:00" ;
 	dcterms:creator "od" .
 
@@ -1117,6 +1386,7 @@ d:Req-5ba3512b0000bca801371cc0617eb4c1
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineMechanics ;
 	ReqIF-WF:SupplierStatus ReqIF-WF:CustomerStatus.ToBeClarified ;
 	ReqIF-WF:SupplierComment "We did not find the actual minimum dimensions of the buttons." ;
+	pig:revision "25" ;
 	dcterms:modified "2017-06-19T20:13:08+02:00" ;
 	dcterms:creator "od" .
 
@@ -1131,6 +1401,7 @@ d:Req-5b8fbb300000bca80137c73e3ce4c737
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineElectronics ;
 	ReqIF-WF:SupplierStatus ReqIF-WF:CustomerStatus.ToBeClarified ;
 	ReqIF-WF:SupplierComment "For which time period?  Permanent load?" ;
+	pig:revision "25" ;
 	dcterms:modified "2017-06-19T20:13:08+02:00" ;
 	dcterms:creator "od" .
 
@@ -1142,8 +1413,10 @@ d:Req-5b944fc70000bca8013763f44fdc0e03
 	SpecIF:LifecycleStatus SpecIF:LifecycleStatusApproved ;
 	SpecIF:Priority SpecIF:priorityMedium ;
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupUser ;
-	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineMechanics ;
+	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineMechanics ,
+		SpecIF:EngineeringDisciplineSoftware ;
 	ReqIF-WF:SupplierStatus ReqIF-WF:SupplierStatus.Agreed ;
+	pig:revision "26" ;
 	dcterms:modified "2017-06-19T20:13:09+02:00" ;
 	dcterms:creator "od" .
 
@@ -1160,6 +1433,7 @@ d:Req-5ba140d60000bca801372b09f9888eca
 	ReqIF-WF:SupplierComment "Mais bien sûr." ;
 	ReqIF-WF:CustomerStatus ReqIF-WF:CustomerStatus.ToEvaluate ;
 	ReqIF-WF:CustomerComment "Das ist ganz wichtig für uns." ;
+	pig:revision "252" ;
 	dcterms:modified "2018-03-08T11:59:42+01:00" ;
 	dcterms:creator "supplier" .
 
@@ -1171,7 +1445,9 @@ d:Req-ee452cf20000c3a8014035290669304d
 	SpecIF:LifecycleStatus SpecIF:LifecycleStatusApproved ;
 	SpecIF:Priority SpecIF:priorityMedium ;
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupUser ;
-	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineMechanics ;
+	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineMechanics ,
+		SpecIF:EngineeringDisciplineSoftware ;
+	pig:revision "27" ;
 	dcterms:modified "2017-06-19T20:13:10+02:00" ;
 	dcterms:creator "od" .
 
@@ -1183,7 +1459,9 @@ d:Req-ee43fc4c0000c3a8014063d42c77767f
 	SpecIF:LifecycleStatus SpecIF:LifecycleStatusApproved ;
 	SpecIF:Priority SpecIF:priorityHigh ;
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupSystem ;
-	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineElectronics ;
+	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineElectronics ,
+		SpecIF:EngineeringDisciplineSoftware ;
+	pig:revision "28" ;
 	dcterms:modified "2017-06-19T20:13:11+02:00" ;
 	dcterms:creator "od" .
 
@@ -1196,6 +1474,7 @@ d:Req-5b9124bc0000bca80137fa2ce86f5eca
 	SpecIF:Priority SpecIF:priorityMedium ;
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupUser ;
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineElectronics ;
+	pig:revision "29" ;
 	dcterms:modified "2017-06-19T20:13:11+02:00" ;
 	dcterms:creator "od" .
 
@@ -1208,6 +1487,7 @@ d:Req-5b9e68530000bca801371362c49d2d08
 	SpecIF:Priority SpecIF:priorityMedium ;
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupSystem ;
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineElectronics ;
+	pig:revision "29" ;
 	dcterms:modified "2017-06-19T20:13:11+02:00" ;
 	dcterms:creator "od" .
 
@@ -1219,7 +1499,10 @@ d:Req-eea1cd500000c3a80140fe00109eb7f4
 	SpecIF:LifecycleStatus SpecIF:LifecycleStatusApproved ;
 	SpecIF:Priority SpecIF:priorityMedium ;
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupUser ;
-	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineMechanics ;
+	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineMechanics ,
+		SpecIF:EngineeringDisciplineElectronics ,
+		SpecIF:EngineeringDisciplineSafety ;
+	pig:revision "31" ;
 	dcterms:modified "2017-06-19T20:13:12+02:00" ;
 	dcterms:creator "od" .
 
@@ -1232,6 +1515,7 @@ d:Req-5b95fae40000bca801372becc933682d
 	SpecIF:Priority SpecIF:priorityHigh ;
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupSystem ;
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineMechanics ;
+	pig:revision "32" ;
 	dcterms:modified "2017-06-19T20:13:12+02:00" ;
 	dcterms:creator "od" .
 
@@ -1243,7 +1527,9 @@ d:Req-5b9ab8a50000bca801377ad0be3bbc89
 	SpecIF:LifecycleStatus SpecIF:LifecycleStatusSubmitted ;
 	SpecIF:Priority SpecIF:priorityHigh ;
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupUser ;
-	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineMechanics ;
+	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineMechanics ,
+		SpecIF:EngineeringDisciplineElectronics ;
+	pig:revision "244" ;
 	dcterms:modified "2018-02-16T10:29:48+01:00" ;
 	dcterms:creator "od" .
 
@@ -1258,6 +1544,7 @@ d:Req-728c69c80018b1a8014b974542c36edc
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineElectronics ;
 	ReqIF-WF:SupplierComment "This is standard for all our products: expensive, but effective." ;
 	ReqIF-WF:CustomerStatus ReqIF-WF:CustomerStatus.ToEvaluate ;
+	pig:revision "247" ;
 	dcterms:modified "2018-02-28T13:16:17+01:00" ;
 	dcterms:creator "supplier" .
 
@@ -1270,6 +1557,7 @@ d:Req-5b9c950e0000bca801374f16615247b9
 	SpecIF:Priority SpecIF:priorityMedium ;
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupSystem ;
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineSoftware ;
+	pig:revision "233" ;
 	dcterms:modified "2017-10-27T11:44:20+02:00" ;
 	dcterms:creator "od" .
 
@@ -1277,6 +1565,7 @@ d:MEl-5bd6bd890000bca8013739588a3f43d6
 	rdf:type FMC:Actor ;
 	rdfs:label "Bulb" ;
 	rdfs:comment "<div><p> Dimmable candescent light-bulb 230V.</p></div>" ;
+	pig:revision "239" ;
 	dcterms:modified "2017-11-11T16:16:13+01:00" ;
 	dcterms:creator "od" .
 
@@ -1284,6 +1573,7 @@ d:MEl-5bcfb01d0000bca80137f303272a5557
 	rdf:type FMC:Actor ;
 	rdfs:label "Shading" ;
 	rdfs:comment "<div><p>Window-shade with 2 degrees of freedom: It can be moved up/down and the elements can be set straight/tilted. Both movements can be made proportionally with an electric drive.</p> </div>" ;
+	pig:revision "50" ;
 	dcterms:modified "2017-06-19T20:13:19+02:00" ;
 	dcterms:creator "od" .
 
@@ -1291,6 +1581,7 @@ d:MEl-803fd3750000c3a8013cf1fdb3b26d33
 	rdf:type FMC:State ;
 	rdfs:label "SmartHome System" ;
 	rdfs:comment "<div><p>The new system for controlling all major functions of the private home:</p> <ul> <li>light/illumination</li> <li>window shades</li> <li>heating</li> <li>consumption meters for electricity, heat, gas and water.</li></ul> </div>" ;
+	pig:revision "73" ;
 	dcterms:modified "2017-06-19T20:13:26+02:00" ;
 	dcterms:creator "od" .
 
@@ -1298,6 +1589,7 @@ d:MEl-5a489c300000bca80137ee1373c16844
 	rdf:type FMC:State ;
 	rdfs:label "Flush-mounted Dimmer" ;
 	rdfs:comment "<p>A dimmer for electric loads in an industry-standard mounting frame which is flush with the wall surface. In other words, the dimmer is sitting in the wall and just the buttons are visible.</p>" ;
+	pig:revision "63" ;
 	dcterms:modified "2017-06-19T20:13:23+02:00" ;
 	dcterms:creator "od" .
 
@@ -1305,6 +1597,7 @@ d:MEl-5a7776c50000bca8013765ae93af9209
 	rdf:type FMC:State ;
 	rdfs:label "Actuator Rods" ;
 	rdfs:comment "<div><p>Up to four actuator rods connecting the buttons to electrical contacts.</p> </div>" ;
+	pig:revision "59" ;
 	dcterms:modified "2017-06-19T20:13:22+02:00" ;
 	dcterms:creator "od" .
 
@@ -1312,12 +1605,14 @@ d:MEl-5a76365c0000bca8013776e91afd1e8e
 	rdf:type FMC:Actor ;
 	rdfs:label "Assembly Frame" ;
 	rdfs:comment "<div><p> Mounting frame screwed to or into a wall.</p></div>" ;
+	pig:revision "39" ;
 	dcterms:modified "2017-06-19T20:13:16+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-5a9ce0310000bca801378176dc4744e8
 	rdf:type FMC:State ;
 	rdfs:label "Control Signals" ;
+	pig:revision "60" ;
 	dcterms:modified "2017-06-19T20:13:22+02:00" ;
 	dcterms:creator "od" .
 
@@ -1325,6 +1620,7 @@ d:MEl-5a752ccc0000bca80137479a2e8bab30
 	rdf:type FMC:Actor ;
 	rdfs:label "Dimmer Module" ;
 	rdfs:comment "<div><p>The actuator module with dimmer function for resistive loads.</p> </div>" ;
+	pig:revision "45" ;
 	dcterms:modified "2017-06-19T20:13:17+02:00" ;
 	dcterms:creator "od" .
 
@@ -1332,90 +1628,105 @@ d:MEl-5a85347c0000bca80137ad485c7cd330
 	rdf:type FMC:Actor ;
 	rdfs:label "Dimmer Controller Software" ;
 	rdfs:comment "<div><p> Input commands (events):</p><ul> <li> up-long → increase brightness </li> <li> down-long → decrease brightness </li> <li> release → stop dimming, keep brightness </li> <li> up-short → switch to maximum </li> <li> down-short → switch to minimum </li> <li> inappropriate commands are ignored (e.g. up-long when maximum is set). </li> <li> set parameters </li></ul><p> Four parameters influence the behavior of the particular device:</p><ul> <li> minimum value (default: 0%) </li> <li> maximum value (default: 100%) </li> <li> ramp-up speed (default: 10% per sec) </li> <li> ramp-down speed (default: 10% per sec) </li></ul></div>" ;
+	pig:revision "242" ;
 	dcterms:modified "2017-12-09T10:38:29+01:00" ;
 	dcterms:creator "od" .
 
 d:MEl-5b2f95ec0000bca8013709bfa81d701f
 	rdf:type FMC:Event ;
 	rdfs:label "Decreasing" ;
+	pig:revision "81" ;
 	dcterms:modified "2017-06-19T20:13:28+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-45450be80000c3a801414f280f146c71
 	rdf:type FMC:Event ;
 	rdfs:label "down-long!" ;
+	pig:revision "84" ;
 	dcterms:modified "2017-06-19T20:13:29+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-4536b0350000c3a801415986f8ea806a
 	rdf:type FMC:Event ;
 	rdfs:label "down-short!" ;
+	pig:revision "85" ;
 	dcterms:modified "2017-06-19T20:13:30+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-5b149eab0000bca80137aad99b6eea7b
 	rdf:type FMC:Event ;
 	rdfs:label "Increasing" ;
+	pig:revision "85" ;
 	dcterms:modified "2017-06-19T20:13:30+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-5b08ed8d0000bca8013719f554353b0e
 	rdf:type FMC:Event ;
 	rdfs:label "Intermediate" ;
+	pig:revision "86" ;
 	dcterms:modified "2017-06-19T20:13:30+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-453dfb670000c3a8014191107df4565e
 	rdf:type FMC:Event ;
 	rdfs:label "max-reached!" ;
+	pig:revision "87" ;
 	dcterms:modified "2017-06-19T20:13:30+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-5b094f8a0000bca801374c798a6587ad
 	rdf:type FMC:Event ;
 	rdfs:label "Maximum" ;
+	pig:revision "87" ;
 	dcterms:modified "2017-06-19T20:13:30+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-45428b930000c3a80141e28b7d4b5ae5
 	rdf:type FMC:Event ;
 	rdfs:label "min-reached!" ;
+	pig:revision "88" ;
 	dcterms:modified "2017-06-19T20:13:30+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-5b078fa50000bca80137f36ed05c43cb
 	rdf:type FMC:Event ;
 	rdfs:label "Minimum" ;
+	pig:revision "89" ;
 	dcterms:modified "2017-06-19T20:13:31+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-453facbb0000c3a80141c43d2fb4f5e2
 	rdf:type FMC:Event ;
 	rdfs:label "released!" ;
+	pig:revision "89" ;
 	dcterms:modified "2017-06-19T20:13:31+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-5b2d29070000bca801378a6c020cf8f5
 	rdf:type FMC:Actor ;
 	rdfs:label "Start-decreasing" ;
+	pig:revision "51" ;
 	dcterms:modified "2017-06-19T20:13:19+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-5b1750f80000bca801373b2d143d7478
 	rdf:type FMC:Actor ;
 	rdfs:label "Start-increasing" ;
+	pig:revision "51" ;
 	dcterms:modified "2017-06-19T20:13:19+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-5b2ddad80000bca80137c44d62ba97d8
 	rdf:type FMC:Actor ;
 	rdfs:label "Stop-decreasing" ;
+	pig:revision "52" ;
 	dcterms:modified "2017-06-19T20:13:20+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-5b2449180000bca8013722c01c9d35a5
 	rdf:type FMC:Actor ;
 	rdfs:label "Stop-increasing" ;
+	pig:revision "52" ;
 	dcterms:modified "2017-06-19T20:13:20+02:00" ;
 	dcterms:creator "od" .
 
@@ -1423,6 +1734,7 @@ d:MEl-5b0839b90000bca801376dcca41ca7d0
 	rdf:type FMC:Actor ;
 	rdfs:label "Switch-off" ;
 	rdfs:comment "<div><p>Switch to programmed min-value.</p> </div>" ;
+	pig:revision "53" ;
 	dcterms:modified "2017-06-19T20:13:20+02:00" ;
 	dcterms:creator "od" .
 
@@ -1430,18 +1742,21 @@ d:MEl-5b07e6aa0000bca8013797aad9be69ae
 	rdf:type FMC:Actor ;
 	rdfs:label "Switch-on" ;
 	rdfs:comment "<div><p>Switch to programmed max-value.</p> </div>" ;
+	pig:revision "54" ;
 	dcterms:modified "2017-06-19T20:13:21+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-4543fe900000c3a80141f5253ff13c35
 	rdf:type FMC:Event ;
 	rdfs:label "up-long!" ;
+	pig:revision "91" ;
 	dcterms:modified "2017-06-19T20:13:32+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-453d34af0000c3a80141918f84641161
 	rdf:type FMC:Event ;
 	rdfs:label "up-short!" ;
+	pig:revision "92" ;
 	dcterms:modified "2017-06-19T20:13:33+02:00" ;
 	dcterms:creator "od" .
 
@@ -1450,6 +1765,7 @@ d:MEl-5a808e2a0000bca80137bfd74268a84a
 	rdfs:label "Dimmer Electronics" ;
 	rdfs:comment "<div><p>The Dimmer Electronics is a printed circuit board with low-power micro-processor, memory, binary as well as analog I/O signals and a power stage supporting the specified electric load.</p></div>" ;
 	SpecIF:Diagram "<div><p class=\"inline-label\">Diagramm:</p><p><object data=\"files_and_images/Schaltplan.gif\" name=\"Schaltplan.gif\" type=\"image/gif\"/></p> </div>" ;
+	pig:revision "44" ;
 	dcterms:modified "2017-06-19T20:13:17+02:00" ;
 	dcterms:creator "od" .
 
@@ -1457,6 +1773,7 @@ d:MEl-5a844d820000bca8013750b9a0410b6b
 	rdf:type FMC:State ;
 	rdfs:label "Electro-Magnetic Resistance" ;
 	rdfs:comment "<div><p>Electromagnetic characteristics, especially EM-shielding.</p> </div>" ;
+	pig:revision "62" ;
 	dcterms:modified "2017-06-19T20:13:23+02:00" ;
 	dcterms:creator "od" .
 
@@ -1464,6 +1781,7 @@ d:MEl-5a8009a00000bca80137ef95bc3f643f
 	rdf:type FMC:Actor ;
 	rdfs:label "Housing" ;
 	SpecIF:Diagram "<div> <p class=\"inline-label\">Diagramm:</p><p><object data=\"files_and_images/UP-Dose.png\" name=\"UP-Dose.png\" type=\"image/png\"/></p> </div>" ;
+	pig:revision "47" ;
 	dcterms:modified "2017-06-19T20:13:18+02:00" ;
 	dcterms:creator "od" .
 
@@ -1471,6 +1789,7 @@ d:MEl-5a87083e0000bca801379bb412523737
 	rdf:type FMC:State ;
 	rdfs:label "I/O Pins" ;
 	rdfs:comment "<div><p>per input and output signal:</p> <ul> <li>hardware-address</li> <li>number of significant bits</li></ul> </div>" ;
+	pig:revision "65" ;
 	dcterms:modified "2017-06-19T20:13:23+02:00" ;
 	dcterms:creator "od" .
 
@@ -1478,6 +1797,7 @@ d:MEl-5a82ec6f0000bca801372ef053a71bdf
 	rdf:type FMC:State ;
 	rdfs:label "Physical Space" ;
 	rdfs:comment "<div><p>Effective 3D interior space and mounting for electronics.</p> </div>" ;
+	pig:revision "70" ;
 	dcterms:modified "2017-06-19T20:13:25+02:00" ;
 	dcterms:creator "od" .
 
@@ -1485,6 +1805,7 @@ d:MEl-5a86b8980000bca80137ca6fde1a125e
 	rdf:type FMC:State ;
 	rdfs:label "Processor RAM ROM" ;
 	rdfs:comment "<div><p>EPROM-Size</p> <p>RAM-Size</p> <p>Processor type with instruction set and speed (MIPS)</p> </div>" ;
+	pig:revision "71" ;
 	dcterms:modified "2017-06-19T20:13:25+02:00" ;
 	dcterms:creator "od" .
 
@@ -1492,6 +1813,7 @@ d:MEl-5a820a3c0000bca801378c9093fb7d80
 	rdf:type FMC:State ;
 	rdfs:label "Thermal Resistance" ;
 	rdfs:comment "<div><p> Thermal resistance and thermal capacity of the [[housing]].</p></div>" ;
+	pig:revision "77" ;
 	dcterms:modified "2017-06-19T20:13:27+02:00" ;
 	dcterms:creator "od" .
 
@@ -1499,6 +1821,7 @@ d:MEl-5a71c4800000bca80137f2aaa7b63000
 	rdf:type FMC:Actor ;
 	rdfs:label "Double Button" ;
 	rdfs:comment "<div><p>The Double Button (a sensor unit) is a versatile all-mechanical unit used for multiple purposes. The mechanical position is transferred with a rod per button to the next unit where it is converted to an electrical signal.</p> </div>" ;
+	pig:revision "46" ;
 	dcterms:modified "2017-06-19T20:13:17+02:00" ;
 	dcterms:creator "od" .
 
@@ -1506,6 +1829,7 @@ d:MEl-606f16ac0000bca801373587fda932b3
 	rdf:type FMC:Actor ;
 	rdfs:label "Double-Button Observer Software" ;
 	rdfs:comment "<div><p>This is an observer of the double-button sensor. It distinguishes short and long pressing in the 'up' and 'down' directions. A discriminator may send five events:</p> <ul> <li>up-short</li> <li>down-short</li> <li>up-long</li> <li>down-long and </li> <li>release.</li> </ul><p>The events are interpreted and actions are initiated accordingly by the target actuator unit. The double button sensor and the observer have no notion of the underlying function.</p> </div>" ;
+	pig:revision "47" ;
 	dcterms:modified "2017-06-19T20:13:18+02:00" ;
 	dcterms:creator "od" .
 
@@ -1513,12 +1837,14 @@ d:MEl-45a236e00000c3a801410f6503287e16
 	rdf:type FMC:Actor ;
 	rdfs:label "Wait for Activation" ;
 	rdfs:comment "<div><p>The kind of activation is determined:</p> <ul> <li>Up- or Down-Button</li> <li>Short or long activation: 'Short' is &lt; 0,4 sec.</li> <li>Do only wait until the distinction between 'short' or 'long' can be made!</li></ul> </div>" ;
+	pig:revision "56" ;
 	dcterms:modified "2017-06-19T20:13:21+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-45a3b13c0000c3a801415e97f5bc29d1
 	rdf:type FMC:Actor ;
 	rdfs:label "Wait for Deactivation" ;
+	pig:revision "57" ;
 	dcterms:modified "2017-06-19T20:13:21+02:00" ;
 	dcterms:creator "od" .
 
@@ -1526,6 +1852,7 @@ d:MEl-5a4dd77b0000bca8013736c6912ad291
 	rdf:type FMC:State ;
 	rdfs:label "down" ;
 	rdfs:comment "<div><p>The button to drive down the dimmer, shading or similar devices.</p> </div>" ;
+	pig:revision "61" ;
 	dcterms:modified "2017-06-19T20:13:22+02:00" ;
 	dcterms:creator "od" .
 
@@ -1533,6 +1860,7 @@ d:MEl-5a99c89c0000bca801375d44cf9a50ca
 	rdf:type FMC:State ;
 	rdfs:label "Ground Cable" ;
 	rdfs:comment "<div><ul> <li>Cable-diameter</li> <li>Wire-diameter</li> <li>Max-current</li></ul> </div>" ;
+	pig:revision "64" ;
 	dcterms:modified "2017-06-19T20:13:23+02:00" ;
 	dcterms:creator "od" .
 
@@ -1540,6 +1868,7 @@ d:MEl-5a9929510000bca80137d23c81f1ca54
 	rdf:type FMC:State ;
 	rdfs:label "Load Cable" ;
 	rdfs:comment "<div><ul> <li>Cable-diameter</li> <li>Wire-diameter</li> <li>Max-current</li></ul> </div>" ;
+	pig:revision "67" ;
 	dcterms:modified "2017-06-19T20:13:24+02:00" ;
 	dcterms:creator "od" .
 
@@ -1547,6 +1876,7 @@ d:MEl-5c29fb8e0000bca80137eb9734c99bfd
 	rdf:type FMC:State ;
 	rdfs:label "Neutral Cable" ;
 	rdfs:comment "<div><ul> <li>Cable-diameter</li> <li>Wire-diameter</li> <li>Max-current</li></ul> </div>" ;
+	pig:revision "69" ;
 	dcterms:modified "2017-06-19T20:13:24+02:00" ;
 	dcterms:creator "od" .
 
@@ -1554,6 +1884,7 @@ d:MEl-5a77385f0000bca80137e1c7dc0b1721
 	rdf:type FMC:State ;
 	rdfs:label "Spring Clips" ;
 	rdfs:comment "<div><p>Spring clips for mechanical connection.</p> </div>" ;
+	pig:revision "74" ;
 	dcterms:modified "2017-06-19T20:13:26+02:00" ;
 	dcterms:creator "od" .
 
@@ -1561,6 +1892,7 @@ d:MEl-5a9888810000bca801375410ce1cc142
 	rdf:type FMC:State ;
 	rdfs:label "Supply Cable" ;
 	rdfs:comment "<div><ul> <li>Cable-diameter</li> <li>Wire-diameter</li> <li>Max-current</li></ul> </div>" ;
+	pig:revision "76" ;
 	dcterms:modified "2017-06-19T20:13:27+02:00" ;
 	dcterms:creator "od" .
 
@@ -1568,6 +1900,7 @@ d:MEl-5a4d6dee0000bca80137c1caf2f42349
 	rdf:type FMC:State ;
 	rdfs:label "up" ;
 	rdfs:comment "<div><p>The button to drive up the dimmer, shading or similar devices.</p> </div>" ;
+	pig:revision "79" ;
 	dcterms:modified "2017-06-19T20:13:28+02:00" ;
 	dcterms:creator "od" .
 
@@ -1575,18 +1908,21 @@ d:MEl-5a9b7a9b0000bca80137d768644696b7
 	rdf:type FMC:Actor ;
 	rdfs:label "Wireless Module" ;
 	rdfs:comment "<div><p>Receives control commands via radio signal or the mechanical position of a mounted sensor unit. Sends electrical control signals to the mounted actuator module.</p> </div>" ;
+	pig:revision "58" ;
 	dcterms:modified "2017-06-19T20:13:22+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-463289cd0000c3a80141be3fc417034a
 	rdf:type FMC:State ;
 	rdfs:label "Wireless Network" ;
+	pig:revision "80" ;
 	dcterms:modified "2017-06-19T20:13:28+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-5a4c80c20000bca8013753b6999a4da8
 	rdf:type FMC:State ;
 	rdfs:label "Flush-mounted Shading Control" ;
+	pig:revision "63" ;
 	dcterms:modified "2017-06-19T20:13:23+02:00" ;
 	dcterms:creator "od" .
 
@@ -1594,6 +1930,7 @@ d:MEl-5a4cfa830000bca801370d837f761f3e
 	rdf:type FMC:State ;
 	rdfs:label "straighten" ;
 	rdfs:comment "<div><p>The button to straighten the shading elements.</p> </div>" ;
+	pig:revision "75" ;
 	dcterms:modified "2017-06-19T20:13:27+02:00" ;
 	dcterms:creator "od" .
 
@@ -1601,6 +1938,7 @@ d:MEl-5a4d2bd00000bca80137a3f233cdffeb
 	rdf:type FMC:State ;
 	rdfs:label "tilt" ;
 	rdfs:comment "<div><p>The button to tilt the shading elements.</p> </div>" ;
+	pig:revision "78" ;
 	dcterms:modified "2017-06-19T20:13:28+02:00" ;
 	dcterms:creator "od" .
 
@@ -1608,6 +1946,7 @@ d:MEl-5a52b50c0000bca801377e3d15255f98
 	rdf:type FMC:State ;
 	rdfs:label "Intelligent Shading Drive" ;
 	rdfs:comment "<div><p>An intelligent shading actuator with 2 drives for up/down straight/tilt motion. The unit comprises the control unit and the motors.</p> </div>" ;
+	pig:revision "66" ;
 	dcterms:modified "2017-06-19T20:13:24+02:00" ;
 	dcterms:creator "od" .
 
@@ -1615,12 +1954,14 @@ d:MEl-5bcf35cf0000bca8013776d68023612a
 	rdf:type FMC:State ;
 	rdfs:label "M" ;
 	rdfs:comment "<div><p>Actuator Motor 230V.</p> </div>" ;
+	pig:revision "68" ;
 	dcterms:modified "2017-06-19T20:13:24+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-5a51dd920000bca8013770a4395c83fc
 	rdf:type FMC:State ;
 	rdfs:label "Remote Control" ;
+	pig:revision "72" ;
 	dcterms:modified "2017-06-19T20:13:26+02:00" ;
 	dcterms:creator "od" .
 
@@ -1628,12 +1969,14 @@ d:MEl-5a50d5b60000bca8013781532547ce93
 	rdf:type FMC:Actor ;
 	rdfs:label "SmartHome Controller" ;
 	rdfs:comment "<div><p>The controller </p> <ul> <li>interconnects locally distributed sensors and actuators, </li> <li>coordinates different actuators where appropriate and </li> <li>performes automatic functions, such as switching external lamps dependend on ambient light.</li></ul> </div>" ;
+	pig:revision "51" ;
 	dcterms:modified "2017-06-19T20:13:19+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-5a47935a0000bca801377c17f8cb25b0
 	rdf:type FMC:Actor ;
 	rdfs:label "User" ;
+	pig:revision "55" ;
 	dcterms:modified "2017-06-19T20:13:21+02:00" ;
 	dcterms:creator "od" .
 
@@ -1641,6 +1984,7 @@ d:MEl-608177820000bca801379179ebf3b6aa
 	rdf:type FMC:Actor ;
 	rdfs:label "Briefly press Down-button" ;
 	rdfs:comment "<div><p>Press down-button &lt;400 ms.</p> </div>" ;
+	pig:revision "40" ;
 	dcterms:modified "2017-06-19T20:13:16+02:00" ;
 	dcterms:creator "od" .
 
@@ -1648,24 +1992,28 @@ d:MEl-611366530000bca80137a97f194e96a3
 	rdf:type FMC:Actor ;
 	rdfs:label "Briefly press Up-button" ;
 	rdfs:comment "<div><p>Press up-button &lt;400 ms.</p> </div>" ;
+	pig:revision "41" ;
 	dcterms:modified "2017-06-19T20:13:16+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-453862540000c3a801419d91bef48cfd
 	rdf:type FMC:Event ;
 	rdfs:label "Dim-down!" ;
+	pig:revision "82" ;
 	dcterms:modified "2017-06-19T20:13:29+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-45387c0b0000c3a801410aa03f6b9be4
 	rdf:type FMC:Event ;
 	rdfs:label "Dim-up!" ;
+	pig:revision "83" ;
 	dcterms:modified "2017-06-19T20:13:29+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-4538920b0000c3a801415c67e334b8a1
 	rdf:type FMC:Event ;
 	rdfs:label "Done!" ;
+	pig:revision "83" ;
 	dcterms:modified "2017-06-19T20:13:29+02:00" ;
 	dcterms:creator "od" .
 
@@ -1673,6 +2021,7 @@ d:MEl-608239830000bca801373690c7d2af0f
 	rdf:type FMC:Actor ;
 	rdfs:label "Press and hold Down-button" ;
 	rdfs:comment "<div><p>Press down-button &gt;400 ms.</p> </div>" ;
+	pig:revision "48" ;
 	dcterms:modified "2017-06-19T20:13:18+02:00" ;
 	dcterms:creator "od" .
 
@@ -1680,30 +2029,35 @@ d:MEl-610b07100000bca80137c10f96c46247
 	rdf:type FMC:Actor ;
 	rdfs:label "Press and hold Up-button" ;
 	rdfs:comment "<div><p>Press up-button &gt;400 ms.</p> </div>" ;
+	pig:revision "49" ;
 	dcterms:modified "2017-06-19T20:13:18+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-610e0b010000bca80137ac40800bb1b8
 	rdf:type FMC:Actor ;
 	rdfs:label "Release button" ;
+	pig:revision "49" ;
 	dcterms:modified "2017-06-19T20:13:18+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-459b92580000c3a80141cb4acb521ab1
 	rdf:type FMC:Event ;
 	rdfs:label "Stop dimming!" ;
+	pig:revision "90" ;
 	dcterms:modified "2017-06-19T20:13:31+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-45384cd10000c3a80141c1f85d7c26e6
 	rdf:type FMC:Event ;
 	rdfs:label "Switch-off!" ;
+	pig:revision "91" ;
 	dcterms:modified "2017-06-19T20:13:32+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-607f13b50000bca80137ba95f11856ab
 	rdf:type FMC:Event ;
 	rdfs:label "Switch-on!" ;
+	pig:revision "91" ;
 	dcterms:modified "2017-06-19T20:13:32+02:00" ;
 	dcterms:creator "od" .
 
@@ -1712,9 +2066,10 @@ d:Iss-ee2abb630000c3a8013987a750219659
 	dcterms:identifier "OPM_001" ;
 	rdfs:label "An open issue with respect to mechanics" ;
 	rdfs:comment "<div><p>This is the description of the issue and potential solution.</p> </div>" ;
-	o:PC_IssueStatus oslc_cm:Inprogress ;
+	o:PC-IssueStatus oslc_cm:Inprogress ;
 	SpecIF:Priority SpecIF:priorityLow ;
 	SpecIF:DueDate "2012-09-30T12:00:00+02:00" ;
+	pig:revision "35" ;
 	dcterms:modified "2017-06-19T20:13:15+02:00" ;
 	dcterms:creator "od" .
 
@@ -1723,265 +2078,17 @@ d:Iss-eee2d4e00000c3a801394148dcc58a52
 	dcterms:identifier "OPS_001" ;
 	rdfs:label "An open issue concerning software" ;
 	rdfs:comment "<div><p>A description.</p> </div>" ;
-	o:PC_IssueStatus o:V_Iss_Status_6 ;
+	o:PC-IssueStatus o:V-Iss-Status-6 ;
 	SpecIF:Priority SpecIF:priorityMedium ;
 	SpecIF:Responsible "Vorname Nachname" ;
 	SpecIF:DueDate "2012-09-30T12:00:00+02:00" ;
+	pig:revision "37" ;
 	dcterms:modified "2017-06-19T20:13:15+02:00" ;
 	dcterms:creator "od" .
 
 #################################################################
 # Relationships
 #################################################################
-
-d:Pln-5a4755dd0000bca801375293a62c90a8
-	pig:shows d:MEl-5bd6bd890000bca8013739588a3f43d6 .
-
-d:Pln-5a4755dd0000bca801375293a62c90a8
-	pig:shows d:MEl-5a4dd77b0000bca8013736c6912ad291 .
-
-d:Pln-5a4755dd0000bca801375293a62c90a8
-	pig:shows d:MEl-5a489c300000bca80137ee1373c16844 .
-
-d:Pln-5a4755dd0000bca801375293a62c90a8
-	pig:shows d:MEl-5a4c80c20000bca8013753b6999a4da8 .
-
-d:Pln-5a4755dd0000bca801375293a62c90a8
-	pig:shows d:MEl-5bcf35cf0000bca8013776d68023612a .
-
-d:Pln-5a4755dd0000bca801375293a62c90a8
-	pig:shows d:MEl-5a52b50c0000bca801377e3d15255f98 .
-
-d:Pln-5a4755dd0000bca801375293a62c90a8
-	pig:shows d:MEl-5a51dd920000bca8013770a4395c83fc .
-
-d:Pln-5a4755dd0000bca801375293a62c90a8
-	pig:shows d:MEl-5a50d5b60000bca8013781532547ce93 .
-
-d:Pln-5a4755dd0000bca801375293a62c90a8
-	pig:shows d:MEl-5bcfb01d0000bca80137f303272a5557 .
-
-d:Pln-5a4755dd0000bca801375293a62c90a8
-	pig:shows d:MEl-803fd3750000c3a8013cf1fdb3b26d33 .
-
-d:Pln-5a4755dd0000bca801375293a62c90a8
-	pig:shows d:MEl-5a4cfa830000bca801370d837f761f3e .
-
-d:Pln-5a4755dd0000bca801375293a62c90a8
-	pig:shows d:MEl-5a4d2bd00000bca80137a3f233cdffeb .
-
-d:Pln-5a4755dd0000bca801375293a62c90a8
-	pig:shows d:MEl-5a4d6dee0000bca80137c1caf2f42349 .
-
-d:Pln-5a4755dd0000bca801375293a62c90a8
-	pig:shows d:MEl-5a47935a0000bca801377c17f8cb25b0 .
-
-d:Pln-5a6cdea50000bca80137d6b2d6e8a3a0
-	pig:shows d:MEl-5a7776c50000bca8013765ae93af9209 .
-
-d:Pln-5a6cdea50000bca80137d6b2d6e8a3a0
-	pig:shows d:MEl-5a76365c0000bca8013776e91afd1e8e .
-
-d:Pln-5a6cdea50000bca80137d6b2d6e8a3a0
-	pig:shows d:MEl-5a9ce0310000bca801378176dc4744e8 .
-
-d:Pln-5a6cdea50000bca80137d6b2d6e8a3a0
-	pig:shows d:MEl-5a752ccc0000bca80137479a2e8bab30 .
-
-d:Pln-5a6cdea50000bca80137d6b2d6e8a3a0
-	pig:shows d:MEl-5a71c4800000bca80137f2aaa7b63000 .
-
-d:Pln-5a6cdea50000bca80137d6b2d6e8a3a0
-	pig:shows d:MEl-5a4dd77b0000bca8013736c6912ad291 .
-
-d:Pln-5a6cdea50000bca80137d6b2d6e8a3a0
-	pig:shows d:MEl-5a489c300000bca80137ee1373c16844 .
-
-d:Pln-5a6cdea50000bca80137d6b2d6e8a3a0
-	pig:shows d:MEl-5a99c89c0000bca801375d44cf9a50ca .
-
-d:Pln-5a6cdea50000bca80137d6b2d6e8a3a0
-	pig:shows d:MEl-5a9929510000bca80137d23c81f1ca54 .
-
-d:Pln-5a6cdea50000bca80137d6b2d6e8a3a0
-	pig:shows d:MEl-5c29fb8e0000bca80137eb9734c99bfd .
-
-d:Pln-5a6cdea50000bca80137d6b2d6e8a3a0
-	pig:shows d:MEl-5a77385f0000bca80137e1c7dc0b1721 .
-
-d:Pln-5a6cdea50000bca80137d6b2d6e8a3a0
-	pig:shows d:MEl-5a9888810000bca801375410ce1cc142 .
-
-d:Pln-5a6cdea50000bca80137d6b2d6e8a3a0
-	pig:shows d:MEl-5a4d6dee0000bca80137c1caf2f42349 .
-
-d:Pln-5a6cdea50000bca80137d6b2d6e8a3a0
-	pig:shows d:MEl-5a9b7a9b0000bca80137d768644696b7 .
-
-d:Pln-5a6cdea50000bca80137d6b2d6e8a3a0
-	pig:shows d:MEl-463289cd0000c3a80141be3fc417034a .
-
-d:Pln-5a7f99af0000bca8013754f2ef12d3e5
-	pig:shows d:MEl-5a9ce0310000bca801378176dc4744e8 .
-
-d:Pln-5a7f99af0000bca8013754f2ef12d3e5
-	pig:shows d:MEl-5a85347c0000bca80137ad485c7cd330 .
-
-d:Pln-5a7f99af0000bca8013754f2ef12d3e5
-	pig:shows d:MEl-5a808e2a0000bca80137bfd74268a84a .
-
-d:Pln-5a7f99af0000bca8013754f2ef12d3e5
-	pig:shows d:MEl-5a752ccc0000bca80137479a2e8bab30 .
-
-d:Pln-5a7f99af0000bca8013754f2ef12d3e5
-	pig:shows d:MEl-5a844d820000bca8013750b9a0410b6b .
-
-d:Pln-5a7f99af0000bca8013754f2ef12d3e5
-	pig:shows d:MEl-5a99c89c0000bca801375d44cf9a50ca .
-
-d:Pln-5a7f99af0000bca8013754f2ef12d3e5
-	pig:shows d:MEl-5a8009a00000bca80137ef95bc3f643f .
-
-d:Pln-5a7f99af0000bca8013754f2ef12d3e5
-	pig:shows d:MEl-5a87083e0000bca801379bb412523737 .
-
-d:Pln-5a7f99af0000bca8013754f2ef12d3e5
-	pig:shows d:MEl-5a9929510000bca80137d23c81f1ca54 .
-
-d:Pln-5a7f99af0000bca8013754f2ef12d3e5
-	pig:shows d:MEl-5c29fb8e0000bca80137eb9734c99bfd .
-
-d:Pln-5a7f99af0000bca8013754f2ef12d3e5
-	pig:shows d:MEl-5a82ec6f0000bca801372ef053a71bdf .
-
-d:Pln-5a7f99af0000bca8013754f2ef12d3e5
-	pig:shows d:MEl-5a86b8980000bca80137ca6fde1a125e .
-
-d:Pln-5a7f99af0000bca8013754f2ef12d3e5
-	pig:shows d:MEl-5a77385f0000bca80137e1c7dc0b1721 .
-
-d:Pln-5a7f99af0000bca8013754f2ef12d3e5
-	pig:shows d:MEl-5a9888810000bca801375410ce1cc142 .
-
-d:Pln-5a7f99af0000bca8013754f2ef12d3e5
-	pig:shows d:MEl-5a820a3c0000bca801378c9093fb7d80 .
-
-d:Pln-606e76c70000bca801376ec3133a1181
-	pig:shows d:MEl-608177820000bca801379179ebf3b6aa .
-
-d:Pln-606e76c70000bca801376ec3133a1181
-	pig:shows d:MEl-611366530000bca80137a97f194e96a3 .
-
-d:Pln-606e76c70000bca801376ec3133a1181
-	pig:shows d:MEl-453862540000c3a801419d91bef48cfd .
-
-d:Pln-606e76c70000bca801376ec3133a1181
-	pig:shows d:MEl-45387c0b0000c3a801410aa03f6b9be4 .
-
-d:Pln-606e76c70000bca801376ec3133a1181
-	pig:shows d:MEl-4538920b0000c3a801415c67e334b8a1 .
-
-d:Pln-606e76c70000bca801376ec3133a1181
-	pig:shows d:MEl-608239830000bca801373690c7d2af0f .
-
-d:Pln-606e76c70000bca801376ec3133a1181
-	pig:shows d:MEl-610b07100000bca80137c10f96c46247 .
-
-d:Pln-606e76c70000bca801376ec3133a1181
-	pig:shows d:MEl-610e0b010000bca80137ac40800bb1b8 .
-
-d:Pln-606e76c70000bca801376ec3133a1181
-	pig:shows d:MEl-459b92580000c3a80141cb4acb521ab1 .
-
-d:Pln-606e76c70000bca801376ec3133a1181
-	pig:shows d:MEl-45384cd10000c3a80141c1f85d7c26e6 .
-
-d:Pln-606e76c70000bca801376ec3133a1181
-	pig:shows d:MEl-607f13b50000bca80137ba95f11856ab .
-
-d:Pln-606e76c70000bca801376ec3133a1181
-	pig:shows d:MEl-5a47935a0000bca801377c17f8cb25b0 .
-
-d:Pln-45a1c8930000c3a801414cd1eaa70b5a
-	pig:shows d:MEl-606f16ac0000bca801373587fda932b3 .
-
-d:Pln-45a1c8930000c3a801414cd1eaa70b5a
-	pig:shows d:MEl-45450be80000c3a801414f280f146c71 .
-
-d:Pln-45a1c8930000c3a801414cd1eaa70b5a
-	pig:shows d:MEl-4536b0350000c3a801415986f8ea806a .
-
-d:Pln-45a1c8930000c3a801414cd1eaa70b5a
-	pig:shows d:MEl-453facbb0000c3a80141c43d2fb4f5e2 .
-
-d:Pln-45a1c8930000c3a801414cd1eaa70b5a
-	pig:shows d:MEl-4543fe900000c3a80141f5253ff13c35 .
-
-d:Pln-45a1c8930000c3a801414cd1eaa70b5a
-	pig:shows d:MEl-453d34af0000c3a80141918f84641161 .
-
-d:Pln-45a1c8930000c3a801414cd1eaa70b5a
-	pig:shows d:MEl-45a236e00000c3a801410f6503287e16 .
-
-d:Pln-45a1c8930000c3a801414cd1eaa70b5a
-	pig:shows d:MEl-45a3b13c0000c3a801415e97f5bc29d1 .
-
-d:Pln-5af364560000bca80137b84017f4e832
-	pig:shows d:MEl-5b2f95ec0000bca8013709bfa81d701f .
-
-d:Pln-5af364560000bca80137b84017f4e832
-	pig:shows d:MEl-5a85347c0000bca80137ad485c7cd330 .
-
-d:Pln-5af364560000bca80137b84017f4e832
-	pig:shows d:MEl-45450be80000c3a801414f280f146c71 .
-
-d:Pln-5af364560000bca80137b84017f4e832
-	pig:shows d:MEl-4536b0350000c3a801415986f8ea806a .
-
-d:Pln-5af364560000bca80137b84017f4e832
-	pig:shows d:MEl-5b149eab0000bca80137aad99b6eea7b .
-
-d:Pln-5af364560000bca80137b84017f4e832
-	pig:shows d:MEl-5b08ed8d0000bca8013719f554353b0e .
-
-d:Pln-5af364560000bca80137b84017f4e832
-	pig:shows d:MEl-453dfb670000c3a8014191107df4565e .
-
-d:Pln-5af364560000bca80137b84017f4e832
-	pig:shows d:MEl-5b094f8a0000bca801374c798a6587ad .
-
-d:Pln-5af364560000bca80137b84017f4e832
-	pig:shows d:MEl-45428b930000c3a80141e28b7d4b5ae5 .
-
-d:Pln-5af364560000bca80137b84017f4e832
-	pig:shows d:MEl-5b078fa50000bca80137f36ed05c43cb .
-
-d:Pln-5af364560000bca80137b84017f4e832
-	pig:shows d:MEl-453facbb0000c3a80141c43d2fb4f5e2 .
-
-d:Pln-5af364560000bca80137b84017f4e832
-	pig:shows d:MEl-5b2d29070000bca801378a6c020cf8f5 .
-
-d:Pln-5af364560000bca80137b84017f4e832
-	pig:shows d:MEl-5b1750f80000bca801373b2d143d7478 .
-
-d:Pln-5af364560000bca80137b84017f4e832
-	pig:shows d:MEl-5b2ddad80000bca80137c44d62ba97d8 .
-
-d:Pln-5af364560000bca80137b84017f4e832
-	pig:shows d:MEl-5b2449180000bca8013722c01c9d35a5 .
-
-d:Pln-5af364560000bca80137b84017f4e832
-	pig:shows d:MEl-5b0839b90000bca801376dcca41ca7d0 .
-
-d:Pln-5af364560000bca80137b84017f4e832
-	pig:shows d:MEl-5b07e6aa0000bca8013797aad9be69ae .
-
-d:Pln-5af364560000bca80137b84017f4e832
-	pig:shows d:MEl-4543fe900000c3a80141f5253ff13c35 .
-
-d:Pln-5af364560000bca80137b84017f4e832
-	pig:shows d:MEl-453d34af0000c3a80141918f84641161 .
 
 d:RSat-MEl-5a85347c0000bca80137ad485c7cd330-Req-d1c895230000c3a80150f8afd049f738
 	rdf:type oslc_rm:satisfies ;
@@ -2964,196 +3071,244 @@ d:HierarchyRoot
 	rdf:type pig:HierarchyRoot ;
 	rdfs:label "Hierarchy Root" ;
 	rdfs:comment "... anchoring all hierarchies of this graph (package)" ;
-	pig:lists d:Fld-59c8a7730000bca80137509a49b1218b-info ,
-		d:Fld-5a5f54090000bca801375b04a668f1a7 ,
-		d:Fld-5af3154d0000bca801379748537d7388 ,
-		d:Fld-5b8e98550000bca801371afb0c7b671b ,
-		d:Fld-59c8a7730000bca80137509a49b1218b ,
-		d:Fld-ef47e6970000c3a80139dc747c5df319 ,
-		d:FolderGlossary-8001804519 .
+	pig:lists (
+			d:O-ACP-59c8a7730000bca80137509a49b1218b
+		) .
+
+d:O-ACP-59c8a7730000bca80137509a49b1218b
+	rdf:type pig:Outline ;
+	rdfs:label "Dimmer - Semantically Integrated Specification (2021-01-28)" ;
+	rdfs:comment "This specification method integrates and represents:\n- processes, system composition and requirements (dynamic, static and detail views)\n- mechanic, electric and software components with their interfaces.\n\nIt is important to understand, that all plans (diagrams) are views of a common system engineering model, sometimes called 'system repository'. Thus, consistency is always maintained.\n\nThe model elements are connected with relations, most of which are defined by positioning graph elements. For example, if a system component is drawn within another, a relationship 'contains' is created in the logic representation of the engineering model. Other relations, such as a system component 'satisfies' a requirement are created manually.  \n\nAlso, the documents are generated from the system engineering model. The ordering is in most projects (it can be rearranged, however, if appropriate):\n- All plans\n- A glossary with descriptions of all model elements appearing on one or more plans\n- A hierarchically ordered list of requirements\n- A list of open issues.\nPlease note that plans list related model elements and model elements list related requirements .. and vice versa. Active hyper-links are used, so that it is easy to jump between related model elements.\n\nFurther information is given in Appendix 'Method'." ;
+	pig:category SpecIF:Heading ;
+	dcterms:modified "2024-08-16T16:02:19.998Z" ;
+	pig:lists (
+			d:Fld-59c8a7730000bca80137509a49b1218b-info
+			d:Fld-5a5f54090000bca801375b04a668f1a7
+			d:Fld-5af3154d0000bca801379748537d7388
+			d:Fld-5b8e98550000bca801371afb0c7b671b
+			d:Fld-59c8a7730000bca80137509a49b1218b
+			d:Fld-ef47e6970000c3a80139dc747c5df319
+			d:FolderGlossary-8001804519
+		) .
 
 d:Fld-59c8a7730000bca80137509a49b1218b-info
-	rdf:type SpecIF:Heading ;
+	rdf:type pig:Outline ;
 	rdfs:label "Project Information" ;
 	rdfs:comment "<div> <p> <a href=\"https://enso-managers.de\" ><object data=\"files_and_images/enso-logo.png\" type=\"image/png\" >enso managers gmbh</object></a> </p> <p> This is a small show-case illustrating the basic concepts for integrated mechatronic system specification. In addition to the original text and diagrams you will find logical relations between the information elements. Most relations are derived automatically from the diagrams; the resulting semantic net lends itself for navigation, search and audit. </p> <p> The specification integrates and represents: </p><ul><li>processes, system composition and requirements (dynamic, static and detail views) </li><li>mechanic, electric and software components with their interfaces. </li></ul><p>It is an important characteristic, that all plans (diagrams) are views of a common system engineering model, sometimes called 'system repository'. Thus, consistency is always maintained. </p><p>The model elements are connected with relations, most of which are defined by positioning graph elements. For example, if a system component is drawn within another, a relationship 'contains' is created in the logic representation of the engineering model. Other relations, such as a system component 'satisfies' a requirement are created manually. </p><p>Also, the documents are generated from the system engineering model. The ordering is in most projects (it can be rearranged, however, if appropriate): </p><ul><li> All plans </li><li> A glossary with descriptions of all model elements appearing on one or more plans </li><li> A hierarchically ordered list of requirements </li> <li> A list of open issues. </li></ul><p> Please note that plans list related model elements and model elements list related requirements .. and vice versa. Active hyper-links are used, so that it is easy to jump between related model elements. </p><p><br/></p><p><strong>Stakeholders:</strong></p><table class=\"stdInlineWithBorder\"> <tbody> <tr> <th> Name </th><th>Organisation</th><th> Telephone </th> <th> Email </th> </tr> <tr> <td> Dr. Oskar v. Dungern </td> <td>enso managers GmbH</td> <td> </td> <td><a href=\"mailto:od@enso-managers.de\" >od@enso-managers.de</a></td> </tr> </tbody> </table> <p> <br /> </p> <p><strong>Legend:</strong> </p> <p> To distinguish their type, element names are preceded by one of the following symbols: </p> <table class=\"stdInlineWithBorder\"> <tbody> <tr> <td> ▣ </td><td> Plan </td> <td> A 'Diagram' is a graphical model view with a specific communication purpose, e.g. a business process or system composition. </td></tr><tr> <td> ■ </td><td> Actor (Role, Function) </td> <td> An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role. </td> </tr> <tr> <td> ● </td> <td> State (Information) </td> <td> A 'State' is a fundamental model element type representing a passive entity, be it a value, a condition, an information storage or even a physical shape. </td> </tr> <tr> <td> ♦ </td> <td> Event </td> <td> An 'Event' is a fundamental model element type representing a time reference, a change in condition/value or more generally a synchronisation primitive. </td> </tr> <tr> <td> ✶ </td> <td> Feature </td> <td> A 'Feature' is an intentional distinguishing characteristic of a system, often a unique selling proposition. </td> </tr> <tr> <td> ↯ </td> <td> Requirement </td> <td> A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform. </td> </tr> </tbody> </table> <p class=\"sceditor-nlf\"> <br /> </p></div>" ;
+	pig:revision "254" ;
 	dcterms:modified "2018-05-04T17:18:18+02:00" ;
 	dcterms:creator "od" .
 
 d:Fld-5a5f54090000bca801375b04a668f1a7
-	rdf:type SpecIF:Heading ;
+	rdf:type pig:Outline ;
 	rdfs:label "System Composition" ;
 	rdfs:comment "<div><p>.. showing the system and its composition of modules (at a higher level) and components (at a lower level). The relevant interfaces between the disciplines mechanical, electrical and software engineering are shown.</p> </div>" ;
+	pig:revision "13" ;
 	dcterms:modified "2017-06-19T20:13:02+02:00" ;
 	dcterms:creator "od" ;
-	pig:lists d:Pln-27420ffc0000c3a8013ab527ca1b71f5 ,
-		d:Pln-5a4755dd0000bca801375293a62c90a8 ,
-		d:Pln-5a6cdea50000bca80137d6b2d6e8a3a0 ,
-		d:Pln-5a7f99af0000bca8013754f2ef12d3e5 .
+	pig:lists (
+			d:Pln-27420ffc0000c3a8013ab527ca1b71f5
+			d:Pln-5a4755dd0000bca801375293a62c90a8
+			d:Pln-5a6cdea50000bca80137d6b2d6e8a3a0
+			d:Pln-5a7f99af0000bca8013754f2ef12d3e5
+		) .
 
 d:Fld-5af3154d0000bca801379748537d7388
-	rdf:type SpecIF:Heading ;
+	rdf:type pig:Outline ;
 	rdfs:label "Scenarios" ;
 	rdfs:comment "<div><p>.. showing the behavioral aspects of system design, both from external user perspective ('black box') and from internal perspective ('white box').</p> </div>" ;
+	pig:revision "13" ;
 	dcterms:modified "2017-06-19T20:13:02+02:00" ;
 	dcterms:creator "od" ;
-	pig:lists d:Fld-5b6a99f10000bca80137b78cda65fc07 .
+	pig:lists (
+			d:Fld-5b6a99f10000bca80137b78cda65fc07
+		) .
 
 d:Fld-5b6a99f10000bca80137b78cda65fc07
-	rdf:type SpecIF:Heading ;
+	rdf:type pig:Outline ;
 	rdfs:label "Dimming" ;
+	pig:revision "20" ;
 	dcterms:modified "2017-06-19T20:13:04+02:00" ;
 	dcterms:creator "od" ;
-	pig:lists d:Pln-606e76c70000bca801376ec3133a1181 ,
-		d:Pln-45a1c8930000c3a801414cd1eaa70b5a ,
-		d:Pln-5af364560000bca80137b84017f4e832 .
+	pig:lists (
+			d:Pln-606e76c70000bca801376ec3133a1181
+			d:Pln-45a1c8930000c3a801414cd1eaa70b5a
+			d:Pln-5af364560000bca80137b84017f4e832
+		) .
 
 d:Fld-5b8e98550000bca801371afb0c7b671b
-	rdf:type SpecIF:Heading ;
+	rdf:type pig:Outline ;
 	rdfs:label "Requirements" ;
+	pig:revision "14" ;
 	dcterms:modified "2017-06-19T20:13:02+02:00" ;
 	dcterms:creator "od" ;
-	pig:lists d:Fld-d1b1698a0000c3a801505b1b5698b7a1 ,
-		d:Fld-d1b1d6c60000c3a80150fe9ce40e6588 ,
-		d:Fld-d1b314890000c3a80150b71a1473d374 .
+	pig:lists (
+			d:Fld-d1b1698a0000c3a801505b1b5698b7a1
+			d:Fld-d1b1d6c60000c3a80150fe9ce40e6588
+			d:Fld-d1b314890000c3a80150b71a1473d374
+		) .
 
 d:Fld-d1b1698a0000c3a801505b1b5698b7a1
-	rdf:type SpecIF:Heading ;
+	rdf:type pig:Outline ;
 	rdfs:label "Function" ;
 	rdfs:comment "<div><p>The requirements related to the product function.</p> </div>" ;
+	pig:revision "22" ;
 	dcterms:modified "2017-06-19T20:13:06+02:00" ;
 	dcterms:creator "od" ;
-	pig:lists d:Req-d1c895230000c3a80150f8afd049f738 ,
-		d:Req-d1d42a6a0000c3a8015091ec8d149b93 ,
-		d:Req-d1cd7f370000c3a8015095e6ee21aab7 ,
-		d:Req-5ba3512b0000bca801371cc0617eb4c1 ,
-		d:Req-5b8fbb300000bca80137c73e3ce4c737 .
+	pig:lists (
+			d:Req-d1c895230000c3a80150f8afd049f738
+			d:Req-d1d42a6a0000c3a8015091ec8d149b93
+			d:Req-d1cd7f370000c3a8015095e6ee21aab7
+			d:Req-5ba3512b0000bca801371cc0617eb4c1
+			d:Req-5b8fbb300000bca80137c73e3ce4c737
+		) .
 
 d:Fld-d1b1d6c60000c3a80150fe9ce40e6588
-	rdf:type SpecIF:Heading ;
+	rdf:type pig:Outline ;
 	rdfs:label "Quality" ;
 	rdfs:comment "<div><p>The requirements related to quality characteristics of the product.</p> </div>" ;
+	pig:revision "25" ;
 	dcterms:modified "2017-06-19T20:13:08+02:00" ;
 	dcterms:creator "od" ;
-	pig:lists d:Req-5b944fc70000bca8013763f44fdc0e03 ,
-		d:Req-5ba140d60000bca801372b09f9888eca ,
-		d:Req-ee452cf20000c3a8014035290669304d ,
-		d:Req-ee43fc4c0000c3a8014063d42c77767f ,
-		d:Req-5b9124bc0000bca80137fa2ce86f5eca ,
-		d:Req-5b9e68530000bca801371362c49d2d08 .
+	pig:lists (
+			d:Req-5b944fc70000bca8013763f44fdc0e03
+			d:Req-5ba140d60000bca801372b09f9888eca
+			d:Req-ee452cf20000c3a8014035290669304d
+			d:Req-ee43fc4c0000c3a8014063d42c77767f
+			d:Req-5b9124bc0000bca80137fa2ce86f5eca
+			d:Req-5b9e68530000bca801371362c49d2d08
+		) .
 
 d:Fld-d1b314890000c3a80150b71a1473d374
-	rdf:type SpecIF:Heading ;
+	rdf:type pig:Outline ;
 	rdfs:label "Constraints" ;
 	rdfs:comment "<div><p>The requirements related to constraints for product conception, such as regulations or technical choices made upfront.</p> </div>" ;
+	pig:revision "30" ;
 	dcterms:modified "2017-06-19T20:13:12+02:00" ;
 	dcterms:creator "od" ;
-	pig:lists d:Req-eea1cd500000c3a80140fe00109eb7f4 ,
-		d:Req-5b95fae40000bca801372becc933682d ,
-		d:Req-5b9ab8a50000bca801377ad0be3bbc89 ,
-		d:Req-728c69c80018b1a8014b974542c36edc ,
-		d:Req-5b9c950e0000bca801374f16615247b9 .
+	pig:lists (
+			d:Req-eea1cd500000c3a80140fe00109eb7f4
+			d:Req-5b95fae40000bca801372becc933682d
+			d:Req-5b9ab8a50000bca801377ad0be3bbc89
+			d:Req-728c69c80018b1a8014b974542c36edc
+			d:Req-5b9c950e0000bca801374f16615247b9
+		) .
 
 d:Fld-59c8a7730000bca80137509a49b1218b
-	rdf:type SpecIF:Heading ;
+	rdf:type pig:Outline ;
 	rdfs:label "Parts List" ;
 	rdfs:comment "<div>This Parts List has been automatically generated from the model. </div>" ;
+	pig:revision "17" ;
 	dcterms:modified "2017-06-19T20:13:02+02:00" ;
 	dcterms:creator "od" ;
-	pig:lists d:MEl-5bd6bd890000bca8013739588a3f43d6 ,
-		d:MEl-5bcfb01d0000bca80137f303272a5557 ,
-		d:MEl-803fd3750000c3a8013cf1fdb3b26d33 ,
-		d:MEl-5a47935a0000bca801377c17f8cb25b0 .
+	pig:lists (
+			d:MEl-5bd6bd890000bca8013739588a3f43d6
+			d:MEl-5bcfb01d0000bca80137f303272a5557
+			d:MEl-803fd3750000c3a8013cf1fdb3b26d33
+			d:MEl-5a47935a0000bca801377c17f8cb25b0
+		) .
 
 d:Fld-ef47e6970000c3a80139dc747c5df319
-	rdf:type SpecIF:Heading ;
+	rdf:type pig:Outline ;
 	rdfs:label "Open Issues" ;
+	pig:revision "15" ;
 	dcterms:modified "2017-06-19T20:13:02+02:00" ;
 	dcterms:creator "od" ;
-	pig:lists d:Fld-ee29463e0000c3a80139627bbced50ae ,
-		d:Fld-ee2a15040000c3a80139d27de6704f15 .
+	pig:lists (
+			d:Fld-ee29463e0000c3a80139627bbced50ae
+			d:Fld-ee2a15040000c3a80139d27de6704f15
+		) .
 
 d:Fld-ee29463e0000c3a80139627bbced50ae
-	rdf:type SpecIF:Heading ;
+	rdf:type pig:Outline ;
 	rdfs:label "Mechanical" ;
+	pig:revision "34" ;
 	dcterms:modified "2017-06-19T20:13:14+02:00" ;
 	dcterms:creator "od" ;
-	pig:lists d:Iss-ee2abb630000c3a8013987a750219659 .
+	pig:lists (
+			d:Iss-ee2abb630000c3a8013987a750219659
+		) .
 
 d:Fld-ee2a15040000c3a80139d27de6704f15
-	rdf:type SpecIF:Heading ;
+	rdf:type pig:Outline ;
 	rdfs:label "Software" ;
+	pig:revision "36" ;
 	dcterms:modified "2017-06-19T20:13:15+02:00" ;
 	dcterms:creator "od" ;
-	pig:lists d:Iss-eee2d4e00000c3a801394148dcc58a52 .
+	pig:lists (
+			d:Iss-eee2d4e00000c3a801394148dcc58a52
+		) .
 
 d:FolderGlossary-8001804519
-	rdf:type SpecIF:Heading ;
+	rdf:type pig:Outline ;
 	rdfs:label "Model Elements (Glossary)" ;
-	dcterms:type "Model Elements (Glossary)" ;
-	dcterms:modified "2025-10-17T14:41:47.844Z" ;
-	pig:lists d:MEl-5a7776c50000bca8013765ae93af9209 ,
-		d:MEl-5a76365c0000bca8013776e91afd1e8e ,
-		d:MEl-608177820000bca801379179ebf3b6aa ,
-		d:MEl-611366530000bca80137a97f194e96a3 ,
-		d:MEl-5bd6bd890000bca8013739588a3f43d6 ,
-		d:MEl-5a9ce0310000bca801378176dc4744e8 ,
-		d:MEl-5b2f95ec0000bca8013709bfa81d701f ,
-		d:MEl-453862540000c3a801419d91bef48cfd ,
-		d:MEl-45387c0b0000c3a801410aa03f6b9be4 ,
-		d:MEl-5a85347c0000bca80137ad485c7cd330 ,
-		d:MEl-5a808e2a0000bca80137bfd74268a84a ,
-		d:MEl-5a752ccc0000bca80137479a2e8bab30 ,
-		d:MEl-4538920b0000c3a801415c67e334b8a1 ,
-		d:MEl-5a71c4800000bca80137f2aaa7b63000 ,
-		d:MEl-606f16ac0000bca801373587fda932b3 ,
-		d:MEl-5a4dd77b0000bca8013736c6912ad291 ,
-		d:MEl-45450be80000c3a801414f280f146c71 ,
-		d:MEl-4536b0350000c3a801415986f8ea806a ,
-		d:MEl-5a844d820000bca8013750b9a0410b6b ,
-		d:MEl-5a489c300000bca80137ee1373c16844 ,
-		d:MEl-5a4c80c20000bca8013753b6999a4da8 ,
-		d:MEl-5a99c89c0000bca801375d44cf9a50ca ,
-		d:MEl-5a8009a00000bca80137ef95bc3f643f ,
-		d:MEl-5a87083e0000bca801379bb412523737 ,
-		d:MEl-5b149eab0000bca80137aad99b6eea7b ,
-		d:MEl-5a52b50c0000bca801377e3d15255f98 ,
-		d:MEl-5b08ed8d0000bca8013719f554353b0e ,
-		d:MEl-5a9929510000bca80137d23c81f1ca54 ,
-		d:MEl-5bcf35cf0000bca8013776d68023612a ,
-		d:MEl-453dfb670000c3a8014191107df4565e ,
-		d:MEl-5b094f8a0000bca801374c798a6587ad ,
-		d:MEl-45428b930000c3a80141e28b7d4b5ae5 ,
-		d:MEl-5b078fa50000bca80137f36ed05c43cb ,
-		d:MEl-5c29fb8e0000bca80137eb9734c99bfd ,
-		d:MEl-5a82ec6f0000bca801372ef053a71bdf ,
-		d:MEl-608239830000bca801373690c7d2af0f ,
-		d:MEl-610b07100000bca80137c10f96c46247 ,
-		d:MEl-5a86b8980000bca80137ca6fde1a125e ,
-		d:MEl-610e0b010000bca80137ac40800bb1b8 ,
-		d:MEl-453facbb0000c3a80141c43d2fb4f5e2 ,
-		d:MEl-5a51dd920000bca8013770a4395c83fc ,
-		d:MEl-5bcfb01d0000bca80137f303272a5557 ,
-		d:MEl-5a50d5b60000bca8013781532547ce93 ,
-		d:MEl-803fd3750000c3a8013cf1fdb3b26d33 ,
-		d:MEl-5a77385f0000bca80137e1c7dc0b1721 ,
-		d:MEl-5b2d29070000bca801378a6c020cf8f5 ,
-		d:MEl-5b1750f80000bca801373b2d143d7478 ,
-		d:MEl-459b92580000c3a80141cb4acb521ab1 ,
-		d:MEl-5b2ddad80000bca80137c44d62ba97d8 ,
-		d:MEl-5b2449180000bca8013722c01c9d35a5 ,
-		d:MEl-5a4cfa830000bca801370d837f761f3e ,
-		d:MEl-5a9888810000bca801375410ce1cc142 ,
-		d:MEl-5b0839b90000bca801376dcca41ca7d0 ,
-		d:MEl-45384cd10000c3a80141c1f85d7c26e6 ,
-		d:MEl-5b07e6aa0000bca8013797aad9be69ae ,
-		d:MEl-607f13b50000bca80137ba95f11856ab ,
-		d:MEl-5a820a3c0000bca801378c9093fb7d80 ,
-		d:MEl-5a4d2bd00000bca80137a3f233cdffeb ,
-		d:MEl-5a4d6dee0000bca80137c1caf2f42349 ,
-		d:MEl-4543fe900000c3a80141f5253ff13c35 ,
-		d:MEl-453d34af0000c3a80141918f84641161 ,
-		d:MEl-5a47935a0000bca801377c17f8cb25b0 ,
-		d:MEl-45a236e00000c3a801410f6503287e16 ,
-		d:MEl-45a3b13c0000c3a801415e97f5bc29d1 ,
-		d:MEl-5a9b7a9b0000bca80137d768644696b7 ,
-		d:MEl-463289cd0000c3a80141be3fc417034a .
+	pig:category SpecIF:Glossary ;
+	dcterms:modified "2025-11-12T14:00:20.816Z" ;
+	pig:lists (
+			d:MEl-5a7776c50000bca8013765ae93af9209
+			d:MEl-5a76365c0000bca8013776e91afd1e8e
+			d:MEl-608177820000bca801379179ebf3b6aa
+			d:MEl-611366530000bca80137a97f194e96a3
+			d:MEl-5bd6bd890000bca8013739588a3f43d6
+			d:MEl-5a9ce0310000bca801378176dc4744e8
+			d:MEl-5b2f95ec0000bca8013709bfa81d701f
+			d:MEl-453862540000c3a801419d91bef48cfd
+			d:MEl-45387c0b0000c3a801410aa03f6b9be4
+			d:MEl-5a85347c0000bca80137ad485c7cd330
+			d:MEl-5a808e2a0000bca80137bfd74268a84a
+			d:MEl-5a752ccc0000bca80137479a2e8bab30
+			d:MEl-4538920b0000c3a801415c67e334b8a1
+			d:MEl-5a71c4800000bca80137f2aaa7b63000
+			d:MEl-606f16ac0000bca801373587fda932b3
+			d:MEl-5a4dd77b0000bca8013736c6912ad291
+			d:MEl-45450be80000c3a801414f280f146c71
+			d:MEl-4536b0350000c3a801415986f8ea806a
+			d:MEl-5a844d820000bca8013750b9a0410b6b
+			d:MEl-5a489c300000bca80137ee1373c16844
+			d:MEl-5a4c80c20000bca8013753b6999a4da8
+			d:MEl-5a99c89c0000bca801375d44cf9a50ca
+			d:MEl-5a8009a00000bca80137ef95bc3f643f
+			d:MEl-5a87083e0000bca801379bb412523737
+			d:MEl-5b149eab0000bca80137aad99b6eea7b
+			d:MEl-5a52b50c0000bca801377e3d15255f98
+			d:MEl-5b08ed8d0000bca8013719f554353b0e
+			d:MEl-5a9929510000bca80137d23c81f1ca54
+			d:MEl-5bcf35cf0000bca8013776d68023612a
+			d:MEl-453dfb670000c3a8014191107df4565e
+			d:MEl-5b094f8a0000bca801374c798a6587ad
+			d:MEl-45428b930000c3a80141e28b7d4b5ae5
+			d:MEl-5b078fa50000bca80137f36ed05c43cb
+			d:MEl-5c29fb8e0000bca80137eb9734c99bfd
+			d:MEl-5a82ec6f0000bca801372ef053a71bdf
+			d:MEl-608239830000bca801373690c7d2af0f
+			d:MEl-610b07100000bca80137c10f96c46247
+			d:MEl-5a86b8980000bca80137ca6fde1a125e
+			d:MEl-610e0b010000bca80137ac40800bb1b8
+			d:MEl-453facbb0000c3a80141c43d2fb4f5e2
+			d:MEl-5a51dd920000bca8013770a4395c83fc
+			d:MEl-5bcfb01d0000bca80137f303272a5557
+			d:MEl-5a50d5b60000bca8013781532547ce93
+			d:MEl-803fd3750000c3a8013cf1fdb3b26d33
+			d:MEl-5a77385f0000bca80137e1c7dc0b1721
+			d:MEl-5b2d29070000bca801378a6c020cf8f5
+			d:MEl-5b1750f80000bca801373b2d143d7478
+			d:MEl-459b92580000c3a80141cb4acb521ab1
+			d:MEl-5b2ddad80000bca80137c44d62ba97d8
+			d:MEl-5b2449180000bca8013722c01c9d35a5
+			d:MEl-5a4cfa830000bca801370d837f761f3e
+			d:MEl-5a9888810000bca801375410ce1cc142
+			d:MEl-5b0839b90000bca801376dcca41ca7d0
+			d:MEl-45384cd10000c3a80141c1f85d7c26e6
+			d:MEl-5b07e6aa0000bca8013797aad9be69ae
+			d:MEl-607f13b50000bca80137ba95f11856ab
+			d:MEl-5a820a3c0000bca801378c9093fb7d80
+			d:MEl-5a4d2bd00000bca80137a3f233cdffeb
+			d:MEl-5a4d6dee0000bca80137c1caf2f42349
+			d:MEl-4543fe900000c3a80141f5253ff13c35
+			d:MEl-453d34af0000c3a80141918f84641161
+			d:MEl-5a47935a0000bca801377c17f8cb25b0
+			d:MEl-45a236e00000c3a801410f6503287e16
+			d:MEl-45a3b13c0000c3a801415e97f5bc29d1
+			d:MEl-5a9b7a9b0000bca80137d768644696b7
+			d:MEl-463289cd0000c3a80141be3fc417034a
+		) .

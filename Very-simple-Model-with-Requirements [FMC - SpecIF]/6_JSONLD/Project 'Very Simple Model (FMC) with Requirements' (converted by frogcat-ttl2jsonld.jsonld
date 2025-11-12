@@ -1,14 +1,9 @@
-
-@frogcat/ttl2jsonld demo
-Input turtle
-Output JSON-LD
-
 {
   "@context": {
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "owl": "http://www.w3.org/2002/07/owl#",
-    "sh": "https://www.w3.org/ns/shacl#",
+    "sh": "http://www.w3.org/ns/shacl#",
     "W3C": "https://www.w3.org/standards/semanticweb#",
     "xsd": "http://www.w3.org/2001/XMLSchema#",
     "dcterms": "http://purl.org/dc/terms/",
@@ -17,8 +12,9 @@ Output JSON-LD
     "iana": "https://www.iana.org/assignments/media-types#",
     "foaf": "http://xmlns.com/foaf/spec/#",
     "FMC": "http://fmc-modeling.org#",
+    "RFLP": "https://product-information-graph.org/v0.2/ontology/RFLP#",
     "IR": "https://www.adesso.de/de/impulse/interaction-room/index.jsp#",
-    "IREB": "https://www.ireb.org/cpre-glossary#",
+    "IREB": "https://cpre.ireb.org/en/downloads-and-resources/glossary#",
     "ReqIF": "https://www.prostep.org/fileadmin/downloads/PSI_ImplementationGuide_ReqIF_V1-7.pdf#",
     "ReqIF-WF": "https://www.prostep.org/fileadmin/downloads/Recommendation_ReqIF_V2_RZ3.pdf#",
     "HIS": "https://www.itwissen.info/Herstellerinitiative-Software-Automotive-HIS.html#",
@@ -32,7 +28,20 @@ Output JSON-LD
     "pig": "https://product-information-graph.org/metamodel#",
     "DDP": "http://www.prostep.org/dictionary/2.0#",
     "SpecIF": "https://specif.de/v1.2/schema#",
-    "o": "https://product-information-graph.org/examples/ontology#",
+    "pigShapes_dcterms": "https://product-information-graph.org/v0.2/ontology/shapes/dcterms:#",
+    "pigShapes_rdfs": "https://product-information-graph.org/v0.2/ontology/shapes/rdfs:#",
+    "pigShapes_uml": "https://product-information-graph.org/v0.2/ontology/shapes/uml:#",
+    "pigShapes_sysml": "https://product-information-graph.org/v0.2/ontology/shapes/sysml:#",
+    "pigShapes_FMC": "https://product-information-graph.org/v0.2/ontology/shapes/FMC:#",
+    "pigShapes_RFLP": "https://product-information-graph.org/v0.2/ontology/shapes/RFLP:#",
+    "pigShapes_IREB": "https://product-information-graph.org/v0.2/ontology/shapes/IREB:#",
+    "pigShapes_oslc_rm": "https://product-information-graph.org/v0.2/ontology/shapes/oslc_rm:#",
+    "pigShapes_oslc_cm": "https://product-information-graph.org/v0.2/ontology/shapes/oslc_cm:#",
+    "pigShapes_ReqIF": "https://product-information-graph.org/v0.2/ontology/shapes/ReqIF:#",
+    "pigShapes_ReqIF-WF": "https://product-information-graph.org/v0.2/ontology/shapes/ReqIF-WF:#",
+    "pigShapes_SpecIF": "https://product-information-graph.org/v0.2/ontology/shapes/SpecIF:#",
+    "pigShapes_pig": "https://product-information-graph.org/v0.2/ontology/shapes/pig:#",
+    "o": "https://product-information-graph.org/v0.2/ontology#",
     "d": "https://product-information-graph.org/examples/09_Very-Simple-Model-FMC-with-Requirements.specif.zip#"
   },
   "@graph": [
@@ -53,31 +62,7 @@ Output JSON-LD
       "dcterms:license": {
         "@id": "https://creativecommons.org/licenses/by-sa/4.0/"
       },
-      "dcterms:modified": "2025-10-17T10:55:11.686Z"
-    },
-    {
-      "@id": "pig:Property",
-      "rdf:type": {
-        "@id": "owl:DatatypeProperty"
-      },
-      "rdfs:label": "Literal Property",
-      "rdfs:comment": "A PIG meta-model element used for literal properties."
-    },
-    {
-      "@id": "pig:PropertyEnum",
-      "rdf:type": {
-        "@id": "owl:ObjectProperty"
-      },
-      "rdfs:label": "Enumerated literal Property",
-      "rdfs:comment": "A PIG meta-model element used for enumerated literal properties."
-    },
-    {
-      "@id": "pig:Organizer",
-      "rdf:type": {
-        "@id": "owl:Class"
-      },
-      "rdfs:label": "Organizer",
-      "rdfs:comment": "A PIG meta-model element used for organizing model-elements."
+      "dcterms:modified": "2025-11-12T14:39:33.257Z"
     },
     {
       "@id": "pig:Entity",
@@ -88,6 +73,29 @@ Output JSON-LD
       "rdfs:comment": "A PIG meta-model element used for entities (aka resources or artifacts)."
     },
     {
+      "@id": "pigShapes_pig:Entity",
+      "rdf:type": {
+        "@id": "sh:NodeShape"
+      },
+      "sh:property": [
+        {
+          "@id": "pigShapes_rdfs:label"
+        },
+        {
+          "@id": "pigShapes_rdfs:comment"
+        },
+        {
+          "@id": "pigShapes_pig:category"
+        },
+        {
+          "@id": "pigShapes_pig:icon"
+        }
+      ],
+      "sh:targetClass": {
+        "@id": "pig:Entity"
+      }
+    },
+    {
       "@id": "pig:Relationship",
       "rdf:type": {
         "@id": "owl:Class"
@@ -96,40 +104,214 @@ Output JSON-LD
       "rdfs:comment": "A PIG meta-model element used for reified relationships (aka predicates)."
     },
     {
+      "@id": "pigShapes_pig:Relationship",
+      "rdf:type": {
+        "@id": "sh:NodeShape"
+      },
+      "sh:property": [
+        {
+          "@id": "pigShapes_rdfs:label"
+        },
+        {
+          "@id": "pigShapes_rdfs:comment"
+        },
+        {
+          "@id": "pigShapes_pig:category"
+        },
+        {
+          "@id": "pigShapes_pig:icon"
+        },
+        {
+          "@id": "pigShapes_pig:eligibleSource"
+        },
+        {
+          "@id": "pigShapes_pig:eligibleTarget"
+        }
+      ],
+      "sh:targetClass": {
+        "@id": "pig:Relationship"
+      }
+    },
+    {
+      "@id": "pig:Organizer",
+      "rdf:type": {
+        "@id": "owl:Class"
+      },
+      "rdfs:label": "Organizer",
+      "rdfs:comment": "An element organizing model elements. An example is a list of requirements or a diagram using a certain notation which depicts selected model elements."
+    },
+    {
+      "@id": "pigShapes_pig:Organizer",
+      "rdf:type": {
+        "@id": "sh:NodeShape"
+      },
+      "sh:property": [
+        {
+          "@id": "pigShapes_rdfs:label"
+        },
+        {
+          "@id": "pigShapes_rdfs:comment"
+        },
+        {
+          "@id": "pigShapes_pig:category"
+        },
+        {
+          "@id": "pigShapes_pig:eligibleElement"
+        }
+      ],
+      "sh:targetClass": {
+        "@id": "pig:Organizer"
+      }
+    },
+    {
+      "@id": "pig:HierarchyRoot",
+      "rdfs:subClassOf": {
+        "@id": "pig:Organizer"
+      },
+      "rdfs:label": "Hierarchy Root",
+      "rdfs:comment": "A subclass of PIG organizer serving as a root for hierarchically organized graph elements."
+    },
+    {
+      "@id": "pigShapes_pig:HierarchyRoot",
+      "rdf:type": {
+        "@id": "sh:NodeShape"
+      },
+      "sh:property": [
+        {
+          "@id": "pigShapes_rdfs:label"
+        },
+        {
+          "@id": "pigShapes_rdfs:comment"
+        },
+        {
+          "@id": "pigShapes_pig:lists"
+        }
+      ],
+      "sh:targetClass": {
+        "@id": "pig:HierarchyRoot"
+      }
+    },
+    {
+      "@id": "pig:Outline",
+      "rdfs:subClassOf": {
+        "@id": "pig:Organizer"
+      },
+      "rdfs:label": "Outline",
+      "rdfs:comment": "A subclass of PIG organizer comprising all information items of a human-readable document. As usual, the outline is hierarchically organized."
+    },
+    {
+      "@id": "pigShapes_pig:Outline",
+      "rdf:type": {
+        "@id": "sh:NodeShape"
+      },
+      "sh:property": [
+        {
+          "@id": "pigShapes_rdfs:label"
+        },
+        {
+          "@id": "pigShapes_rdfs:comment"
+        },
+        {
+          "@id": "pigShapes_pig:category"
+        },
+        {
+          "@id": "pigShapes_pig:lists"
+        }
+      ],
+      "sh:targetClass": {
+        "@id": "pig:Outline"
+      }
+    },
+    {
       "@id": "pig:eligibleSource",
       "rdf:type": {
         "@id": "owl:ObjectProperty"
       },
-      "rdfs:domain": {
-        "@id": "pig:Relationship"
-      },
       "rdfs:range": {
-        "@id": "pig:Entity"
+        "owl:unionOf": {
+          "@list": [
+            {
+              "@id": "pig:Entity"
+            },
+            {
+              "@id": "pig:Relationship"
+            }
+          ]
+        }
       },
       "rdfs:label": "has source",
       "rdfs:comment": "Connects the source of a reified relationship."
+    },
+    {
+      "@id": "pigShapes_pig:eligibleSource",
+      "rdf:type": {
+        "@id": "sh:PropertyShape"
+      },
+      "sh:path": {
+        "@id": "pig:eligibleSource"
+      },
+      "sh:or": {
+        "@list": [
+          {
+            "sh:class": {
+              "@id": "pig:Entity"
+            }
+          },
+          {
+            "sh:class": {
+              "@id": "pig:Relationship"
+            }
+          }
+        ]
+      }
     },
     {
       "@id": "pig:eligibleTarget",
       "rdf:type": {
         "@id": "owl:ObjectProperty"
       },
-      "rdfs:domain": {
-        "@id": "pig:Relationship"
-      },
       "rdfs:range": {
-        "@id": "pig:Entity"
+        "owl:unionOf": {
+          "@list": [
+            {
+              "@id": "pig:Entity"
+            },
+            {
+              "@id": "pig:Relationship"
+            }
+          ]
+        }
       },
       "rdfs:label": "has target",
       "rdfs:comment": "Connects the target of a reified relationship."
     },
     {
+      "@id": "pigShapes_pig:eligibleTarget",
+      "rdf:type": {
+        "@id": "sh:PropertyShape"
+      },
+      "sh:path": {
+        "@id": "pig:eligibleTarget"
+      },
+      "sh:or": {
+        "@list": [
+          {
+            "sh:class": {
+              "@id": "pig:Entity"
+            }
+          },
+          {
+            "sh:class": {
+              "@id": "pig:Relationship"
+            }
+          }
+        ]
+      }
+    },
+    {
       "@id": "pig:eligibleElement",
       "rdf:type": {
         "@id": "owl:ObjectProperty"
-      },
-      "rdfs:domain": {
-        "@id": "pig:Organizer"
       },
       "rdfs:range": {
         "owl:unionOf": {
@@ -150,21 +332,49 @@ Output JSON-LD
       "rdfs:comment": "References an entity, a relationship or a subordinated organizer."
     },
     {
+      "@id": "pigShapes_pig:eligibleElement",
+      "rdf:type": {
+        "@id": "sh:PropertyShape"
+      },
+      "sh:path": {
+        "@id": "pig:eligibleElement"
+      },
+      "sh:or": {
+        "@list": [
+          {
+            "sh:class": {
+              "@id": "pig:Entity"
+            }
+          },
+          {
+            "sh:class": {
+              "@id": "pig:Relationship"
+            }
+          },
+          {
+            "sh:class": {
+              "@id": "pig:Organizer"
+            }
+          }
+        ]
+      }
+    },
+    {
       "@id": "pig:lists",
       "rdfs:subPropertyOf": {
         "@id": "pig:eligibleElement"
       },
-      "rdfs:domain": {
+      "rdfs:range": {
         "owl:unionOf": {
           "@list": [
             {
-              "@id": "pig:HierarchyRoot"
+              "@id": "pig:Entity"
             },
             {
-              "@id": "pig:Outline"
+              "@id": "pig:Relationship"
             },
             {
-              "@id": "SpecIF:Heading"
+              "@id": "pig:Organizer"
             }
           ]
         }
@@ -173,12 +383,37 @@ Output JSON-LD
       "rdfs:comment": "Lists (references) an entity, a relationship or a subordinated organizer."
     },
     {
+      "@id": "pigShapes_pig:lists",
+      "rdf:type": {
+        "@id": "sh:PropertyShape"
+      },
+      "sh:path": {
+        "@id": "pig:lists"
+      },
+      "sh:or": {
+        "@list": [
+          {
+            "sh:class": {
+              "@id": "pig:Entity"
+            }
+          },
+          {
+            "sh:class": {
+              "@id": "pig:Relationship"
+            }
+          },
+          {
+            "sh:class": {
+              "@id": "pig:Organizer"
+            }
+          }
+        ]
+      }
+    },
+    {
       "@id": "pig:shows",
       "rdfs:subPropertyOf": {
         "@id": "pig:eligibleElement"
-      },
-      "rdfs:domain": {
-        "@id": "pig:View"
       },
       "rdfs:range": {
         "owl:unionOf": {
@@ -196,18 +431,102 @@ Output JSON-LD
       "rdfs:comment": "Shows (references) an entity or a relationship."
     },
     {
+      "@id": "pigShapes_pig:shows",
+      "rdf:type": {
+        "@id": "sh:PropertyShape"
+      },
+      "sh:path": {
+        "@id": "pig:shows"
+      },
+      "sh:or": {
+        "@list": [
+          {
+            "sh:class": {
+              "@id": "pig:Entity"
+            }
+          },
+          {
+            "sh:class": {
+              "@id": "pig:Relationship"
+            }
+          }
+        ]
+      }
+    },
+    {
       "@id": "pig:depicts",
       "rdfs:subPropertyOf": {
         "@id": "pig:eligibleElement"
-      },
-      "rdfs:domain": {
-        "@id": "pig:View"
       },
       "rdfs:range": {
         "@id": "pig:Entity"
       },
       "rdfs:label": "depicts",
       "rdfs:comment": "Depicts an entity; inverse of uml:ownedDiagram."
+    },
+    {
+      "@id": "pigShapes_pig:depicts",
+      "rdf:type": {
+        "@id": "sh:PropertyShape"
+      },
+      "sh:path": {
+        "@id": "pig:depicts"
+      },
+      "sh:or": {
+        "@list": [
+          {
+            "sh:class": {
+              "@id": "pig:Entity"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@id": "pig:icon",
+      "rdf:type": {
+        "@id": "owl:DatatypeProperty"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      },
+      "rdfs:label": "has icon",
+      "rdfs:comment": "Specifies an icon for a model element (entity or relationship)."
+    },
+    {
+      "@id": "pigShapes_pig:icon",
+      "rdf:type": {
+        "@id": "sh:PropertyShape"
+      },
+      "sh:path": {
+        "@id": "pig:icon"
+      },
+      "sh:datatype": {
+        "@id": "xsd:string"
+      }
+    },
+    {
+      "@id": "pig:category",
+      "rdfs:subPropertyOf": {
+        "@id": "dcterms:type"
+      },
+      "rdfs:range": {
+        "@id": "xsd:string"
+      },
+      "rdfs:label": "has category",
+      "rdfs:comment": "Specifies a category for an element (entity, relationship or organizer)."
+    },
+    {
+      "@id": "pigShapes_pig:category",
+      "rdf:type": {
+        "@id": "sh:PropertyShape"
+      },
+      "sh:path": {
+        "@id": "pig:category"
+      },
+      "sh:datatype": {
+        "@id": "xsd:string"
+      }
     },
     {
       "@id": "SpecIF:Priority-Value",
@@ -232,7 +551,6 @@ Output JSON-LD
         "@value": "Enumerated values for the 'Priority' of the resource.",
         "@language": "en"
       },
-      "dcterms:modified": "2016-05-26T08:59:00+02:00",
       "owl:oneOf": {
         "@list": [
           {
@@ -308,36 +626,36 @@ Output JSON-LD
       ]
     },
     {
-      "@id": "rdfs:label-Shape",
+      "@id": "pigShapes_rdfs:label",
       "rdf:type": {
-        "@id": "http://www.w3.org/ns/shacl#PropertyShape"
+        "@id": "sh:PropertyShape"
       },
-      "http://www.w3.org/ns/shacl#path": {
+      "sh:path": {
         "@id": "rdfs:label"
       },
-      "http://www.w3.org/ns/shacl#maxCount": "1",
-      "http://www.w3.org/ns/shacl#datatype": {
+      "sh:maxCount": "1",
+      "sh:datatype": {
         "@id": "xsd:string"
       },
-      "http://www.w3.org/ns/shacl#maxLength": "256"
+      "sh:maxLength": "256"
     },
     {
-      "@id": "rdfs:comment-Shape",
+      "@id": "pigShapes_rdfs:comment",
       "rdf:type": {
-        "@id": "http://www.w3.org/ns/shacl#PropertyShape"
+        "@id": "sh:PropertyShape"
       },
-      "http://www.w3.org/ns/shacl#path": {
+      "sh:path": {
         "@id": "rdfs:comment"
       },
-      "http://www.w3.org/ns/shacl#maxCount": "1",
-      "http://www.w3.org/ns/shacl#datatype": {
+      "sh:maxCount": "1",
+      "sh:datatype": {
         "@id": "xsd:string"
       }
     },
     {
       "@id": "SpecIF:Diagram",
-      "rdfs:subClassOf": {
-        "@id": "pig:Property"
+      "rdf:type": {
+        "@id": "owl:DatatypeProperty"
       },
       "rdfs:label": [
         {
@@ -356,64 +674,38 @@ Output JSON-LD
       "rdfs:comment": {
         "@value": "A diagram illustrating the resource or a link to a diagram.",
         "@language": "en"
-      },
-      "dcterms:modified": "2023-02-26T14:40:17.601Z"
+      }
     },
     {
-      "@id": "SpecIF:Diagram-Shape",
+      "@id": "pigShapes_SpecIF:Diagram",
       "rdf:type": {
-        "@id": "http://www.w3.org/ns/shacl#PropertyShape"
+        "@id": "sh:PropertyShape"
       },
-      "http://www.w3.org/ns/shacl#path": {
+      "sh:path": {
         "@id": "SpecIF:Diagram"
       },
-      "http://www.w3.org/ns/shacl#datatype": {
+      "sh:datatype": {
         "@id": "xsd:string"
       }
     },
     {
-      "@id": "dcterms:type",
-      "rdfs:subClassOf": {
-        "@id": "pig:Property"
-      },
-      "rdfs:label": [
-        {
-          "@value": "Element Type",
-          "@language": "en"
-        },
-        {
-          "@value": "Element-Typ",
-          "@language": "de"
-        },
-        {
-          "@value": "Type d'élément",
-          "@language": "fr"
-        }
-      ],
-      "rdfs:comment": {
-        "@value": "<p>The nature or genre of the resource. <small>(<i>source: <a href=\"http://purl.org/dc/elements/1.1/type\">DCMI</a></i>)</small></p><p>Recommended best practice is to use a controlled vocabulary such as the DCMI Type Vocabulary [DCMITYPE]. To describe the file format, physical medium, or dimensions of the resource, use the Format element.</p><p>For example, a [[FMC:Actor]] may represent a <i>System Function</i>, a <i>System Component</i> or a <i>User Role</i>. Similarly, in the context of process modelling, a FMC:Actor may represent a <i>Process Step</i> or again a <i>User Role</i>. So, all of these are meaningful values for a FMC:Actor's property named dcterms:type.</p>",
-        "@language": "en"
-      },
-      "dcterms:modified": "2023-02-26T20:18:04.451Z"
-    },
-    {
-      "@id": "dcterms:type-Shape",
+      "@id": "pigShapes_pig:category",
       "rdf:type": {
-        "@id": "http://www.w3.org/ns/shacl#PropertyShape"
+        "@id": "sh:PropertyShape"
       },
-      "http://www.w3.org/ns/shacl#path": {
-        "@id": "dcterms:type"
+      "sh:path": {
+        "@id": "pig:category"
       },
-      "http://www.w3.org/ns/shacl#maxCount": "1",
-      "http://www.w3.org/ns/shacl#datatype": {
+      "sh:maxCount": "1",
+      "sh:datatype": {
         "@id": "xsd:string"
       },
-      "http://www.w3.org/ns/shacl#maxLength": "32"
+      "sh:maxLength": "32"
     },
     {
       "@id": "SpecIF:Priority",
-      "rdfs:subClassOf": {
-        "@id": "pig:PropertyEnum"
+      "rdf:type": {
+        "@id": "owl:ObjectProperty"
       },
       "rdfs:label": [
         {
@@ -435,114 +727,20 @@ Output JSON-LD
       },
       "rdfs:range": {
         "@id": "SpecIF:Priority-Value"
-      },
-      "dcterms:modified": "2020-03-26T22:59:00+02:00"
-    },
-    {
-      "@id": "SpecIF:Priority-Shape",
-      "rdf:type": {
-        "@id": "http://www.w3.org/ns/shacl#PropertyShape"
-      },
-      "http://www.w3.org/ns/shacl#path": {
-        "@id": "SpecIF:Priority"
-      },
-      "http://www.w3.org/ns/shacl#maxCount": "1",
-      "http://www.w3.org/ns/shacl#class": {
-        "@id": "SpecIF:Priority-Value"
       }
     },
     {
-      "@id": "SpecIF:Icon",
-      "rdfs:subClassOf": {
-        "@id": "pig:Property"
-      },
-      "rdfs:label": [
-        {
-          "@value": "Icon",
-          "@language": "en"
-        },
-        {
-          "@value": "Symbol",
-          "@language": "de"
-        },
-        {
-          "@value": "Symbole",
-          "@language": "fr"
-        }
-      ],
-      "rdfs:comment": {
-        "@value": "A symbol or icon for display as a prefix to titles; applicable to all instances of the class. Is usually a XML-encoded UTF-8 symbol, can be an URL or dataURL.",
-        "@language": "en"
-      },
-      "dcterms:modified": "2025-09-05T12:43:26.716Z"
-    },
-    {
-      "@id": "SpecIF:Icon-Shape",
+      "@id": "pigShapes_SpecIF:Priority",
       "rdf:type": {
-        "@id": "http://www.w3.org/ns/shacl#PropertyShape"
+        "@id": "sh:PropertyShape"
       },
-      "http://www.w3.org/ns/shacl#path": {
-        "@id": "SpecIF:Icon"
+      "sh:path": {
+        "@id": "SpecIF:Priority"
       },
-      "http://www.w3.org/ns/shacl#maxCount": "1",
-      "http://www.w3.org/ns/shacl#datatype": {
-        "@id": "xsd:string"
-      },
-      "http://www.w3.org/ns/shacl#maxLength": "256"
-    },
-    {
-      "@id": "SpecIF:Heading",
-      "rdfs:subClassOf": {
-        "@id": "SpecIF:Paragraph"
-      },
-      "rdfs:label": [
-        {
-          "@value": "Heading",
-          "@language": "en"
-        },
-        {
-          "@value": "Überschrift",
-          "@language": "de"
-        },
-        {
-          "@value": "Intitulé",
-          "@language": "fr"
-        }
-      ],
-      "rdfs:comment": [
-        {
-          "@value": "A 'Heading' is a chapter title at any level with optional description.",
-          "@language": "en"
-        },
-        {
-          "@value": "Eine 'Überschrift' in einem Dokument ist der Titel eines Kapitels. Sie kann eine Beschreibung haben, die als Einleitung oder Zusammenfassung des Kapitels genutzt werden kann.",
-          "@language": "de"
-        }
-      ],
-      "dcterms:modified": "2024-03-02T15:28:50.414Z"
-    },
-    {
-      "@id": "SpecIF:Heading-Shape",
-      "rdf:type": {
-        "@id": "http://www.w3.org/ns/shacl#NodeShape"
-      },
-      "http://www.w3.org/ns/shacl#targetClass": {
-        "@id": "SpecIF:Heading"
-      },
-      "http://www.w3.org/ns/shacl#property": [
-        {
-          "@id": "rdfs:label-Shape"
-        },
-        {
-          "@id": "rdfs:comment-Shape"
-        },
-        {
-          "@id": "SpecIF:Diagram-Shape"
-        },
-        {
-          "@id": "dcterms:type-Shape"
-        }
-      ]
+      "sh:maxCount": "1",
+      "sh:class": {
+        "@id": "SpecIF:Priority-Value"
+      }
     },
     {
       "@id": "SpecIF:Paragraph",
@@ -572,29 +770,28 @@ Output JSON-LD
           "@value": "<p>Ein 'Textabschnitt' in einem Dokument auf beliebiger Ebene.</p>",
           "@language": "de"
         }
-      ],
-      "dcterms:modified": "2023-07-16T09:30:25.850Z"
+      ]
     },
     {
-      "@id": "SpecIF:Paragraph-Shape",
+      "@id": "pigShapes_SpecIF:Paragraph",
       "rdf:type": {
-        "@id": "http://www.w3.org/ns/shacl#NodeShape"
+        "@id": "sh:NodeShape"
       },
-      "http://www.w3.org/ns/shacl#targetClass": {
+      "sh:targetClass": {
         "@id": "SpecIF:Paragraph"
       },
-      "http://www.w3.org/ns/shacl#property": [
+      "sh:property": [
         {
-          "@id": "rdfs:label-Shape"
+          "@id": "pigShapes_rdfs:label"
         },
         {
-          "@id": "rdfs:comment-Shape"
+          "@id": "pigShapes_rdfs:comment"
         },
         {
-          "@id": "SpecIF:Diagram-Shape"
+          "@id": "pigShapes_SpecIF:Diagram"
         },
         {
-          "@id": "dcterms:type-Shape"
+          "@id": "pigShapes_pig:category"
         }
       ]
     },
@@ -605,29 +802,28 @@ Output JSON-LD
       },
       "rdfs:label": "View",
       "rdfs:comment": "A PIG organizer class representing a diagram with certain model-elements for a given communication purpose.",
-      "pig:icon": "▣",
-      "dcterms:modified": "2018-05-10T11:54:00+01:00"
+      "pig:icon": "▣"
     },
     {
-      "@id": "pig:View-Shape",
+      "@id": "pigShapes_pig:View",
       "rdf:type": {
-        "@id": "http://www.w3.org/ns/shacl#NodeShape"
+        "@id": "sh:NodeShape"
       },
-      "http://www.w3.org/ns/shacl#targetClass": {
+      "sh:targetClass": {
         "@id": "pig:View"
       },
-      "http://www.w3.org/ns/shacl#property": [
+      "sh:property": [
         {
-          "@id": "rdfs:label-Shape"
+          "@id": "pigShapes_rdfs:label"
         },
         {
-          "@id": "rdfs:comment-Shape"
+          "@id": "pigShapes_rdfs:comment"
         },
         {
-          "@id": "SpecIF:Diagram-Shape"
+          "@id": "pigShapes_SpecIF:Diagram"
         },
         {
-          "@id": "dcterms:type-Shape"
+          "@id": "pigShapes_pig:category"
         }
       ]
     },
@@ -664,26 +860,25 @@ Output JSON-LD
           "@language": "fr"
         }
       ],
-      "pig:icon": "&#x25A1;",
-      "dcterms:modified": "2018-05-10T11:54:00+01:00"
+      "pig:icon": "&#x25A1;"
     },
     {
-      "@id": "FMC:Actor-Shape",
+      "@id": "pigShapes_FMC:Actor",
       "rdf:type": {
-        "@id": "http://www.w3.org/ns/shacl#NodeShape"
+        "@id": "sh:NodeShape"
       },
-      "http://www.w3.org/ns/shacl#targetClass": {
+      "sh:targetClass": {
         "@id": "FMC:Actor"
       },
-      "http://www.w3.org/ns/shacl#property": [
+      "sh:property": [
         {
-          "@id": "rdfs:label-Shape"
+          "@id": "pigShapes_rdfs:label"
         },
         {
-          "@id": "rdfs:comment-Shape"
+          "@id": "pigShapes_rdfs:comment"
         },
         {
-          "@id": "dcterms:type-Shape"
+          "@id": "pigShapes_pig:category"
         }
       ]
     },
@@ -720,26 +915,25 @@ Output JSON-LD
           "@language": "fr"
         }
       ],
-      "pig:icon": "&#x25CB;",
-      "dcterms:modified": "2018-05-10T11:54:00+01:00"
+      "pig:icon": "&#x25CB;"
     },
     {
-      "@id": "FMC:State-Shape",
+      "@id": "pigShapes_FMC:State",
       "rdf:type": {
-        "@id": "http://www.w3.org/ns/shacl#NodeShape"
+        "@id": "sh:NodeShape"
       },
-      "http://www.w3.org/ns/shacl#targetClass": {
+      "sh:targetClass": {
         "@id": "FMC:State"
       },
-      "http://www.w3.org/ns/shacl#property": [
+      "sh:property": [
         {
-          "@id": "rdfs:label-Shape"
+          "@id": "pigShapes_rdfs:label"
         },
         {
-          "@id": "rdfs:comment-Shape"
+          "@id": "pigShapes_rdfs:comment"
         },
         {
-          "@id": "dcterms:type-Shape"
+          "@id": "pigShapes_pig:category"
         }
       ]
     },
@@ -776,26 +970,25 @@ Output JSON-LD
           "@language": "fr"
         }
       ],
-      "pig:icon": "&#x2662;",
-      "dcterms:modified": "2018-05-10T11:54:00+01:00"
+      "pig:icon": "&#x2662;"
     },
     {
-      "@id": "FMC:Event-Shape",
+      "@id": "pigShapes_FMC:Event",
       "rdf:type": {
-        "@id": "http://www.w3.org/ns/shacl#NodeShape"
+        "@id": "sh:NodeShape"
       },
-      "http://www.w3.org/ns/shacl#targetClass": {
+      "sh:targetClass": {
         "@id": "FMC:Event"
       },
-      "http://www.w3.org/ns/shacl#property": [
+      "sh:property": [
         {
-          "@id": "rdfs:label-Shape"
+          "@id": "pigShapes_rdfs:label"
         },
         {
-          "@id": "rdfs:comment-Shape"
+          "@id": "pigShapes_rdfs:comment"
         },
         {
-          "@id": "dcterms:type-Shape"
+          "@id": "pigShapes_pig:category"
         }
       ]
     },
@@ -832,26 +1025,25 @@ Output JSON-LD
           "@language": "fr"
         }
       ],
-      "pig:icon": "&#8623;",
-      "dcterms:modified": "2021-02-22T08:59:00+02:00"
+      "pig:icon": "&#8623;"
     },
     {
-      "@id": "IREB:Requirement-Shape",
+      "@id": "pigShapes_IREB:Requirement",
       "rdf:type": {
-        "@id": "http://www.w3.org/ns/shacl#NodeShape"
+        "@id": "sh:NodeShape"
       },
-      "http://www.w3.org/ns/shacl#targetClass": {
+      "sh:targetClass": {
         "@id": "IREB:Requirement"
       },
-      "http://www.w3.org/ns/shacl#property": [
+      "sh:property": [
         {
-          "@id": "rdfs:label-Shape"
+          "@id": "pigShapes_rdfs:label"
         },
         {
-          "@id": "rdfs:comment-Shape"
+          "@id": "pigShapes_rdfs:comment"
         },
         {
-          "@id": "SpecIF:Priority-Shape"
+          "@id": "pigShapes_SpecIF:Priority"
         }
       ]
     },
@@ -877,15 +1069,14 @@ Output JSON-LD
       "rdfs:comment": {
         "@value": "A [[FMC:Actor]] 'writes' (changes) a [[FMC:State]].",
         "@language": "en"
-      },
-      "dcterms:modified": "2018-05-10T11:54:00+01:00"
+      }
     },
     {
       "@id": "SpecIF:writes-hasSource",
       "rdfs:subPropertyOf": {
         "@id": "pig:eligibleSource"
       },
-      "rdfs:label": "Connects the source of SpecIF:writes",
+      "rdfs:comment": "Connects the source of SpecIF:writes",
       "rdfs:domain": {
         "@id": "SpecIF:writes"
       },
@@ -898,7 +1089,7 @@ Output JSON-LD
       "rdfs:subPropertyOf": {
         "@id": "pig:eligibleTarget"
       },
-      "rdfs:label": "Connects the target of SpecIF:writes",
+      "rdfs:comment": "Connects the target of SpecIF:writes",
       "rdfs:domain": {
         "@id": "SpecIF:writes"
       },
@@ -907,36 +1098,48 @@ Output JSON-LD
       }
     },
     {
-      "@id": "SpecIF:writes-Shape",
+      "@id": "pigShapes_SpecIF:writes",
       "rdf:type": {
-        "@id": "http://www.w3.org/ns/shacl#NodeShape"
+        "@id": "sh:NodeShape"
       },
-      "http://www.w3.org/ns/shacl#targetClass": {
+      "sh:targetClass": {
         "@id": "SpecIF:writes"
       },
-      "http://www.w3.org/ns/shacl#property": [
+      "sh:property": [
         {
-          "@id": "rdfs:comment-Shape"
+          "@id": "pigShapes_rdfs:comment"
         },
         {
-          "http://www.w3.org/ns/shacl#path": {
+          "sh:path": {
             "@id": "SpecIF:writes-hasSource"
           },
-          "http://www.w3.org/ns/shacl#class": {
-            "@id": "FMC:Actor"
+          "sh:or": {
+            "@list": [
+              {
+                "sh:class": {
+                  "@id": "FMC:Actor"
+                }
+              }
+            ]
           },
-          "http://www.w3.org/ns/shacl#minCount": 1,
-          "http://www.w3.org/ns/shacl#maxCount": 1
+          "sh:minCount": 1,
+          "sh:maxCount": 1
         },
         {
-          "http://www.w3.org/ns/shacl#path": {
+          "sh:path": {
             "@id": "SpecIF:writes-hasTarget"
           },
-          "http://www.w3.org/ns/shacl#class": {
-            "@id": "FMC:State"
+          "sh:or": {
+            "@list": [
+              {
+                "sh:class": {
+                  "@id": "FMC:State"
+                }
+              }
+            ]
           },
-          "http://www.w3.org/ns/shacl#minCount": 1,
-          "http://www.w3.org/ns/shacl#maxCount": 1
+          "sh:minCount": 1,
+          "sh:maxCount": 1
         }
       ]
     },
@@ -962,15 +1165,14 @@ Output JSON-LD
       "rdfs:comment": {
         "@value": "A [[FMC:Actor]] 'reads' a [[FMC:State]].",
         "@language": "en"
-      },
-      "dcterms:modified": "2018-05-10T11:54:00+01:00"
+      }
     },
     {
       "@id": "SpecIF:reads-hasSource",
       "rdfs:subPropertyOf": {
         "@id": "pig:eligibleSource"
       },
-      "rdfs:label": "Connects the source of SpecIF:reads",
+      "rdfs:comment": "Connects the source of SpecIF:reads",
       "rdfs:domain": {
         "@id": "SpecIF:reads"
       },
@@ -983,7 +1185,7 @@ Output JSON-LD
       "rdfs:subPropertyOf": {
         "@id": "pig:eligibleTarget"
       },
-      "rdfs:label": "Connects the target of SpecIF:reads",
+      "rdfs:comment": "Connects the target of SpecIF:reads",
       "rdfs:domain": {
         "@id": "SpecIF:reads"
       },
@@ -992,36 +1194,48 @@ Output JSON-LD
       }
     },
     {
-      "@id": "SpecIF:reads-Shape",
+      "@id": "pigShapes_SpecIF:reads",
       "rdf:type": {
-        "@id": "http://www.w3.org/ns/shacl#NodeShape"
+        "@id": "sh:NodeShape"
       },
-      "http://www.w3.org/ns/shacl#targetClass": {
+      "sh:targetClass": {
         "@id": "SpecIF:reads"
       },
-      "http://www.w3.org/ns/shacl#property": [
+      "sh:property": [
         {
-          "@id": "rdfs:comment-Shape"
+          "@id": "pigShapes_rdfs:comment"
         },
         {
-          "http://www.w3.org/ns/shacl#path": {
+          "sh:path": {
             "@id": "SpecIF:reads-hasSource"
           },
-          "http://www.w3.org/ns/shacl#class": {
-            "@id": "FMC:Actor"
+          "sh:or": {
+            "@list": [
+              {
+                "sh:class": {
+                  "@id": "FMC:Actor"
+                }
+              }
+            ]
           },
-          "http://www.w3.org/ns/shacl#minCount": 1,
-          "http://www.w3.org/ns/shacl#maxCount": 1
+          "sh:minCount": 1,
+          "sh:maxCount": 1
         },
         {
-          "http://www.w3.org/ns/shacl#path": {
+          "sh:path": {
             "@id": "SpecIF:reads-hasTarget"
           },
-          "http://www.w3.org/ns/shacl#class": {
-            "@id": "FMC:State"
+          "sh:or": {
+            "@list": [
+              {
+                "sh:class": {
+                  "@id": "FMC:State"
+                }
+              }
+            ]
           },
-          "http://www.w3.org/ns/shacl#minCount": 1,
-          "http://www.w3.org/ns/shacl#maxCount": 1
+          "sh:minCount": 1,
+          "sh:maxCount": 1
         }
       ]
     },
@@ -1047,15 +1261,14 @@ Output JSON-LD
       "rdfs:comment": {
         "@value": "<p>The object is satisfied by the subject. <small>(<i>source: <a href=\"http://open-services.net/\">OSLC</a></i>)</small></p><p>SpecIF suggests that the subject is confined to a model element, e.g, a [[FMC:Actor]] or [[FMC:State]], and the object is confined to a [[IREB:Requirement]]. More concretely, an example for this type of statement is 'Component-X <em>satisfies</em> 'Requirement-4711'.</p>",
         "@language": "en"
-      },
-      "dcterms:modified": "2016-05-26T08:59:00+02:00"
+      }
     },
     {
       "@id": "oslc_rm:satisfies-hasSource",
       "rdfs:subPropertyOf": {
         "@id": "pig:eligibleSource"
       },
-      "rdfs:label": "Connects the source of oslc_rm:satisfies",
+      "rdfs:comment": "Connects the source of oslc_rm:satisfies",
       "rdfs:domain": {
         "@id": "oslc_rm:satisfies"
       },
@@ -1077,7 +1290,7 @@ Output JSON-LD
       "rdfs:subPropertyOf": {
         "@id": "pig:eligibleTarget"
       },
-      "rdfs:label": "Connects the target of oslc_rm:satisfies",
+      "rdfs:comment": "Connects the target of oslc_rm:satisfies",
       "rdfs:domain": {
         "@id": "oslc_rm:satisfies"
       },
@@ -1086,45 +1299,53 @@ Output JSON-LD
       }
     },
     {
-      "@id": "oslc_rm:satisfies-Shape",
+      "@id": "pigShapes_oslc_rm:satisfies",
       "rdf:type": {
-        "@id": "http://www.w3.org/ns/shacl#NodeShape"
+        "@id": "sh:NodeShape"
       },
-      "http://www.w3.org/ns/shacl#targetClass": {
+      "sh:targetClass": {
         "@id": "oslc_rm:satisfies"
       },
-      "http://www.w3.org/ns/shacl#property": [
+      "sh:property": [
         {
-          "@id": "rdfs:comment-Shape"
+          "@id": "pigShapes_rdfs:comment"
         },
         {
-          "http://www.w3.org/ns/shacl#path": {
+          "sh:path": {
             "@id": "oslc_rm:satisfies-hasSource"
           },
-          "http://www.w3.org/ns/shacl#class": {
-            "owl:unionOf": {
-              "@list": [
-                {
+          "sh:or": {
+            "@list": [
+              {
+                "sh:class": {
                   "@id": "FMC:Actor"
-                },
-                {
+                }
+              },
+              {
+                "sh:class": {
                   "@id": "FMC:State"
                 }
-              ]
-            }
+              }
+            ]
           },
-          "http://www.w3.org/ns/shacl#minCount": 1,
-          "http://www.w3.org/ns/shacl#maxCount": 1
+          "sh:minCount": 1,
+          "sh:maxCount": 1
         },
         {
-          "http://www.w3.org/ns/shacl#path": {
+          "sh:path": {
             "@id": "oslc_rm:satisfies-hasTarget"
           },
-          "http://www.w3.org/ns/shacl#class": {
-            "@id": "IREB:Requirement"
+          "sh:or": {
+            "@list": [
+              {
+                "sh:class": {
+                  "@id": "IREB:Requirement"
+                }
+              }
+            ]
           },
-          "http://www.w3.org/ns/shacl#minCount": 1,
-          "http://www.w3.org/ns/shacl#maxCount": 1
+          "sh:minCount": 1,
+          "sh:maxCount": 1
         }
       ]
     },
@@ -1171,8 +1392,24 @@ Output JSON-LD
       },
       "rdfs:label": "IT-Integration: FiCo-Application and FiCo-Data",
       "SpecIF:Diagram": "<p class=\"inline-label\">Model Diagram:</p><p><object type=\"image/svg+xml\" data=\"files_and_images/Very-Simple-Model-FMC.svg\">Notation: FMC Block Diagram</object></p>",
-      "dcterms:type": "FMC Block Diagram",
-      "dcterms:modified": "2020-03-06T08:32:00+01:00"
+      "pig:category": "FMC Block Diagram",
+      "dcterms:modified": "2020-03-06T08:32:00+01:00",
+      "pig:shows": {
+        "@list": [
+          {
+            "@id": "d:MEl-50fbfe8f0029b1a8016ea86245a9d83a"
+          },
+          {
+            "@id": "d:MEl-50feddc00029b1a8016e2872e78ecadc"
+          },
+          {
+            "@id": "d:SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc"
+          },
+          {
+            "@id": "d:SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc"
+          }
+        ]
+      }
     },
     {
       "@id": "d:MEl-50fbfe8f0029b1a8016ea86245a9d83a",
@@ -1191,18 +1428,6 @@ Output JSON-LD
       "rdfs:label": "FiCo-Data",
       "rdfs:comment": "<p>Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc.</p>",
       "dcterms:modified": "2020-03-06T09:03:00+01:00"
-    },
-    {
-      "@id": "d:Diagram-aec0df7900010000017001eaf53e8876",
-      "pig:shows": {
-        "@id": "d:MEl-50fbfe8f0029b1a8016ea86245a9d83a"
-      }
-    },
-    {
-      "@id": "d:Diagram-aec0df7900010000017001eaf53e8876",
-      "pig:shows": {
-        "@id": "d:MEl-50feddc00029b1a8016e2872e78ecadc"
-      }
     },
     {
       "@id": "d:SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc",
@@ -1275,43 +1500,51 @@ Output JSON-LD
       "dcterms:modified": "2020-10-17T10:00:00+01:00"
     },
     {
-      "@id": "d:Diagram-aec0df7900010000017001eaf53e8876",
-      "pig:shows": {
-        "@id": "d:SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc"
-      }
-    },
-    {
-      "@id": "d:Diagram-aec0df7900010000017001eaf53e8876",
-      "pig:shows": {
-        "@id": "d:SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc"
-      }
-    },
-    {
       "@id": "d:HierarchyRoot",
       "rdf:type": {
         "@id": "pig:HierarchyRoot"
       },
       "rdfs:label": "Hierarchy Root",
       "rdfs:comment": "... anchoring all hierarchies of this graph (package)",
-      "pig:lists": [
-        {
-          "@id": "d:Folder-Introduction"
-        },
-        {
-          "@id": "d:Folder-Requirements"
-        },
-        {
-          "@id": "d:Folder-SystemModel"
-        },
-        {
-          "@id": "d:FolderGlossary-10875487071"
-        }
-      ]
+      "pig:lists": {
+        "@list": [
+          {
+            "@id": "d:O-ACP-Very-Simple-Model-FMC-with-Requirements"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "d:O-ACP-Very-Simple-Model-FMC-with-Requirements",
+      "rdf:type": {
+        "@id": "pig:Outline"
+      },
+      "rdfs:label": "Project 'Very Simple Model (FMC) with Requirements'",
+      "pig:category": {
+        "@id": "SpecIF:Heading"
+      },
+      "dcterms:modified": "2025-01-26T17:06:19.300Z",
+      "pig:lists": {
+        "@list": [
+          {
+            "@id": "d:Folder-Introduction"
+          },
+          {
+            "@id": "d:Folder-Requirements"
+          },
+          {
+            "@id": "d:Folder-SystemModel"
+          },
+          {
+            "@id": "d:FolderGlossary-10875487071"
+          }
+        ]
+      }
     },
     {
       "@id": "d:Folder-Introduction",
       "rdf:type": {
-        "@id": "SpecIF:Heading"
+        "@id": "pig:Outline"
       },
       "rdfs:label": "Introduction",
       "rdfs:comment": "<p>This is a minimal showcase for a model with model-elements and related requirements. It covers pretty much all characteristics neeeded in such cases (including 'statements on statements'), so that transformations and expressive power of other data formats can be evaluated. The example and its representation in SpecIF format is discussed in <a href=\"https://specif.de/Tutorials/06_Very-Simple-Model-FMC.html\" target=\"_blank\">Tutorial 6: Very Simple Model (FMC)</a> and <a href=\"https://specif.de/Tutorials/09_Very-Simple-Model-FMC-with-Requirements.html\" target=\"_blank\">Tutorial 9: Very Simple Model (FMC) with Requirements</a>.</p>",
@@ -1320,50 +1553,59 @@ Output JSON-LD
     {
       "@id": "d:Folder-Requirements",
       "rdf:type": {
-        "@id": "SpecIF:Heading"
+        "@id": "pig:Outline"
       },
       "rdfs:label": "Requirements",
       "dcterms:modified": "2020-03-06T08:32:00+01:00",
-      "pig:lists": [
-        {
-          "@id": "d:Req-1a8016e2872e78ecadc50feddc00029b"
-        },
-        {
-          "@id": "d:Req-0Z7916e2872e78ecadc50feddc00918a"
-        },
-        {
-          "@id": "d:Req-2b9016e2872e78ecadc50feddc0013Ac"
-        }
-      ]
+      "pig:lists": {
+        "@list": [
+          {
+            "@id": "d:Req-1a8016e2872e78ecadc50feddc00029b"
+          },
+          {
+            "@id": "d:Req-0Z7916e2872e78ecadc50feddc00918a"
+          },
+          {
+            "@id": "d:Req-2b9016e2872e78ecadc50feddc0013Ac"
+          }
+        ]
+      }
     },
     {
       "@id": "d:Folder-SystemModel",
       "rdf:type": {
-        "@id": "SpecIF:Heading"
+        "@id": "pig:Outline"
       },
       "rdfs:label": "System Model",
       "dcterms:modified": "2020-03-06T08:32:00+01:00",
       "pig:lists": {
-        "@id": "d:Diagram-aec0df7900010000017001eaf53e8876"
+        "@list": [
+          {
+            "@id": "d:Diagram-aec0df7900010000017001eaf53e8876"
+          }
+        ]
       }
     },
     {
       "@id": "d:FolderGlossary-10875487071",
       "rdf:type": {
-        "@id": "SpecIF:Heading"
+        "@id": "pig:Outline"
       },
       "rdfs:label": "Model Elements (Glossary)",
-      "dcterms:type": "Model Elements (Glossary)",
-      "dcterms:modified": "2025-10-17T10:54:49.587Z",
-      "pig:lists": [
-        {
-          "@id": "d:MEl-50fbfe8f0029b1a8016ea86245a9d83a"
-        },
-        {
-          "@id": "d:MEl-50feddc00029b1a8016e2872e78ecadc"
-        }
-      ]
+      "pig:category": {
+        "@id": "SpecIF:Glossary"
+      },
+      "dcterms:modified": "2025-11-12T14:31:54.244Z",
+      "pig:lists": {
+        "@list": [
+          {
+            "@id": "d:MEl-50fbfe8f0029b1a8016ea86245a9d83a"
+          },
+          {
+            "@id": "d:MEl-50feddc00029b1a8016e2872e78ecadc"
+          }
+        ]
+      }
     }
   ]
 }
-
