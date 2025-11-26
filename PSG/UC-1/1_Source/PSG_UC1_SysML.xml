@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI
+    xmlns:xmi="http://schema.omg.org/spec/XMI/2.1"
+    xmlns:uml="http://www.omg.org/spec/UML/20090901"
+    xmlns:sysml="http://www.omg.org/spec/SysML/20100301/SysML-profile">
+
+  <!-- Root model -->
+  <uml:Model xmi:id="m1" name="SARTest_OperatorInterface_Model">
+    <packagedElement xmi:type="uml:Package"
+                     xmi:id="pkg1"
+                     name="SARTestSystemPackage">
+
+      <!-- ========= BLOCKS (as UML Classes with «block» stereotype) ========= -->
+
+      <packagedElement xmi:type="uml:Class"
+                       xmi:id="b1"
+                       name="SARTestSystem"/>
+
+      <packagedElement xmi:type="uml:Class"
+                       xmi:id="b2"
+                       name="OperatorInterface"/>
+
+      <packagedElement xmi:type="uml:Class"
+                       xmi:id="b3"
+                       name="ModeSequencer"/>
+
+      <packagedElement xmi:type="uml:Class"
+                       xmi:id="b4"
+                       name="RetaskingController"/>
+
+      <packagedElement xmi:type="uml:Class"
+                       xmi:id="b5"
+                       name="SafetyAndResourceManager"/>
+
+      <packagedElement xmi:type="uml:Class"
+                       xmi:id="b6"
+                       name="LoggingSubsystem"/>
+
+      <packagedElement xmi:type="uml:Class"
+                       xmi:id="b7"
+                       name="HealthStatusMonitor"/>
+
+      <packagedElement xmi:type="uml:Class"
+                       xmi:id="b8"
+                       name="AutoModeSelector"/>
+
+      <!-- Composition: SARTestSystem owns the main functional blocks -->
+      <ownedAttribute xmi:id="p1"
+                      name="operatorInterface"
+                      type="b2"
+                      aggregation="composite"
+                      visibility="private"/>
+
+      <ownedAttribute xmi:id="p2"
+                      name="modeSequencer"
+                      type="b3"
+                      aggregation="composite"
+                      visibility="private"/>
+
+      <ownedAttribute xmi:id="p3"
+                      name="retaskingController"
+                      type="b4"
+                      aggregation="composite"
+                      visibility="private"/>
+
+      <ownedAttribute xmi:id="p4"
+                      name="safetyAndResourceManager"
+                      type="b5"
+                      aggregation="composite"
+                      visibility="private"/>
+
+      <ownedAttribute xmi:id="p5"
+                      name="loggingSubsystem"
+                      type="b6"
+                      aggregation="composite"
+                      visibility="private"/>
+
+      <ownedAttribute xmi:id="p6"
+                      name="healthStatusMonitor"
+                      type="b7"
+                      aggregation="composite"
+                      visibility="private"/>
+
+      <ownedAttribute xmi:id="p7"
+                      name="autoModeSelector"
+                      type="b8"
+                      aggregation="composite"
+                      visibility="private"/>
+
+      <!-- ========= REQUIREMENTS (as UML Classes with «requirement» stereotype) ========= -->
+
+      <packagedElement xmi:type="uml:Class"
+                       xmi:id="r1"
+                       name="OR-1"/>
+
+      <packagedElement xmi:type="uml:Class"
+                       xmi:id="r2"
+                       name="OR-2"/>
+
+      <packagedElement xmi:type="uml:Class"
+                       xmi:id="r3"
+                       name="OR-3"/>
+
+      <packagedElement xmi:type="uml:Class"
+                       xmi:id="r4"
+                       name="OR-4"/>
+
+      <packagedElement xmi:type="uml:Class"
+                       xmi:id="r5"
+                       name="OR-5"/>
+
+      <packagedElement xmi:type="uml:Class"
+                       xmi:id="r6"
+                       name="OR-6"/>
+
+      <packagedElement xmi:type="uml:Class"
+                       xmi:id="r7"
+                       name="OR-7"/>
+
+      <!-- ========= SATISFY RELATIONSHIPS (uml:Abstraction + «satisfy») ========= -->
+
+      <!-- OR-1 – Operator interface displays imaging modes and key parameters -->
+      <packagedElement xmi:type="uml:Abstraction"
+                       xmi:id="sat1"
+                       name="Satisfy_OR-1"
+                       client="b2"
+                       supplier="r1"/>
+
+      <!-- OR-2 – Pre-planned sequences of modes along the flight path -->
+      <packagedElement xmi:type="uml:Abstraction"
+                       xmi:id="sat2"
+                       name="Satisfy_OR-2"
+                       client="b3"
+                       supplier="r2"/>
+
+      <!-- OR-3 – In-mission mode re-tasking subject to constraints -->
+      <packagedElement xmi:type="uml:Abstraction"
+                       xmi:id="sat3"
+                       name="Satisfy_OR-3"
+                       client="b4"
+                       supplier="r3"/>
+
+      <!-- OR-4 – Enforce safety and resource constraints -->
+      <packagedElement xmi:type="uml:Abstraction"
+                       xmi:id="sat4"
+                       name="Satisfy_OR-4"
+                       client="b5"
+                       supplier="r4"/>
+
+      <!-- OR-5 – Logging of mode selections, wavelength settings, metadata -->
+      <packagedElement xmi:type="uml:Abstraction"
+                       xmi:id="sat5"
+                       name="Satisfy_OR-5"
+                       client="b6"
+                       supplier="r5"/>
+
+      <!-- OR-6 – Health and status indicators for RF, timing, processing -->
+      <packagedElement xmi:type="uml:Abstraction"
+                       xmi:id="sat6"
+                       name="Satisfy_OR-6"
+                       client="b7"
+                       supplier="r6"/>
+
+      <!-- OR-7 – Automatic mode selection policies -->
+      <packagedElement xmi:type="uml:Abstraction"
+                       xmi:id="sat7"
+                       name="Satisfy_OR-7"
+                       client="b8"
+                       supplier="r7"/>
+
+    </packagedElement>
+  </uml:Model>

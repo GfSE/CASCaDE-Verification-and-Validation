@@ -1,0 +1,249 @@
+
+@prefix pig:  <http://example.org/pig#> .
+@prefix ex:   <http://example.org/sarzoom#> .
+
+##########
+# Organizers for source artifacts
+##########
+
+ex:reqifSpec1 a pig:Organizer ;
+  pig:hasName "UC1 Operator Requirements ReqIF Specification" ;
+  pig:organizes ex:req_OR_1, ex:req_OR_2, ex:req_OR_3,
+                ex:req_OR_4, ex:req_OR_5, ex:req_OR_6, ex:req_OR_7 .
+
+ex:sysmlPkg1 a pig:Organizer ;
+  pig:hasName "SAR Zoom SysML Package" ;
+  pig:organizes ex:block_SARZoomSystem, ex:block_OperatorInterface,
+                ex:block_ModeSequencer, ex:block_RetaskingController,
+                ex:block_SafetyAndResourceManager, ex:block_LoggingSubsystem,
+                ex:block_HealthStatusMonitor, ex:block_AutoModeSelector .
+
+##########
+# Entity types (domain classes)
+##########
+
+ex:Requirement a pig:Entity .
+ex:Block       a pig:Entity .
+ex:System      a pig:Entity .
+ex:Satisfies   a pig:Relationship .
+ex:ComposedOf  a pig:Relationship .
+
+##########
+# Requirement entities (from ReqIF SPEC-OBJECTS)
+##########
+
+ex:req_OR_1 a pig:Entity ;
+  pig:hasType ex:Requirement ;
+  pig:hasName "OR-1 – Operator interface parameters" ;
+  pig:sourceArtifact ex:reqifSpec1 .
+
+ex:req_OR_2 a pig:Entity ;
+  pig:hasType ex:Requirement ;
+  pig:hasName "OR-2 – Pre-planned mode sequences" ;
+  pig:sourceArtifact ex:reqifSpec1 .
+
+ex:req_OR_3 a pig:Entity ;
+  pig:hasType ex:Requirement ;
+  pig:hasName "OR-3 – In-mission retasking" ;
+  pig:sourceArtifact ex:reqifSpec1 .
+
+ex:req_OR_4 a pig:Entity ;
+  pig:hasType ex:Requirement ;
+  pig:hasName "OR-4 – Safety & resource constraints" ;
+  pig:sourceArtifact ex:reqifSpec1 .
+
+ex:req_OR_5 a pig:Entity ;
+  pig:hasType ex:Requirement ;
+  pig:hasName "OR-5 – Mode logging & metadata" ;
+  pig:sourceArtifact ex:reqifSpec1 .
+
+ex:req_OR_6 a pig:Entity ;
+  pig:hasType ex:Requirement ;
+  pig:hasName "OR-6 – Health & status indicators" ;
+  pig:sourceArtifact ex:reqifSpec1 .
+
+ex:req_OR_7 a pig:Entity ;
+  pig:hasType ex:Requirement ;
+  pig:hasName "OR-7 – Automatic mode selection policies" ;
+  pig:sourceArtifact ex:reqifSpec1 .
+
+##########
+# Requirement properties (PIG Property + Value pattern)
+# (Fully expanded for OR-1; others analogous)
+##########
+
+# OR-1 external ID
+ex:req_OR_1_id_prop a pig:Property ;
+  pig:hasName "External ID" ;
+  pig:forEntity ex:req_OR_1 ;
+  pig:hasValue ex:req_OR_1_id_val .
+
+ex:req_OR_1_id_val a pig:Value ;
+  pig:literal "OR-1" .
+
+# OR-1 text
+ex:req_OR_1_text_prop a pig:Property ;
+  pig:hasName "Text" ;
+  pig:forEntity ex:req_OR_1 ;
+  pig:hasValue ex:req_OR_1_text_val .
+
+ex:req_OR_1_text_val a pig:Value ;
+  pig:literal """
+The S system shall provide an operator interface that displays available imaging
+modes and their key parameters (frequency, resolution, coverage, DF, power).
+""" .
+
+# OR-1 verification method
+ex:req_OR_1_verif_prop a pig:Property ;
+  pig:hasName "Verification" ;
+  pig:forEntity ex:req_OR_1 ;
+  pig:hasValue ex:req_OR_1_verif_val .
+
+ex:req_OR_1_verif_val a pig:Value ;
+  pig:literal "I, D" .
+
+# (You’d repeat the same Property/Value pattern for OR-2..OR-7:
+#   ID = "OR-n", Text = full requirement sentence, Verification = codes)
+
+##########
+# Block / system entities (from SysML blocks)
+##########
+
+ex:block_SARZoomSystem a pig:Entity ;
+  pig:hasType ex:System ;
+  pig:hasName "SARZoomSystem" ;
+  pig:sourceArtifact ex:sysmlPkg1 .
+
+ex:block_OperatorInterface a pig:Entity ;
+  pig:hasType ex:Block ;
+  pig:hasName "OperatorInterface" ;
+  pig:sourceArtifact ex:sysmlPkg1 .
+
+ex:block_ModeSequencer a pig:Entity ;
+  pig:hasType ex:Block ;
+  pig:hasName "ModeSequencer" ;
+  pig:sourceArtifact ex:sysmlPkg1 .
+
+ex:block_RetaskingController a pig:Entity ;
+  pig:hasType ex:Block ;
+  pig:hasName "RetaskingController" ;
+  pig:sourceArtifact ex:sysmlPkg1 .
+
+ex:block_SafetyAndResourceManager a pig:Entity ;
+  pig:hasType ex:Block ;
+  pig:hasName "SafetyAndResourceManager" ;
+  pig:sourceArtifact ex:sysmlPkg1 .
+
+ex:block_LoggingSubsystem a pig:Entity ;
+  pig:hasType ex:Block ;
+  pig:hasName "LoggingSubsystem" ;
+  pig:sourceArtifact ex:sysmlPkg1 .
+
+ex:block_HealthStatusMonitor a pig:Entity ;
+  pig:hasType ex:Block ;
+  pig:hasName "HealthStatusMonitor" ;
+  pig:sourceArtifact ex:sysmlPkg1 .
+
+ex:block_AutoModeSelector a pig:Entity ;
+  pig:hasType ex:Block ;
+  pig:hasName "AutoModeSelector" ;
+  pig:sourceArtifact ex:sysmlPkg1 .
+
+##########
+# System composition relationships (from ownedAttributes in SysML)
+##########
+
+ex:rel_comp_1 a pig:Relationship ;
+  pig:hasType ex:ComposedOf ;
+  pig:from ex:block_SARZoomSystem ;
+  pig:to   ex:block_OperatorInterface ;
+  pig:sourceArtifact ex:sysmlPkg1 .
+
+ex:rel_comp_2 a pig:Relationship ;
+  pig:hasType ex:ComposedOf ;
+  pig:from ex:block_SARZoomSystem ;
+  pig:to   ex:block_ModeSequencer ;
+  pig:sourceArtifact ex:sysmlPkg1 .
+
+ex:rel_comp_3 a pig:Relationship ;
+  pig:hasType ex:ComposedOf ;
+  pig:from ex:block_SARZoomSystem ;
+  pig:to   ex:block_RetaskingController ;
+  pig:sourceArtifact ex:sysmlPkg1 .
+
+ex:rel_comp_4 a pig:Relationship ;
+  pig:hasType ex:ComposedOf ;
+  pig:from ex:block_SARZoomSystem ;
+  pig:to   ex:block_SafetyAndResourceManager ;
+  pig:sourceArtifact ex:sysmlPkg1 .
+
+ex:rel_comp_5 a pig:Relationship ;
+  pig:hasType ex:ComposedOf ;
+  pig:from ex:block_SARZoomSystem ;
+  pig:to   ex:block_LoggingSubsystem ;
+  pig:sourceArtifact ex:sysmlPkg1 .
+
+ex:rel_comp_6 a pig:Relationship ;
+  pig:hasType ex:ComposedOf ;
+  pig:from ex:block_SARZoomSystem ;
+  pig:to   ex:block_HealthStatusMonitor ;
+  pig:sourceArtifact ex:sysmlPkg1 .
+
+ex:rel_comp_7 a pig:Relationship ;
+  pig:hasType ex:ComposedOf ;
+  pig:from ex:block_SARZoomSystem ;
+  pig:to   ex:block_AutoModeSelector ;
+  pig:sourceArtifact ex:sysmlPkg1 .
+
+##########
+# Satisfy relationships (from SysML «satisfy» Abstractions sat1..sat7)
+##########
+
+# OR-1 – satisfied by OperatorInterface
+ex:rel_sat_OR_1 a pig:Relationship ;
+  pig:hasType ex:Satisfies ;
+  pig:from ex:block_OperatorInterface ;
+  pig:to   ex:req_OR_1 ;
+  pig:sourceArtifact ex:sysmlPkg1 .
+
+# OR-2 – satisfied by ModeSequencer
+ex:rel_sat_OR_2 a pig:Relationship ;
+  pig:hasType ex:Satisfies ;
+  pig:from ex:block_ModeSequencer ;
+  pig:to   ex:req_OR_2 ;
+  pig:sourceArtifact ex:sysmlPkg1 .
+
+# OR-3 – satisfied by RetaskingController
+ex:rel_sat_OR_3 a pig:Relationship ;
+  pig:hasType ex:Satisfies ;
+  pig:from ex:block_RetaskingController ;
+  pig:to   ex:req_OR_3 ;
+  pig:sourceArtifact ex:sysmlPkg1 .
+
+# OR-4 – satisfied by SafetyAndResourceManager
+ex:rel_sat_OR_4 a pig:Relationship ;
+  pig:hasType ex:Satisfies ;
+  pig:from ex:block_SafetyAndResourceManager ;
+  pig:to   ex:req_OR_4 ;
+  pig:sourceArtifact ex:sysmlPkg1 .
+
+# OR-5 – satisfied by LoggingSubsystem
+ex:rel_sat_OR_5 a pig:Relationship ;
+  pig:hasType ex:Satisfies ;
+  pig:from ex:block_LoggingSubsystem ;
+  pig:to   ex:req_OR_5 ;
+  pig:sourceArtifact ex:sysmlPkg1 .
+
+# OR-6 – satisfied by HealthStatusMonitor
+ex:rel_sat_OR_6 a pig:Relationship ;
+  pig:hasType ex:Satisfies ;
+  pig:from ex:block_HealthStatusMonitor ;
+  pig:to   ex:req_OR_6 ;
+  pig:sourceArtifact ex:sysmlPkg1 .
+
+# OR-7 – satisfied by AutoModeSelector
+ex:rel_sat_OR_7 a pig:Relationship ;
+  pig:hasType ex:Satisfies ;
+  pig:from ex:block_AutoModeSelector ;
+  pig:to   ex:req_OR_7 ;
+  pig:sourceArtifact ex:sysmlPkg1 .

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<REQ-IF xmlns="http://www.omg.org/spec/ReqIF/20110401/reqif.xsd"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <THE-HEADER>
+    <REQ-IF-HEADER
+        IDENTIFIER="RH-UC1-OR"
+        CREATION-TIME="2025-11-22T00:00:00Z"
+        REQ-IF-TOOL-ID="CASCaRA-Example"
+        REQ-IF-VERSION="1.0"
+        COMMENT="Minimal ReqIF example for OR-1..OR-7"/>
+  </THE-HEADER>
+
+  <CORE-CONTENT>
+    <REQ-IF-CONTENT>
+
+      <!-- Datatype definitions -->
+      <DATATYPES>
+        <DATATYPE-DEFINITION-STRING
+            IDENTIFIER="DT-STRING"
+            LONG-NAME="String"
+            MAX-LENGTH="255"/>
+        <DATATYPE-DEFINITION-XHTML
+            IDENTIFIER="DT-XHTML"
+            LONG-NAME="Formatted Text"/>
+      </DATATYPES>
+
+      <!-- Spec type for requirements -->
+      <SPEC-TYPES>
+        <SPEC-OBJECT-TYPE
+            IDENTIFIER="T-Requirement"
+            LONG-NAME="Requirement">
+          <SPEC-ATTRIBUTES>
+            <ATTRIBUTE-DEFINITION-STRING
+                IDENTIFIER="AD-ID"
+                LONG-NAME="ID"
+                DATATYPE-DEFINITION="DT-STRING"/>
+            <ATTRIBUTE-DEFINITION-XHTML
+                IDENTIFIER="AD-Text"
+                LONG-NAME="Text"
+                DATATYPE-DEFINITION="DT-XHTML"/>
+            <ATTRIBUTE-DEFINITION-STRING
+                IDENTIFIER="AD-Verification"
+                LONG-NAME="Verification"
+                DATATYPE-DEFINITION="DT-STRING"/>
+          </SPEC-ATTRIBUTES>
+        </SPEC-OBJECT-TYPE>
+      </SPEC-TYPES>
+
+      <!-- The requirements from your table -->
+      <SPEC-OBJECTS>
+
+        <SPEC-OBJECT
+            IDENTIFIER="REQ-OR-1"
+            LONG-NAME="OR-1"
+            TYPE="T-Requirement">
+          <VALUES>
+            <ATTRIBUTE-VALUE-STRING ATTRIBUTE-DEFINITION="AD-ID">
+              <THE-VALUE>OR-1</THE-VALUE>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-XHTML ATTRIBUTE-DEFINITION="AD-Text">
+              <THE-VALUE>
+                <xhtml:div>
+                  The S system shall provide an operator interface that
+                  displays available imaging modes and their key parameters
+                  (frequency, resolution, coverage, DF, power).
+                </xhtml:div>
+              </THE-VALUE>
+            </ATTRIBUTE-VALUE-XHTML>
+            <ATTRIBUTE-VALUE-STRING ATTRIBUTE-DEFINITION="AD-Verification">
+              <THE-VALUE>I, D</THE-VALUE>
+            </ATTRIBUTE-VALUE-STRING>
+          </VALUES>
+        </SPEC-OBJECT>
+
+        <SPEC-OBJECT
+            IDENTIFIER="REQ-OR-2"
+            LONG-NAME="OR-2"
+            TYPE="T-Requirement">
+          <VALUES>
+            <ATTRIBUTE-VALUE-STRING ATTRIBUTE-DEFINITION="AD-ID">
+              <THE-VALUE>OR-2</THE-VALUE>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-XHTML ATTRIBUTE-DEFINITION="AD-Text">
+              <THE-VALUE>
+                <xhtml:div>
+                  The system shall allow operators to pre-plan sequences of
+                  modes along the flight path.
+                </xhtml:div>
+              </THE-VALUE>
+            </ATTRIBUTE-VALUE-XHTML>
+            <ATTRIBUTE-VALUE-STRING ATTRIBUTE-DEFINITION="AD-Verification">
+              <THE-VALUE>D, I</THE-VALUE>
+            </ATTRIBUTE-VALUE-STRING>
+          </VALUES>
+        </SPEC-OBJECT>
+
+        <SPEC-OBJECT
+            IDENTIFIER="REQ-OR-3"
+            LONG-NAME="OR-3"
+            TYPE="T-Requirement">
+          <VALUES>
+            <ATTRIBUTE-VALUE-STRING ATTRIBUTE-DEFINITION="AD-ID">
+              <THE-VALUE>OR-3</THE-VALUE>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-XHTML ATTRIBUTE-DEFINITION="AD-Text">
+              <THE-VALUE>
+                <xhtml:div>
+                  The system shall support in-mission re-tasking of modes
+                  subject to platform and resource constraints.
+                </xhtml:div>
+              </THE-VALUE>
+            </ATTRIBUTE-VALUE-XHTML>
+            <ATTRIBUTE-VALUE-STRING ATTRIBUTE-DEFINITION="AD-Verification">
+              <THE-VALUE>D, T</THE-VALUE>
+            </ATTRIBUTE-VALUE-STRING>
+          </VALUES>
+        </SPEC-OBJECT>
+
+        <SPEC-OBJECT
+            IDENTIFIER="REQ-OR-4"
+            LONG-NAME="OR-4"
+            TYPE="T-Requirement">
+          <VALUES>
+            <ATTRIBUTE-VALUE-STRING ATTRIBUTE-DEFINITION="AD-ID">
+              <THE-VALUE>OR-4</THE-VALUE>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-XHTML ATTRIBUTE-DEFINITION="AD-Text">
+              <THE-VALUE>
+                <xhtml:div>
+                  The system shall enforce safety and resource constraints
+                  (e.g., maximum duty cycle, power limits) when selecting
+                  high-demand zoom modes.
+                </xhtml:div>
+              </THE-VALUE>
+            </ATTRIBUTE-VALUE-XHTML>
+            <ATTRIBUTE-VALUE-STRING ATTRIBUTE-DEFINITION="AD-Verification">
+              <THE-VALUE>A, T</THE-VALUE>
+            </ATTRIBUTE-VALUE-STRING>
+          </VALUES>
+        </SPEC-OBJECT>
+
+        <SPEC-OBJECT
+            IDENTIFIER="REQ-OR-5"
+            LONG-NAME="OR-5"
+            TYPE="T-Requirement">
+          <VALUES>
+            <ATTRIBUTE-VALUE-STRING ATTRIBUTE-DEFINITION="AD-ID">
+              <THE-VALUE>OR-5</THE-VALUE>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-XHTML ATTRIBUTE-DEFINITION="AD-Text">
+              <THE-VALUE>
+                <xhtml:div>
+                  The system shall log all mode selections, wavelength
+                  settings, and associated metadata for post-mission analysis
+                  and verification.
+                </xhtml:div>
+              </THE-VALUE>
+            </ATTRIBUTE-VALUE-XHTML>
+            <ATTRIBUTE-VALUE-STRING ATTRIBUTE-DEFINITION="AD-Verification">
+              <THE-VALUE>I, T</THE-VALUE>
+            </ATTRIBUTE-VALUE-STRING>
+          </VALUES>
+        </SPEC-OBJECT>
+
+        <SPEC-OBJECT
+            IDENTIFIER="REQ-OR-6"
+            LONG-NAME="OR-6"
+            TYPE="T-Requirement">
+          <VALUES>
+            <ATTRIBUTE-VALUE-STRING ATTRIBUTE-DEFINITION="AD-ID">
+              <THE-VALUE>OR-6</THE-VALUE>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-XHTML ATTRIBUTE-DEFINITION="AD-Text">
+              <THE-VALUE>
+                <xhtml:div>
+                  The system shall provide health and status indicators for
+                  RF subsystems, timing, and processing relevant to all
+                  wavelength modes.
+                </xhtml:div>
+              </THE-VALUE>
+            </ATTRIBUTE-VALUE-XHTML>
+            <ATTRIBUTE-VALUE-STRING ATTRIBUTE-DEFINITION="AD-Verification">
+              <THE-VALUE>I, T</THE-VALUE>
+            </ATTRIBUTE-VALUE-STRING>
+          </VALUES>
+        </SPEC-OBJECT>
+
+        <SPEC-OBJECT
+            IDENTIFIER="REQ-OR-7"
+            LONG-NAME="OR-7"
+            TYPE="T-Requirement">
+          <VALUES>
+            <ATTRIBUTE-VALUE-STRING ATTRIBUTE-DEFINITION="AD-ID">
+              <THE-VALUE>OR-7</THE-VALUE>
+            </ATTRIBUTE-VALUE-STRING>
+            <ATTRIBUTE-VALUE-XHTML ATTRIBUTE-DEFINITION="AD-Text">
+              <THE-VALUE>
+                <xhtml:div>
+                  The system shall support automatic mode selection policies
+                  where required by the concept of operations.
+                </xhtml:div>
+              </THE-VALUE>
+            </ATTRIBUTE-VALUE-XHTML>
+            <ATTRIBUTE-VALUE-STRING ATTRIBUTE-DEFINITION="AD-Verification">
+              <THE-VALUE>A, D</THE-VALUE>
+            </ATTRIBUTE-VALUE-STRING>
+          </VALUES>
+        </SPEC-OBJECT>
+
+      </SPEC-OBJECTS>
+
+    </REQ-IF-CONTENT>
+  </CORE-CONTENT>
+</REQ-IF>
