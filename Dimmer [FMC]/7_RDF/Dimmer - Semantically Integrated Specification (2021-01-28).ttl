@@ -3,40 +3,20 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix W3C: <https://www.w3.org/standards/semanticweb#> .
 @prefix xs: <http://www.w3.org/2001/XMLSchema#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix dc: <http://purl.org/dc/elements/1.1/> .
-@prefix schema: <https://schema.org#> .
-@prefix iana: <https://www.iana.org/assignments/media-types#> .
-@prefix foaf: <http://xmlns.com/foaf/spec/#> .
 @prefix FMC: <http://fmc-modeling.org#> .
-@prefix RFLP: <https://product-information-graph.org/v0.2/ontology/RFLP#> .
-@prefix IR: <https://www.adesso.de/de/impulse/interaction-room/index.jsp#> .
 @prefix IREB: <https://cpre.ireb.org/en/downloads-and-resources/glossary#> .
 @prefix ReqIF: <https://www.prostep.org/fileadmin/downloads/PSI_ImplementationGuide_ReqIF_V1-7.pdf#> .
 @prefix ReqIF-WF: <https://www.prostep.org/fileadmin/downloads/Recommendation_ReqIF_V2_RZ3.pdf#> .
-@prefix HIS: <https://www.itwissen.info/Herstellerinitiative-Software-Automotive-HIS.html#> .
-@prefix oslc: <http://open-services.net/ns/core#> .
 @prefix oslc_rm: <http://open-services.net/ns/rm#> .
-@prefix oslc_cm: <http://open-services.net/ns/cm#> .
-@prefix ArchiMate: <https://pubs.opengroup.org#> .
-@prefix bpmn: <https://www.bpmn.org#> .
-@prefix uml: <https://www.omg.org/spec/UML#> .
-@prefix sysml: <https://www.omg.org/spec/SysML#> .
-@prefix pig: <https://product-information-graph.org/metamodel#> .
-@prefix DDP: <http://www.prostep.org/dictionary/2.0#> .
+@prefix pig: <https://product-information-graph.org/v0.2/metamodel#> .
 @prefix SpecIF: <https://specif.de/v1.2/schema#> .
 @prefix pigShapes_dcterms: <https://product-information-graph.org/v0.2/ontology/shapes/dcterms:#> .
 @prefix pigShapes_rdfs: <https://product-information-graph.org/v0.2/ontology/shapes/rdfs:#> .
-@prefix pigShapes_uml: <https://product-information-graph.org/v0.2/ontology/shapes/uml:#> .
-@prefix pigShapes_sysml: <https://product-information-graph.org/v0.2/ontology/shapes/sysml:#> .
 @prefix pigShapes_FMC: <https://product-information-graph.org/v0.2/ontology/shapes/FMC:#> .
-@prefix pigShapes_RFLP: <https://product-information-graph.org/v0.2/ontology/shapes/RFLP:#> .
 @prefix pigShapes_IREB: <https://product-information-graph.org/v0.2/ontology/shapes/IREB:#> .
 @prefix pigShapes_oslc_rm: <https://product-information-graph.org/v0.2/ontology/shapes/oslc_rm:#> .
-@prefix pigShapes_oslc_cm: <https://product-information-graph.org/v0.2/ontology/shapes/oslc_cm:#> .
 @prefix pigShapes_ReqIF: <https://product-information-graph.org/v0.2/ontology/shapes/ReqIF:#> .
 @prefix pigShapes_ReqIF-WF: <https://product-information-graph.org/v0.2/ontology/shapes/ReqIF-WF:#> .
 @prefix pigShapes_SpecIF: <https://product-information-graph.org/v0.2/ontology/shapes/SpecIF:#> .
@@ -57,7 +37,7 @@ d:
 		<http://www.w3.org/2000/01/rdf-schema#> ;
 	dcterms:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
 	dcterms:creator "<mailto:od@enso-managers.de>" ;
-	dcterms:modified "2025-11-12T14:00:28.621Z" .
+	dcterms:modified "2026-01-12T12:40:21.290Z" .
 
 #################################################################
 # PIG Metamodel (pig:)
@@ -70,39 +50,23 @@ pig:Entity
 
 pigShapes_pig:Entity
 	rdf:type sh:NodeShape ;
+	sh:targetClass pig:Entity ;
 	sh:property pigShapes_rdfs:label ,
 		pigShapes_rdfs:comment ,
 		pigShapes_pig:category ,
-		pigShapes_pig:icon ;
-	sh:targetClass pig:Entity .
-
-pig:Relationship
-	rdf:type owl:Class ;
-	rdfs:label "Relationship" ;
-	rdfs:comment "A PIG meta-model element used for reified relationships (aka predicates)." .
-
-pigShapes_pig:Relationship
-	rdf:type sh:NodeShape ;
-	sh:property pigShapes_rdfs:label ,
-		pigShapes_rdfs:comment ,
-		pigShapes_pig:category ,
-		pigShapes_pig:icon ,
-		pigShapes_pig:eligibleSource ,
-		pigShapes_pig:eligibleTarget ;
-	sh:targetClass pig:Relationship .
+		pigShapes_pig:icon .
 
 pig:Organizer
-	rdf:type owl:Class ;
+	rdfs:subClassOf pig:Entity ;
 	rdfs:label "Organizer" ;
-	rdfs:comment "An element organizing model elements. An example is a list of requirements or a diagram using a certain notation which depicts selected model elements." .
+	rdfs:comment "An element organizing model elements. An example is a list of requirements or a diagram using a certain notation." .
 
 pigShapes_pig:Organizer
 	rdf:type sh:NodeShape ;
+	sh:targetClass pig:Organizer ;
 	sh:property pigShapes_rdfs:label ,
 		pigShapes_rdfs:comment ,
-		pigShapes_pig:category ,
-		pigShapes_pig:eligibleElement ;
-	sh:targetClass pig:Organizer .
+		pigShapes_pig:category .
 
 pig:HierarchyRoot
 	rdfs:subClassOf pig:Organizer ;
@@ -111,10 +75,10 @@ pig:HierarchyRoot
 
 pigShapes_pig:HierarchyRoot
 	rdf:type sh:NodeShape ;
+	sh:targetClass pig:HierarchyRoot ;
 	sh:property pigShapes_rdfs:label ,
 		pigShapes_rdfs:comment ,
-		pigShapes_pig:lists ;
-	sh:targetClass pig:HierarchyRoot .
+		pigShapes_pig:lists .
 
 pig:Outline
 	rdfs:subClassOf pig:Organizer ;
@@ -123,74 +87,127 @@ pig:Outline
 
 pigShapes_pig:Outline
 	rdf:type sh:NodeShape ;
+	sh:targetClass pig:Outline ;
 	sh:property pigShapes_rdfs:label ,
 		pigShapes_rdfs:comment ,
 		pigShapes_pig:category ,
-		pigShapes_pig:lists ;
-	sh:targetClass pig:Outline .
+		pigShapes_pig:lists .
 
-pig:eligibleSource
+pig:View
+	rdfs:subClassOf pig:Organizer ;
+	rdfs:label "View" ;
+	rdfs:comment "A subclass of PIG organizer representing a model view (diagram) using a certain notation showing selected model elements." .
+
+pigShapes_pig:View
+	rdf:type sh:NodeShape ;
+	sh:targetClass pig:View ;
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		pigShapes_pig:category ,
+		pigShapes_pig:icon ,
+		pigShapes_pig:shows ,
+		pigShapes_pig:depicts .
+
+pig:Relationship
+	rdf:type owl:Class ;
+	rdfs:label "Relationship" ;
+	rdfs:comment "A PIG meta-model element used for reified relationships (aka predicates)." .
+
+pigShapes_pig:Relationship
+	rdf:type sh:NodeShape ;
+	sh:targetClass pig:Relationship ;
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		pigShapes_pig:category ,
+		pigShapes_pig:icon ,
+		pigShapes_pig:SourceLink ,
+		pigShapes_pig:TargetLink .
+
+pig:icon
+	rdf:type owl:DatatypeProperty ;
+	rdfs:label "has icon" ;
+	rdfs:comment "Specifies an icon for a model element (entity or relationship)." .
+
+pigShapes_pig:icon
+	rdf:type sh:PropertyShape ;
+	sh:path pig:icon ;
+	sh:datatype xs:string ;
+	sh:minCount "0" ;
+	sh:maxCount "1" .
+
+pig:category
+	rdfs:subPropertyOf dcterms:type ;
+	rdfs:label "has category" ;
+	rdfs:comment "Specifies a category for an element (entity, relationship or organizer)." .
+
+pigShapes_pig:category
+	rdf:type sh:PropertyShape ;
+	sh:path pig:category ;
+	sh:datatype xs:string ;
+	sh:maxLength "32" ;
+	sh:minCount "0" ;
+	sh:maxCount "1" .
+
+pig:Link
 	rdf:type owl:ObjectProperty ;
 	rdfs:range [ owl:unionOf(
 			pig:Entity
 			pig:Relationship
 		)] ;
-	rdfs:label "has source" ;
+	rdfs:label "linked with" ;
+	rdfs:comment "Connects a reified relationship with its source or target. Also connects an organizer to a model element" .
+
+pigShapes_pig:Link
+	rdf:type sh:PropertyShape ;
+	sh:path pig:Link ;
+	sh:or (
+			[ sh:class pig:Entity ]
+			[ sh:class pig:Relationship ]
+		) .
+
+pig:SourceLink
+	rdfs:subPropertyOf pig:Link ;
+	rdfs:range [ owl:unionOf(
+			pig:Entity
+			pig:Relationship
+		)] ;
+	rdfs:label "to source" ;
 	rdfs:comment "Connects the source of a reified relationship." .
 
-pigShapes_pig:eligibleSource
+pigShapes_pig:SourceLink
 	rdf:type sh:PropertyShape ;
-	sh:path pig:eligibleSource ;
+	sh:path pig:SourceLink ;
 	sh:or (
 			[ sh:class pig:Entity ]
 			[ sh:class pig:Relationship ]
 		) .
 
-pig:eligibleTarget
-	rdf:type owl:ObjectProperty ;
+pig:TargetLink
+	rdfs:subPropertyOf pig:Link ;
 	rdfs:range [ owl:unionOf(
 			pig:Entity
 			pig:Relationship
 		)] ;
-	rdfs:label "has target" ;
-	rdfs:comment "Connects the target of a reified relationship." .
+	rdfs:label "to target" ;
+	rdfs:comment "Connects the target of a reified relationship or an organizer." .
 
-pigShapes_pig:eligibleTarget
+pigShapes_pig:TargetLink
 	rdf:type sh:PropertyShape ;
-	sh:path pig:eligibleTarget ;
+	sh:path pig:TargetLink ;
 	sh:or (
 			[ sh:class pig:Entity ]
 			[ sh:class pig:Relationship ]
-		) .
-
-pig:eligibleElement
-	rdf:type owl:ObjectProperty ;
-	rdfs:range [ owl:unionOf(
-			pig:Entity
-			pig:Relationship
-			pig:Organizer
-		)] ;
-	rdfs:label "has element" ;
-	rdfs:comment "References an entity, a relationship or a subordinated organizer." .
-
-pigShapes_pig:eligibleElement
-	rdf:type sh:PropertyShape ;
-	sh:path pig:eligibleElement ;
-	sh:or (
-			[ sh:class pig:Entity ]
-			[ sh:class pig:Relationship ]
-			[ sh:class pig:Organizer ]
 		) .
 
 pig:lists
-	rdfs:subPropertyOf pig:eligibleElement ;
+	rdfs:subPropertyOf pig:TargetLink ;
 	rdfs:range [ owl:unionOf(
 			pig:Entity
 			pig:Relationship
 			pig:Organizer
 		)] ;
 	rdfs:label "lists" ;
-	rdfs:comment "Lists (references) an entity, a relationship or a subordinated organizer." .
+	rdfs:comment "Lists an entity, a relationship or a subordinated organizer." .
 
 pigShapes_pig:lists
 	rdf:type sh:PropertyShape ;
@@ -202,13 +219,13 @@ pigShapes_pig:lists
 		) .
 
 pig:shows
-	rdfs:subPropertyOf pig:eligibleElement ;
+	rdfs:subPropertyOf pig:TargetLink ;
 	rdfs:range [ owl:unionOf(
 			pig:Entity
 			pig:Relationship
 		)] ;
 	rdfs:label "shows" ;
-	rdfs:comment "Shows (references) an entity or a relationship." .
+	rdfs:comment "Shows an entity or a relationship." .
 
 pigShapes_pig:shows
 	rdf:type sh:PropertyShape ;
@@ -219,7 +236,7 @@ pigShapes_pig:shows
 		) .
 
 pig:depicts
-	rdfs:subPropertyOf pig:eligibleElement ;
+	rdfs:subPropertyOf pig:TargetLink ;
 	rdfs:range pig:Entity ;
 	rdfs:label "depicts" ;
 	rdfs:comment "Depicts an entity; inverse of uml:ownedDiagram." .
@@ -231,40 +248,18 @@ pigShapes_pig:depicts
 			[ sh:class pig:Entity ]
 		) .
 
-pig:icon
-	rdf:type owl:DatatypeProperty ;
-	rdfs:range xsd:string ;
-	rdfs:label "has icon" ;
-	rdfs:comment "Specifies an icon for a model element (entity or relationship)." .
-
-pigShapes_pig:icon
-	rdf:type sh:PropertyShape ;
-	sh:path pig:icon ;
-	sh:datatype xsd:string .
-
-pig:category
-	rdfs:subPropertyOf dcterms:type ;
-	rdfs:range xsd:string ;
-	rdfs:label "has category" ;
-	rdfs:comment "Specifies a category for an element (entity, relationship or organizer)." .
-
-pigShapes_pig:category
-	rdf:type sh:PropertyShape ;
-	sh:path pig:category ;
-	sh:datatype xsd:string .
-
 #################################################################
 # Data Types with Enumerated Values
 #################################################################
 
 SpecIF:LifecycleStatus-Value
 	rdf:type owl:Class ;
-	rdfs:label "Lifecycle"@en ;
-	rdfs:label "Lebenszyklus"@de ;
-	rdfs:label "Cycle de vie"@fr ;
-	rdfs:comment "The 'Lifecycle Status' of the resource."@en ;
-	rdfs:comment "Der 'Lebenszyklusstatus' der Ressource."@de ;
-	rdfs:comment "L'état du cycle de vie de la ressource."@fr ;
+	rdfs:label "Lifecycle"@en ,
+		"Lebenszyklus"@de ,
+		"Cycle de vie"@fr ;
+	rdfs:comment "The 'Lifecycle Status' of the resource."@en ,
+		"Der 'Lebenszyklusstatus' der Ressource."@de ,
+		"L'état du cycle de vie de la ressource."@fr ;
 	owl:oneOf (
 			SpecIF:LifecycleStatusDeprecated
 			SpecIF:LifecycleStatusRejected
@@ -277,47 +272,47 @@ SpecIF:LifecycleStatus-Value
 		) .
 SpecIF:LifecycleStatusDeprecated
 	rdf:type SpecIF:LifecycleStatus-Value ;
-	rdfs:label "deprecated"@en ;
-	rdfs:label "veraltet"@de ;
-	rdfs:label "dépassé"@fr .
+	rdfs:label "deprecated"@en ,
+		"veraltet"@de ,
+		"dépassé"@fr .
 SpecIF:LifecycleStatusRejected
 	rdf:type SpecIF:LifecycleStatus-Value ;
-	rdfs:label "rejected"@en ;
-	rdfs:label "abgelehnt"@de ;
-	rdfs:label "rejeté"@fr .
+	rdfs:label "rejected"@en ,
+		"abgelehnt"@de ,
+		"rejeté"@fr .
 SpecIF:LifecycleStatusInitial
 	rdf:type SpecIF:LifecycleStatus-Value ;
 	rdfs:label "initial"@en .
 SpecIF:LifecycleStatusDrafted
 	rdf:type SpecIF:LifecycleStatus-Value ;
-	rdfs:label "drafted"@en ;
-	rdfs:label "entworfen"@de ;
-	rdfs:label "rédigé"@fr .
+	rdfs:label "drafted"@en ,
+		"entworfen"@de ,
+		"rédigé"@fr .
 SpecIF:LifecycleStatusSubmitted
 	rdf:type SpecIF:LifecycleStatus-Value ;
-	rdfs:label "submitted"@en ;
-	rdfs:label "vorgelegt"@de ;
-	rdfs:label "soumis"@fr .
+	rdfs:label "submitted"@en ,
+		"vorgelegt"@de ,
+		"soumis"@fr .
 SpecIF:LifecycleStatusApproved
 	rdf:type SpecIF:LifecycleStatus-Value ;
-	rdfs:label "approved"@en ;
-	rdfs:label "genehmigt"@de ;
-	rdfs:label "approuvé"@fr .
+	rdfs:label "approved"@en ,
+		"genehmigt"@de ,
+		"approuvé"@fr .
 SpecIF:LifecycleStatusDone
 	rdf:type SpecIF:LifecycleStatus-Value ;
-	rdfs:label "done"@en ;
-	rdfs:label "erledigt ('done')"@de .
+	rdfs:label "done"@en ,
+		"erledigt ('done')"@de .
 SpecIF:LifecycleStatusReleased
 	rdf:type SpecIF:LifecycleStatus-Value ;
-	rdfs:label "released"@en ;
-	rdfs:label "freigegeben"@de ;
-	rdfs:label "publié"@fr .
+	rdfs:label "released"@en ,
+		"freigegeben"@de ,
+		"publié"@fr .
 
 SpecIF:Priority-Value
 	rdf:type owl:Class ;
-	rdfs:label "Priority"@en ;
-	rdfs:label "Priorität"@de ;
-	rdfs:label "Priorité"@fr ;
+	rdfs:label "Priority"@en ,
+		"Priorität"@de ,
+		"Priorité"@fr ;
 	rdfs:comment "Enumerated values for the 'Priority' of the resource."@en ;
 	owl:oneOf (
 			SpecIF:priorityHigh
@@ -326,19 +321,19 @@ SpecIF:Priority-Value
 		) .
 SpecIF:priorityHigh
 	rdf:type SpecIF:Priority-Value ;
-	rdfs:label "high"@en ;
-	rdfs:label "hoch"@de ;
-	rdfs:label "haut"@fr .
+	rdfs:label "high"@en ,
+		"hoch"@de ,
+		"haut"@fr .
 SpecIF:priorityMedium
 	rdf:type SpecIF:Priority-Value ;
-	rdfs:label "medium"@en ;
-	rdfs:label "mittel"@de ;
-	rdfs:label "moyen"@fr .
+	rdfs:label "medium"@en ,
+		"mittel"@de ,
+		"moyen"@fr .
 SpecIF:priorityLow
 	rdf:type SpecIF:Priority-Value ;
-	rdfs:label "low"@en ;
-	rdfs:label "niedrig"@de ;
-	rdfs:label "bas"@fr .
+	rdfs:label "low"@en ,
+		"niedrig"@de ,
+		"bas"@fr .
 
 SpecIF:StakeholderGroup-Value
 	rdf:type owl:Class ;
@@ -361,9 +356,9 @@ SpecIF:StakeholderGroupSystem
 
 SpecIF:EngineeringDiscipline-Value
 	rdf:type owl:Class ;
-	rdfs:label "Engineering Discipline"@en ;
-	rdfs:label "Ingenieurdisziplin"@de ;
-	rdfs:label "Discipline d'ingénierie"@fr ;
+	rdfs:label "Engineering Discipline"@en ,
+		"Ingenieurdisziplin"@de ,
+		"Discipline d'ingénierie"@fr ;
 	rdfs:comment "The engineering discipline involved by a development artefact."@en ;
 	owl:oneOf (
 			SpecIF:EngineeringDisciplineMechanics
@@ -373,29 +368,29 @@ SpecIF:EngineeringDiscipline-Value
 		) .
 SpecIF:EngineeringDisciplineMechanics
 	rdf:type SpecIF:EngineeringDiscipline-Value ;
-	rdfs:label "Mechanics"@en ;
-	rdfs:label "Mechanik"@de ;
-	rdfs:label "Mecanique"@fr .
+	rdfs:label "Mechanics"@en ,
+		"Mechanik"@de ,
+		"Mecanique"@fr .
 SpecIF:EngineeringDisciplineElectronics
 	rdf:type SpecIF:EngineeringDiscipline-Value ;
-	rdfs:label "Electronics"@en ;
-	rdfs:label "Elektronik"@de ;
-	rdfs:label "Électronique"@fr .
+	rdfs:label "Electronics"@en ,
+		"Elektronik"@de ,
+		"Électronique"@fr .
 SpecIF:EngineeringDisciplineSoftware
 	rdf:type SpecIF:EngineeringDiscipline-Value ;
-	rdfs:label "Software"@en ;
-	rdfs:label "Logiciel"@fr .
+	rdfs:label "Software"@en ,
+		"Logiciel"@fr .
 SpecIF:EngineeringDisciplineSafety
 	rdf:type SpecIF:EngineeringDiscipline-Value ;
-	rdfs:label "Safety"@en ;
-	rdfs:label "Sicherheit"@de ;
-	rdfs:label "Sécurité"@fr .
+	rdfs:label "Safety"@en ,
+		"Sicherheit"@de ,
+		"Sécurité"@fr .
 
 ReqIF-WF:SupplierStatus-Value
 	rdf:type owl:Class ;
-	rdfs:label "Supplier Status"@en ;
-	rdfs:label "Zustand Lieferant"@de ;
-	rdfs:label "Statut coté Fournisseur"@fr ;
+	rdfs:label "Supplier Status"@en ,
+		"Zustand Lieferant"@de ,
+		"Statut coté Fournisseur"@fr ;
 	owl:oneOf (
 			SpecIF:NotApplicable
 			ReqIF-WF:CustomerStatus.ToBeClarified
@@ -405,35 +400,35 @@ ReqIF-WF:SupplierStatus-Value
 		) .
 SpecIF:NotApplicable
 	rdf:type ReqIF-WF:SupplierStatus-Value ;
-	rdfs:label "not applicable"@en ;
-	rdfs:label "nicht anwendbar"@de ;
-	rdfs:label "sans objet"@fr .
+	rdfs:label "not applicable"@en ,
+		"nicht anwendbar"@de ,
+		"sans objet"@fr .
 ReqIF-WF:CustomerStatus.ToBeClarified
 	rdf:type ReqIF-WF:SupplierStatus-Value ;
-	rdfs:label "to be clarified"@en ;
-	rdfs:label "zu klären"@de ;
-	rdfs:label "à préciser"@fr .
+	rdfs:label "to be clarified"@en ,
+		"zu klären"@de ,
+		"à préciser"@fr .
 ReqIF-WF:SupplierStatus.Agreed
 	rdf:type ReqIF-WF:SupplierStatus-Value ;
-	rdfs:label "agreed"@en ;
-	rdfs:label "zugestimmt"@de ;
-	rdfs:label "approuvé"@fr .
+	rdfs:label "agreed"@en ,
+		"zugestimmt"@de ,
+		"approuvé"@fr .
 ReqIF-WF:SupplierStatus.AgreedWithComment
 	rdf:type ReqIF-WF:SupplierStatus-Value ;
-	rdfs:label "agreed with comment"@en ;
-	rdfs:label "zugestimmt mit Kommentar"@de ;
-	rdfs:label "approuvé avec commentaire"@fr .
+	rdfs:label "agreed with comment"@en ,
+		"zugestimmt mit Kommentar"@de ,
+		"approuvé avec commentaire"@fr .
 ReqIF-WF:SupplierStatus.NotAgreed
 	rdf:type ReqIF-WF:SupplierStatus-Value ;
-	rdfs:label "not agreed"@en ;
-	rdfs:label "nicht zugestimmt"@de ;
-	rdfs:label "non approuvé"@fr .
+	rdfs:label "not agreed"@en ,
+		"nicht zugestimmt"@de ,
+		"non approuvé"@fr .
 
 ReqIF-WF:CustomerStatus-Value
 	rdf:type owl:Class ;
-	rdfs:label "Customer Status"@en ;
-	rdfs:label "Zustand Kunde"@de ;
-	rdfs:label "Statut coté Client"@fr ;
+	rdfs:label "Customer Status"@en ,
+		"Zustand Kunde"@de ,
+		"Statut coté Client"@fr ;
 	owl:oneOf (
 			ReqIF-WF:CustomerStatus.NotToEvaluate
 			ReqIF-WF:CustomerStatus.ToEvaluate
@@ -442,28 +437,28 @@ ReqIF-WF:CustomerStatus-Value
 		) .
 ReqIF-WF:CustomerStatus.NotToEvaluate
 	rdf:type ReqIF-WF:CustomerStatus-Value ;
-	rdfs:label "not to evaluate"@en ;
-	rdfs:label "nicht zu evaluieren"@de ;
-	rdfs:label "ne pas évaluer"@fr .
+	rdfs:label "not to evaluate"@en ,
+		"nicht zu evaluieren"@de ,
+		"ne pas évaluer"@fr .
 ReqIF-WF:CustomerStatus.ToEvaluate
 	rdf:type ReqIF-WF:CustomerStatus-Value ;
-	rdfs:label "to evaluate"@en ;
-	rdfs:label "zu evaluieren"@de ;
-	rdfs:label "pour évaluer"@fr .
+	rdfs:label "to evaluate"@en ,
+		"zu evaluieren"@de ,
+		"pour évaluer"@fr .
 ReqIF-WF:CustomerStatus.Accepted
 	rdf:type ReqIF-WF:CustomerStatus-Value ;
-	rdfs:label "accepted"@en ;
-	rdfs:label "akzeptiert"@de ;
-	rdfs:label "accepté"@fr .
+	rdfs:label "accepted"@en ,
+		"akzeptiert"@de ,
+		"accepté"@fr .
 ReqIF-WF:CustomerStatus.NotAccepted
 	rdf:type ReqIF-WF:CustomerStatus-Value ;
-	rdfs:label "not accepted"@en ;
-	rdfs:label "nicht akzeptiert"@de ;
-	rdfs:label "non accepté"@fr .
+	rdfs:label "not accepted"@en ,
+		"nicht akzeptiert"@de ,
+		"non accepté"@fr .
 
 o:DT-IssueStatus
 	rdf:type owl:Class ;
-	rdfs:label SpecIF:LifecycleStatusIssue ;
+	rdfs:label "SpecIF:LifecycleStatusIssue" ;
 	rdfs:comment "Enumerated values for issue status" ;
 	owl:oneOf (
 			o:V-Iss-Status-0
@@ -494,7 +489,7 @@ o:V-Iss-Status-5
 	rdfs:label "reopened" .
 o:V-Iss-Status-6
 	rdf:type o:DT-IssueStatus ;
-	rdfs:label SpecIF:LifecycleStatusRejected .
+	rdfs:label "SpecIF:LifecycleStatusRejected" .
 
 #################################################################
 # Ontology - Property Classes
@@ -502,32 +497,21 @@ o:V-Iss-Status-6
 
 # Skipping implicit property: rdfs:label
 
-pigShapes_rdfs:label
-	rdf:type sh:PropertyShape ;
-	sh:path rdfs:label ;
-	sh:maxCount "1" ;
-	sh:datatype xsd:string ;
-	sh:maxLength "256" .
-
 # Skipping implicit property: rdfs:comment
-
-pigShapes_rdfs:comment
-	rdf:type sh:PropertyShape ;
-	sh:path rdfs:comment ;
-	sh:maxCount "1" ;
-	sh:datatype xsd:string .
 
 SpecIF:Diagram
 	rdf:type owl:DatatypeProperty ;
-	rdfs:label "Diagram"@en ;
-	rdfs:label "Diagramm"@de ;
-	rdfs:label "Diagramme"@fr ;
+	rdfs:label "Diagram"@en ,
+		"Diagramm"@de ,
+		"Diagramme"@fr ;
 	rdfs:comment "A diagram illustrating the resource or a link to a diagram."@en .
 
 pigShapes_SpecIF:Diagram
 	rdf:type sh:PropertyShape ;
 	sh:path SpecIF:Diagram ;
-	sh:datatype xsd:string .
+	sh:datatype xs:string .
+
+# Skipping implicit property: pig:category
 
 SpecIF:Notation
 	rdf:type owl:DatatypeProperty ;
@@ -538,14 +522,14 @@ pigShapes_SpecIF:Notation
 	rdf:type sh:PropertyShape ;
 	sh:path SpecIF:Notation ;
 	sh:maxCount "1" ;
-	sh:datatype xsd:string ;
+	sh:datatype xs:string ;
 	sh:maxLength "256" .
 
 SpecIF:Priority
 	rdf:type owl:ObjectProperty ;
-	rdfs:label "Priority"@en ;
-	rdfs:label "Priorität"@de ;
-	rdfs:label "Priorité"@fr ;
+	rdfs:label "Priority"@en ,
+		"Priorität"@de ,
+		"Priorité"@fr ;
 	rdfs:comment "Enumerated values for the 'Priority' of the resource."@en ;
 	rdfs:range SpecIF:Priority-Value .
 
@@ -557,12 +541,12 @@ pigShapes_SpecIF:Priority
 
 SpecIF:LifecycleStatus
 	rdf:type owl:ObjectProperty ;
-	rdfs:label "Lifecycle"@en ;
-	rdfs:label "Lebenszyklus"@de ;
-	rdfs:label "Cycle de vie"@fr ;
-	rdfs:comment "The 'Lifecycle Status' of the resource."@en ;
-	rdfs:comment "Der 'Lebenszyklusstatus' der Ressource."@de ;
-	rdfs:comment "L'état du cycle de vie de la ressource."@fr ;
+	rdfs:label "Lifecycle"@en ,
+		"Lebenszyklus"@de ,
+		"Cycle de vie"@fr ;
+	rdfs:comment "The 'Lifecycle Status' of the resource."@en ,
+		"Der 'Lebenszyklusstatus' der Ressource."@de ,
+		"L'état du cycle de vie de la ressource."@fr ;
 	rdfs:range SpecIF:LifecycleStatus-Value .
 
 pigShapes_SpecIF:LifecycleStatus
@@ -573,9 +557,9 @@ pigShapes_SpecIF:LifecycleStatus
 
 ReqIF-WF:SupplierStatus
 	rdf:type owl:ObjectProperty ;
-	rdfs:label "Supplier Status"@en ;
-	rdfs:label "Zustand Lieferant"@de ;
-	rdfs:label "Statut coté Fournisseur"@fr ;
+	rdfs:label "Supplier Status"@en ,
+		"Zustand Lieferant"@de ,
+		"Statut coté Fournisseur"@fr ;
 	rdfs:range ReqIF-WF:SupplierStatus-Value .
 
 pigShapes_ReqIF-WF:SupplierStatus
@@ -586,21 +570,21 @@ pigShapes_ReqIF-WF:SupplierStatus
 
 ReqIF-WF:SupplierComment
 	rdf:type owl:DatatypeProperty ;
-	rdfs:label "Supplier Comment"@en ;
-	rdfs:label "Kommentar Lieferant"@de ;
-	rdfs:label "Commentaire du Client"@fr .
+	rdfs:label "Supplier Comment"@en ,
+		"Kommentar Lieferant"@de ,
+		"Commentaire du Client"@fr .
 
 pigShapes_ReqIF-WF:SupplierComment
 	rdf:type sh:PropertyShape ;
 	sh:path ReqIF-WF:SupplierComment ;
 	sh:maxCount "1" ;
-	sh:datatype xsd:string .
+	sh:datatype xs:string .
 
 ReqIF-WF:CustomerStatus
 	rdf:type owl:ObjectProperty ;
-	rdfs:label "Customer Status"@en ;
-	rdfs:label "Zustand Kunde"@de ;
-	rdfs:label "Statut coté Client"@fr ;
+	rdfs:label "Customer Status"@en ,
+		"Zustand Kunde"@de ,
+		"Statut coté Client"@fr ;
 	rdfs:range ReqIF-WF:CustomerStatus-Value .
 
 pigShapes_ReqIF-WF:CustomerStatus
@@ -611,28 +595,28 @@ pigShapes_ReqIF-WF:CustomerStatus
 
 ReqIF-WF:CustomerComment
 	rdf:type owl:DatatypeProperty ;
-	rdfs:label "Customer Comment"@en ;
-	rdfs:label "Kommentar Kunde"@de ;
-	rdfs:label "Commentaire du Client"@fr .
+	rdfs:label "Customer Comment"@en ,
+		"Kommentar Kunde"@de ,
+		"Commentaire du Client"@fr .
 
 pigShapes_ReqIF-WF:CustomerComment
 	rdf:type sh:PropertyShape ;
 	sh:path ReqIF-WF:CustomerComment ;
 	sh:maxCount "1" ;
-	sh:datatype xsd:string .
+	sh:datatype xs:string .
 
 dcterms:identifier
 	rdf:type owl:DatatypeProperty ;
-	rdfs:label "Identifier"@en ;
-	rdfs:label "Bezeichner"@de ;
-	rdfs:label "Identifiant"@fr ;
+	rdfs:label "Identifier"@en ,
+		"Bezeichner"@de ,
+		"Identifiant"@fr ;
 	rdfs:comment "<p>A unique reference to the resource within a given context. <small>(<i>source: <a href=\"http://purl.org/dc/elements/1.1/identifier\">DCMI</a></i>)</small></p><p>An identifier for a resource. This identifier may be unique with a scope that is defined by the RM provider. Assigned by the service provider when a resource is created. Not intended for end-user display. <small>(<i>source: <a href=\"http://open-services.net/\">OSLC</a></i>)</small></p>"@en .
 
 pigShapes_dcterms:identifier
 	rdf:type sh:PropertyShape ;
 	sh:path dcterms:identifier ;
 	sh:maxCount "1" ;
-	sh:datatype xsd:string ;
+	sh:datatype xs:string ;
 	sh:maxLength "256" .
 
 SpecIF:StakeholderGroup
@@ -649,9 +633,9 @@ pigShapes_SpecIF:StakeholderGroup
 
 SpecIF:EngineeringDiscipline
 	rdf:type owl:ObjectProperty ;
-	rdfs:label "Engineering Discipline"@en ;
-	rdfs:label "Ingenieurdisziplin"@de ;
-	rdfs:label "Discipline d'ingénierie"@fr ;
+	rdfs:label "Engineering Discipline"@en ,
+		"Ingenieurdisziplin"@de ,
+		"Discipline d'ingénierie"@fr ;
 	rdfs:comment "The engineering discipline involved by a development artefact."@en ;
 	rdfs:range SpecIF:EngineeringDiscipline-Value .
 
@@ -662,7 +646,7 @@ pigShapes_SpecIF:EngineeringDiscipline
 
 o:PC-IssueStatus
 	rdf:type owl:ObjectProperty ;
-	rdfs:label SpecIF:LifecycleStatusIssue ;
+	rdfs:label "SpecIF:LifecycleStatusIssue" ;
 	rdfs:range o:DT-IssueStatus .
 
 o:PC-IssueStatus_shape
@@ -673,71 +657,59 @@ o:PC-IssueStatus_shape
 
 SpecIF:Responsible
 	rdf:type owl:DatatypeProperty ;
-	rdfs:label "Responsible"@en ;
-	rdfs:label "Verantwortliche(r)"@de ;
-	rdfs:label "Responsable"@fr ;
+	rdfs:label "Responsible"@en ,
+		"Verantwortliche(r)"@de ,
+		"Responsable"@fr ;
 	rdfs:comment "The 'Person' being responsible for the resource."@en .
 
 pigShapes_SpecIF:Responsible
 	rdf:type sh:PropertyShape ;
 	sh:path SpecIF:Responsible ;
 	sh:maxCount "1" ;
-	sh:datatype xsd:string ;
+	sh:datatype xs:string ;
 	sh:maxLength "256" .
 
 SpecIF:DueDate
 	rdf:type owl:DatatypeProperty ;
-	rdfs:label "Due Date"@en ;
-	rdfs:label "Termin"@de ;
-	rdfs:label "Date limite"@fr ;
+	rdfs:label "Due Date"@en ,
+		"Termin"@de ,
+		"Date limite"@fr ;
 	rdfs:comment "A 'Due Date' for the resource."@en .
 
 pigShapes_SpecIF:DueDate
 	rdf:type sh:PropertyShape ;
 	sh:path SpecIF:DueDate ;
 	sh:maxCount "1" ;
-	sh:datatype xsd:dateTime .
-
-# Skipping implicit property: pig:category
-
-pigShapes_pig:category
-	rdf:type sh:PropertyShape ;
-	sh:path pig:category ;
-	sh:maxCount "1" ;
-	sh:datatype xsd:string ;
-	sh:maxLength "32" .
+	sh:datatype xs:dateTime .
 
 #################################################################
 # Ontology - Entity Classes
 #################################################################
 
-pig:View
-	rdfs:subClassOf pig:Organizer ;
-	rdfs:label "View" ;
-	rdfs:comment "A PIG organizer class representing a diagram with certain model-elements for a given communication purpose." ;
-	pig:icon "▣" .
+SpecIF:Paragraph
+	rdfs:subClassOf pig:Entity ;
+	rdfs:label "Paragraph"@en ,
+		"Textabsatz"@de ,
+		"Paragraphe"@fr ;
+	rdfs:comment "<p>A 'Paragraph' is an unspecified information in a document at any level.</p>"@en ,
+		"<p>Ein 'Textabschnitt' in einem Dokument auf beliebiger Ebene.</p>"@de .
 
-pigShapes_pig:View
+pigShapes_SpecIF:Paragraph
 	rdf:type sh:NodeShape ;
-	sh:targetClass pig:View ;
+	sh:targetClass SpecIF:Paragraph ;
 	sh:property pigShapes_rdfs:label ,
 		pigShapes_rdfs:comment ,
 		pigShapes_SpecIF:Diagram ,
-		pigShapes_SpecIF:Notation ,
-		pigShapes_SpecIF:LifecycleStatus ,
-		pigShapes_ReqIF-WF:SupplierStatus ,
-		pigShapes_ReqIF-WF:SupplierComment ,
-		pigShapes_ReqIF-WF:CustomerStatus ,
-		pigShapes_ReqIF-WF:CustomerComment .
+		pigShapes_pig:category .
 
 FMC:Actor
 	rdfs:subClassOf pig:Entity ;
-	rdfs:label "Actor"@en ;
-	rdfs:label "Akteur"@de ;
-	rdfs:label "Acteur"@fr ;
-	rdfs:comment "<p>An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role.</p><p>The  particular use or original type is specified with a [[dcterms:type]] property of the 'FMC:Actor'. A value of that property should be an ontology-term, such as [[bpmn:processStep]].</p>"@en ;
-	rdfs:comment "<p>Ein 'Akteur' ist ein fundamentaler Modellelementtyp, der eine aktive Entität darstellt, sei es eine Aktivität, ein Prozessschritt, eine Funktion, eine Systemkomponente oder eine Rolle.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Actor' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[bpmn:timer]].</p>"@de ;
-	rdfs:comment "<p>Un 'Acteur' est un type d'élément de modèle fondamental représentant une entité active, qu'il s'agisse d'une activité, d'une étape de processus, d'une fonction, d'un composant de système ou d'un rôle.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:Actor'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[bpmn:timer]].</p>"@fr ;
+	rdfs:label "Actor"@en ,
+		"Akteur"@de ,
+		"Acteur"@fr ;
+	rdfs:comment "<p>An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role.</p><p>The  particular use or original type is specified with a [[dcterms:type]] property of the 'FMC:Actor'. A value of that property should be an ontology-term, such as [[bpmn:processStep]].</p>"@en ,
+		"<p>Ein 'Akteur' ist ein fundamentaler Modellelementtyp, der eine aktive Entität darstellt, sei es eine Aktivität, ein Prozessschritt, eine Funktion, eine Systemkomponente oder eine Rolle.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Actor' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[bpmn:timer]].</p>"@de ,
+		"<p>Un 'Acteur' est un type d'élément de modèle fondamental représentant une entité active, qu'il s'agisse d'une activité, d'une étape de processus, d'une fonction, d'un composant de système ou d'un rôle.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:Actor'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[bpmn:timer]].</p>"@fr ;
 	pig:icon "&#x25A1;" .
 
 pigShapes_FMC:Actor
@@ -749,12 +721,12 @@ pigShapes_FMC:Actor
 
 FMC:State
 	rdfs:subClassOf pig:Entity ;
-	rdfs:label "State"@en ;
-	rdfs:label "Zustand"@de ;
-	rdfs:label "État"@fr ;
-	rdfs:comment "<p>A 'State' is a fundamental model element type representing a passive entity, be it a value, a condition, an information storage or even a physical shape.</p><p>The particular use or the original type is specified with a [[dcterms:type]] property of the 'FMC:State'. A value of that property should bean  ontology-term, such as [[bpmn:dataObject]].</p>"@en ;
-	rdfs:comment "<p>Ein 'Zustand' ist ein fundamentaler Modellelementtyp, der eine passive Entität darstellt, sei es ein Wert, ein Dokument, ein Informationsspeicher, eine Bedingung oder eine physische Beschaffenheit.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:State' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[ArchiMate:DataObject]].</p>"@de ;
-	rdfs:comment "<p>Un 'État' est un type d'élément de modèle fondamental représentant une entité passive, qu'il s'agisse d'une valeur, d'une condition, d'un stockage d'informations ou même d'une forme physique.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:State'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[ArchiMate:DataObject]].</p>"@fr ;
+	rdfs:label "State"@en ,
+		"Zustand"@de ,
+		"État"@fr ;
+	rdfs:comment "<p>A 'State' is a fundamental model element type representing a passive entity, be it a value, a condition, an information storage or even a physical shape.</p><p>The particular use or the original type is specified with a [[dcterms:type]] property of the 'FMC:State'. A value of that property should bean  ontology-term, such as [[bpmn:dataObject]].</p>"@en ,
+		"<p>Ein 'Zustand' ist ein fundamentaler Modellelementtyp, der eine passive Entität darstellt, sei es ein Wert, ein Dokument, ein Informationsspeicher, eine Bedingung oder eine physische Beschaffenheit.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:State' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[ArchiMate:DataObject]].</p>"@de ,
+		"<p>Un 'État' est un type d'élément de modèle fondamental représentant une entité passive, qu'il s'agisse d'une valeur, d'une condition, d'un stockage d'informations ou même d'une forme physique.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:State'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[ArchiMate:DataObject]].</p>"@fr ;
 	pig:icon "&#x25CB;" .
 
 pigShapes_FMC:State
@@ -765,12 +737,12 @@ pigShapes_FMC:State
 
 FMC:Event
 	rdfs:subClassOf pig:Entity ;
-	rdfs:label "Event"@en ;
-	rdfs:label "Ereignis"@de ;
-	rdfs:label "Évenement"@fr ;
-	rdfs:comment "<p>An 'Event' is a fundamental model element type representing a time reference, a change in condition/value or more generally a synchronization primitive.</p><p>The particular use or the original type is specified with a [[dcterms:type]] property of the 'FMC:Event'. A value of that property should be an ontology-term, such as [[bpmn:startEvent]].</p>"@en ;
-	rdfs:comment "<p>Ein 'Ereignis' ist ein fundamentaler Modellelementtyp, der eine Zeitreferenz, eine Änderung einer Bedingung/eines Wertes oder allgemeiner ein Synchronisationsmittel darstellt.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Event' spezifiziert. Die Werte dieser Eigenschaft sollen Ontologiebegriffe sein, wie z.B. [[bpmn:startEvent]].</p>"@de ;
-	rdfs:comment "<p>Un 'Événement' est un type d'élément de modèle fondamental représentant une référence temporelle, un changement de condition/valeur ou plus généralement une primitive de synchronisation.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:Event'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[bpmn:startEvent]].</p>"@fr ;
+	rdfs:label "Event"@en ,
+		"Ereignis"@de ,
+		"Évenement"@fr ;
+	rdfs:comment "<p>An 'Event' is a fundamental model element type representing a time reference, a change in condition/value or more generally a synchronization primitive.</p><p>The particular use or the original type is specified with a [[dcterms:type]] property of the 'FMC:Event'. A value of that property should be an ontology-term, such as [[bpmn:startEvent]].</p>"@en ,
+		"<p>Ein 'Ereignis' ist ein fundamentaler Modellelementtyp, der eine Zeitreferenz, eine Änderung einer Bedingung/eines Wertes oder allgemeiner ein Synchronisationsmittel darstellt.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Event' spezifiziert. Die Werte dieser Eigenschaft sollen Ontologiebegriffe sein, wie z.B. [[bpmn:startEvent]].</p>"@de ,
+		"<p>Un 'Événement' est un type d'élément de modèle fondamental représentant une référence temporelle, un changement de condition/valeur ou plus généralement une primitive de synchronisation.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:Event'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[bpmn:startEvent]].</p>"@fr ;
 	pig:icon "&#x2662;" .
 
 pigShapes_FMC:Event
@@ -781,12 +753,12 @@ pigShapes_FMC:Event
 
 IREB:Requirement
 	rdfs:subClassOf pig:Entity ;
-	rdfs:label "Requirement"@en ;
-	rdfs:label "Anforderung"@de ;
-	rdfs:label "Exigence"@fr ;
-	rdfs:comment "<p>A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>A condition or capability needed by a user to solve a problem or achieve an objective.</li><li>A condition or capability that must be met or possessed by a system or system component to satisfy a contract, standard, specification, or other formally imposed documents.</li><li>A documented representation of a condition or capability as in (1) or (2).</li></ol><p>Note: The definition above is the classic one from IEEE Std 610.12 of 1990. Alternatively, we also give a more modern definition:</p><ol><li>A need perceived by a stakeholder.</li><li>A capability or property that a system shall have.</li><li>A documented representation of a need, capability or property.</li></ol>"@en ;
-	rdfs:comment "<p>Eine 'Anforderung' ist ein einzelnes dokumentiertes physisches und funktionales Bedürfnis, das ein bestimmter Entwurf, ein Produkt oder ein Prozess erfüllen muss. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>Eine Bedingung oder Fähigkeit, die ein Benutzer benötigt, um ein Problem zu lösen oder ein Ziel zu erreichen.</li><li>Eine Bedingung oder Fähigkeit, die ein System oder eine Systemkomponente erfüllen oder besitzen muss, um einen Vertrag, eine Norm, eine Spezifikation oder ein anderes formal vorgeschriebenes Dokument zu erfüllen.</li><li>Eine dokumentierte Darstellung einer Bedingung oder Fähigkeit wie in (1) oder (2).</li></ol><p>Anmerkung: Die obige Definition ist die klassische Definition aus IEEE Std 610.12 von 1990. Alternativ geben wir auch eine modernere Definition an:</p><ol><li>Ein von einem Stakeholder wahrgenommener Bedarf.</li><li>Eine Fähigkeit oder Eigenschaft, die ein System haben soll.</li><li>Eine dokumentierte Darstellung eines Bedarfs, einer Fähigkeit oder Eigenschaft.</li></ol>"@de ;
-	rdfs:comment "<p>Une 'Exigence' est un besoin physique et fonctionnel unique et documenté qu'une conception, un produit ou un processus particulier doit pouvoir satisfaire. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Définition:</p><ol><li>Condition ou capacité dont un utilisateur a besoin pour résoudre un problème ou atteindre un objectif.</li><li>Condition ou capacité qui doit être remplie ou possédée par un système ou un composant de système pour satisfaire à un contrat, à une norme, à une spécification ou à d'autres documents imposés officiellement.</li><li>Une représentation documentée d'une condition ou d'une capacité comme dans (1) ou (2).</li></ol><p>Remarque: La définition ci-dessus est la définition classique de la norme IEEE 610.12 de 1990. Nous donnons également une définition plus moderne:</p><ol><li>Un besoin perçu par une partie prenante;</li><li>Une capacité ou une propriété qu'un système doit avoir.</li><li>Une représentation documentée d'un besoin, d'une capacité ou d'une propriété.</li></ol>"@fr ;
+	rdfs:label "Requirement"@en ,
+		"Anforderung"@de ,
+		"Exigence"@fr ;
+	rdfs:comment "<p>A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>A condition or capability needed by a user to solve a problem or achieve an objective.</li><li>A condition or capability that must be met or possessed by a system or system component to satisfy a contract, standard, specification, or other formally imposed documents.</li><li>A documented representation of a condition or capability as in (1) or (2).</li></ol><p>Note: The definition above is the classic one from IEEE Std 610.12 of 1990. Alternatively, we also give a more modern definition:</p><ol><li>A need perceived by a stakeholder.</li><li>A capability or property that a system shall have.</li><li>A documented representation of a need, capability or property.</li></ol>"@en ,
+		"<p>Eine 'Anforderung' ist ein einzelnes dokumentiertes physisches und funktionales Bedürfnis, das ein bestimmter Entwurf, ein Produkt oder ein Prozess erfüllen muss. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>Eine Bedingung oder Fähigkeit, die ein Benutzer benötigt, um ein Problem zu lösen oder ein Ziel zu erreichen.</li><li>Eine Bedingung oder Fähigkeit, die ein System oder eine Systemkomponente erfüllen oder besitzen muss, um einen Vertrag, eine Norm, eine Spezifikation oder ein anderes formal vorgeschriebenes Dokument zu erfüllen.</li><li>Eine dokumentierte Darstellung einer Bedingung oder Fähigkeit wie in (1) oder (2).</li></ol><p>Anmerkung: Die obige Definition ist die klassische Definition aus IEEE Std 610.12 von 1990. Alternativ geben wir auch eine modernere Definition an:</p><ol><li>Ein von einem Stakeholder wahrgenommener Bedarf.</li><li>Eine Fähigkeit oder Eigenschaft, die ein System haben soll.</li><li>Eine dokumentierte Darstellung eines Bedarfs, einer Fähigkeit oder Eigenschaft.</li></ol>"@de ,
+		"<p>Une 'Exigence' est un besoin physique et fonctionnel unique et documenté qu'une conception, un produit ou un processus particulier doit pouvoir satisfaire. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Définition:</p><ol><li>Condition ou capacité dont un utilisateur a besoin pour résoudre un problème ou atteindre un objectif.</li><li>Condition ou capacité qui doit être remplie ou possédée par un système ou un composant de système pour satisfaire à un contrat, à une norme, à une spécification ou à d'autres documents imposés officiellement.</li><li>Une représentation documentée d'une condition ou d'une capacité comme dans (1) ou (2).</li></ol><p>Remarque: La définition ci-dessus est la définition classique de la norme IEEE 610.12 de 1990. Nous donnons également une définition plus moderne:</p><ol><li>Un besoin perçu par une partie prenante;</li><li>Une capacité ou une propriété qu'un système doit avoir.</li><li>Une représentation documentée d'un besoin, d'une capacité ou d'une propriété.</li></ol>"@fr ;
 	pig:icon "&#8623;" .
 
 pigShapes_IREB:Requirement
@@ -806,12 +778,12 @@ pigShapes_IREB:Requirement
 
 SpecIF:Issue
 	rdfs:subClassOf pig:Entity ;
-	rdfs:label "Open Issue"@en ;
-	rdfs:label "Offener Punkt"@de ;
-	rdfs:label "Problème"@fr ;
-	rdfs:comment "An 'Issue' is a question to answer or decision to take which is worth tracking."@en ;
-	rdfs:comment "Ein 'Offener Punkt ist eine zu beantwortende Frage oder eine zu treffende Entscheidung."@de ;
-	rdfs:comment "Un 'problème' est une question à laquelle il faut répondre ou une décision à prendre qui mérite d'être suivie."@fr .
+	rdfs:label "Open Issue"@en ,
+		"Offener Punkt"@de ,
+		"Problème"@fr ;
+	rdfs:comment "An 'Issue' is a question to answer or decision to take which is worth tracking."@en ,
+		"Ein 'Offener Punkt ist eine zu beantwortende Frage oder eine zu treffende Entscheidung."@de ,
+		"Un 'problème' est une question à laquelle il faut répondre ou une décision à prendre qui mérite d'être suivie."@fr .
 
 pigShapes_SpecIF:Issue
 	rdf:type sh:NodeShape ;
@@ -824,35 +796,20 @@ pigShapes_SpecIF:Issue
 		pigShapes_SpecIF:Responsible ,
 		pigShapes_SpecIF:DueDate .
 
-SpecIF:Paragraph
-	rdfs:subClassOf pig:Entity ;
-	rdfs:label "Paragraph"@en ;
-	rdfs:label "Textabsatz"@de ;
-	rdfs:label "Paragraphe"@fr ;
-	rdfs:comment "<p>A 'Paragraph' is an unspecified information in a document at any level.</p>"@en ;
-	rdfs:comment "<p>Ein 'Textabschnitt' in einem Dokument auf beliebiger Ebene.</p>"@de .
-
-pigShapes_SpecIF:Paragraph
-	rdf:type sh:NodeShape ;
-	sh:targetClass SpecIF:Paragraph ;
-	sh:property pigShapes_rdfs:label ,
-		pigShapes_rdfs:comment ,
-		pigShapes_SpecIF:Diagram ,
-		pigShapes_pig:category .
-
 #################################################################
 # Ontology - Relationship Classes
 #################################################################
 
 SpecIF:contains
 	rdfs:subClassOf pig:Relationship ;
-	rdfs:label "contains"@en ;
-	rdfs:label "enthält"@de ;
-	rdfs:label "contient"@fr ;
+	rdfs:label "contains"@en ,
+		"enthält"@de ,
+		"contient"@fr ;
 	rdfs:comment "General containment, such as:\n- Package-A *contains* Diagram-B\n- Collection-1 *contains* DataObject-1.1\n\nNot to confound with *[[dcterms:hasPart]]*."@en .
 
-SpecIF:contains-hasSource
-	rdfs:subPropertyOf pig:eligibleSource ;
+SpecIF:contains-toSource
+	rdfs:subPropertyOf pig:SourceLink ;
+	rdfs:label "SpecIF:contains to source" ;
 	rdfs:comment "Connects the source of SpecIF:contains" ;
 	rdfs:domain SpecIF:contains ;
 	rdfs:range [ owl:unionOf(
@@ -861,8 +818,9 @@ SpecIF:contains-hasSource
 			FMC:Event
 		)] .
 
-SpecIF:contains-hasTarget
-	rdfs:subPropertyOf pig:eligibleTarget ;
+SpecIF:contains-toTarget
+	rdfs:subPropertyOf pig:TargetLink ;
+	rdfs:label "SpecIF:contains to target" ;
 	rdfs:comment "Connects the target of SpecIF:contains" ;
 	rdfs:domain SpecIF:contains ;
 	rdfs:range [ owl:unionOf(
@@ -875,7 +833,7 @@ pigShapes_SpecIF:contains
 	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:contains ;
 	sh:property [ 
-		sh:path SpecIF:contains-hasSource ;
+		sh:path SpecIF:contains-toSource ;
 		sh:or (
 			[ sh:class FMC:Actor ]
 			[ sh:class FMC:State ]
@@ -885,7 +843,7 @@ pigShapes_SpecIF:contains
 		sh:maxCount 1
 	] ;
 	sh:property [ 
-		sh:path SpecIF:contains-hasTarget ;
+		sh:path SpecIF:contains-toTarget ;
 		sh:or (
 			[ sh:class FMC:Actor ]
 			[ sh:class FMC:State ]
@@ -897,17 +855,19 @@ pigShapes_SpecIF:contains
 
 o:SC-stores
 	rdfs:subClassOf pig:Relationship ;
-	rdfs:label SpecIF:modifies ;
+	rdfs:label "SpecIF:modifies" ;
 	rdfs:comment "Relation: Actor (Role, Function) writes and reads State (Information)" .
 
-o:SC-stores-hasSource
-	rdfs:subPropertyOf pig:eligibleSource ;
+o:SC-stores-toSource
+	rdfs:subPropertyOf pig:SourceLink ;
+	rdfs:label "o:SC-stores to source" ;
 	rdfs:comment "Connects the source of o:SC-stores" ;
 	rdfs:domain o:SC-stores ;
 	rdfs:range FMC:Actor .
 
-o:SC-stores-hasTarget
-	rdfs:subPropertyOf pig:eligibleTarget ;
+o:SC-stores-toTarget
+	rdfs:subPropertyOf pig:TargetLink ;
+	rdfs:label "o:SC-stores to target" ;
 	rdfs:comment "Connects the target of o:SC-stores" ;
 	rdfs:domain o:SC-stores ;
 	rdfs:range FMC:State .
@@ -916,7 +876,7 @@ o:SC-stores_shape
 	rdf:type sh:NodeShape ;
 	sh:targetClass o:SC-stores ;
 	sh:property [ 
-		sh:path o:SC-stores-hasSource ;
+		sh:path o:SC-stores-toSource ;
 		sh:or (
 			[ sh:class FMC:Actor ]
 		) ;
@@ -924,7 +884,7 @@ o:SC-stores_shape
 		sh:maxCount 1
 	] ;
 	sh:property [ 
-		sh:path o:SC-stores-hasTarget ;
+		sh:path o:SC-stores-toTarget ;
 		sh:or (
 			[ sh:class FMC:State ]
 		) ;
@@ -934,19 +894,21 @@ o:SC-stores_shape
 
 SpecIF:writes
 	rdfs:subClassOf pig:Relationship ;
-	rdfs:label "writes"@en ;
-	rdfs:label "schreibt"@de ;
-	rdfs:label "écrit"@fr ;
+	rdfs:label "writes"@en ,
+		"schreibt"@de ,
+		"écrit"@fr ;
 	rdfs:comment "A [[FMC:Actor]] 'writes' (changes) a [[FMC:State]]."@en .
 
-SpecIF:writes-hasSource
-	rdfs:subPropertyOf pig:eligibleSource ;
+SpecIF:writes-toSource
+	rdfs:subPropertyOf pig:SourceLink ;
+	rdfs:label "SpecIF:writes to source" ;
 	rdfs:comment "Connects the source of SpecIF:writes" ;
 	rdfs:domain SpecIF:writes ;
 	rdfs:range FMC:Actor .
 
-SpecIF:writes-hasTarget
-	rdfs:subPropertyOf pig:eligibleTarget ;
+SpecIF:writes-toTarget
+	rdfs:subPropertyOf pig:TargetLink ;
+	rdfs:label "SpecIF:writes to target" ;
 	rdfs:comment "Connects the target of SpecIF:writes" ;
 	rdfs:domain SpecIF:writes ;
 	rdfs:range FMC:State .
@@ -955,7 +917,7 @@ pigShapes_SpecIF:writes
 	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:writes ;
 	sh:property [ 
-		sh:path SpecIF:writes-hasSource ;
+		sh:path SpecIF:writes-toSource ;
 		sh:or (
 			[ sh:class FMC:Actor ]
 		) ;
@@ -963,7 +925,7 @@ pigShapes_SpecIF:writes
 		sh:maxCount 1
 	] ;
 	sh:property [ 
-		sh:path SpecIF:writes-hasTarget ;
+		sh:path SpecIF:writes-toTarget ;
 		sh:or (
 			[ sh:class FMC:State ]
 		) ;
@@ -973,19 +935,21 @@ pigShapes_SpecIF:writes
 
 SpecIF:reads
 	rdfs:subClassOf pig:Relationship ;
-	rdfs:label "reads"@en ;
-	rdfs:label "liest"@de ;
-	rdfs:label "lit"@fr ;
+	rdfs:label "reads"@en ,
+		"liest"@de ,
+		"lit"@fr ;
 	rdfs:comment "A [[FMC:Actor]] 'reads' a [[FMC:State]]."@en .
 
-SpecIF:reads-hasSource
-	rdfs:subPropertyOf pig:eligibleSource ;
+SpecIF:reads-toSource
+	rdfs:subPropertyOf pig:SourceLink ;
+	rdfs:label "SpecIF:reads to source" ;
 	rdfs:comment "Connects the source of SpecIF:reads" ;
 	rdfs:domain SpecIF:reads ;
 	rdfs:range FMC:Actor .
 
-SpecIF:reads-hasTarget
-	rdfs:subPropertyOf pig:eligibleTarget ;
+SpecIF:reads-toTarget
+	rdfs:subPropertyOf pig:TargetLink ;
+	rdfs:label "SpecIF:reads to target" ;
 	rdfs:comment "Connects the target of SpecIF:reads" ;
 	rdfs:domain SpecIF:reads ;
 	rdfs:range FMC:State .
@@ -994,7 +958,7 @@ pigShapes_SpecIF:reads
 	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:reads ;
 	sh:property [ 
-		sh:path SpecIF:reads-hasSource ;
+		sh:path SpecIF:reads-toSource ;
 		sh:or (
 			[ sh:class FMC:Actor ]
 		) ;
@@ -1002,7 +966,7 @@ pigShapes_SpecIF:reads
 		sh:maxCount 1
 	] ;
 	sh:property [ 
-		sh:path SpecIF:reads-hasTarget ;
+		sh:path SpecIF:reads-toTarget ;
 		sh:or (
 			[ sh:class FMC:State ]
 		) ;
@@ -1012,19 +976,21 @@ pigShapes_SpecIF:reads
 
 SpecIF:dependsOn
 	rdfs:subClassOf pig:Relationship ;
-	rdfs:label "depends on"@en ;
-	rdfs:label "hängt ab von"@de ;
-	rdfs:label "depend de"@fr ;
+	rdfs:label "depends on"@en ,
+		"hängt ab von"@de ,
+		"depend de"@fr ;
 	rdfs:comment "<p>A [[IREB:Requirement]] 'depends on' another [[IREB:Requirement]].</p>"@en .
 
-SpecIF:dependsOn-hasSource
-	rdfs:subPropertyOf pig:eligibleSource ;
+SpecIF:dependsOn-toSource
+	rdfs:subPropertyOf pig:SourceLink ;
+	rdfs:label "SpecIF:dependsOn to source" ;
 	rdfs:comment "Connects the source of SpecIF:dependsOn" ;
 	rdfs:domain SpecIF:dependsOn ;
 	rdfs:range IREB:Requirement .
 
-SpecIF:dependsOn-hasTarget
-	rdfs:subPropertyOf pig:eligibleTarget ;
+SpecIF:dependsOn-toTarget
+	rdfs:subPropertyOf pig:TargetLink ;
+	rdfs:label "SpecIF:dependsOn to target" ;
 	rdfs:comment "Connects the target of SpecIF:dependsOn" ;
 	rdfs:domain SpecIF:dependsOn ;
 	rdfs:range IREB:Requirement .
@@ -1033,7 +999,7 @@ pigShapes_SpecIF:dependsOn
 	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:dependsOn ;
 	sh:property [ 
-		sh:path SpecIF:dependsOn-hasSource ;
+		sh:path SpecIF:dependsOn-toSource ;
 		sh:or (
 			[ sh:class IREB:Requirement ]
 		) ;
@@ -1041,7 +1007,7 @@ pigShapes_SpecIF:dependsOn
 		sh:maxCount 1
 	] ;
 	sh:property [ 
-		sh:path SpecIF:dependsOn-hasTarget ;
+		sh:path SpecIF:dependsOn-toTarget ;
 		sh:or (
 			[ sh:class IREB:Requirement ]
 		) ;
@@ -1051,13 +1017,14 @@ pigShapes_SpecIF:dependsOn
 
 oslc_rm:satisfies
 	rdfs:subClassOf pig:Relationship ;
-	rdfs:label "satisfies"@en ;
-	rdfs:label "erfüllt"@de ;
-	rdfs:label "satisfait"@fr ;
+	rdfs:label "satisfies"@en ,
+		"erfüllt"@de ,
+		"satisfait"@fr ;
 	rdfs:comment "<p>The object is satisfied by the subject. <small>(<i>source: <a href=\"http://open-services.net/\">OSLC</a></i>)</small></p><p>SpecIF suggests that the subject is confined to a model element, e.g, a [[FMC:Actor]] or [[FMC:State]], and the object is confined to a [[IREB:Requirement]]. More concretely, an example for this type of statement is 'Component-X <em>satisfies</em> 'Requirement-4711'.</p>"@en .
 
-oslc_rm:satisfies-hasSource
-	rdfs:subPropertyOf pig:eligibleSource ;
+oslc_rm:satisfies-toSource
+	rdfs:subPropertyOf pig:SourceLink ;
+	rdfs:label "oslc_rm:satisfies to source" ;
 	rdfs:comment "Connects the source of oslc_rm:satisfies" ;
 	rdfs:domain oslc_rm:satisfies ;
 	rdfs:range [ owl:unionOf(
@@ -1066,8 +1033,9 @@ oslc_rm:satisfies-hasSource
 			FMC:Event
 		)] .
 
-oslc_rm:satisfies-hasTarget
-	rdfs:subPropertyOf pig:eligibleTarget ;
+oslc_rm:satisfies-toTarget
+	rdfs:subPropertyOf pig:TargetLink ;
+	rdfs:label "oslc_rm:satisfies to target" ;
 	rdfs:comment "Connects the target of oslc_rm:satisfies" ;
 	rdfs:domain oslc_rm:satisfies ;
 	rdfs:range IREB:Requirement .
@@ -1076,7 +1044,7 @@ pigShapes_oslc_rm:satisfies
 	rdf:type sh:NodeShape ;
 	sh:targetClass oslc_rm:satisfies ;
 	sh:property [ 
-		sh:path oslc_rm:satisfies-hasSource ;
+		sh:path oslc_rm:satisfies-toSource ;
 		sh:or (
 			[ sh:class FMC:Actor ]
 			[ sh:class FMC:State ]
@@ -1086,7 +1054,7 @@ pigShapes_oslc_rm:satisfies
 		sh:maxCount 1
 	] ;
 	sh:property [ 
-		sh:path oslc_rm:satisfies-hasTarget ;
+		sh:path oslc_rm:satisfies-toTarget ;
 		sh:or (
 			[ sh:class IREB:Requirement ]
 		) ;
@@ -1096,19 +1064,21 @@ pigShapes_oslc_rm:satisfies
 
 SpecIF:refersTo
 	rdfs:subClassOf pig:Relationship ;
-	rdfs:label "refers to"@en ;
-	rdfs:label "bezieht sich auf"@de ;
-	rdfs:label "concerne"@fr ;
+	rdfs:label "refers to"@en ,
+		"bezieht sich auf"@de ,
+		"concerne"@fr ;
 	rdfs:comment "<p>A resource 'refers to' any other resource.</p>"@en .
 
-SpecIF:refersTo-hasSource
-	rdfs:subPropertyOf pig:eligibleSource ;
+SpecIF:refersTo-toSource
+	rdfs:subPropertyOf pig:SourceLink ;
+	rdfs:label "SpecIF:refersTo to source" ;
 	rdfs:comment "Connects the source of SpecIF:refersTo" ;
 	rdfs:domain SpecIF:refersTo ;
 	rdfs:range SpecIF:Issue .
 
-SpecIF:refersTo-hasTarget
-	rdfs:subPropertyOf pig:eligibleTarget ;
+SpecIF:refersTo-toTarget
+	rdfs:subPropertyOf pig:TargetLink ;
+	rdfs:label "SpecIF:refersTo to target" ;
 	rdfs:comment "Connects the target of SpecIF:refersTo" ;
 	rdfs:domain SpecIF:refersTo ;
 	rdfs:range [ owl:unionOf(
@@ -1123,7 +1093,7 @@ pigShapes_SpecIF:refersTo
 	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:refersTo ;
 	sh:property [ 
-		sh:path SpecIF:refersTo-hasSource ;
+		sh:path SpecIF:refersTo-toSource ;
 		sh:or (
 			[ sh:class SpecIF:Issue ]
 		) ;
@@ -1131,7 +1101,7 @@ pigShapes_SpecIF:refersTo
 		sh:maxCount 1
 	] ;
 	sh:property [ 
-		sh:path SpecIF:refersTo-hasTarget ;
+		sh:path SpecIF:refersTo-toTarget ;
 		sh:or (
 			[ sh:class pig:View ]
 			[ sh:class FMC:Actor ]
@@ -2092,974 +2062,974 @@ d:Iss-eee2d4e00000c3a801394148dcc58a52
 
 d:RSat-MEl-5a85347c0000bca80137ad485c7cd330-Req-d1c895230000c3a80150f8afd049f738
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
-	oslc_rm:satisfies-hasTarget d:Req-d1c895230000c3a80150f8afd049f738 ;
+	oslc_rm:satisfies-toSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
+	oslc_rm:satisfies-toTarget d:Req-d1c895230000c3a80150f8afd049f738 ;
 	dcterms:modified "2017-06-19T20:13:49+02:00" ;
 	dcterms:creator "od" .
 
 d:R-RpgwxaijQtHjsE71uYHiTJyJW79
 	rdf:type SpecIF:dependsOn ;
-	SpecIF:dependsOn-hasSource d:Req-d1c895230000c3a80150f8afd049f738 ;
-	SpecIF:dependsOn-hasTarget d:Req-d1cd7f370000c3a8015095e6ee21aab7 ;
+	SpecIF:dependsOn-toSource d:Req-d1c895230000c3a80150f8afd049f738 ;
+	SpecIF:dependsOn-toTarget d:Req-d1cd7f370000c3a8015095e6ee21aab7 ;
 	dcterms:modified "2017-06-19T20:13:49+02:00" ;
 	dcterms:creator "od" .
 
 d:R-tA5fx5sgbN3nJReiqqzE6PvBhbt
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
-	oslc_rm:satisfies-hasTarget d:Req-d1c895230000c3a80150f8afd049f738 ;
+	oslc_rm:satisfies-toSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
+	oslc_rm:satisfies-toTarget d:Req-d1c895230000c3a80150f8afd049f738 ;
 	dcterms:modified "2017-06-19T20:13:50+02:00" ;
 	dcterms:creator "od" .
 
 d:R-2hkTtbuV2BjIYernvDaRZXDFV1Q
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
-	oslc_rm:satisfies-hasTarget d:Req-d1c895230000c3a80150f8afd049f738 ;
+	oslc_rm:satisfies-toSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
+	oslc_rm:satisfies-toTarget d:Req-d1c895230000c3a80150f8afd049f738 ;
 	dcterms:modified "2017-06-19T20:13:50+02:00" ;
 	dcterms:creator "od" .
 
 d:RSat-MEl-5a85347c0000bca80137ad485c7cd330-Req-d1d42a6a0000c3a8015091ec8d149b93
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
-	oslc_rm:satisfies-hasTarget d:Req-d1d42a6a0000c3a8015091ec8d149b93 ;
+	oslc_rm:satisfies-toSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
+	oslc_rm:satisfies-toTarget d:Req-d1d42a6a0000c3a8015091ec8d149b93 ;
 	dcterms:modified "2017-06-19T20:13:50+02:00" ;
 	dcterms:creator "od" .
 
 d:R-Ch6fs9eKiVNhSacQ72yIBhF0Q3W
 	rdf:type SpecIF:refersTo ;
-	SpecIF:refersTo-hasSource d:Iss-ee2abb630000c3a8013987a750219659 ;
-	SpecIF:refersTo-hasTarget d:Req-d1d42a6a0000c3a8015091ec8d149b93 ;
+	SpecIF:refersTo-toSource d:Iss-ee2abb630000c3a8013987a750219659 ;
+	SpecIF:refersTo-toTarget d:Req-d1d42a6a0000c3a8015091ec8d149b93 ;
 	dcterms:modified "2018-11-15T15:46:00+01:00" ;
 	dcterms:creator "od" .
 
 d:RSat-MEl-5a85347c0000bca80137ad485c7cd330-Req-d1cd7f370000c3a8015095e6ee21aab7
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
-	oslc_rm:satisfies-hasTarget d:Req-d1cd7f370000c3a8015095e6ee21aab7 ;
+	oslc_rm:satisfies-toSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
+	oslc_rm:satisfies-toTarget d:Req-d1cd7f370000c3a8015095e6ee21aab7 ;
 	dcterms:modified "2017-06-19T20:13:51+02:00" ;
 	dcterms:creator "od" .
 
 d:RSat-MEl-5a71c4800000bca80137f2aaa7b63000-Req-5ba3512b0000bca801371cc0617eb4c1
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-5a71c4800000bca80137f2aaa7b63000 ;
-	oslc_rm:satisfies-hasTarget d:Req-5ba3512b0000bca801371cc0617eb4c1 ;
+	oslc_rm:satisfies-toSource d:MEl-5a71c4800000bca80137f2aaa7b63000 ;
+	oslc_rm:satisfies-toTarget d:Req-5ba3512b0000bca801371cc0617eb4c1 ;
 	dcterms:modified "2017-06-19T20:13:51+02:00" ;
 	dcterms:creator "od" .
 
 d:RSat-MEl-5a808e2a0000bca80137bfd74268a84a-Req-5b8fbb300000bca80137c73e3ce4c737
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
-	oslc_rm:satisfies-hasTarget d:Req-5b8fbb300000bca80137c73e3ce4c737 ;
+	oslc_rm:satisfies-toSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
+	oslc_rm:satisfies-toTarget d:Req-5b8fbb300000bca80137c73e3ce4c737 ;
 	dcterms:modified "2017-06-19T20:13:51+02:00" ;
 	dcterms:creator "od" .
 
 d:RSat-MEl-5a47935a0000bca801377c17f8cb25b0-Req-5b944fc70000bca8013763f44fdc0e03
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
-	oslc_rm:satisfies-hasTarget d:Req-5b944fc70000bca8013763f44fdc0e03 ;
+	oslc_rm:satisfies-toSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
+	oslc_rm:satisfies-toTarget d:Req-5b944fc70000bca8013763f44fdc0e03 ;
 	dcterms:modified "2017-06-19T20:13:51+02:00" ;
 	dcterms:creator "od" .
 
 d:RCnc-Iss-ee2abb630000c3a8013987a750219659-Req-5b944fc70000bca8013763f44fdc0e03
 	rdf:type SpecIF:refersTo ;
-	SpecIF:refersTo-hasSource d:Iss-ee2abb630000c3a8013987a750219659 ;
-	SpecIF:refersTo-hasTarget d:Req-5b944fc70000bca8013763f44fdc0e03 ;
+	SpecIF:refersTo-toSource d:Iss-ee2abb630000c3a8013987a750219659 ;
+	SpecIF:refersTo-toTarget d:Req-5b944fc70000bca8013763f44fdc0e03 ;
 	dcterms:modified "2017-06-19T20:13:51+02:00" ;
 	dcterms:creator "od" .
 
 d:RSat-MEl-5a752ccc0000bca80137479a2e8bab30-Req-5ba140d60000bca801372b09f9888eca
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
-	oslc_rm:satisfies-hasTarget d:Req-5ba140d60000bca801372b09f9888eca ;
+	oslc_rm:satisfies-toSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
+	oslc_rm:satisfies-toTarget d:Req-5ba140d60000bca801372b09f9888eca ;
 	dcterms:modified "2017-06-19T20:13:51+02:00" ;
 	dcterms:creator "od" .
 
 d:RSat-MEl-5a9b7a9b0000bca80137d768644696b7-Req-5ba140d60000bca801372b09f9888eca
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-5a9b7a9b0000bca80137d768644696b7 ;
-	oslc_rm:satisfies-hasTarget d:Req-5ba140d60000bca801372b09f9888eca ;
+	oslc_rm:satisfies-toSource d:MEl-5a9b7a9b0000bca80137d768644696b7 ;
+	oslc_rm:satisfies-toTarget d:Req-5ba140d60000bca801372b09f9888eca ;
 	dcterms:modified "2017-06-19T20:13:52+02:00" ;
 	dcterms:creator "od" .
 
 d:RSat-MEl-803fd3750000c3a8013cf1fdb3b26d33-Req-ee452cf20000c3a8014035290669304d
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-803fd3750000c3a8013cf1fdb3b26d33 ;
-	oslc_rm:satisfies-hasTarget d:Req-ee452cf20000c3a8014035290669304d ;
+	oslc_rm:satisfies-toSource d:MEl-803fd3750000c3a8013cf1fdb3b26d33 ;
+	oslc_rm:satisfies-toTarget d:Req-ee452cf20000c3a8014035290669304d ;
 	dcterms:modified "2017-06-19T20:13:52+02:00" ;
 	dcterms:creator "od" .
 
 d:R-UZD4SQ8jYghL2Tsb4tZjoXDSYoM
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
-	oslc_rm:satisfies-hasTarget d:Req-ee452cf20000c3a8014035290669304d ;
+	oslc_rm:satisfies-toSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
+	oslc_rm:satisfies-toTarget d:Req-ee452cf20000c3a8014035290669304d ;
 	dcterms:modified "2017-06-19T20:13:52+02:00" ;
 	dcterms:creator "od" .
 
 d:RSat-MEl-5a489c300000bca80137ee1373c16844-Req-ee43fc4c0000c3a8014063d42c77767f
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-5a489c300000bca80137ee1373c16844 ;
-	oslc_rm:satisfies-hasTarget d:Req-ee43fc4c0000c3a8014063d42c77767f ;
+	oslc_rm:satisfies-toSource d:MEl-5a489c300000bca80137ee1373c16844 ;
+	oslc_rm:satisfies-toTarget d:Req-ee43fc4c0000c3a8014063d42c77767f ;
 	dcterms:modified "2017-06-19T20:13:52+02:00" ;
 	dcterms:creator "od" .
 
 d:RSat-MEl-5a4c80c20000bca8013753b6999a4da8-Req-ee43fc4c0000c3a8014063d42c77767f
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-5a4c80c20000bca8013753b6999a4da8 ;
-	oslc_rm:satisfies-hasTarget d:Req-ee43fc4c0000c3a8014063d42c77767f ;
+	oslc_rm:satisfies-toSource d:MEl-5a4c80c20000bca8013753b6999a4da8 ;
+	oslc_rm:satisfies-toTarget d:Req-ee43fc4c0000c3a8014063d42c77767f ;
 	dcterms:modified "2017-06-19T20:13:52+02:00" ;
 	dcterms:creator "od" .
 
 d:RSat-MEl-5a52b50c0000bca801377e3d15255f98-Req-ee43fc4c0000c3a8014063d42c77767f
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-5a52b50c0000bca801377e3d15255f98 ;
-	oslc_rm:satisfies-hasTarget d:Req-ee43fc4c0000c3a8014063d42c77767f ;
+	oslc_rm:satisfies-toSource d:MEl-5a52b50c0000bca801377e3d15255f98 ;
+	oslc_rm:satisfies-toTarget d:Req-ee43fc4c0000c3a8014063d42c77767f ;
 	dcterms:modified "2017-06-19T20:13:53+02:00" ;
 	dcterms:creator "od" .
 
 d:RSat-MEl-5a50d5b60000bca8013781532547ce93-Req-ee43fc4c0000c3a8014063d42c77767f
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-5a50d5b60000bca8013781532547ce93 ;
-	oslc_rm:satisfies-hasTarget d:Req-ee43fc4c0000c3a8014063d42c77767f ;
+	oslc_rm:satisfies-toSource d:MEl-5a50d5b60000bca8013781532547ce93 ;
+	oslc_rm:satisfies-toTarget d:Req-ee43fc4c0000c3a8014063d42c77767f ;
 	dcterms:modified "2017-06-19T20:13:53+02:00" ;
 	dcterms:creator "od" .
 
 d:RDep-Req-ee43fc4c0000c3a8014063d42c77767f-Req-5b9c950e0000bca801374f16615247b9
 	rdf:type SpecIF:dependsOn ;
-	SpecIF:dependsOn-hasSource d:Req-ee43fc4c0000c3a8014063d42c77767f ;
-	SpecIF:dependsOn-hasTarget d:Req-5b9c950e0000bca801374f16615247b9 ;
+	SpecIF:dependsOn-toSource d:Req-ee43fc4c0000c3a8014063d42c77767f ;
+	SpecIF:dependsOn-toTarget d:Req-5b9c950e0000bca801374f16615247b9 ;
 	dcterms:modified "2017-06-19T20:13:53+02:00" ;
 	dcterms:creator "od" .
 
 d:RSat-MEl-5a808e2a0000bca80137bfd74268a84a-Req-5b9124bc0000bca80137fa2ce86f5eca
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
-	oslc_rm:satisfies-hasTarget d:Req-5b9124bc0000bca80137fa2ce86f5eca ;
+	oslc_rm:satisfies-toSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
+	oslc_rm:satisfies-toTarget d:Req-5b9124bc0000bca80137fa2ce86f5eca ;
 	dcterms:modified "2017-06-19T20:13:53+02:00" ;
 	dcterms:creator "od" .
 
 d:RSat-MEl-5a52b50c0000bca801377e3d15255f98-Req-5b9124bc0000bca80137fa2ce86f5eca
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-5a52b50c0000bca801377e3d15255f98 ;
-	oslc_rm:satisfies-hasTarget d:Req-5b9124bc0000bca80137fa2ce86f5eca ;
+	oslc_rm:satisfies-toSource d:MEl-5a52b50c0000bca801377e3d15255f98 ;
+	oslc_rm:satisfies-toTarget d:Req-5b9124bc0000bca80137fa2ce86f5eca ;
 	dcterms:modified "2017-06-19T20:13:54+02:00" ;
 	dcterms:creator "od" .
 
 d:RSat-MEl-5a808e2a0000bca80137bfd74268a84a-Req-5b9e68530000bca801371362c49d2d08
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
-	oslc_rm:satisfies-hasTarget d:Req-5b9e68530000bca801371362c49d2d08 ;
+	oslc_rm:satisfies-toSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
+	oslc_rm:satisfies-toTarget d:Req-5b9e68530000bca801371362c49d2d08 ;
 	dcterms:modified "2017-06-19T20:13:54+02:00" ;
 	dcterms:creator "od" .
 
 d:RSat-MEl-5a52b50c0000bca801377e3d15255f98-Req-5b9e68530000bca801371362c49d2d08
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-5a52b50c0000bca801377e3d15255f98 ;
-	oslc_rm:satisfies-hasTarget d:Req-5b9e68530000bca801371362c49d2d08 ;
+	oslc_rm:satisfies-toSource d:MEl-5a52b50c0000bca801377e3d15255f98 ;
+	oslc_rm:satisfies-toTarget d:Req-5b9e68530000bca801371362c49d2d08 ;
 	dcterms:modified "2017-06-19T20:13:54+02:00" ;
 	dcterms:creator "od" .
 
 d:RSat-MEl-803fd3750000c3a8013cf1fdb3b26d33-Req-eea1cd500000c3a80140fe00109eb7f4
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-803fd3750000c3a8013cf1fdb3b26d33 ;
-	oslc_rm:satisfies-hasTarget d:Req-eea1cd500000c3a80140fe00109eb7f4 ;
+	oslc_rm:satisfies-toSource d:MEl-803fd3750000c3a8013cf1fdb3b26d33 ;
+	oslc_rm:satisfies-toTarget d:Req-eea1cd500000c3a80140fe00109eb7f4 ;
 	dcterms:modified "2017-06-19T20:13:54+02:00" ;
 	dcterms:creator "od" .
 
 d:R-lELLVnNbbagfomwYyTBgGfXSalj
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
-	oslc_rm:satisfies-hasTarget d:Req-eea1cd500000c3a80140fe00109eb7f4 ;
+	oslc_rm:satisfies-toSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
+	oslc_rm:satisfies-toTarget d:Req-eea1cd500000c3a80140fe00109eb7f4 ;
 	dcterms:modified "2017-06-19T20:13:54+02:00" ;
 	dcterms:creator "od" .
 
 d:RSat-MEl-5a489c300000bca80137ee1373c16844-Req-5b95fae40000bca801372becc933682d
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-5a489c300000bca80137ee1373c16844 ;
-	oslc_rm:satisfies-hasTarget d:Req-5b95fae40000bca801372becc933682d ;
+	oslc_rm:satisfies-toSource d:MEl-5a489c300000bca80137ee1373c16844 ;
+	oslc_rm:satisfies-toTarget d:Req-5b95fae40000bca801372becc933682d ;
 	dcterms:modified "2017-06-19T20:13:54+02:00" ;
 	dcterms:creator "od" .
 
 d:RSat-MEl-5a4c80c20000bca8013753b6999a4da8-Req-5b95fae40000bca801372becc933682d
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-5a4c80c20000bca8013753b6999a4da8 ;
-	oslc_rm:satisfies-hasTarget d:Req-5b95fae40000bca801372becc933682d ;
+	oslc_rm:satisfies-toSource d:MEl-5a4c80c20000bca8013753b6999a4da8 ;
+	oslc_rm:satisfies-toTarget d:Req-5b95fae40000bca801372becc933682d ;
 	dcterms:modified "2017-06-19T20:13:55+02:00" ;
 	dcterms:creator "od" .
 
 d:RSat-MEl-5a489c300000bca80137ee1373c16844-Req-5b9ab8a50000bca801377ad0be3bbc89
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-5a489c300000bca80137ee1373c16844 ;
-	oslc_rm:satisfies-hasTarget d:Req-5b9ab8a50000bca801377ad0be3bbc89 ;
+	oslc_rm:satisfies-toSource d:MEl-5a489c300000bca80137ee1373c16844 ;
+	oslc_rm:satisfies-toTarget d:Req-5b9ab8a50000bca801377ad0be3bbc89 ;
 	dcterms:modified "2017-06-19T20:13:55+02:00" ;
 	dcterms:creator "od" .
 
 d:RSat-MEl-5a52b50c0000bca801377e3d15255f98-Req-5b9ab8a50000bca801377ad0be3bbc89
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-5a52b50c0000bca801377e3d15255f98 ;
-	oslc_rm:satisfies-hasTarget d:Req-5b9ab8a50000bca801377ad0be3bbc89 ;
+	oslc_rm:satisfies-toSource d:MEl-5a52b50c0000bca801377e3d15255f98 ;
+	oslc_rm:satisfies-toTarget d:Req-5b9ab8a50000bca801377ad0be3bbc89 ;
 	dcterms:modified "2017-06-19T20:13:55+02:00" ;
 	dcterms:creator "od" .
 
 d:R-NJ2iOLwt4CEpcf8IidN1z0P4d0m
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
-	oslc_rm:satisfies-hasTarget d:Req-5b9ab8a50000bca801377ad0be3bbc89 ;
+	oslc_rm:satisfies-toSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
+	oslc_rm:satisfies-toTarget d:Req-5b9ab8a50000bca801377ad0be3bbc89 ;
 	dcterms:modified "2017-06-19T20:13:55+02:00" ;
 	dcterms:creator "od" .
 
 d:RSat-MEl-5a808e2a0000bca80137bfd74268a84a-Req-728c69c80018b1a8014b974542c36edc
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
-	oslc_rm:satisfies-hasTarget d:Req-728c69c80018b1a8014b974542c36edc ;
+	oslc_rm:satisfies-toSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
+	oslc_rm:satisfies-toTarget d:Req-728c69c80018b1a8014b974542c36edc ;
 	dcterms:modified "2017-06-19T20:13:55+02:00" ;
 	dcterms:creator "od" .
 
 d:RSat-MEl-5a85347c0000bca80137ad485c7cd330-Req-5b9c950e0000bca801374f16615247b9
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
-	oslc_rm:satisfies-hasTarget d:Req-5b9c950e0000bca801374f16615247b9 ;
+	oslc_rm:satisfies-toSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
+	oslc_rm:satisfies-toTarget d:Req-5b9c950e0000bca801374f16615247b9 ;
 	dcterms:modified "2017-06-19T20:13:55+02:00" ;
 	dcterms:creator "od" .
 
 d:RWri-MEl-5a76365c0000bca8013776e91afd1e8e-MEl-5a77385f0000bca80137e1c7dc0b1721
 	rdf:type SpecIF:writes ;
-	SpecIF:writes-hasSource d:MEl-5a76365c0000bca8013776e91afd1e8e ;
-	SpecIF:writes-hasTarget d:MEl-5a77385f0000bca80137e1c7dc0b1721 ;
+	SpecIF:writes-toSource d:MEl-5a76365c0000bca8013776e91afd1e8e ;
+	SpecIF:writes-toTarget d:MEl-5a77385f0000bca80137e1c7dc0b1721 ;
 	dcterms:modified "2017-06-19T20:13:56+02:00" ;
 	dcterms:creator "od" .
 
 d:RRea-MEl-5a76365c0000bca8013776e91afd1e8e-MEl-5a77385f0000bca80137e1c7dc0b1721
 	rdf:type SpecIF:reads ;
-	SpecIF:reads-hasSource d:MEl-5a76365c0000bca8013776e91afd1e8e ;
-	SpecIF:reads-hasTarget d:MEl-5a77385f0000bca80137e1c7dc0b1721 ;
+	SpecIF:reads-toSource d:MEl-5a76365c0000bca8013776e91afd1e8e ;
+	SpecIF:reads-toTarget d:MEl-5a77385f0000bca80137e1c7dc0b1721 ;
 	dcterms:modified "2017-06-19T20:13:57+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a489c300000bca80137ee1373c16844-MEl-5a76365c0000bca8013776e91afd1e8e
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a489c300000bca80137ee1373c16844 ;
-	SpecIF:contains-hasTarget d:MEl-5a76365c0000bca8013776e91afd1e8e ;
+	SpecIF:contains-toSource d:MEl-5a489c300000bca80137ee1373c16844 ;
+	SpecIF:contains-toTarget d:MEl-5a76365c0000bca8013776e91afd1e8e ;
 	dcterms:modified "2017-06-19T20:13:57+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a47935a0000bca801377c17f8cb25b0-MEl-608177820000bca801379179ebf3b6aa
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
-	SpecIF:contains-hasTarget d:MEl-608177820000bca801379179ebf3b6aa ;
+	SpecIF:contains-toSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
+	SpecIF:contains-toTarget d:MEl-608177820000bca801379179ebf3b6aa ;
 	dcterms:modified "2017-06-19T20:13:57+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a47935a0000bca801377c17f8cb25b0-MEl-611366530000bca80137a97f194e96a3
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
-	SpecIF:contains-hasTarget d:MEl-611366530000bca80137a97f194e96a3 ;
+	SpecIF:contains-toSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
+	SpecIF:contains-toTarget d:MEl-611366530000bca80137a97f194e96a3 ;
 	dcterms:modified "2017-06-19T20:13:57+02:00" ;
 	dcterms:creator "od" .
 
 d:RRea-MEl-5bd6bd890000bca8013739588a3f43d6-MEl-5a489c300000bca80137ee1373c16844
 	rdf:type SpecIF:reads ;
-	SpecIF:reads-hasSource d:MEl-5bd6bd890000bca8013739588a3f43d6 ;
-	SpecIF:reads-hasTarget d:MEl-5a489c300000bca80137ee1373c16844 ;
+	SpecIF:reads-toSource d:MEl-5bd6bd890000bca8013739588a3f43d6 ;
+	SpecIF:reads-toTarget d:MEl-5a489c300000bca80137ee1373c16844 ;
 	dcterms:modified "2017-06-19T20:13:57+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a85347c0000bca80137ad485c7cd330-MEl-45450be80000c3a801414f280f146c71
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
-	SpecIF:contains-hasTarget d:MEl-45450be80000c3a801414f280f146c71 ;
+	SpecIF:contains-toSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
+	SpecIF:contains-toTarget d:MEl-45450be80000c3a801414f280f146c71 ;
 	dcterms:modified "2017-06-19T20:13:57+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a85347c0000bca80137ad485c7cd330-MEl-4536b0350000c3a801415986f8ea806a
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
-	SpecIF:contains-hasTarget d:MEl-4536b0350000c3a801415986f8ea806a ;
+	SpecIF:contains-toSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
+	SpecIF:contains-toTarget d:MEl-4536b0350000c3a801415986f8ea806a ;
 	dcterms:modified "2017-06-19T20:13:57+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a85347c0000bca80137ad485c7cd330-MEl-5b08ed8d0000bca8013719f554353b0e
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
-	SpecIF:contains-hasTarget d:MEl-5b08ed8d0000bca8013719f554353b0e ;
+	SpecIF:contains-toSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
+	SpecIF:contains-toTarget d:MEl-5b08ed8d0000bca8013719f554353b0e ;
 	dcterms:modified "2017-06-19T20:13:58+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a85347c0000bca80137ad485c7cd330-MEl-453dfb670000c3a8014191107df4565e
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
-	SpecIF:contains-hasTarget d:MEl-453dfb670000c3a8014191107df4565e ;
+	SpecIF:contains-toSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
+	SpecIF:contains-toTarget d:MEl-453dfb670000c3a8014191107df4565e ;
 	dcterms:modified "2017-06-19T20:13:58+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a85347c0000bca80137ad485c7cd330-MEl-5b094f8a0000bca801374c798a6587ad
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
-	SpecIF:contains-hasTarget d:MEl-5b094f8a0000bca801374c798a6587ad ;
+	SpecIF:contains-toSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
+	SpecIF:contains-toTarget d:MEl-5b094f8a0000bca801374c798a6587ad ;
 	dcterms:modified "2017-06-19T20:13:58+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a85347c0000bca80137ad485c7cd330-MEl-45428b930000c3a80141e28b7d4b5ae5
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
-	SpecIF:contains-hasTarget d:MEl-45428b930000c3a80141e28b7d4b5ae5 ;
+	SpecIF:contains-toSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
+	SpecIF:contains-toTarget d:MEl-45428b930000c3a80141e28b7d4b5ae5 ;
 	dcterms:modified "2017-06-19T20:13:58+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a85347c0000bca80137ad485c7cd330-MEl-5b078fa50000bca80137f36ed05c43cb
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
-	SpecIF:contains-hasTarget d:MEl-5b078fa50000bca80137f36ed05c43cb ;
+	SpecIF:contains-toSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
+	SpecIF:contains-toTarget d:MEl-5b078fa50000bca80137f36ed05c43cb ;
 	dcterms:modified "2017-06-19T20:13:58+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a85347c0000bca80137ad485c7cd330-MEl-453facbb0000c3a80141c43d2fb4f5e2
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
-	SpecIF:contains-hasTarget d:MEl-453facbb0000c3a80141c43d2fb4f5e2 ;
+	SpecIF:contains-toSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
+	SpecIF:contains-toTarget d:MEl-453facbb0000c3a80141c43d2fb4f5e2 ;
 	dcterms:modified "2017-06-19T20:13:58+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a85347c0000bca80137ad485c7cd330-MEl-5b0839b90000bca801376dcca41ca7d0
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
-	SpecIF:contains-hasTarget d:MEl-5b0839b90000bca801376dcca41ca7d0 ;
+	SpecIF:contains-toSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
+	SpecIF:contains-toTarget d:MEl-5b0839b90000bca801376dcca41ca7d0 ;
 	dcterms:modified "2017-06-19T20:13:59+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a85347c0000bca80137ad485c7cd330-MEl-5b07e6aa0000bca8013797aad9be69ae
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
-	SpecIF:contains-hasTarget d:MEl-5b07e6aa0000bca8013797aad9be69ae ;
+	SpecIF:contains-toSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
+	SpecIF:contains-toTarget d:MEl-5b07e6aa0000bca8013797aad9be69ae ;
 	dcterms:modified "2017-06-19T20:13:59+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a85347c0000bca80137ad485c7cd330-MEl-4543fe900000c3a80141f5253ff13c35
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
-	SpecIF:contains-hasTarget d:MEl-4543fe900000c3a80141f5253ff13c35 ;
+	SpecIF:contains-toSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
+	SpecIF:contains-toTarget d:MEl-4543fe900000c3a80141f5253ff13c35 ;
 	dcterms:modified "2017-06-19T20:13:59+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a85347c0000bca80137ad485c7cd330-MEl-453d34af0000c3a80141918f84641161
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
-	SpecIF:contains-hasTarget d:MEl-453d34af0000c3a80141918f84641161 ;
+	SpecIF:contains-toSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
+	SpecIF:contains-toTarget d:MEl-453d34af0000c3a80141918f84641161 ;
 	dcterms:modified "2017-06-19T20:13:59+02:00" ;
 	dcterms:creator "od" .
 
 d:RRea-MEl-5a85347c0000bca80137ad485c7cd330-MEl-5a87083e0000bca801379bb412523737
 	rdf:type SpecIF:reads ;
-	SpecIF:reads-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
-	SpecIF:reads-hasTarget d:MEl-5a87083e0000bca801379bb412523737 ;
+	SpecIF:reads-toSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
+	SpecIF:reads-toTarget d:MEl-5a87083e0000bca801379bb412523737 ;
 	dcterms:modified "2017-06-19T20:14:00+02:00" ;
 	dcterms:creator "od" .
 
 d:RRea-MEl-5a85347c0000bca80137ad485c7cd330-MEl-5a86b8980000bca80137ca6fde1a125e
 	rdf:type SpecIF:reads ;
-	SpecIF:reads-hasSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
-	SpecIF:reads-hasTarget d:MEl-5a86b8980000bca80137ca6fde1a125e ;
+	SpecIF:reads-toSource d:MEl-5a85347c0000bca80137ad485c7cd330 ;
+	SpecIF:reads-toTarget d:MEl-5a86b8980000bca80137ca6fde1a125e ;
 	dcterms:modified "2017-06-19T20:14:00+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a752ccc0000bca80137479a2e8bab30-MEl-5a85347c0000bca80137ad485c7cd330
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
-	SpecIF:contains-hasTarget d:MEl-5a85347c0000bca80137ad485c7cd330 ;
+	SpecIF:contains-toSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
+	SpecIF:contains-toTarget d:MEl-5a85347c0000bca80137ad485c7cd330 ;
 	dcterms:modified "2017-06-19T20:14:00+02:00" ;
 	dcterms:creator "od" .
 
 d:RWri-MEl-5a808e2a0000bca80137bfd74268a84a-MEl-5a99c89c0000bca801375d44cf9a50ca
 	rdf:type SpecIF:writes ;
-	SpecIF:writes-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
-	SpecIF:writes-hasTarget d:MEl-5a99c89c0000bca801375d44cf9a50ca ;
+	SpecIF:writes-toSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
+	SpecIF:writes-toTarget d:MEl-5a99c89c0000bca801375d44cf9a50ca ;
 	dcterms:modified "2017-06-19T20:14:00+02:00" ;
 	dcterms:creator "od" .
 
 d:RRea-MEl-5a808e2a0000bca80137bfd74268a84a-MEl-5a99c89c0000bca801375d44cf9a50ca
 	rdf:type SpecIF:reads ;
-	SpecIF:reads-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
-	SpecIF:reads-hasTarget d:MEl-5a99c89c0000bca801375d44cf9a50ca ;
+	SpecIF:reads-toSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
+	SpecIF:reads-toTarget d:MEl-5a99c89c0000bca801375d44cf9a50ca ;
 	dcterms:modified "2017-06-19T20:14:00+02:00" ;
 	dcterms:creator "od" .
 
 d:RWri-MEl-5a808e2a0000bca80137bfd74268a84a-MEl-5a9929510000bca80137d23c81f1ca54
 	rdf:type SpecIF:writes ;
-	SpecIF:writes-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
-	SpecIF:writes-hasTarget d:MEl-5a9929510000bca80137d23c81f1ca54 ;
+	SpecIF:writes-toSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
+	SpecIF:writes-toTarget d:MEl-5a9929510000bca80137d23c81f1ca54 ;
 	dcterms:modified "2017-06-19T20:14:01+02:00" ;
 	dcterms:creator "od" .
 
 d:RRea-MEl-5a808e2a0000bca80137bfd74268a84a-MEl-5a9929510000bca80137d23c81f1ca54
 	rdf:type SpecIF:reads ;
-	SpecIF:reads-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
-	SpecIF:reads-hasTarget d:MEl-5a9929510000bca80137d23c81f1ca54 ;
+	SpecIF:reads-toSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
+	SpecIF:reads-toTarget d:MEl-5a9929510000bca80137d23c81f1ca54 ;
 	dcterms:modified "2017-06-19T20:14:01+02:00" ;
 	dcterms:creator "od" .
 
 d:RWri-MEl-5a808e2a0000bca80137bfd74268a84a-MEl-5c29fb8e0000bca80137eb9734c99bfd
 	rdf:type SpecIF:writes ;
-	SpecIF:writes-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
-	SpecIF:writes-hasTarget d:MEl-5c29fb8e0000bca80137eb9734c99bfd ;
+	SpecIF:writes-toSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
+	SpecIF:writes-toTarget d:MEl-5c29fb8e0000bca80137eb9734c99bfd ;
 	dcterms:modified "2017-06-19T20:14:01+02:00" ;
 	dcterms:creator "od" .
 
 d:RRea-MEl-5a808e2a0000bca80137bfd74268a84a-MEl-5c29fb8e0000bca80137eb9734c99bfd
 	rdf:type SpecIF:reads ;
-	SpecIF:reads-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
-	SpecIF:reads-hasTarget d:MEl-5c29fb8e0000bca80137eb9734c99bfd ;
+	SpecIF:reads-toSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
+	SpecIF:reads-toTarget d:MEl-5c29fb8e0000bca80137eb9734c99bfd ;
 	dcterms:modified "2017-06-19T20:14:01+02:00" ;
 	dcterms:creator "od" .
 
 d:RWri-MEl-5a808e2a0000bca80137bfd74268a84a-MEl-5a9888810000bca801375410ce1cc142
 	rdf:type SpecIF:writes ;
-	SpecIF:writes-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
-	SpecIF:writes-hasTarget d:MEl-5a9888810000bca801375410ce1cc142 ;
+	SpecIF:writes-toSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
+	SpecIF:writes-toTarget d:MEl-5a9888810000bca801375410ce1cc142 ;
 	dcterms:modified "2017-06-19T20:14:01+02:00" ;
 	dcterms:creator "od" .
 
 d:RRea-MEl-5a808e2a0000bca80137bfd74268a84a-MEl-5a9888810000bca801375410ce1cc142
 	rdf:type SpecIF:reads ;
-	SpecIF:reads-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
-	SpecIF:reads-hasTarget d:MEl-5a9888810000bca801375410ce1cc142 ;
+	SpecIF:reads-toSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
+	SpecIF:reads-toTarget d:MEl-5a9888810000bca801375410ce1cc142 ;
 	dcterms:modified "2017-06-19T20:14:02+02:00" ;
 	dcterms:creator "od" .
 
 d:RWri-MEl-5a808e2a0000bca80137bfd74268a84a-MEl-5a86b8980000bca80137ca6fde1a125e
 	rdf:type SpecIF:writes ;
-	SpecIF:writes-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
-	SpecIF:writes-hasTarget d:MEl-5a86b8980000bca80137ca6fde1a125e ;
+	SpecIF:writes-toSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
+	SpecIF:writes-toTarget d:MEl-5a86b8980000bca80137ca6fde1a125e ;
 	dcterms:modified "2017-06-19T20:14:02+02:00" ;
 	dcterms:creator "od" .
 
 d:RWri-MEl-5a808e2a0000bca80137bfd74268a84a-MEl-5a87083e0000bca801379bb412523737
 	rdf:type SpecIF:writes ;
-	SpecIF:writes-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
-	SpecIF:writes-hasTarget d:MEl-5a87083e0000bca801379bb412523737 ;
+	SpecIF:writes-toSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
+	SpecIF:writes-toTarget d:MEl-5a87083e0000bca801379bb412523737 ;
 	dcterms:modified "2017-06-19T20:14:02+02:00" ;
 	dcterms:creator "od" .
 
 d:RRea-MEl-5a808e2a0000bca80137bfd74268a84a-MEl-5a9ce0310000bca801378176dc4744e8
 	rdf:type SpecIF:reads ;
-	SpecIF:reads-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
-	SpecIF:reads-hasTarget d:MEl-5a9ce0310000bca801378176dc4744e8 ;
+	SpecIF:reads-toSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
+	SpecIF:reads-toTarget d:MEl-5a9ce0310000bca801378176dc4744e8 ;
 	dcterms:modified "2017-06-19T20:14:02+02:00" ;
 	dcterms:creator "od" .
 
 d:RRea-MEl-5a808e2a0000bca80137bfd74268a84a-MEl-5a820a3c0000bca801378c9093fb7d80
 	rdf:type SpecIF:reads ;
-	SpecIF:reads-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
-	SpecIF:reads-hasTarget d:MEl-5a820a3c0000bca801378c9093fb7d80 ;
+	SpecIF:reads-toSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
+	SpecIF:reads-toTarget d:MEl-5a820a3c0000bca801378c9093fb7d80 ;
 	dcterms:modified "2017-06-19T20:14:03+02:00" ;
 	dcterms:creator "od" .
 
 d:RRea-MEl-5a808e2a0000bca80137bfd74268a84a-MEl-5a844d820000bca8013750b9a0410b6b
 	rdf:type SpecIF:reads ;
-	SpecIF:reads-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
-	SpecIF:reads-hasTarget d:MEl-5a844d820000bca8013750b9a0410b6b ;
+	SpecIF:reads-toSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
+	SpecIF:reads-toTarget d:MEl-5a844d820000bca8013750b9a0410b6b ;
 	dcterms:modified "2017-06-19T20:14:03+02:00" ;
 	dcterms:creator "od" .
 
 d:RRea-MEl-5a808e2a0000bca80137bfd74268a84a-MEl-5a82ec6f0000bca801372ef053a71bdf
 	rdf:type SpecIF:reads ;
-	SpecIF:reads-hasSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
-	SpecIF:reads-hasTarget d:MEl-5a82ec6f0000bca801372ef053a71bdf ;
+	SpecIF:reads-toSource d:MEl-5a808e2a0000bca80137bfd74268a84a ;
+	SpecIF:reads-toTarget d:MEl-5a82ec6f0000bca801372ef053a71bdf ;
 	dcterms:modified "2017-06-19T20:14:03+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a752ccc0000bca80137479a2e8bab30-MEl-5a808e2a0000bca80137bfd74268a84a
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
-	SpecIF:contains-hasTarget d:MEl-5a808e2a0000bca80137bfd74268a84a ;
+	SpecIF:contains-toSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
+	SpecIF:contains-toTarget d:MEl-5a808e2a0000bca80137bfd74268a84a ;
 	dcterms:modified "2017-06-19T20:14:04+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a752ccc0000bca80137479a2e8bab30-MEl-5a8009a00000bca80137ef95bc3f643f
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
-	SpecIF:contains-hasTarget d:MEl-5a8009a00000bca80137ef95bc3f643f ;
+	SpecIF:contains-toSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
+	SpecIF:contains-toTarget d:MEl-5a8009a00000bca80137ef95bc3f643f ;
 	dcterms:modified "2017-06-19T20:14:04+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a752ccc0000bca80137479a2e8bab30-MEl-5a844d820000bca8013750b9a0410b6b
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
-	SpecIF:contains-hasTarget d:MEl-5a844d820000bca8013750b9a0410b6b ;
+	SpecIF:contains-toSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
+	SpecIF:contains-toTarget d:MEl-5a844d820000bca8013750b9a0410b6b ;
 	dcterms:modified "2017-06-19T20:14:04+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a752ccc0000bca80137479a2e8bab30-MEl-5a86b8980000bca80137ca6fde1a125e
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
-	SpecIF:contains-hasTarget d:MEl-5a86b8980000bca80137ca6fde1a125e ;
+	SpecIF:contains-toSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
+	SpecIF:contains-toTarget d:MEl-5a86b8980000bca80137ca6fde1a125e ;
 	dcterms:modified "2017-06-19T20:14:04+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a752ccc0000bca80137479a2e8bab30-MEl-5a87083e0000bca801379bb412523737
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
-	SpecIF:contains-hasTarget d:MEl-5a87083e0000bca801379bb412523737 ;
+	SpecIF:contains-toSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
+	SpecIF:contains-toTarget d:MEl-5a87083e0000bca801379bb412523737 ;
 	dcterms:modified "2017-06-19T20:14:04+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a752ccc0000bca80137479a2e8bab30-MEl-5a82ec6f0000bca801372ef053a71bdf
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
-	SpecIF:contains-hasTarget d:MEl-5a82ec6f0000bca801372ef053a71bdf ;
+	SpecIF:contains-toSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
+	SpecIF:contains-toTarget d:MEl-5a82ec6f0000bca801372ef053a71bdf ;
 	dcterms:modified "2017-06-19T20:14:04+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a752ccc0000bca80137479a2e8bab30-MEl-5a820a3c0000bca801378c9093fb7d80
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
-	SpecIF:contains-hasTarget d:MEl-5a820a3c0000bca801378c9093fb7d80 ;
+	SpecIF:contains-toSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
+	SpecIF:contains-toTarget d:MEl-5a820a3c0000bca801378c9093fb7d80 ;
 	dcterms:modified "2017-06-19T20:14:05+02:00" ;
 	dcterms:creator "od" .
 
 d:RRea-MEl-5a752ccc0000bca80137479a2e8bab30-MEl-5a9ce0310000bca801378176dc4744e8
 	rdf:type SpecIF:reads ;
-	SpecIF:reads-hasSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
-	SpecIF:reads-hasTarget d:MEl-5a9ce0310000bca801378176dc4744e8 ;
+	SpecIF:reads-toSource d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
+	SpecIF:reads-toTarget d:MEl-5a9ce0310000bca801378176dc4744e8 ;
 	dcterms:modified "2017-06-19T20:14:05+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a489c300000bca80137ee1373c16844-MEl-5a752ccc0000bca80137479a2e8bab30
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a489c300000bca80137ee1373c16844 ;
-	SpecIF:contains-hasTarget d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
+	SpecIF:contains-toSource d:MEl-5a489c300000bca80137ee1373c16844 ;
+	SpecIF:contains-toTarget d:MEl-5a752ccc0000bca80137479a2e8bab30 ;
 	dcterms:modified "2017-06-19T20:14:05+02:00" ;
 	dcterms:creator "od" .
 
 d:RWri-MEl-5a71c4800000bca80137f2aaa7b63000-MEl-5a77385f0000bca80137e1c7dc0b1721
 	rdf:type SpecIF:writes ;
-	SpecIF:writes-hasSource d:MEl-5a71c4800000bca80137f2aaa7b63000 ;
-	SpecIF:writes-hasTarget d:MEl-5a77385f0000bca80137e1c7dc0b1721 ;
+	SpecIF:writes-toSource d:MEl-5a71c4800000bca80137f2aaa7b63000 ;
+	SpecIF:writes-toTarget d:MEl-5a77385f0000bca80137e1c7dc0b1721 ;
 	dcterms:modified "2017-06-19T20:14:06+02:00" ;
 	dcterms:creator "od" .
 
 d:RRea-MEl-5a71c4800000bca80137f2aaa7b63000-MEl-5a77385f0000bca80137e1c7dc0b1721
 	rdf:type SpecIF:reads ;
-	SpecIF:reads-hasSource d:MEl-5a71c4800000bca80137f2aaa7b63000 ;
-	SpecIF:reads-hasTarget d:MEl-5a77385f0000bca80137e1c7dc0b1721 ;
+	SpecIF:reads-toSource d:MEl-5a71c4800000bca80137f2aaa7b63000 ;
+	SpecIF:reads-toTarget d:MEl-5a77385f0000bca80137e1c7dc0b1721 ;
 	dcterms:modified "2017-06-19T20:14:06+02:00" ;
 	dcterms:creator "od" .
 
 d:RWri-MEl-5a71c4800000bca80137f2aaa7b63000-MEl-5a7776c50000bca8013765ae93af9209
 	rdf:type SpecIF:writes ;
-	SpecIF:writes-hasSource d:MEl-5a71c4800000bca80137f2aaa7b63000 ;
-	SpecIF:writes-hasTarget d:MEl-5a7776c50000bca8013765ae93af9209 ;
+	SpecIF:writes-toSource d:MEl-5a71c4800000bca80137f2aaa7b63000 ;
+	SpecIF:writes-toTarget d:MEl-5a7776c50000bca8013765ae93af9209 ;
 	dcterms:modified "2017-06-19T20:14:06+02:00" ;
 	dcterms:creator "od" .
 
 d:RRea-MEl-5a71c4800000bca80137f2aaa7b63000-MEl-5a4dd77b0000bca8013736c6912ad291
 	rdf:type SpecIF:reads ;
-	SpecIF:reads-hasSource d:MEl-5a71c4800000bca80137f2aaa7b63000 ;
-	SpecIF:reads-hasTarget d:MEl-5a4dd77b0000bca8013736c6912ad291 ;
+	SpecIF:reads-toSource d:MEl-5a71c4800000bca80137f2aaa7b63000 ;
+	SpecIF:reads-toTarget d:MEl-5a4dd77b0000bca8013736c6912ad291 ;
 	dcterms:modified "2017-06-19T20:14:06+02:00" ;
 	dcterms:creator "od" .
 
 d:RRea-MEl-5a71c4800000bca80137f2aaa7b63000-MEl-5a4d6dee0000bca80137c1caf2f42349
 	rdf:type SpecIF:reads ;
-	SpecIF:reads-hasSource d:MEl-5a71c4800000bca80137f2aaa7b63000 ;
-	SpecIF:reads-hasTarget d:MEl-5a4d6dee0000bca80137c1caf2f42349 ;
+	SpecIF:reads-toSource d:MEl-5a71c4800000bca80137f2aaa7b63000 ;
+	SpecIF:reads-toTarget d:MEl-5a4d6dee0000bca80137c1caf2f42349 ;
 	dcterms:modified "2017-06-19T20:14:06+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a489c300000bca80137ee1373c16844-MEl-5a71c4800000bca80137f2aaa7b63000
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a489c300000bca80137ee1373c16844 ;
-	SpecIF:contains-hasTarget d:MEl-5a71c4800000bca80137f2aaa7b63000 ;
+	SpecIF:contains-toSource d:MEl-5a489c300000bca80137ee1373c16844 ;
+	SpecIF:contains-toTarget d:MEl-5a71c4800000bca80137f2aaa7b63000 ;
 	dcterms:modified "2017-06-19T20:14:07+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-606f16ac0000bca801373587fda932b3-MEl-45450be80000c3a801414f280f146c71
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-606f16ac0000bca801373587fda932b3 ;
-	SpecIF:contains-hasTarget d:MEl-45450be80000c3a801414f280f146c71 ;
+	SpecIF:contains-toSource d:MEl-606f16ac0000bca801373587fda932b3 ;
+	SpecIF:contains-toTarget d:MEl-45450be80000c3a801414f280f146c71 ;
 	dcterms:modified "2017-06-19T20:14:07+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-606f16ac0000bca801373587fda932b3-MEl-4536b0350000c3a801415986f8ea806a
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-606f16ac0000bca801373587fda932b3 ;
-	SpecIF:contains-hasTarget d:MEl-4536b0350000c3a801415986f8ea806a ;
+	SpecIF:contains-toSource d:MEl-606f16ac0000bca801373587fda932b3 ;
+	SpecIF:contains-toTarget d:MEl-4536b0350000c3a801415986f8ea806a ;
 	dcterms:modified "2017-06-19T20:14:07+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-606f16ac0000bca801373587fda932b3-MEl-453facbb0000c3a80141c43d2fb4f5e2
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-606f16ac0000bca801373587fda932b3 ;
-	SpecIF:contains-hasTarget d:MEl-453facbb0000c3a80141c43d2fb4f5e2 ;
+	SpecIF:contains-toSource d:MEl-606f16ac0000bca801373587fda932b3 ;
+	SpecIF:contains-toTarget d:MEl-453facbb0000c3a80141c43d2fb4f5e2 ;
 	dcterms:modified "2017-06-19T20:14:07+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-606f16ac0000bca801373587fda932b3-MEl-4543fe900000c3a80141f5253ff13c35
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-606f16ac0000bca801373587fda932b3 ;
-	SpecIF:contains-hasTarget d:MEl-4543fe900000c3a80141f5253ff13c35 ;
+	SpecIF:contains-toSource d:MEl-606f16ac0000bca801373587fda932b3 ;
+	SpecIF:contains-toTarget d:MEl-4543fe900000c3a80141f5253ff13c35 ;
 	dcterms:modified "2017-06-19T20:14:08+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-606f16ac0000bca801373587fda932b3-MEl-453d34af0000c3a80141918f84641161
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-606f16ac0000bca801373587fda932b3 ;
-	SpecIF:contains-hasTarget d:MEl-453d34af0000c3a80141918f84641161 ;
+	SpecIF:contains-toSource d:MEl-606f16ac0000bca801373587fda932b3 ;
+	SpecIF:contains-toTarget d:MEl-453d34af0000c3a80141918f84641161 ;
 	dcterms:modified "2017-06-19T20:14:08+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-606f16ac0000bca801373587fda932b3-MEl-45a236e00000c3a801410f6503287e16
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-606f16ac0000bca801373587fda932b3 ;
-	SpecIF:contains-hasTarget d:MEl-45a236e00000c3a801410f6503287e16 ;
+	SpecIF:contains-toSource d:MEl-606f16ac0000bca801373587fda932b3 ;
+	SpecIF:contains-toTarget d:MEl-45a236e00000c3a801410f6503287e16 ;
 	dcterms:modified "2017-06-19T20:14:08+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-606f16ac0000bca801373587fda932b3-MEl-45a3b13c0000c3a801415e97f5bc29d1
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-606f16ac0000bca801373587fda932b3 ;
-	SpecIF:contains-hasTarget d:MEl-45a3b13c0000c3a801415e97f5bc29d1 ;
+	SpecIF:contains-toSource d:MEl-606f16ac0000bca801373587fda932b3 ;
+	SpecIF:contains-toTarget d:MEl-45a3b13c0000c3a801415e97f5bc29d1 ;
 	dcterms:modified "2017-06-19T20:14:08+02:00" ;
 	dcterms:creator "od" .
 
 d:RCnc-Iss-ee2abb630000c3a8013987a750219659-MEl-5a8009a00000bca80137ef95bc3f643f
 	rdf:type SpecIF:refersTo ;
-	SpecIF:refersTo-hasSource d:Iss-ee2abb630000c3a8013987a750219659 ;
-	SpecIF:refersTo-hasTarget d:MEl-5a8009a00000bca80137ef95bc3f643f ;
+	SpecIF:refersTo-toSource d:Iss-ee2abb630000c3a8013987a750219659 ;
+	SpecIF:refersTo-toTarget d:MEl-5a8009a00000bca80137ef95bc3f643f ;
 	dcterms:modified "2017-06-19T20:13:56+02:00" ;
 	dcterms:creator "od" .
 
 d:RWri-MEl-5a8009a00000bca80137ef95bc3f643f-MEl-5a77385f0000bca80137e1c7dc0b1721
 	rdf:type SpecIF:writes ;
-	SpecIF:writes-hasSource d:MEl-5a8009a00000bca80137ef95bc3f643f ;
-	SpecIF:writes-hasTarget d:MEl-5a77385f0000bca80137e1c7dc0b1721 ;
+	SpecIF:writes-toSource d:MEl-5a8009a00000bca80137ef95bc3f643f ;
+	SpecIF:writes-toTarget d:MEl-5a77385f0000bca80137e1c7dc0b1721 ;
 	dcterms:modified "2017-06-19T20:14:08+02:00" ;
 	dcterms:creator "od" .
 
 d:RRea-MEl-5a8009a00000bca80137ef95bc3f643f-MEl-5a77385f0000bca80137e1c7dc0b1721
 	rdf:type SpecIF:reads ;
-	SpecIF:reads-hasSource d:MEl-5a8009a00000bca80137ef95bc3f643f ;
-	SpecIF:reads-hasTarget d:MEl-5a77385f0000bca80137e1c7dc0b1721 ;
+	SpecIF:reads-toSource d:MEl-5a8009a00000bca80137ef95bc3f643f ;
+	SpecIF:reads-toTarget d:MEl-5a77385f0000bca80137e1c7dc0b1721 ;
 	dcterms:modified "2017-06-19T20:14:08+02:00" ;
 	dcterms:creator "od" .
 
 d:RWri-MEl-5a8009a00000bca80137ef95bc3f643f-MEl-5a844d820000bca8013750b9a0410b6b
 	rdf:type SpecIF:writes ;
-	SpecIF:writes-hasSource d:MEl-5a8009a00000bca80137ef95bc3f643f ;
-	SpecIF:writes-hasTarget d:MEl-5a844d820000bca8013750b9a0410b6b ;
+	SpecIF:writes-toSource d:MEl-5a8009a00000bca80137ef95bc3f643f ;
+	SpecIF:writes-toTarget d:MEl-5a844d820000bca8013750b9a0410b6b ;
 	dcterms:modified "2017-06-19T20:14:09+02:00" ;
 	dcterms:creator "od" .
 
 d:RWri-MEl-5a8009a00000bca80137ef95bc3f643f-MEl-5a82ec6f0000bca801372ef053a71bdf
 	rdf:type SpecIF:writes ;
-	SpecIF:writes-hasSource d:MEl-5a8009a00000bca80137ef95bc3f643f ;
-	SpecIF:writes-hasTarget d:MEl-5a82ec6f0000bca801372ef053a71bdf ;
+	SpecIF:writes-toSource d:MEl-5a8009a00000bca80137ef95bc3f643f ;
+	SpecIF:writes-toTarget d:MEl-5a82ec6f0000bca801372ef053a71bdf ;
 	dcterms:modified "2017-06-19T20:14:09+02:00" ;
 	dcterms:creator "od" .
 
 d:RWri-MEl-5a8009a00000bca80137ef95bc3f643f-MEl-5a820a3c0000bca801378c9093fb7d80
 	rdf:type SpecIF:writes ;
-	SpecIF:writes-hasSource d:MEl-5a8009a00000bca80137ef95bc3f643f ;
-	SpecIF:writes-hasTarget d:MEl-5a820a3c0000bca801378c9093fb7d80 ;
+	SpecIF:writes-toSource d:MEl-5a8009a00000bca80137ef95bc3f643f ;
+	SpecIF:writes-toTarget d:MEl-5a820a3c0000bca801378c9093fb7d80 ;
 	dcterms:modified "2017-06-19T20:14:09+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a47935a0000bca801377c17f8cb25b0-MEl-608239830000bca801373690c7d2af0f
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
-	SpecIF:contains-hasTarget d:MEl-608239830000bca801373690c7d2af0f ;
+	SpecIF:contains-toSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
+	SpecIF:contains-toTarget d:MEl-608239830000bca801373690c7d2af0f ;
 	dcterms:modified "2017-06-19T20:14:10+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a47935a0000bca801377c17f8cb25b0-MEl-610b07100000bca80137c10f96c46247
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
-	SpecIF:contains-hasTarget d:MEl-610b07100000bca80137c10f96c46247 ;
+	SpecIF:contains-toSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
+	SpecIF:contains-toTarget d:MEl-610b07100000bca80137c10f96c46247 ;
 	dcterms:modified "2017-06-19T20:14:10+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a47935a0000bca801377c17f8cb25b0-MEl-610e0b010000bca80137ac40800bb1b8
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
-	SpecIF:contains-hasTarget d:MEl-610e0b010000bca80137ac40800bb1b8 ;
+	SpecIF:contains-toSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
+	SpecIF:contains-toTarget d:MEl-610e0b010000bca80137ac40800bb1b8 ;
 	dcterms:modified "2017-06-19T20:14:10+02:00" ;
 	dcterms:creator "od" .
 
 d:RRea-MEl-5bcfb01d0000bca80137f303272a5557-MEl-5a52b50c0000bca801377e3d15255f98
 	rdf:type SpecIF:reads ;
-	SpecIF:reads-hasSource d:MEl-5bcfb01d0000bca80137f303272a5557 ;
-	SpecIF:reads-hasTarget d:MEl-5a52b50c0000bca801377e3d15255f98 ;
+	SpecIF:reads-toSource d:MEl-5bcfb01d0000bca80137f303272a5557 ;
+	SpecIF:reads-toTarget d:MEl-5a52b50c0000bca801377e3d15255f98 ;
 	dcterms:modified "2017-06-19T20:14:10+02:00" ;
 	dcterms:creator "od" .
 
 d:RWri-MEl-5a50d5b60000bca8013781532547ce93-MEl-5a489c300000bca80137ee1373c16844
 	rdf:type SpecIF:writes ;
-	SpecIF:writes-hasSource d:MEl-5a50d5b60000bca8013781532547ce93 ;
-	SpecIF:writes-hasTarget d:MEl-5a489c300000bca80137ee1373c16844 ;
+	SpecIF:writes-toSource d:MEl-5a50d5b60000bca8013781532547ce93 ;
+	SpecIF:writes-toTarget d:MEl-5a489c300000bca80137ee1373c16844 ;
 	dcterms:modified "2017-06-19T20:14:10+02:00" ;
 	dcterms:creator "od" .
 
 d:RRea-MEl-5a50d5b60000bca8013781532547ce93-MEl-5a489c300000bca80137ee1373c16844
 	rdf:type SpecIF:reads ;
-	SpecIF:reads-hasSource d:MEl-5a50d5b60000bca8013781532547ce93 ;
-	SpecIF:reads-hasTarget d:MEl-5a489c300000bca80137ee1373c16844 ;
+	SpecIF:reads-toSource d:MEl-5a50d5b60000bca8013781532547ce93 ;
+	SpecIF:reads-toTarget d:MEl-5a489c300000bca80137ee1373c16844 ;
 	dcterms:modified "2017-06-19T20:14:11+02:00" ;
 	dcterms:creator "od" .
 
 d:RWri-MEl-5a50d5b60000bca8013781532547ce93-MEl-5a52b50c0000bca801377e3d15255f98
 	rdf:type SpecIF:writes ;
-	SpecIF:writes-hasSource d:MEl-5a50d5b60000bca8013781532547ce93 ;
-	SpecIF:writes-hasTarget d:MEl-5a52b50c0000bca801377e3d15255f98 ;
+	SpecIF:writes-toSource d:MEl-5a50d5b60000bca8013781532547ce93 ;
+	SpecIF:writes-toTarget d:MEl-5a52b50c0000bca801377e3d15255f98 ;
 	dcterms:modified "2017-06-19T20:14:11+02:00" ;
 	dcterms:creator "od" .
 
 d:RRea-MEl-5a50d5b60000bca8013781532547ce93-MEl-5a4c80c20000bca8013753b6999a4da8
 	rdf:type SpecIF:reads ;
-	SpecIF:reads-hasSource d:MEl-5a50d5b60000bca8013781532547ce93 ;
-	SpecIF:reads-hasTarget d:MEl-5a4c80c20000bca8013753b6999a4da8 ;
+	SpecIF:reads-toSource d:MEl-5a50d5b60000bca8013781532547ce93 ;
+	SpecIF:reads-toTarget d:MEl-5a4c80c20000bca8013753b6999a4da8 ;
 	dcterms:modified "2017-06-19T20:14:11+02:00" ;
 	dcterms:creator "od" .
 
 d:RRea-MEl-5a50d5b60000bca8013781532547ce93-MEl-5a51dd920000bca8013770a4395c83fc
 	rdf:type SpecIF:reads ;
-	SpecIF:reads-hasSource d:MEl-5a50d5b60000bca8013781532547ce93 ;
-	SpecIF:reads-hasTarget d:MEl-5a51dd920000bca8013770a4395c83fc ;
+	SpecIF:reads-toSource d:MEl-5a50d5b60000bca8013781532547ce93 ;
+	SpecIF:reads-toTarget d:MEl-5a51dd920000bca8013770a4395c83fc ;
 	dcterms:modified "2017-06-19T20:14:11+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-803fd3750000c3a8013cf1fdb3b26d33-MEl-5a50d5b60000bca8013781532547ce93
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-803fd3750000c3a8013cf1fdb3b26d33 ;
-	SpecIF:contains-hasTarget d:MEl-5a50d5b60000bca8013781532547ce93 ;
+	SpecIF:contains-toSource d:MEl-803fd3750000c3a8013cf1fdb3b26d33 ;
+	SpecIF:contains-toTarget d:MEl-5a50d5b60000bca8013781532547ce93 ;
 	dcterms:modified "2017-06-19T20:14:11+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a47935a0000bca801377c17f8cb25b0-MEl-453862540000c3a801419d91bef48cfd
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
-	SpecIF:contains-hasTarget d:MEl-453862540000c3a801419d91bef48cfd ;
+	SpecIF:contains-toSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
+	SpecIF:contains-toTarget d:MEl-453862540000c3a801419d91bef48cfd ;
 	dcterms:modified "2017-06-19T20:14:12+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a47935a0000bca801377c17f8cb25b0-MEl-45387c0b0000c3a801410aa03f6b9be4
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
-	SpecIF:contains-hasTarget d:MEl-45387c0b0000c3a801410aa03f6b9be4 ;
+	SpecIF:contains-toSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
+	SpecIF:contains-toTarget d:MEl-45387c0b0000c3a801410aa03f6b9be4 ;
 	dcterms:modified "2017-06-19T20:14:12+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a47935a0000bca801377c17f8cb25b0-MEl-4538920b0000c3a801415c67e334b8a1
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
-	SpecIF:contains-hasTarget d:MEl-4538920b0000c3a801415c67e334b8a1 ;
+	SpecIF:contains-toSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
+	SpecIF:contains-toTarget d:MEl-4538920b0000c3a801415c67e334b8a1 ;
 	dcterms:modified "2017-06-19T20:14:12+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a47935a0000bca801377c17f8cb25b0-MEl-459b92580000c3a80141cb4acb521ab1
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
-	SpecIF:contains-hasTarget d:MEl-459b92580000c3a80141cb4acb521ab1 ;
+	SpecIF:contains-toSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
+	SpecIF:contains-toTarget d:MEl-459b92580000c3a80141cb4acb521ab1 ;
 	dcterms:modified "2017-06-19T20:14:13+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a47935a0000bca801377c17f8cb25b0-MEl-607f13b50000bca80137ba95f11856ab
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
-	SpecIF:contains-hasTarget d:MEl-607f13b50000bca80137ba95f11856ab ;
+	SpecIF:contains-toSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
+	SpecIF:contains-toTarget d:MEl-607f13b50000bca80137ba95f11856ab ;
 	dcterms:modified "2017-06-19T20:14:13+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a47935a0000bca801377c17f8cb25b0-MEl-45384cd10000c3a80141c1f85d7c26e6
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
-	SpecIF:contains-hasTarget d:MEl-45384cd10000c3a80141c1f85d7c26e6 ;
+	SpecIF:contains-toSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
+	SpecIF:contains-toTarget d:MEl-45384cd10000c3a80141c1f85d7c26e6 ;
 	dcterms:modified "2017-06-19T20:14:13+02:00" ;
 	dcterms:creator "od" .
 
 d:RWri-MEl-5a47935a0000bca801377c17f8cb25b0-MEl-5a51dd920000bca8013770a4395c83fc
 	rdf:type SpecIF:writes ;
-	SpecIF:writes-hasSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
-	SpecIF:writes-hasTarget d:MEl-5a51dd920000bca8013770a4395c83fc ;
+	SpecIF:writes-toSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
+	SpecIF:writes-toTarget d:MEl-5a51dd920000bca8013770a4395c83fc ;
 	dcterms:modified "2017-06-19T20:14:14+02:00" ;
 	dcterms:creator "od" .
 
 d:RWri-MEl-5a47935a0000bca801377c17f8cb25b0-MEl-5a4c80c20000bca8013753b6999a4da8
 	rdf:type SpecIF:writes ;
-	SpecIF:writes-hasSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
-	SpecIF:writes-hasTarget d:MEl-5a4c80c20000bca8013753b6999a4da8 ;
+	SpecIF:writes-toSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
+	SpecIF:writes-toTarget d:MEl-5a4c80c20000bca8013753b6999a4da8 ;
 	dcterms:modified "2017-06-19T20:14:14+02:00" ;
 	dcterms:creator "od" .
 
 d:RWri-MEl-5a47935a0000bca801377c17f8cb25b0-MEl-5a489c300000bca80137ee1373c16844
 	rdf:type SpecIF:writes ;
-	SpecIF:writes-hasSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
-	SpecIF:writes-hasTarget d:MEl-5a489c300000bca80137ee1373c16844 ;
+	SpecIF:writes-toSource d:MEl-5a47935a0000bca801377c17f8cb25b0 ;
+	SpecIF:writes-toTarget d:MEl-5a489c300000bca80137ee1373c16844 ;
 	dcterms:modified "2017-06-19T20:14:14+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a489c300000bca80137ee1373c16844-MEl-5a9b7a9b0000bca80137d768644696b7
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a489c300000bca80137ee1373c16844 ;
-	SpecIF:contains-hasTarget d:MEl-5a9b7a9b0000bca80137d768644696b7 ;
+	SpecIF:contains-toSource d:MEl-5a489c300000bca80137ee1373c16844 ;
+	SpecIF:contains-toTarget d:MEl-5a9b7a9b0000bca80137d768644696b7 ;
 	dcterms:modified "2017-06-19T20:14:14+02:00" ;
 	dcterms:creator "od" .
 
 d:RWri-MEl-5a9b7a9b0000bca80137d768644696b7-MEl-5a77385f0000bca80137e1c7dc0b1721
 	rdf:type SpecIF:writes ;
-	SpecIF:writes-hasSource d:MEl-5a9b7a9b0000bca80137d768644696b7 ;
-	SpecIF:writes-hasTarget d:MEl-5a77385f0000bca80137e1c7dc0b1721 ;
+	SpecIF:writes-toSource d:MEl-5a9b7a9b0000bca80137d768644696b7 ;
+	SpecIF:writes-toTarget d:MEl-5a77385f0000bca80137e1c7dc0b1721 ;
 	dcterms:modified "2017-06-19T20:14:14+02:00" ;
 	dcterms:creator "od" .
 
 d:RRea-MEl-5a9b7a9b0000bca80137d768644696b7-MEl-5a77385f0000bca80137e1c7dc0b1721
 	rdf:type SpecIF:reads ;
-	SpecIF:reads-hasSource d:MEl-5a9b7a9b0000bca80137d768644696b7 ;
-	SpecIF:reads-hasTarget d:MEl-5a77385f0000bca80137e1c7dc0b1721 ;
+	SpecIF:reads-toSource d:MEl-5a9b7a9b0000bca80137d768644696b7 ;
+	SpecIF:reads-toTarget d:MEl-5a77385f0000bca80137e1c7dc0b1721 ;
 	dcterms:modified "2017-06-19T20:14:15+02:00" ;
 	dcterms:creator "od" .
 
 d:RWri-MEl-5a9b7a9b0000bca80137d768644696b7-MEl-463289cd0000c3a80141be3fc417034a
 	rdf:type SpecIF:writes ;
-	SpecIF:writes-hasSource d:MEl-5a9b7a9b0000bca80137d768644696b7 ;
-	SpecIF:writes-hasTarget d:MEl-463289cd0000c3a80141be3fc417034a ;
+	SpecIF:writes-toSource d:MEl-5a9b7a9b0000bca80137d768644696b7 ;
+	SpecIF:writes-toTarget d:MEl-463289cd0000c3a80141be3fc417034a ;
 	dcterms:modified "2017-06-19T20:14:15+02:00" ;
 	dcterms:creator "od" .
 
 d:RRea-MEl-5a9b7a9b0000bca80137d768644696b7-MEl-463289cd0000c3a80141be3fc417034a
 	rdf:type SpecIF:reads ;
-	SpecIF:reads-hasSource d:MEl-5a9b7a9b0000bca80137d768644696b7 ;
-	SpecIF:reads-hasTarget d:MEl-463289cd0000c3a80141be3fc417034a ;
+	SpecIF:reads-toSource d:MEl-5a9b7a9b0000bca80137d768644696b7 ;
+	SpecIF:reads-toTarget d:MEl-463289cd0000c3a80141be3fc417034a ;
 	dcterms:modified "2017-06-19T20:14:15+02:00" ;
 	dcterms:creator "od" .
 
 d:RWri-MEl-5a9b7a9b0000bca80137d768644696b7-MEl-5a9ce0310000bca801378176dc4744e8
 	rdf:type SpecIF:writes ;
-	SpecIF:writes-hasSource d:MEl-5a9b7a9b0000bca80137d768644696b7 ;
-	SpecIF:writes-hasTarget d:MEl-5a9ce0310000bca801378176dc4744e8 ;
+	SpecIF:writes-toSource d:MEl-5a9b7a9b0000bca80137d768644696b7 ;
+	SpecIF:writes-toTarget d:MEl-5a9ce0310000bca801378176dc4744e8 ;
 	dcterms:modified "2017-06-19T20:14:15+02:00" ;
 	dcterms:creator "od" .
 
 d:RRea-MEl-5a9b7a9b0000bca80137d768644696b7-MEl-5a7776c50000bca8013765ae93af9209
 	rdf:type SpecIF:reads ;
-	SpecIF:reads-hasSource d:MEl-5a9b7a9b0000bca80137d768644696b7 ;
-	SpecIF:reads-hasTarget d:MEl-5a7776c50000bca8013765ae93af9209 ;
+	SpecIF:reads-toSource d:MEl-5a9b7a9b0000bca80137d768644696b7 ;
+	SpecIF:reads-toTarget d:MEl-5a7776c50000bca8013765ae93af9209 ;
 	dcterms:modified "2017-06-19T20:14:16+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a489c300000bca80137ee1373c16844-MEl-5a7776c50000bca8013765ae93af9209
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a489c300000bca80137ee1373c16844 ;
-	SpecIF:contains-hasTarget d:MEl-5a7776c50000bca8013765ae93af9209 ;
+	SpecIF:contains-toSource d:MEl-5a489c300000bca80137ee1373c16844 ;
+	SpecIF:contains-toTarget d:MEl-5a7776c50000bca8013765ae93af9209 ;
 	dcterms:modified "2017-06-19T20:14:16+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a489c300000bca80137ee1373c16844-MEl-5a9ce0310000bca801378176dc4744e8
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a489c300000bca80137ee1373c16844 ;
-	SpecIF:contains-hasTarget d:MEl-5a9ce0310000bca801378176dc4744e8 ;
+	SpecIF:contains-toSource d:MEl-5a489c300000bca80137ee1373c16844 ;
+	SpecIF:contains-toTarget d:MEl-5a9ce0310000bca801378176dc4744e8 ;
 	dcterms:modified "2017-06-19T20:14:16+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a489c300000bca80137ee1373c16844-MEl-5a4dd77b0000bca8013736c6912ad291
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a489c300000bca80137ee1373c16844 ;
-	SpecIF:contains-hasTarget d:MEl-5a4dd77b0000bca8013736c6912ad291 ;
+	SpecIF:contains-toSource d:MEl-5a489c300000bca80137ee1373c16844 ;
+	SpecIF:contains-toTarget d:MEl-5a4dd77b0000bca8013736c6912ad291 ;
 	dcterms:modified "2017-06-19T20:14:16+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a4c80c20000bca8013753b6999a4da8-MEl-5a4dd77b0000bca8013736c6912ad291
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a4c80c20000bca8013753b6999a4da8 ;
-	SpecIF:contains-hasTarget d:MEl-5a4dd77b0000bca8013736c6912ad291 ;
+	SpecIF:contains-toSource d:MEl-5a4c80c20000bca8013753b6999a4da8 ;
+	SpecIF:contains-toTarget d:MEl-5a4dd77b0000bca8013736c6912ad291 ;
 	dcterms:modified "2017-06-19T20:14:16+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a51dd920000bca8013770a4395c83fc-MEl-5a4dd77b0000bca8013736c6912ad291
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a51dd920000bca8013770a4395c83fc ;
-	SpecIF:contains-hasTarget d:MEl-5a4dd77b0000bca8013736c6912ad291 ;
+	SpecIF:contains-toSource d:MEl-5a51dd920000bca8013770a4395c83fc ;
+	SpecIF:contains-toTarget d:MEl-5a4dd77b0000bca8013736c6912ad291 ;
 	dcterms:modified "2017-06-19T20:14:16+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a489c300000bca80137ee1373c16844-MEl-5a4d6dee0000bca80137c1caf2f42349
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a489c300000bca80137ee1373c16844 ;
-	SpecIF:contains-hasTarget d:MEl-5a4d6dee0000bca80137c1caf2f42349 ;
+	SpecIF:contains-toSource d:MEl-5a489c300000bca80137ee1373c16844 ;
+	SpecIF:contains-toTarget d:MEl-5a4d6dee0000bca80137c1caf2f42349 ;
 	dcterms:modified "2017-06-19T20:14:17+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a489c300000bca80137ee1373c16844-MEl-5a77385f0000bca80137e1c7dc0b1721
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a489c300000bca80137ee1373c16844 ;
-	SpecIF:contains-hasTarget d:MEl-5a77385f0000bca80137e1c7dc0b1721 ;
+	SpecIF:contains-toSource d:MEl-5a489c300000bca80137ee1373c16844 ;
+	SpecIF:contains-toTarget d:MEl-5a77385f0000bca80137e1c7dc0b1721 ;
 	dcterms:modified "2017-06-19T20:14:17+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-803fd3750000c3a8013cf1fdb3b26d33-MEl-5a489c300000bca80137ee1373c16844
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-803fd3750000c3a8013cf1fdb3b26d33 ;
-	SpecIF:contains-hasTarget d:MEl-5a489c300000bca80137ee1373c16844 ;
+	SpecIF:contains-toSource d:MEl-803fd3750000c3a8013cf1fdb3b26d33 ;
+	SpecIF:contains-toTarget d:MEl-5a489c300000bca80137ee1373c16844 ;
 	dcterms:modified "2017-06-19T20:14:17+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a4c80c20000bca8013753b6999a4da8-MEl-5a4d6dee0000bca80137c1caf2f42349
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a4c80c20000bca8013753b6999a4da8 ;
-	SpecIF:contains-hasTarget d:MEl-5a4d6dee0000bca80137c1caf2f42349 ;
+	SpecIF:contains-toSource d:MEl-5a4c80c20000bca8013753b6999a4da8 ;
+	SpecIF:contains-toTarget d:MEl-5a4d6dee0000bca80137c1caf2f42349 ;
 	dcterms:modified "2017-06-19T20:14:18+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a4c80c20000bca8013753b6999a4da8-MEl-5a4cfa830000bca801370d837f761f3e
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a4c80c20000bca8013753b6999a4da8 ;
-	SpecIF:contains-hasTarget d:MEl-5a4cfa830000bca801370d837f761f3e ;
+	SpecIF:contains-toSource d:MEl-5a4c80c20000bca8013753b6999a4da8 ;
+	SpecIF:contains-toTarget d:MEl-5a4cfa830000bca801370d837f761f3e ;
 	dcterms:modified "2017-06-19T20:14:18+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a4c80c20000bca8013753b6999a4da8-MEl-5a4d2bd00000bca80137a3f233cdffeb
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a4c80c20000bca8013753b6999a4da8 ;
-	SpecIF:contains-hasTarget d:MEl-5a4d2bd00000bca80137a3f233cdffeb ;
+	SpecIF:contains-toSource d:MEl-5a4c80c20000bca8013753b6999a4da8 ;
+	SpecIF:contains-toTarget d:MEl-5a4d2bd00000bca80137a3f233cdffeb ;
 	dcterms:modified "2017-06-19T20:14:18+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-803fd3750000c3a8013cf1fdb3b26d33-MEl-5a4c80c20000bca8013753b6999a4da8
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-803fd3750000c3a8013cf1fdb3b26d33 ;
-	SpecIF:contains-hasTarget d:MEl-5a4c80c20000bca8013753b6999a4da8 ;
+	SpecIF:contains-toSource d:MEl-803fd3750000c3a8013cf1fdb3b26d33 ;
+	SpecIF:contains-toTarget d:MEl-5a4c80c20000bca8013753b6999a4da8 ;
 	dcterms:modified "2017-06-19T20:14:19+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a52b50c0000bca801377e3d15255f98-MEl-5bcf35cf0000bca8013776d68023612a
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a52b50c0000bca801377e3d15255f98 ;
-	SpecIF:contains-hasTarget d:MEl-5bcf35cf0000bca8013776d68023612a ;
+	SpecIF:contains-toSource d:MEl-5a52b50c0000bca801377e3d15255f98 ;
+	SpecIF:contains-toTarget d:MEl-5bcf35cf0000bca8013776d68023612a ;
 	dcterms:modified "2017-06-19T20:14:19+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-803fd3750000c3a8013cf1fdb3b26d33-MEl-5a52b50c0000bca801377e3d15255f98
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-803fd3750000c3a8013cf1fdb3b26d33 ;
-	SpecIF:contains-hasTarget d:MEl-5a52b50c0000bca801377e3d15255f98 ;
+	SpecIF:contains-toSource d:MEl-803fd3750000c3a8013cf1fdb3b26d33 ;
+	SpecIF:contains-toTarget d:MEl-5a52b50c0000bca801377e3d15255f98 ;
 	dcterms:modified "2017-06-19T20:14:19+02:00" ;
 	dcterms:creator "od" .
 
 d:R-vxkoenpgAX6s6PxskSWlYPN8e4y
 	rdf:type SpecIF:refersTo ;
-	SpecIF:refersTo-hasSource d:Iss-eee2d4e00000c3a801394148dcc58a52 ;
-	SpecIF:refersTo-hasTarget d:MEl-5a51dd920000bca8013770a4395c83fc ;
+	SpecIF:refersTo-toSource d:Iss-eee2d4e00000c3a801394148dcc58a52 ;
+	SpecIF:refersTo-toTarget d:MEl-5a51dd920000bca8013770a4395c83fc ;
 	dcterms:modified "2017-06-19T20:13:56+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-5a51dd920000bca8013770a4395c83fc-MEl-5a4d6dee0000bca80137c1caf2f42349
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-5a51dd920000bca8013770a4395c83fc ;
-	SpecIF:contains-hasTarget d:MEl-5a4d6dee0000bca80137c1caf2f42349 ;
+	SpecIF:contains-toSource d:MEl-5a51dd920000bca8013770a4395c83fc ;
+	SpecIF:contains-toTarget d:MEl-5a4d6dee0000bca80137c1caf2f42349 ;
 	dcterms:modified "2017-06-19T20:14:19+02:00" ;
 	dcterms:creator "od" .
 
 d:RCtn-MEl-803fd3750000c3a8013cf1fdb3b26d33-MEl-5a51dd920000bca8013770a4395c83fc
 	rdf:type SpecIF:contains ;
-	SpecIF:contains-hasSource d:MEl-803fd3750000c3a8013cf1fdb3b26d33 ;
-	SpecIF:contains-hasTarget d:MEl-5a51dd920000bca8013770a4395c83fc ;
+	SpecIF:contains-toSource d:MEl-803fd3750000c3a8013cf1fdb3b26d33 ;
+	SpecIF:contains-toTarget d:MEl-5a51dd920000bca8013770a4395c83fc ;
 	dcterms:modified "2017-06-19T20:14:19+02:00" ;
 	dcterms:creator "od" .
 
@@ -3067,28 +3037,29 @@ d:RCtn-MEl-803fd3750000c3a8013cf1fdb3b26d33-MEl-5a51dd920000bca8013770a4395c83fc
 # Hierarchy
 #################################################################
 
-d:HierarchyRoot
+d:HierarchyRoot-ACP-59c8a7730000bca80137509a49b1218b
 	rdf:type pig:HierarchyRoot ;
+	dcterms:modified "2026-01-12T12:40:22.295Z" ;
 	rdfs:label "Hierarchy Root" ;
 	rdfs:comment "... anchoring all hierarchies of this graph (package)" ;
 	pig:lists (
-			d:O-ACP-59c8a7730000bca80137509a49b1218b
+			d:HR-Fld-59c8a7730000bca80137509a49b1218b-info
+			d:HR-Fld-5a5f54090000bca801375b04a668f1a7
+			d:HR-Fld-5af3154d0000bca801379748537d7388
+			d:HR-Fld-5b8e98550000bca801371afb0c7b671b
+			d:HR-Fld-59c8a7730000bca80137509a49b1218b
+			d:HR-k9qMB6fnxPTk942dvPKdyvnwnoQ
+			d:HR-FolderGlossary-8001804519
 		) .
 
-d:O-ACP-59c8a7730000bca80137509a49b1218b
+d:HR-Fld-59c8a7730000bca80137509a49b1218b-info
 	rdf:type pig:Outline ;
 	rdfs:label "Dimmer - Semantically Integrated Specification (2021-01-28)" ;
 	rdfs:comment "This specification method integrates and represents:\n- processes, system composition and requirements (dynamic, static and detail views)\n- mechanic, electric and software components with their interfaces.\n\nIt is important to understand, that all plans (diagrams) are views of a common system engineering model, sometimes called 'system repository'. Thus, consistency is always maintained.\n\nThe model elements are connected with relations, most of which are defined by positioning graph elements. For example, if a system component is drawn within another, a relationship 'contains' is created in the logic representation of the engineering model. Other relations, such as a system component 'satisfies' a requirement are created manually.  \n\nAlso, the documents are generated from the system engineering model. The ordering is in most projects (it can be rearranged, however, if appropriate):\n- All plans\n- A glossary with descriptions of all model elements appearing on one or more plans\n- A hierarchically ordered list of requirements\n- A list of open issues.\nPlease note that plans list related model elements and model elements list related requirements .. and vice versa. Active hyper-links are used, so that it is easy to jump between related model elements.\n\nFurther information is given in Appendix 'Method'." ;
-	pig:category SpecIF:Heading ;
-	dcterms:modified "2024-08-16T16:02:19.998Z" ;
+	pig:category ReqIF:HierarchyRoot ;
+	dcterms:modified "2026-01-12T12:40:21.690Z" ;
 	pig:lists (
 			d:Fld-59c8a7730000bca80137509a49b1218b-info
-			d:Fld-5a5f54090000bca801375b04a668f1a7
-			d:Fld-5af3154d0000bca801379748537d7388
-			d:Fld-5b8e98550000bca801371afb0c7b671b
-			d:Fld-59c8a7730000bca80137509a49b1218b
-			d:Fld-ef47e6970000c3a80139dc747c5df319
-			d:FolderGlossary-8001804519
 		) .
 
 d:Fld-59c8a7730000bca80137509a49b1218b-info
@@ -3098,6 +3069,16 @@ d:Fld-59c8a7730000bca80137509a49b1218b-info
 	pig:revision "254" ;
 	dcterms:modified "2018-05-04T17:18:18+02:00" ;
 	dcterms:creator "od" .
+
+d:HR-Fld-5a5f54090000bca801375b04a668f1a7
+	rdf:type pig:Outline ;
+	rdfs:label "Dimmer - Semantically Integrated Specification (2021-01-28)" ;
+	rdfs:comment "This specification method integrates and represents:\n- processes, system composition and requirements (dynamic, static and detail views)\n- mechanic, electric and software components with their interfaces.\n\nIt is important to understand, that all plans (diagrams) are views of a common system engineering model, sometimes called 'system repository'. Thus, consistency is always maintained.\n\nThe model elements are connected with relations, most of which are defined by positioning graph elements. For example, if a system component is drawn within another, a relationship 'contains' is created in the logic representation of the engineering model. Other relations, such as a system component 'satisfies' a requirement are created manually.  \n\nAlso, the documents are generated from the system engineering model. The ordering is in most projects (it can be rearranged, however, if appropriate):\n- All plans\n- A glossary with descriptions of all model elements appearing on one or more plans\n- A hierarchically ordered list of requirements\n- A list of open issues.\nPlease note that plans list related model elements and model elements list related requirements .. and vice versa. Active hyper-links are used, so that it is easy to jump between related model elements.\n\nFurther information is given in Appendix 'Method'." ;
+	pig:category ReqIF:HierarchyRoot ;
+	dcterms:modified "2026-01-12T12:40:21.690Z" ;
+	pig:lists (
+			d:Fld-5a5f54090000bca801375b04a668f1a7
+		) .
 
 d:Fld-5a5f54090000bca801375b04a668f1a7
 	rdf:type pig:Outline ;
@@ -3111,6 +3092,16 @@ d:Fld-5a5f54090000bca801375b04a668f1a7
 			d:Pln-5a4755dd0000bca801375293a62c90a8
 			d:Pln-5a6cdea50000bca80137d6b2d6e8a3a0
 			d:Pln-5a7f99af0000bca8013754f2ef12d3e5
+		) .
+
+d:HR-Fld-5af3154d0000bca801379748537d7388
+	rdf:type pig:Outline ;
+	rdfs:label "Dimmer - Semantically Integrated Specification (2021-01-28)" ;
+	rdfs:comment "This specification method integrates and represents:\n- processes, system composition and requirements (dynamic, static and detail views)\n- mechanic, electric and software components with their interfaces.\n\nIt is important to understand, that all plans (diagrams) are views of a common system engineering model, sometimes called 'system repository'. Thus, consistency is always maintained.\n\nThe model elements are connected with relations, most of which are defined by positioning graph elements. For example, if a system component is drawn within another, a relationship 'contains' is created in the logic representation of the engineering model. Other relations, such as a system component 'satisfies' a requirement are created manually.  \n\nAlso, the documents are generated from the system engineering model. The ordering is in most projects (it can be rearranged, however, if appropriate):\n- All plans\n- A glossary with descriptions of all model elements appearing on one or more plans\n- A hierarchically ordered list of requirements\n- A list of open issues.\nPlease note that plans list related model elements and model elements list related requirements .. and vice versa. Active hyper-links are used, so that it is easy to jump between related model elements.\n\nFurther information is given in Appendix 'Method'." ;
+	pig:category ReqIF:HierarchyRoot ;
+	dcterms:modified "2026-01-12T12:40:21.690Z" ;
+	pig:lists (
+			d:Fld-5af3154d0000bca801379748537d7388
 		) .
 
 d:Fld-5af3154d0000bca801379748537d7388
@@ -3134,6 +3125,16 @@ d:Fld-5b6a99f10000bca80137b78cda65fc07
 			d:Pln-606e76c70000bca801376ec3133a1181
 			d:Pln-45a1c8930000c3a801414cd1eaa70b5a
 			d:Pln-5af364560000bca80137b84017f4e832
+		) .
+
+d:HR-Fld-5b8e98550000bca801371afb0c7b671b
+	rdf:type pig:Outline ;
+	rdfs:label "Dimmer - Semantically Integrated Specification (2021-01-28)" ;
+	rdfs:comment "This specification method integrates and represents:\n- processes, system composition and requirements (dynamic, static and detail views)\n- mechanic, electric and software components with their interfaces.\n\nIt is important to understand, that all plans (diagrams) are views of a common system engineering model, sometimes called 'system repository'. Thus, consistency is always maintained.\n\nThe model elements are connected with relations, most of which are defined by positioning graph elements. For example, if a system component is drawn within another, a relationship 'contains' is created in the logic representation of the engineering model. Other relations, such as a system component 'satisfies' a requirement are created manually.  \n\nAlso, the documents are generated from the system engineering model. The ordering is in most projects (it can be rearranged, however, if appropriate):\n- All plans\n- A glossary with descriptions of all model elements appearing on one or more plans\n- A hierarchically ordered list of requirements\n- A list of open issues.\nPlease note that plans list related model elements and model elements list related requirements .. and vice versa. Active hyper-links are used, so that it is easy to jump between related model elements.\n\nFurther information is given in Appendix 'Method'." ;
+	pig:category ReqIF:HierarchyRoot ;
+	dcterms:modified "2026-01-12T12:40:21.690Z" ;
+	pig:lists (
+			d:Fld-5b8e98550000bca801371afb0c7b671b
 		) .
 
 d:Fld-5b8e98550000bca801371afb0c7b671b
@@ -3194,6 +3195,16 @@ d:Fld-d1b314890000c3a80150b71a1473d374
 			d:Req-5b9c950e0000bca801374f16615247b9
 		) .
 
+d:HR-Fld-59c8a7730000bca80137509a49b1218b
+	rdf:type pig:Outline ;
+	rdfs:label "Dimmer - Semantically Integrated Specification (2021-01-28)" ;
+	rdfs:comment "This specification method integrates and represents:\n- processes, system composition and requirements (dynamic, static and detail views)\n- mechanic, electric and software components with their interfaces.\n\nIt is important to understand, that all plans (diagrams) are views of a common system engineering model, sometimes called 'system repository'. Thus, consistency is always maintained.\n\nThe model elements are connected with relations, most of which are defined by positioning graph elements. For example, if a system component is drawn within another, a relationship 'contains' is created in the logic representation of the engineering model. Other relations, such as a system component 'satisfies' a requirement are created manually.  \n\nAlso, the documents are generated from the system engineering model. The ordering is in most projects (it can be rearranged, however, if appropriate):\n- All plans\n- A glossary with descriptions of all model elements appearing on one or more plans\n- A hierarchically ordered list of requirements\n- A list of open issues.\nPlease note that plans list related model elements and model elements list related requirements .. and vice versa. Active hyper-links are used, so that it is easy to jump between related model elements.\n\nFurther information is given in Appendix 'Method'." ;
+	pig:category ReqIF:HierarchyRoot ;
+	dcterms:modified "2026-01-12T12:40:21.690Z" ;
+	pig:lists (
+			d:Fld-59c8a7730000bca80137509a49b1218b
+		) .
+
 d:Fld-59c8a7730000bca80137509a49b1218b
 	rdf:type pig:Outline ;
 	rdfs:label "Parts List" ;
@@ -3206,6 +3217,16 @@ d:Fld-59c8a7730000bca80137509a49b1218b
 			d:MEl-5bcfb01d0000bca80137f303272a5557
 			d:MEl-803fd3750000c3a8013cf1fdb3b26d33
 			d:MEl-5a47935a0000bca801377c17f8cb25b0
+		) .
+
+d:HR-k9qMB6fnxPTk942dvPKdyvnwnoQ
+	rdf:type pig:Outline ;
+	rdfs:label "Dimmer - Semantically Integrated Specification (2021-01-28)" ;
+	rdfs:comment "This specification method integrates and represents:\n- processes, system composition and requirements (dynamic, static and detail views)\n- mechanic, electric and software components with their interfaces.\n\nIt is important to understand, that all plans (diagrams) are views of a common system engineering model, sometimes called 'system repository'. Thus, consistency is always maintained.\n\nThe model elements are connected with relations, most of which are defined by positioning graph elements. For example, if a system component is drawn within another, a relationship 'contains' is created in the logic representation of the engineering model. Other relations, such as a system component 'satisfies' a requirement are created manually.  \n\nAlso, the documents are generated from the system engineering model. The ordering is in most projects (it can be rearranged, however, if appropriate):\n- All plans\n- A glossary with descriptions of all model elements appearing on one or more plans\n- A hierarchically ordered list of requirements\n- A list of open issues.\nPlease note that plans list related model elements and model elements list related requirements .. and vice versa. Active hyper-links are used, so that it is easy to jump between related model elements.\n\nFurther information is given in Appendix 'Method'." ;
+	pig:category ReqIF:HierarchyRoot ;
+	dcterms:modified "2026-01-12T12:40:21.690Z" ;
+	pig:lists (
+			d:Fld-ef47e6970000c3a80139dc747c5df319
 		) .
 
 d:Fld-ef47e6970000c3a80139dc747c5df319
@@ -3239,11 +3260,21 @@ d:Fld-ee2a15040000c3a80139d27de6704f15
 			d:Iss-eee2d4e00000c3a801394148dcc58a52
 		) .
 
+d:HR-FolderGlossary-8001804519
+	rdf:type pig:Outline ;
+	rdfs:label "Dimmer - Semantically Integrated Specification (2021-01-28)" ;
+	rdfs:comment "This specification method integrates and represents:\n- processes, system composition and requirements (dynamic, static and detail views)\n- mechanic, electric and software components with their interfaces.\n\nIt is important to understand, that all plans (diagrams) are views of a common system engineering model, sometimes called 'system repository'. Thus, consistency is always maintained.\n\nThe model elements are connected with relations, most of which are defined by positioning graph elements. For example, if a system component is drawn within another, a relationship 'contains' is created in the logic representation of the engineering model. Other relations, such as a system component 'satisfies' a requirement are created manually.  \n\nAlso, the documents are generated from the system engineering model. The ordering is in most projects (it can be rearranged, however, if appropriate):\n- All plans\n- A glossary with descriptions of all model elements appearing on one or more plans\n- A hierarchically ordered list of requirements\n- A list of open issues.\nPlease note that plans list related model elements and model elements list related requirements .. and vice versa. Active hyper-links are used, so that it is easy to jump between related model elements.\n\nFurther information is given in Appendix 'Method'." ;
+	pig:category ReqIF:HierarchyRoot ;
+	dcterms:modified "2026-01-12T12:40:21.690Z" ;
+	pig:lists (
+			d:FolderGlossary-8001804519
+		) .
+
 d:FolderGlossary-8001804519
 	rdf:type pig:Outline ;
 	rdfs:label "Model Elements (Glossary)" ;
 	pig:category SpecIF:Glossary ;
-	dcterms:modified "2025-11-12T14:00:20.816Z" ;
+	dcterms:modified "2026-01-12T12:40:07.655Z" ;
 	pig:lists (
 			d:MEl-5a7776c50000bca8013765ae93af9209
 			d:MEl-5a76365c0000bca8013776e91afd1e8e

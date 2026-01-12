@@ -3,42 +3,18 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix W3C: <https://www.w3.org/standards/semanticweb#> .
 @prefix xs: <http://www.w3.org/2001/XMLSchema#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix dc: <http://purl.org/dc/elements/1.1/> .
-@prefix schema: <https://schema.org#> .
-@prefix iana: <https://www.iana.org/assignments/media-types#> .
-@prefix foaf: <http://xmlns.com/foaf/spec/#> .
 @prefix FMC: <http://fmc-modeling.org#> .
-@prefix RFLP: <https://product-information-graph.org/v0.2/ontology/RFLP#> .
-@prefix IR: <https://www.adesso.de/de/impulse/interaction-room/index.jsp#> .
 @prefix IREB: <https://cpre.ireb.org/en/downloads-and-resources/glossary#> .
 @prefix ReqIF: <https://www.prostep.org/fileadmin/downloads/PSI_ImplementationGuide_ReqIF_V1-7.pdf#> .
-@prefix ReqIF-WF: <https://www.prostep.org/fileadmin/downloads/Recommendation_ReqIF_V2_RZ3.pdf#> .
-@prefix HIS: <https://www.itwissen.info/Herstellerinitiative-Software-Automotive-HIS.html#> .
-@prefix oslc: <http://open-services.net/ns/core#> .
 @prefix oslc_rm: <http://open-services.net/ns/rm#> .
-@prefix oslc_cm: <http://open-services.net/ns/cm#> .
-@prefix ArchiMate: <https://pubs.opengroup.org#> .
-@prefix bpmn: <https://www.bpmn.org#> .
-@prefix uml: <https://www.omg.org/spec/UML#> .
-@prefix sysml: <https://www.omg.org/spec/SysML#> .
-@prefix pig: <https://product-information-graph.org/metamodel#> .
-@prefix DDP: <http://www.prostep.org/dictionary/2.0#> .
+@prefix pig: <https://product-information-graph.org/v0.2/metamodel#> .
 @prefix SpecIF: <https://specif.de/v1.2/schema#> .
-@prefix pigShapes_dcterms: <https://product-information-graph.org/v0.2/ontology/shapes/dcterms:#> .
 @prefix pigShapes_rdfs: <https://product-information-graph.org/v0.2/ontology/shapes/rdfs:#> .
-@prefix pigShapes_uml: <https://product-information-graph.org/v0.2/ontology/shapes/uml:#> .
-@prefix pigShapes_sysml: <https://product-information-graph.org/v0.2/ontology/shapes/sysml:#> .
 @prefix pigShapes_FMC: <https://product-information-graph.org/v0.2/ontology/shapes/FMC:#> .
-@prefix pigShapes_RFLP: <https://product-information-graph.org/v0.2/ontology/shapes/RFLP:#> .
 @prefix pigShapes_IREB: <https://product-information-graph.org/v0.2/ontology/shapes/IREB:#> .
 @prefix pigShapes_oslc_rm: <https://product-information-graph.org/v0.2/ontology/shapes/oslc_rm:#> .
-@prefix pigShapes_oslc_cm: <https://product-information-graph.org/v0.2/ontology/shapes/oslc_cm:#> .
 @prefix pigShapes_ReqIF: <https://product-information-graph.org/v0.2/ontology/shapes/ReqIF:#> .
-@prefix pigShapes_ReqIF-WF: <https://product-information-graph.org/v0.2/ontology/shapes/ReqIF-WF:#> .
 @prefix pigShapes_SpecIF: <https://product-information-graph.org/v0.2/ontology/shapes/SpecIF:#> .
 @prefix pigShapes_pig: <https://product-information-graph.org/v0.2/ontology/shapes/pig:#> .
 
@@ -55,7 +31,7 @@ d:
 	owl:imports <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ,
 		<http://www.w3.org/2000/01/rdf-schema#> ;
 	dcterms:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
-	dcterms:modified "2025-11-12T14:39:33.257Z" .
+	dcterms:modified "2026-01-12T12:38:56.693Z" .
 
 #################################################################
 # PIG Metamodel (pig:)
@@ -68,39 +44,23 @@ pig:Entity
 
 pigShapes_pig:Entity
 	rdf:type sh:NodeShape ;
+	sh:targetClass pig:Entity ;
 	sh:property pigShapes_rdfs:label ,
 		pigShapes_rdfs:comment ,
 		pigShapes_pig:category ,
-		pigShapes_pig:icon ;
-	sh:targetClass pig:Entity .
-
-pig:Relationship
-	rdf:type owl:Class ;
-	rdfs:label "Relationship" ;
-	rdfs:comment "A PIG meta-model element used for reified relationships (aka predicates)." .
-
-pigShapes_pig:Relationship
-	rdf:type sh:NodeShape ;
-	sh:property pigShapes_rdfs:label ,
-		pigShapes_rdfs:comment ,
-		pigShapes_pig:category ,
-		pigShapes_pig:icon ,
-		pigShapes_pig:eligibleSource ,
-		pigShapes_pig:eligibleTarget ;
-	sh:targetClass pig:Relationship .
+		pigShapes_pig:icon .
 
 pig:Organizer
-	rdf:type owl:Class ;
+	rdfs:subClassOf pig:Entity ;
 	rdfs:label "Organizer" ;
-	rdfs:comment "An element organizing model elements. An example is a list of requirements or a diagram using a certain notation which depicts selected model elements." .
+	rdfs:comment "An element organizing model elements. An example is a list of requirements or a diagram using a certain notation." .
 
 pigShapes_pig:Organizer
 	rdf:type sh:NodeShape ;
+	sh:targetClass pig:Organizer ;
 	sh:property pigShapes_rdfs:label ,
 		pigShapes_rdfs:comment ,
-		pigShapes_pig:category ,
-		pigShapes_pig:eligibleElement ;
-	sh:targetClass pig:Organizer .
+		pigShapes_pig:category .
 
 pig:HierarchyRoot
 	rdfs:subClassOf pig:Organizer ;
@@ -109,10 +69,10 @@ pig:HierarchyRoot
 
 pigShapes_pig:HierarchyRoot
 	rdf:type sh:NodeShape ;
+	sh:targetClass pig:HierarchyRoot ;
 	sh:property pigShapes_rdfs:label ,
 		pigShapes_rdfs:comment ,
-		pigShapes_pig:lists ;
-	sh:targetClass pig:HierarchyRoot .
+		pigShapes_pig:lists .
 
 pig:Outline
 	rdfs:subClassOf pig:Organizer ;
@@ -121,74 +81,127 @@ pig:Outline
 
 pigShapes_pig:Outline
 	rdf:type sh:NodeShape ;
+	sh:targetClass pig:Outline ;
 	sh:property pigShapes_rdfs:label ,
 		pigShapes_rdfs:comment ,
 		pigShapes_pig:category ,
-		pigShapes_pig:lists ;
-	sh:targetClass pig:Outline .
+		pigShapes_pig:lists .
 
-pig:eligibleSource
+pig:View
+	rdfs:subClassOf pig:Organizer ;
+	rdfs:label "View" ;
+	rdfs:comment "A subclass of PIG organizer representing a model view (diagram) using a certain notation showing selected model elements." .
+
+pigShapes_pig:View
+	rdf:type sh:NodeShape ;
+	sh:targetClass pig:View ;
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		pigShapes_pig:category ,
+		pigShapes_pig:icon ,
+		pigShapes_pig:shows ,
+		pigShapes_pig:depicts .
+
+pig:Relationship
+	rdf:type owl:Class ;
+	rdfs:label "Relationship" ;
+	rdfs:comment "A PIG meta-model element used for reified relationships (aka predicates)." .
+
+pigShapes_pig:Relationship
+	rdf:type sh:NodeShape ;
+	sh:targetClass pig:Relationship ;
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		pigShapes_pig:category ,
+		pigShapes_pig:icon ,
+		pigShapes_pig:SourceLink ,
+		pigShapes_pig:TargetLink .
+
+pig:icon
+	rdf:type owl:DatatypeProperty ;
+	rdfs:label "has icon" ;
+	rdfs:comment "Specifies an icon for a model element (entity or relationship)." .
+
+pigShapes_pig:icon
+	rdf:type sh:PropertyShape ;
+	sh:path pig:icon ;
+	sh:datatype xs:string ;
+	sh:minCount "0" ;
+	sh:maxCount "1" .
+
+pig:category
+	rdfs:subPropertyOf dcterms:type ;
+	rdfs:label "has category" ;
+	rdfs:comment "Specifies a category for an element (entity, relationship or organizer)." .
+
+pigShapes_pig:category
+	rdf:type sh:PropertyShape ;
+	sh:path pig:category ;
+	sh:datatype xs:string ;
+	sh:maxLength "32" ;
+	sh:minCount "0" ;
+	sh:maxCount "1" .
+
+pig:Link
 	rdf:type owl:ObjectProperty ;
 	rdfs:range [ owl:unionOf(
 			pig:Entity
 			pig:Relationship
 		)] ;
-	rdfs:label "has source" ;
+	rdfs:label "linked with" ;
+	rdfs:comment "Connects a reified relationship with its source or target. Also connects an organizer to a model element" .
+
+pigShapes_pig:Link
+	rdf:type sh:PropertyShape ;
+	sh:path pig:Link ;
+	sh:or (
+			[ sh:class pig:Entity ]
+			[ sh:class pig:Relationship ]
+		) .
+
+pig:SourceLink
+	rdfs:subPropertyOf pig:Link ;
+	rdfs:range [ owl:unionOf(
+			pig:Entity
+			pig:Relationship
+		)] ;
+	rdfs:label "to source" ;
 	rdfs:comment "Connects the source of a reified relationship." .
 
-pigShapes_pig:eligibleSource
+pigShapes_pig:SourceLink
 	rdf:type sh:PropertyShape ;
-	sh:path pig:eligibleSource ;
+	sh:path pig:SourceLink ;
 	sh:or (
 			[ sh:class pig:Entity ]
 			[ sh:class pig:Relationship ]
 		) .
 
-pig:eligibleTarget
-	rdf:type owl:ObjectProperty ;
+pig:TargetLink
+	rdfs:subPropertyOf pig:Link ;
 	rdfs:range [ owl:unionOf(
 			pig:Entity
 			pig:Relationship
 		)] ;
-	rdfs:label "has target" ;
-	rdfs:comment "Connects the target of a reified relationship." .
+	rdfs:label "to target" ;
+	rdfs:comment "Connects the target of a reified relationship or an organizer." .
 
-pigShapes_pig:eligibleTarget
+pigShapes_pig:TargetLink
 	rdf:type sh:PropertyShape ;
-	sh:path pig:eligibleTarget ;
+	sh:path pig:TargetLink ;
 	sh:or (
 			[ sh:class pig:Entity ]
 			[ sh:class pig:Relationship ]
-		) .
-
-pig:eligibleElement
-	rdf:type owl:ObjectProperty ;
-	rdfs:range [ owl:unionOf(
-			pig:Entity
-			pig:Relationship
-			pig:Organizer
-		)] ;
-	rdfs:label "has element" ;
-	rdfs:comment "References an entity, a relationship or a subordinated organizer." .
-
-pigShapes_pig:eligibleElement
-	rdf:type sh:PropertyShape ;
-	sh:path pig:eligibleElement ;
-	sh:or (
-			[ sh:class pig:Entity ]
-			[ sh:class pig:Relationship ]
-			[ sh:class pig:Organizer ]
 		) .
 
 pig:lists
-	rdfs:subPropertyOf pig:eligibleElement ;
+	rdfs:subPropertyOf pig:TargetLink ;
 	rdfs:range [ owl:unionOf(
 			pig:Entity
 			pig:Relationship
 			pig:Organizer
 		)] ;
 	rdfs:label "lists" ;
-	rdfs:comment "Lists (references) an entity, a relationship or a subordinated organizer." .
+	rdfs:comment "Lists an entity, a relationship or a subordinated organizer." .
 
 pigShapes_pig:lists
 	rdf:type sh:PropertyShape ;
@@ -200,13 +213,13 @@ pigShapes_pig:lists
 		) .
 
 pig:shows
-	rdfs:subPropertyOf pig:eligibleElement ;
+	rdfs:subPropertyOf pig:TargetLink ;
 	rdfs:range [ owl:unionOf(
 			pig:Entity
 			pig:Relationship
 		)] ;
 	rdfs:label "shows" ;
-	rdfs:comment "Shows (references) an entity or a relationship." .
+	rdfs:comment "Shows an entity or a relationship." .
 
 pigShapes_pig:shows
 	rdf:type sh:PropertyShape ;
@@ -217,7 +230,7 @@ pigShapes_pig:shows
 		) .
 
 pig:depicts
-	rdfs:subPropertyOf pig:eligibleElement ;
+	rdfs:subPropertyOf pig:TargetLink ;
 	rdfs:range pig:Entity ;
 	rdfs:label "depicts" ;
 	rdfs:comment "Depicts an entity; inverse of uml:ownedDiagram." .
@@ -229,37 +242,15 @@ pigShapes_pig:depicts
 			[ sh:class pig:Entity ]
 		) .
 
-pig:icon
-	rdf:type owl:DatatypeProperty ;
-	rdfs:range xsd:string ;
-	rdfs:label "has icon" ;
-	rdfs:comment "Specifies an icon for a model element (entity or relationship)." .
-
-pigShapes_pig:icon
-	rdf:type sh:PropertyShape ;
-	sh:path pig:icon ;
-	sh:datatype xsd:string .
-
-pig:category
-	rdfs:subPropertyOf dcterms:type ;
-	rdfs:range xsd:string ;
-	rdfs:label "has category" ;
-	rdfs:comment "Specifies a category for an element (entity, relationship or organizer)." .
-
-pigShapes_pig:category
-	rdf:type sh:PropertyShape ;
-	sh:path pig:category ;
-	sh:datatype xsd:string .
-
 #################################################################
 # Data Types with Enumerated Values
 #################################################################
 
 SpecIF:Priority-Value
 	rdf:type owl:Class ;
-	rdfs:label "Priority"@en ;
-	rdfs:label "Priorität"@de ;
-	rdfs:label "Priorité"@fr ;
+	rdfs:label "Priority"@en ,
+		"Priorität"@de ,
+		"Priorité"@fr ;
 	rdfs:comment "Enumerated values for the 'Priority' of the resource."@en ;
 	owl:oneOf (
 			SpecIF:priorityHigh
@@ -268,19 +259,19 @@ SpecIF:Priority-Value
 		) .
 SpecIF:priorityHigh
 	rdf:type SpecIF:Priority-Value ;
-	rdfs:label "high"@en ;
-	rdfs:label "hoch"@de ;
-	rdfs:label "haut"@fr .
+	rdfs:label "high"@en ,
+		"hoch"@de ,
+		"haut"@fr .
 SpecIF:priorityMedium
 	rdf:type SpecIF:Priority-Value ;
-	rdfs:label "medium"@en ;
-	rdfs:label "mittel"@de ;
-	rdfs:label "moyen"@fr .
+	rdfs:label "medium"@en ,
+		"mittel"@de ,
+		"moyen"@fr .
 SpecIF:priorityLow
 	rdf:type SpecIF:Priority-Value ;
-	rdfs:label "low"@en ;
-	rdfs:label "niedrig"@de ;
-	rdfs:label "bas"@fr .
+	rdfs:label "low"@en ,
+		"niedrig"@de ,
+		"bas"@fr .
 
 #################################################################
 # Ontology - Property Classes
@@ -288,47 +279,27 @@ SpecIF:priorityLow
 
 # Skipping implicit property: rdfs:label
 
-pigShapes_rdfs:label
-	rdf:type sh:PropertyShape ;
-	sh:path rdfs:label ;
-	sh:maxCount "1" ;
-	sh:datatype xsd:string ;
-	sh:maxLength "256" .
-
 # Skipping implicit property: rdfs:comment
-
-pigShapes_rdfs:comment
-	rdf:type sh:PropertyShape ;
-	sh:path rdfs:comment ;
-	sh:maxCount "1" ;
-	sh:datatype xsd:string .
 
 SpecIF:Diagram
 	rdf:type owl:DatatypeProperty ;
-	rdfs:label "Diagram"@en ;
-	rdfs:label "Diagramm"@de ;
-	rdfs:label "Diagramme"@fr ;
+	rdfs:label "Diagram"@en ,
+		"Diagramm"@de ,
+		"Diagramme"@fr ;
 	rdfs:comment "A diagram illustrating the resource or a link to a diagram."@en .
 
 pigShapes_SpecIF:Diagram
 	rdf:type sh:PropertyShape ;
 	sh:path SpecIF:Diagram ;
-	sh:datatype xsd:string .
+	sh:datatype xs:string .
 
 # Skipping implicit property: pig:category
 
-pigShapes_pig:category
-	rdf:type sh:PropertyShape ;
-	sh:path pig:category ;
-	sh:maxCount "1" ;
-	sh:datatype xsd:string ;
-	sh:maxLength "32" .
-
 SpecIF:Priority
 	rdf:type owl:ObjectProperty ;
-	rdfs:label "Priority"@en ;
-	rdfs:label "Priorität"@de ;
-	rdfs:label "Priorité"@fr ;
+	rdfs:label "Priority"@en ,
+		"Priorität"@de ,
+		"Priorité"@fr ;
 	rdfs:comment "Enumerated values for the 'Priority' of the resource."@en ;
 	rdfs:range SpecIF:Priority-Value .
 
@@ -344,11 +315,11 @@ pigShapes_SpecIF:Priority
 
 SpecIF:Paragraph
 	rdfs:subClassOf pig:Entity ;
-	rdfs:label "Paragraph"@en ;
-	rdfs:label "Textabsatz"@de ;
-	rdfs:label "Paragraphe"@fr ;
-	rdfs:comment "<p>A 'Paragraph' is an unspecified information in a document at any level.</p>"@en ;
-	rdfs:comment "<p>Ein 'Textabschnitt' in einem Dokument auf beliebiger Ebene.</p>"@de .
+	rdfs:label "Paragraph"@en ,
+		"Textabsatz"@de ,
+		"Paragraphe"@fr ;
+	rdfs:comment "<p>A 'Paragraph' is an unspecified information in a document at any level.</p>"@en ,
+		"<p>Ein 'Textabschnitt' in einem Dokument auf beliebiger Ebene.</p>"@de .
 
 pigShapes_SpecIF:Paragraph
 	rdf:type sh:NodeShape ;
@@ -358,28 +329,14 @@ pigShapes_SpecIF:Paragraph
 		pigShapes_SpecIF:Diagram ,
 		pigShapes_pig:category .
 
-pig:View
-	rdfs:subClassOf pig:Organizer ;
-	rdfs:label "View" ;
-	rdfs:comment "A PIG organizer class representing a diagram with certain model-elements for a given communication purpose." ;
-	pig:icon "▣" .
-
-pigShapes_pig:View
-	rdf:type sh:NodeShape ;
-	sh:targetClass pig:View ;
-	sh:property pigShapes_rdfs:label ,
-		pigShapes_rdfs:comment ,
-		pigShapes_SpecIF:Diagram ,
-		pigShapes_pig:category .
-
 FMC:Actor
 	rdfs:subClassOf pig:Entity ;
-	rdfs:label "Actor"@en ;
-	rdfs:label "Akteur"@de ;
-	rdfs:label "Acteur"@fr ;
-	rdfs:comment "<p>An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role.</p><p>The  particular use or original type is specified with a [[dcterms:type]] property of the 'FMC:Actor'. A value of that property should be an ontology-term, such as [[bpmn:processStep]].</p>"@en ;
-	rdfs:comment "<p>Ein 'Akteur' ist ein fundamentaler Modellelementtyp, der eine aktive Entität darstellt, sei es eine Aktivität, ein Prozessschritt, eine Funktion, eine Systemkomponente oder eine Rolle.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Actor' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[bpmn:timer]].</p>"@de ;
-	rdfs:comment "<p>Un 'Acteur' est un type d'élément de modèle fondamental représentant une entité active, qu'il s'agisse d'une activité, d'une étape de processus, d'une fonction, d'un composant de système ou d'un rôle.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:Actor'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[bpmn:timer]].</p>"@fr ;
+	rdfs:label "Actor"@en ,
+		"Akteur"@de ,
+		"Acteur"@fr ;
+	rdfs:comment "<p>An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role.</p><p>The  particular use or original type is specified with a [[dcterms:type]] property of the 'FMC:Actor'. A value of that property should be an ontology-term, such as [[bpmn:processStep]].</p>"@en ,
+		"<p>Ein 'Akteur' ist ein fundamentaler Modellelementtyp, der eine aktive Entität darstellt, sei es eine Aktivität, ein Prozessschritt, eine Funktion, eine Systemkomponente oder eine Rolle.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Actor' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[bpmn:timer]].</p>"@de ,
+		"<p>Un 'Acteur' est un type d'élément de modèle fondamental représentant une entité active, qu'il s'agisse d'une activité, d'une étape de processus, d'une fonction, d'un composant de système ou d'un rôle.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:Actor'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[bpmn:timer]].</p>"@fr ;
 	pig:icon "&#x25A1;" .
 
 pigShapes_FMC:Actor
@@ -391,12 +348,12 @@ pigShapes_FMC:Actor
 
 FMC:State
 	rdfs:subClassOf pig:Entity ;
-	rdfs:label "State"@en ;
-	rdfs:label "Zustand"@de ;
-	rdfs:label "État"@fr ;
-	rdfs:comment "<p>A 'State' is a fundamental model element type representing a passive entity, be it a value, a condition, an information storage or even a physical shape.</p><p>The particular use or the original type is specified with a [[dcterms:type]] property of the 'FMC:State'. A value of that property should bean  ontology-term, such as [[bpmn:dataObject]].</p>"@en ;
-	rdfs:comment "<p>Ein 'Zustand' ist ein fundamentaler Modellelementtyp, der eine passive Entität darstellt, sei es ein Wert, ein Dokument, ein Informationsspeicher, eine Bedingung oder eine physische Beschaffenheit.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:State' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[ArchiMate:DataObject]].</p>"@de ;
-	rdfs:comment "<p>Un 'État' est un type d'élément de modèle fondamental représentant une entité passive, qu'il s'agisse d'une valeur, d'une condition, d'un stockage d'informations ou même d'une forme physique.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:State'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[ArchiMate:DataObject]].</p>"@fr ;
+	rdfs:label "State"@en ,
+		"Zustand"@de ,
+		"État"@fr ;
+	rdfs:comment "<p>A 'State' is a fundamental model element type representing a passive entity, be it a value, a condition, an information storage or even a physical shape.</p><p>The particular use or the original type is specified with a [[dcterms:type]] property of the 'FMC:State'. A value of that property should bean  ontology-term, such as [[bpmn:dataObject]].</p>"@en ,
+		"<p>Ein 'Zustand' ist ein fundamentaler Modellelementtyp, der eine passive Entität darstellt, sei es ein Wert, ein Dokument, ein Informationsspeicher, eine Bedingung oder eine physische Beschaffenheit.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:State' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[ArchiMate:DataObject]].</p>"@de ,
+		"<p>Un 'État' est un type d'élément de modèle fondamental représentant une entité passive, qu'il s'agisse d'une valeur, d'une condition, d'un stockage d'informations ou même d'une forme physique.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:State'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[ArchiMate:DataObject]].</p>"@fr ;
 	pig:icon "&#x25CB;" .
 
 pigShapes_FMC:State
@@ -408,12 +365,12 @@ pigShapes_FMC:State
 
 FMC:Event
 	rdfs:subClassOf pig:Entity ;
-	rdfs:label "Event"@en ;
-	rdfs:label "Ereignis"@de ;
-	rdfs:label "Évenement"@fr ;
-	rdfs:comment "<p>An 'Event' is a fundamental model element type representing a time reference, a change in condition/value or more generally a synchronization primitive.</p><p>The particular use or the original type is specified with a [[dcterms:type]] property of the 'FMC:Event'. A value of that property should be an ontology-term, such as [[bpmn:startEvent]].</p>"@en ;
-	rdfs:comment "<p>Ein 'Ereignis' ist ein fundamentaler Modellelementtyp, der eine Zeitreferenz, eine Änderung einer Bedingung/eines Wertes oder allgemeiner ein Synchronisationsmittel darstellt.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Event' spezifiziert. Die Werte dieser Eigenschaft sollen Ontologiebegriffe sein, wie z.B. [[bpmn:startEvent]].</p>"@de ;
-	rdfs:comment "<p>Un 'Événement' est un type d'élément de modèle fondamental représentant une référence temporelle, un changement de condition/valeur ou plus généralement une primitive de synchronisation.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:Event'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[bpmn:startEvent]].</p>"@fr ;
+	rdfs:label "Event"@en ,
+		"Ereignis"@de ,
+		"Évenement"@fr ;
+	rdfs:comment "<p>An 'Event' is a fundamental model element type representing a time reference, a change in condition/value or more generally a synchronization primitive.</p><p>The particular use or the original type is specified with a [[dcterms:type]] property of the 'FMC:Event'. A value of that property should be an ontology-term, such as [[bpmn:startEvent]].</p>"@en ,
+		"<p>Ein 'Ereignis' ist ein fundamentaler Modellelementtyp, der eine Zeitreferenz, eine Änderung einer Bedingung/eines Wertes oder allgemeiner ein Synchronisationsmittel darstellt.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Event' spezifiziert. Die Werte dieser Eigenschaft sollen Ontologiebegriffe sein, wie z.B. [[bpmn:startEvent]].</p>"@de ,
+		"<p>Un 'Événement' est un type d'élément de modèle fondamental représentant une référence temporelle, un changement de condition/valeur ou plus généralement une primitive de synchronisation.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:Event'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[bpmn:startEvent]].</p>"@fr ;
 	pig:icon "&#x2662;" .
 
 pigShapes_FMC:Event
@@ -425,12 +382,12 @@ pigShapes_FMC:Event
 
 IREB:Requirement
 	rdfs:subClassOf pig:Entity ;
-	rdfs:label "Requirement"@en ;
-	rdfs:label "Anforderung"@de ;
-	rdfs:label "Exigence"@fr ;
-	rdfs:comment "<p>A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>A condition or capability needed by a user to solve a problem or achieve an objective.</li><li>A condition or capability that must be met or possessed by a system or system component to satisfy a contract, standard, specification, or other formally imposed documents.</li><li>A documented representation of a condition or capability as in (1) or (2).</li></ol><p>Note: The definition above is the classic one from IEEE Std 610.12 of 1990. Alternatively, we also give a more modern definition:</p><ol><li>A need perceived by a stakeholder.</li><li>A capability or property that a system shall have.</li><li>A documented representation of a need, capability or property.</li></ol>"@en ;
-	rdfs:comment "<p>Eine 'Anforderung' ist ein einzelnes dokumentiertes physisches und funktionales Bedürfnis, das ein bestimmter Entwurf, ein Produkt oder ein Prozess erfüllen muss. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>Eine Bedingung oder Fähigkeit, die ein Benutzer benötigt, um ein Problem zu lösen oder ein Ziel zu erreichen.</li><li>Eine Bedingung oder Fähigkeit, die ein System oder eine Systemkomponente erfüllen oder besitzen muss, um einen Vertrag, eine Norm, eine Spezifikation oder ein anderes formal vorgeschriebenes Dokument zu erfüllen.</li><li>Eine dokumentierte Darstellung einer Bedingung oder Fähigkeit wie in (1) oder (2).</li></ol><p>Anmerkung: Die obige Definition ist die klassische Definition aus IEEE Std 610.12 von 1990. Alternativ geben wir auch eine modernere Definition an:</p><ol><li>Ein von einem Stakeholder wahrgenommener Bedarf.</li><li>Eine Fähigkeit oder Eigenschaft, die ein System haben soll.</li><li>Eine dokumentierte Darstellung eines Bedarfs, einer Fähigkeit oder Eigenschaft.</li></ol>"@de ;
-	rdfs:comment "<p>Une 'Exigence' est un besoin physique et fonctionnel unique et documenté qu'une conception, un produit ou un processus particulier doit pouvoir satisfaire. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Définition:</p><ol><li>Condition ou capacité dont un utilisateur a besoin pour résoudre un problème ou atteindre un objectif.</li><li>Condition ou capacité qui doit être remplie ou possédée par un système ou un composant de système pour satisfaire à un contrat, à une norme, à une spécification ou à d'autres documents imposés officiellement.</li><li>Une représentation documentée d'une condition ou d'une capacité comme dans (1) ou (2).</li></ol><p>Remarque: La définition ci-dessus est la définition classique de la norme IEEE 610.12 de 1990. Nous donnons également une définition plus moderne:</p><ol><li>Un besoin perçu par une partie prenante;</li><li>Une capacité ou une propriété qu'un système doit avoir.</li><li>Une représentation documentée d'un besoin, d'une capacité ou d'une propriété.</li></ol>"@fr ;
+	rdfs:label "Requirement"@en ,
+		"Anforderung"@de ,
+		"Exigence"@fr ;
+	rdfs:comment "<p>A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>A condition or capability needed by a user to solve a problem or achieve an objective.</li><li>A condition or capability that must be met or possessed by a system or system component to satisfy a contract, standard, specification, or other formally imposed documents.</li><li>A documented representation of a condition or capability as in (1) or (2).</li></ol><p>Note: The definition above is the classic one from IEEE Std 610.12 of 1990. Alternatively, we also give a more modern definition:</p><ol><li>A need perceived by a stakeholder.</li><li>A capability or property that a system shall have.</li><li>A documented representation of a need, capability or property.</li></ol>"@en ,
+		"<p>Eine 'Anforderung' ist ein einzelnes dokumentiertes physisches und funktionales Bedürfnis, das ein bestimmter Entwurf, ein Produkt oder ein Prozess erfüllen muss. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>Eine Bedingung oder Fähigkeit, die ein Benutzer benötigt, um ein Problem zu lösen oder ein Ziel zu erreichen.</li><li>Eine Bedingung oder Fähigkeit, die ein System oder eine Systemkomponente erfüllen oder besitzen muss, um einen Vertrag, eine Norm, eine Spezifikation oder ein anderes formal vorgeschriebenes Dokument zu erfüllen.</li><li>Eine dokumentierte Darstellung einer Bedingung oder Fähigkeit wie in (1) oder (2).</li></ol><p>Anmerkung: Die obige Definition ist die klassische Definition aus IEEE Std 610.12 von 1990. Alternativ geben wir auch eine modernere Definition an:</p><ol><li>Ein von einem Stakeholder wahrgenommener Bedarf.</li><li>Eine Fähigkeit oder Eigenschaft, die ein System haben soll.</li><li>Eine dokumentierte Darstellung eines Bedarfs, einer Fähigkeit oder Eigenschaft.</li></ol>"@de ,
+		"<p>Une 'Exigence' est un besoin physique et fonctionnel unique et documenté qu'une conception, un produit ou un processus particulier doit pouvoir satisfaire. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Définition:</p><ol><li>Condition ou capacité dont un utilisateur a besoin pour résoudre un problème ou atteindre un objectif.</li><li>Condition ou capacité qui doit être remplie ou possédée par un système ou un composant de système pour satisfaire à un contrat, à une norme, à une spécification ou à d'autres documents imposés officiellement.</li><li>Une représentation documentée d'une condition ou d'une capacité comme dans (1) ou (2).</li></ol><p>Remarque: La définition ci-dessus est la définition classique de la norme IEEE 610.12 de 1990. Nous donnons également une définition plus moderne:</p><ol><li>Un besoin perçu par une partie prenante;</li><li>Une capacité ou une propriété qu'un système doit avoir.</li><li>Une représentation documentée d'un besoin, d'une capacité ou d'une propriété.</li></ol>"@fr ;
 	pig:icon "&#8623;" .
 
 pigShapes_IREB:Requirement
@@ -446,19 +403,21 @@ pigShapes_IREB:Requirement
 
 SpecIF:writes
 	rdfs:subClassOf pig:Relationship ;
-	rdfs:label "writes"@en ;
-	rdfs:label "schreibt"@de ;
-	rdfs:label "écrit"@fr ;
+	rdfs:label "writes"@en ,
+		"schreibt"@de ,
+		"écrit"@fr ;
 	rdfs:comment "A [[FMC:Actor]] 'writes' (changes) a [[FMC:State]]."@en .
 
-SpecIF:writes-hasSource
-	rdfs:subPropertyOf pig:eligibleSource ;
+SpecIF:writes-toSource
+	rdfs:subPropertyOf pig:SourceLink ;
+	rdfs:label "SpecIF:writes to source" ;
 	rdfs:comment "Connects the source of SpecIF:writes" ;
 	rdfs:domain SpecIF:writes ;
 	rdfs:range FMC:Actor .
 
-SpecIF:writes-hasTarget
-	rdfs:subPropertyOf pig:eligibleTarget ;
+SpecIF:writes-toTarget
+	rdfs:subPropertyOf pig:TargetLink ;
+	rdfs:label "SpecIF:writes to target" ;
 	rdfs:comment "Connects the target of SpecIF:writes" ;
 	rdfs:domain SpecIF:writes ;
 	rdfs:range FMC:State .
@@ -468,7 +427,7 @@ pigShapes_SpecIF:writes
 	sh:targetClass SpecIF:writes ;
 	sh:property pigShapes_rdfs:comment ;
 	sh:property [ 
-		sh:path SpecIF:writes-hasSource ;
+		sh:path SpecIF:writes-toSource ;
 		sh:or (
 			[ sh:class FMC:Actor ]
 		) ;
@@ -476,7 +435,7 @@ pigShapes_SpecIF:writes
 		sh:maxCount 1
 	] ;
 	sh:property [ 
-		sh:path SpecIF:writes-hasTarget ;
+		sh:path SpecIF:writes-toTarget ;
 		sh:or (
 			[ sh:class FMC:State ]
 		) ;
@@ -486,19 +445,21 @@ pigShapes_SpecIF:writes
 
 SpecIF:reads
 	rdfs:subClassOf pig:Relationship ;
-	rdfs:label "reads"@en ;
-	rdfs:label "liest"@de ;
-	rdfs:label "lit"@fr ;
+	rdfs:label "reads"@en ,
+		"liest"@de ,
+		"lit"@fr ;
 	rdfs:comment "A [[FMC:Actor]] 'reads' a [[FMC:State]]."@en .
 
-SpecIF:reads-hasSource
-	rdfs:subPropertyOf pig:eligibleSource ;
+SpecIF:reads-toSource
+	rdfs:subPropertyOf pig:SourceLink ;
+	rdfs:label "SpecIF:reads to source" ;
 	rdfs:comment "Connects the source of SpecIF:reads" ;
 	rdfs:domain SpecIF:reads ;
 	rdfs:range FMC:Actor .
 
-SpecIF:reads-hasTarget
-	rdfs:subPropertyOf pig:eligibleTarget ;
+SpecIF:reads-toTarget
+	rdfs:subPropertyOf pig:TargetLink ;
+	rdfs:label "SpecIF:reads to target" ;
 	rdfs:comment "Connects the target of SpecIF:reads" ;
 	rdfs:domain SpecIF:reads ;
 	rdfs:range FMC:State .
@@ -508,7 +469,7 @@ pigShapes_SpecIF:reads
 	sh:targetClass SpecIF:reads ;
 	sh:property pigShapes_rdfs:comment ;
 	sh:property [ 
-		sh:path SpecIF:reads-hasSource ;
+		sh:path SpecIF:reads-toSource ;
 		sh:or (
 			[ sh:class FMC:Actor ]
 		) ;
@@ -516,7 +477,7 @@ pigShapes_SpecIF:reads
 		sh:maxCount 1
 	] ;
 	sh:property [ 
-		sh:path SpecIF:reads-hasTarget ;
+		sh:path SpecIF:reads-toTarget ;
 		sh:or (
 			[ sh:class FMC:State ]
 		) ;
@@ -526,13 +487,14 @@ pigShapes_SpecIF:reads
 
 oslc_rm:satisfies
 	rdfs:subClassOf pig:Relationship ;
-	rdfs:label "satisfies"@en ;
-	rdfs:label "erfüllt"@de ;
-	rdfs:label "satisfait"@fr ;
+	rdfs:label "satisfies"@en ,
+		"erfüllt"@de ,
+		"satisfait"@fr ;
 	rdfs:comment "<p>The object is satisfied by the subject. <small>(<i>source: <a href=\"http://open-services.net/\">OSLC</a></i>)</small></p><p>SpecIF suggests that the subject is confined to a model element, e.g, a [[FMC:Actor]] or [[FMC:State]], and the object is confined to a [[IREB:Requirement]]. More concretely, an example for this type of statement is 'Component-X <em>satisfies</em> 'Requirement-4711'.</p>"@en .
 
-oslc_rm:satisfies-hasSource
-	rdfs:subPropertyOf pig:eligibleSource ;
+oslc_rm:satisfies-toSource
+	rdfs:subPropertyOf pig:SourceLink ;
+	rdfs:label "oslc_rm:satisfies to source" ;
 	rdfs:comment "Connects the source of oslc_rm:satisfies" ;
 	rdfs:domain oslc_rm:satisfies ;
 	rdfs:range [ owl:unionOf(
@@ -540,8 +502,9 @@ oslc_rm:satisfies-hasSource
 			FMC:State
 		)] .
 
-oslc_rm:satisfies-hasTarget
-	rdfs:subPropertyOf pig:eligibleTarget ;
+oslc_rm:satisfies-toTarget
+	rdfs:subPropertyOf pig:TargetLink ;
+	rdfs:label "oslc_rm:satisfies to target" ;
 	rdfs:comment "Connects the target of oslc_rm:satisfies" ;
 	rdfs:domain oslc_rm:satisfies ;
 	rdfs:range IREB:Requirement .
@@ -551,7 +514,7 @@ pigShapes_oslc_rm:satisfies
 	sh:targetClass oslc_rm:satisfies ;
 	sh:property pigShapes_rdfs:comment ;
 	sh:property [ 
-		sh:path oslc_rm:satisfies-hasSource ;
+		sh:path oslc_rm:satisfies-toSource ;
 		sh:or (
 			[ sh:class FMC:Actor ]
 			[ sh:class FMC:State ]
@@ -560,7 +523,7 @@ pigShapes_oslc_rm:satisfies
 		sh:maxCount 1
 	] ;
 	sh:property [ 
-		sh:path oslc_rm:satisfies-hasTarget ;
+		sh:path oslc_rm:satisfies-toTarget ;
 		sh:or (
 			[ sh:class IREB:Requirement ]
 		) ;
@@ -624,36 +587,36 @@ d:MEl-50feddc00029b1a8016e2872e78ecadc
 
 d:SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc
 	rdf:type SpecIF:writes ;
-	SpecIF:writes-hasSource d:MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
-	SpecIF:writes-hasTarget d:MEl-50feddc00029b1a8016e2872e78ecadc ;
+	SpecIF:writes-toSource d:MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
+	SpecIF:writes-toTarget d:MEl-50feddc00029b1a8016e2872e78ecadc ;
 	rdfs:comment "'FiCo-Application' writes 'FiCo-Data'" ;
 	dcterms:modified "2020-03-06T09:05:00+01:00" .
 
 d:SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc
 	rdf:type SpecIF:reads ;
-	SpecIF:reads-hasSource d:MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
-	SpecIF:reads-hasTarget d:MEl-50feddc00029b1a8016e2872e78ecadc ;
+	SpecIF:reads-toSource d:MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
+	SpecIF:reads-toTarget d:MEl-50feddc00029b1a8016e2872e78ecadc ;
 	rdfs:comment "'FiCo-Application' reads 'FiCo-Data'" ;
 	dcterms:modified "2020-03-06T09:05:00+01:00" .
 
 d:Ssat-50feddc00029b1a8016e2872e78ecadc-1a8016e2872e78ecadc50feddc00029b
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-50feddc00029b1a8016e2872e78ecadc ;
-	oslc_rm:satisfies-hasTarget d:Req-1a8016e2872e78ecadc50feddc00029b ;
+	oslc_rm:satisfies-toSource d:MEl-50feddc00029b1a8016e2872e78ecadc ;
+	oslc_rm:satisfies-toTarget d:Req-1a8016e2872e78ecadc50feddc00029b ;
 	rdfs:comment "'FiCo-Data' satisfies 'Data Volume'" ;
 	dcterms:modified "2020-10-17T10:00:00+01:00" .
 
 d:Ssat-50feddc00029b1a8016e2872e78ecadc-0Z7916e2872e78ecadc50feddc00918a
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-50feddc00029b1a8016e2872e78ecadc ;
-	oslc_rm:satisfies-hasTarget d:Req-0Z7916e2872e78ecadc50feddc00918a ;
+	oslc_rm:satisfies-toSource d:MEl-50feddc00029b1a8016e2872e78ecadc ;
+	oslc_rm:satisfies-toTarget d:Req-0Z7916e2872e78ecadc50feddc00918a ;
 	rdfs:comment "'FiCo-Data' satisfies 'Consistency'" ;
 	dcterms:modified "2020-10-17T10:00:00+01:00" .
 
 d:Ssat-50fbfe8f0029b1a8016ea86245a9d83a-2b9016e2872e78ecadc50feddc0013Ac
 	rdf:type oslc_rm:satisfies ;
-	oslc_rm:satisfies-hasSource d:MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
-	oslc_rm:satisfies-hasTarget d:Req-2b9016e2872e78ecadc50feddc0013Ac ;
+	oslc_rm:satisfies-toSource d:MEl-50fbfe8f0029b1a8016ea86245a9d83a ;
+	oslc_rm:satisfies-toTarget d:Req-2b9016e2872e78ecadc50feddc0013Ac ;
 	rdfs:comment "'FiCo-Application' satisfies 'Response Time'" ;
 	dcterms:modified "2020-10-17T10:00:00+01:00" .
 
@@ -661,24 +624,25 @@ d:Ssat-50fbfe8f0029b1a8016ea86245a9d83a-2b9016e2872e78ecadc50feddc0013Ac
 # Hierarchy
 #################################################################
 
-d:HierarchyRoot
+d:HierarchyRoot-ACP-Very-Simple-Model-FMC-with-Requirements
 	rdf:type pig:HierarchyRoot ;
+	dcterms:modified "2026-01-12T12:38:56.988Z" ;
 	rdfs:label "Hierarchy Root" ;
 	rdfs:comment "... anchoring all hierarchies of this graph (package)" ;
 	pig:lists (
-			d:O-ACP-Very-Simple-Model-FMC-with-Requirements
+			d:HR-Folder-Introduction
+			d:HR-Folder-Requirements
+			d:HR-Folder-SystemModel
+			d:HR-FolderGlossary-10875487071
 		) .
 
-d:O-ACP-Very-Simple-Model-FMC-with-Requirements
+d:HR-Folder-Introduction
 	rdf:type pig:Outline ;
 	rdfs:label "Project 'Very Simple Model (FMC) with Requirements'" ;
-	pig:category SpecIF:Heading ;
-	dcterms:modified "2025-01-26T17:06:19.300Z" ;
+	pig:category ReqIF:HierarchyRoot ;
+	dcterms:modified "2026-01-12T12:38:56.849Z" ;
 	pig:lists (
 			d:Folder-Introduction
-			d:Folder-Requirements
-			d:Folder-SystemModel
-			d:FolderGlossary-10875487071
 		) .
 
 d:Folder-Introduction
@@ -686,6 +650,15 @@ d:Folder-Introduction
 	rdfs:label "Introduction" ;
 	rdfs:comment "<p>This is a minimal showcase for a model with model-elements and related requirements. It covers pretty much all characteristics neeeded in such cases (including 'statements on statements'), so that transformations and expressive power of other data formats can be evaluated. The example and its representation in SpecIF format is discussed in <a href=\"https://specif.de/Tutorials/06_Very-Simple-Model-FMC.html\" target=\"_blank\">Tutorial 6: Very Simple Model (FMC)</a> and <a href=\"https://specif.de/Tutorials/09_Very-Simple-Model-FMC-with-Requirements.html\" target=\"_blank\">Tutorial 9: Very Simple Model (FMC) with Requirements</a>.</p>" ;
 	dcterms:modified "2025-02-07T08:32:00+01:00" .
+
+d:HR-Folder-Requirements
+	rdf:type pig:Outline ;
+	rdfs:label "Project 'Very Simple Model (FMC) with Requirements'" ;
+	pig:category ReqIF:HierarchyRoot ;
+	dcterms:modified "2026-01-12T12:38:56.849Z" ;
+	pig:lists (
+			d:Folder-Requirements
+		) .
 
 d:Folder-Requirements
 	rdf:type pig:Outline ;
@@ -697,6 +670,15 @@ d:Folder-Requirements
 			d:Req-2b9016e2872e78ecadc50feddc0013Ac
 		) .
 
+d:HR-Folder-SystemModel
+	rdf:type pig:Outline ;
+	rdfs:label "Project 'Very Simple Model (FMC) with Requirements'" ;
+	pig:category ReqIF:HierarchyRoot ;
+	dcterms:modified "2026-01-12T12:38:56.849Z" ;
+	pig:lists (
+			d:Folder-SystemModel
+		) .
+
 d:Folder-SystemModel
 	rdf:type pig:Outline ;
 	rdfs:label "System Model" ;
@@ -705,11 +687,20 @@ d:Folder-SystemModel
 			d:Diagram-aec0df7900010000017001eaf53e8876
 		) .
 
+d:HR-FolderGlossary-10875487071
+	rdf:type pig:Outline ;
+	rdfs:label "Project 'Very Simple Model (FMC) with Requirements'" ;
+	pig:category ReqIF:HierarchyRoot ;
+	dcterms:modified "2026-01-12T12:38:56.849Z" ;
+	pig:lists (
+			d:FolderGlossary-10875487071
+		) .
+
 d:FolderGlossary-10875487071
 	rdf:type pig:Outline ;
 	rdfs:label "Model Elements (Glossary)" ;
 	pig:category SpecIF:Glossary ;
-	dcterms:modified "2025-11-12T14:31:54.244Z" ;
+	dcterms:modified "2026-01-12T12:38:44.062Z" ;
 	pig:lists (
 			d:MEl-50fbfe8f0029b1a8016ea86245a9d83a
 			d:MEl-50feddc00029b1a8016e2872e78ecadc
