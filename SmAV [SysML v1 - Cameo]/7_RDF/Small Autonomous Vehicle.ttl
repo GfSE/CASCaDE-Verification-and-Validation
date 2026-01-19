@@ -40,7 +40,7 @@ d:
 	owl:imports <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ,
 		<http://www.w3.org/2000/01/rdf-schema#> ;
 	dcterms:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
-	dcterms:modified "2026-01-12T12:39:29.664Z" .
+	dcterms:modified "2026-01-17T22:39:01.181Z" .
 
 #################################################################
 # PIG Metamodel (pig:)
@@ -126,8 +126,18 @@ pigShapes_pig:Relationship
 		pigShapes_pig:SourceLink ,
 		pigShapes_pig:TargetLink .
 
-pig:icon
+pig:Property
 	rdf:type owl:DatatypeProperty ;
+	rdfs:label "Property" ;
+	rdfs:comment "A PIG meta-model element used for properties (aka attributes)." .
+
+pigShapes_pig:Property
+	rdf:type sh:PropertyShape ;
+	sh:path pig:Property ;
+	sh:datatype xs:anyType .
+
+pig:icon
+	rdfs:subPropertyOf pig:Property ;
 	rdfs:label "has icon" ;
 	rdfs:comment "Specifies an icon for a model element (entity or relationship)." .
 
@@ -2383,7 +2393,7 @@ d:_19_0_3_e40094_1718632569345_311906_14190
 
 d:HierarchyRoot-P-eee_1045467100313_135436_1
 	rdf:type pig:HierarchyRoot ;
-	dcterms:modified "2026-01-12T12:39:30.056Z" ;
+	dcterms:modified "2026-01-17T22:39:01.606Z" ;
 	rdfs:label "Hierarchy Root" ;
 	rdfs:comment "... anchoring all hierarchies of this graph (package)" ;
 	pig:lists (
@@ -2396,7 +2406,7 @@ d:HR-9052885961
 	rdfs:label "Small Autonomous Vehicle" ;
 	rdfs:comment "A set of SpecIF Classes derived from a SpecIF Ontology for the domains SpecIF:DomainBase, SpecIF:DomainSystemsEngineering, SpecIF:DomainSystemModelIntegration."@en ;
 	pig:category ReqIF:HierarchyRoot ;
-	dcterms:modified "2026-01-12T12:39:29.874Z" ;
+	dcterms:modified "2026-01-17T22:39:01.449Z" ;
 	pig:lists (
 			d:eee_1045467100313_135436_1
 		) .
@@ -2418,7 +2428,7 @@ d:HR-FolderGlossary-10391243923
 	rdfs:label "Small Autonomous Vehicle" ;
 	rdfs:comment "A set of SpecIF Classes derived from a SpecIF Ontology for the domains SpecIF:DomainBase, SpecIF:DomainSystemsEngineering, SpecIF:DomainSystemModelIntegration."@en ;
 	pig:category ReqIF:HierarchyRoot ;
-	dcterms:modified "2026-01-12T12:39:29.875Z" ;
+	dcterms:modified "2026-01-17T22:39:01.449Z" ;
 	pig:lists (
 			d:FolderGlossary-10391243923
 		) .
@@ -2427,7 +2437,7 @@ d:FolderGlossary-10391243923
 	rdf:type pig:Outline ;
 	rdfs:label "Model Elements (Glossary)" ;
 	pig:category SpecIF:Glossary ;
-	dcterms:modified "2026-01-12T12:39:18.325Z" ;
+	dcterms:modified "2026-01-17T22:38:43.273Z" ;
 	pig:lists (
 			d:_18_5_3_bc402f4_1552814266523_206006_15821
 			d:_18_5_3_bc402f4_1552811469014_293642_14411

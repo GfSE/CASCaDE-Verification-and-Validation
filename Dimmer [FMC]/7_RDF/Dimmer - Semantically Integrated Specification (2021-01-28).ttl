@@ -37,7 +37,7 @@ d:
 		<http://www.w3.org/2000/01/rdf-schema#> ;
 	dcterms:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
 	dcterms:creator "<mailto:od@enso-managers.de>" ;
-	dcterms:modified "2026-01-12T12:40:21.290Z" .
+	dcterms:modified "2026-01-17T22:39:33.066Z" .
 
 #################################################################
 # PIG Metamodel (pig:)
@@ -123,8 +123,18 @@ pigShapes_pig:Relationship
 		pigShapes_pig:SourceLink ,
 		pigShapes_pig:TargetLink .
 
-pig:icon
+pig:Property
 	rdf:type owl:DatatypeProperty ;
+	rdfs:label "Property" ;
+	rdfs:comment "A PIG meta-model element used for properties (aka attributes)." .
+
+pigShapes_pig:Property
+	rdf:type sh:PropertyShape ;
+	sh:path pig:Property ;
+	sh:datatype xs:anyType .
+
+pig:icon
+	rdfs:subPropertyOf pig:Property ;
 	rdfs:label "has icon" ;
 	rdfs:comment "Specifies an icon for a model element (entity or relationship)." .
 
@@ -3039,7 +3049,7 @@ d:RCtn-MEl-803fd3750000c3a8013cf1fdb3b26d33-MEl-5a51dd920000bca8013770a4395c83fc
 
 d:HierarchyRoot-ACP-59c8a7730000bca80137509a49b1218b
 	rdf:type pig:HierarchyRoot ;
-	dcterms:modified "2026-01-12T12:40:22.295Z" ;
+	dcterms:modified "2026-01-17T22:39:33.891Z" ;
 	rdfs:label "Hierarchy Root" ;
 	rdfs:comment "... anchoring all hierarchies of this graph (package)" ;
 	pig:lists (
@@ -3057,7 +3067,7 @@ d:HR-Fld-59c8a7730000bca80137509a49b1218b-info
 	rdfs:label "Dimmer - Semantically Integrated Specification (2021-01-28)" ;
 	rdfs:comment "This specification method integrates and represents:\n- processes, system composition and requirements (dynamic, static and detail views)\n- mechanic, electric and software components with their interfaces.\n\nIt is important to understand, that all plans (diagrams) are views of a common system engineering model, sometimes called 'system repository'. Thus, consistency is always maintained.\n\nThe model elements are connected with relations, most of which are defined by positioning graph elements. For example, if a system component is drawn within another, a relationship 'contains' is created in the logic representation of the engineering model. Other relations, such as a system component 'satisfies' a requirement are created manually.  \n\nAlso, the documents are generated from the system engineering model. The ordering is in most projects (it can be rearranged, however, if appropriate):\n- All plans\n- A glossary with descriptions of all model elements appearing on one or more plans\n- A hierarchically ordered list of requirements\n- A list of open issues.\nPlease note that plans list related model elements and model elements list related requirements .. and vice versa. Active hyper-links are used, so that it is easy to jump between related model elements.\n\nFurther information is given in Appendix 'Method'." ;
 	pig:category ReqIF:HierarchyRoot ;
-	dcterms:modified "2026-01-12T12:40:21.690Z" ;
+	dcterms:modified "2026-01-17T22:39:33.435Z" ;
 	pig:lists (
 			d:Fld-59c8a7730000bca80137509a49b1218b-info
 		) .
@@ -3075,7 +3085,7 @@ d:HR-Fld-5a5f54090000bca801375b04a668f1a7
 	rdfs:label "Dimmer - Semantically Integrated Specification (2021-01-28)" ;
 	rdfs:comment "This specification method integrates and represents:\n- processes, system composition and requirements (dynamic, static and detail views)\n- mechanic, electric and software components with their interfaces.\n\nIt is important to understand, that all plans (diagrams) are views of a common system engineering model, sometimes called 'system repository'. Thus, consistency is always maintained.\n\nThe model elements are connected with relations, most of which are defined by positioning graph elements. For example, if a system component is drawn within another, a relationship 'contains' is created in the logic representation of the engineering model. Other relations, such as a system component 'satisfies' a requirement are created manually.  \n\nAlso, the documents are generated from the system engineering model. The ordering is in most projects (it can be rearranged, however, if appropriate):\n- All plans\n- A glossary with descriptions of all model elements appearing on one or more plans\n- A hierarchically ordered list of requirements\n- A list of open issues.\nPlease note that plans list related model elements and model elements list related requirements .. and vice versa. Active hyper-links are used, so that it is easy to jump between related model elements.\n\nFurther information is given in Appendix 'Method'." ;
 	pig:category ReqIF:HierarchyRoot ;
-	dcterms:modified "2026-01-12T12:40:21.690Z" ;
+	dcterms:modified "2026-01-17T22:39:33.435Z" ;
 	pig:lists (
 			d:Fld-5a5f54090000bca801375b04a668f1a7
 		) .
@@ -3099,7 +3109,7 @@ d:HR-Fld-5af3154d0000bca801379748537d7388
 	rdfs:label "Dimmer - Semantically Integrated Specification (2021-01-28)" ;
 	rdfs:comment "This specification method integrates and represents:\n- processes, system composition and requirements (dynamic, static and detail views)\n- mechanic, electric and software components with their interfaces.\n\nIt is important to understand, that all plans (diagrams) are views of a common system engineering model, sometimes called 'system repository'. Thus, consistency is always maintained.\n\nThe model elements are connected with relations, most of which are defined by positioning graph elements. For example, if a system component is drawn within another, a relationship 'contains' is created in the logic representation of the engineering model. Other relations, such as a system component 'satisfies' a requirement are created manually.  \n\nAlso, the documents are generated from the system engineering model. The ordering is in most projects (it can be rearranged, however, if appropriate):\n- All plans\n- A glossary with descriptions of all model elements appearing on one or more plans\n- A hierarchically ordered list of requirements\n- A list of open issues.\nPlease note that plans list related model elements and model elements list related requirements .. and vice versa. Active hyper-links are used, so that it is easy to jump between related model elements.\n\nFurther information is given in Appendix 'Method'." ;
 	pig:category ReqIF:HierarchyRoot ;
-	dcterms:modified "2026-01-12T12:40:21.690Z" ;
+	dcterms:modified "2026-01-17T22:39:33.435Z" ;
 	pig:lists (
 			d:Fld-5af3154d0000bca801379748537d7388
 		) .
@@ -3132,7 +3142,7 @@ d:HR-Fld-5b8e98550000bca801371afb0c7b671b
 	rdfs:label "Dimmer - Semantically Integrated Specification (2021-01-28)" ;
 	rdfs:comment "This specification method integrates and represents:\n- processes, system composition and requirements (dynamic, static and detail views)\n- mechanic, electric and software components with their interfaces.\n\nIt is important to understand, that all plans (diagrams) are views of a common system engineering model, sometimes called 'system repository'. Thus, consistency is always maintained.\n\nThe model elements are connected with relations, most of which are defined by positioning graph elements. For example, if a system component is drawn within another, a relationship 'contains' is created in the logic representation of the engineering model. Other relations, such as a system component 'satisfies' a requirement are created manually.  \n\nAlso, the documents are generated from the system engineering model. The ordering is in most projects (it can be rearranged, however, if appropriate):\n- All plans\n- A glossary with descriptions of all model elements appearing on one or more plans\n- A hierarchically ordered list of requirements\n- A list of open issues.\nPlease note that plans list related model elements and model elements list related requirements .. and vice versa. Active hyper-links are used, so that it is easy to jump between related model elements.\n\nFurther information is given in Appendix 'Method'." ;
 	pig:category ReqIF:HierarchyRoot ;
-	dcterms:modified "2026-01-12T12:40:21.690Z" ;
+	dcterms:modified "2026-01-17T22:39:33.435Z" ;
 	pig:lists (
 			d:Fld-5b8e98550000bca801371afb0c7b671b
 		) .
@@ -3200,7 +3210,7 @@ d:HR-Fld-59c8a7730000bca80137509a49b1218b
 	rdfs:label "Dimmer - Semantically Integrated Specification (2021-01-28)" ;
 	rdfs:comment "This specification method integrates and represents:\n- processes, system composition and requirements (dynamic, static and detail views)\n- mechanic, electric and software components with their interfaces.\n\nIt is important to understand, that all plans (diagrams) are views of a common system engineering model, sometimes called 'system repository'. Thus, consistency is always maintained.\n\nThe model elements are connected with relations, most of which are defined by positioning graph elements. For example, if a system component is drawn within another, a relationship 'contains' is created in the logic representation of the engineering model. Other relations, such as a system component 'satisfies' a requirement are created manually.  \n\nAlso, the documents are generated from the system engineering model. The ordering is in most projects (it can be rearranged, however, if appropriate):\n- All plans\n- A glossary with descriptions of all model elements appearing on one or more plans\n- A hierarchically ordered list of requirements\n- A list of open issues.\nPlease note that plans list related model elements and model elements list related requirements .. and vice versa. Active hyper-links are used, so that it is easy to jump between related model elements.\n\nFurther information is given in Appendix 'Method'." ;
 	pig:category ReqIF:HierarchyRoot ;
-	dcterms:modified "2026-01-12T12:40:21.690Z" ;
+	dcterms:modified "2026-01-17T22:39:33.435Z" ;
 	pig:lists (
 			d:Fld-59c8a7730000bca80137509a49b1218b
 		) .
@@ -3224,7 +3234,7 @@ d:HR-k9qMB6fnxPTk942dvPKdyvnwnoQ
 	rdfs:label "Dimmer - Semantically Integrated Specification (2021-01-28)" ;
 	rdfs:comment "This specification method integrates and represents:\n- processes, system composition and requirements (dynamic, static and detail views)\n- mechanic, electric and software components with their interfaces.\n\nIt is important to understand, that all plans (diagrams) are views of a common system engineering model, sometimes called 'system repository'. Thus, consistency is always maintained.\n\nThe model elements are connected with relations, most of which are defined by positioning graph elements. For example, if a system component is drawn within another, a relationship 'contains' is created in the logic representation of the engineering model. Other relations, such as a system component 'satisfies' a requirement are created manually.  \n\nAlso, the documents are generated from the system engineering model. The ordering is in most projects (it can be rearranged, however, if appropriate):\n- All plans\n- A glossary with descriptions of all model elements appearing on one or more plans\n- A hierarchically ordered list of requirements\n- A list of open issues.\nPlease note that plans list related model elements and model elements list related requirements .. and vice versa. Active hyper-links are used, so that it is easy to jump between related model elements.\n\nFurther information is given in Appendix 'Method'." ;
 	pig:category ReqIF:HierarchyRoot ;
-	dcterms:modified "2026-01-12T12:40:21.690Z" ;
+	dcterms:modified "2026-01-17T22:39:33.435Z" ;
 	pig:lists (
 			d:Fld-ef47e6970000c3a80139dc747c5df319
 		) .
@@ -3265,7 +3275,7 @@ d:HR-FolderGlossary-8001804519
 	rdfs:label "Dimmer - Semantically Integrated Specification (2021-01-28)" ;
 	rdfs:comment "This specification method integrates and represents:\n- processes, system composition and requirements (dynamic, static and detail views)\n- mechanic, electric and software components with their interfaces.\n\nIt is important to understand, that all plans (diagrams) are views of a common system engineering model, sometimes called 'system repository'. Thus, consistency is always maintained.\n\nThe model elements are connected with relations, most of which are defined by positioning graph elements. For example, if a system component is drawn within another, a relationship 'contains' is created in the logic representation of the engineering model. Other relations, such as a system component 'satisfies' a requirement are created manually.  \n\nAlso, the documents are generated from the system engineering model. The ordering is in most projects (it can be rearranged, however, if appropriate):\n- All plans\n- A glossary with descriptions of all model elements appearing on one or more plans\n- A hierarchically ordered list of requirements\n- A list of open issues.\nPlease note that plans list related model elements and model elements list related requirements .. and vice versa. Active hyper-links are used, so that it is easy to jump between related model elements.\n\nFurther information is given in Appendix 'Method'." ;
 	pig:category ReqIF:HierarchyRoot ;
-	dcterms:modified "2026-01-12T12:40:21.690Z" ;
+	dcterms:modified "2026-01-17T22:39:33.435Z" ;
 	pig:lists (
 			d:FolderGlossary-8001804519
 		) .
@@ -3274,7 +3284,7 @@ d:FolderGlossary-8001804519
 	rdf:type pig:Outline ;
 	rdfs:label "Model Elements (Glossary)" ;
 	pig:category SpecIF:Glossary ;
-	dcterms:modified "2026-01-12T12:40:07.655Z" ;
+	dcterms:modified "2026-01-17T22:39:20.717Z" ;
 	pig:lists (
 			d:MEl-5a7776c50000bca8013765ae93af9209
 			d:MEl-5a76365c0000bca8013776e91afd1e8e

@@ -31,7 +31,7 @@ d:
 	owl:imports <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ,
 		<http://www.w3.org/2000/01/rdf-schema#> ;
 	dcterms:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
-	dcterms:modified "2026-01-12T12:38:56.693Z" .
+	dcterms:modified "2026-01-17T22:38:26.464Z" .
 
 #################################################################
 # PIG Metamodel (pig:)
@@ -117,8 +117,18 @@ pigShapes_pig:Relationship
 		pigShapes_pig:SourceLink ,
 		pigShapes_pig:TargetLink .
 
-pig:icon
+pig:Property
 	rdf:type owl:DatatypeProperty ;
+	rdfs:label "Property" ;
+	rdfs:comment "A PIG meta-model element used for properties (aka attributes)." .
+
+pigShapes_pig:Property
+	rdf:type sh:PropertyShape ;
+	sh:path pig:Property ;
+	sh:datatype xs:anyType .
+
+pig:icon
+	rdfs:subPropertyOf pig:Property ;
 	rdfs:label "has icon" ;
 	rdfs:comment "Specifies an icon for a model element (entity or relationship)." .
 
@@ -626,7 +636,7 @@ d:Ssat-50fbfe8f0029b1a8016ea86245a9d83a-2b9016e2872e78ecadc50feddc0013Ac
 
 d:HierarchyRoot-ACP-Very-Simple-Model-FMC-with-Requirements
 	rdf:type pig:HierarchyRoot ;
-	dcterms:modified "2026-01-12T12:38:56.988Z" ;
+	dcterms:modified "2026-01-17T22:38:26.682Z" ;
 	rdfs:label "Hierarchy Root" ;
 	rdfs:comment "... anchoring all hierarchies of this graph (package)" ;
 	pig:lists (
@@ -640,7 +650,7 @@ d:HR-Folder-Introduction
 	rdf:type pig:Outline ;
 	rdfs:label "Project 'Very Simple Model (FMC) with Requirements'" ;
 	pig:category ReqIF:HierarchyRoot ;
-	dcterms:modified "2026-01-12T12:38:56.849Z" ;
+	dcterms:modified "2026-01-17T22:38:26.601Z" ;
 	pig:lists (
 			d:Folder-Introduction
 		) .
@@ -655,7 +665,7 @@ d:HR-Folder-Requirements
 	rdf:type pig:Outline ;
 	rdfs:label "Project 'Very Simple Model (FMC) with Requirements'" ;
 	pig:category ReqIF:HierarchyRoot ;
-	dcterms:modified "2026-01-12T12:38:56.849Z" ;
+	dcterms:modified "2026-01-17T22:38:26.601Z" ;
 	pig:lists (
 			d:Folder-Requirements
 		) .
@@ -674,7 +684,7 @@ d:HR-Folder-SystemModel
 	rdf:type pig:Outline ;
 	rdfs:label "Project 'Very Simple Model (FMC) with Requirements'" ;
 	pig:category ReqIF:HierarchyRoot ;
-	dcterms:modified "2026-01-12T12:38:56.849Z" ;
+	dcterms:modified "2026-01-17T22:38:26.601Z" ;
 	pig:lists (
 			d:Folder-SystemModel
 		) .
@@ -691,7 +701,7 @@ d:HR-FolderGlossary-10875487071
 	rdf:type pig:Outline ;
 	rdfs:label "Project 'Very Simple Model (FMC) with Requirements'" ;
 	pig:category ReqIF:HierarchyRoot ;
-	dcterms:modified "2026-01-12T12:38:56.849Z" ;
+	dcterms:modified "2026-01-17T22:38:26.601Z" ;
 	pig:lists (
 			d:FolderGlossary-10875487071
 		) .
@@ -700,7 +710,7 @@ d:FolderGlossary-10875487071
 	rdf:type pig:Outline ;
 	rdfs:label "Model Elements (Glossary)" ;
 	pig:category SpecIF:Glossary ;
-	dcterms:modified "2026-01-12T12:38:44.062Z" ;
+	dcterms:modified "2026-01-17T22:38:13.953Z" ;
 	pig:lists (
 			d:MEl-50fbfe8f0029b1a8016ea86245a9d83a
 			d:MEl-50feddc00029b1a8016e2872e78ecadc
