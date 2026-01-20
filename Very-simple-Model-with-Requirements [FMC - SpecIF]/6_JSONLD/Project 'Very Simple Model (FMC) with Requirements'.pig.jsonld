@@ -214,55 +214,6 @@
             }
         },
         {
-            "@id": "pig:icon",
-            "pig:specializes": {
-                "@id": "pig:Property"
-            },
-            "pig:itemType": {
-                "@id": "pig:Property"
-            },
-            "dcterms:title": [
-                {
-                    "@value": "has icon"
-                }
-            ],
-            "dcterms:description": [
-                {
-                    "@value": "Specifies an icon for a model element (entity or relationship)."
-                }
-            ],
-            "sh:datatype": {
-                "@id": "xs:string"
-            },
-            "sh:minCount": 0,
-            "sh:maxCount": 1
-        },
-        {
-            "@id": "pig:category",
-            "pig:specializes": {
-                "@id": "dcterms:type"
-            },
-            "pig:itemType": {
-                "@id": "pig:Property"
-            },
-            "dcterms:title": [
-                {
-                    "@value": "has category"
-                }
-            ],
-            "dcterms:description": [
-                {
-                    "@value": "Specifies a category for an element (entity, relationship or organizer)."
-                }
-            ],
-            "sh:datatype": {
-                "@id": "xs:string"
-            },
-            "sh:maxLength": 32,
-            "sh:minCount": 0,
-            "sh:maxCount": 1
-        },
-        {
             "@id": "pig:Link",
             "@type": "owl:ObjectProperty",
             "pig:itemType": {
@@ -421,6 +372,55 @@
                     "@value": "Depicts an entity; inverse of uml:ownedDiagram."
                 }
             ]
+        },
+        {
+            "@id": "pig:icon",
+            "pig:specializes": {
+                "@id": "pig:Property"
+            },
+            "pig:itemType": {
+                "@id": "pig:Property"
+            },
+            "dcterms:title": [
+                {
+                    "@value": "has icon"
+                }
+            ],
+            "dcterms:description": [
+                {
+                    "@value": "Specifies an icon for a model element (entity or relationship)."
+                }
+            ],
+            "sh:datatype": {
+                "@id": "xs:string"
+            },
+            "sh:minCount": 0,
+            "sh:maxCount": 1
+        },
+        {
+            "@id": "pig:category",
+            "pig:specializes": {
+                "@id": "dcterms:type"
+            },
+            "pig:itemType": {
+                "@id": "pig:Property"
+            },
+            "dcterms:title": [
+                {
+                    "@value": "has category"
+                }
+            ],
+            "dcterms:description": [
+                {
+                    "@value": "Specifies a category for an element (entity, relationship or organizer)."
+                }
+            ],
+            "sh:datatype": {
+                "@id": "xs:string"
+            },
+            "sh:maxLength": 32,
+            "sh:minCount": 0,
+            "sh:maxCount": 1
         },
         {
             "@id": "dcterms:title",
