@@ -14,17 +14,17 @@
 @prefix sysml: <https://www.omg.org/spec/SysML#> .
 @prefix pig: <https://product-information-graph.org/v0.2/metamodel#> .
 @prefix SpecIF: <https://specif.de/v1.2/schema#> .
-@prefix pigShapes_dcterms: <https://product-information-graph.org/v0.2/ontology/shapes/dcterms:#> .
-@prefix pigShapes_rdfs: <https://product-information-graph.org/v0.2/ontology/shapes/rdfs:#> .
-@prefix pigShapes_uml: <https://product-information-graph.org/v0.2/ontology/shapes/uml:#> .
-@prefix pigShapes_sysml: <https://product-information-graph.org/v0.2/ontology/shapes/sysml:#> .
-@prefix pigShapes_FMC: <https://product-information-graph.org/v0.2/ontology/shapes/FMC:#> .
-@prefix pigShapes_RFLP: <https://product-information-graph.org/v0.2/ontology/shapes/RFLP:#> .
-@prefix pigShapes_IREB: <https://product-information-graph.org/v0.2/ontology/shapes/IREB:#> .
-@prefix pigShapes_oslc_rm: <https://product-information-graph.org/v0.2/ontology/shapes/oslc_rm:#> .
-@prefix pigShapes_ReqIF: <https://product-information-graph.org/v0.2/ontology/shapes/ReqIF:#> .
-@prefix pigShapes_SpecIF: <https://product-information-graph.org/v0.2/ontology/shapes/SpecIF:#> .
-@prefix pigShapes_pig: <https://product-information-graph.org/v0.2/ontology/shapes/pig:#> .
+@prefix pigShapes_dcterms: <https://product-information-graph.org/v0.2/ontology/shapes/dcterms#> .
+@prefix pigShapes_rdfs: <https://product-information-graph.org/v0.2/ontology/shapes/rdfs#> .
+@prefix pigShapes_uml: <https://product-information-graph.org/v0.2/ontology/shapes/uml#> .
+@prefix pigShapes_sysml: <https://product-information-graph.org/v0.2/ontology/shapes/sysml#> .
+@prefix pigShapes_FMC: <https://product-information-graph.org/v0.2/ontology/shapes/FMC#> .
+@prefix pigShapes_RFLP: <https://product-information-graph.org/v0.2/ontology/shapes/RFLP#> .
+@prefix pigShapes_IREB: <https://product-information-graph.org/v0.2/ontology/shapes/IREB#> .
+@prefix pigShapes_oslc_rm: <https://product-information-graph.org/v0.2/ontology/shapes/oslc_rm#> .
+@prefix pigShapes_ReqIF: <https://product-information-graph.org/v0.2/ontology/shapes/ReqIF#> .
+@prefix pigShapes_SpecIF: <https://product-information-graph.org/v0.2/ontology/shapes/SpecIF#> .
+@prefix pigShapes_pig: <https://product-information-graph.org/v0.2/ontology/shapes/pig#> .
 
 @prefix o: <https://product-information-graph.org/v0.2/ontology#> .
 @prefix d: <https://product-information-graph.org/examples/Small%20Autonomous%20Vehicle.specif.zip#> .
@@ -40,124 +40,224 @@ d:
 	owl:imports <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ,
 		<http://www.w3.org/2000/01/rdf-schema#> ;
 	dcterms:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
-	dcterms:modified "2026-01-17T22:39:01.181Z" .
+	dcterms:modified "2026-02-18T13:48:17.800Z" .
 
 #################################################################
 # PIG Metamodel (pig:)
 #################################################################
 
+pig:Package
+	rdf:type owl:Class ;
+	rdfs:label "Package" ;
+	rdfs:comment "A PIG meta-model item used for packages comprising entities, relationships and potentially nested packages." .
+
+pigShapes_pig:Package
+	rdf:type sh:NodeShape ;
+	sh:targetClass pig:Package ;
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment .
+
 pig:Entity
 	rdf:type owl:Class ;
 	rdfs:label "Entity" ;
-	rdfs:comment "A PIG meta-model element used for entities (aka resources or artifacts)." .
+	rdfs:comment "A PIG meta-model item used for entities (aka resources or artifacts)." .
 
 pigShapes_pig:Entity
 	rdf:type sh:NodeShape ;
 	sh:targetClass pig:Entity ;
 	sh:property pigShapes_rdfs:label ,
 		pigShapes_rdfs:comment ,
-		pigShapes_pig:category ,
-		pigShapes_pig:icon .
+		pigShapes_pig:Category ,
+		pigShapes_pig:Icon .
+
+pig:ModelElement
+	rdfs:subClassOf pig:Entity ;
+	rdfs:label "Model-Element" ;
+	rdfs:comment "The most generic class for all model elements (entities and relationships)." .
+
+pigShapes_pig:ModelElement
+	rdf:type sh:NodeShape ;
+	sh:targetClass pig:ModelElement ;
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment .
+
+FMC:Actor
+	rdfs:subClassOf pig:ModelElement ;
+	rdfs:label "Actor" ;
+	rdfs:comment "A fundamental model-element class for actors (e.g., users, functions, systems, components, ...)." .
+
+pigShapes_FMC:Actor
+	rdf:type sh:NodeShape ;
+	sh:targetClass FMC:Actor ;
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment .
+
+FMC:State
+	rdfs:subClassOf pig:ModelElement ;
+	rdfs:label "State" ;
+	rdfs:comment "A fundamental model-element class for states (e.g., system or process states, information, form, color, ...)." .
+
+pigShapes_FMC:State
+	rdf:type sh:NodeShape ;
+	sh:targetClass FMC:State ;
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment .
+
+FMC:Event
+	rdfs:subClassOf pig:ModelElement ;
+	rdfs:label "Event" ;
+	rdfs:comment "A fundamental model-element class for events (e.g., environmental or process events, ...)." .
+
+pigShapes_FMC:Event
+	rdf:type sh:NodeShape ;
+	sh:targetClass FMC:Event ;
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment .
 
 pig:Organizer
 	rdfs:subClassOf pig:Entity ;
 	rdfs:label "Organizer" ;
-	rdfs:comment "An element organizing model elements. An example is a list of requirements or a diagram using a certain notation." .
+	rdfs:comment "A class for organizing model-elements. An example is a list of requirements or a diagram using a certain notation." .
 
 pigShapes_pig:Organizer
 	rdf:type sh:NodeShape ;
 	sh:targetClass pig:Organizer ;
 	sh:property pigShapes_rdfs:label ,
-		pigShapes_rdfs:comment ,
-		pigShapes_pig:category .
+		pigShapes_rdfs:comment .
 
-pig:HierarchyRoot
+pig:Root
 	rdfs:subClassOf pig:Organizer ;
-	rdfs:label "Hierarchy Root" ;
-	rdfs:comment "A subclass of PIG organizer serving as a root for hierarchically organized graph elements." .
+	rdfs:label "Root" ;
+	rdfs:comment "A subclass of pig:Organizer serving as a root for trees and tables." .
 
-pigShapes_pig:HierarchyRoot
+pigShapes_pig:Root
 	rdf:type sh:NodeShape ;
-	sh:targetClass pig:HierarchyRoot ;
+	sh:targetClass pig:Root ;
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		pigShapes_pig:lists .
+
+pig:Tree
+	rdfs:subClassOf pig:Organizer ;
+	rdfs:label "Tree" ;
+	rdfs:comment "A subclass of pig:Organizer for strictly hierarchical data structures referencing entities and relationships." .
+
+pigShapes_pig:Tree
+	rdf:type sh:NodeShape ;
+	sh:targetClass pig:Tree ;
 	sh:property pigShapes_rdfs:label ,
 		pigShapes_rdfs:comment ,
 		pigShapes_pig:lists .
 
 pig:Outline
-	rdfs:subClassOf pig:Organizer ;
+	rdfs:subClassOf pig:Tree ;
 	rdfs:label "Outline" ;
-	rdfs:comment "A subclass of PIG organizer comprising all information items of a human-readable document. As usual, the outline is hierarchically organized." .
+	rdfs:comment "A subclass of pig:Tree comprising all information items of a human-readable document. As usual, the outline is hierarchically organized." .
 
 pigShapes_pig:Outline
 	rdf:type sh:NodeShape ;
 	sh:targetClass pig:Outline ;
 	sh:property pigShapes_rdfs:label ,
-		pigShapes_rdfs:comment ,
-		pigShapes_pig:category ,
-		pigShapes_pig:lists .
+		pigShapes_rdfs:comment .
 
 pig:View
 	rdfs:subClassOf pig:Organizer ;
 	rdfs:label "View" ;
-	rdfs:comment "A subclass of PIG organizer representing a model view (diagram) using a certain notation showing selected model elements." .
+	rdfs:comment "A subclass of pig:Organizer representing a model view (diagram) using a certain notation showing selected model elements." .
 
 pigShapes_pig:View
 	rdf:type sh:NodeShape ;
 	sh:targetClass pig:View ;
 	sh:property pigShapes_rdfs:label ,
 		pigShapes_rdfs:comment ,
-		pigShapes_pig:category ,
-		pigShapes_pig:icon ,
+		pigShapes_pig:Diagram ,
+		pigShapes_pig:Notation ,
 		pigShapes_pig:shows ,
 		pigShapes_pig:depicts .
+
+pig:Table
+	rdfs:subClassOf pig:Organizer ;
+	rdfs:label "Table" ;
+	rdfs:comment "A subclass of pig:Organizer representing a table showing selected model elements." .
+
+pigShapes_pig:Table
+	rdf:type sh:NodeShape ;
+	sh:targetClass pig:Table ;
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		pigShapes_pig:shows .
 
 pig:Relationship
 	rdf:type owl:Class ;
 	rdfs:label "Relationship" ;
-	rdfs:comment "A PIG meta-model element used for reified relationships (aka predicates)." .
+	rdfs:comment "A PIG meta-model item used for reified relationships (aka predicates)." .
 
 pigShapes_pig:Relationship
 	rdf:type sh:NodeShape ;
 	sh:targetClass pig:Relationship ;
 	sh:property pigShapes_rdfs:label ,
 		pigShapes_rdfs:comment ,
-		pigShapes_pig:category ,
-		pigShapes_pig:icon ,
-		pigShapes_pig:SourceLink ,
-		pigShapes_pig:TargetLink .
+		pigShapes_pig:Category ,
+		pigShapes_pig:Icon ,
+		"pigShapes_undefined" ,
+		"pigShapes_undefined" .
 
 pig:Property
 	rdf:type owl:DatatypeProperty ;
 	rdfs:label "Property" ;
-	rdfs:comment "A PIG meta-model element used for properties (aka attributes)." .
+	rdfs:comment "A PIG meta-model item used for properties (aka attributes)." .
 
 pigShapes_pig:Property
 	rdf:type sh:PropertyShape ;
 	sh:path pig:Property ;
 	sh:datatype xs:anyType .
 
-pig:icon
+pig:Icon
 	rdfs:subPropertyOf pig:Property ;
 	rdfs:label "has icon" ;
 	rdfs:comment "Specifies an icon for a model element (entity or relationship)." .
 
-pigShapes_pig:icon
+pigShapes_pig:Icon
 	rdf:type sh:PropertyShape ;
-	sh:path pig:icon ;
+	sh:path pig:Icon ;
 	sh:datatype xs:string ;
 	sh:minCount "0" ;
 	sh:maxCount "1" .
 
-pig:category
-	rdfs:subPropertyOf dcterms:type ;
+pig:Diagram
+	rdfs:subPropertyOf pig:Property ;
+	rdfs:label "Diagram" ;
+	rdfs:comment "A diagram illustrating the resource or a link to a diagram." .
+
+pigShapes_pig:Diagram
+	rdf:type sh:PropertyShape ;
+	sh:path pig:Diagram ;
+	sh:datatype xs:string ;
+	sh:minCount "0" ;
+	sh:maxCount "1" .
+
+pig:Category
+	rdfs:subPropertyOf pig:Property ;
 	rdfs:label "has category" ;
 	rdfs:comment "Specifies a category for an element (entity, relationship or organizer)." .
 
-pigShapes_pig:category
+pigShapes_pig:Category
 	rdf:type sh:PropertyShape ;
-	sh:path pig:category ;
+	sh:path pig:Category ;
 	sh:datatype xs:string ;
 	sh:maxLength "32" ;
+	sh:minCount "0" ;
+	sh:maxCount "1" .
+
+pig:Notation
+	rdfs:subPropertyOf pig:Category ;
+	rdfs:label "Notation" ;
+	rdfs:comment "A reference to a notation defining the syntax and semantics of a diagram." .
+
+pigShapes_pig:Notation
+	rdf:type sh:PropertyShape ;
+	sh:path pig:Notation ;
+	sh:datatype xs:string ;
 	sh:minCount "0" ;
 	sh:maxCount "1" .
 
@@ -168,7 +268,7 @@ pig:Link
 			pig:Relationship
 		)] ;
 	rdfs:label "linked with" ;
-	rdfs:comment "Connects a reified relationship with its source or target. Also connects an organizer to a model element" .
+	rdfs:comment "A PIG meta-model item connecting a reified relationship with its source or target. Also connects an organizer to a model element." .
 
 pigShapes_pig:Link
 	rdf:type sh:PropertyShape ;
@@ -269,31 +369,21 @@ pigShapes_pig:depicts
 
 # Skipping implicit property: rdfs:comment
 
-SpecIF:Diagram
-	rdf:type owl:DatatypeProperty ;
-	rdfs:label "Diagram"@en ,
-		"Diagramm"@de ,
-		"Diagramme"@fr ;
-	rdfs:comment "A diagram illustrating the resource or a link to a diagram."@en .
+# Skipping implicit property: pig:Category
 
-pigShapes_SpecIF:Diagram
+# Skipping implicit property: pig:Diagram
+
+# Skipping implicit property: pig:Notation
+
+o:PC-Diagram-8458877254
+	rdf:type owl:DatatypeProperty ;
+	rdfs:label "pig:Diagram" ;
+	rdfs:comment "A diagram illustrating the resource or a link to a diagram." .
+
+o:PC-Diagram-8458877254_shape
 	rdf:type sh:PropertyShape ;
-	sh:path SpecIF:Diagram ;
+	sh:path o:PC-Diagram-8458877254 ;
 	sh:datatype xs:string .
-
-# Skipping implicit property: pig:category
-
-SpecIF:Notation
-	rdf:type owl:DatatypeProperty ;
-	rdfs:label "Notation"@en ;
-	rdfs:comment "The notation used by a model diagram, e.g. 'BPMN 2.0', 'SysML Activity Diagram' or 'FMC Block Diagram'."@en .
-
-pigShapes_SpecIF:Notation
-	rdf:type sh:PropertyShape ;
-	sh:path SpecIF:Notation ;
-	sh:maxCount "1" ;
-	sh:datatype xs:string ;
-	sh:maxLength "32" .
 
 #################################################################
 # Ontology - Entity Classes
@@ -312,8 +402,8 @@ pigShapes_SpecIF:Paragraph
 	sh:targetClass SpecIF:Paragraph ;
 	sh:property pigShapes_rdfs:label ,
 		pigShapes_rdfs:comment ,
-		pigShapes_SpecIF:Diagram ,
-		pigShapes_pig:category .
+		pigShapes_pig:Diagram ,
+		pigShapes_pig:Category .
 
 SpecIF:ModelElement
 	rdfs:subClassOf pig:Entity ;
@@ -321,31 +411,14 @@ SpecIF:ModelElement
 		"Modellelement"@de ;
 	rdfs:comment "Is a generalized type for model elements."@en ,
 		"Ist ein generalisierter Typ für Modellelemente."@de ;
-	pig:icon "&#x2606;" .
+	pig:Icon "&#x2606;" .
 
 pigShapes_SpecIF:ModelElement
 	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:ModelElement ;
 	sh:property pigShapes_rdfs:label ,
 		pigShapes_rdfs:comment ,
-		pigShapes_pig:category .
-
-FMC:Actor
-	rdfs:subClassOf SpecIF:ModelElement ;
-	rdfs:label "Actor"@en ,
-		"Akteur"@de ,
-		"Acteur"@fr ;
-	rdfs:comment "<p>An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role.</p><p>The  particular use or original type is specified with a [[dcterms:type]] property of the 'FMC:Actor'. A value of that property should be an ontology-term, such as [[bpmn:processStep]].</p>"@en ,
-		"<p>Ein 'Akteur' ist ein fundamentaler Modellelementtyp, der eine aktive Entität darstellt, sei es eine Aktivität, ein Prozessschritt, eine Funktion, eine Systemkomponente oder eine Rolle.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Actor' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[bpmn:timer]].</p>"@de ,
-		"<p>Un 'Acteur' est un type d'élément de modèle fondamental représentant une entité active, qu'il s'agisse d'une activité, d'une étape de processus, d'une fonction, d'un composant de système ou d'un rôle.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:Actor'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[bpmn:timer]].</p>"@fr ;
-	pig:icon "&#x25A1;" .
-
-pigShapes_FMC:Actor
-	rdf:type sh:NodeShape ;
-	sh:targetClass FMC:Actor ;
-	sh:property pigShapes_rdfs:label ,
-		pigShapes_rdfs:comment ,
-		pigShapes_pig:category .
+		pigShapes_pig:Category .
 
 SpecIF:Collection
 	rdfs:subClassOf SpecIF:ModelElement ;
@@ -355,48 +428,14 @@ SpecIF:Collection
 	rdfs:comment "<p>A 'Collection' is a logical (often conceptual) group of resources linked with a [[SpecIF:contains]] statement. It corresponds to a <a href=\"https://camunda.com/bpmn/reference/\">'Group'</a> in BPMN Diagrams.</p><p>BPMN: An arbitrary set of objects can be defined as a Group to show that they logically belong together. <small>(<i>source: <a href=\"http://www.bpmn-tool.com/en/tutorial/\">BPMN Tutorial</a></i>)</small></p>"@en ,
 		"<p>Eine 'Kollektion' ist eine logische Gruppierung bestimmter Modellelemente, die per [[SpecIF:contains]] Relation zusammen gefasst sind. Sie entspricht einer <a href=\"https://camunda.com/bpmn/reference/\">'Gruppe'</a> in BPMN Diagrammen. <small>(<i>source: <a href=\"http://www.bpmn-tool.com/en/tutorial/\">BPMN Tutorial</a></i>)</small></p>"@de ,
 		"<p>Une 'collection' est un groupe logique (souvent conceptuel) de ressources liées par une déclaration [[SpecIF:contains]]. Elle correspond à un <a href=\"https://camunda.com/bpmn/reference/\">'groupe'</a> dans les diagrammes BPMN. <small>(<i>source: <a href=\"http://www.bpmn-tool.com/en/tutorial/\">BPMN Tutoriel</a></i>)</small></p>"@fr ;
-	pig:icon "⬚" .
+	pig:Icon "⬚" .
 
 pigShapes_SpecIF:Collection
 	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:Collection ;
 	sh:property pigShapes_rdfs:label ,
 		pigShapes_rdfs:comment ,
-		pigShapes_pig:category .
-
-FMC:State
-	rdfs:subClassOf SpecIF:ModelElement ;
-	rdfs:label "State"@en ,
-		"Zustand"@de ,
-		"État"@fr ;
-	rdfs:comment "<p>A 'State' is a fundamental model element type representing a passive entity, be it a value, a condition, an information storage or even a physical shape.</p><p>The particular use or the original type is specified with a [[dcterms:type]] property of the 'FMC:State'. A value of that property should bean  ontology-term, such as [[bpmn:dataObject]].</p>"@en ,
-		"<p>Ein 'Zustand' ist ein fundamentaler Modellelementtyp, der eine passive Entität darstellt, sei es ein Wert, ein Dokument, ein Informationsspeicher, eine Bedingung oder eine physische Beschaffenheit.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:State' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[ArchiMate:DataObject]].</p>"@de ,
-		"<p>Un 'État' est un type d'élément de modèle fondamental représentant une entité passive, qu'il s'agisse d'une valeur, d'une condition, d'un stockage d'informations ou même d'une forme physique.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:State'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[ArchiMate:DataObject]].</p>"@fr ;
-	pig:icon "&#x25CB;" .
-
-pigShapes_FMC:State
-	rdf:type sh:NodeShape ;
-	sh:targetClass FMC:State ;
-	sh:property pigShapes_rdfs:label ,
-		pigShapes_rdfs:comment ,
-		pigShapes_pig:category .
-
-FMC:Event
-	rdfs:subClassOf SpecIF:ModelElement ;
-	rdfs:label "Event"@en ,
-		"Ereignis"@de ,
-		"Évenement"@fr ;
-	rdfs:comment "<p>An 'Event' is a fundamental model element type representing a time reference, a change in condition/value or more generally a synchronization primitive.</p><p>The particular use or the original type is specified with a [[dcterms:type]] property of the 'FMC:Event'. A value of that property should be an ontology-term, such as [[bpmn:startEvent]].</p>"@en ,
-		"<p>Ein 'Ereignis' ist ein fundamentaler Modellelementtyp, der eine Zeitreferenz, eine Änderung einer Bedingung/eines Wertes oder allgemeiner ein Synchronisationsmittel darstellt.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Event' spezifiziert. Die Werte dieser Eigenschaft sollen Ontologiebegriffe sein, wie z.B. [[bpmn:startEvent]].</p>"@de ,
-		"<p>Un 'Événement' est un type d'élément de modèle fondamental représentant une référence temporelle, un changement de condition/valeur ou plus généralement une primitive de synchronisation.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:Event'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[bpmn:startEvent]].</p>"@fr ;
-	pig:icon "&#x2662;" .
-
-pigShapes_FMC:Event
-	rdf:type sh:NodeShape ;
-	sh:targetClass FMC:Event ;
-	sh:property pigShapes_rdfs:label ,
-		pigShapes_rdfs:comment ,
-		pigShapes_pig:category .
+		pigShapes_pig:Category .
 
 uml:Package
 	rdfs:subClassOf SpecIF:Collection ;
@@ -407,7 +446,7 @@ pigShapes_uml:Package
 	sh:targetClass uml:Package ;
 	sh:property pigShapes_rdfs:label ,
 		pigShapes_rdfs:comment ,
-		pigShapes_pig:category .
+		pigShapes_pig:Category .
 
 IREB:Requirement
 	rdfs:subClassOf pig:Entity ;
@@ -417,14 +456,28 @@ IREB:Requirement
 	rdfs:comment "<p>A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>A condition or capability needed by a user to solve a problem or achieve an objective.</li><li>A condition or capability that must be met or possessed by a system or system component to satisfy a contract, standard, specification, or other formally imposed documents.</li><li>A documented representation of a condition or capability as in (1) or (2).</li></ol><p>Note: The definition above is the classic one from IEEE Std 610.12 of 1990. Alternatively, we also give a more modern definition:</p><ol><li>A need perceived by a stakeholder.</li><li>A capability or property that a system shall have.</li><li>A documented representation of a need, capability or property.</li></ol>"@en ,
 		"<p>Eine 'Anforderung' ist ein einzelnes dokumentiertes physisches und funktionales Bedürfnis, das ein bestimmter Entwurf, ein Produkt oder ein Prozess erfüllen muss. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>Eine Bedingung oder Fähigkeit, die ein Benutzer benötigt, um ein Problem zu lösen oder ein Ziel zu erreichen.</li><li>Eine Bedingung oder Fähigkeit, die ein System oder eine Systemkomponente erfüllen oder besitzen muss, um einen Vertrag, eine Norm, eine Spezifikation oder ein anderes formal vorgeschriebenes Dokument zu erfüllen.</li><li>Eine dokumentierte Darstellung einer Bedingung oder Fähigkeit wie in (1) oder (2).</li></ol><p>Anmerkung: Die obige Definition ist die klassische Definition aus IEEE Std 610.12 von 1990. Alternativ geben wir auch eine modernere Definition an:</p><ol><li>Ein von einem Stakeholder wahrgenommener Bedarf.</li><li>Eine Fähigkeit oder Eigenschaft, die ein System haben soll.</li><li>Eine dokumentierte Darstellung eines Bedarfs, einer Fähigkeit oder Eigenschaft.</li></ol>"@de ,
 		"<p>Une 'Exigence' est un besoin physique et fonctionnel unique et documenté qu'une conception, un produit ou un processus particulier doit pouvoir satisfaire. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Définition:</p><ol><li>Condition ou capacité dont un utilisateur a besoin pour résoudre un problème ou atteindre un objectif.</li><li>Condition ou capacité qui doit être remplie ou possédée par un système ou un composant de système pour satisfaire à un contrat, à une norme, à une spécification ou à d'autres documents imposés officiellement.</li><li>Une représentation documentée d'une condition ou d'une capacité comme dans (1) ou (2).</li></ol><p>Remarque: La définition ci-dessus est la définition classique de la norme IEEE 610.12 de 1990. Nous donnons également une définition plus moderne:</p><ol><li>Un besoin perçu par une partie prenante;</li><li>Une capacité ou une propriété qu'un système doit avoir.</li><li>Une représentation documentée d'un besoin, d'une capacité ou d'une propriété.</li></ol>"@fr ;
-	pig:icon "&#8623;" .
+	pig:Icon "&#8623;" .
 
 pigShapes_IREB:Requirement
 	rdf:type sh:NodeShape ;
 	sh:targetClass IREB:Requirement ;
 	sh:property pigShapes_rdfs:label ,
 		pigShapes_rdfs:comment ,
-		pigShapes_pig:category .
+		pigShapes_pig:Category .
+
+o:RC-Paragraph-8458877285
+	rdfs:subClassOf pig:Entity ;
+	rdfs:label "SpecIF:Paragraph" ;
+	rdfs:comment "<p>A 'Paragraph' is an unspecified information in a document at any level.</p>"@en ,
+		"<p>Ein 'Textabschnitt' in einem Dokument auf beliebiger Ebene.</p>"@de .
+
+o:RC-Paragraph-8458877285_shape
+	rdf:type sh:NodeShape ;
+	sh:targetClass o:RC-Paragraph-8458877285 ;
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment ,
+		o:PC-Diagram-8458877254_shape ,
+		pigShapes_pig:Category .
 
 #################################################################
 # Ontology - Relationship Classes
@@ -453,7 +506,7 @@ SpecIF:relates-toTarget
 pigShapes_SpecIF:relates
 	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:relates ;
-	sh:property pigShapes_pig:category ;
+	sh:property pigShapes_pig:Category ;
 	sh:property [ 
 		sh:path SpecIF:relates-toSource ;
 		sh:minCount 1 ;
@@ -502,7 +555,7 @@ dcterms:hasPart-toTarget
 pigShapes_dcterms:hasPart
 	rdf:type sh:NodeShape ;
 	sh:targetClass dcterms:hasPart ;
-	sh:property pigShapes_pig:category ;
+	sh:property pigShapes_pig:Category ;
 	sh:property [ 
 		sh:path dcterms:hasPart-toSource ;
 		sh:or (
@@ -569,7 +622,7 @@ SpecIF:contains-toTarget
 pigShapes_SpecIF:contains
 	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:contains ;
-	sh:property pigShapes_pig:category ;
+	sh:property pigShapes_pig:Category ;
 	sh:property [ 
 		sh:path SpecIF:contains-toSource ;
 		sh:or (
@@ -889,15 +942,15 @@ pigShapes_uml:TransitionTarget
 d:_19_0_3_71e0233_1746001337727_31616_14119
 	rdf:type uml:Package ;
 	rdfs:label "1. Requirements" ;
-	pig:category uml:Package ;
+	pig:Category uml:Package ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552810549321_335902_14037
 	rdf:type pig:View ;
 	rdfs:label "Original Requirement Specification" ;
-	SpecIF:Diagram "<object data=\"files_and_images/Original Requirement Specification.png\" type=\"image/png\">files_and_images/Original Requirement Specification.png</object>" ;
-	pig:category uml:Diagram ;
-	SpecIF:Notation "UML Requirement Diagram" ;
+	pig:Diagram "<object data=\"files_and_images/Original Requirement Specification.png\" type=\"image/png\">files_and_images/Original Requirement Specification.png</object>" ;
+	pig:Category uml:Diagram ;
+	pig:Notation "UML Requirement Diagram" ;
 	pig:revision "rev-9405830621" ;
 	dcterms:modified "2025-11-12T09:28:04.871Z" ;
 	pig:shows (
@@ -919,64 +972,64 @@ d:_18_5_3_bc402f4_1552810549321_335902_14037
 d:_18_5_3_bc402f4_1552810776263_894029_14121
 	rdf:type IREB:Requirement ;
 	rdfs:label "Navigation" ;
-	pig:category uml:Class ;
+	pig:Category uml:Class ;
 	rdfs:comment "The Vehicle shall autonomously choose the best route from the current location C to the target location T by means of a road map and actual traffic conditions." ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552810869277_586147_14175
 	rdf:type IREB:Requirement ;
 	rdfs:label "Road Driving" ;
-	pig:category uml:Class ;
+	pig:Category uml:Class ;
 	rdfs:comment "The vehicle shall be able to follow a selected road." ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552810644650_650036_14079
 	rdf:type IREB:Requirement ;
 	rdfs:label "Transport to Target" ;
-	pig:category uml:Class ;
+	pig:Category uml:Class ;
 	rdfs:comment "As a customer I would like to get a parcel delivered from the current location C to a target location T. " ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552812370943_152244_14924
 	rdf:type IREB:Requirement ;
 	rdfs:label "Location as Postal Address" ;
-	pig:category uml:Class ;
+	pig:Category uml:Class ;
 	rdfs:comment "A location may be specified as a postal address." ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552813199775_830344_15281
 	rdf:type IREB:Requirement ;
 	rdfs:label "Obstacle Avoidance" ;
-	pig:category uml:Class ;
+	pig:Category uml:Class ;
 	rdfs:comment "The vehicle shall not hit a person or an obstacle on the road." ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552810948738_707540_14217
 	rdf:type IREB:Requirement ;
 	rdfs:label "Safe Driving" ;
-	pig:category uml:Class ;
+	pig:Category uml:Class ;
 	rdfs:comment "The vehicle shall drive no faster than allowed or adequate for the actual road condition." ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552812437056_257578_14975
 	rdf:type IREB:Requirement ;
 	rdfs:label "Loacation as GPS Coordinate" ;
-	pig:category uml:Class ;
+	pig:Category uml:Class ;
 	rdfs:comment "A location may be specified as GPS Coordinate with Longitude and Latitude in Degrees." ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746001480225_327746_14120
 	rdf:type uml:Package ;
 	rdfs:label "2. Functional Layer" ;
-	pig:category uml:Package ;
+	pig:Category uml:Package ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552811870216_105923_14824
 	rdf:type pig:View ;
 	rdfs:label "Functional Decomposition" ;
-	SpecIF:Diagram "<object data=\"files_and_images/Functional Decomposition.png\" type=\"image/png\">files_and_images/Functional Decomposition.png</object>" ;
-	pig:category uml:Diagram ;
-	SpecIF:Notation "SysML Block Definition Diagram" ;
+	pig:Diagram "<object data=\"files_and_images/Functional Decomposition.png\" type=\"image/png\">files_and_images/Functional Decomposition.png</object>" ;
+	pig:Category uml:Diagram ;
+	pig:Notation "SysML Block Definition Diagram" ;
 	pig:revision "rev-11094738149" ;
 	dcterms:modified "2025-11-12T09:28:21.131Z" ;
 	pig:shows (
@@ -1030,102 +1083,102 @@ d:_18_5_3_bc402f4_1552811870216_105923_14824
 d:_18_5_3_bc402f4_1552813556602_820961_15353
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Brake in an Emergency" ;
-	pig:category RFLP:Function ;
+	pig:Category RFLP:Function ;
 	rdfs:comment "Take the vehicle to a full stop in the shortest time possible without loosing control over the trajectory." ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552814212889_663150_15729
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Set Speed" ;
-	pig:category RFLP:Function ;
+	pig:Category RFLP:Function ;
 	rdfs:comment "The (autonomous) driver's speed command (gas pedal position)." ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1556615164506_303870_14975
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Turn Right" ;
-	pig:category RFLP:Function ;
+	pig:Category RFLP:Function ;
 	rdfs:comment "Take a right turn at a road intersection. Observe the traffic entering the same lane and avoid a collision, if another vehicle does not observe the priority rules." ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552814194319_862392_15683
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Set Radius" ;
-	pig:category RFLP:Function ;
+	pig:Category RFLP:Function ;
 	rdfs:comment "The (autonomous) driver's steering command (steering wheel position)." ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552812663506_709974_15011
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Navigate" ;
-	pig:category RFLP:Function ;
+	pig:Category RFLP:Function ;
 	rdfs:comment "Select a path to get from the current position to the target." ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552814523707_628151_15988
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Calculate Accelerations" ;
-	pig:category RFLP:Function ;
+	pig:Category RFLP:Function ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1556615212765_548060_15021
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Turn Left" ;
-	pig:category RFLP:Function ;
+	pig:Category RFLP:Function ;
 	rdfs:comment "Take a left turn in a road intersection. Observe the priority rules and avoid traffic on the two lanes you are crossing." ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552811937697_690731_14862
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Drive to Target" ;
-	pig:category RFLP:Function ;
+	pig:Category RFLP:Function ;
 	rdfs:comment "Manoevre the vehicle from the current position to the selected target." ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552814246502_629251_15775
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Set Acceleration Left" ;
-	pig:category RFLP:Function ;
+	pig:Category RFLP:Function ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552813038602_222864_15129
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Select an adequate Speed" ;
-	pig:category RFLP:Function ;
+	pig:Category RFLP:Function ;
 	rdfs:comment "Taking into account road condition and weather, select a safe speed." ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552815791106_548984_16360
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Set Acceleration Right" ;
-	pig:category RFLP:Function ;
+	pig:Category RFLP:Function ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552812805784_548404_15062
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Follow the Road" ;
-	pig:category RFLP:Function ;
+	pig:Category RFLP:Function ;
 	rdfs:comment "Keep the vehicle on the selected road." ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552814266523_206006_15821
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Apply Brake" ;
-	pig:category RFLP:Function ;
+	pig:Category RFLP:Function ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746001561119_779379_14121
 	rdf:type uml:Package ;
 	rdfs:label "3. Logical Layer" ;
-	pig:category uml:Package ;
+	pig:Category uml:Package ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746027287147_82140_14431
 	rdf:type pig:View ;
 	rdfs:label "Logical Decomposition" ;
-	SpecIF:Diagram "<object data=\"files_and_images/Logical Decomposition.png\" type=\"image/png\">files_and_images/Logical Decomposition.png</object>" ;
-	pig:category uml:Diagram ;
-	SpecIF:Notation "SysML Block Definition Diagram" ;
+	pig:Diagram "<object data=\"files_and_images/Logical Decomposition.png\" type=\"image/png\">files_and_images/Logical Decomposition.png</object>" ;
+	pig:Category uml:Diagram ;
+	pig:Notation "SysML Block Definition Diagram" ;
 	pig:revision "rev-7887707545" ;
 	dcterms:modified "2025-11-12T09:28:38.225Z" ;
 	pig:shows (
@@ -1153,53 +1206,53 @@ d:_19_0_3_71e0233_1746027287147_82140_14431
 d:_19_0_3_e40094_1718632293724_754873_14112
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Drive Right" ;
-	pig:category RFLP:Logical_System ;
+	pig:Category RFLP:Logical_System ;
 	rdfs:comment "The wheel with motor and brake on the right side. The motor can accelerate and decelerate. The motor controller is \"4-quadrant\" and can supply electrical current for recharging the batteries." ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552827771600_60767_16481
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Track Sensor" ;
-	pig:category RFLP:Logical_System ;
+	pig:Category RFLP:Logical_System ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552811469014_293642_14411
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Body" ;
-	pig:category RFLP:Logical_System ;
+	pig:Category RFLP:Logical_System ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552811510062_903764_14503
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Drive Left" ;
-	pig:category RFLP:Logical_System ;
+	pig:Category RFLP:Logical_System ;
 	rdfs:comment "The wheel with motor and brake on the left side. The motor can accelerate and decelerate. The motor controller is \"4-quadrant\" and can supply electrical current for recharging the batteries." ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552811412605_640145_14319
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "LEGO Mindstorms Vehicle" ;
-	pig:category RFLP:Logical_System ;
+	pig:Category RFLP:Logical_System ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552811538626_715866_14549
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Support Front" ;
-	pig:category RFLP:Logical_System ;
+	pig:Category RFLP:Logical_System ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552814104357_719492_15607
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Controller" ;
-	pig:category RFLP:Logical_System ;
+	pig:Category RFLP:Logical_System ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746027630926_778269_14800
 	rdf:type pig:View ;
 	rdfs:label "Controller State Machine" ;
-	SpecIF:Diagram "<object data=\"files_and_images/Controller State Machine.png\" type=\"image/png\">files_and_images/Controller State Machine.png</object>" ;
-	pig:category uml:Diagram ;
-	SpecIF:Notation "SysML State Machine Diagram" ;
+	pig:Diagram "<object data=\"files_and_images/Controller State Machine.png\" type=\"image/png\">files_and_images/Controller State Machine.png</object>" ;
+	pig:Category uml:Diagram ;
+	pig:Notation "SysML State Machine Diagram" ;
 	pig:revision "rev-11807243868" ;
 	dcterms:modified "2025-11-12T09:29:01.139Z" ;
 	pig:shows (
@@ -1252,265 +1305,265 @@ d:_19_0_3_71e0233_1746027630926_778269_14800
 d:_19_0_3_71e0233_1746027631039_116153_14834
 	rdf:type FMC:State ;
 	rdfs:label "entry" ;
-	pig:category uml:Pseudostate ;
+	pig:Category uml:Pseudostate ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746027631053_836894_14835
 	rdf:type FMC:State ;
 	rdfs:label "Off" ;
-	pig:category uml:State ;
+	pig:Category uml:State ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746027731735_863978_14871
 	rdf:type FMC:State ;
 	rdfs:label "entry" ;
-	pig:category uml:Pseudostate ;
+	pig:Category uml:Pseudostate ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746027747207_605800_14880
 	rdf:type FMC:State ;
 	rdfs:label "Navigating" ;
-	pig:category uml:State ;
+	pig:Category uml:State ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746027804266_719052_14896
 	rdf:type FMC:State ;
 	rdfs:label "Defining Target" ;
-	pig:category uml:State ;
+	pig:Category uml:State ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746027882482_912182_14918
 	rdf:type FMC:State ;
 	rdfs:label "Following the Road" ;
-	pig:category uml:State ;
+	pig:Category uml:State ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746027920180_215768_14934
 	rdf:type FMC:State ;
 	rdfs:label "Turning Right" ;
-	pig:category uml:State ;
+	pig:Category uml:State ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746027967661_707482_14950
 	rdf:type FMC:State ;
 	rdfs:label "Turning Left" ;
-	pig:category uml:State ;
+	pig:Category uml:State ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746028605370_466818_15028
 	rdf:type FMC:State ;
 	rdfs:label "Standing" ;
-	pig:category uml:State ;
+	pig:Category uml:State ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746027837044_867827_14913
 	rdf:type FMC:Actor ;
 	rdfs:label "entry→Defining Target" ;
-	pig:category uml:Transition ;
+	pig:Category uml:Transition ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746027847324_539644_14916
 	rdf:type FMC:Actor ;
 	rdfs:label "Defining Target→Navigating" ;
-	pig:category uml:Transition ;
+	pig:Category uml:Transition ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746028061993_960870_14971
 	rdf:type FMC:Actor ;
 	rdfs:label "Navigating→Following the Road" ;
-	pig:category uml:Transition ;
+	pig:Category uml:Transition ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746028073773_979720_14974
 	rdf:type FMC:Actor ;
 	rdfs:label "Following the Road→Navigating" ;
-	pig:category uml:Transition ;
+	pig:Category uml:Transition ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746028149871_266697_14985
 	rdf:type FMC:Actor ;
 	rdfs:label "Following the Road→Turning Right" ;
-	pig:category uml:Transition ;
+	pig:Category uml:Transition ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746028183413_413266_14988
 	rdf:type FMC:Actor ;
 	rdfs:label "Turning Right→Following the Road" ;
-	pig:category uml:Transition ;
+	pig:Category uml:Transition ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746028275862_880382_14999
 	rdf:type FMC:Actor ;
 	rdfs:label "Following the Road→Turning Left" ;
-	pig:category uml:Transition ;
+	pig:Category uml:Transition ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746028306923_558192_15006
 	rdf:type FMC:Actor ;
 	rdfs:label "Turning Left→Following the Road" ;
-	pig:category uml:Transition ;
+	pig:Category uml:Transition ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746028822501_191804_15047
 	rdf:type FMC:Actor ;
 	rdfs:label "Following the Road→Standing" ;
-	pig:category uml:Transition ;
+	pig:Category uml:Transition ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746028827712_739888_15050
 	rdf:type FMC:Actor ;
 	rdfs:label "Following the Road→Standing" ;
-	pig:category uml:Transition ;
+	pig:Category uml:Transition ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746028839192_503107_15053
 	rdf:type FMC:Actor ;
 	rdfs:label "Standing→Following the Road" ;
-	pig:category uml:Transition ;
+	pig:Category uml:Transition ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746029049431_401220_15072
 	rdf:type FMC:Actor ;
 	rdfs:label "Standing→Defining Target" ;
-	pig:category uml:Transition ;
+	pig:Category uml:Transition ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746028508430_363448_15020
 	rdf:type FMC:Actor ;
 	rdfs:label "Standing→Off" ;
-	pig:category uml:Transition ;
+	pig:Category uml:Transition ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746027704287_746273_14855
 	rdf:type FMC:State ;
 	rdfs:label "On" ;
-	pig:category uml:State ;
+	pig:Category uml:State ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746027631056_691503_14836
 	rdf:type FMC:Actor ;
 	rdfs:label "entry→Off" ;
-	pig:category uml:Transition ;
+	pig:Category uml:Transition ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746028442990_717820_15013
 	rdf:type FMC:Actor ;
 	rdfs:label "Off→On" ;
-	pig:category uml:Transition ;
+	pig:Category uml:Transition ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552811554859_819240_14595
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Support Rear" ;
-	pig:category RFLP:Logical_System ;
+	pig:Category RFLP:Logical_System ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552811454014_108965_14365
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Chassis" ;
-	pig:category RFLP:Logical_System ;
+	pig:Category RFLP:Logical_System ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_bc402f4_1604360793737_196507_13523
 	rdf:type SpecIF:ModelElement ;
 	rdfs:label "Collision Alarm \nSensor" ;
-	pig:category RFLP:Logical_System ;
+	pig:Category RFLP:Logical_System ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746028118776_36360_14979
 	rdf:type FMC:Event ;
 	rdfs:label "start_driving!" ;
-	pig:category uml:SignalEvent ;
+	pig:Category uml:SignalEvent ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746028195311_519257_14989
 	rdf:type FMC:Event ;
 	rdfs:label "turn_right!" ;
-	pig:category uml:SignalEvent ;
+	pig:Category uml:SignalEvent ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746028216231_986687_14993
 	rdf:type FMC:Event ;
 	rdfs:label "turned_right!" ;
-	pig:category uml:SignalEvent ;
+	pig:Category uml:SignalEvent ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746028282302_943711_15000
 	rdf:type FMC:Event ;
 	rdfs:label "turn_left!" ;
-	pig:category uml:SignalEvent ;
+	pig:Category uml:SignalEvent ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746028313498_548385_15007
 	rdf:type FMC:Event ;
 	rdfs:label "turned_left!" ;
-	pig:category uml:SignalEvent ;
+	pig:Category uml:SignalEvent ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746028483612_410592_15014
 	rdf:type FMC:Event ;
 	rdfs:label "switch_on!" ;
-	pig:category uml:SignalEvent ;
+	pig:Category uml:SignalEvent ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746028540160_854095_15021
 	rdf:type FMC:Event ;
 	rdfs:label "switch_off!" ;
-	pig:category uml:SignalEvent ;
+	pig:Category uml:SignalEvent ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746028884803_562591_15054
 	rdf:type FMC:Event ;
 	rdfs:label "continue_driving!" ;
-	pig:category uml:SignalEvent ;
+	pig:Category uml:SignalEvent ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746028899054_101006_15058
 	rdf:type FMC:Event ;
 	rdfs:label "halt!" ;
-	pig:category uml:SignalEvent ;
+	pig:Category uml:SignalEvent ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746028954791_356054_15062
 	rdf:type FMC:Event ;
 	rdfs:label "emergency_brake!" ;
-	pig:category uml:SignalEvent ;
+	pig:Category uml:SignalEvent ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746029024681_691401_15066
 	rdf:type FMC:Event ;
 	rdfs:label "navigate!" ;
-	pig:category uml:SignalEvent ;
+	pig:Category uml:SignalEvent ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746029056197_950529_15073
 	rdf:type FMC:Event ;
 	rdfs:label "new_target!" ;
-	pig:category uml:SignalEvent ;
+	pig:Category uml:SignalEvent ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746029726958_589946_15078
 	rdf:type FMC:Event ;
 	rdfs:label "re-navigate!" ;
-	pig:category uml:CallEvent ;
+	pig:Category uml:CallEvent ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746027630942_863638_14801
 	rdf:type FMC:Actor ;
 	rdfs:label "Controller State Machine" ;
-	pig:category uml:StateMachine ;
+	pig:Category uml:StateMachine ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746027630942_464786_14802
 	rdf:type FMC:Actor ;
 	rdfs:label "unnamed uml:Region" ;
-	pig:category uml:Region ;
+	pig:Category uml:Region ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746027731735_371186_14872
 	rdf:type FMC:Actor ;
 	rdfs:label "unnamed uml:Region" ;
-	pig:category uml:Region ;
+	pig:Category uml:Region ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 #################################################################
@@ -2392,8 +2445,8 @@ d:_19_0_3_e40094_1718632569345_311906_14190
 #################################################################
 
 d:HierarchyRoot-P-eee_1045467100313_135436_1
-	rdf:type pig:HierarchyRoot ;
-	dcterms:modified "2026-01-17T22:39:01.606Z" ;
+	rdf:type pig:Root ;
+	dcterms:modified "2026-02-18T13:48:18.068Z" ;
 	rdfs:label "Hierarchy Root" ;
 	rdfs:comment "... anchoring all hierarchies of this graph (package)" ;
 	pig:lists (
@@ -2405,8 +2458,8 @@ d:HR-9052885961
 	rdf:type pig:Outline ;
 	rdfs:label "Small Autonomous Vehicle" ;
 	rdfs:comment "A set of SpecIF Classes derived from a SpecIF Ontology for the domains SpecIF:DomainBase, SpecIF:DomainSystemsEngineering, SpecIF:DomainSystemModelIntegration."@en ;
-	pig:category ReqIF:HierarchyRoot ;
-	dcterms:modified "2026-01-17T22:39:01.449Z" ;
+	pig:Category ReqIF:HierarchyRoot ;
+	dcterms:modified "2026-02-18T13:48:17.951Z" ;
 	pig:lists (
 			d:eee_1045467100313_135436_1
 		) .
@@ -2414,7 +2467,7 @@ d:HR-9052885961
 d:eee_1045467100313_135436_1
 	rdf:type pig:Outline ;
 	rdfs:label "Small Autonomous Vehicle" ;
-	pig:category uml:Model ;
+	pig:Category uml:Model ;
 	pig:revision "rev-10410861023" ;
 	dcterms:modified "2025-11-12T09:27:42.126Z" ;
 	pig:lists (
@@ -2427,8 +2480,8 @@ d:HR-FolderGlossary-10391243923
 	rdf:type pig:Outline ;
 	rdfs:label "Small Autonomous Vehicle" ;
 	rdfs:comment "A set of SpecIF Classes derived from a SpecIF Ontology for the domains SpecIF:DomainBase, SpecIF:DomainSystemsEngineering, SpecIF:DomainSystemModelIntegration."@en ;
-	pig:category ReqIF:HierarchyRoot ;
-	dcterms:modified "2026-01-17T22:39:01.449Z" ;
+	pig:Category ReqIF:HierarchyRoot ;
+	dcterms:modified "2026-02-18T13:48:17.951Z" ;
 	pig:lists (
 			d:FolderGlossary-10391243923
 		) .
@@ -2436,8 +2489,8 @@ d:HR-FolderGlossary-10391243923
 d:FolderGlossary-10391243923
 	rdf:type pig:Outline ;
 	rdfs:label "Model Elements (Glossary)" ;
-	pig:category SpecIF:Glossary ;
-	dcterms:modified "2026-01-17T22:38:43.273Z" ;
+	pig:Category SpecIF:Glossary ;
+	dcterms:modified "2026-02-18T13:48:04.278Z" ;
 	pig:lists (
 			d:_18_5_3_bc402f4_1552814266523_206006_15821
 			d:_18_5_3_bc402f4_1552811469014_293642_14411
