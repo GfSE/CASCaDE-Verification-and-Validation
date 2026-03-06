@@ -56,14 +56,14 @@ pigShapes_pig:Organizer
 		pigShapes_rdfs:comment ,
 		pigShapes_pig:category .
 
-pig:HierarchyRoot
+pig:Root
 	rdfs:subClassOf pig:Organizer ;
 	rdfs:label "Hierarchy Root" ;
 	rdfs:comment "A subclass of PIG organizer serving as a root for hierarchically organized graph elements." .
 
-pigShapes_pig:HierarchyRoot
+pigShapes_pig:Root
 	rdf:type sh:NodeShape ;
-	sh:targetClass pig:HierarchyRoot ;
+	sh:targetClass pig:Root ;
 	sh:property pigShapes_rdfs:label ,
 		pigShapes_rdfs:comment ,
 		pigShapes_pig:lists .

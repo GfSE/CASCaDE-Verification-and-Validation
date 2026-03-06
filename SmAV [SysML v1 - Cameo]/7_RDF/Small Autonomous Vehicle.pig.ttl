@@ -40,22 +40,11 @@ d:
 	owl:imports <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ,
 		<http://www.w3.org/2000/01/rdf-schema#> ;
 	dcterms:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
-	dcterms:modified "2026-02-18T13:48:17.800Z" .
+	dcterms:modified "2026-03-06T17:57:17.429Z" .
 
 #################################################################
 # PIG Metamodel (pig:)
 #################################################################
-
-pig:Package
-	rdf:type owl:Class ;
-	rdfs:label "Package" ;
-	rdfs:comment "A PIG meta-model item used for packages comprising entities, relationships and potentially nested packages." .
-
-pigShapes_pig:Package
-	rdf:type sh:NodeShape ;
-	sh:targetClass pig:Package ;
-	sh:property pigShapes_rdfs:label ,
-		pigShapes_rdfs:comment .
 
 pig:Entity
 	rdf:type owl:Class ;
@@ -69,6 +58,17 @@ pigShapes_pig:Entity
 		pigShapes_rdfs:comment ,
 		pigShapes_pig:Category ,
 		pigShapes_pig:Icon .
+
+pig:Package
+	rdfs:subClassOf pig:Entity ;
+	rdfs:label "Package" ;
+	rdfs:comment "A PIG meta-model item used for packages comprising entities, relationships and potentially nested packages." .
+
+pigShapes_pig:Package
+	rdf:type sh:NodeShape ;
+	sh:targetClass pig:Package ;
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment .
 
 pig:ModelElement
 	rdfs:subClassOf pig:Entity ;
@@ -84,7 +84,7 @@ pigShapes_pig:ModelElement
 FMC:Actor
 	rdfs:subClassOf pig:ModelElement ;
 	rdfs:label "Actor" ;
-	rdfs:comment "A fundamental model-element class for actors (e.g., users, functions, systems, components, ...)." .
+	rdfs:comment "A fundamental model-element class for actors (e.g. users, functions, systems, components, ...)." .
 
 pigShapes_FMC:Actor
 	rdf:type sh:NodeShape ;
@@ -95,7 +95,7 @@ pigShapes_FMC:Actor
 FMC:State
 	rdfs:subClassOf pig:ModelElement ;
 	rdfs:label "State" ;
-	rdfs:comment "A fundamental model-element class for states (e.g., system or process states, information, form, color, ...)." .
+	rdfs:comment "A fundamental model-element class for states (e.g. system or process states, information, form, color, ...)." .
 
 pigShapes_FMC:State
 	rdf:type sh:NodeShape ;
@@ -106,7 +106,7 @@ pigShapes_FMC:State
 FMC:Event
 	rdfs:subClassOf pig:ModelElement ;
 	rdfs:label "Event" ;
-	rdfs:comment "A fundamental model-element class for events (e.g., environmental or process events, ...)." .
+	rdfs:comment "A fundamental model-element class for events (e.g. environmental or process events, ...)." .
 
 pigShapes_FMC:Event
 	rdf:type sh:NodeShape ;
@@ -187,6 +187,17 @@ pigShapes_pig:Table
 		pigShapes_rdfs:comment ,
 		pigShapes_pig:shows .
 
+pig:Enumeration
+	rdfs:subClassOf pig:Entity ;
+	rdfs:label "Enumeration" ;
+	rdfs:comment "A PIG meta-model item used for enumerations of values." .
+
+pigShapes_pig:Enumeration
+	rdf:type sh:NodeShape ;
+	sh:targetClass pig:Enumeration ;
+	sh:property pigShapes_rdfs:label ,
+		pigShapes_rdfs:comment .
+
 pig:Relationship
 	rdf:type owl:Class ;
 	rdfs:label "Relationship" ;
@@ -199,8 +210,8 @@ pigShapes_pig:Relationship
 		pigShapes_rdfs:comment ,
 		pigShapes_pig:Category ,
 		pigShapes_pig:Icon ,
-		"pigShapes_undefined" ,
-		"pigShapes_undefined" .
+		pigShapes_pig:SourceLink ,
+		pigShapes_pig:TargetLink .
 
 pig:Property
 	rdf:type owl:DatatypeProperty ;
@@ -375,14 +386,14 @@ pigShapes_pig:depicts
 
 # Skipping implicit property: pig:Notation
 
-o:PC-Diagram-8458877254
+o:PC-Diagram-10810055447
 	rdf:type owl:DatatypeProperty ;
 	rdfs:label "pig:Diagram" ;
 	rdfs:comment "A diagram illustrating the resource or a link to a diagram." .
 
-o:PC-Diagram-8458877254_shape
+o:PC-Diagram-10810055447_shape
 	rdf:type sh:PropertyShape ;
-	sh:path o:PC-Diagram-8458877254 ;
+	sh:path o:PC-Diagram-10810055447 ;
 	sh:datatype xs:string .
 
 #################################################################
@@ -390,6 +401,7 @@ o:PC-Diagram-8458877254_shape
 #################################################################
 
 SpecIF:Paragraph
+	rdf:type owl:Class ;
 	rdfs:subClassOf pig:Entity ;
 	rdfs:label "Paragraph"@en ,
 		"Textabsatz"@de ,
@@ -406,6 +418,7 @@ pigShapes_SpecIF:Paragraph
 		pigShapes_pig:Category .
 
 SpecIF:ModelElement
+	rdf:type owl:Class ;
 	rdfs:subClassOf pig:Entity ;
 	rdfs:label "Model Element"@en ,
 		"Modellelement"@de ;
@@ -421,6 +434,7 @@ pigShapes_SpecIF:ModelElement
 		pigShapes_pig:Category .
 
 SpecIF:Collection
+	rdf:type owl:Class ;
 	rdfs:subClassOf SpecIF:ModelElement ;
 	rdfs:label "Collection or Group"@en ,
 		"Kollektion oder Gruppe"@de ,
@@ -438,6 +452,7 @@ pigShapes_SpecIF:Collection
 		pigShapes_pig:Category .
 
 uml:Package
+	rdf:type owl:Class ;
 	rdfs:subClassOf SpecIF:Collection ;
 	rdfs:label "Package"@en .
 
@@ -449,6 +464,7 @@ pigShapes_uml:Package
 		pigShapes_pig:Category .
 
 IREB:Requirement
+	rdf:type owl:Class ;
 	rdfs:subClassOf pig:Entity ;
 	rdfs:label "Requirement"@en ,
 		"Anforderung"@de ,
@@ -465,18 +481,19 @@ pigShapes_IREB:Requirement
 		pigShapes_rdfs:comment ,
 		pigShapes_pig:Category .
 
-o:RC-Paragraph-8458877285
+o:RC-Paragraph-10810055447
+	rdf:type owl:Class ;
 	rdfs:subClassOf pig:Entity ;
 	rdfs:label "SpecIF:Paragraph" ;
 	rdfs:comment "<p>A 'Paragraph' is an unspecified information in a document at any level.</p>"@en ,
 		"<p>Ein 'Textabschnitt' in einem Dokument auf beliebiger Ebene.</p>"@de .
 
-o:RC-Paragraph-8458877285_shape
+o:RC-Paragraph-10810055447_shape
 	rdf:type sh:NodeShape ;
-	sh:targetClass o:RC-Paragraph-8458877285 ;
+	sh:targetClass o:RC-Paragraph-10810055447 ;
 	sh:property pigShapes_rdfs:label ,
 		pigShapes_rdfs:comment ,
-		o:PC-Diagram-8458877254_shape ,
+		o:PC-Diagram-10810055447_shape ,
 		pigShapes_pig:Category .
 
 #################################################################
@@ -484,6 +501,7 @@ o:RC-Paragraph-8458877285_shape
 #################################################################
 
 SpecIF:relates
+	rdf:type owl:Class ;
 	rdfs:subClassOf pig:Relationship ;
 	rdfs:label "relates"@en ,
 		"verbindet"@de ,
@@ -519,6 +537,7 @@ pigShapes_SpecIF:relates
 	] .
 
 dcterms:hasPart
+	rdf:type owl:Class ;
 	rdfs:subClassOf SpecIF:relates ;
 	rdfs:label "has part"@en ,
 		"enthält"@de ,
@@ -583,6 +602,7 @@ pigShapes_dcterms:hasPart
 	] .
 
 SpecIF:contains
+	rdf:type owl:Class ;
 	rdfs:subClassOf SpecIF:relates ;
 	rdfs:label "contains"@en ,
 		"enthält"@de ,
@@ -653,6 +673,7 @@ pigShapes_SpecIF:contains
 	] .
 
 oslc_rm:satisfies
+	rdf:type owl:Class ;
 	rdfs:subClassOf pig:Relationship ;
 	rdfs:label "satisfies"@en ,
 		"erfüllt"@de ,
@@ -690,6 +711,7 @@ pigShapes_oslc_rm:satisfies
 	] .
 
 IREB:refines
+	rdf:type owl:Class ;
 	rdfs:subClassOf pig:Relationship ;
 	rdfs:label "refines"@en ,
 		"verfeinert"@de ,
@@ -731,6 +753,7 @@ pigShapes_IREB:refines
 	] .
 
 sysml:Allocate
+	rdf:type owl:Class ;
 	rdfs:subClassOf pig:Relationship ;
 	rdfs:label "is allocated to"@en ,
 		"zugeordnet zu"@de ,
@@ -772,6 +795,7 @@ pigShapes_sysml:Allocate
 	] .
 
 uml:ownedBehavior
+	rdf:type owl:Class ;
 	rdfs:subClassOf pig:Relationship ;
 	rdfs:label "has Behavior" .
 
@@ -814,6 +838,7 @@ pigShapes_uml:ownedBehavior
 	] .
 
 uml:Trigger
+	rdf:type owl:Class ;
 	rdfs:subClassOf pig:Relationship ;
 	rdfs:label "triggers" .
 
@@ -844,6 +869,7 @@ pigShapes_uml:Trigger
 	] .
 
 uml:TransitionSource
+	rdf:type owl:Class ;
 	rdfs:subClassOf pig:Relationship ;
 	rdfs:label "starts from" .
 
@@ -890,6 +916,7 @@ pigShapes_uml:TransitionSource
 	] .
 
 uml:TransitionTarget
+	rdf:type owl:Class ;
 	rdfs:subClassOf pig:Relationship ;
 	rdfs:label "ends at" .
 
@@ -2446,7 +2473,7 @@ d:_19_0_3_e40094_1718632569345_311906_14190
 
 d:HierarchyRoot-P-eee_1045467100313_135436_1
 	rdf:type pig:Root ;
-	dcterms:modified "2026-02-18T13:48:18.068Z" ;
+	dcterms:modified "2026-03-06T17:57:17.711Z" ;
 	rdfs:label "Hierarchy Root" ;
 	rdfs:comment "... anchoring all hierarchies of this graph (package)" ;
 	pig:lists (
@@ -2459,7 +2486,7 @@ d:HR-9052885961
 	rdfs:label "Small Autonomous Vehicle" ;
 	rdfs:comment "A set of SpecIF Classes derived from a SpecIF Ontology for the domains SpecIF:DomainBase, SpecIF:DomainSystemsEngineering, SpecIF:DomainSystemModelIntegration."@en ;
 	pig:Category ReqIF:HierarchyRoot ;
-	dcterms:modified "2026-02-18T13:48:17.951Z" ;
+	dcterms:modified "2026-03-06T17:57:17.583Z" ;
 	pig:lists (
 			d:eee_1045467100313_135436_1
 		) .
@@ -2481,7 +2508,7 @@ d:HR-FolderGlossary-10391243923
 	rdfs:label "Small Autonomous Vehicle" ;
 	rdfs:comment "A set of SpecIF Classes derived from a SpecIF Ontology for the domains SpecIF:DomainBase, SpecIF:DomainSystemsEngineering, SpecIF:DomainSystemModelIntegration."@en ;
 	pig:Category ReqIF:HierarchyRoot ;
-	dcterms:modified "2026-02-18T13:48:17.951Z" ;
+	dcterms:modified "2026-03-06T17:57:17.583Z" ;
 	pig:lists (
 			d:FolderGlossary-10391243923
 		) .
@@ -2490,7 +2517,7 @@ d:FolderGlossary-10391243923
 	rdf:type pig:Outline ;
 	rdfs:label "Model Elements (Glossary)" ;
 	pig:Category SpecIF:Glossary ;
-	dcterms:modified "2026-02-18T13:48:04.278Z" ;
+	dcterms:modified "2026-03-06T17:56:29.075Z" ;
 	pig:lists (
 			d:_18_5_3_bc402f4_1552814266523_206006_15821
 			d:_18_5_3_bc402f4_1552811469014_293642_14411
