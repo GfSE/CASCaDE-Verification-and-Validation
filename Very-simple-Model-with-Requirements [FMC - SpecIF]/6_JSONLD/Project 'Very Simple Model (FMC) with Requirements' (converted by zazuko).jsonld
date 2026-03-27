@@ -4,43 +4,21 @@
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
     "owl": "http://www.w3.org/2002/07/owl#",
     "sh": "http://www.w3.org/ns/shacl#",
-    "xsd": "http://www.w3.org/2001/XMLSchema#",
     "dcterms": "http://purl.org/dc/terms/",
-    "schema": "http://schema.org/",
-    "foaf": "http://xmlns.com/foaf/0.1/",
-    "dc11": "http://purl.org/dc/elements/1.1/",
-    "W3C": "https://www.w3.org/standards/semanticweb#",
-    "iana": "https://www.iana.org/assignments/media-types#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
     "FMC": "http://fmc-modeling.org#",
-    "RFLP": "https://product-information-graph.org/v0.2/ontology/RFLP#",
-    "IR": "https://www.adesso.de/de/impulse/interaction-room/index.jsp#",
     "IREB": "https://cpre.ireb.org/en/downloads-and-resources/glossary#",
     "ReqIF": "https://www.prostep.org/fileadmin/downloads/PSI_ImplementationGuide_ReqIF_V1-7.pdf#",
-    "ReqIF-WF": "https://www.prostep.org/fileadmin/downloads/Recommendation_ReqIF_V2_RZ3.pdf#",
-    "HIS": "https://www.itwissen.info/Herstellerinitiative-Software-Automotive-HIS.html#",
-    "oslc": "http://open-services.net/ns/core#",
     "oslc_rm": "http://open-services.net/ns/rm#",
-    "oslc_cm": "http://open-services.net/ns/cm#",
-    "ArchiMate": "https://pubs.opengroup.org#",
-    "bpmn": "https://www.bpmn.org#",
-    "uml": "https://www.omg.org/spec/UML#",
-    "sysml": "https://www.omg.org/spec/SysML#",
-    "pig": "https://product-information-graph.org/metamodel#",
-    "DDP": "http://www.prostep.org/dictionary/2.0#",
+    "pig": "https://product-information-graph.org/v0.2/metamodel#",
     "SpecIF": "https://specif.de/v1.2/schema#",
-    "pigShapes_dcterms": "https://product-information-graph.org/v0.2/ontology/shapes/dcterms:#",
-    "pigShapes_rdfs": "https://product-information-graph.org/v0.2/ontology/shapes/rdfs:#",
-    "pigShapes_uml": "https://product-information-graph.org/v0.2/ontology/shapes/uml:#",
-    "pigShapes_sysml": "https://product-information-graph.org/v0.2/ontology/shapes/sysml:#",
-    "pigShapes_FMC": "https://product-information-graph.org/v0.2/ontology/shapes/FMC:#",
-    "pigShapes_RFLP": "https://product-information-graph.org/v0.2/ontology/shapes/RFLP:#",
-    "pigShapes_IREB": "https://product-information-graph.org/v0.2/ontology/shapes/IREB:#",
-    "pigShapes_oslc_rm": "https://product-information-graph.org/v0.2/ontology/shapes/oslc_rm:#",
-    "pigShapes_oslc_cm": "https://product-information-graph.org/v0.2/ontology/shapes/oslc_cm:#",
-    "pigShapes_ReqIF": "https://product-information-graph.org/v0.2/ontology/shapes/ReqIF:#",
-    "pigShapes_ReqIF-WF": "https://product-information-graph.org/v0.2/ontology/shapes/ReqIF-WF:#",
-    "pigShapes_SpecIF": "https://product-information-graph.org/v0.2/ontology/shapes/SpecIF:#",
-    "pigShapes_pig": "https://product-information-graph.org/v0.2/ontology/shapes/pig:#",
+    "pigShapes_rdfs": "https://product-information-graph.org/v0.2/ontology/shapes/rdfs#",
+    "pigShapes_FMC": "https://product-information-graph.org/v0.2/ontology/shapes/FMC#",
+    "pigShapes_IREB": "https://product-information-graph.org/v0.2/ontology/shapes/IREB#",
+    "pigShapes_oslc_rm": "https://product-information-graph.org/v0.2/ontology/shapes/oslc_rm#",
+    "pigShapes_ReqIF": "https://product-information-graph.org/v0.2/ontology/shapes/ReqIF#",
+    "pigShapes_SpecIF": "https://product-information-graph.org/v0.2/ontology/shapes/SpecIF#",
+    "pigShapes_pig": "https://product-information-graph.org/v0.2/ontology/shapes/pig#",
     "o": "https://product-information-graph.org/v0.2/ontology#",
     "d": "https://product-information-graph.org/examples/09_Very-Simple-Model-FMC-with-Requirements.specif.zip#"
   },
@@ -79,33 +57,24 @@
           },
           {
             "@id": "pig:Relationship"
-          },
-          {
-            "@id": "pig:Organizer"
           }
         ]
       }
     },
     {
-      "@id": "_:g19",
+      "@id": "_:g18",
       "sh:class": {
         "@id": "pig:Entity"
+      }
+    },
+    {
+      "@id": "_:g20",
+      "sh:class": {
+        "@id": "pig:Relationship"
       }
     },
     {
       "@id": "_:g21",
-      "sh:class": {
-        "@id": "pig:Relationship"
-      }
-    },
-    {
-      "@id": "_:g23",
-      "sh:class": {
-        "@id": "pig:Organizer"
-      }
-    },
-    {
-      "@id": "_:g24",
       "owl:unionOf": {
         "@list": [
           {
@@ -121,25 +90,25 @@
       }
     },
     {
-      "@id": "_:g29",
+      "@id": "_:g26",
       "sh:class": {
         "@id": "pig:Entity"
       }
     },
     {
-      "@id": "_:g31",
+      "@id": "_:g28",
       "sh:class": {
         "@id": "pig:Relationship"
       }
     },
     {
-      "@id": "_:g33",
+      "@id": "_:g30",
       "sh:class": {
         "@id": "pig:Organizer"
       }
     },
     {
-      "@id": "_:g34",
+      "@id": "_:g31",
       "owl:unionOf": {
         "@list": [
           {
@@ -152,7 +121,19 @@
       }
     },
     {
-      "@id": "_:g38",
+      "@id": "_:g35",
+      "sh:class": {
+        "@id": "pig:Entity"
+      }
+    },
+    {
+      "@id": "_:g37",
+      "sh:class": {
+        "@id": "pig:Relationship"
+      }
+    },
+    {
+      "@id": "_:g39",
       "sh:class": {
         "@id": "pig:Entity"
       }
@@ -164,15 +145,30 @@
       }
     },
     {
-      "@id": "_:g40",
-      "sh:class": {
-        "@id": "pig:Relationship"
+      "@id": "_:g43",
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:or": {
+        "@list": [
+          {
+            "@id": "_:g45"
+          }
+        ]
+      },
+      "sh:path": {
+        "@id": "SpecIF:writes-toSource"
       }
     },
     {
-      "@id": "_:g42",
+      "@id": "_:g45",
       "sh:class": {
-        "@id": "pig:Entity"
+        "@id": "FMC:Actor"
       }
     },
     {
@@ -193,13 +189,13 @@
         ]
       },
       "sh:path": {
-        "@id": "SpecIF:writes-hasSource"
+        "@id": "SpecIF:writes-toTarget"
       }
     },
     {
       "@id": "_:g48",
       "sh:class": {
-        "@id": "FMC:Actor"
+        "@id": "FMC:State"
       }
     },
     {
@@ -220,13 +216,13 @@
         ]
       },
       "sh:path": {
-        "@id": "SpecIF:writes-hasTarget"
+        "@id": "SpecIF:reads-toSource"
       }
     },
     {
       "@id": "_:g51",
       "sh:class": {
-        "@id": "FMC:State"
+        "@id": "FMC:Actor"
       }
     },
     {
@@ -247,44 +243,17 @@
         ]
       },
       "sh:path": {
-        "@id": "SpecIF:reads-hasSource"
+        "@id": "SpecIF:reads-toTarget"
       }
     },
     {
       "@id": "_:g54",
       "sh:class": {
-        "@id": "FMC:Actor"
-      }
-    },
-    {
-      "@id": "_:g55",
-      "sh:maxCount": {
-        "@type": "xsd:integer",
-        "@value": "1"
-      },
-      "sh:minCount": {
-        "@type": "xsd:integer",
-        "@value": "1"
-      },
-      "sh:or": {
-        "@list": [
-          {
-            "@id": "_:g57"
-          }
-        ]
-      },
-      "sh:path": {
-        "@id": "SpecIF:reads-hasTarget"
-      }
-    },
-    {
-      "@id": "_:g57",
-      "sh:class": {
         "@id": "FMC:State"
       }
     },
     {
-      "@id": "_:g58",
+      "@id": "_:g55",
       "owl:unionOf": {
         "@list": [
           {
@@ -297,13 +266,49 @@
       }
     },
     {
+      "@id": "_:g58",
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:or": {
+        "@list": [
+          {
+            "@id": "_:g60"
+          },
+          {
+            "@id": "_:g62"
+          }
+        ]
+      },
+      "sh:path": {
+        "@id": "oslc_rm:satisfies-toSource"
+      }
+    },
+    {
       "@id": "_:g6",
       "sh:class": {
         "@id": "pig:Relationship"
       }
     },
     {
-      "@id": "_:g61",
+      "@id": "_:g60",
+      "sh:class": {
+        "@id": "FMC:Actor"
+      }
+    },
+    {
+      "@id": "_:g62",
+      "sh:class": {
+        "@id": "FMC:State"
+      }
+    },
+    {
+      "@id": "_:g63",
       "sh:maxCount": {
         "@type": "xsd:integer",
         "@value": "1"
@@ -314,53 +319,17 @@
       },
       "sh:or": {
         "@list": [
-          {
-            "@id": "_:g63"
-          },
           {
             "@id": "_:g65"
           }
         ]
       },
       "sh:path": {
-        "@id": "oslc_rm:satisfies-hasSource"
-      }
-    },
-    {
-      "@id": "_:g63",
-      "sh:class": {
-        "@id": "FMC:Actor"
+        "@id": "oslc_rm:satisfies-toTarget"
       }
     },
     {
       "@id": "_:g65",
-      "sh:class": {
-        "@id": "FMC:State"
-      }
-    },
-    {
-      "@id": "_:g66",
-      "sh:maxCount": {
-        "@type": "xsd:integer",
-        "@value": "1"
-      },
-      "sh:minCount": {
-        "@type": "xsd:integer",
-        "@value": "1"
-      },
-      "sh:or": {
-        "@list": [
-          {
-            "@id": "_:g68"
-          }
-        ]
-      },
-      "sh:path": {
-        "@id": "oslc_rm:satisfies-hasTarget"
-      }
-    },
-    {
-      "@id": "_:g68",
       "sh:class": {
         "@id": "IREB:Requirement"
       }
@@ -380,111 +349,31 @@
     },
     {
       "@id": "FMC:Actor",
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "<p>An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role.</p><p>The  particular use or original type is specified with a [[dcterms:type]] property of the 'FMC:Actor'. A value of that property should be an ontology-term, such as [[bpmn:processStep]].</p>"
-        },
-        {
-          "@language": "de",
-          "@value": "<p>Ein 'Akteur' ist ein fundamentaler Modellelementtyp, der eine aktive Entität darstellt, sei es eine Aktivität, ein Prozessschritt, eine Funktion, eine Systemkomponente oder eine Rolle.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Actor' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[bpmn:timer]].</p>"
-        },
-        {
-          "@language": "fr",
-          "@value": "<p>Un 'Acteur' est un type d'élément de modèle fondamental représentant une entité active, qu'il s'agisse d'une activité, d'une étape de processus, d'une fonction, d'un composant de système ou d'un rôle.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:Actor'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[bpmn:timer]].</p>"
-        }
-      ],
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Actor"
-        },
-        {
-          "@language": "de",
-          "@value": "Akteur"
-        },
-        {
-          "@language": "fr",
-          "@value": "Acteur"
-        }
-      ],
+      "rdfs:comment": "A fundamental model-element class for actors (e.g. users, functions, systems, components, ...).",
+      "rdfs:label": "Actor",
       "rdfs:subClassOf": {
-        "@id": "pig:Entity"
-      },
-      "pig:icon": "&#x25A1;"
+        "@id": "pig:ModelElement"
+      }
     },
     {
       "@id": "FMC:Event",
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "<p>An 'Event' is a fundamental model element type representing a time reference, a change in condition/value or more generally a synchronization primitive.</p><p>The particular use or the original type is specified with a [[dcterms:type]] property of the 'FMC:Event'. A value of that property should be an ontology-term, such as [[bpmn:startEvent]].</p>"
-        },
-        {
-          "@language": "de",
-          "@value": "<p>Ein 'Ereignis' ist ein fundamentaler Modellelementtyp, der eine Zeitreferenz, eine Änderung einer Bedingung/eines Wertes oder allgemeiner ein Synchronisationsmittel darstellt.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Event' spezifiziert. Die Werte dieser Eigenschaft sollen Ontologiebegriffe sein, wie z.B. [[bpmn:startEvent]].</p>"
-        },
-        {
-          "@language": "fr",
-          "@value": "<p>Un 'Événement' est un type d'élément de modèle fondamental représentant une référence temporelle, un changement de condition/valeur ou plus généralement une primitive de synchronisation.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:Event'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[bpmn:startEvent]].</p>"
-        }
-      ],
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Event"
-        },
-        {
-          "@language": "de",
-          "@value": "Ereignis"
-        },
-        {
-          "@language": "fr",
-          "@value": "Évenement"
-        }
-      ],
+      "rdfs:comment": "A fundamental model-element class for events (e.g. environmental or process events, ...).",
+      "rdfs:label": "Event",
       "rdfs:subClassOf": {
-        "@id": "pig:Entity"
-      },
-      "pig:icon": "&#x2662;"
+        "@id": "pig:ModelElement"
+      }
     },
     {
       "@id": "FMC:State",
-      "rdfs:comment": [
-        {
-          "@language": "en",
-          "@value": "<p>A 'State' is a fundamental model element type representing a passive entity, be it a value, a condition, an information storage or even a physical shape.</p><p>The particular use or the original type is specified with a [[dcterms:type]] property of the 'FMC:State'. A value of that property should bean  ontology-term, such as [[bpmn:dataObject]].</p>"
-        },
-        {
-          "@language": "de",
-          "@value": "<p>Ein 'Zustand' ist ein fundamentaler Modellelementtyp, der eine passive Entität darstellt, sei es ein Wert, ein Dokument, ein Informationsspeicher, eine Bedingung oder eine physische Beschaffenheit.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:State' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[ArchiMate:DataObject]].</p>"
-        },
-        {
-          "@language": "fr",
-          "@value": "<p>Un 'État' est un type d'élément de modèle fondamental représentant une entité passive, qu'il s'agisse d'une valeur, d'une condition, d'un stockage d'informations ou même d'une forme physique.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:State'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[ArchiMate:DataObject]].</p>"
-        }
-      ],
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "State"
-        },
-        {
-          "@language": "de",
-          "@value": "Zustand"
-        },
-        {
-          "@language": "fr",
-          "@value": "État"
-        }
-      ],
+      "rdfs:comment": "A fundamental model-element class for states (e.g. system or process states, information, form, color, ...).",
+      "rdfs:label": "State",
       "rdfs:subClassOf": {
-        "@id": "pig:Entity"
-      },
-      "pig:icon": "&#x25CB;"
+        "@id": "pig:ModelElement"
+      }
     },
     {
       "@id": "oslc_rm:satisfies",
+      "@type": "owl:Class",
       "rdfs:comment": {
         "@language": "en",
         "@value": "<p>The object is satisfied by the subject. <small>(<i>source: <a href=\"http://open-services.net/\">OSLC</a></i>)</small></p><p>SpecIF suggests that the subject is confined to a model element, e.g, a [[FMC:Actor]] or [[FMC:State]], and the object is confined to a [[IREB:Requirement]]. More concretely, an example for this type of statement is 'Component-X <em>satisfies</em> 'Requirement-4711'.</p>"
@@ -508,33 +397,36 @@
       }
     },
     {
-      "@id": "oslc_rm:satisfies-hasSource",
+      "@id": "oslc_rm:satisfies-toSource",
       "rdfs:comment": "Connects the source of oslc_rm:satisfies",
       "rdfs:domain": {
         "@id": "oslc_rm:satisfies"
       },
+      "rdfs:label": "oslc_rm:satisfies to source",
       "rdfs:range": {
-        "@id": "_:g58"
+        "@id": "_:g55"
       },
       "rdfs:subPropertyOf": {
-        "@id": "pig:eligibleSource"
+        "@id": "pig:SourceLink"
       }
     },
     {
-      "@id": "oslc_rm:satisfies-hasTarget",
+      "@id": "oslc_rm:satisfies-toTarget",
       "rdfs:comment": "Connects the target of oslc_rm:satisfies",
       "rdfs:domain": {
         "@id": "oslc_rm:satisfies"
       },
+      "rdfs:label": "oslc_rm:satisfies to target",
       "rdfs:range": {
         "@id": "IREB:Requirement"
       },
       "rdfs:subPropertyOf": {
-        "@id": "pig:eligibleTarget"
+        "@id": "pig:TargetLink"
       }
     },
     {
       "@id": "IREB:Requirement",
+      "@type": "owl:Class",
       "rdfs:comment": [
         {
           "@language": "en",
@@ -566,7 +458,7 @@
       "rdfs:subClassOf": {
         "@id": "pig:Entity"
       },
-      "pig:icon": "&#8623;"
+      "pig:Icon": "&#8623;"
     },
     {
       "@id": "https://product-information-graph.org/examples/09_Very-Simple-Model-FMC-with-Requirements.specif.zip#",
@@ -574,7 +466,7 @@
       "dcterms:license": {
         "@id": "https://creativecommons.org/licenses/by-sa/4.0/"
       },
-      "dcterms:modified": "2025-11-12T14:39:33.257Z",
+      "dcterms:modified": "2026-03-06T17:36:25.471Z",
       "rdfs:label": "Project 'Very Simple Model (FMC) with Requirements'",
       "owl:imports": [
         {
@@ -590,7 +482,8 @@
       "@type": "pig:View",
       "dcterms:modified": "2020-03-06T08:32:00+01:00",
       "rdfs:label": "IT-Integration: FiCo-Application and FiCo-Data",
-      "pig:category": "FMC Block Diagram",
+      "pig:Category": "FMC Block Diagram",
+      "pig:Diagram": "<p class=\"inline-label\">Model Diagram:</p><p><object type=\"image/svg+xml\" data=\"files_and_images/Very-Simple-Model-FMC.svg\">Notation: FMC Block Diagram</object></p>",
       "pig:shows": {
         "@list": [
           {
@@ -606,8 +499,7 @@
             "@id": "d:SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc"
           }
         ]
-      },
-      "SpecIF:Diagram": "<p class=\"inline-label\">Model Diagram:</p><p><object type=\"image/svg+xml\" data=\"files_and_images/Very-Simple-Model-FMC.svg\">Notation: FMC Block Diagram</object></p>"
+      }
     },
     {
       "@id": "d:Folder-Introduction",
@@ -651,9 +543,9 @@
     {
       "@id": "d:FolderGlossary-10875487071",
       "@type": "pig:Outline",
-      "dcterms:modified": "2025-11-12T14:31:54.244Z",
+      "dcterms:modified": "2026-03-06T17:34:25.053Z",
       "rdfs:label": "Model Elements (Glossary)",
-      "pig:category": {
+      "pig:Category": {
         "@id": "SpecIF:Glossary"
       },
       "pig:lists": {
@@ -668,14 +560,88 @@
       }
     },
     {
-      "@id": "d:HierarchyRoot",
-      "@type": "pig:HierarchyRoot",
+      "@id": "d:HR-Folder-Introduction",
+      "@type": "pig:Outline",
+      "dcterms:modified": "2026-03-06T17:36:25.567Z",
+      "rdfs:label": "Project 'Very Simple Model (FMC) with Requirements'",
+      "pig:Category": {
+        "@id": "ReqIF:HierarchyRoot"
+      },
+      "pig:lists": {
+        "@list": [
+          {
+            "@id": "d:Folder-Introduction"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "d:HR-Folder-Requirements",
+      "@type": "pig:Outline",
+      "dcterms:modified": "2026-03-06T17:36:25.567Z",
+      "rdfs:label": "Project 'Very Simple Model (FMC) with Requirements'",
+      "pig:Category": {
+        "@id": "ReqIF:HierarchyRoot"
+      },
+      "pig:lists": {
+        "@list": [
+          {
+            "@id": "d:Folder-Requirements"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "d:HR-Folder-SystemModel",
+      "@type": "pig:Outline",
+      "dcterms:modified": "2026-03-06T17:36:25.567Z",
+      "rdfs:label": "Project 'Very Simple Model (FMC) with Requirements'",
+      "pig:Category": {
+        "@id": "ReqIF:HierarchyRoot"
+      },
+      "pig:lists": {
+        "@list": [
+          {
+            "@id": "d:Folder-SystemModel"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "d:HR-FolderGlossary-10875487071",
+      "@type": "pig:Outline",
+      "dcterms:modified": "2026-03-06T17:36:25.567Z",
+      "rdfs:label": "Project 'Very Simple Model (FMC) with Requirements'",
+      "pig:Category": {
+        "@id": "ReqIF:HierarchyRoot"
+      },
+      "pig:lists": {
+        "@list": [
+          {
+            "@id": "d:FolderGlossary-10875487071"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "d:HierarchyRoot-ACP-Very-Simple-Model-FMC-with-Requirements",
+      "@type": "pig:Root",
+      "dcterms:modified": "2026-03-06T17:36:25.645Z",
       "rdfs:comment": "... anchoring all hierarchies of this graph (package)",
       "rdfs:label": "Hierarchy Root",
       "pig:lists": {
         "@list": [
           {
-            "@id": "d:O-ACP-Very-Simple-Model-FMC-with-Requirements"
+            "@id": "d:HR-Folder-Introduction"
+          },
+          {
+            "@id": "d:HR-Folder-Requirements"
+          },
+          {
+            "@id": "d:HR-Folder-SystemModel"
+          },
+          {
+            "@id": "d:HR-FolderGlossary-10875487071"
           }
         ]
       }
@@ -693,31 +659,6 @@
       "dcterms:modified": "2020-03-06T09:03:00+01:00",
       "rdfs:comment": "<p>Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc.</p>",
       "rdfs:label": "FiCo-Data"
-    },
-    {
-      "@id": "d:O-ACP-Very-Simple-Model-FMC-with-Requirements",
-      "@type": "pig:Outline",
-      "dcterms:modified": "2025-01-26T17:06:19.300Z",
-      "rdfs:label": "Project 'Very Simple Model (FMC) with Requirements'",
-      "pig:category": {
-        "@id": "SpecIF:Heading"
-      },
-      "pig:lists": {
-        "@list": [
-          {
-            "@id": "d:Folder-Introduction"
-          },
-          {
-            "@id": "d:Folder-Requirements"
-          },
-          {
-            "@id": "d:Folder-SystemModel"
-          },
-          {
-            "@id": "d:FolderGlossary-10875487071"
-          }
-        ]
-      }
     },
     {
       "@id": "d:Req-0Z7916e2872e78ecadc50feddc00918a",
@@ -754,10 +695,10 @@
       "@type": "SpecIF:reads",
       "dcterms:modified": "2020-03-06T09:05:00+01:00",
       "rdfs:comment": "'FiCo-Application' reads 'FiCo-Data'",
-      "SpecIF:reads-hasSource": {
+      "SpecIF:reads-toSource": {
         "@id": "d:MEl-50fbfe8f0029b1a8016ea86245a9d83a"
       },
-      "SpecIF:reads-hasTarget": {
+      "SpecIF:reads-toTarget": {
         "@id": "d:MEl-50feddc00029b1a8016e2872e78ecadc"
       }
     },
@@ -766,20 +707,20 @@
       "@type": "SpecIF:writes",
       "dcterms:modified": "2020-03-06T09:05:00+01:00",
       "rdfs:comment": "'FiCo-Application' writes 'FiCo-Data'",
-      "SpecIF:writes-hasSource": {
+      "SpecIF:writes-toSource": {
         "@id": "d:MEl-50fbfe8f0029b1a8016ea86245a9d83a"
       },
-      "SpecIF:writes-hasTarget": {
+      "SpecIF:writes-toTarget": {
         "@id": "d:MEl-50feddc00029b1a8016e2872e78ecadc"
       }
     },
     {
       "@id": "d:Ssat-50fbfe8f0029b1a8016ea86245a9d83a-2b9016e2872e78ecadc50feddc0013Ac",
       "@type": "oslc_rm:satisfies",
-      "oslc_rm:satisfies-hasSource": {
+      "oslc_rm:satisfies-toSource": {
         "@id": "d:MEl-50fbfe8f0029b1a8016ea86245a9d83a"
       },
-      "oslc_rm:satisfies-hasTarget": {
+      "oslc_rm:satisfies-toTarget": {
         "@id": "d:Req-2b9016e2872e78ecadc50feddc0013Ac"
       },
       "dcterms:modified": "2020-10-17T10:00:00+01:00",
@@ -788,10 +729,10 @@
     {
       "@id": "d:Ssat-50feddc00029b1a8016e2872e78ecadc-0Z7916e2872e78ecadc50feddc00918a",
       "@type": "oslc_rm:satisfies",
-      "oslc_rm:satisfies-hasSource": {
+      "oslc_rm:satisfies-toSource": {
         "@id": "d:MEl-50feddc00029b1a8016e2872e78ecadc"
       },
-      "oslc_rm:satisfies-hasTarget": {
+      "oslc_rm:satisfies-toTarget": {
         "@id": "d:Req-0Z7916e2872e78ecadc50feddc00918a"
       },
       "dcterms:modified": "2020-10-17T10:00:00+01:00",
@@ -800,67 +741,166 @@
     {
       "@id": "d:Ssat-50feddc00029b1a8016e2872e78ecadc-1a8016e2872e78ecadc50feddc00029b",
       "@type": "oslc_rm:satisfies",
-      "oslc_rm:satisfies-hasSource": {
+      "oslc_rm:satisfies-toSource": {
         "@id": "d:MEl-50feddc00029b1a8016e2872e78ecadc"
       },
-      "oslc_rm:satisfies-hasTarget": {
+      "oslc_rm:satisfies-toTarget": {
         "@id": "d:Req-1a8016e2872e78ecadc50feddc00029b"
       },
       "dcterms:modified": "2020-10-17T10:00:00+01:00",
       "rdfs:comment": "'FiCo-Data' satisfies 'Data Volume'"
     },
     {
+      "@id": "pig:Category",
+      "rdfs:comment": "Specifies a category for an element (entity, relationship or organizer).",
+      "rdfs:label": "has category",
+      "rdfs:subPropertyOf": {
+        "@id": "pig:Property"
+      }
+    },
+    {
+      "@id": "pig:Diagram",
+      "rdfs:comment": "A diagram illustrating the resource or a link to a diagram.",
+      "rdfs:label": "Diagram",
+      "rdfs:subPropertyOf": {
+        "@id": "pig:Property"
+      }
+    },
+    {
       "@id": "pig:Entity",
       "@type": "owl:Class",
-      "rdfs:comment": "A PIG meta-model element used for entities (aka resources or artifacts).",
+      "rdfs:comment": "A PIG meta-model item used for entities (aka resources or artifacts).",
       "rdfs:label": "Entity"
     },
     {
-      "@id": "pig:HierarchyRoot",
-      "rdfs:comment": "A subclass of PIG organizer serving as a root for hierarchically organized graph elements.",
-      "rdfs:label": "Hierarchy Root",
+      "@id": "pig:Enumeration",
+      "rdfs:comment": "A PIG meta-model item used for enumerations of values.",
+      "rdfs:label": "Enumeration",
       "rdfs:subClassOf": {
-        "@id": "pig:Organizer"
+        "@id": "pig:Entity"
+      }
+    },
+    {
+      "@id": "pig:Icon",
+      "rdfs:comment": "Specifies an icon for a model element (entity or relationship).",
+      "rdfs:label": "has icon",
+      "rdfs:subPropertyOf": {
+        "@id": "pig:Property"
+      }
+    },
+    {
+      "@id": "pig:Link",
+      "@type": "owl:ObjectProperty",
+      "rdfs:comment": "A PIG meta-model item connecting a reified relationship with its source or target. Also connects an organizer to a model element.",
+      "rdfs:label": "linked with",
+      "rdfs:range": {
+        "@id": "_:g0"
+      }
+    },
+    {
+      "@id": "pig:ModelElement",
+      "rdfs:comment": "The most generic class for all model elements (entities and relationships).",
+      "rdfs:label": "Model-Element",
+      "rdfs:subClassOf": {
+        "@id": "pig:Entity"
+      }
+    },
+    {
+      "@id": "pig:Notation",
+      "rdfs:comment": "A reference to a notation defining the syntax and semantics of a diagram.",
+      "rdfs:label": "Notation",
+      "rdfs:subPropertyOf": {
+        "@id": "pig:Category"
       }
     },
     {
       "@id": "pig:Organizer",
-      "@type": "owl:Class",
-      "rdfs:comment": "An element organizing model elements. An example is a list of requirements or a diagram using a certain notation which depicts selected model elements.",
-      "rdfs:label": "Organizer"
+      "rdfs:comment": "A class for organizing model-elements. An example is a list of requirements or a diagram using a certain notation.",
+      "rdfs:label": "Organizer",
+      "rdfs:subClassOf": {
+        "@id": "pig:Entity"
+      }
     },
     {
       "@id": "pig:Outline",
-      "rdfs:comment": "A subclass of PIG organizer comprising all information items of a human-readable document. As usual, the outline is hierarchically organized.",
+      "rdfs:comment": "A subclass of pig:Tree comprising all information items of a human-readable document. As usual, the outline is hierarchically organized.",
       "rdfs:label": "Outline",
+      "rdfs:subClassOf": {
+        "@id": "pig:Tree"
+      }
+    },
+    {
+      "@id": "pig:Package",
+      "rdfs:comment": "A PIG meta-model item used for packages comprising entities, relationships and potentially nested packages.",
+      "rdfs:label": "Package",
+      "rdfs:subClassOf": {
+        "@id": "pig:Entity"
+      }
+    },
+    {
+      "@id": "pig:Property",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "A PIG meta-model item used for properties (aka attributes).",
+      "rdfs:label": "Property"
+    },
+    {
+      "@id": "pig:Relationship",
+      "@type": "owl:Class",
+      "rdfs:comment": "A PIG meta-model item used for reified relationships (aka predicates).",
+      "rdfs:label": "Relationship"
+    },
+    {
+      "@id": "pig:Root",
+      "rdfs:comment": "A subclass of pig:Organizer serving as a root for trees and tables.",
+      "rdfs:label": "Root",
       "rdfs:subClassOf": {
         "@id": "pig:Organizer"
       }
     },
     {
-      "@id": "pig:Relationship",
-      "@type": "owl:Class",
-      "rdfs:comment": "A PIG meta-model element used for reified relationships (aka predicates).",
-      "rdfs:label": "Relationship"
+      "@id": "pig:SourceLink",
+      "rdfs:comment": "Connects the source of a reified relationship.",
+      "rdfs:label": "to source",
+      "rdfs:range": {
+        "@id": "_:g7"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "pig:Link"
+      }
+    },
+    {
+      "@id": "pig:Table",
+      "rdfs:comment": "A subclass of pig:Organizer representing a table showing selected model elements.",
+      "rdfs:label": "Table",
+      "rdfs:subClassOf": {
+        "@id": "pig:Organizer"
+      }
+    },
+    {
+      "@id": "pig:TargetLink",
+      "rdfs:comment": "Connects the target of a reified relationship or an organizer.",
+      "rdfs:label": "to target",
+      "rdfs:range": {
+        "@id": "_:g14"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "pig:Link"
+      }
+    },
+    {
+      "@id": "pig:Tree",
+      "rdfs:comment": "A subclass of pig:Organizer for strictly hierarchical data structures referencing entities and relationships.",
+      "rdfs:label": "Tree",
+      "rdfs:subClassOf": {
+        "@id": "pig:Organizer"
+      }
     },
     {
       "@id": "pig:View",
-      "rdfs:comment": "A PIG organizer class representing a diagram with certain model-elements for a given communication purpose.",
+      "rdfs:comment": "A subclass of pig:Organizer representing a model view (diagram) using a certain notation showing selected model elements.",
       "rdfs:label": "View",
       "rdfs:subClassOf": {
         "@id": "pig:Organizer"
-      },
-      "pig:icon": "▣"
-    },
-    {
-      "@id": "pig:category",
-      "rdfs:comment": "Specifies a category for an element (entity, relationship or organizer).",
-      "rdfs:label": "has category",
-      "rdfs:range": {
-        "@id": "xsd:string"
-      },
-      "rdfs:subPropertyOf": {
-        "@id": "dcterms:type"
       }
     },
     {
@@ -871,65 +911,84 @@
         "@id": "pig:Entity"
       },
       "rdfs:subPropertyOf": {
-        "@id": "pig:eligibleElement"
-      }
-    },
-    {
-      "@id": "pig:eligibleElement",
-      "@type": "owl:ObjectProperty",
-      "rdfs:comment": "References an entity, a relationship or a subordinated organizer.",
-      "rdfs:label": "has element",
-      "rdfs:range": {
-        "@id": "_:g14"
-      }
-    },
-    {
-      "@id": "pig:eligibleSource",
-      "@type": "owl:ObjectProperty",
-      "rdfs:comment": "Connects the source of a reified relationship.",
-      "rdfs:label": "has source",
-      "rdfs:range": {
-        "@id": "_:g0"
-      }
-    },
-    {
-      "@id": "pig:eligibleTarget",
-      "@type": "owl:ObjectProperty",
-      "rdfs:comment": "Connects the target of a reified relationship.",
-      "rdfs:label": "has target",
-      "rdfs:range": {
-        "@id": "_:g7"
-      }
-    },
-    {
-      "@id": "pig:icon",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:comment": "Specifies an icon for a model element (entity or relationship).",
-      "rdfs:label": "has icon",
-      "rdfs:range": {
-        "@id": "xsd:string"
+        "@id": "pig:TargetLink"
       }
     },
     {
       "@id": "pig:lists",
-      "rdfs:comment": "Lists (references) an entity, a relationship or a subordinated organizer.",
+      "rdfs:comment": "Lists an entity, a relationship or a subordinated organizer.",
       "rdfs:label": "lists",
       "rdfs:range": {
-        "@id": "_:g24"
+        "@id": "_:g21"
       },
       "rdfs:subPropertyOf": {
-        "@id": "pig:eligibleElement"
+        "@id": "pig:TargetLink"
       }
     },
     {
       "@id": "pig:shows",
-      "rdfs:comment": "Shows (references) an entity or a relationship.",
+      "rdfs:comment": "Shows an entity or a relationship.",
       "rdfs:label": "shows",
       "rdfs:range": {
-        "@id": "_:g34"
+        "@id": "_:g31"
       },
       "rdfs:subPropertyOf": {
-        "@id": "pig:eligibleElement"
+        "@id": "pig:TargetLink"
+      }
+    },
+    {
+      "@id": "o:PC-Diagram-10408483458",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:comment": "A diagram illustrating the resource or a link to a diagram.",
+      "rdfs:label": "pig:Diagram"
+    },
+    {
+      "@id": "o:PC-Diagram-10408483458_shape",
+      "@type": "sh:PropertyShape",
+      "sh:datatype": {
+        "@id": "xsd:string"
+      },
+      "sh:path": {
+        "@id": "o:PC-Diagram-10408483458"
+      }
+    },
+    {
+      "@id": "o:RC-Paragraph-10408483458",
+      "@type": "owl:Class",
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "<p>A 'Paragraph' is an unspecified information in a document at any level.</p>"
+        },
+        {
+          "@language": "de",
+          "@value": "<p>Ein 'Textabschnitt' in einem Dokument auf beliebiger Ebene.</p>"
+        }
+      ],
+      "rdfs:label": "SpecIF:Paragraph",
+      "rdfs:subClassOf": {
+        "@id": "pig:Entity"
+      }
+    },
+    {
+      "@id": "o:RC-Paragraph-10408483458_shape",
+      "@type": "sh:NodeShape",
+      "sh:property": [
+        {
+          "@id": "pigShapes_rdfs:label"
+        },
+        {
+          "@id": "pigShapes_rdfs:comment"
+        },
+        {
+          "@id": "o:PC-Diagram-10408483458_shape"
+        },
+        {
+          "@id": "pigShapes_pig:Category"
+        }
+      ],
+      "sh:targetClass": {
+        "@id": "o:RC-Paragraph-10408483458"
       }
     },
     {
@@ -941,9 +1000,6 @@
         },
         {
           "@id": "pigShapes_rdfs:comment"
-        },
-        {
-          "@id": "pigShapes_pig:category"
         }
       ],
       "sh:targetClass": {
@@ -959,9 +1015,6 @@
         },
         {
           "@id": "pigShapes_rdfs:comment"
-        },
-        {
-          "@id": "pigShapes_pig:category"
         }
       ],
       "sh:targetClass": {
@@ -977,9 +1030,6 @@
         },
         {
           "@id": "pigShapes_rdfs:comment"
-        },
-        {
-          "@id": "pigShapes_pig:category"
         }
       ],
       "sh:targetClass": {
@@ -1005,16 +1055,6 @@
       }
     },
     {
-      "@id": "pigShapes_SpecIF:Diagram",
-      "@type": "sh:PropertyShape",
-      "sh:datatype": {
-        "@id": "xsd:string"
-      },
-      "sh:path": {
-        "@id": "SpecIF:Diagram"
-      }
-    },
-    {
       "@id": "pigShapes_SpecIF:Paragraph",
       "@type": "sh:NodeShape",
       "sh:property": [
@@ -1025,10 +1065,10 @@
           "@id": "pigShapes_rdfs:comment"
         },
         {
-          "@id": "pigShapes_SpecIF:Diagram"
+          "@id": "pigShapes_pig:Diagram"
         },
         {
-          "@id": "pigShapes_pig:category"
+          "@id": "pigShapes_pig:Category"
         }
       ],
       "sh:targetClass": {
@@ -1054,10 +1094,10 @@
           "@id": "pigShapes_rdfs:comment"
         },
         {
-          "@id": "_:g52"
+          "@id": "_:g49"
         },
         {
-          "@id": "_:g55"
+          "@id": "_:g52"
         }
       ],
       "sh:targetClass": {
@@ -1072,10 +1112,10 @@
           "@id": "pigShapes_rdfs:comment"
         },
         {
-          "@id": "_:g46"
+          "@id": "_:g43"
         },
         {
-          "@id": "_:g49"
+          "@id": "_:g46"
         }
       ],
       "sh:targetClass": {
@@ -1090,14 +1130,39 @@
           "@id": "pigShapes_rdfs:comment"
         },
         {
-          "@id": "_:g61"
+          "@id": "_:g58"
         },
         {
-          "@id": "_:g66"
+          "@id": "_:g63"
         }
       ],
       "sh:targetClass": {
         "@id": "oslc_rm:satisfies"
+      }
+    },
+    {
+      "@id": "pigShapes_pig:Category",
+      "@type": "sh:PropertyShape",
+      "sh:datatype": {
+        "@id": "xsd:string"
+      },
+      "sh:maxCount": "1",
+      "sh:maxLength": "32",
+      "sh:minCount": "0",
+      "sh:path": {
+        "@id": "pig:Category"
+      }
+    },
+    {
+      "@id": "pigShapes_pig:Diagram",
+      "@type": "sh:PropertyShape",
+      "sh:datatype": {
+        "@id": "xsd:string"
+      },
+      "sh:maxCount": "1",
+      "sh:minCount": "0",
+      "sh:path": {
+        "@id": "pig:Diagram"
       }
     },
     {
@@ -1111,10 +1176,10 @@
           "@id": "pigShapes_rdfs:comment"
         },
         {
-          "@id": "pigShapes_pig:category"
+          "@id": "pigShapes_pig:Category"
         },
         {
-          "@id": "pigShapes_pig:icon"
+          "@id": "pigShapes_pig:Icon"
         }
       ],
       "sh:targetClass": {
@@ -1122,7 +1187,7 @@
       }
     },
     {
-      "@id": "pigShapes_pig:HierarchyRoot",
+      "@id": "pigShapes_pig:Enumeration",
       "@type": "sh:NodeShape",
       "sh:property": [
         {
@@ -1130,13 +1195,66 @@
         },
         {
           "@id": "pigShapes_rdfs:comment"
-        },
-        {
-          "@id": "pigShapes_pig:lists"
         }
       ],
       "sh:targetClass": {
-        "@id": "pig:HierarchyRoot"
+        "@id": "pig:Enumeration"
+      }
+    },
+    {
+      "@id": "pigShapes_pig:Icon",
+      "@type": "sh:PropertyShape",
+      "sh:datatype": {
+        "@id": "xsd:string"
+      },
+      "sh:maxCount": "1",
+      "sh:minCount": "0",
+      "sh:path": {
+        "@id": "pig:Icon"
+      }
+    },
+    {
+      "@id": "pigShapes_pig:Link",
+      "@type": "sh:PropertyShape",
+      "sh:or": {
+        "@list": [
+          {
+            "@id": "_:g4"
+          },
+          {
+            "@id": "_:g6"
+          }
+        ]
+      },
+      "sh:path": {
+        "@id": "pig:Link"
+      }
+    },
+    {
+      "@id": "pigShapes_pig:ModelElement",
+      "@type": "sh:NodeShape",
+      "sh:property": [
+        {
+          "@id": "pigShapes_rdfs:label"
+        },
+        {
+          "@id": "pigShapes_rdfs:comment"
+        }
+      ],
+      "sh:targetClass": {
+        "@id": "pig:ModelElement"
+      }
+    },
+    {
+      "@id": "pigShapes_pig:Notation",
+      "@type": "sh:PropertyShape",
+      "sh:datatype": {
+        "@id": "xsd:string"
+      },
+      "sh:maxCount": "1",
+      "sh:minCount": "0",
+      "sh:path": {
+        "@id": "pig:Notation"
       }
     },
     {
@@ -1148,12 +1266,6 @@
         },
         {
           "@id": "pigShapes_rdfs:comment"
-        },
-        {
-          "@id": "pigShapes_pig:category"
-        },
-        {
-          "@id": "pigShapes_pig:eligibleElement"
         }
       ],
       "sh:targetClass": {
@@ -1169,16 +1281,35 @@
         },
         {
           "@id": "pigShapes_rdfs:comment"
-        },
-        {
-          "@id": "pigShapes_pig:category"
-        },
-        {
-          "@id": "pigShapes_pig:lists"
         }
       ],
       "sh:targetClass": {
         "@id": "pig:Outline"
+      }
+    },
+    {
+      "@id": "pigShapes_pig:Package",
+      "@type": "sh:NodeShape",
+      "sh:property": [
+        {
+          "@id": "pigShapes_rdfs:label"
+        },
+        {
+          "@id": "pigShapes_rdfs:comment"
+        }
+      ],
+      "sh:targetClass": {
+        "@id": "pig:Package"
+      }
+    },
+    {
+      "@id": "pigShapes_pig:Property",
+      "@type": "sh:PropertyShape",
+      "sh:datatype": {
+        "@id": "xsd:anyType"
+      },
+      "sh:path": {
+        "@id": "pig:Property"
       }
     },
     {
@@ -1192,20 +1323,108 @@
           "@id": "pigShapes_rdfs:comment"
         },
         {
-          "@id": "pigShapes_pig:category"
+          "@id": "pigShapes_pig:Category"
         },
         {
-          "@id": "pigShapes_pig:icon"
+          "@id": "pigShapes_pig:Icon"
         },
         {
-          "@id": "pigShapes_pig:eligibleSource"
+          "@id": "pigShapes_pig:SourceLink"
         },
         {
-          "@id": "pigShapes_pig:eligibleTarget"
+          "@id": "pigShapes_pig:TargetLink"
         }
       ],
       "sh:targetClass": {
         "@id": "pig:Relationship"
+      }
+    },
+    {
+      "@id": "pigShapes_pig:Root",
+      "@type": "sh:NodeShape",
+      "sh:property": [
+        {
+          "@id": "pigShapes_rdfs:label"
+        },
+        {
+          "@id": "pigShapes_rdfs:comment"
+        },
+        {
+          "@id": "pigShapes_pig:lists"
+        }
+      ],
+      "sh:targetClass": {
+        "@id": "pig:Root"
+      }
+    },
+    {
+      "@id": "pigShapes_pig:SourceLink",
+      "@type": "sh:PropertyShape",
+      "sh:or": {
+        "@list": [
+          {
+            "@id": "_:g11"
+          },
+          {
+            "@id": "_:g13"
+          }
+        ]
+      },
+      "sh:path": {
+        "@id": "pig:SourceLink"
+      }
+    },
+    {
+      "@id": "pigShapes_pig:Table",
+      "@type": "sh:NodeShape",
+      "sh:property": [
+        {
+          "@id": "pigShapes_rdfs:label"
+        },
+        {
+          "@id": "pigShapes_rdfs:comment"
+        },
+        {
+          "@id": "pigShapes_pig:shows"
+        }
+      ],
+      "sh:targetClass": {
+        "@id": "pig:Table"
+      }
+    },
+    {
+      "@id": "pigShapes_pig:TargetLink",
+      "@type": "sh:PropertyShape",
+      "sh:or": {
+        "@list": [
+          {
+            "@id": "_:g18"
+          },
+          {
+            "@id": "_:g20"
+          }
+        ]
+      },
+      "sh:path": {
+        "@id": "pig:TargetLink"
+      }
+    },
+    {
+      "@id": "pigShapes_pig:Tree",
+      "@type": "sh:NodeShape",
+      "sh:property": [
+        {
+          "@id": "pigShapes_rdfs:label"
+        },
+        {
+          "@id": "pigShapes_rdfs:comment"
+        },
+        {
+          "@id": "pigShapes_pig:lists"
+        }
+      ],
+      "sh:targetClass": {
+        "@id": "pig:Tree"
       }
     },
     {
@@ -1219,10 +1438,16 @@
           "@id": "pigShapes_rdfs:comment"
         },
         {
-          "@id": "pigShapes_SpecIF:Diagram"
+          "@id": "pigShapes_pig:Diagram"
         },
         {
-          "@id": "pigShapes_pig:category"
+          "@id": "pigShapes_pig:Notation"
+        },
+        {
+          "@id": "pigShapes_pig:shows"
+        },
+        {
+          "@id": "pigShapes_pig:depicts"
         }
       ],
       "sh:targetClass": {
@@ -1230,37 +1455,12 @@
       }
     },
     {
-      "@id": "pigShapes_pig:category",
-      "@type": [
-        "sh:PropertyShape",
-        "sh:PropertyShape"
-      ],
-      "sh:datatype": [
-        {
-          "@id": "xsd:string"
-        },
-        {
-          "@id": "xsd:string"
-        }
-      ],
-      "sh:maxCount": "1",
-      "sh:maxLength": "32",
-      "sh:path": [
-        {
-          "@id": "pig:category"
-        },
-        {
-          "@id": "pig:category"
-        }
-      ]
-    },
-    {
       "@id": "pigShapes_pig:depicts",
       "@type": "sh:PropertyShape",
       "sh:or": {
         "@list": [
           {
-            "@id": "_:g42"
+            "@id": "_:g39"
           }
         ]
       },
@@ -1269,82 +1469,18 @@
       }
     },
     {
-      "@id": "pigShapes_pig:eligibleElement",
-      "@type": "sh:PropertyShape",
-      "sh:or": {
-        "@list": [
-          {
-            "@id": "_:g19"
-          },
-          {
-            "@id": "_:g21"
-          },
-          {
-            "@id": "_:g23"
-          }
-        ]
-      },
-      "sh:path": {
-        "@id": "pig:eligibleElement"
-      }
-    },
-    {
-      "@id": "pigShapes_pig:eligibleSource",
-      "@type": "sh:PropertyShape",
-      "sh:or": {
-        "@list": [
-          {
-            "@id": "_:g4"
-          },
-          {
-            "@id": "_:g6"
-          }
-        ]
-      },
-      "sh:path": {
-        "@id": "pig:eligibleSource"
-      }
-    },
-    {
-      "@id": "pigShapes_pig:eligibleTarget",
-      "@type": "sh:PropertyShape",
-      "sh:or": {
-        "@list": [
-          {
-            "@id": "_:g11"
-          },
-          {
-            "@id": "_:g13"
-          }
-        ]
-      },
-      "sh:path": {
-        "@id": "pig:eligibleTarget"
-      }
-    },
-    {
-      "@id": "pigShapes_pig:icon",
-      "@type": "sh:PropertyShape",
-      "sh:datatype": {
-        "@id": "xsd:string"
-      },
-      "sh:path": {
-        "@id": "pig:icon"
-      }
-    },
-    {
       "@id": "pigShapes_pig:lists",
       "@type": "sh:PropertyShape",
       "sh:or": {
         "@list": [
           {
-            "@id": "_:g29"
+            "@id": "_:g26"
           },
           {
-            "@id": "_:g31"
+            "@id": "_:g28"
           },
           {
-            "@id": "_:g33"
+            "@id": "_:g30"
           }
         ]
       },
@@ -1358,10 +1494,10 @@
       "sh:or": {
         "@list": [
           {
-            "@id": "_:g38"
+            "@id": "_:g35"
           },
           {
-            "@id": "_:g40"
+            "@id": "_:g37"
           }
         ]
       },
@@ -1370,52 +1506,8 @@
       }
     },
     {
-      "@id": "pigShapes_rdfs:comment",
-      "@type": "sh:PropertyShape",
-      "sh:datatype": {
-        "@id": "xsd:string"
-      },
-      "sh:maxCount": "1",
-      "sh:path": {
-        "@id": "rdfs:comment"
-      }
-    },
-    {
-      "@id": "pigShapes_rdfs:label",
-      "@type": "sh:PropertyShape",
-      "sh:datatype": {
-        "@id": "xsd:string"
-      },
-      "sh:maxCount": "1",
-      "sh:maxLength": "256",
-      "sh:path": {
-        "@id": "rdfs:label"
-      }
-    },
-    {
-      "@id": "SpecIF:Diagram",
-      "@type": "owl:DatatypeProperty",
-      "rdfs:comment": {
-        "@language": "en",
-        "@value": "A diagram illustrating the resource or a link to a diagram."
-      },
-      "rdfs:label": [
-        {
-          "@language": "en",
-          "@value": "Diagram"
-        },
-        {
-          "@language": "de",
-          "@value": "Diagramm"
-        },
-        {
-          "@language": "fr",
-          "@value": "Diagramme"
-        }
-      ]
-    },
-    {
       "@id": "SpecIF:Paragraph",
+      "@type": "owl:Class",
       "rdfs:comment": [
         {
           "@language": "en",
@@ -1471,7 +1563,6 @@
     },
     {
       "@id": "SpecIF:Priority-Value",
-      "@type": "owl:Class",
       "rdfs:comment": {
         "@language": "en",
         "@value": "Enumerated values for the 'Priority' of the resource."
@@ -1490,6 +1581,9 @@
           "@value": "Priorité"
         }
       ],
+      "rdfs:subClassOf": {
+        "@id": "pig:Enumeration"
+      },
       "owl:oneOf": {
         "@list": [
           {
@@ -1560,6 +1654,7 @@
     },
     {
       "@id": "SpecIF:reads",
+      "@type": "owl:Class",
       "rdfs:comment": {
         "@language": "en",
         "@value": "A [[FMC:Actor]] 'reads' a [[FMC:State]]."
@@ -1583,33 +1678,36 @@
       }
     },
     {
-      "@id": "SpecIF:reads-hasSource",
+      "@id": "SpecIF:reads-toSource",
       "rdfs:comment": "Connects the source of SpecIF:reads",
       "rdfs:domain": {
         "@id": "SpecIF:reads"
       },
+      "rdfs:label": "SpecIF:reads to source",
       "rdfs:range": {
         "@id": "FMC:Actor"
       },
       "rdfs:subPropertyOf": {
-        "@id": "pig:eligibleSource"
+        "@id": "pig:SourceLink"
       }
     },
     {
-      "@id": "SpecIF:reads-hasTarget",
+      "@id": "SpecIF:reads-toTarget",
       "rdfs:comment": "Connects the target of SpecIF:reads",
       "rdfs:domain": {
         "@id": "SpecIF:reads"
       },
+      "rdfs:label": "SpecIF:reads to target",
       "rdfs:range": {
         "@id": "FMC:State"
       },
       "rdfs:subPropertyOf": {
-        "@id": "pig:eligibleTarget"
+        "@id": "pig:TargetLink"
       }
     },
     {
       "@id": "SpecIF:writes",
+      "@type": "owl:Class",
       "rdfs:comment": {
         "@language": "en",
         "@value": "A [[FMC:Actor]] 'writes' (changes) a [[FMC:State]]."
@@ -1633,29 +1731,31 @@
       }
     },
     {
-      "@id": "SpecIF:writes-hasSource",
+      "@id": "SpecIF:writes-toSource",
       "rdfs:comment": "Connects the source of SpecIF:writes",
       "rdfs:domain": {
         "@id": "SpecIF:writes"
       },
+      "rdfs:label": "SpecIF:writes to source",
       "rdfs:range": {
         "@id": "FMC:Actor"
       },
       "rdfs:subPropertyOf": {
-        "@id": "pig:eligibleSource"
+        "@id": "pig:SourceLink"
       }
     },
     {
-      "@id": "SpecIF:writes-hasTarget",
+      "@id": "SpecIF:writes-toTarget",
       "rdfs:comment": "Connects the target of SpecIF:writes",
       "rdfs:domain": {
         "@id": "SpecIF:writes"
       },
+      "rdfs:label": "SpecIF:writes to target",
       "rdfs:range": {
         "@id": "FMC:State"
       },
       "rdfs:subPropertyOf": {
-        "@id": "pig:eligibleTarget"
+        "@id": "pig:TargetLink"
       }
     }
   ]
