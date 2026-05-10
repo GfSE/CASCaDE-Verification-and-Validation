@@ -2,27 +2,26 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix skos: <https://www.w3.org/TR/skos-reference/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xs: <http://www.w3.org/2001/XMLSchema#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix FMC: <http://fmc-modeling.org#> .
+@prefix casShapes_FMC: <https://product-information-graph.org/v0.2/ontology/shapes/FMC#> .
 @prefix IREB: <https://cpre.ireb.org/en/downloads-and-resources/glossary#> .
+@prefix casShapes_IREB: <https://product-information-graph.org/v0.2/ontology/shapes/IREB#> .
 @prefix ReqIF: <https://www.prostep.org/fileadmin/downloads/PSI_ImplementationGuide_ReqIF_V1-7.pdf#> .
+@prefix casShapes_ReqIF: <https://product-information-graph.org/v0.2/ontology/shapes/ReqIF#> .
 @prefix ReqIF-WF: <https://www.prostep.org/fileadmin/downloads/Recommendation_ReqIF_V2_RZ3.pdf#> .
+@prefix casShapes_ReqIF-WF: <https://product-information-graph.org/v0.2/ontology/shapes/ReqIF-WF#> .
 @prefix oslc_rm: <http://open-services.net/ns/rm#> .
+@prefix casShapes_oslc_rm: <https://product-information-graph.org/v0.2/ontology/shapes/oslc_rm#> .
 @prefix oslc_cm: <http://open-services.net/ns/cm#> .
-@prefix pig: <https://product-information-graph.org/v0.2/metamodel#> .
+@prefix casShapes_oslc_cm: <https://product-information-graph.org/v0.2/ontology/shapes/oslc_cm#> .
+@prefix cas: <https://product-information-graph.org/v0.2/metamodel#> .
+@prefix casShapes_cas: <https://product-information-graph.org/v0.2/ontology/shapes/cas#> .
 @prefix SpecIF: <https://specif.de/v1.2/schema#> .
-@prefix pigShapes_dcterms: <https://product-information-graph.org/v0.2/ontology/shapes/dcterms#> .
-@prefix pigShapes_rdfs: <https://product-information-graph.org/v0.2/ontology/shapes/rdfs#> .
-@prefix pigShapes_FMC: <https://product-information-graph.org/v0.2/ontology/shapes/FMC#> .
-@prefix pigShapes_IREB: <https://product-information-graph.org/v0.2/ontology/shapes/IREB#> .
-@prefix pigShapes_oslc_rm: <https://product-information-graph.org/v0.2/ontology/shapes/oslc_rm#> .
-@prefix pigShapes_oslc_cm: <https://product-information-graph.org/v0.2/ontology/shapes/oslc_cm#> .
-@prefix pigShapes_ReqIF: <https://product-information-graph.org/v0.2/ontology/shapes/ReqIF#> .
-@prefix pigShapes_ReqIF-WF: <https://product-information-graph.org/v0.2/ontology/shapes/ReqIF-WF#> .
-@prefix pigShapes_SpecIF: <https://product-information-graph.org/v0.2/ontology/shapes/SpecIF#> .
-@prefix pigShapes_pig: <https://product-information-graph.org/v0.2/ontology/shapes/pig#> .
+@prefix casShapes_SpecIF: <https://product-information-graph.org/v0.2/ontology/shapes/SpecIF#> .
 
 @prefix o: <https://product-information-graph.org/v0.2/ontology#> .
 @prefix d: <https://product-information-graph.org/examples/Dimmer.specifz#> .
@@ -39,336 +38,439 @@ d:
 		<http://www.w3.org/2000/01/rdf-schema#> ;
 	dcterms:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
 	dcterms:creator "<mailto:od@enso-managers.de>" ;
-	dcterms:modified "2026-03-06T17:58:06.511Z" .
+	dcterms:modified "2026-04-08T09:49:25.069Z" .
 
 #################################################################
-# PIG Metamodel (pig:)
+# CASCaRA Metamodel and Semantic Infrastructure
 #################################################################
 
-pig:Entity
+cas:Entity
 	rdf:type owl:Class ;
 	rdfs:label "Entity" ;
-	rdfs:comment "A PIG meta-model item used for entities (aka resources or artifacts)." .
+	skos:definition "A CASCaRA meta-model item used for entities (aka resources or artifacts)." .
 
-pigShapes_pig:Entity
+casShapes_cas:Entity
 	rdf:type sh:NodeShape ;
-	sh:targetClass pig:Entity ;
-	sh:property pigShapes_rdfs:label ,
-		pigShapes_rdfs:comment ,
-		pigShapes_pig:Category ,
-		pigShapes_pig:Icon .
+	sh:targetClass cas:Entity ;
+	sh:property [ 
+		sh:path rdfs:label ;
+		sh:minCount 1
+	] ,
+		[ 
+		sh:path rdfs:comment ;
+		sh:minCount 1
+	] ,
+		casShapes_cas:Category ,
+		casShapes_cas:Icon .
 
-pig:Package
-	rdfs:subClassOf pig:Entity ;
+cas:Package
+	rdf:type owl:Class ;
+	rdfs:subClassOf cas:Entity ;
 	rdfs:label "Package" ;
-	rdfs:comment "A PIG meta-model item used for packages comprising entities, relationships and potentially nested packages." .
+	skos:definition "A CASCaRA meta-model item used for packages comprising entities, relationships and potentially nested packages." .
 
-pigShapes_pig:Package
+casShapes_cas:Package
 	rdf:type sh:NodeShape ;
-	sh:targetClass pig:Package ;
-	sh:property pigShapes_rdfs:label ,
-		pigShapes_rdfs:comment .
+	sh:targetClass cas:Package ;
+	sh:property [ 
+		sh:path rdfs:label ;
+		sh:minCount 1
+	] ,
+		[ 
+		sh:path rdfs:comment ;
+		sh:minCount 1
+	] .
 
-pig:ModelElement
-	rdfs:subClassOf pig:Entity ;
-	rdfs:label "Model-Element" ;
-	rdfs:comment "The most generic class for all model elements (entities and relationships)." .
+cas:Artifact
+	rdf:type owl:Class ;
+	rdfs:subClassOf cas:Entity ;
+	rdfs:label "Artifact" ;
+	skos:definition "The most generic class for all model entities (e.g. requirement, function, system, component, state, event, ...)." .
 
-pigShapes_pig:ModelElement
+casShapes_cas:Artifact
 	rdf:type sh:NodeShape ;
-	sh:targetClass pig:ModelElement ;
-	sh:property pigShapes_rdfs:label ,
-		pigShapes_rdfs:comment .
+	sh:targetClass cas:Artifact ;
+	sh:property [ 
+		sh:path rdfs:label ;
+		sh:minCount 1
+	] ,
+		[ 
+		sh:path rdfs:comment ;
+		sh:minCount 1
+	] .
 
 FMC:Actor
-	rdfs:subClassOf pig:ModelElement ;
+	rdf:type owl:Class ;
+	rdfs:subClassOf cas:Artifact ;
 	rdfs:label "Actor" ;
-	rdfs:comment "A fundamental model-element class for actors (e.g. users, functions, systems, components, ...)." .
+	skos:definition "A fundamental model-element class for actors (e.g. users, functions, systems, components, ...)." .
 
-pigShapes_FMC:Actor
+casShapes_FMC:Actor
 	rdf:type sh:NodeShape ;
 	sh:targetClass FMC:Actor ;
-	sh:property pigShapes_rdfs:label ,
-		pigShapes_rdfs:comment .
+	sh:property [ 
+		sh:path rdfs:label ;
+		sh:minCount 1
+	] ,
+		[ 
+		sh:path rdfs:comment ;
+		sh:minCount 1
+	] .
 
 FMC:State
-	rdfs:subClassOf pig:ModelElement ;
+	rdf:type owl:Class ;
+	rdfs:subClassOf cas:Artifact ;
 	rdfs:label "State" ;
-	rdfs:comment "A fundamental model-element class for states (e.g. system or process states, information, form, color, ...)." .
+	skos:definition "A fundamental model-element class for states (e.g. system or process states, information, form, color, ...)." .
 
-pigShapes_FMC:State
+casShapes_FMC:State
 	rdf:type sh:NodeShape ;
 	sh:targetClass FMC:State ;
-	sh:property pigShapes_rdfs:label ,
-		pigShapes_rdfs:comment .
+	sh:property [ 
+		sh:path rdfs:label ;
+		sh:minCount 1
+	] ,
+		[ 
+		sh:path rdfs:comment ;
+		sh:minCount 1
+	] .
 
 FMC:Event
-	rdfs:subClassOf pig:ModelElement ;
+	rdf:type owl:Class ;
+	rdfs:subClassOf cas:Artifact ;
 	rdfs:label "Event" ;
-	rdfs:comment "A fundamental model-element class for events (e.g. environmental or process events, ...)." .
+	skos:definition "A fundamental model-element class for events (e.g. environmental or process events, ...)." .
 
-pigShapes_FMC:Event
+casShapes_FMC:Event
 	rdf:type sh:NodeShape ;
 	sh:targetClass FMC:Event ;
-	sh:property pigShapes_rdfs:label ,
-		pigShapes_rdfs:comment .
+	sh:property [ 
+		sh:path rdfs:label ;
+		sh:minCount 1
+	] ,
+		[ 
+		sh:path rdfs:comment ;
+		sh:minCount 1
+	] .
 
-pig:Organizer
-	rdfs:subClassOf pig:Entity ;
+cas:Organizer
+	rdf:type owl:Class ;
+	rdfs:subClassOf cas:Entity ;
 	rdfs:label "Organizer" ;
-	rdfs:comment "A class for organizing model-elements. An example is a list of requirements or a diagram using a certain notation." .
+	skos:definition "A class for organizing model-elements. An example is a list of requirements or a diagram using a certain notation." .
 
-pigShapes_pig:Organizer
+casShapes_cas:Organizer
 	rdf:type sh:NodeShape ;
-	sh:targetClass pig:Organizer ;
-	sh:property pigShapes_rdfs:label ,
-		pigShapes_rdfs:comment .
+	sh:targetClass cas:Organizer ;
+	sh:property [ 
+		sh:path rdfs:label ;
+		sh:minCount 1
+	] ,
+		[ 
+		sh:path rdfs:comment ;
+		sh:minCount 1
+	] .
 
-pig:Root
-	rdfs:subClassOf pig:Organizer ;
+cas:Root
+	rdf:type owl:Class ;
+	rdfs:subClassOf cas:Organizer ;
 	rdfs:label "Root" ;
-	rdfs:comment "A subclass of pig:Organizer serving as a root for trees and tables." .
+	skos:definition "A subclass of cas:Organizer serving as a root for trees and tables." .
 
-pigShapes_pig:Root
+casShapes_cas:Root
 	rdf:type sh:NodeShape ;
-	sh:targetClass pig:Root ;
-	sh:property pigShapes_rdfs:label ,
-		pigShapes_rdfs:comment ,
-		pigShapes_pig:lists .
+	sh:targetClass cas:Root ;
+	sh:property [ 
+		sh:path rdfs:label ;
+		sh:minCount 1
+	] ,
+		[ 
+		sh:path rdfs:comment ;
+		sh:minCount 1
+	] ,
+		casShapes_cas:lists .
 
-pig:Tree
-	rdfs:subClassOf pig:Organizer ;
+cas:Tree
+	rdf:type owl:Class ;
+	rdfs:subClassOf cas:Organizer ;
 	rdfs:label "Tree" ;
-	rdfs:comment "A subclass of pig:Organizer for strictly hierarchical data structures referencing entities and relationships." .
+	skos:definition "A subclass of cas:Organizer for strictly hierarchical data structures referencing entities and relationships." .
 
-pigShapes_pig:Tree
+casShapes_cas:Tree
 	rdf:type sh:NodeShape ;
-	sh:targetClass pig:Tree ;
-	sh:property pigShapes_rdfs:label ,
-		pigShapes_rdfs:comment ,
-		pigShapes_pig:lists .
+	sh:targetClass cas:Tree ;
+	sh:property [ 
+		sh:path rdfs:label ;
+		sh:minCount 1
+	] ,
+		[ 
+		sh:path rdfs:comment ;
+		sh:minCount 1
+	] ,
+		casShapes_cas:lists .
 
-pig:Outline
-	rdfs:subClassOf pig:Tree ;
+cas:Outline
+	rdf:type owl:Class ;
+	rdfs:subClassOf cas:Tree ;
 	rdfs:label "Outline" ;
-	rdfs:comment "A subclass of pig:Tree comprising all information items of a human-readable document. As usual, the outline is hierarchically organized." .
+	skos:definition "A subclass of cas:Tree comprising all information items of a human-readable document. As usual, the outline is hierarchically organized." .
 
-pigShapes_pig:Outline
+casShapes_cas:Outline
 	rdf:type sh:NodeShape ;
-	sh:targetClass pig:Outline ;
-	sh:property pigShapes_rdfs:label ,
-		pigShapes_rdfs:comment .
+	sh:targetClass cas:Outline ;
+	sh:property [ 
+		sh:path rdfs:label ;
+		sh:minCount 1
+	] ,
+		[ 
+		sh:path rdfs:comment ;
+		sh:minCount 1
+	] .
 
-pig:View
-	rdfs:subClassOf pig:Organizer ;
+cas:View
+	rdf:type owl:Class ;
+	rdfs:subClassOf cas:Organizer ;
 	rdfs:label "View" ;
-	rdfs:comment "A subclass of pig:Organizer representing a model view (diagram) using a certain notation showing selected model elements." .
+	skos:definition "A subclass of cas:Organizer representing a model view (diagram) using a certain notation showing selected model elements." .
 
-pigShapes_pig:View
+casShapes_cas:View
 	rdf:type sh:NodeShape ;
-	sh:targetClass pig:View ;
-	sh:property pigShapes_rdfs:label ,
-		pigShapes_rdfs:comment ,
-		pigShapes_pig:Diagram ,
-		pigShapes_pig:Notation ,
-		pigShapes_pig:shows ,
-		pigShapes_pig:depicts .
+	sh:targetClass cas:View ;
+	sh:property [ 
+		sh:path rdfs:label ;
+		sh:minCount 1
+	] ,
+		[ 
+		sh:path rdfs:comment ;
+		sh:minCount 1
+	] ,
+		casShapes_cas:Diagram ,
+		casShapes_cas:Notation ,
+		casShapes_cas:shows ,
+		casShapes_cas:depicts .
 
-pig:Table
-	rdfs:subClassOf pig:Organizer ;
+cas:Table
+	rdf:type owl:Class ;
+	rdfs:subClassOf cas:Organizer ;
 	rdfs:label "Table" ;
-	rdfs:comment "A subclass of pig:Organizer representing a table showing selected model elements." .
+	skos:definition "A subclass of cas:Organizer representing a table showing selected model elements." .
 
-pigShapes_pig:Table
+casShapes_cas:Table
 	rdf:type sh:NodeShape ;
-	sh:targetClass pig:Table ;
-	sh:property pigShapes_rdfs:label ,
-		pigShapes_rdfs:comment ,
-		pigShapes_pig:shows .
+	sh:targetClass cas:Table ;
+	sh:property [ 
+		sh:path rdfs:label ;
+		sh:minCount 1
+	] ,
+		[ 
+		sh:path rdfs:comment ;
+		sh:minCount 1
+	] ,
+		casShapes_cas:shows .
 
-pig:Enumeration
-	rdfs:subClassOf pig:Entity ;
+cas:Enumeration
+	rdf:type owl:Class ;
 	rdfs:label "Enumeration" ;
-	rdfs:comment "A PIG meta-model item used for enumerations of values." .
+	skos:definition "A CASCaRA meta-model item used for enumerations of values." .
 
-pigShapes_pig:Enumeration
+casShapes_cas:Enumeration
 	rdf:type sh:NodeShape ;
-	sh:targetClass pig:Enumeration ;
-	sh:property pigShapes_rdfs:label ,
-		pigShapes_rdfs:comment .
+	sh:targetClass cas:Enumeration ;
+	sh:property [ 
+		sh:path rdfs:label ;
+		sh:minCount 1
+	] ,
+		[ 
+		sh:path rdfs:comment ;
+		sh:minCount 1
+	] .
 
-pig:Relationship
+cas:Relationship
 	rdf:type owl:Class ;
 	rdfs:label "Relationship" ;
-	rdfs:comment "A PIG meta-model item used for reified relationships (aka predicates)." .
+	skos:definition "A CASCaRA meta-model item used for reified relationships (aka predicates)." .
 
-pigShapes_pig:Relationship
+casShapes_cas:Relationship
 	rdf:type sh:NodeShape ;
-	sh:targetClass pig:Relationship ;
-	sh:property pigShapes_rdfs:label ,
-		pigShapes_rdfs:comment ,
-		pigShapes_pig:Category ,
-		pigShapes_pig:Icon ,
-		pigShapes_pig:SourceLink ,
-		pigShapes_pig:TargetLink .
+	sh:targetClass cas:Relationship ;
+	sh:property [ 
+		sh:path rdfs:label ;
+		sh:minCount 1
+	] ,
+		[ 
+		sh:path rdfs:comment ;
+		sh:minCount 1
+	] ,
+		casShapes_cas:Category ,
+		casShapes_cas:Icon ,
+		casShapes_cas:SourceLink ,
+		casShapes_cas:TargetLink .
 
-pig:Property
+cas:Property
 	rdf:type owl:DatatypeProperty ;
 	rdfs:label "Property" ;
-	rdfs:comment "A PIG meta-model item used for properties (aka attributes)." .
+	skos:definition "A CASCaRA meta-model item used for properties (aka attributes)." .
 
-pigShapes_pig:Property
+casShapes_cas:Property
 	rdf:type sh:PropertyShape ;
-	sh:path pig:Property ;
+	sh:path cas:Property ;
 	sh:datatype xs:anyType .
 
-pig:Icon
-	rdfs:subPropertyOf pig:Property ;
+cas:Icon
+	rdf:type owl:DatatypeProperty ;
+	rdfs:subPropertyOf cas:Property ;
 	rdfs:label "has icon" ;
-	rdfs:comment "Specifies an icon for a model element (entity or relationship)." .
+	skos:definition "Specifies an icon for a model element (entity or relationship)." .
 
-pigShapes_pig:Icon
+casShapes_cas:Icon
 	rdf:type sh:PropertyShape ;
-	sh:path pig:Icon ;
+	sh:path cas:Icon ;
 	sh:datatype xs:string ;
 	sh:minCount "0" ;
 	sh:maxCount "1" .
 
-pig:Diagram
-	rdfs:subPropertyOf pig:Property ;
+cas:Diagram
+	rdf:type owl:DatatypeProperty ;
+	rdfs:subPropertyOf cas:Property ;
 	rdfs:label "Diagram" ;
-	rdfs:comment "A diagram illustrating the resource or a link to a diagram." .
+	skos:definition "A diagram illustrating the resource or a link to a diagram." .
 
-pigShapes_pig:Diagram
+casShapes_cas:Diagram
 	rdf:type sh:PropertyShape ;
-	sh:path pig:Diagram ;
+	sh:path cas:Diagram ;
 	sh:datatype xs:string ;
-	sh:minCount "0" ;
-	sh:maxCount "1" .
+	sh:minCount "0" .
 
-pig:Category
-	rdfs:subPropertyOf pig:Property ;
+cas:Category
+	rdf:type owl:DatatypeProperty ;
+	rdfs:subPropertyOf cas:Property ;
 	rdfs:label "has category" ;
-	rdfs:comment "Specifies a category for an element (entity, relationship or organizer)." .
+	skos:definition "Specifies a category for an element (entity, relationship or organizer)." .
 
-pigShapes_pig:Category
+casShapes_cas:Category
 	rdf:type sh:PropertyShape ;
-	sh:path pig:Category ;
+	sh:path cas:Category ;
 	sh:datatype xs:string ;
 	sh:maxLength "32" ;
 	sh:minCount "0" ;
 	sh:maxCount "1" .
 
-pig:Notation
-	rdfs:subPropertyOf pig:Category ;
+cas:Notation
+	rdf:type owl:DatatypeProperty ;
+	rdfs:subPropertyOf cas:Category ;
 	rdfs:label "Notation" ;
-	rdfs:comment "A reference to a notation defining the syntax and semantics of a diagram." .
+	skos:definition "A reference to a notation defining the syntax and semantics of a diagram." .
 
-pigShapes_pig:Notation
+casShapes_cas:Notation
 	rdf:type sh:PropertyShape ;
-	sh:path pig:Notation ;
+	sh:path cas:Notation ;
 	sh:datatype xs:string ;
 	sh:minCount "0" ;
 	sh:maxCount "1" .
 
-pig:Link
+cas:Link
 	rdf:type owl:ObjectProperty ;
 	rdfs:range [ owl:unionOf(
-			pig:Entity
-			pig:Relationship
+			cas:Entity
+			cas:Relationship
 		)] ;
 	rdfs:label "linked with" ;
-	rdfs:comment "A PIG meta-model item connecting a reified relationship with its source or target. Also connects an organizer to a model element." .
+	skos:definition "A PIG meta-model item connecting a reified relationship with its source or target. Also connects an organizer to a model element." .
 
-pigShapes_pig:Link
+casShapes_cas:Link
 	rdf:type sh:PropertyShape ;
-	sh:path pig:Link ;
+	sh:path cas:Link ;
 	sh:or (
-			[ sh:class pig:Entity ]
-			[ sh:class pig:Relationship ]
+			[ sh:class cas:Entity ]
+			[ sh:class cas:Relationship ]
 		) .
 
-pig:SourceLink
-	rdfs:subPropertyOf pig:Link ;
+cas:SourceLink
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf cas:Link ;
 	rdfs:range [ owl:unionOf(
-			pig:Entity
-			pig:Relationship
+			cas:Entity
+			cas:Relationship
 		)] ;
 	rdfs:label "to source" ;
-	rdfs:comment "Connects the source of a reified relationship." .
+	skos:definition "Connects the source of a reified relationship." .
 
-pigShapes_pig:SourceLink
+casShapes_cas:SourceLink
 	rdf:type sh:PropertyShape ;
-	sh:path pig:SourceLink ;
+	sh:path cas:SourceLink ;
 	sh:or (
-			[ sh:class pig:Entity ]
-			[ sh:class pig:Relationship ]
+			[ sh:class cas:Entity ]
+			[ sh:class cas:Relationship ]
 		) .
 
-pig:TargetLink
-	rdfs:subPropertyOf pig:Link ;
+cas:TargetLink
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf cas:Link ;
 	rdfs:range [ owl:unionOf(
-			pig:Entity
-			pig:Relationship
+			cas:Entity
+			cas:Relationship
 		)] ;
 	rdfs:label "to target" ;
-	rdfs:comment "Connects the target of a reified relationship or an organizer." .
+	skos:definition "Connects the target of a reified relationship or an organizer." .
 
-pigShapes_pig:TargetLink
+casShapes_cas:TargetLink
 	rdf:type sh:PropertyShape ;
-	sh:path pig:TargetLink ;
+	sh:path cas:TargetLink ;
 	sh:or (
-			[ sh:class pig:Entity ]
-			[ sh:class pig:Relationship ]
+			[ sh:class cas:Entity ]
+			[ sh:class cas:Relationship ]
 		) .
 
-pig:lists
-	rdfs:subPropertyOf pig:TargetLink ;
+cas:lists
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf cas:TargetLink ;
 	rdfs:range [ owl:unionOf(
-			pig:Entity
-			pig:Relationship
-			pig:Organizer
+			cas:Entity
+			cas:Relationship
+			cas:Organizer
 		)] ;
 	rdfs:label "lists" ;
-	rdfs:comment "Lists an entity, a relationship or a subordinated organizer." .
+	skos:definition "Lists an entity, a relationship or a subordinated organizer." .
 
-pigShapes_pig:lists
+casShapes_cas:lists
 	rdf:type sh:PropertyShape ;
-	sh:path pig:lists ;
+	sh:path cas:lists ;
 	sh:or (
-			[ sh:class pig:Entity ]
-			[ sh:class pig:Relationship ]
-			[ sh:class pig:Organizer ]
+			[ sh:class cas:Entity ]
+			[ sh:class cas:Relationship ]
+			[ sh:class cas:Organizer ]
 		) .
 
-pig:shows
-	rdfs:subPropertyOf pig:TargetLink ;
+cas:shows
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf cas:TargetLink ;
 	rdfs:range [ owl:unionOf(
-			pig:Entity
-			pig:Relationship
+			cas:Entity
+			cas:Relationship
 		)] ;
 	rdfs:label "shows" ;
-	rdfs:comment "Shows an entity or a relationship." .
+	skos:definition "Shows an entity or a relationship." .
 
-pigShapes_pig:shows
+casShapes_cas:shows
 	rdf:type sh:PropertyShape ;
-	sh:path pig:shows ;
+	sh:path cas:shows ;
 	sh:or (
-			[ sh:class pig:Entity ]
-			[ sh:class pig:Relationship ]
+			[ sh:class cas:Entity ]
+			[ sh:class cas:Relationship ]
 		) .
 
-pig:depicts
-	rdfs:subPropertyOf pig:TargetLink ;
-	rdfs:range pig:Entity ;
+cas:depicts
+	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf cas:TargetLink ;
+	rdfs:range cas:Entity ;
 	rdfs:label "depicts" ;
-	rdfs:comment "Depicts an entity; inverse of uml:ownedDiagram." .
+	skos:definition "Depicts an entity; inverse of uml:ownedDiagram." .
 
-pigShapes_pig:depicts
+casShapes_cas:depicts
 	rdf:type sh:PropertyShape ;
-	sh:path pig:depicts ;
+	sh:path cas:depicts ;
 	sh:or (
-			[ sh:class pig:Entity ]
+			[ sh:class cas:Entity ]
 		) .
 
 #################################################################
@@ -376,13 +478,16 @@ pigShapes_pig:depicts
 #################################################################
 
 SpecIF:LifecycleStatus-Value
-	rdfs:subClassOf pig:Enumeration ;
+	rdf:type owl:Class ;
+	rdfs:subClassOf cas:Enumeration ;
 	rdfs:label "Lifecycle"@en ,
 		"Lebenszyklus"@de ,
 		"Cycle de vie"@fr ;
-	rdfs:comment "The 'Lifecycle Status' of the resource."@en ,
+	skos:definition "The 'Lifecycle Status' of the resource."@en ,
 		"Der 'Lebenszyklusstatus' der Ressource."@de ,
 		"L'état du cycle de vie de la ressource."@fr ;
+	dcterms:modified "2016-05-26T08:59:00+02:00" ;
+	sh:datatype xs:string ;
 	owl:oneOf (
 			SpecIF:LifecycleStatusDeprecated
 			SpecIF:LifecycleStatusRejected
@@ -432,11 +537,14 @@ SpecIF:LifecycleStatusReleased
 		"publié"@fr .
 
 SpecIF:Priority-Value
-	rdfs:subClassOf pig:Enumeration ;
+	rdf:type owl:Class ;
+	rdfs:subClassOf cas:Enumeration ;
 	rdfs:label "Priority"@en ,
 		"Priorität"@de ,
 		"Priorité"@fr ;
-	rdfs:comment "Enumerated values for the 'Priority' of the resource."@en ;
+	skos:definition "Enumerated values for the 'Priority' of the resource."@en ;
+	dcterms:modified "2016-05-26T08:59:00+02:00" ;
+	sh:datatype xs:string ;
 	owl:oneOf (
 			SpecIF:priorityHigh
 			SpecIF:priorityMedium
@@ -459,9 +567,12 @@ SpecIF:priorityLow
 		"bas"@fr .
 
 SpecIF:StakeholderGroup-Value
-	rdfs:subClassOf pig:Enumeration ;
+	rdf:type owl:Class ;
+	rdfs:subClassOf cas:Enumeration ;
 	rdfs:label "Stakeholder Group"@en ;
-	rdfs:comment "Enumerated values for the 'Stakehoder Group' addressed by the term."@en ;
+	skos:definition "Enumerated values for the 'Stakehoder Group' addressed by the term."@en ;
+	dcterms:modified "2016-05-26T08:59:00+02:00" ;
+	sh:datatype xs:string ;
 	owl:oneOf (
 			SpecIF:StakeholderGroupBusiness
 			SpecIF:StakeholderGroupUser
@@ -478,11 +589,14 @@ SpecIF:StakeholderGroupSystem
 	rdfs:label "System"@en .
 
 SpecIF:EngineeringDiscipline-Value
-	rdfs:subClassOf pig:Enumeration ;
+	rdf:type owl:Class ;
+	rdfs:subClassOf cas:Enumeration ;
 	rdfs:label "Engineering Discipline"@en ,
 		"Ingenieurdisziplin"@de ,
 		"Discipline d'ingénierie"@fr ;
-	rdfs:comment "The engineering discipline involved by a development artefact."@en ;
+	skos:definition "The engineering discipline involved by a development artefact."@en ;
+	dcterms:modified "2016-05-26T08:59:00+02:00" ;
+	sh:datatype xs:string ;
 	owl:oneOf (
 			SpecIF:EngineeringDisciplineMechanics
 			SpecIF:EngineeringDisciplineElectronics
@@ -510,10 +624,13 @@ SpecIF:EngineeringDisciplineSafety
 		"Sécurité"@fr .
 
 ReqIF-WF:SupplierStatus-Value
-	rdfs:subClassOf pig:Enumeration ;
+	rdf:type owl:Class ;
+	rdfs:subClassOf cas:Enumeration ;
 	rdfs:label "Supplier Status"@en ,
 		"Zustand Lieferant"@de ,
 		"Statut coté Fournisseur"@fr ;
+	dcterms:modified "2016-05-26T08:59:00+02:00" ;
+	sh:datatype xs:string ;
 	owl:oneOf (
 			SpecIF:NotApplicable
 			ReqIF-WF:CustomerStatus.ToBeClarified
@@ -548,10 +665,13 @@ ReqIF-WF:SupplierStatus.NotAgreed
 		"non approuvé"@fr .
 
 ReqIF-WF:CustomerStatus-Value
-	rdfs:subClassOf pig:Enumeration ;
+	rdf:type owl:Class ;
+	rdfs:subClassOf cas:Enumeration ;
 	rdfs:label "Customer Status"@en ,
 		"Zustand Kunde"@de ,
 		"Statut coté Client"@fr ;
+	dcterms:modified "2016-05-26T08:59:00+02:00" ;
+	sh:datatype xs:string ;
 	owl:oneOf (
 			ReqIF-WF:CustomerStatus.NotToEvaluate
 			ReqIF-WF:CustomerStatus.ToEvaluate
@@ -580,9 +700,12 @@ ReqIF-WF:CustomerStatus.NotAccepted
 		"non accepté"@fr .
 
 o:DT-IssueStatus
-	rdfs:subClassOf pig:Enumeration ;
+	rdf:type owl:Class ;
+	rdfs:subClassOf cas:Enumeration ;
 	rdfs:label "SpecIF:LifecycleStatusIssue" ;
-	rdfs:comment "Enumerated values for issue status" ;
+	skos:definition "Enumerated values for issue status" ;
+	dcterms:modified "2016-05-26T08:59:00+02:00" ;
+	sh:datatype xs:string ;
 	owl:oneOf (
 			o:V-Iss-Status-0
 			o:V-Iss-Status-1
@@ -622,19 +745,20 @@ o:V-Iss-Status-6
 
 # Skipping implicit property: rdfs:comment
 
-# Skipping implicit property: pig:Diagram
+# Skipping implicit property: cas:Diagram
 
-# Skipping implicit property: pig:Notation
+# Skipping implicit property: cas:Notation
 
 SpecIF:Priority
 	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf cas:Link ;
 	rdfs:label "Priority"@en ,
 		"Priorität"@de ,
 		"Priorité"@fr ;
-	rdfs:comment "Enumerated values for the 'Priority' of the resource."@en ;
+	skos:definition "Enumerated values for the 'Priority' of the resource."@en ;
 	rdfs:range SpecIF:Priority-Value .
 
-pigShapes_SpecIF:Priority
+casShapes_SpecIF:Priority
 	rdf:type sh:PropertyShape ;
 	sh:path SpecIF:Priority ;
 	sh:maxCount "1" ;
@@ -642,15 +766,16 @@ pigShapes_SpecIF:Priority
 
 SpecIF:LifecycleStatus
 	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf cas:Link ;
 	rdfs:label "Lifecycle"@en ,
 		"Lebenszyklus"@de ,
 		"Cycle de vie"@fr ;
-	rdfs:comment "The 'Lifecycle Status' of the resource."@en ,
+	skos:definition "The 'Lifecycle Status' of the resource."@en ,
 		"Der 'Lebenszyklusstatus' der Ressource."@de ,
 		"L'état du cycle de vie de la ressource."@fr ;
 	rdfs:range SpecIF:LifecycleStatus-Value .
 
-pigShapes_SpecIF:LifecycleStatus
+casShapes_SpecIF:LifecycleStatus
 	rdf:type sh:PropertyShape ;
 	sh:path SpecIF:LifecycleStatus ;
 	sh:maxCount "1" ;
@@ -658,12 +783,13 @@ pigShapes_SpecIF:LifecycleStatus
 
 ReqIF-WF:SupplierStatus
 	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf cas:Link ;
 	rdfs:label "Supplier Status"@en ,
 		"Zustand Lieferant"@de ,
 		"Statut coté Fournisseur"@fr ;
 	rdfs:range ReqIF-WF:SupplierStatus-Value .
 
-pigShapes_ReqIF-WF:SupplierStatus
+casShapes_ReqIF-WF:SupplierStatus
 	rdf:type sh:PropertyShape ;
 	sh:path ReqIF-WF:SupplierStatus ;
 	sh:maxCount "1" ;
@@ -671,11 +797,12 @@ pigShapes_ReqIF-WF:SupplierStatus
 
 ReqIF-WF:SupplierComment
 	rdf:type owl:DatatypeProperty ;
+	rdfs:subPropertyOf cas:Property ;
 	rdfs:label "Supplier Comment"@en ,
 		"Kommentar Lieferant"@de ,
 		"Commentaire du Client"@fr .
 
-pigShapes_ReqIF-WF:SupplierComment
+casShapes_ReqIF-WF:SupplierComment
 	rdf:type sh:PropertyShape ;
 	sh:path ReqIF-WF:SupplierComment ;
 	sh:maxCount "1" ;
@@ -683,12 +810,13 @@ pigShapes_ReqIF-WF:SupplierComment
 
 ReqIF-WF:CustomerStatus
 	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf cas:Link ;
 	rdfs:label "Customer Status"@en ,
 		"Zustand Kunde"@de ,
 		"Statut coté Client"@fr ;
 	rdfs:range ReqIF-WF:CustomerStatus-Value .
 
-pigShapes_ReqIF-WF:CustomerStatus
+casShapes_ReqIF-WF:CustomerStatus
 	rdf:type sh:PropertyShape ;
 	sh:path ReqIF-WF:CustomerStatus ;
 	sh:maxCount "1" ;
@@ -696,37 +824,27 @@ pigShapes_ReqIF-WF:CustomerStatus
 
 ReqIF-WF:CustomerComment
 	rdf:type owl:DatatypeProperty ;
+	rdfs:subPropertyOf cas:Property ;
 	rdfs:label "Customer Comment"@en ,
 		"Kommentar Kunde"@de ,
 		"Commentaire du Client"@fr .
 
-pigShapes_ReqIF-WF:CustomerComment
+casShapes_ReqIF-WF:CustomerComment
 	rdf:type sh:PropertyShape ;
 	sh:path ReqIF-WF:CustomerComment ;
 	sh:maxCount "1" ;
 	sh:datatype xs:string .
 
-dcterms:identifier
-	rdf:type owl:DatatypeProperty ;
-	rdfs:label "Identifier"@en ,
-		"Bezeichner"@de ,
-		"Identifiant"@fr ;
-	rdfs:comment "<p>A unique reference to the resource within a given context. <small>(<i>source: <a href=\"http://purl.org/dc/elements/1.1/identifier\">DCMI</a></i>)</small></p><p>An identifier for a resource. This identifier may be unique with a scope that is defined by the RM provider. Assigned by the service provider when a resource is created. Not intended for end-user display. <small>(<i>source: <a href=\"http://open-services.net/\">OSLC</a></i>)</small></p>"@en .
-
-pigShapes_dcterms:identifier
-	rdf:type sh:PropertyShape ;
-	sh:path dcterms:identifier ;
-	sh:maxCount "1" ;
-	sh:datatype xs:string ;
-	sh:maxLength "256" .
+# Skipping implicit property: dcterms:identifier
 
 SpecIF:StakeholderGroup
 	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf cas:Link ;
 	rdfs:label "Stakeholder Group"@en ;
-	rdfs:comment "Enumerated values for the 'Stakehoder Group' addressed by the term."@en ;
+	skos:definition "Enumerated values for the 'Stakehoder Group' addressed by the term."@en ;
 	rdfs:range SpecIF:StakeholderGroup-Value .
 
-pigShapes_SpecIF:StakeholderGroup
+casShapes_SpecIF:StakeholderGroup
 	rdf:type sh:PropertyShape ;
 	sh:path SpecIF:StakeholderGroup ;
 	sh:maxCount "1" ;
@@ -734,19 +852,21 @@ pigShapes_SpecIF:StakeholderGroup
 
 SpecIF:EngineeringDiscipline
 	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf cas:Link ;
 	rdfs:label "Engineering Discipline"@en ,
 		"Ingenieurdisziplin"@de ,
 		"Discipline d'ingénierie"@fr ;
-	rdfs:comment "The engineering discipline involved by a development artefact."@en ;
+	skos:definition "The engineering discipline involved by a development artefact."@en ;
 	rdfs:range SpecIF:EngineeringDiscipline-Value .
 
-pigShapes_SpecIF:EngineeringDiscipline
+casShapes_SpecIF:EngineeringDiscipline
 	rdf:type sh:PropertyShape ;
 	sh:path SpecIF:EngineeringDiscipline ;
 	sh:class SpecIF:EngineeringDiscipline-Value .
 
 o:PC-IssueStatus
 	rdf:type owl:ObjectProperty ;
+	rdfs:subPropertyOf cas:Link ;
 	rdfs:label "SpecIF:LifecycleStatusIssue" ;
 	rdfs:range o:DT-IssueStatus .
 
@@ -758,12 +878,13 @@ o:PC-IssueStatus_shape
 
 SpecIF:Responsible
 	rdf:type owl:DatatypeProperty ;
+	rdfs:subPropertyOf cas:Property ;
 	rdfs:label "Responsible"@en ,
 		"Verantwortliche(r)"@de ,
 		"Responsable"@fr ;
-	rdfs:comment "The 'Person' being responsible for the resource."@en .
+	skos:definition "The 'Person' being responsible for the resource."@en .
 
-pigShapes_SpecIF:Responsible
+casShapes_SpecIF:Responsible
 	rdf:type sh:PropertyShape ;
 	sh:path SpecIF:Responsible ;
 	sh:maxCount "1" ;
@@ -772,27 +893,29 @@ pigShapes_SpecIF:Responsible
 
 SpecIF:DueDate
 	rdf:type owl:DatatypeProperty ;
+	rdfs:subPropertyOf cas:Property ;
 	rdfs:label "Due Date"@en ,
 		"Termin"@de ,
 		"Date limite"@fr ;
-	rdfs:comment "A 'Due Date' for the resource."@en .
+	skos:definition "A 'Due Date' for the resource."@en .
 
-pigShapes_SpecIF:DueDate
+casShapes_SpecIF:DueDate
 	rdf:type sh:PropertyShape ;
 	sh:path SpecIF:DueDate ;
 	sh:maxCount "1" ;
 	sh:datatype xs:dateTime .
 
-# Skipping implicit property: pig:Category
+# Skipping implicit property: cas:Category
 
-o:PC-Diagram-11436142245
+o:PC-Diagram-10674004527
 	rdf:type owl:DatatypeProperty ;
-	rdfs:label "pig:Diagram" ;
-	rdfs:comment "A diagram illustrating the resource or a link to a diagram." .
+	rdfs:subPropertyOf cas:Property ;
+	rdfs:label "cas:Diagram" ;
+	skos:definition "A diagram illustrating the resource or a link to a diagram." .
 
-o:PC-Diagram-11436142245_shape
+o:PC-Diagram-10674004527_shape
 	rdf:type sh:PropertyShape ;
-	sh:path o:PC-Diagram-11436142245 ;
+	sh:path o:PC-Diagram-10674004527 ;
 	sh:datatype xs:string .
 
 #################################################################
@@ -801,82 +924,106 @@ o:PC-Diagram-11436142245_shape
 
 IREB:Requirement
 	rdf:type owl:Class ;
-	rdfs:subClassOf pig:Entity ;
+	rdfs:subClassOf cas:Artifact ;
 	rdfs:label "Requirement"@en ,
 		"Anforderung"@de ,
 		"Exigence"@fr ;
-	rdfs:comment "<p>A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>A condition or capability needed by a user to solve a problem or achieve an objective.</li><li>A condition or capability that must be met or possessed by a system or system component to satisfy a contract, standard, specification, or other formally imposed documents.</li><li>A documented representation of a condition or capability as in (1) or (2).</li></ol><p>Note: The definition above is the classic one from IEEE Std 610.12 of 1990. Alternatively, we also give a more modern definition:</p><ol><li>A need perceived by a stakeholder.</li><li>A capability or property that a system shall have.</li><li>A documented representation of a need, capability or property.</li></ol>"@en ,
+	skos:definition "<p>A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>A condition or capability needed by a user to solve a problem or achieve an objective.</li><li>A condition or capability that must be met or possessed by a system or system component to satisfy a contract, standard, specification, or other formally imposed documents.</li><li>A documented representation of a condition or capability as in (1) or (2).</li></ol><p>Note: The definition above is the classic one from IEEE Std 610.12 of 1990. Alternatively, we also give a more modern definition:</p><ol><li>A need perceived by a stakeholder.</li><li>A capability or property that a system shall have.</li><li>A documented representation of a need, capability or property.</li></ol>"@en ,
 		"<p>Eine 'Anforderung' ist ein einzelnes dokumentiertes physisches und funktionales Bedürfnis, das ein bestimmter Entwurf, ein Produkt oder ein Prozess erfüllen muss. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>Eine Bedingung oder Fähigkeit, die ein Benutzer benötigt, um ein Problem zu lösen oder ein Ziel zu erreichen.</li><li>Eine Bedingung oder Fähigkeit, die ein System oder eine Systemkomponente erfüllen oder besitzen muss, um einen Vertrag, eine Norm, eine Spezifikation oder ein anderes formal vorgeschriebenes Dokument zu erfüllen.</li><li>Eine dokumentierte Darstellung einer Bedingung oder Fähigkeit wie in (1) oder (2).</li></ol><p>Anmerkung: Die obige Definition ist die klassische Definition aus IEEE Std 610.12 von 1990. Alternativ geben wir auch eine modernere Definition an:</p><ol><li>Ein von einem Stakeholder wahrgenommener Bedarf.</li><li>Eine Fähigkeit oder Eigenschaft, die ein System haben soll.</li><li>Eine dokumentierte Darstellung eines Bedarfs, einer Fähigkeit oder Eigenschaft.</li></ol>"@de ,
 		"<p>Une 'Exigence' est un besoin physique et fonctionnel unique et documenté qu'une conception, un produit ou un processus particulier doit pouvoir satisfaire. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Définition:</p><ol><li>Condition ou capacité dont un utilisateur a besoin pour résoudre un problème ou atteindre un objectif.</li><li>Condition ou capacité qui doit être remplie ou possédée par un système ou un composant de système pour satisfaire à un contrat, à une norme, à une spécification ou à d'autres documents imposés officiellement.</li><li>Une représentation documentée d'une condition ou d'une capacité comme dans (1) ou (2).</li></ol><p>Remarque: La définition ci-dessus est la définition classique de la norme IEEE 610.12 de 1990. Nous donnons également une définition plus moderne:</p><ol><li>Un besoin perçu par une partie prenante;</li><li>Une capacité ou une propriété qu'un système doit avoir.</li><li>Une représentation documentée d'un besoin, d'une capacité ou d'une propriété.</li></ol>"@fr ;
-	pig:Icon "&#8623;" .
+	cas:Icon "&#8623;" .
 
-pigShapes_IREB:Requirement
+casShapes_IREB:Requirement
 	rdf:type sh:NodeShape ;
 	sh:targetClass IREB:Requirement ;
-	sh:property pigShapes_dcterms:identifier ,
-		pigShapes_rdfs:label ,
-		pigShapes_rdfs:comment ,
-		pigShapes_SpecIF:LifecycleStatus ,
-		pigShapes_SpecIF:Priority ,
-		pigShapes_SpecIF:StakeholderGroup ,
-		pigShapes_SpecIF:EngineeringDiscipline ,
-		pigShapes_ReqIF-WF:SupplierStatus ,
-		pigShapes_ReqIF-WF:SupplierComment ,
-		pigShapes_ReqIF-WF:CustomerStatus ,
-		pigShapes_ReqIF-WF:CustomerComment .
+	sh:property casShapes_dcterms:identifier ,
+		[ 
+		sh:path rdfs:label ;
+		sh:minCount 1
+	] ,
+		[ 
+		sh:path rdfs:comment ;
+		sh:minCount 1
+	] ,
+		casShapes_SpecIF:LifecycleStatus ,
+		casShapes_SpecIF:Priority ,
+		casShapes_SpecIF:StakeholderGroup ,
+		casShapes_SpecIF:EngineeringDiscipline ,
+		casShapes_ReqIF-WF:SupplierStatus ,
+		casShapes_ReqIF-WF:SupplierComment ,
+		casShapes_ReqIF-WF:CustomerStatus ,
+		casShapes_ReqIF-WF:CustomerComment .
 
 SpecIF:Issue
 	rdf:type owl:Class ;
-	rdfs:subClassOf pig:Entity ;
+	rdfs:subClassOf cas:Artifact ;
 	rdfs:label "Open Issue"@en ,
 		"Offener Punkt"@de ,
 		"Problème"@fr ;
-	rdfs:comment "An 'Issue' is a question to answer or decision to take which is worth tracking."@en ,
+	skos:definition "An 'Issue' is a question to answer or decision to take which is worth tracking."@en ,
 		"Ein 'Offener Punkt ist eine zu beantwortende Frage oder eine zu treffende Entscheidung."@de ,
 		"Un 'problème' est une question à laquelle il faut répondre ou une décision à prendre qui mérite d'être suivie."@fr .
 
-pigShapes_SpecIF:Issue
+casShapes_SpecIF:Issue
 	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:Issue ;
-	sh:property pigShapes_dcterms:identifier ,
-		pigShapes_rdfs:label ,
-		pigShapes_rdfs:comment ,
+	sh:property casShapes_dcterms:identifier ,
+		[ 
+		sh:path rdfs:label ;
+		sh:minCount 1
+	] ,
+		[ 
+		sh:path rdfs:comment ;
+		sh:minCount 1
+	] ,
 		o:PC-IssueStatus_shape ,
-		pigShapes_SpecIF:Priority ,
-		pigShapes_SpecIF:Responsible ,
-		pigShapes_SpecIF:DueDate .
+		casShapes_SpecIF:Priority ,
+		casShapes_SpecIF:Responsible ,
+		casShapes_SpecIF:DueDate .
 
 SpecIF:Paragraph
 	rdf:type owl:Class ;
-	rdfs:subClassOf pig:Entity ;
+	rdfs:subClassOf cas:Artifact ;
 	rdfs:label "Paragraph"@en ,
 		"Textabsatz"@de ,
 		"Paragraphe"@fr ;
-	rdfs:comment "<p>A 'Paragraph' is an unspecified information in a document at any level.</p>"@en ,
+	skos:definition "<p>A 'Paragraph' is an unspecified information in a document at any level.</p>"@en ,
 		"<p>Ein 'Textabschnitt' in einem Dokument auf beliebiger Ebene.</p>"@de .
 
-pigShapes_SpecIF:Paragraph
+casShapes_SpecIF:Paragraph
 	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:Paragraph ;
-	sh:property pigShapes_rdfs:label ,
-		pigShapes_rdfs:comment ,
-		pigShapes_pig:Diagram ,
-		pigShapes_pig:Category .
+	sh:property [ 
+		sh:path rdfs:label ;
+		sh:minCount 1
+	] ,
+		[ 
+		sh:path rdfs:comment ;
+		sh:minCount 1
+	] ,
+		casShapes_cas:Diagram ,
+		casShapes_cas:Category .
 
-o:RC-Paragraph-11436142245
+o:RC-Paragraph-10674004527
 	rdf:type owl:Class ;
-	rdfs:subClassOf pig:Entity ;
+	rdfs:subClassOf cas:Artifact ;
 	rdfs:label "SpecIF:Paragraph" ;
-	rdfs:comment "<p>A 'Paragraph' is an unspecified information in a document at any level.</p>"@en ,
+	skos:definition "<p>A 'Paragraph' is an unspecified information in a document at any level.</p>"@en ,
 		"<p>Ein 'Textabschnitt' in einem Dokument auf beliebiger Ebene.</p>"@de .
 
-o:RC-Paragraph-11436142245_shape
+o:RC-Paragraph-10674004527_shape
 	rdf:type sh:NodeShape ;
-	sh:targetClass o:RC-Paragraph-11436142245 ;
-	sh:property pigShapes_rdfs:label ,
-		pigShapes_rdfs:comment ,
-		o:PC-Diagram-11436142245_shape ,
-		pigShapes_pig:Category .
+	sh:targetClass o:RC-Paragraph-10674004527 ;
+	sh:property [ 
+		sh:path rdfs:label ;
+		sh:minCount 1
+	] ,
+		[ 
+		sh:path rdfs:comment ;
+		sh:minCount 1
+	] ,
+		o:PC-Diagram-10674004527_shape ,
+		casShapes_cas:Category .
 
 #################################################################
 # Ontology - Relationship Classes
@@ -884,14 +1031,15 @@ o:RC-Paragraph-11436142245_shape
 
 SpecIF:contains
 	rdf:type owl:Class ;
-	rdfs:subClassOf pig:Relationship ;
+	rdfs:subClassOf cas:Relationship ;
 	rdfs:label "contains"@en ,
 		"enthält"@de ,
 		"contient"@fr ;
-	rdfs:comment "General containment, such as:\n- Package-A *contains* Diagram-B\n- Collection-1 *contains* DataObject-1.1\n\nNot to confound with *[[dcterms:hasPart]]*."@en .
+	skos:definition "General containment, such as:\n- Package-A *contains* Diagram-B\n- Collection-1 *contains* DataObject-1.1\n\nNot to confound with *[[dcterms:hasPart]]*."@en ;
+	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
 SpecIF:contains-toSource
-	rdfs:subPropertyOf pig:SourceLink ;
+	rdfs:subPropertyOf cas:SourceLink ;
 	rdfs:label "SpecIF:contains to source" ;
 	rdfs:comment "Connects the source of SpecIF:contains" ;
 	rdfs:domain SpecIF:contains ;
@@ -902,7 +1050,7 @@ SpecIF:contains-toSource
 		)] .
 
 SpecIF:contains-toTarget
-	rdfs:subPropertyOf pig:TargetLink ;
+	rdfs:subPropertyOf cas:TargetLink ;
 	rdfs:label "SpecIF:contains to target" ;
 	rdfs:comment "Connects the target of SpecIF:contains" ;
 	rdfs:domain SpecIF:contains ;
@@ -912,7 +1060,7 @@ SpecIF:contains-toTarget
 			FMC:Event
 		)] .
 
-pigShapes_SpecIF:contains
+casShapes_SpecIF:contains
 	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:contains ;
 	sh:property [ 
@@ -938,19 +1086,20 @@ pigShapes_SpecIF:contains
 
 o:SC-stores
 	rdf:type owl:Class ;
-	rdfs:subClassOf pig:Relationship ;
+	rdfs:subClassOf cas:Relationship ;
 	rdfs:label "SpecIF:modifies" ;
-	rdfs:comment "Relation: Actor (Role, Function) writes and reads State (Information)" .
+	skos:definition "Relation: Actor (Role, Function) writes and reads State (Information)" ;
+	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
 o:SC-stores-toSource
-	rdfs:subPropertyOf pig:SourceLink ;
+	rdfs:subPropertyOf cas:SourceLink ;
 	rdfs:label "o:SC-stores to source" ;
 	rdfs:comment "Connects the source of o:SC-stores" ;
 	rdfs:domain o:SC-stores ;
 	rdfs:range FMC:Actor .
 
 o:SC-stores-toTarget
-	rdfs:subPropertyOf pig:TargetLink ;
+	rdfs:subPropertyOf cas:TargetLink ;
 	rdfs:label "o:SC-stores to target" ;
 	rdfs:comment "Connects the target of o:SC-stores" ;
 	rdfs:domain o:SC-stores ;
@@ -978,27 +1127,28 @@ o:SC-stores_shape
 
 SpecIF:writes
 	rdf:type owl:Class ;
-	rdfs:subClassOf pig:Relationship ;
+	rdfs:subClassOf cas:Relationship ;
 	rdfs:label "writes"@en ,
 		"schreibt"@de ,
 		"écrit"@fr ;
-	rdfs:comment "A [[FMC:Actor]] 'writes' (changes) a [[FMC:State]]."@en .
+	skos:definition "A [[FMC:Actor]] 'writes' (changes) a [[FMC:State]]."@en ;
+	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
 SpecIF:writes-toSource
-	rdfs:subPropertyOf pig:SourceLink ;
+	rdfs:subPropertyOf cas:SourceLink ;
 	rdfs:label "SpecIF:writes to source" ;
 	rdfs:comment "Connects the source of SpecIF:writes" ;
 	rdfs:domain SpecIF:writes ;
 	rdfs:range FMC:Actor .
 
 SpecIF:writes-toTarget
-	rdfs:subPropertyOf pig:TargetLink ;
+	rdfs:subPropertyOf cas:TargetLink ;
 	rdfs:label "SpecIF:writes to target" ;
 	rdfs:comment "Connects the target of SpecIF:writes" ;
 	rdfs:domain SpecIF:writes ;
 	rdfs:range FMC:State .
 
-pigShapes_SpecIF:writes
+casShapes_SpecIF:writes
 	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:writes ;
 	sh:property [ 
@@ -1020,27 +1170,28 @@ pigShapes_SpecIF:writes
 
 SpecIF:reads
 	rdf:type owl:Class ;
-	rdfs:subClassOf pig:Relationship ;
+	rdfs:subClassOf cas:Relationship ;
 	rdfs:label "reads"@en ,
 		"liest"@de ,
 		"lit"@fr ;
-	rdfs:comment "A [[FMC:Actor]] 'reads' a [[FMC:State]]."@en .
+	skos:definition "A [[FMC:Actor]] 'reads' a [[FMC:State]]."@en ;
+	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
 SpecIF:reads-toSource
-	rdfs:subPropertyOf pig:SourceLink ;
+	rdfs:subPropertyOf cas:SourceLink ;
 	rdfs:label "SpecIF:reads to source" ;
 	rdfs:comment "Connects the source of SpecIF:reads" ;
 	rdfs:domain SpecIF:reads ;
 	rdfs:range FMC:Actor .
 
 SpecIF:reads-toTarget
-	rdfs:subPropertyOf pig:TargetLink ;
+	rdfs:subPropertyOf cas:TargetLink ;
 	rdfs:label "SpecIF:reads to target" ;
 	rdfs:comment "Connects the target of SpecIF:reads" ;
 	rdfs:domain SpecIF:reads ;
 	rdfs:range FMC:State .
 
-pigShapes_SpecIF:reads
+casShapes_SpecIF:reads
 	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:reads ;
 	sh:property [ 
@@ -1062,27 +1213,28 @@ pigShapes_SpecIF:reads
 
 SpecIF:dependsOn
 	rdf:type owl:Class ;
-	rdfs:subClassOf pig:Relationship ;
+	rdfs:subClassOf cas:Relationship ;
 	rdfs:label "depends on"@en ,
 		"hängt ab von"@de ,
 		"depend de"@fr ;
-	rdfs:comment "<p>A [[IREB:Requirement]] 'depends on' another [[IREB:Requirement]].</p>"@en .
+	skos:definition "<p>A [[IREB:Requirement]] 'depends on' another [[IREB:Requirement]].</p>"@en ;
+	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
 SpecIF:dependsOn-toSource
-	rdfs:subPropertyOf pig:SourceLink ;
+	rdfs:subPropertyOf cas:SourceLink ;
 	rdfs:label "SpecIF:dependsOn to source" ;
 	rdfs:comment "Connects the source of SpecIF:dependsOn" ;
 	rdfs:domain SpecIF:dependsOn ;
 	rdfs:range IREB:Requirement .
 
 SpecIF:dependsOn-toTarget
-	rdfs:subPropertyOf pig:TargetLink ;
+	rdfs:subPropertyOf cas:TargetLink ;
 	rdfs:label "SpecIF:dependsOn to target" ;
 	rdfs:comment "Connects the target of SpecIF:dependsOn" ;
 	rdfs:domain SpecIF:dependsOn ;
 	rdfs:range IREB:Requirement .
 
-pigShapes_SpecIF:dependsOn
+casShapes_SpecIF:dependsOn
 	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:dependsOn ;
 	sh:property [ 
@@ -1104,14 +1256,15 @@ pigShapes_SpecIF:dependsOn
 
 oslc_rm:satisfies
 	rdf:type owl:Class ;
-	rdfs:subClassOf pig:Relationship ;
+	rdfs:subClassOf cas:Relationship ;
 	rdfs:label "satisfies"@en ,
 		"erfüllt"@de ,
 		"satisfait"@fr ;
-	rdfs:comment "<p>The object is satisfied by the subject. <small>(<i>source: <a href=\"http://open-services.net/\">OSLC</a></i>)</small></p><p>SpecIF suggests that the subject is confined to a model element, e.g, a [[FMC:Actor]] or [[FMC:State]], and the object is confined to a [[IREB:Requirement]]. More concretely, an example for this type of statement is 'Component-X <em>satisfies</em> 'Requirement-4711'.</p>"@en .
+	skos:definition "<p>The object is satisfied by the subject. <small>(<i>source: <a href=\"http://open-services.net/\">OSLC</a></i>)</small></p><p>SpecIF suggests that the subject is confined to a model element, e.g, a [[FMC:Actor]] or [[FMC:State]], and the object is confined to a [[IREB:Requirement]]. More concretely, an example for this type of statement is 'Component-X <em>satisfies</em> 'Requirement-4711'.</p>"@en ;
+	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
 oslc_rm:satisfies-toSource
-	rdfs:subPropertyOf pig:SourceLink ;
+	rdfs:subPropertyOf cas:SourceLink ;
 	rdfs:label "oslc_rm:satisfies to source" ;
 	rdfs:comment "Connects the source of oslc_rm:satisfies" ;
 	rdfs:domain oslc_rm:satisfies ;
@@ -1122,13 +1275,13 @@ oslc_rm:satisfies-toSource
 		)] .
 
 oslc_rm:satisfies-toTarget
-	rdfs:subPropertyOf pig:TargetLink ;
+	rdfs:subPropertyOf cas:TargetLink ;
 	rdfs:label "oslc_rm:satisfies to target" ;
 	rdfs:comment "Connects the target of oslc_rm:satisfies" ;
 	rdfs:domain oslc_rm:satisfies ;
 	rdfs:range IREB:Requirement .
 
-pigShapes_oslc_rm:satisfies
+casShapes_oslc_rm:satisfies
 	rdf:type sh:NodeShape ;
 	sh:targetClass oslc_rm:satisfies ;
 	sh:property [ 
@@ -1152,33 +1305,34 @@ pigShapes_oslc_rm:satisfies
 
 SpecIF:refersTo
 	rdf:type owl:Class ;
-	rdfs:subClassOf pig:Relationship ;
+	rdfs:subClassOf cas:Relationship ;
 	rdfs:label "refers to"@en ,
 		"bezieht sich auf"@de ,
 		"concerne"@fr ;
-	rdfs:comment "<p>A resource 'refers to' any other resource.</p>"@en .
+	skos:definition "<p>A resource 'refers to' any other resource.</p>"@en ;
+	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
 SpecIF:refersTo-toSource
-	rdfs:subPropertyOf pig:SourceLink ;
+	rdfs:subPropertyOf cas:SourceLink ;
 	rdfs:label "SpecIF:refersTo to source" ;
 	rdfs:comment "Connects the source of SpecIF:refersTo" ;
 	rdfs:domain SpecIF:refersTo ;
 	rdfs:range SpecIF:Issue .
 
 SpecIF:refersTo-toTarget
-	rdfs:subPropertyOf pig:TargetLink ;
+	rdfs:subPropertyOf cas:TargetLink ;
 	rdfs:label "SpecIF:refersTo to target" ;
 	rdfs:comment "Connects the target of SpecIF:refersTo" ;
 	rdfs:domain SpecIF:refersTo ;
 	rdfs:range [ owl:unionOf(
-			pig:View
+			cas:View
 			FMC:Actor
 			FMC:State
 			FMC:Event
 			IREB:Requirement
 		)] .
 
-pigShapes_SpecIF:refersTo
+casShapes_SpecIF:refersTo
 	rdf:type sh:NodeShape ;
 	sh:targetClass SpecIF:refersTo ;
 	sh:property [ 
@@ -1192,7 +1346,7 @@ pigShapes_SpecIF:refersTo
 	sh:property [ 
 		sh:path SpecIF:refersTo-toTarget ;
 		sh:or (
-			[ sh:class pig:View ]
+			[ sh:class cas:View ]
 			[ sh:class FMC:Actor ]
 			[ sh:class FMC:State ]
 			[ sh:class FMC:Event ]
@@ -1207,30 +1361,30 @@ pigShapes_SpecIF:refersTo
 #################################################################
 
 d:Pln-27420ffc0000c3a8013ab527ca1b71f5
-	rdf:type pig:View ;
+	rdf:type cas:View ;
 	rdfs:label "Color coding" ;
-	pig:Diagram "<div style=\"max-width: 480px;\" ><object data=\"files_and_images/27420ffc0000c3a8013ab527ca1b71f5.svg\" type=\"image/svg+xml\" >Color Coding</object></div>" ;
-	pig:Notation "FMC Block Diagram" ;
+	cas:Diagram "<div style=\"max-width: 480px;\" ><object data=\"files_and_images/27420ffc0000c3a8013ab527ca1b71f5.svg\" type=\"image/svg+xml\" >Color Coding</object></div>" ;
+	cas:Notation "FMC Block Diagram" ;
 	SpecIF:LifecycleStatus SpecIF:LifecycleStatusApproved ;
 	ReqIF-WF:SupplierStatus SpecIF:NotApplicable ;
 	ReqIF-WF:CustomerStatus ReqIF-WF:CustomerStatus.NotToEvaluate ;
-	pig:revision "18" ;
+	cas:revision "18" ;
 	dcterms:modified "2017-06-19T20:13:03+02:00" ;
 	dcterms:creator "od" .
 
 d:Pln-5a4755dd0000bca801375293a62c90a8
-	rdf:type pig:View ;
+	rdf:type cas:View ;
 	rdfs:label "SmartHome System" ;
 	rdfs:comment "<div><p>The Smart-Home-System consists of sensors on the left side, the controller in the middle and the actuators on the right side. </p></div>" ;
-	pig:Diagram "<div style=\"max-width: 600px;\"><object data=\"files_and_images/5a4755dd0000bca801375293a62c90a8.svg\" type=\"image/svg+xml\" >files_and_images\\5a4755dd0000bca801375293a62c90a8.svg</object></div>" ;
-	pig:Notation "FMC Block Diagram" ;
+	cas:Diagram "<div style=\"max-width: 600px;\"><object data=\"files_and_images/5a4755dd0000bca801375293a62c90a8.svg\" type=\"image/svg+xml\" >files_and_images\\5a4755dd0000bca801375293a62c90a8.svg</object></div>" ;
+	cas:Notation "FMC Block Diagram" ;
 	SpecIF:LifecycleStatus SpecIF:LifecycleStatusInitial ;
 	ReqIF-WF:SupplierStatus ReqIF-WF:CustomerStatus.ToBeClarified ;
 	ReqIF-WF:CustomerStatus ReqIF-WF:CustomerStatus.ToEvaluate ;
-	pig:revision "19" ;
+	cas:revision "19" ;
 	dcterms:modified "2017-06-19T20:13:03+02:00" ;
 	dcterms:creator "od" ;
-	pig:shows (
+	cas:shows (
 			d:MEl-5bd6bd890000bca8013739588a3f43d6
 			d:MEl-5a4dd77b0000bca8013736c6912ad291
 			d:MEl-5a489c300000bca80137ee1373c16844
@@ -1248,18 +1402,18 @@ d:Pln-5a4755dd0000bca801375293a62c90a8
 		) .
 
 d:Pln-5a6cdea50000bca80137d6b2d6e8a3a0
-	rdf:type pig:View ;
+	rdf:type cas:View ;
 	rdfs:label "Flush-mounted Dimmer" ;
 	rdfs:comment "<div><p> .. showing the components of the device with their interfaces. </p></div>" ;
-	pig:Diagram "<div style=\"max-width: 600px;\"><object data=\"files_and_images/5a6cdea50000bca80137d6b2d6e8a3a0.svg\" type=\"image/svg+xml\" >files_and_images\\5a6cdea50000bca80137d6b2d6e8a3a0.svg</object></div>" ;
-	pig:Notation "FMC Block Diagram" ;
+	cas:Diagram "<div style=\"max-width: 600px;\"><object data=\"files_and_images/5a6cdea50000bca80137d6b2d6e8a3a0.svg\" type=\"image/svg+xml\" >files_and_images\\5a6cdea50000bca80137d6b2d6e8a3a0.svg</object></div>" ;
+	cas:Notation "FMC Block Diagram" ;
 	SpecIF:LifecycleStatus SpecIF:LifecycleStatusInitial ;
 	ReqIF-WF:SupplierStatus ReqIF-WF:SupplierStatus.NotAgreed ;
 	ReqIF-WF:CustomerStatus ReqIF-WF:CustomerStatus.NotAccepted ;
-	pig:revision "19" ;
+	cas:revision "19" ;
 	dcterms:modified "2017-06-19T20:13:03+02:00" ;
 	dcterms:creator "od" ;
-	pig:shows (
+	cas:shows (
 			d:MEl-5a7776c50000bca8013765ae93af9209
 			d:MEl-5a76365c0000bca8013776e91afd1e8e
 			d:MEl-5a9ce0310000bca801378176dc4744e8
@@ -1278,17 +1432,17 @@ d:Pln-5a6cdea50000bca80137d6b2d6e8a3a0
 		) .
 
 d:Pln-5a7f99af0000bca8013754f2ef12d3e5
-	rdf:type pig:View ;
+	rdf:type cas:View ;
 	rdfs:label "Dimmer Module" ;
-	pig:Diagram "<div style=\"max-width: 600px;\"><object data=\"files_and_images/5a7f99af0000bca8013754f2ef12d3e5.svg\" type=\"image/svg+xml\" >files_and_images\\5a7f99af0000bca8013754f2ef12d3e5.svg</object></div>" ;
-	pig:Notation "FMC Block Diagram" ;
+	cas:Diagram "<div style=\"max-width: 600px;\"><object data=\"files_and_images/5a7f99af0000bca8013754f2ef12d3e5.svg\" type=\"image/svg+xml\" >files_and_images\\5a7f99af0000bca8013754f2ef12d3e5.svg</object></div>" ;
+	cas:Notation "FMC Block Diagram" ;
 	SpecIF:LifecycleStatus SpecIF:LifecycleStatusInitial ;
 	ReqIF-WF:SupplierStatus ReqIF-WF:SupplierStatus.AgreedWithComment ;
 	ReqIF-WF:CustomerStatus ReqIF-WF:CustomerStatus.ToEvaluate ;
-	pig:revision "20" ;
+	cas:revision "20" ;
 	dcterms:modified "2017-06-19T20:13:04+02:00" ;
 	dcterms:creator "od" ;
-	pig:shows (
+	cas:shows (
 			d:MEl-5a9ce0310000bca801378176dc4744e8
 			d:MEl-5a85347c0000bca80137ad485c7cd330
 			d:MEl-5a808e2a0000bca80137bfd74268a84a
@@ -1307,18 +1461,18 @@ d:Pln-5a7f99af0000bca8013754f2ef12d3e5
 		) .
 
 d:Pln-606e76c70000bca801376ec3133a1181
-	rdf:type pig:View ;
+	rdf:type cas:View ;
 	rdfs:label "User Activity" ;
 	rdfs:comment "<div><p>This shows the defined sequences of manual operation to activate the device. </p></div>" ;
-	pig:Diagram "<div style=\"max-width: 600px;\"><object data=\"files_and_images/606e76c70000bca801376ec3133a1181.svg\" type=\"image/svg+xml\" >files_and_images\\606e76c70000bca801376ec3133a1181.svg</object></div>" ;
-	pig:Notation "BPMN Process Model" ;
+	cas:Diagram "<div style=\"max-width: 600px;\"><object data=\"files_and_images/606e76c70000bca801376ec3133a1181.svg\" type=\"image/svg+xml\" >files_and_images\\606e76c70000bca801376ec3133a1181.svg</object></div>" ;
+	cas:Notation "BPMN Process Model" ;
 	SpecIF:LifecycleStatus SpecIF:LifecycleStatusDrafted ;
 	ReqIF-WF:SupplierStatus ReqIF-WF:SupplierStatus.Agreed ;
 	ReqIF-WF:CustomerStatus ReqIF-WF:CustomerStatus.Accepted ;
-	pig:revision "20" ;
+	cas:revision "20" ;
 	dcterms:modified "2017-06-19T20:13:04+02:00" ;
 	dcterms:creator "od" ;
-	pig:shows (
+	cas:shows (
 			d:MEl-608177820000bca801379179ebf3b6aa
 			d:MEl-611366530000bca80137a97f194e96a3
 			d:MEl-453862540000c3a801419d91bef48cfd
@@ -1334,18 +1488,18 @@ d:Pln-606e76c70000bca801376ec3133a1181
 		) .
 
 d:Pln-45a1c8930000c3a801414cd1eaa70b5a
-	rdf:type pig:View ;
+	rdf:type cas:View ;
 	rdfs:label "Double-Button Observer Software" ;
 	rdfs:comment "<div><p>This software module discriminates the user's activity (operation sequence) and submits corresponding events/commands to the actuator. This software is generic with respect to the actuator, it can be used for [[dimmer]]s, [[shading]] devices and others. </p></div>" ;
-	pig:Diagram "<div style=\"max-width: 600px;\"><object type=\"image/svg+xml\" data=\"files_and_images/45a1c8930000c3a801414cd1eaa70b5a.svg\">files_and_images\\45a1c8930000c3a801414cd1eaa70b5a.svg</object></div>" ;
-	pig:Notation "BPMN Process Model" ;
+	cas:Diagram "<div style=\"max-width: 600px;\"><object type=\"image/svg+xml\" data=\"files_and_images/45a1c8930000c3a801414cd1eaa70b5a.svg\">files_and_images\\45a1c8930000c3a801414cd1eaa70b5a.svg</object></div>" ;
+	cas:Notation "BPMN Process Model" ;
 	SpecIF:LifecycleStatus SpecIF:LifecycleStatusDrafted ;
 	ReqIF-WF:SupplierStatus ReqIF-WF:SupplierStatus.Agreed ;
 	ReqIF-WF:CustomerStatus ReqIF-WF:CustomerStatus.Accepted ;
-	pig:revision "253" ;
+	cas:revision "253" ;
 	dcterms:modified "2018-03-15T15:36:31+01:00" ;
 	dcterms:creator "od" ;
-	pig:shows (
+	cas:shows (
 			d:MEl-606f16ac0000bca801373587fda932b3
 			d:MEl-45450be80000c3a801414f280f146c71
 			d:MEl-4536b0350000c3a801415986f8ea806a
@@ -1357,18 +1511,18 @@ d:Pln-45a1c8930000c3a801414cd1eaa70b5a
 		) .
 
 d:Pln-5af364560000bca80137b84017f4e832
-	rdf:type pig:View ;
+	rdf:type cas:View ;
 	rdfs:label "Dimmer Controller Software" ;
 	rdfs:comment "<div><p>This software decodes the commands and controls the timely behavior of the actuator. </p></div>" ;
-	pig:Diagram "<div style=\"max-width: 720px;\"><object data=\"files_and_images/5af364560000bca80137b84017f4e832.svg\" type=\"image/svg+xml\" >files_and_images\\5af364560000bca80137b84017f4e832.svg</object></div>" ;
-	pig:Notation "Petri Net" ;
+	cas:Diagram "<div style=\"max-width: 720px;\"><object data=\"files_and_images/5af364560000bca80137b84017f4e832.svg\" type=\"image/svg+xml\" >files_and_images\\5af364560000bca80137b84017f4e832.svg</object></div>" ;
+	cas:Notation "Petri Net" ;
 	SpecIF:LifecycleStatus SpecIF:LifecycleStatusDrafted ;
 	ReqIF-WF:SupplierStatus ReqIF-WF:SupplierStatus.Agreed ;
 	ReqIF-WF:CustomerStatus ReqIF-WF:CustomerStatus.Accepted ;
-	pig:revision "22" ;
+	cas:revision "22" ;
 	dcterms:modified "2017-06-19T20:13:06+02:00" ;
 	dcterms:creator "od" ;
-	pig:shows (
+	cas:shows (
 			d:MEl-5b2f95ec0000bca8013709bfa81d701f
 			d:MEl-5a85347c0000bca80137ad485c7cd330
 			d:MEl-45450be80000c3a801414f280f146c71
@@ -1403,7 +1557,7 @@ d:Req-d1c895230000c3a80150f8afd049f738
 		SpecIF:EngineeringDisciplineSoftware ;
 	ReqIF-WF:SupplierStatus ReqIF-WF:SupplierStatus.Agreed ;
 	ReqIF-WF:SupplierComment "Our solution does this perfectly." ;
-	pig:revision "23" ;
+	cas:revision "23" ;
 	dcterms:modified "2017-06-19T20:13:06+02:00" ;
 	dcterms:creator "od" .
 
@@ -1417,7 +1571,7 @@ d:Req-d1d42a6a0000c3a8015091ec8d149b93
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupUser ;
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineElectronics ,
 		SpecIF:EngineeringDisciplineSoftware ;
-	pig:revision "243" ;
+	cas:revision "243" ;
 	dcterms:modified "2018-02-13T12:22:44+01:00" ;
 	dcterms:creator "od" .
 
@@ -1430,7 +1584,7 @@ d:Req-d1cd7f370000c3a8015095e6ee21aab7
 	SpecIF:Priority SpecIF:priorityMedium ;
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupUser ;
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineSoftware ;
-	pig:revision "24" ;
+	cas:revision "24" ;
 	dcterms:modified "2017-06-19T20:13:07+02:00" ;
 	dcterms:creator "od" .
 
@@ -1445,7 +1599,7 @@ d:Req-5ba3512b0000bca801371cc0617eb4c1
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineMechanics ;
 	ReqIF-WF:SupplierStatus ReqIF-WF:CustomerStatus.ToBeClarified ;
 	ReqIF-WF:SupplierComment "We did not find the actual minimum dimensions of the buttons." ;
-	pig:revision "25" ;
+	cas:revision "25" ;
 	dcterms:modified "2017-06-19T20:13:08+02:00" ;
 	dcterms:creator "od" .
 
@@ -1460,7 +1614,7 @@ d:Req-5b8fbb300000bca80137c73e3ce4c737
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineElectronics ;
 	ReqIF-WF:SupplierStatus ReqIF-WF:CustomerStatus.ToBeClarified ;
 	ReqIF-WF:SupplierComment "For which time period?  Permanent load?" ;
-	pig:revision "25" ;
+	cas:revision "25" ;
 	dcterms:modified "2017-06-19T20:13:08+02:00" ;
 	dcterms:creator "od" .
 
@@ -1475,7 +1629,7 @@ d:Req-5b944fc70000bca8013763f44fdc0e03
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineMechanics ,
 		SpecIF:EngineeringDisciplineSoftware ;
 	ReqIF-WF:SupplierStatus ReqIF-WF:SupplierStatus.Agreed ;
-	pig:revision "26" ;
+	cas:revision "26" ;
 	dcterms:modified "2017-06-19T20:13:09+02:00" ;
 	dcterms:creator "od" .
 
@@ -1492,7 +1646,7 @@ d:Req-5ba140d60000bca801372b09f9888eca
 	ReqIF-WF:SupplierComment "Mais bien sûr." ;
 	ReqIF-WF:CustomerStatus ReqIF-WF:CustomerStatus.ToEvaluate ;
 	ReqIF-WF:CustomerComment "Das ist ganz wichtig für uns." ;
-	pig:revision "252" ;
+	cas:revision "252" ;
 	dcterms:modified "2018-03-08T11:59:42+01:00" ;
 	dcterms:creator "supplier" .
 
@@ -1506,7 +1660,7 @@ d:Req-ee452cf20000c3a8014035290669304d
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupUser ;
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineMechanics ,
 		SpecIF:EngineeringDisciplineSoftware ;
-	pig:revision "27" ;
+	cas:revision "27" ;
 	dcterms:modified "2017-06-19T20:13:10+02:00" ;
 	dcterms:creator "od" .
 
@@ -1520,7 +1674,7 @@ d:Req-ee43fc4c0000c3a8014063d42c77767f
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupSystem ;
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineElectronics ,
 		SpecIF:EngineeringDisciplineSoftware ;
-	pig:revision "28" ;
+	cas:revision "28" ;
 	dcterms:modified "2017-06-19T20:13:11+02:00" ;
 	dcterms:creator "od" .
 
@@ -1533,7 +1687,7 @@ d:Req-5b9124bc0000bca80137fa2ce86f5eca
 	SpecIF:Priority SpecIF:priorityMedium ;
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupUser ;
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineElectronics ;
-	pig:revision "29" ;
+	cas:revision "29" ;
 	dcterms:modified "2017-06-19T20:13:11+02:00" ;
 	dcterms:creator "od" .
 
@@ -1546,7 +1700,7 @@ d:Req-5b9e68530000bca801371362c49d2d08
 	SpecIF:Priority SpecIF:priorityMedium ;
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupSystem ;
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineElectronics ;
-	pig:revision "29" ;
+	cas:revision "29" ;
 	dcterms:modified "2017-06-19T20:13:11+02:00" ;
 	dcterms:creator "od" .
 
@@ -1561,7 +1715,7 @@ d:Req-eea1cd500000c3a80140fe00109eb7f4
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineMechanics ,
 		SpecIF:EngineeringDisciplineElectronics ,
 		SpecIF:EngineeringDisciplineSafety ;
-	pig:revision "31" ;
+	cas:revision "31" ;
 	dcterms:modified "2017-06-19T20:13:12+02:00" ;
 	dcterms:creator "od" .
 
@@ -1574,7 +1728,7 @@ d:Req-5b95fae40000bca801372becc933682d
 	SpecIF:Priority SpecIF:priorityHigh ;
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupSystem ;
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineMechanics ;
-	pig:revision "32" ;
+	cas:revision "32" ;
 	dcterms:modified "2017-06-19T20:13:12+02:00" ;
 	dcterms:creator "od" .
 
@@ -1588,7 +1742,7 @@ d:Req-5b9ab8a50000bca801377ad0be3bbc89
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupUser ;
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineMechanics ,
 		SpecIF:EngineeringDisciplineElectronics ;
-	pig:revision "244" ;
+	cas:revision "244" ;
 	dcterms:modified "2018-02-16T10:29:48+01:00" ;
 	dcterms:creator "od" .
 
@@ -1603,7 +1757,7 @@ d:Req-728c69c80018b1a8014b974542c36edc
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineElectronics ;
 	ReqIF-WF:SupplierComment "This is standard for all our products: expensive, but effective." ;
 	ReqIF-WF:CustomerStatus ReqIF-WF:CustomerStatus.ToEvaluate ;
-	pig:revision "247" ;
+	cas:revision "247" ;
 	dcterms:modified "2018-02-28T13:16:17+01:00" ;
 	dcterms:creator "supplier" .
 
@@ -1616,7 +1770,7 @@ d:Req-5b9c950e0000bca801374f16615247b9
 	SpecIF:Priority SpecIF:priorityMedium ;
 	SpecIF:StakeholderGroup SpecIF:StakeholderGroupSystem ;
 	SpecIF:EngineeringDiscipline SpecIF:EngineeringDisciplineSoftware ;
-	pig:revision "233" ;
+	cas:revision "233" ;
 	dcterms:modified "2017-10-27T11:44:20+02:00" ;
 	dcterms:creator "od" .
 
@@ -1624,7 +1778,7 @@ d:MEl-5bd6bd890000bca8013739588a3f43d6
 	rdf:type FMC:Actor ;
 	rdfs:label "Bulb" ;
 	rdfs:comment "<div><p> Dimmable candescent light-bulb 230V.</p></div>" ;
-	pig:revision "239" ;
+	cas:revision "239" ;
 	dcterms:modified "2017-11-11T16:16:13+01:00" ;
 	dcterms:creator "od" .
 
@@ -1632,7 +1786,7 @@ d:MEl-5bcfb01d0000bca80137f303272a5557
 	rdf:type FMC:Actor ;
 	rdfs:label "Shading" ;
 	rdfs:comment "<div><p>Window-shade with 2 degrees of freedom: It can be moved up/down and the elements can be set straight/tilted. Both movements can be made proportionally with an electric drive.</p> </div>" ;
-	pig:revision "50" ;
+	cas:revision "50" ;
 	dcterms:modified "2017-06-19T20:13:19+02:00" ;
 	dcterms:creator "od" .
 
@@ -1640,7 +1794,7 @@ d:MEl-803fd3750000c3a8013cf1fdb3b26d33
 	rdf:type FMC:State ;
 	rdfs:label "SmartHome System" ;
 	rdfs:comment "<div><p>The new system for controlling all major functions of the private home:</p> <ul> <li>light/illumination</li> <li>window shades</li> <li>heating</li> <li>consumption meters for electricity, heat, gas and water.</li></ul> </div>" ;
-	pig:revision "73" ;
+	cas:revision "73" ;
 	dcterms:modified "2017-06-19T20:13:26+02:00" ;
 	dcterms:creator "od" .
 
@@ -1648,7 +1802,7 @@ d:MEl-5a489c300000bca80137ee1373c16844
 	rdf:type FMC:State ;
 	rdfs:label "Flush-mounted Dimmer" ;
 	rdfs:comment "<p>A dimmer for electric loads in an industry-standard mounting frame which is flush with the wall surface. In other words, the dimmer is sitting in the wall and just the buttons are visible.</p>" ;
-	pig:revision "63" ;
+	cas:revision "63" ;
 	dcterms:modified "2017-06-19T20:13:23+02:00" ;
 	dcterms:creator "od" .
 
@@ -1656,7 +1810,7 @@ d:MEl-5a7776c50000bca8013765ae93af9209
 	rdf:type FMC:State ;
 	rdfs:label "Actuator Rods" ;
 	rdfs:comment "<div><p>Up to four actuator rods connecting the buttons to electrical contacts.</p> </div>" ;
-	pig:revision "59" ;
+	cas:revision "59" ;
 	dcterms:modified "2017-06-19T20:13:22+02:00" ;
 	dcterms:creator "od" .
 
@@ -1664,14 +1818,14 @@ d:MEl-5a76365c0000bca8013776e91afd1e8e
 	rdf:type FMC:Actor ;
 	rdfs:label "Assembly Frame" ;
 	rdfs:comment "<div><p> Mounting frame screwed to or into a wall.</p></div>" ;
-	pig:revision "39" ;
+	cas:revision "39" ;
 	dcterms:modified "2017-06-19T20:13:16+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-5a9ce0310000bca801378176dc4744e8
 	rdf:type FMC:State ;
 	rdfs:label "Control Signals" ;
-	pig:revision "60" ;
+	cas:revision "60" ;
 	dcterms:modified "2017-06-19T20:13:22+02:00" ;
 	dcterms:creator "od" .
 
@@ -1679,7 +1833,7 @@ d:MEl-5a752ccc0000bca80137479a2e8bab30
 	rdf:type FMC:Actor ;
 	rdfs:label "Dimmer Module" ;
 	rdfs:comment "<div><p>The actuator module with dimmer function for resistive loads.</p> </div>" ;
-	pig:revision "45" ;
+	cas:revision "45" ;
 	dcterms:modified "2017-06-19T20:13:17+02:00" ;
 	dcterms:creator "od" .
 
@@ -1687,105 +1841,105 @@ d:MEl-5a85347c0000bca80137ad485c7cd330
 	rdf:type FMC:Actor ;
 	rdfs:label "Dimmer Controller Software" ;
 	rdfs:comment "<div><p> Input commands (events):</p><ul> <li> up-long → increase brightness </li> <li> down-long → decrease brightness </li> <li> release → stop dimming, keep brightness </li> <li> up-short → switch to maximum </li> <li> down-short → switch to minimum </li> <li> inappropriate commands are ignored (e.g. up-long when maximum is set). </li> <li> set parameters </li></ul><p> Four parameters influence the behavior of the particular device:</p><ul> <li> minimum value (default: 0%) </li> <li> maximum value (default: 100%) </li> <li> ramp-up speed (default: 10% per sec) </li> <li> ramp-down speed (default: 10% per sec) </li></ul></div>" ;
-	pig:revision "242" ;
+	cas:revision "242" ;
 	dcterms:modified "2017-12-09T10:38:29+01:00" ;
 	dcterms:creator "od" .
 
 d:MEl-5b2f95ec0000bca8013709bfa81d701f
 	rdf:type FMC:Event ;
 	rdfs:label "Decreasing" ;
-	pig:revision "81" ;
+	cas:revision "81" ;
 	dcterms:modified "2017-06-19T20:13:28+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-45450be80000c3a801414f280f146c71
 	rdf:type FMC:Event ;
 	rdfs:label "down-long!" ;
-	pig:revision "84" ;
+	cas:revision "84" ;
 	dcterms:modified "2017-06-19T20:13:29+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-4536b0350000c3a801415986f8ea806a
 	rdf:type FMC:Event ;
 	rdfs:label "down-short!" ;
-	pig:revision "85" ;
+	cas:revision "85" ;
 	dcterms:modified "2017-06-19T20:13:30+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-5b149eab0000bca80137aad99b6eea7b
 	rdf:type FMC:Event ;
 	rdfs:label "Increasing" ;
-	pig:revision "85" ;
+	cas:revision "85" ;
 	dcterms:modified "2017-06-19T20:13:30+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-5b08ed8d0000bca8013719f554353b0e
 	rdf:type FMC:Event ;
 	rdfs:label "Intermediate" ;
-	pig:revision "86" ;
+	cas:revision "86" ;
 	dcterms:modified "2017-06-19T20:13:30+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-453dfb670000c3a8014191107df4565e
 	rdf:type FMC:Event ;
 	rdfs:label "max-reached!" ;
-	pig:revision "87" ;
+	cas:revision "87" ;
 	dcterms:modified "2017-06-19T20:13:30+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-5b094f8a0000bca801374c798a6587ad
 	rdf:type FMC:Event ;
 	rdfs:label "Maximum" ;
-	pig:revision "87" ;
+	cas:revision "87" ;
 	dcterms:modified "2017-06-19T20:13:30+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-45428b930000c3a80141e28b7d4b5ae5
 	rdf:type FMC:Event ;
 	rdfs:label "min-reached!" ;
-	pig:revision "88" ;
+	cas:revision "88" ;
 	dcterms:modified "2017-06-19T20:13:30+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-5b078fa50000bca80137f36ed05c43cb
 	rdf:type FMC:Event ;
 	rdfs:label "Minimum" ;
-	pig:revision "89" ;
+	cas:revision "89" ;
 	dcterms:modified "2017-06-19T20:13:31+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-453facbb0000c3a80141c43d2fb4f5e2
 	rdf:type FMC:Event ;
 	rdfs:label "released!" ;
-	pig:revision "89" ;
+	cas:revision "89" ;
 	dcterms:modified "2017-06-19T20:13:31+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-5b2d29070000bca801378a6c020cf8f5
 	rdf:type FMC:Actor ;
 	rdfs:label "Start-decreasing" ;
-	pig:revision "51" ;
+	cas:revision "51" ;
 	dcterms:modified "2017-06-19T20:13:19+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-5b1750f80000bca801373b2d143d7478
 	rdf:type FMC:Actor ;
 	rdfs:label "Start-increasing" ;
-	pig:revision "51" ;
+	cas:revision "51" ;
 	dcterms:modified "2017-06-19T20:13:19+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-5b2ddad80000bca80137c44d62ba97d8
 	rdf:type FMC:Actor ;
 	rdfs:label "Stop-decreasing" ;
-	pig:revision "52" ;
+	cas:revision "52" ;
 	dcterms:modified "2017-06-19T20:13:20+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-5b2449180000bca8013722c01c9d35a5
 	rdf:type FMC:Actor ;
 	rdfs:label "Stop-increasing" ;
-	pig:revision "52" ;
+	cas:revision "52" ;
 	dcterms:modified "2017-06-19T20:13:20+02:00" ;
 	dcterms:creator "od" .
 
@@ -1793,7 +1947,7 @@ d:MEl-5b0839b90000bca801376dcca41ca7d0
 	rdf:type FMC:Actor ;
 	rdfs:label "Switch-off" ;
 	rdfs:comment "<div><p>Switch to programmed min-value.</p> </div>" ;
-	pig:revision "53" ;
+	cas:revision "53" ;
 	dcterms:modified "2017-06-19T20:13:20+02:00" ;
 	dcterms:creator "od" .
 
@@ -1801,21 +1955,21 @@ d:MEl-5b07e6aa0000bca8013797aad9be69ae
 	rdf:type FMC:Actor ;
 	rdfs:label "Switch-on" ;
 	rdfs:comment "<div><p>Switch to programmed max-value.</p> </div>" ;
-	pig:revision "54" ;
+	cas:revision "54" ;
 	dcterms:modified "2017-06-19T20:13:21+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-4543fe900000c3a80141f5253ff13c35
 	rdf:type FMC:Event ;
 	rdfs:label "up-long!" ;
-	pig:revision "91" ;
+	cas:revision "91" ;
 	dcterms:modified "2017-06-19T20:13:32+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-453d34af0000c3a80141918f84641161
 	rdf:type FMC:Event ;
 	rdfs:label "up-short!" ;
-	pig:revision "92" ;
+	cas:revision "92" ;
 	dcterms:modified "2017-06-19T20:13:33+02:00" ;
 	dcterms:creator "od" .
 
@@ -1823,8 +1977,8 @@ d:MEl-5a808e2a0000bca80137bfd74268a84a
 	rdf:type FMC:Actor ;
 	rdfs:label "Dimmer Electronics" ;
 	rdfs:comment "<div><p>The Dimmer Electronics is a printed circuit board with low-power micro-processor, memory, binary as well as analog I/O signals and a power stage supporting the specified electric load.</p></div>" ;
-	pig:Diagram "<div><p class=\"inline-label\">Diagramm:</p><p><object data=\"files_and_images/Schaltplan.gif\" name=\"Schaltplan.gif\" type=\"image/gif\"/></p> </div>" ;
-	pig:revision "44" ;
+	cas:Diagram "<div><p class=\"inline-label\">Diagramm:</p><p><object data=\"files_and_images/Schaltplan.gif\" name=\"Schaltplan.gif\" type=\"image/gif\"/></p> </div>" ;
+	cas:revision "44" ;
 	dcterms:modified "2017-06-19T20:13:17+02:00" ;
 	dcterms:creator "od" .
 
@@ -1832,15 +1986,15 @@ d:MEl-5a844d820000bca8013750b9a0410b6b
 	rdf:type FMC:State ;
 	rdfs:label "Electro-Magnetic Resistance" ;
 	rdfs:comment "<div><p>Electromagnetic characteristics, especially EM-shielding.</p> </div>" ;
-	pig:revision "62" ;
+	cas:revision "62" ;
 	dcterms:modified "2017-06-19T20:13:23+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-5a8009a00000bca80137ef95bc3f643f
 	rdf:type FMC:Actor ;
 	rdfs:label "Housing" ;
-	pig:Diagram "<div> <p class=\"inline-label\">Diagramm:</p><p><object data=\"files_and_images/UP-Dose.png\" name=\"UP-Dose.png\" type=\"image/png\"/></p> </div>" ;
-	pig:revision "47" ;
+	cas:Diagram "<div> <p class=\"inline-label\">Diagramm:</p><p><object data=\"files_and_images/UP-Dose.png\" name=\"UP-Dose.png\" type=\"image/png\"/></p> </div>" ;
+	cas:revision "47" ;
 	dcterms:modified "2017-06-19T20:13:18+02:00" ;
 	dcterms:creator "od" .
 
@@ -1848,7 +2002,7 @@ d:MEl-5a87083e0000bca801379bb412523737
 	rdf:type FMC:State ;
 	rdfs:label "I/O Pins" ;
 	rdfs:comment "<div><p>per input and output signal:</p> <ul> <li>hardware-address</li> <li>number of significant bits</li></ul> </div>" ;
-	pig:revision "65" ;
+	cas:revision "65" ;
 	dcterms:modified "2017-06-19T20:13:23+02:00" ;
 	dcterms:creator "od" .
 
@@ -1856,7 +2010,7 @@ d:MEl-5a82ec6f0000bca801372ef053a71bdf
 	rdf:type FMC:State ;
 	rdfs:label "Physical Space" ;
 	rdfs:comment "<div><p>Effective 3D interior space and mounting for electronics.</p> </div>" ;
-	pig:revision "70" ;
+	cas:revision "70" ;
 	dcterms:modified "2017-06-19T20:13:25+02:00" ;
 	dcterms:creator "od" .
 
@@ -1864,7 +2018,7 @@ d:MEl-5a86b8980000bca80137ca6fde1a125e
 	rdf:type FMC:State ;
 	rdfs:label "Processor RAM ROM" ;
 	rdfs:comment "<div><p>EPROM-Size</p> <p>RAM-Size</p> <p>Processor type with instruction set and speed (MIPS)</p> </div>" ;
-	pig:revision "71" ;
+	cas:revision "71" ;
 	dcterms:modified "2017-06-19T20:13:25+02:00" ;
 	dcterms:creator "od" .
 
@@ -1872,7 +2026,7 @@ d:MEl-5a820a3c0000bca801378c9093fb7d80
 	rdf:type FMC:State ;
 	rdfs:label "Thermal Resistance" ;
 	rdfs:comment "<div><p> Thermal resistance and thermal capacity of the [[housing]].</p></div>" ;
-	pig:revision "77" ;
+	cas:revision "77" ;
 	dcterms:modified "2017-06-19T20:13:27+02:00" ;
 	dcterms:creator "od" .
 
@@ -1880,7 +2034,7 @@ d:MEl-5a71c4800000bca80137f2aaa7b63000
 	rdf:type FMC:Actor ;
 	rdfs:label "Double Button" ;
 	rdfs:comment "<div><p>The Double Button (a sensor unit) is a versatile all-mechanical unit used for multiple purposes. The mechanical position is transferred with a rod per button to the next unit where it is converted to an electrical signal.</p> </div>" ;
-	pig:revision "46" ;
+	cas:revision "46" ;
 	dcterms:modified "2017-06-19T20:13:17+02:00" ;
 	dcterms:creator "od" .
 
@@ -1888,7 +2042,7 @@ d:MEl-606f16ac0000bca801373587fda932b3
 	rdf:type FMC:Actor ;
 	rdfs:label "Double-Button Observer Software" ;
 	rdfs:comment "<div><p>This is an observer of the double-button sensor. It distinguishes short and long pressing in the 'up' and 'down' directions. A discriminator may send five events:</p> <ul> <li>up-short</li> <li>down-short</li> <li>up-long</li> <li>down-long and </li> <li>release.</li> </ul><p>The events are interpreted and actions are initiated accordingly by the target actuator unit. The double button sensor and the observer have no notion of the underlying function.</p> </div>" ;
-	pig:revision "47" ;
+	cas:revision "47" ;
 	dcterms:modified "2017-06-19T20:13:18+02:00" ;
 	dcterms:creator "od" .
 
@@ -1896,14 +2050,14 @@ d:MEl-45a236e00000c3a801410f6503287e16
 	rdf:type FMC:Actor ;
 	rdfs:label "Wait for Activation" ;
 	rdfs:comment "<div><p>The kind of activation is determined:</p> <ul> <li>Up- or Down-Button</li> <li>Short or long activation: 'Short' is &lt; 0,4 sec.</li> <li>Do only wait until the distinction between 'short' or 'long' can be made!</li></ul> </div>" ;
-	pig:revision "56" ;
+	cas:revision "56" ;
 	dcterms:modified "2017-06-19T20:13:21+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-45a3b13c0000c3a801415e97f5bc29d1
 	rdf:type FMC:Actor ;
 	rdfs:label "Wait for Deactivation" ;
-	pig:revision "57" ;
+	cas:revision "57" ;
 	dcterms:modified "2017-06-19T20:13:21+02:00" ;
 	dcterms:creator "od" .
 
@@ -1911,7 +2065,7 @@ d:MEl-5a4dd77b0000bca8013736c6912ad291
 	rdf:type FMC:State ;
 	rdfs:label "down" ;
 	rdfs:comment "<div><p>The button to drive down the dimmer, shading or similar devices.</p> </div>" ;
-	pig:revision "61" ;
+	cas:revision "61" ;
 	dcterms:modified "2017-06-19T20:13:22+02:00" ;
 	dcterms:creator "od" .
 
@@ -1919,7 +2073,7 @@ d:MEl-5a99c89c0000bca801375d44cf9a50ca
 	rdf:type FMC:State ;
 	rdfs:label "Ground Cable" ;
 	rdfs:comment "<div><ul> <li>Cable-diameter</li> <li>Wire-diameter</li> <li>Max-current</li></ul> </div>" ;
-	pig:revision "64" ;
+	cas:revision "64" ;
 	dcterms:modified "2017-06-19T20:13:23+02:00" ;
 	dcterms:creator "od" .
 
@@ -1927,7 +2081,7 @@ d:MEl-5a9929510000bca80137d23c81f1ca54
 	rdf:type FMC:State ;
 	rdfs:label "Load Cable" ;
 	rdfs:comment "<div><ul> <li>Cable-diameter</li> <li>Wire-diameter</li> <li>Max-current</li></ul> </div>" ;
-	pig:revision "67" ;
+	cas:revision "67" ;
 	dcterms:modified "2017-06-19T20:13:24+02:00" ;
 	dcterms:creator "od" .
 
@@ -1935,7 +2089,7 @@ d:MEl-5c29fb8e0000bca80137eb9734c99bfd
 	rdf:type FMC:State ;
 	rdfs:label "Neutral Cable" ;
 	rdfs:comment "<div><ul> <li>Cable-diameter</li> <li>Wire-diameter</li> <li>Max-current</li></ul> </div>" ;
-	pig:revision "69" ;
+	cas:revision "69" ;
 	dcterms:modified "2017-06-19T20:13:24+02:00" ;
 	dcterms:creator "od" .
 
@@ -1943,7 +2097,7 @@ d:MEl-5a77385f0000bca80137e1c7dc0b1721
 	rdf:type FMC:State ;
 	rdfs:label "Spring Clips" ;
 	rdfs:comment "<div><p>Spring clips for mechanical connection.</p> </div>" ;
-	pig:revision "74" ;
+	cas:revision "74" ;
 	dcterms:modified "2017-06-19T20:13:26+02:00" ;
 	dcterms:creator "od" .
 
@@ -1951,7 +2105,7 @@ d:MEl-5a9888810000bca801375410ce1cc142
 	rdf:type FMC:State ;
 	rdfs:label "Supply Cable" ;
 	rdfs:comment "<div><ul> <li>Cable-diameter</li> <li>Wire-diameter</li> <li>Max-current</li></ul> </div>" ;
-	pig:revision "76" ;
+	cas:revision "76" ;
 	dcterms:modified "2017-06-19T20:13:27+02:00" ;
 	dcterms:creator "od" .
 
@@ -1959,7 +2113,7 @@ d:MEl-5a4d6dee0000bca80137c1caf2f42349
 	rdf:type FMC:State ;
 	rdfs:label "up" ;
 	rdfs:comment "<div><p>The button to drive up the dimmer, shading or similar devices.</p> </div>" ;
-	pig:revision "79" ;
+	cas:revision "79" ;
 	dcterms:modified "2017-06-19T20:13:28+02:00" ;
 	dcterms:creator "od" .
 
@@ -1967,21 +2121,21 @@ d:MEl-5a9b7a9b0000bca80137d768644696b7
 	rdf:type FMC:Actor ;
 	rdfs:label "Wireless Module" ;
 	rdfs:comment "<div><p>Receives control commands via radio signal or the mechanical position of a mounted sensor unit. Sends electrical control signals to the mounted actuator module.</p> </div>" ;
-	pig:revision "58" ;
+	cas:revision "58" ;
 	dcterms:modified "2017-06-19T20:13:22+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-463289cd0000c3a80141be3fc417034a
 	rdf:type FMC:State ;
 	rdfs:label "Wireless Network" ;
-	pig:revision "80" ;
+	cas:revision "80" ;
 	dcterms:modified "2017-06-19T20:13:28+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-5a4c80c20000bca8013753b6999a4da8
 	rdf:type FMC:State ;
 	rdfs:label "Flush-mounted Shading Control" ;
-	pig:revision "63" ;
+	cas:revision "63" ;
 	dcterms:modified "2017-06-19T20:13:23+02:00" ;
 	dcterms:creator "od" .
 
@@ -1989,7 +2143,7 @@ d:MEl-5a4cfa830000bca801370d837f761f3e
 	rdf:type FMC:State ;
 	rdfs:label "straighten" ;
 	rdfs:comment "<div><p>The button to straighten the shading elements.</p> </div>" ;
-	pig:revision "75" ;
+	cas:revision "75" ;
 	dcterms:modified "2017-06-19T20:13:27+02:00" ;
 	dcterms:creator "od" .
 
@@ -1997,7 +2151,7 @@ d:MEl-5a4d2bd00000bca80137a3f233cdffeb
 	rdf:type FMC:State ;
 	rdfs:label "tilt" ;
 	rdfs:comment "<div><p>The button to tilt the shading elements.</p> </div>" ;
-	pig:revision "78" ;
+	cas:revision "78" ;
 	dcterms:modified "2017-06-19T20:13:28+02:00" ;
 	dcterms:creator "od" .
 
@@ -2005,7 +2159,7 @@ d:MEl-5a52b50c0000bca801377e3d15255f98
 	rdf:type FMC:State ;
 	rdfs:label "Intelligent Shading Drive" ;
 	rdfs:comment "<div><p>An intelligent shading actuator with 2 drives for up/down straight/tilt motion. The unit comprises the control unit and the motors.</p> </div>" ;
-	pig:revision "66" ;
+	cas:revision "66" ;
 	dcterms:modified "2017-06-19T20:13:24+02:00" ;
 	dcterms:creator "od" .
 
@@ -2013,14 +2167,14 @@ d:MEl-5bcf35cf0000bca8013776d68023612a
 	rdf:type FMC:State ;
 	rdfs:label "M" ;
 	rdfs:comment "<div><p>Actuator Motor 230V.</p> </div>" ;
-	pig:revision "68" ;
+	cas:revision "68" ;
 	dcterms:modified "2017-06-19T20:13:24+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-5a51dd920000bca8013770a4395c83fc
 	rdf:type FMC:State ;
 	rdfs:label "Remote Control" ;
-	pig:revision "72" ;
+	cas:revision "72" ;
 	dcterms:modified "2017-06-19T20:13:26+02:00" ;
 	dcterms:creator "od" .
 
@@ -2028,14 +2182,14 @@ d:MEl-5a50d5b60000bca8013781532547ce93
 	rdf:type FMC:Actor ;
 	rdfs:label "SmartHome Controller" ;
 	rdfs:comment "<div><p>The controller </p> <ul> <li>interconnects locally distributed sensors and actuators, </li> <li>coordinates different actuators where appropriate and </li> <li>performes automatic functions, such as switching external lamps dependend on ambient light.</li></ul> </div>" ;
-	pig:revision "51" ;
+	cas:revision "51" ;
 	dcterms:modified "2017-06-19T20:13:19+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-5a47935a0000bca801377c17f8cb25b0
 	rdf:type FMC:Actor ;
 	rdfs:label "User" ;
-	pig:revision "55" ;
+	cas:revision "55" ;
 	dcterms:modified "2017-06-19T20:13:21+02:00" ;
 	dcterms:creator "od" .
 
@@ -2043,7 +2197,7 @@ d:MEl-608177820000bca801379179ebf3b6aa
 	rdf:type FMC:Actor ;
 	rdfs:label "Briefly press Down-button" ;
 	rdfs:comment "<div><p>Press down-button &lt;400 ms.</p> </div>" ;
-	pig:revision "40" ;
+	cas:revision "40" ;
 	dcterms:modified "2017-06-19T20:13:16+02:00" ;
 	dcterms:creator "od" .
 
@@ -2051,28 +2205,28 @@ d:MEl-611366530000bca80137a97f194e96a3
 	rdf:type FMC:Actor ;
 	rdfs:label "Briefly press Up-button" ;
 	rdfs:comment "<div><p>Press up-button &lt;400 ms.</p> </div>" ;
-	pig:revision "41" ;
+	cas:revision "41" ;
 	dcterms:modified "2017-06-19T20:13:16+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-453862540000c3a801419d91bef48cfd
 	rdf:type FMC:Event ;
 	rdfs:label "Dim-down!" ;
-	pig:revision "82" ;
+	cas:revision "82" ;
 	dcterms:modified "2017-06-19T20:13:29+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-45387c0b0000c3a801410aa03f6b9be4
 	rdf:type FMC:Event ;
 	rdfs:label "Dim-up!" ;
-	pig:revision "83" ;
+	cas:revision "83" ;
 	dcterms:modified "2017-06-19T20:13:29+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-4538920b0000c3a801415c67e334b8a1
 	rdf:type FMC:Event ;
 	rdfs:label "Done!" ;
-	pig:revision "83" ;
+	cas:revision "83" ;
 	dcterms:modified "2017-06-19T20:13:29+02:00" ;
 	dcterms:creator "od" .
 
@@ -2080,7 +2234,7 @@ d:MEl-608239830000bca801373690c7d2af0f
 	rdf:type FMC:Actor ;
 	rdfs:label "Press and hold Down-button" ;
 	rdfs:comment "<div><p>Press down-button &gt;400 ms.</p> </div>" ;
-	pig:revision "48" ;
+	cas:revision "48" ;
 	dcterms:modified "2017-06-19T20:13:18+02:00" ;
 	dcterms:creator "od" .
 
@@ -2088,35 +2242,35 @@ d:MEl-610b07100000bca80137c10f96c46247
 	rdf:type FMC:Actor ;
 	rdfs:label "Press and hold Up-button" ;
 	rdfs:comment "<div><p>Press up-button &gt;400 ms.</p> </div>" ;
-	pig:revision "49" ;
+	cas:revision "49" ;
 	dcterms:modified "2017-06-19T20:13:18+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-610e0b010000bca80137ac40800bb1b8
 	rdf:type FMC:Actor ;
 	rdfs:label "Release button" ;
-	pig:revision "49" ;
+	cas:revision "49" ;
 	dcterms:modified "2017-06-19T20:13:18+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-459b92580000c3a80141cb4acb521ab1
 	rdf:type FMC:Event ;
 	rdfs:label "Stop dimming!" ;
-	pig:revision "90" ;
+	cas:revision "90" ;
 	dcterms:modified "2017-06-19T20:13:31+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-45384cd10000c3a80141c1f85d7c26e6
 	rdf:type FMC:Event ;
 	rdfs:label "Switch-off!" ;
-	pig:revision "91" ;
+	cas:revision "91" ;
 	dcterms:modified "2017-06-19T20:13:32+02:00" ;
 	dcterms:creator "od" .
 
 d:MEl-607f13b50000bca80137ba95f11856ab
 	rdf:type FMC:Event ;
 	rdfs:label "Switch-on!" ;
-	pig:revision "91" ;
+	cas:revision "91" ;
 	dcterms:modified "2017-06-19T20:13:32+02:00" ;
 	dcterms:creator "od" .
 
@@ -2128,7 +2282,7 @@ d:Iss-ee2abb630000c3a8013987a750219659
 	o:PC-IssueStatus oslc_cm:Inprogress ;
 	SpecIF:Priority SpecIF:priorityLow ;
 	SpecIF:DueDate "2012-09-30T12:00:00+02:00" ;
-	pig:revision "35" ;
+	cas:revision "35" ;
 	dcterms:modified "2017-06-19T20:13:15+02:00" ;
 	dcterms:creator "od" .
 
@@ -2141,7 +2295,7 @@ d:Iss-eee2d4e00000c3a801394148dcc58a52
 	SpecIF:Priority SpecIF:priorityMedium ;
 	SpecIF:Responsible "Vorname Nachname" ;
 	SpecIF:DueDate "2012-09-30T12:00:00+02:00" ;
-	pig:revision "37" ;
+	cas:revision "37" ;
 	dcterms:modified "2017-06-19T20:13:15+02:00" ;
 	dcterms:creator "od" .
 
@@ -3127,11 +3281,11 @@ d:RCtn-MEl-803fd3750000c3a8013cf1fdb3b26d33-MEl-5a51dd920000bca8013770a4395c83fc
 #################################################################
 
 d:HierarchyRoot-ACP-59c8a7730000bca80137509a49b1218b
-	rdf:type pig:Root ;
-	dcterms:modified "2026-03-06T17:58:07.131Z" ;
+	rdf:type cas:Root ;
+	dcterms:modified "2026-04-08T09:49:25.521Z" ;
 	rdfs:label "Hierarchy Root" ;
 	rdfs:comment "... anchoring all hierarchies of this graph (package)" ;
-	pig:lists (
+	cas:lists (
 			d:HR-Fld-59c8a7730000bca80137509a49b1218b-info
 			d:HR-Fld-5a5f54090000bca801375b04a668f1a7
 			d:HR-Fld-5af3154d0000bca801379748537d7388
@@ -3142,41 +3296,41 @@ d:HierarchyRoot-ACP-59c8a7730000bca80137509a49b1218b
 		) .
 
 d:HR-Fld-59c8a7730000bca80137509a49b1218b-info
-	rdf:type pig:Outline ;
+	rdf:type cas:Outline ;
 	rdfs:label "Dimmer - Semantically Integrated Specification (2021-01-28)" ;
 	rdfs:comment "This specification method integrates and represents:\n- processes, system composition and requirements (dynamic, static and detail views)\n- mechanic, electric and software components with their interfaces.\n\nIt is important to understand, that all plans (diagrams) are views of a common system engineering model, sometimes called 'system repository'. Thus, consistency is always maintained.\n\nThe model elements are connected with relations, most of which are defined by positioning graph elements. For example, if a system component is drawn within another, a relationship 'contains' is created in the logic representation of the engineering model. Other relations, such as a system component 'satisfies' a requirement are created manually.  \n\nAlso, the documents are generated from the system engineering model. The ordering is in most projects (it can be rearranged, however, if appropriate):\n- All plans\n- A glossary with descriptions of all model elements appearing on one or more plans\n- A hierarchically ordered list of requirements\n- A list of open issues.\nPlease note that plans list related model elements and model elements list related requirements .. and vice versa. Active hyper-links are used, so that it is easy to jump between related model elements.\n\nFurther information is given in Appendix 'Method'." ;
-	pig:Category ReqIF:HierarchyRoot ;
-	dcterms:modified "2026-03-06T17:58:06.779Z" ;
-	pig:lists (
+	cas:Category ReqIF:HierarchyRoot ;
+	dcterms:modified "2026-04-08T09:49:25.257Z" ;
+	cas:lists (
 			d:Fld-59c8a7730000bca80137509a49b1218b-info
 		) .
 
 d:Fld-59c8a7730000bca80137509a49b1218b-info
-	rdf:type pig:Outline ;
+	rdf:type cas:Outline ;
 	rdfs:label "Project Information" ;
 	rdfs:comment "<div> <p> <a href=\"https://enso-managers.de\" ><object data=\"files_and_images/enso-logo.png\" type=\"image/png\" >enso managers gmbh</object></a> </p> <p> This is a small show-case illustrating the basic concepts for integrated mechatronic system specification. In addition to the original text and diagrams you will find logical relations between the information elements. Most relations are derived automatically from the diagrams; the resulting semantic net lends itself for navigation, search and audit. </p> <p> The specification integrates and represents: </p><ul><li>processes, system composition and requirements (dynamic, static and detail views) </li><li>mechanic, electric and software components with their interfaces. </li></ul><p>It is an important characteristic, that all plans (diagrams) are views of a common system engineering model, sometimes called 'system repository'. Thus, consistency is always maintained. </p><p>The model elements are connected with relations, most of which are defined by positioning graph elements. For example, if a system component is drawn within another, a relationship 'contains' is created in the logic representation of the engineering model. Other relations, such as a system component 'satisfies' a requirement are created manually. </p><p>Also, the documents are generated from the system engineering model. The ordering is in most projects (it can be rearranged, however, if appropriate): </p><ul><li> All plans </li><li> A glossary with descriptions of all model elements appearing on one or more plans </li><li> A hierarchically ordered list of requirements </li> <li> A list of open issues. </li></ul><p> Please note that plans list related model elements and model elements list related requirements .. and vice versa. Active hyper-links are used, so that it is easy to jump between related model elements. </p><p><br/></p><p><strong>Stakeholders:</strong></p><table class=\"stdInlineWithBorder\"> <tbody> <tr> <th> Name </th><th>Organisation</th><th> Telephone </th> <th> Email </th> </tr> <tr> <td> Dr. Oskar v. Dungern </td> <td>enso managers GmbH</td> <td> </td> <td><a href=\"mailto:od@enso-managers.de\" >od@enso-managers.de</a></td> </tr> </tbody> </table> <p> <br /> </p> <p><strong>Legend:</strong> </p> <p> To distinguish their type, element names are preceded by one of the following symbols: </p> <table class=\"stdInlineWithBorder\"> <tbody> <tr> <td> ▣ </td><td> Plan </td> <td> A 'Diagram' is a graphical model view with a specific communication purpose, e.g. a business process or system composition. </td></tr><tr> <td> ■ </td><td> Actor (Role, Function) </td> <td> An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role. </td> </tr> <tr> <td> ● </td> <td> State (Information) </td> <td> A 'State' is a fundamental model element type representing a passive entity, be it a value, a condition, an information storage or even a physical shape. </td> </tr> <tr> <td> ♦ </td> <td> Event </td> <td> An 'Event' is a fundamental model element type representing a time reference, a change in condition/value or more generally a synchronisation primitive. </td> </tr> <tr> <td> ✶ </td> <td> Feature </td> <td> A 'Feature' is an intentional distinguishing characteristic of a system, often a unique selling proposition. </td> </tr> <tr> <td> ↯ </td> <td> Requirement </td> <td> A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform. </td> </tr> </tbody> </table> <p class=\"sceditor-nlf\"> <br /> </p></div>" ;
-	pig:revision "254" ;
+	cas:revision "254" ;
 	dcterms:modified "2018-05-04T17:18:18+02:00" ;
 	dcterms:creator "od" .
 
 d:HR-Fld-5a5f54090000bca801375b04a668f1a7
-	rdf:type pig:Outline ;
+	rdf:type cas:Outline ;
 	rdfs:label "Dimmer - Semantically Integrated Specification (2021-01-28)" ;
 	rdfs:comment "This specification method integrates and represents:\n- processes, system composition and requirements (dynamic, static and detail views)\n- mechanic, electric and software components with their interfaces.\n\nIt is important to understand, that all plans (diagrams) are views of a common system engineering model, sometimes called 'system repository'. Thus, consistency is always maintained.\n\nThe model elements are connected with relations, most of which are defined by positioning graph elements. For example, if a system component is drawn within another, a relationship 'contains' is created in the logic representation of the engineering model. Other relations, such as a system component 'satisfies' a requirement are created manually.  \n\nAlso, the documents are generated from the system engineering model. The ordering is in most projects (it can be rearranged, however, if appropriate):\n- All plans\n- A glossary with descriptions of all model elements appearing on one or more plans\n- A hierarchically ordered list of requirements\n- A list of open issues.\nPlease note that plans list related model elements and model elements list related requirements .. and vice versa. Active hyper-links are used, so that it is easy to jump between related model elements.\n\nFurther information is given in Appendix 'Method'." ;
-	pig:Category ReqIF:HierarchyRoot ;
-	dcterms:modified "2026-03-06T17:58:06.779Z" ;
-	pig:lists (
+	cas:Category ReqIF:HierarchyRoot ;
+	dcterms:modified "2026-04-08T09:49:25.257Z" ;
+	cas:lists (
 			d:Fld-5a5f54090000bca801375b04a668f1a7
 		) .
 
 d:Fld-5a5f54090000bca801375b04a668f1a7
-	rdf:type pig:Outline ;
+	rdf:type cas:Outline ;
 	rdfs:label "System Composition" ;
 	rdfs:comment "<div><p>.. showing the system and its composition of modules (at a higher level) and components (at a lower level). The relevant interfaces between the disciplines mechanical, electrical and software engineering are shown.</p> </div>" ;
-	pig:revision "13" ;
+	cas:revision "13" ;
 	dcterms:modified "2017-06-19T20:13:02+02:00" ;
 	dcterms:creator "od" ;
-	pig:lists (
+	cas:lists (
 			d:Pln-27420ffc0000c3a8013ab527ca1b71f5
 			d:Pln-5a4755dd0000bca801375293a62c90a8
 			d:Pln-5a6cdea50000bca80137d6b2d6e8a3a0
@@ -3184,68 +3338,68 @@ d:Fld-5a5f54090000bca801375b04a668f1a7
 		) .
 
 d:HR-Fld-5af3154d0000bca801379748537d7388
-	rdf:type pig:Outline ;
+	rdf:type cas:Outline ;
 	rdfs:label "Dimmer - Semantically Integrated Specification (2021-01-28)" ;
 	rdfs:comment "This specification method integrates and represents:\n- processes, system composition and requirements (dynamic, static and detail views)\n- mechanic, electric and software components with their interfaces.\n\nIt is important to understand, that all plans (diagrams) are views of a common system engineering model, sometimes called 'system repository'. Thus, consistency is always maintained.\n\nThe model elements are connected with relations, most of which are defined by positioning graph elements. For example, if a system component is drawn within another, a relationship 'contains' is created in the logic representation of the engineering model. Other relations, such as a system component 'satisfies' a requirement are created manually.  \n\nAlso, the documents are generated from the system engineering model. The ordering is in most projects (it can be rearranged, however, if appropriate):\n- All plans\n- A glossary with descriptions of all model elements appearing on one or more plans\n- A hierarchically ordered list of requirements\n- A list of open issues.\nPlease note that plans list related model elements and model elements list related requirements .. and vice versa. Active hyper-links are used, so that it is easy to jump between related model elements.\n\nFurther information is given in Appendix 'Method'." ;
-	pig:Category ReqIF:HierarchyRoot ;
-	dcterms:modified "2026-03-06T17:58:06.779Z" ;
-	pig:lists (
+	cas:Category ReqIF:HierarchyRoot ;
+	dcterms:modified "2026-04-08T09:49:25.257Z" ;
+	cas:lists (
 			d:Fld-5af3154d0000bca801379748537d7388
 		) .
 
 d:Fld-5af3154d0000bca801379748537d7388
-	rdf:type pig:Outline ;
+	rdf:type cas:Outline ;
 	rdfs:label "Scenarios" ;
 	rdfs:comment "<div><p>.. showing the behavioral aspects of system design, both from external user perspective ('black box') and from internal perspective ('white box').</p> </div>" ;
-	pig:revision "13" ;
+	cas:revision "13" ;
 	dcterms:modified "2017-06-19T20:13:02+02:00" ;
 	dcterms:creator "od" ;
-	pig:lists (
+	cas:lists (
 			d:Fld-5b6a99f10000bca80137b78cda65fc07
 		) .
 
 d:Fld-5b6a99f10000bca80137b78cda65fc07
-	rdf:type pig:Outline ;
+	rdf:type cas:Outline ;
 	rdfs:label "Dimming" ;
-	pig:revision "20" ;
+	cas:revision "20" ;
 	dcterms:modified "2017-06-19T20:13:04+02:00" ;
 	dcterms:creator "od" ;
-	pig:lists (
+	cas:lists (
 			d:Pln-606e76c70000bca801376ec3133a1181
 			d:Pln-45a1c8930000c3a801414cd1eaa70b5a
 			d:Pln-5af364560000bca80137b84017f4e832
 		) .
 
 d:HR-Fld-5b8e98550000bca801371afb0c7b671b
-	rdf:type pig:Outline ;
+	rdf:type cas:Outline ;
 	rdfs:label "Dimmer - Semantically Integrated Specification (2021-01-28)" ;
 	rdfs:comment "This specification method integrates and represents:\n- processes, system composition and requirements (dynamic, static and detail views)\n- mechanic, electric and software components with their interfaces.\n\nIt is important to understand, that all plans (diagrams) are views of a common system engineering model, sometimes called 'system repository'. Thus, consistency is always maintained.\n\nThe model elements are connected with relations, most of which are defined by positioning graph elements. For example, if a system component is drawn within another, a relationship 'contains' is created in the logic representation of the engineering model. Other relations, such as a system component 'satisfies' a requirement are created manually.  \n\nAlso, the documents are generated from the system engineering model. The ordering is in most projects (it can be rearranged, however, if appropriate):\n- All plans\n- A glossary with descriptions of all model elements appearing on one or more plans\n- A hierarchically ordered list of requirements\n- A list of open issues.\nPlease note that plans list related model elements and model elements list related requirements .. and vice versa. Active hyper-links are used, so that it is easy to jump between related model elements.\n\nFurther information is given in Appendix 'Method'." ;
-	pig:Category ReqIF:HierarchyRoot ;
-	dcterms:modified "2026-03-06T17:58:06.779Z" ;
-	pig:lists (
+	cas:Category ReqIF:HierarchyRoot ;
+	dcterms:modified "2026-04-08T09:49:25.257Z" ;
+	cas:lists (
 			d:Fld-5b8e98550000bca801371afb0c7b671b
 		) .
 
 d:Fld-5b8e98550000bca801371afb0c7b671b
-	rdf:type pig:Outline ;
+	rdf:type cas:Outline ;
 	rdfs:label "Requirements" ;
-	pig:revision "14" ;
+	cas:revision "14" ;
 	dcterms:modified "2017-06-19T20:13:02+02:00" ;
 	dcterms:creator "od" ;
-	pig:lists (
+	cas:lists (
 			d:Fld-d1b1698a0000c3a801505b1b5698b7a1
 			d:Fld-d1b1d6c60000c3a80150fe9ce40e6588
 			d:Fld-d1b314890000c3a80150b71a1473d374
 		) .
 
 d:Fld-d1b1698a0000c3a801505b1b5698b7a1
-	rdf:type pig:Outline ;
+	rdf:type cas:Outline ;
 	rdfs:label "Function" ;
 	rdfs:comment "<div><p>The requirements related to the product function.</p> </div>" ;
-	pig:revision "22" ;
+	cas:revision "22" ;
 	dcterms:modified "2017-06-19T20:13:06+02:00" ;
 	dcterms:creator "od" ;
-	pig:lists (
+	cas:lists (
 			d:Req-d1c895230000c3a80150f8afd049f738
 			d:Req-d1d42a6a0000c3a8015091ec8d149b93
 			d:Req-d1cd7f370000c3a8015095e6ee21aab7
@@ -3254,13 +3408,13 @@ d:Fld-d1b1698a0000c3a801505b1b5698b7a1
 		) .
 
 d:Fld-d1b1d6c60000c3a80150fe9ce40e6588
-	rdf:type pig:Outline ;
+	rdf:type cas:Outline ;
 	rdfs:label "Quality" ;
 	rdfs:comment "<div><p>The requirements related to quality characteristics of the product.</p> </div>" ;
-	pig:revision "25" ;
+	cas:revision "25" ;
 	dcterms:modified "2017-06-19T20:13:08+02:00" ;
 	dcterms:creator "od" ;
-	pig:lists (
+	cas:lists (
 			d:Req-5b944fc70000bca8013763f44fdc0e03
 			d:Req-5ba140d60000bca801372b09f9888eca
 			d:Req-ee452cf20000c3a8014035290669304d
@@ -3270,13 +3424,13 @@ d:Fld-d1b1d6c60000c3a80150fe9ce40e6588
 		) .
 
 d:Fld-d1b314890000c3a80150b71a1473d374
-	rdf:type pig:Outline ;
+	rdf:type cas:Outline ;
 	rdfs:label "Constraints" ;
 	rdfs:comment "<div><p>The requirements related to constraints for product conception, such as regulations or technical choices made upfront.</p> </div>" ;
-	pig:revision "30" ;
+	cas:revision "30" ;
 	dcterms:modified "2017-06-19T20:13:12+02:00" ;
 	dcterms:creator "od" ;
-	pig:lists (
+	cas:lists (
 			d:Req-eea1cd500000c3a80140fe00109eb7f4
 			d:Req-5b95fae40000bca801372becc933682d
 			d:Req-5b9ab8a50000bca801377ad0be3bbc89
@@ -3285,23 +3439,23 @@ d:Fld-d1b314890000c3a80150b71a1473d374
 		) .
 
 d:HR-Fld-59c8a7730000bca80137509a49b1218b
-	rdf:type pig:Outline ;
+	rdf:type cas:Outline ;
 	rdfs:label "Dimmer - Semantically Integrated Specification (2021-01-28)" ;
 	rdfs:comment "This specification method integrates and represents:\n- processes, system composition and requirements (dynamic, static and detail views)\n- mechanic, electric and software components with their interfaces.\n\nIt is important to understand, that all plans (diagrams) are views of a common system engineering model, sometimes called 'system repository'. Thus, consistency is always maintained.\n\nThe model elements are connected with relations, most of which are defined by positioning graph elements. For example, if a system component is drawn within another, a relationship 'contains' is created in the logic representation of the engineering model. Other relations, such as a system component 'satisfies' a requirement are created manually.  \n\nAlso, the documents are generated from the system engineering model. The ordering is in most projects (it can be rearranged, however, if appropriate):\n- All plans\n- A glossary with descriptions of all model elements appearing on one or more plans\n- A hierarchically ordered list of requirements\n- A list of open issues.\nPlease note that plans list related model elements and model elements list related requirements .. and vice versa. Active hyper-links are used, so that it is easy to jump between related model elements.\n\nFurther information is given in Appendix 'Method'." ;
-	pig:Category ReqIF:HierarchyRoot ;
-	dcterms:modified "2026-03-06T17:58:06.779Z" ;
-	pig:lists (
+	cas:Category ReqIF:HierarchyRoot ;
+	dcterms:modified "2026-04-08T09:49:25.257Z" ;
+	cas:lists (
 			d:Fld-59c8a7730000bca80137509a49b1218b
 		) .
 
 d:Fld-59c8a7730000bca80137509a49b1218b
-	rdf:type pig:Outline ;
+	rdf:type cas:Outline ;
 	rdfs:label "Parts List" ;
 	rdfs:comment "<div>This Parts List has been automatically generated from the model. </div>" ;
-	pig:revision "17" ;
+	cas:revision "17" ;
 	dcterms:modified "2017-06-19T20:13:02+02:00" ;
 	dcterms:creator "od" ;
-	pig:lists (
+	cas:lists (
 			d:MEl-5bd6bd890000bca8013739588a3f43d6
 			d:MEl-5bcfb01d0000bca80137f303272a5557
 			d:MEl-803fd3750000c3a8013cf1fdb3b26d33
@@ -3309,62 +3463,62 @@ d:Fld-59c8a7730000bca80137509a49b1218b
 		) .
 
 d:HR-k9qMB6fnxPTk942dvPKdyvnwnoQ
-	rdf:type pig:Outline ;
+	rdf:type cas:Outline ;
 	rdfs:label "Dimmer - Semantically Integrated Specification (2021-01-28)" ;
 	rdfs:comment "This specification method integrates and represents:\n- processes, system composition and requirements (dynamic, static and detail views)\n- mechanic, electric and software components with their interfaces.\n\nIt is important to understand, that all plans (diagrams) are views of a common system engineering model, sometimes called 'system repository'. Thus, consistency is always maintained.\n\nThe model elements are connected with relations, most of which are defined by positioning graph elements. For example, if a system component is drawn within another, a relationship 'contains' is created in the logic representation of the engineering model. Other relations, such as a system component 'satisfies' a requirement are created manually.  \n\nAlso, the documents are generated from the system engineering model. The ordering is in most projects (it can be rearranged, however, if appropriate):\n- All plans\n- A glossary with descriptions of all model elements appearing on one or more plans\n- A hierarchically ordered list of requirements\n- A list of open issues.\nPlease note that plans list related model elements and model elements list related requirements .. and vice versa. Active hyper-links are used, so that it is easy to jump between related model elements.\n\nFurther information is given in Appendix 'Method'." ;
-	pig:Category ReqIF:HierarchyRoot ;
-	dcterms:modified "2026-03-06T17:58:06.779Z" ;
-	pig:lists (
+	cas:Category ReqIF:HierarchyRoot ;
+	dcterms:modified "2026-04-08T09:49:25.257Z" ;
+	cas:lists (
 			d:Fld-ef47e6970000c3a80139dc747c5df319
 		) .
 
 d:Fld-ef47e6970000c3a80139dc747c5df319
-	rdf:type pig:Outline ;
+	rdf:type cas:Outline ;
 	rdfs:label "Open Issues" ;
-	pig:revision "15" ;
+	cas:revision "15" ;
 	dcterms:modified "2017-06-19T20:13:02+02:00" ;
 	dcterms:creator "od" ;
-	pig:lists (
+	cas:lists (
 			d:Fld-ee29463e0000c3a80139627bbced50ae
 			d:Fld-ee2a15040000c3a80139d27de6704f15
 		) .
 
 d:Fld-ee29463e0000c3a80139627bbced50ae
-	rdf:type pig:Outline ;
+	rdf:type cas:Outline ;
 	rdfs:label "Mechanical" ;
-	pig:revision "34" ;
+	cas:revision "34" ;
 	dcterms:modified "2017-06-19T20:13:14+02:00" ;
 	dcterms:creator "od" ;
-	pig:lists (
+	cas:lists (
 			d:Iss-ee2abb630000c3a8013987a750219659
 		) .
 
 d:Fld-ee2a15040000c3a80139d27de6704f15
-	rdf:type pig:Outline ;
+	rdf:type cas:Outline ;
 	rdfs:label "Software" ;
-	pig:revision "36" ;
+	cas:revision "36" ;
 	dcterms:modified "2017-06-19T20:13:15+02:00" ;
 	dcterms:creator "od" ;
-	pig:lists (
+	cas:lists (
 			d:Iss-eee2d4e00000c3a801394148dcc58a52
 		) .
 
 d:HR-FolderGlossary-8001804519
-	rdf:type pig:Outline ;
+	rdf:type cas:Outline ;
 	rdfs:label "Dimmer - Semantically Integrated Specification (2021-01-28)" ;
 	rdfs:comment "This specification method integrates and represents:\n- processes, system composition and requirements (dynamic, static and detail views)\n- mechanic, electric and software components with their interfaces.\n\nIt is important to understand, that all plans (diagrams) are views of a common system engineering model, sometimes called 'system repository'. Thus, consistency is always maintained.\n\nThe model elements are connected with relations, most of which are defined by positioning graph elements. For example, if a system component is drawn within another, a relationship 'contains' is created in the logic representation of the engineering model. Other relations, such as a system component 'satisfies' a requirement are created manually.  \n\nAlso, the documents are generated from the system engineering model. The ordering is in most projects (it can be rearranged, however, if appropriate):\n- All plans\n- A glossary with descriptions of all model elements appearing on one or more plans\n- A hierarchically ordered list of requirements\n- A list of open issues.\nPlease note that plans list related model elements and model elements list related requirements .. and vice versa. Active hyper-links are used, so that it is easy to jump between related model elements.\n\nFurther information is given in Appendix 'Method'." ;
-	pig:Category ReqIF:HierarchyRoot ;
-	dcterms:modified "2026-03-06T17:58:06.779Z" ;
-	pig:lists (
+	cas:Category ReqIF:HierarchyRoot ;
+	dcterms:modified "2026-04-08T09:49:25.257Z" ;
+	cas:lists (
 			d:FolderGlossary-8001804519
 		) .
 
 d:FolderGlossary-8001804519
-	rdf:type pig:Outline ;
+	rdf:type cas:Outline ;
 	rdfs:label "Model Elements (Glossary)" ;
-	pig:Category SpecIF:Glossary ;
-	dcterms:modified "2026-03-06T17:57:51.314Z" ;
-	pig:lists (
+	cas:Category SpecIF:Glossary ;
+	dcterms:modified "2026-04-08T09:49:09.881Z" ;
+	cas:lists (
 			d:MEl-5a7776c50000bca8013765ae93af9209
 			d:MEl-5a76365c0000bca8013776e91afd1e8e
 			d:MEl-608177820000bca801379179ebf3b6aa
