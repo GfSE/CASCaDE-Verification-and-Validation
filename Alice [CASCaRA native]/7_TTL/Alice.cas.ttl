@@ -162,8 +162,8 @@ casShapes_cas:Relationship
 		] ,
 		casShapes_cas:Category ,
 		casShapes_cas:Icon ,
-		casShapes_cas:SourceLink ,
-		casShapes_cas:TargetLink .
+		casShapes_cas:linksSource ,
+		casShapes_cas:linksTarget .
 
 cas:Property
 	rdf:type owl:DatatypeProperty ;
@@ -244,7 +244,7 @@ casShapes_cas:Link
 			[ sh:class cas:Relationship ]
 		) .
 
-cas:SourceLink
+cas:linksSource
 	rdf:type owl:ObjectProperty ;
 	rdfs:subPropertyOf cas:Link ;
 	rdfs:range [ owl:unionOf(
@@ -254,15 +254,15 @@ cas:SourceLink
 	rdfs:label "to source"@en ;
 	skos:definition "Connects the source of a reified relationship."@en .
 
-casShapes_cas:SourceLink
+casShapes_cas:linksSource
 	rdf:type sh:PropertyShape ;
-	sh:path cas:SourceLink ;
+	sh:path cas:linksSource ;
 	sh:or (
 			[ sh:class cas:Entity ]
 			[ sh:class cas:Relationship ]
 		) .
 
-cas:TargetLink
+cas:linksTarget
 	rdf:type owl:ObjectProperty ;
 	rdfs:subPropertyOf cas:Link ;
 	rdfs:range [ owl:unionOf(
@@ -272,9 +272,9 @@ cas:TargetLink
 	rdfs:label "to target"@en ;
 	skos:definition "Connects the target of a reified relationship or an organizer."@en .
 
-casShapes_cas:TargetLink
+casShapes_cas:linksTarget
 	rdf:type sh:PropertyShape ;
-	sh:path cas:TargetLink ;
+	sh:path cas:linksTarget ;
 	sh:or (
 			[ sh:class cas:Entity ]
 			[ sh:class cas:Relationship ]
@@ -282,7 +282,7 @@ casShapes_cas:TargetLink
 
 cas:lists
 	rdf:type owl:ObjectProperty ;
-	rdfs:subPropertyOf cas:TargetLink ;
+	rdfs:subPropertyOf cas:linksTarget ;
 	rdfs:range [ owl:unionOf(
 			cas:Entity
 			cas:Relationship
@@ -302,7 +302,7 @@ casShapes_cas:lists
 
 cas:shows
 	rdf:type owl:ObjectProperty ;
-	rdfs:subPropertyOf cas:TargetLink ;
+	rdfs:subPropertyOf cas:linksTarget ;
 	rdfs:range [ owl:unionOf(
 			cas:Entity
 			cas:Relationship
@@ -320,7 +320,7 @@ casShapes_cas:shows
 
 cas:depicts
 	rdf:type owl:ObjectProperty ;
-	rdfs:subPropertyOf cas:TargetLink ;
+	rdfs:subPropertyOf cas:linksTarget ;
 	rdfs:range cas:Entity ;
 	rdfs:label "depicts"@en ;
 	skos:definition "Depicts an entity; inverse of uml:ownedDiagram."@en .
@@ -443,14 +443,14 @@ schema:WorksFor
 	rdfs:comment "Organizations that the person works for."@en .
 
 o:Employee
-	rdfs:subPropertyOf cas:SourceLink ;
+	rdfs:subPropertyOf cas:linksSource ;
 	rdfs:label "employee" ;
 	rdfs:comment "The employee in a 'worksFor' relationship" ;
 	rdfs:domain schema:WorksFor ;
 	rdfs:range schema:Person .
 
 o:Employer
-	rdfs:subPropertyOf cas:TargetLink ;
+	rdfs:subPropertyOf cas:linksTarget ;
 	rdfs:label "employer"@en ;
 	rdfs:comment "The employer in a 'worksFor' relationship"@en ;
 	rdfs:domain schema:WorksFor ;
@@ -512,8 +512,8 @@ d:Alice_worksFor_ACME
 
 d:Root_Alice_worksFor_ACME
 	rdf:type cas:Root ;
-	rdfs:lable: "Package Root"@en ;
-	rdfs:comment: "... anchoring all outlines of this graph (package)"@en ;
+	rdfs:label "Package Root"@en ;
+	rdfs:comment "... anchoring all outlines of this graph (package)"@en ;
 	dcterms:modified "2026-03-06T17:36:25.645Z" ;
 	cas:lists (
 			d:ACME

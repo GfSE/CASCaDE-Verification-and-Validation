@@ -1,13 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Playgound",
     "\\Playgound\\3_SpecIF",
     "\\Playgound\\7_RDF",
     "\\Very-simple-Model-with-Requirements [FMC - SpecIF]",
     "\\Very-simple-Model-with-Requirements [FMC - SpecIF]\\3_SpecIF",
     "\\Very-simple-Model-with-Requirements [FMC - SpecIF]\\7_RDF"
   ],
-  "SelectedNode": "\\DC-Motor [SSP]",
+  "SelectedNode": "\\Playgound",
   "PreviewInSolutionExplorer": false
 }

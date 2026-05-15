@@ -40,7 +40,7 @@ d:
 	owl:imports <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ,
 		<http://www.w3.org/2000/01/rdf-schema#> ;
 	dcterms:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
-	dcterms:modified "2026-05-11T10:02:23.879Z" .
+	dcterms:modified "2026-05-14T08:04:15.308Z" .
 
 #################################################################
 # CASCaRA Metamodel and Semantic Infrastructure
@@ -164,29 +164,6 @@ casShapes_cas:Outline
 		sh:minCount 1
 	] .
 
-cas:View
-	rdf:type owl:Class ;
-	rdfs:subClassOf cas:Organizer ;
-	rdfs:label "View" ;
-	skos:definition "A subclass of cas:Organizer representing a model view (diagram) using a certain notation showing selected model elements." .
-
-casShapes_cas:View
-	rdf:type sh:NodeShape ;
-	sh:targetClass cas:View ;
-	sh:property [ 
-		sh:path rdfs:label ;
-		sh:minCount 1
-	] ,
-		[ 
-		sh:path rdfs:comment ;
-		sh:minCount 1
-	] ,
-		casShapes_cas:Diagram ,
-		casShapes_cas:Notation ,
-		casShapes_cas:Category ,
-		casShapes_cas:shows ,
-		casShapes_cas:depicts .
-
 cas:Table
 	rdf:type owl:Class ;
 	rdfs:subClassOf cas:Organizer ;
@@ -223,8 +200,8 @@ casShapes_cas:Relationship
 		sh:minCount 1
 	] ,
 		casShapes_cas:Category ,
-		casShapes_cas:SourceLink ,
-		casShapes_cas:TargetLink .
+		casShapes_cas:linksSource ,
+		casShapes_cas:linksTarget .
 
 cas:Property
 	rdf:type owl:DatatypeProperty ;
@@ -292,7 +269,7 @@ casShapes_cas:Link
 			[ sh:class cas:Relationship ]
 		) .
 
-cas:SourceLink
+cas:linksSource
 	rdf:type owl:ObjectProperty ;
 	rdfs:subPropertyOf cas:Link ;
 	rdfs:range [ owl:unionOf(
@@ -302,15 +279,15 @@ cas:SourceLink
 	rdfs:label "to source" ;
 	skos:definition "Connects the source of a reified relationship." .
 
-casShapes_cas:SourceLink
+casShapes_cas:linksSource
 	rdf:type sh:PropertyShape ;
-	sh:path cas:SourceLink ;
+	sh:path cas:linksSource ;
 	sh:or (
 			[ sh:class cas:Entity ]
 			[ sh:class cas:Relationship ]
 		) .
 
-cas:TargetLink
+cas:linksTarget
 	rdf:type owl:ObjectProperty ;
 	rdfs:subPropertyOf cas:Link ;
 	rdfs:range [ owl:unionOf(
@@ -320,9 +297,9 @@ cas:TargetLink
 	rdfs:label "to target" ;
 	skos:definition "Connects the target of a reified relationship or an organizer." .
 
-casShapes_cas:TargetLink
+casShapes_cas:linksTarget
 	rdf:type sh:PropertyShape ;
-	sh:path cas:TargetLink ;
+	sh:path cas:linksTarget ;
 	sh:or (
 			[ sh:class cas:Entity ]
 			[ sh:class cas:Relationship ]
@@ -330,7 +307,7 @@ casShapes_cas:TargetLink
 
 cas:lists
 	rdf:type owl:ObjectProperty ;
-	rdfs:subPropertyOf cas:TargetLink ;
+	rdfs:subPropertyOf cas:linksTarget ;
 	rdfs:range [ owl:unionOf(
 			cas:Entity
 			cas:Relationship
@@ -350,7 +327,7 @@ casShapes_cas:lists
 
 cas:shows
 	rdf:type owl:ObjectProperty ;
-	rdfs:subPropertyOf cas:TargetLink ;
+	rdfs:subPropertyOf cas:linksTarget ;
 	rdfs:range [ owl:unionOf(
 			cas:Entity
 			cas:Relationship
@@ -368,7 +345,7 @@ casShapes_cas:shows
 
 cas:depicts
 	rdf:type owl:ObjectProperty ;
-	rdfs:subPropertyOf cas:TargetLink ;
+	rdfs:subPropertyOf cas:linksTarget ;
 	rdfs:range cas:Entity ;
 	rdfs:label "depicts" ;
 	skos:definition "Depicts an entity; inverse of uml:ownedDiagram." .
@@ -379,125 +356,6 @@ casShapes_cas:depicts
 	sh:or (
 			[ sh:class cas:Entity ]
 		) .
-
-#################################################################
-# Data Types with Enumerated Values
-#################################################################
-
-SpecIF:Priority-Enumeration
-	rdf:type owl:Class ;
-	rdfs:subClassOf cas:Enumeration ;
-	rdfs:label "Priority"@en ,
-		"Priorität"@de ,
-		"Priorité"@fr ;
-	skos:definition "Enumerated values for the 'Priority' of the resource."@en ;
-	dcterms:modified "2025-09-05T12:40:27.574Z" ;
-	sh:datatype xs:string ;
-	owl:oneOf (
-			SpecIF:priorityHigh
-			SpecIF:priorityRatherHigh
-			SpecIF:priorityMedium
-			SpecIF:priorityRatherLow
-			SpecIF:priorityLow
-		) .
-SpecIF:priorityHigh
-	rdf:type SpecIF:Priority-Enumeration ;
-	rdfs:label "high"@en ,
-		"hoch"@de ,
-		"haut"@fr .
-SpecIF:priorityRatherHigh
-	rdf:type SpecIF:Priority-Enumeration ;
-	rdfs:label "rather high"@en ,
-		"eher hoch"@de ,
-		"plutôt haut"@fr .
-SpecIF:priorityMedium
-	rdf:type SpecIF:Priority-Enumeration ;
-	rdfs:label "medium"@en ,
-		"mittel"@de ,
-		"moyen"@fr .
-SpecIF:priorityRatherLow
-	rdf:type SpecIF:Priority-Enumeration ;
-	rdfs:label "rather low"@en ,
-		"eher niedrig"@de ,
-		"plutôt bas"@fr .
-SpecIF:priorityLow
-	rdf:type SpecIF:Priority-Enumeration ;
-	rdfs:label "low"@en ,
-		"niedrig"@de ,
-		"bas"@fr .
-
-SpecIF:StakeholderGroup-Enumeration
-	rdf:type owl:Class ;
-	rdfs:subClassOf cas:Enumeration ;
-	rdfs:label "Stakeholder Group"@en ;
-	skos:definition "Enumerated values for the 'Stakehoder Group' addressed by the term."@en ;
-	dcterms:modified "2023-03-10T07:48:02.442Z" ;
-	sh:datatype xs:string ;
-	owl:oneOf (
-			SpecIF:StakeholderGroupRegulation
-			SpecIF:StakeholderGroupBusiness
-			SpecIF:StakeholderGroupUser
-			SpecIF:StakeholderGroupSystem
-			SpecIF:StakeholderGroupOperation
-		) .
-SpecIF:StakeholderGroupRegulation
-	rdf:type SpecIF:StakeholderGroup-Enumeration ;
-	rdfs:label "Regulation"@en .
-SpecIF:StakeholderGroupBusiness
-	rdf:type SpecIF:StakeholderGroup-Enumeration ;
-	rdfs:label "Business"@en .
-SpecIF:StakeholderGroupUser
-	rdf:type SpecIF:StakeholderGroup-Enumeration ;
-	rdfs:label "User"@en .
-SpecIF:StakeholderGroupSystem
-	rdf:type SpecIF:StakeholderGroup-Enumeration ;
-	rdfs:label "System"@en .
-SpecIF:StakeholderGroupOperation
-	rdf:type SpecIF:StakeholderGroup-Enumeration ;
-	rdfs:label "Operation"@en .
-
-IREB:RequirementType-Enumeration
-	rdf:type owl:Class ;
-	rdfs:subClassOf cas:Enumeration ;
-	rdfs:label "Type"@en ,
-		"Art"@de ;
-	skos:definition "According to the IREB, requirements are typically classified into functional requirements ([[IREB:FunctionalRequirement]]), quality requirements ([[IREB:QualityRequirement]]) and constraints ([[IREB:Constraint]]). The latter two are also called non-functional requirements."@en ,
-		"Nach dem IREB werden Anforderungen üblicherweise nach 'Art' in funktionale Anforderungen ([[IREB:FunctionalRequirement]]), Qualitätsanforderungen ([[IREB:QualityRequirement]]) und Randbedingungen ([[IREB:Constraint]]) unterteilt. Die beiden letzteren werden auch nicht-funktionale Anforderungen genannt."@de ,
-		"Selon l'IREB, les exigences sont généralement classées en exigences fonctionnelles ([[IREB:FunctionalRequirement]]), en exigences de qualité ([[IREB:QualityRequirement]]) et en contraintes ([[IREB:Constraint]]). Ces deux dernières sont également appelées exigences non fonctionnelles."@fr ;
-	dcterms:modified "2023-08-08T20:52:31.633Z" ;
-	sh:datatype xs:string ;
-	owl:oneOf (
-			o:V-RequirementType-0
-			o:V-RequirementType-1
-			IREB:FunctionalRequirement
-			IREB:QualityRequirement
-			IREB:Constraint
-			o:V-RequirementType-5
-		) .
-o:V-RequirementType-0
-	rdf:type IREB:RequirementType-Enumeration ;
-	rdfs:label "SpecIF:Feature" .
-o:V-RequirementType-1
-	rdf:type IREB:RequirementType-Enumeration ;
-	rdfs:label "SpecIF:UserStory" .
-IREB:FunctionalRequirement
-	rdf:type IREB:RequirementType-Enumeration ;
-	rdfs:label "Functional Requirement"@en ,
-		"Funktionsanforderung"@de ,
-		"Exigence de function"@fr .
-IREB:QualityRequirement
-	rdf:type IREB:RequirementType-Enumeration ;
-	rdfs:label "Quality Requirement"@en ,
-		"Qualitätsanforderung"@de ,
-		"Exigence de qualité"@fr .
-IREB:Constraint
-	rdf:type IREB:RequirementType-Enumeration ;
-	rdfs:label "Constraint"@en ,
-		"Randbedingung"@de ,
-		"Contrainte"@fr .
-o:V-RequirementType-5
-	rdf:type IREB:RequirementType-Enumeration ;
-	rdfs:label "SpecIF:PainPoint" .
 
 #################################################################
 # Ontology - Property Classes
@@ -513,94 +371,15 @@ o:V-RequirementType-5
 
 # Skipping implicit property: cas:Notation
 
-uml:is_Service
-	rdf:type owl:DatatypeProperty ;
-	rdfs:subPropertyOf cas:Property ;
-	rdfs:label "is server"@en .
-
-casShapes_uml:is_Service
-	rdf:type sh:PropertyShape ;
-	sh:path uml:is_Service ;
-	sh:maxCount "1" ;
-	sh:datatype xs:boolean .
-
-uml:Flow_Direction
-	rdf:type owl:DatatypeProperty ;
-	rdfs:subPropertyOf cas:Property ;
-	rdfs:label "Flow Direction"@en .
-
-casShapes_uml:Flow_Direction
-	rdf:type sh:PropertyShape ;
-	sh:path uml:Flow_Direction ;
-	sh:maxCount "1" ;
-	sh:datatype xs:string ;
-	sh:maxLength "32" .
-
-SpecIF:Priority
-	rdf:type owl:ObjectProperty ;
-	rdfs:subPropertyOf cas:Link ;
-	rdfs:label "Priority"@en ,
-		"Priorität"@de ,
-		"Priorité"@fr ;
-	skos:definition "Enumerated values for the 'Priority' of the resource."@en ;
-	rdfs:range SpecIF:Priority-Enumeration .
-
-casShapes_SpecIF:Priority
-	rdf:type sh:PropertyShape ;
-	sh:path SpecIF:Priority ;
-	sh:maxCount "1" ;
-	sh:class SpecIF:Priority-Enumeration .
-
-SpecIF:StakeholderGroup
-	rdf:type owl:ObjectProperty ;
-	rdfs:subPropertyOf cas:Link ;
-	rdfs:label "Stakeholder Group"@en ;
-	skos:definition "Enumerated values for the 'Stakehoder Group' addressed by the term."@en ;
-	rdfs:range SpecIF:StakeholderGroup-Enumeration .
-
-casShapes_SpecIF:StakeholderGroup
-	rdf:type sh:PropertyShape ;
-	sh:path SpecIF:StakeholderGroup ;
-	sh:maxCount "1" ;
-	sh:class SpecIF:StakeholderGroup-Enumeration .
-
-cas:Icon
-	rdf:type owl:DatatypeProperty ;
-	rdfs:subPropertyOf cas:Property ;
-	rdfs:label "icon" .
-
-casShapes_cas:Icon
-	rdf:type sh:PropertyShape ;
-	sh:path cas:Icon ;
-	sh:maxCount "1" ;
-	sh:datatype xs:string ;
-	sh:maxLength "256" .
-
-IREB:RequirementType
-	rdf:type owl:ObjectProperty ;
-	rdfs:subPropertyOf cas:Link ;
-	rdfs:label "Type"@en ,
-		"Art"@de ;
-	skos:definition "According to the IREB, requirements are typically classified into functional requirements ([[IREB:FunctionalRequirement]]), quality requirements ([[IREB:QualityRequirement]]) and constraints ([[IREB:Constraint]]). The latter two are also called non-functional requirements."@en ,
-		"Nach dem IREB werden Anforderungen üblicherweise nach 'Art' in funktionale Anforderungen ([[IREB:FunctionalRequirement]]), Qualitätsanforderungen ([[IREB:QualityRequirement]]) und Randbedingungen ([[IREB:Constraint]]) unterteilt. Die beiden letzteren werden auch nicht-funktionale Anforderungen genannt."@de ,
-		"Selon l'IREB, les exigences sont généralement classées en exigences fonctionnelles ([[IREB:FunctionalRequirement]]), en exigences de qualité ([[IREB:QualityRequirement]]) et en contraintes ([[IREB:Constraint]]). Ces deux dernières sont également appelées exigences non fonctionnelles."@fr ;
-	rdfs:range IREB:RequirementType-Enumeration .
-
-casShapes_IREB:RequirementType
-	rdf:type sh:PropertyShape ;
-	sh:path IREB:RequirementType ;
-	sh:maxCount "1" ;
-	sh:class IREB:RequirementType-Enumeration .
-
-o:PC-Diagram-10478717701
+o:PC-Diagram-8335030133
 	rdf:type owl:DatatypeProperty ;
 	rdfs:subPropertyOf cas:Property ;
 	rdfs:label "cas:Diagram" ;
 	skos:definition "A diagram illustrating the resource or a link to a diagram." .
 
-o:PC-Diagram-10478717701_shape
+o:PC-Diagram-8335030133_shape
 	rdf:type sh:PropertyShape ;
-	sh:path o:PC-Diagram-10478717701 ;
+	sh:path o:PC-Diagram-8335030133 ;
 	sh:datatype xs:string .
 
 #################################################################
@@ -630,46 +409,6 @@ casShapes_SpecIF:Paragraph
 		casShapes_cas:Diagram ,
 		casShapes_cas:Category .
 
-o:RC-PigElement
-	rdf:type owl:Class ;
-	rdfs:subClassOf cas:Entity ;
-	rdfs:label "pig:Element" ;
-	skos:definition "An abstract superclass for pig:Organizer, pig:Entity and pig:Relationship" .
-
-o:RC-PigElement_shape
-	rdf:type sh:NodeShape ;
-	sh:targetClass o:RC-PigElement ;
-	sh:property [ 
-		sh:path rdfs:label ;
-		sh:minCount 1
-	] ,
-		[ 
-		sh:path rdfs:comment ;
-		sh:minCount 1
-	] ,
-		casShapes_cas:Category ,
-		casShapes_cas:Icon .
-
-o:RC-PigOrganizer
-	rdf:type owl:Class ;
-	rdfs:subClassOf o:RC-PigElement ;
-	rdfs:label "pig:Organizer" ;
-	skos:definition "A hierarchical organizer such as an outline or diagram referencing model-elements." .
-
-o:RC-PigOrganizer_shape
-	rdf:type sh:NodeShape ;
-	sh:targetClass o:RC-PigOrganizer ;
-	sh:property [ 
-		sh:path rdfs:label ;
-		sh:minCount 1
-	] ,
-		[ 
-		sh:path rdfs:comment ;
-		sh:minCount 1
-	] ,
-		casShapes_cas:Category ,
-		casShapes_cas:Icon .
-
 SpecIF:ModelElement
 	rdf:type owl:Class ;
 	rdfs:subClassOf cas:Entity ;
@@ -691,28 +430,6 @@ casShapes_SpecIF:ModelElement
 		sh:minCount 1
 	] ,
 		casShapes_cas:Category .
-
-o:RC-SpecifView
-	rdf:type owl:Class ;
-	rdfs:subClassOf SpecIF:Paragraph ;
-	rdfs:label "pig:View" ;
-	skos:definition "<p>A 'Model View' is a graphical diagram with a specific communication purpose, e.g. a business process or system composition. A suitable notation is applied.</p>" ;
-	cas:Icon "▣" .
-
-o:RC-SpecifView_shape
-	rdf:type sh:NodeShape ;
-	sh:targetClass o:RC-SpecifView ;
-	sh:property [ 
-		sh:path rdfs:label ;
-		sh:minCount 1
-	] ,
-		[ 
-		sh:path rdfs:comment ;
-		sh:minCount 1
-	] ,
-		casShapes_cas:Diagram ,
-		casShapes_cas:Category ,
-		casShapes_cas:Notation .
 
 FMC:Actor
 	rdf:type owl:Class ;
@@ -810,40 +527,12 @@ casShapes_FMC:Event
 	] ,
 		casShapes_cas:Category .
 
-IREB:Requirement
-	rdf:type owl:Class ;
-	rdfs:subClassOf SpecIF:Paragraph ;
-	rdfs:label "Requirement"@en ,
-		"Anforderung"@de ,
-		"Exigence"@fr ;
-	skos:definition "<p>A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>A condition or capability needed by a user to solve a problem or achieve an objective.</li><li>A condition or capability that must be met or possessed by a system or system component to satisfy a contract, standard, specification, or other formally imposed documents.</li><li>A documented representation of a condition or capability as in (1) or (2).</li></ol><p>Note: The definition above is the classic one from IEEE Std 610.12 of 1990. Alternatively, we also give a more modern definition:</p><ol><li>A need perceived by a stakeholder.</li><li>A capability or property that a system shall have.</li><li>A documented representation of a need, capability or property.</li></ol>"@en ,
-		"<p>Eine 'Anforderung' ist ein einzelnes dokumentiertes physisches und funktionales Bedürfnis, das ein bestimmter Entwurf, ein Produkt oder ein Prozess erfüllen muss. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>Eine Bedingung oder Fähigkeit, die ein Benutzer benötigt, um ein Problem zu lösen oder ein Ziel zu erreichen.</li><li>Eine Bedingung oder Fähigkeit, die ein System oder eine Systemkomponente erfüllen oder besitzen muss, um einen Vertrag, eine Norm, eine Spezifikation oder ein anderes formal vorgeschriebenes Dokument zu erfüllen.</li><li>Eine dokumentierte Darstellung einer Bedingung oder Fähigkeit wie in (1) oder (2).</li></ol><p>Anmerkung: Die obige Definition ist die klassische Definition aus IEEE Std 610.12 von 1990. Alternativ geben wir auch eine modernere Definition an:</p><ol><li>Ein von einem Stakeholder wahrgenommener Bedarf.</li><li>Eine Fähigkeit oder Eigenschaft, die ein System haben soll.</li><li>Eine dokumentierte Darstellung eines Bedarfs, einer Fähigkeit oder Eigenschaft.</li></ol>"@de ,
-		"<p>Une 'Exigence' est un besoin physique et fonctionnel unique et documenté qu'une conception, un produit ou un processus particulier doit pouvoir satisfaire. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Définition:</p><ol><li>Condition ou capacité dont un utilisateur a besoin pour résoudre un problème ou atteindre un objectif.</li><li>Condition ou capacité qui doit être remplie ou possédée par un système ou un composant de système pour satisfaire à un contrat, à une norme, à une spécification ou à d'autres documents imposés officiellement.</li><li>Une représentation documentée d'une condition ou d'une capacité comme dans (1) ou (2).</li></ol><p>Remarque: La définition ci-dessus est la définition classique de la norme IEEE 610.12 de 1990. Nous donnons également une définition plus moderne:</p><ol><li>Un besoin perçu par une partie prenante;</li><li>Une capacité ou une propriété qu'un système doit avoir.</li><li>Une représentation documentée d'un besoin, d'une capacité ou d'une propriété.</li></ol>"@fr ;
-	cas:Icon "&#8623;" .
-
-casShapes_IREB:Requirement
-	rdf:type sh:NodeShape ;
-	sh:targetClass IREB:Requirement ;
-	sh:property [ 
-		sh:path rdfs:label ;
-		sh:minCount 1
-	] ,
-		[ 
-		sh:path rdfs:comment ;
-		sh:minCount 1
-	] ,
-		casShapes_cas:Diagram ,
-		casShapes_cas:Category ,
-		casShapes_SpecIF:Priority ,
-		casShapes_IREB:RequirementType ,
-		casShapes_SpecIF:StakeholderGroup .
-
 o:RC-UmlDiagram
 	rdf:type owl:Class ;
-	rdfs:subClassOf SpecIF:Paragraph ;
+	rdfs:subClassOf cas:Entity ;
 	rdfs:label "pig:View" ;
-	skos:definition "<p>A 'Diagram' is a graphical model view with a specific communication purpose, e.g. a business process or system composition.</p>"@en ,
-		"<p>Ein 'Diagramm' ist eine graphische Modellsicht zur Vermittlung eines bestimmten Sachverhalts, z.B. ein Geschäftsprozess oder Systemaufbau.</p>"@de .
+	skos:definition "<p>A 'Diagram' is a graphical model view with a specific communication purpose, e.g. a business process or system composition.</p>" ;
+	cas:Icon "▣" .
 
 o:RC-UmlDiagram_shape
 	rdf:type sh:NodeShape ;
@@ -857,28 +546,8 @@ o:RC-UmlDiagram_shape
 		sh:minCount 1
 	] ,
 		casShapes_cas:Diagram ,
-		casShapes_cas:Category .
-
-o:RC-UmlClass
-	rdf:type owl:Class ;
-	rdfs:subClassOf SpecIF:ModelElement ;
-	rdfs:label "SpecIF:ModelElement" ;
-	skos:definition "Is a generalized type for model elements."@en ,
-		"Ist ein generalisierter Typ für Modellelemente."@de ;
-	cas:Icon "&#x2606;" .
-
-o:RC-UmlClass_shape
-	rdf:type sh:NodeShape ;
-	sh:targetClass o:RC-UmlClass ;
-	sh:property [ 
-		sh:path rdfs:label ;
-		sh:minCount 1
-	] ,
-		[ 
-		sh:path rdfs:comment ;
-		sh:minCount 1
-	] ,
-		casShapes_cas:Category .
+		casShapes_cas:Category ,
+		casShapes_cas:Notation .
 
 uml:Package
 	rdf:type owl:Class ;
@@ -898,126 +567,20 @@ casShapes_uml:Package
 	] ,
 		casShapes_cas:Category .
 
-uml:Port
+IREB:Requirement
 	rdf:type owl:Class ;
-	rdfs:subClassOf FMC:Actor ;
-	rdfs:label "Port"@en ,
-		"Schnittstelle"@de .
-
-casShapes_uml:Port
-	rdf:type sh:NodeShape ;
-	sh:targetClass uml:Port ;
-	sh:property [ 
-		sh:path rdfs:label ;
-		sh:minCount 1
-	] ,
-		[ 
-		sh:path rdfs:comment ;
-		sh:minCount 1
-	] ,
-		casShapes_cas:Category ,
-		casShapes_uml:is_Service ,
-		casShapes_uml:Flow_Direction .
-
-uml:StateMachine
-	rdf:type owl:Class ;
-	rdfs:subClassOf FMC:Actor ;
-	rdfs:label "UML State Machine" .
-
-casShapes_uml:StateMachine
-	rdf:type sh:NodeShape ;
-	sh:targetClass uml:StateMachine ;
-	sh:property [ 
-		sh:path rdfs:label ;
-		sh:minCount 1
-	] ,
-		[ 
-		sh:path rdfs:comment ;
-		sh:minCount 1
-	] ,
-		casShapes_cas:Category .
-
-uml:UseCase
-	rdf:type owl:Class ;
-	rdfs:subClassOf FMC:Actor ;
-	rdfs:label "Use Case" .
-
-casShapes_uml:UseCase
-	rdf:type sh:NodeShape ;
-	sh:targetClass uml:UseCase ;
-	sh:property [ 
-		sh:path rdfs:label ;
-		sh:minCount 1
-	] ,
-		[ 
-		sh:path rdfs:comment ;
-		sh:minCount 1
-	] ,
-		casShapes_cas:Category .
-
-uml:Activity
-	rdf:type owl:Class ;
-	rdfs:subClassOf FMC:Actor ;
-	rdfs:label "UML Activity" .
-
-casShapes_uml:Activity
-	rdf:type sh:NodeShape ;
-	sh:targetClass uml:Activity ;
-	sh:property [ 
-		sh:path rdfs:label ;
-		sh:minCount 1
-	] ,
-		[ 
-		sh:path rdfs:comment ;
-		sh:minCount 1
-	] ,
-		casShapes_cas:Category .
-
-uml:State
-	rdf:type owl:Class ;
-	rdfs:subClassOf FMC:State ;
-	rdfs:label "UML State" .
-
-casShapes_uml:State
-	rdf:type sh:NodeShape ;
-	sh:targetClass uml:State ;
-	sh:property [ 
-		sh:path rdfs:label ;
-		sh:minCount 1
-	] ,
-		[ 
-		sh:path rdfs:comment ;
-		sh:minCount 1
-	] ,
-		casShapes_cas:Category .
-
-uml:Transition
-	rdf:type owl:Class ;
-	rdfs:subClassOf FMC:Actor ;
-	rdfs:label "UML Transition" .
-
-casShapes_uml:Transition
-	rdf:type sh:NodeShape ;
-	sh:targetClass uml:Transition ;
-	sh:property [ 
-		sh:path rdfs:label ;
-		sh:minCount 1
-	] ,
-		[ 
-		sh:path rdfs:comment ;
-		sh:minCount 1
-	] ,
-		casShapes_cas:Category .
-
-o:RC-SysmlRequirement
-	rdf:type owl:Class ;
-	rdfs:subClassOf IREB:Requirement ;
-	rdfs:label "IREB:Requirement" ;
+	rdfs:subClassOf cas:Entity ;
+	rdfs:label "Requirement"@en ,
+		"Anforderung"@de ,
+		"Exigence"@fr ;
+	skos:definition "<p>A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>A condition or capability needed by a user to solve a problem or achieve an objective.</li><li>A condition or capability that must be met or possessed by a system or system component to satisfy a contract, standard, specification, or other formally imposed documents.</li><li>A documented representation of a condition or capability as in (1) or (2).</li></ol><p>Note: The definition above is the classic one from IEEE Std 610.12 of 1990. Alternatively, we also give a more modern definition:</p><ol><li>A need perceived by a stakeholder.</li><li>A capability or property that a system shall have.</li><li>A documented representation of a need, capability or property.</li></ol>"@en ,
+		"<p>Eine 'Anforderung' ist ein einzelnes dokumentiertes physisches und funktionales Bedürfnis, das ein bestimmter Entwurf, ein Produkt oder ein Prozess erfüllen muss. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Definition:</p><ol><li>Eine Bedingung oder Fähigkeit, die ein Benutzer benötigt, um ein Problem zu lösen oder ein Ziel zu erreichen.</li><li>Eine Bedingung oder Fähigkeit, die ein System oder eine Systemkomponente erfüllen oder besitzen muss, um einen Vertrag, eine Norm, eine Spezifikation oder ein anderes formal vorgeschriebenes Dokument zu erfüllen.</li><li>Eine dokumentierte Darstellung einer Bedingung oder Fähigkeit wie in (1) oder (2).</li></ol><p>Anmerkung: Die obige Definition ist die klassische Definition aus IEEE Std 610.12 von 1990. Alternativ geben wir auch eine modernere Definition an:</p><ol><li>Ein von einem Stakeholder wahrgenommener Bedarf.</li><li>Eine Fähigkeit oder Eigenschaft, die ein System haben soll.</li><li>Eine dokumentierte Darstellung eines Bedarfs, einer Fähigkeit oder Eigenschaft.</li></ol>"@de ,
+		"<p>Une 'Exigence' est un besoin physique et fonctionnel unique et documenté qu'une conception, un produit ou un processus particulier doit pouvoir satisfaire. <small>(<i>source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>)</small></p><p>Définition:</p><ol><li>Condition ou capacité dont un utilisateur a besoin pour résoudre un problème ou atteindre un objectif.</li><li>Condition ou capacité qui doit être remplie ou possédée par un système ou un composant de système pour satisfaire à un contrat, à une norme, à une spécification ou à d'autres documents imposés officiellement.</li><li>Une représentation documentée d'une condition ou d'une capacité comme dans (1) ou (2).</li></ol><p>Remarque: La définition ci-dessus est la définition classique de la norme IEEE 610.12 de 1990. Nous donnons également une définition plus moderne:</p><ol><li>Un besoin perçu par une partie prenante;</li><li>Une capacité ou une propriété qu'un système doit avoir.</li><li>Une représentation documentée d'un besoin, d'une capacité ou d'une propriété.</li></ol>"@fr ;
 	cas:Icon "&#8623;" .
 
-o:RC-SysmlRequirement_shape
+casShapes_IREB:Requirement
 	rdf:type sh:NodeShape ;
-	sh:targetClass o:RC-SysmlRequirement ;
+	sh:targetClass IREB:Requirement ;
 	sh:property [ 
 		sh:path rdfs:label ;
 		sh:minCount 1
@@ -1026,22 +589,18 @@ o:RC-SysmlRequirement_shape
 		sh:path rdfs:comment ;
 		sh:minCount 1
 	] ,
-		casShapes_cas:Diagram ,
-		casShapes_cas:Category ,
-		casShapes_SpecIF:Priority ,
-		casShapes_IREB:RequirementType ,
-		casShapes_SpecIF:StakeholderGroup .
+		casShapes_cas:Category .
 
-o:RC-Paragraph-10478717701
+o:RC-Paragraph-8335030133
 	rdf:type owl:Class ;
 	rdfs:subClassOf cas:Entity ;
 	rdfs:label "SpecIF:Paragraph" ;
 	skos:definition "<p>A 'Paragraph' is an unspecified information in a document at any level.</p>"@en ,
 		"<p>Ein 'Textabschnitt' in einem Dokument auf beliebiger Ebene.</p>"@de .
 
-o:RC-Paragraph-10478717701_shape
+o:RC-Paragraph-8335030133_shape
 	rdf:type sh:NodeShape ;
-	sh:targetClass o:RC-Paragraph-10478717701 ;
+	sh:targetClass o:RC-Paragraph-8335030133 ;
 	sh:property [ 
 		sh:path rdfs:label ;
 		sh:minCount 1
@@ -1050,7 +609,7 @@ o:RC-Paragraph-10478717701_shape
 		sh:path rdfs:comment ;
 		sh:minCount 1
 	] ,
-		o:PC-Diagram-10478717701_shape ,
+		o:PC-Diagram-8335030133_shape ,
 		casShapes_cas:Category .
 
 #################################################################
@@ -1068,13 +627,13 @@ SpecIF:relates
 	dcterms:modified "2024-06-09T12:35:33.150Z" .
 
 SpecIF:relates-toSource
-	rdfs:subPropertyOf cas:SourceLink ;
+	rdfs:subPropertyOf cas:linksSource ;
 	rdfs:label "SpecIF:relates to source" ;
 	rdfs:comment "Connects the source of SpecIF:relates" ;
 	rdfs:domain SpecIF:relates .
 
 SpecIF:relates-toTarget
-	rdfs:subPropertyOf cas:TargetLink ;
+	rdfs:subPropertyOf cas:linksTarget ;
 	rdfs:label "SpecIF:relates to target" ;
 	rdfs:comment "Connects the target of SpecIF:relates" ;
 	rdfs:domain SpecIF:relates .
@@ -1104,7 +663,7 @@ dcterms:hasPart
 	dcterms:modified "2024-06-18T12:23:12.163Z" .
 
 dcterms:hasPart-toSource
-	rdfs:subPropertyOf cas:SourceLink ;
+	rdfs:subPropertyOf cas:linksSource ;
 	rdfs:label "dcterms:hasPart to source" ;
 	rdfs:comment "Connects the source of dcterms:hasPart" ;
 	rdfs:domain dcterms:hasPart ;
@@ -1117,7 +676,7 @@ dcterms:hasPart-toSource
 		)] .
 
 dcterms:hasPart-toTarget
-	rdfs:subPropertyOf cas:TargetLink ;
+	rdfs:subPropertyOf cas:linksTarget ;
 	rdfs:label "dcterms:hasPart to target" ;
 	rdfs:comment "Connects the target of dcterms:hasPart" ;
 	rdfs:domain dcterms:hasPart ;
@@ -1126,7 +685,7 @@ dcterms:hasPart-toTarget
 			FMC:State
 			SpecIF:Collection
 			SpecIF:ModelElement
-			uml:Port
+			o:RC-UmlPort
 			o:RC-UmlClass
 		)] .
 
@@ -1153,7 +712,7 @@ casShapes_dcterms:hasPart
 			[ sh:class FMC:State ]
 			[ sh:class SpecIF:Collection ]
 			[ sh:class SpecIF:ModelElement ]
-			[ sh:class uml:Port ]
+			[ sh:class o:RC-UmlPort ]
 			[ sh:class o:RC-UmlClass ]
 		) ;
 		sh:minCount 1 ;
@@ -1170,7 +729,7 @@ SpecIF:contains
 	dcterms:modified "2024-06-18T12:22:11.959Z" .
 
 SpecIF:contains-toSource
-	rdfs:subPropertyOf cas:SourceLink ;
+	rdfs:subPropertyOf cas:linksSource ;
 	rdfs:label "SpecIF:contains to source" ;
 	rdfs:comment "Connects the source of SpecIF:contains" ;
 	rdfs:domain SpecIF:contains ;
@@ -1182,7 +741,7 @@ SpecIF:contains-toSource
 		)] .
 
 SpecIF:contains-toTarget
-	rdfs:subPropertyOf cas:TargetLink ;
+	rdfs:subPropertyOf cas:linksTarget ;
 	rdfs:label "SpecIF:contains to target" ;
 	rdfs:comment "Connects the target of SpecIF:contains" ;
 	rdfs:domain SpecIF:contains ;
@@ -1194,6 +753,9 @@ SpecIF:contains-toTarget
 			uml:Package
 			SpecIF:ModelElement
 			o:RC-SpecifView
+			o:RC-PigView
+			o:RC-UmlDiagram
+			IREB:Requirement
 		)] .
 
 casShapes_SpecIF:contains
@@ -1221,6 +783,9 @@ casShapes_SpecIF:contains
 			[ sh:class uml:Package ]
 			[ sh:class SpecIF:ModelElement ]
 			[ sh:class o:RC-SpecifView ]
+			[ sh:class o:RC-PigView ]
+			[ sh:class o:RC-UmlDiagram ]
+			[ sh:class IREB:Requirement ]
 		) ;
 		sh:minCount 1 ;
 		sh:maxCount 1
@@ -1236,16 +801,17 @@ oslc_rm:satisfies
 	dcterms:modified "2024-06-14T06:49:03.417Z" .
 
 oslc_rm:satisfies-toSource
-	rdfs:subPropertyOf cas:SourceLink ;
+	rdfs:subPropertyOf cas:linksSource ;
 	rdfs:label "oslc_rm:satisfies to source" ;
 	rdfs:comment "Connects the source of oslc_rm:satisfies" ;
 	rdfs:domain oslc_rm:satisfies .
 
 oslc_rm:satisfies-toTarget
-	rdfs:subPropertyOf cas:TargetLink ;
+	rdfs:subPropertyOf cas:linksTarget ;
 	rdfs:label "oslc_rm:satisfies to target" ;
 	rdfs:comment "Connects the target of oslc_rm:satisfies" ;
-	rdfs:domain oslc_rm:satisfies .
+	rdfs:domain oslc_rm:satisfies ;
+	rdfs:range IREB:Requirement .
 
 casShapes_oslc_rm:satisfies
 	rdf:type sh:NodeShape ;
@@ -1257,6 +823,9 @@ casShapes_oslc_rm:satisfies
 	] ;
 	sh:property [ 
 		sh:path oslc_rm:satisfies-toTarget ;
+		sh:or (
+			[ sh:class IREB:Requirement ]
+		) ;
 		sh:minCount 1 ;
 		sh:maxCount 1
 	] .
@@ -1271,27 +840,35 @@ IREB:refines
 	dcterms:modified "2024-06-14T06:40:52.155Z" .
 
 IREB:refines-toSource
-	rdfs:subPropertyOf cas:SourceLink ;
+	rdfs:subPropertyOf cas:linksSource ;
 	rdfs:label "IREB:refines to source" ;
 	rdfs:comment "Connects the source of IREB:refines" ;
-	rdfs:domain IREB:refines .
+	rdfs:domain IREB:refines ;
+	rdfs:range IREB:Requirement .
 
 IREB:refines-toTarget
-	rdfs:subPropertyOf cas:TargetLink ;
+	rdfs:subPropertyOf cas:linksTarget ;
 	rdfs:label "IREB:refines to target" ;
 	rdfs:comment "Connects the target of IREB:refines" ;
-	rdfs:domain IREB:refines .
+	rdfs:domain IREB:refines ;
+	rdfs:range IREB:Requirement .
 
 casShapes_IREB:refines
 	rdf:type sh:NodeShape ;
 	sh:targetClass IREB:refines ;
 	sh:property [ 
 		sh:path IREB:refines-toSource ;
+		sh:or (
+			[ sh:class IREB:Requirement ]
+		) ;
 		sh:minCount 1 ;
 		sh:maxCount 1
 	] ;
 	sh:property [ 
 		sh:path IREB:refines-toTarget ;
+		sh:or (
+			[ sh:class IREB:Requirement ]
+		) ;
 		sh:minCount 1 ;
 		sh:maxCount 1
 	] .
@@ -1306,14 +883,14 @@ sysml:Allocate
 	dcterms:modified "2025-09-06T14:59:03.739Z" .
 
 sysml:Allocate-toSource
-	rdfs:subPropertyOf cas:SourceLink ;
+	rdfs:subPropertyOf cas:linksSource ;
 	rdfs:label "sysml:Allocate to source" ;
 	rdfs:comment "Connects the source of sysml:Allocate" ;
 	rdfs:domain sysml:Allocate ;
 	rdfs:range SpecIF:ModelElement .
 
 sysml:Allocate-toTarget
-	rdfs:subPropertyOf cas:TargetLink ;
+	rdfs:subPropertyOf cas:linksTarget ;
 	rdfs:label "sysml:Allocate to target" ;
 	rdfs:comment "Connects the target of sysml:Allocate" ;
 	rdfs:domain sysml:Allocate ;
@@ -1347,21 +924,21 @@ uml:ownedBehavior
 	dcterms:modified "2025-04-21T17:40:00.590Z" .
 
 uml:ownedBehavior-toSource
-	rdfs:subPropertyOf cas:SourceLink ;
+	rdfs:subPropertyOf cas:linksSource ;
 	rdfs:label "uml:ownedBehavior to source" ;
 	rdfs:comment "Connects the source of uml:ownedBehavior" ;
 	rdfs:domain uml:ownedBehavior .
 
 uml:ownedBehavior-toTarget
-	rdfs:subPropertyOf cas:TargetLink ;
+	rdfs:subPropertyOf cas:linksTarget ;
 	rdfs:label "uml:ownedBehavior to target" ;
 	rdfs:comment "Connects the target of uml:ownedBehavior" ;
 	rdfs:domain uml:ownedBehavior ;
 	rdfs:range [ owl:unionOf(
-			uml:StateMachine
-			uml:Activity
+			o:RC-UmlStatemachine
+			o:RC-UmlActivity
 			FMC:Actor
-			uml:UseCase
+			o:RC-UmlUsecase
 		)] .
 
 casShapes_uml:ownedBehavior
@@ -1375,10 +952,10 @@ casShapes_uml:ownedBehavior
 	sh:property [ 
 		sh:path uml:ownedBehavior-toTarget ;
 		sh:or (
-			[ sh:class uml:StateMachine ]
-			[ sh:class uml:Activity ]
+			[ sh:class o:RC-UmlStatemachine ]
+			[ sh:class o:RC-UmlActivity ]
 			[ sh:class FMC:Actor ]
-			[ sh:class uml:UseCase ]
+			[ sh:class o:RC-UmlUsecase ]
 		) ;
 		sh:minCount 1 ;
 		sh:maxCount 1
@@ -1391,13 +968,13 @@ uml:Trigger
 	dcterms:modified "2025-04-22T09:22:53.072Z" .
 
 uml:Trigger-toSource
-	rdfs:subPropertyOf cas:SourceLink ;
+	rdfs:subPropertyOf cas:linksSource ;
 	rdfs:label "uml:Trigger to source" ;
 	rdfs:comment "Connects the source of uml:Trigger" ;
 	rdfs:domain uml:Trigger .
 
 uml:Trigger-toTarget
-	rdfs:subPropertyOf cas:TargetLink ;
+	rdfs:subPropertyOf cas:linksTarget ;
 	rdfs:label "uml:Trigger to target" ;
 	rdfs:comment "Connects the target of uml:Trigger" ;
 	rdfs:domain uml:Trigger .
@@ -1423,22 +1000,22 @@ uml:TransitionSource
 	dcterms:modified "2025-04-22T13:49:51.249Z" .
 
 uml:TransitionSource-toSource
-	rdfs:subPropertyOf cas:SourceLink ;
+	rdfs:subPropertyOf cas:linksSource ;
 	rdfs:label "uml:TransitionSource to source" ;
 	rdfs:comment "Connects the source of uml:TransitionSource" ;
 	rdfs:domain uml:TransitionSource ;
 	rdfs:range [ owl:unionOf(
-			uml:Transition
+			o:RC-UmlTransition
 			FMC:Actor
 		)] .
 
 uml:TransitionSource-toTarget
-	rdfs:subPropertyOf cas:TargetLink ;
+	rdfs:subPropertyOf cas:linksTarget ;
 	rdfs:label "uml:TransitionSource to target" ;
 	rdfs:comment "Connects the target of uml:TransitionSource" ;
 	rdfs:domain uml:TransitionSource ;
 	rdfs:range [ owl:unionOf(
-			uml:State
+			o:RC-UmlState
 			FMC:State
 		)] .
 
@@ -1448,7 +1025,7 @@ casShapes_uml:TransitionSource
 	sh:property [ 
 		sh:path uml:TransitionSource-toSource ;
 		sh:or (
-			[ sh:class uml:Transition ]
+			[ sh:class o:RC-UmlTransition ]
 			[ sh:class FMC:Actor ]
 		) ;
 		sh:minCount 1 ;
@@ -1457,7 +1034,7 @@ casShapes_uml:TransitionSource
 	sh:property [ 
 		sh:path uml:TransitionSource-toTarget ;
 		sh:or (
-			[ sh:class uml:State ]
+			[ sh:class o:RC-UmlState ]
 			[ sh:class FMC:State ]
 		) ;
 		sh:minCount 1 ;
@@ -1471,22 +1048,22 @@ uml:TransitionTarget
 	dcterms:modified "2025-04-22T13:50:34.458Z" .
 
 uml:TransitionTarget-toSource
-	rdfs:subPropertyOf cas:SourceLink ;
+	rdfs:subPropertyOf cas:linksSource ;
 	rdfs:label "uml:TransitionTarget to source" ;
 	rdfs:comment "Connects the source of uml:TransitionTarget" ;
 	rdfs:domain uml:TransitionTarget ;
 	rdfs:range [ owl:unionOf(
-			uml:Transition
+			o:RC-UmlTransition
 			FMC:Actor
 		)] .
 
 uml:TransitionTarget-toTarget
-	rdfs:subPropertyOf cas:TargetLink ;
+	rdfs:subPropertyOf cas:linksTarget ;
 	rdfs:label "uml:TransitionTarget to target" ;
 	rdfs:comment "Connects the target of uml:TransitionTarget" ;
 	rdfs:domain uml:TransitionTarget ;
 	rdfs:range [ owl:unionOf(
-			uml:State
+			o:RC-UmlState
 			FMC:State
 		)] .
 
@@ -1496,7 +1073,7 @@ casShapes_uml:TransitionTarget
 	sh:property [ 
 		sh:path uml:TransitionTarget-toSource ;
 		sh:or (
-			[ sh:class uml:Transition ]
+			[ sh:class o:RC-UmlTransition ]
 			[ sh:class FMC:Actor ]
 		) ;
 		sh:minCount 1 ;
@@ -1505,7 +1082,7 @@ casShapes_uml:TransitionTarget
 	sh:property [ 
 		sh:path uml:TransitionTarget-toTarget ;
 		sh:or (
-			[ sh:class uml:State ]
+			[ sh:class o:RC-UmlState ]
 			[ sh:class FMC:State ]
 		) ;
 		sh:minCount 1 ;
@@ -1523,58 +1100,58 @@ d:_19_0_3_71e0233_1746001337727_31616_14119
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552810549321_335902_14037
-	rdf:type o:RC-SpecifView ;
+	rdf:type o:RC-UmlDiagram ;
 	rdfs:label "Original Requirement Specification" ;
 	cas:Diagram "<object data=\"files_and_images/Original Requirement Specification.png\" type=\"image/png\">files_and_images/Original Requirement Specification.png</object>" ;
 	cas:Category uml:Diagram ;
 	cas:Notation "UML Requirement Diagram" ;
-	cas:revision "rev-8045321760" ;
-	dcterms:modified "2025-09-25T21:53:43.076Z" .
+	cas:revision "rev-9405830621" ;
+	dcterms:modified "2025-11-12T09:28:04.871Z" .
 
 d:_18_5_3_bc402f4_1552810776263_894029_14121
-	rdf:type o:RC-SysmlRequirement ;
+	rdf:type IREB:Requirement ;
 	rdfs:label "Navigation" ;
 	cas:Category uml:Class ;
 	rdfs:comment "The Vehicle shall autonomously choose the best route from the current location C to the target location T by means of a road map and actual traffic conditions." ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552810869277_586147_14175
-	rdf:type o:RC-SysmlRequirement ;
+	rdf:type IREB:Requirement ;
 	rdfs:label "Road Driving" ;
 	cas:Category uml:Class ;
 	rdfs:comment "The vehicle shall be able to follow a selected road." ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552810644650_650036_14079
-	rdf:type o:RC-SysmlRequirement ;
+	rdf:type IREB:Requirement ;
 	rdfs:label "Transport to Target" ;
 	cas:Category uml:Class ;
 	rdfs:comment "As a customer I would like to get a parcel delivered from the current location C to a target location T. " ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552812370943_152244_14924
-	rdf:type o:RC-SysmlRequirement ;
+	rdf:type IREB:Requirement ;
 	rdfs:label "Location as Postal Address" ;
 	cas:Category uml:Class ;
 	rdfs:comment "A location may be specified as a postal address." ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552813199775_830344_15281
-	rdf:type o:RC-SysmlRequirement ;
+	rdf:type IREB:Requirement ;
 	rdfs:label "Obstacle Avoidance" ;
 	cas:Category uml:Class ;
 	rdfs:comment "The vehicle shall not hit a person or an obstacle on the road." ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552810948738_707540_14217
-	rdf:type o:RC-SysmlRequirement ;
+	rdf:type IREB:Requirement ;
 	rdfs:label "Safe Driving" ;
 	cas:Category uml:Class ;
 	rdfs:comment "The vehicle shall drive no faster than allowed or adequate for the actual road condition." ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552812437056_257578_14975
-	rdf:type o:RC-SysmlRequirement ;
+	rdf:type IREB:Requirement ;
 	rdfs:label "Loacation as GPS Coordinate" ;
 	cas:Category uml:Class ;
 	rdfs:comment "A location may be specified as GPS Coordinate with Longitude and Latitude in Degrees." ;
@@ -1587,13 +1164,13 @@ d:_19_0_3_71e0233_1746001480225_327746_14120
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_18_5_3_bc402f4_1552811870216_105923_14824
-	rdf:type o:RC-SpecifView ;
+	rdf:type o:RC-UmlDiagram ;
 	rdfs:label "Functional Decomposition" ;
 	cas:Diagram "<object data=\"files_and_images/Functional Decomposition.png\" type=\"image/png\">files_and_images/Functional Decomposition.png</object>" ;
 	cas:Category uml:Diagram ;
 	cas:Notation "SysML Block Definition Diagram" ;
-	cas:revision "rev-7899008377" ;
-	dcterms:modified "2025-09-25T21:54:14.234Z" .
+	cas:revision "rev-11094738149" ;
+	dcterms:modified "2025-11-12T09:28:21.131Z" .
 
 d:_18_5_3_bc402f4_1552813556602_820961_15353
 	rdf:type SpecIF:ModelElement ;
@@ -1689,13 +1266,13 @@ d:_19_0_3_71e0233_1746001561119_779379_14121
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746027287147_82140_14431
-	rdf:type o:RC-SpecifView ;
+	rdf:type o:RC-UmlDiagram ;
 	rdfs:label "Logical Decomposition" ;
 	cas:Diagram "<object data=\"files_and_images/Logical Decomposition.png\" type=\"image/png\">files_and_images/Logical Decomposition.png</object>" ;
 	cas:Category uml:Diagram ;
 	cas:Notation "SysML Block Definition Diagram" ;
-	cas:revision "rev-9104863754" ;
-	dcterms:modified "2025-09-25T21:53:59.929Z" .
+	cas:revision "rev-7887707545" ;
+	dcterms:modified "2025-11-12T09:28:38.225Z" .
 
 d:_19_0_3_e40094_1718632293724_754873_14112
 	rdf:type SpecIF:ModelElement ;
@@ -1742,13 +1319,13 @@ d:_18_5_3_bc402f4_1552814104357_719492_15607
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:_19_0_3_71e0233_1746027630926_778269_14800
-	rdf:type o:RC-SpecifView ;
+	rdf:type o:RC-UmlDiagram ;
 	rdfs:label "Controller State Machine" ;
 	cas:Diagram "<object data=\"files_and_images/Controller State Machine.png\" type=\"image/png\">files_and_images/Controller State Machine.png</object>" ;
 	cas:Category uml:Diagram ;
 	cas:Notation "SysML State Machine Diagram" ;
-	cas:revision "rev-9559443397" ;
-	dcterms:modified "2025-09-25T21:54:30.074Z" .
+	cas:revision "rev-11807243868" ;
+	dcterms:modified "2025-11-12T09:29:01.139Z" .
 
 d:_19_0_3_71e0233_1746027631039_116153_14834
 	rdf:type FMC:State ;
@@ -2022,6 +1599,48 @@ d:S-contains-10399921810
 	rdf:type SpecIF:contains ;
 	SpecIF:contains-toSource d:_19_0_3_71e0233_1746001337727_31616_14119 ;
 	SpecIF:contains-toTarget d:_18_5_3_bc402f4_1552810549321_335902_14037 ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:S-contains-10330010667
+	rdf:type SpecIF:contains ;
+	SpecIF:contains-toSource d:_19_0_3_71e0233_1746001337727_31616_14119 ;
+	SpecIF:contains-toTarget d:_18_5_3_bc402f4_1552810776263_894029_14121 ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:S-contains-10652725449
+	rdf:type SpecIF:contains ;
+	SpecIF:contains-toSource d:_19_0_3_71e0233_1746001337727_31616_14119 ;
+	SpecIF:contains-toTarget d:_18_5_3_bc402f4_1552810869277_586147_14175 ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:S-contains-11927092777
+	rdf:type SpecIF:contains ;
+	SpecIF:contains-toSource d:_19_0_3_71e0233_1746001337727_31616_14119 ;
+	SpecIF:contains-toTarget d:_18_5_3_bc402f4_1552810644650_650036_14079 ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:S-contains-8881937697
+	rdf:type SpecIF:contains ;
+	SpecIF:contains-toSource d:_19_0_3_71e0233_1746001337727_31616_14119 ;
+	SpecIF:contains-toTarget d:_18_5_3_bc402f4_1552812370943_152244_14924 ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:S-contains-10783514673
+	rdf:type SpecIF:contains ;
+	SpecIF:contains-toSource d:_19_0_3_71e0233_1746001337727_31616_14119 ;
+	SpecIF:contains-toTarget d:_18_5_3_bc402f4_1552813199775_830344_15281 ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:S-contains-10945506396
+	rdf:type SpecIF:contains ;
+	SpecIF:contains-toSource d:_19_0_3_71e0233_1746001337727_31616_14119 ;
+	SpecIF:contains-toTarget d:_18_5_3_bc402f4_1552810948738_707540_14217 ;
+	dcterms:modified "2025-09-24T08:28:08.223Z" .
+
+d:S-contains-11407335150
+	rdf:type SpecIF:contains ;
+	SpecIF:contains-toSource d:_19_0_3_71e0233_1746001337727_31616_14119 ;
+	SpecIF:contains-toTarget d:_18_5_3_bc402f4_1552812437056_257578_14975 ;
 	dcterms:modified "2025-09-24T08:28:08.223Z" .
 
 d:S-contains-9116397029
@@ -2852,7 +2471,7 @@ d:_19_0_3_e40094_1718632569345_311906_14190
 
 d:HierarchyRoot-P-eee_1045467100313_135436_1
 	rdf:type cas:Root ;
-	dcterms:modified "2026-05-11T10:02:24.325Z" ;
+	dcterms:modified "2026-05-14T08:04:15.567Z" ;
 	rdfs:label "Hierarchy Root" ;
 	rdfs:comment "... anchoring all hierarchies of this graph (package)" ;
 	cas:lists (
@@ -2865,7 +2484,7 @@ d:HR-9052885961
 	rdfs:label "Small Autonomous Vehicle" ;
 	rdfs:comment "A set of SpecIF Classes derived from a SpecIF Ontology for the domains SpecIF:DomainBase, SpecIF:DomainSystemsEngineering, SpecIF:DomainSystemModelIntegration."@en ;
 	cas:Category ReqIF:HierarchyRoot ;
-	dcterms:modified "2026-05-11T10:02:24.088Z" ;
+	dcterms:modified "2026-05-14T08:04:15.449Z" ;
 	cas:lists (
 			d:eee_1045467100313_135436_1
 		) .
@@ -2873,9 +2492,9 @@ d:HR-9052885961
 d:eee_1045467100313_135436_1
 	rdf:type cas:Outline ;
 	rdfs:label "Small Autonomous Vehicle" ;
-	rdfs:comment "Author:dungern.\nCreated:17.03.19 09:14.\nTitle:.\nComment:.\n" ;
 	cas:Category uml:Model ;
-	dcterms:modified "2025-09-24T08:28:08.223Z" ;
+	cas:revision "rev-10410861023" ;
+	dcterms:modified "2025-11-12T09:27:42.126Z" ;
 	cas:lists (
 			d:_19_0_3_71e0233_1746001337727_31616_14119
 			d:_19_0_3_71e0233_1746001480225_327746_14120
@@ -2887,7 +2506,7 @@ d:HR-FolderGlossary-10391243923
 	rdfs:label "Small Autonomous Vehicle" ;
 	rdfs:comment "A set of SpecIF Classes derived from a SpecIF Ontology for the domains SpecIF:DomainBase, SpecIF:DomainSystemsEngineering, SpecIF:DomainSystemModelIntegration."@en ;
 	cas:Category ReqIF:HierarchyRoot ;
-	dcterms:modified "2026-05-11T10:02:24.088Z" ;
+	dcterms:modified "2026-05-14T08:04:15.449Z" ;
 	cas:lists (
 			d:FolderGlossary-10391243923
 		) .
@@ -2896,7 +2515,7 @@ d:FolderGlossary-10391243923
 	rdf:type cas:Outline ;
 	rdfs:label "Model Elements (Glossary)" ;
 	cas:Category SpecIF:Glossary ;
-	dcterms:modified "2026-05-11T09:57:04.874Z" ;
+	dcterms:modified "2026-05-14T08:04:02.752Z" ;
 	cas:lists (
 			d:_18_5_3_bc402f4_1552814266523_206006_15821
 			d:_18_5_3_bc402f4_1552811469014_293642_14411

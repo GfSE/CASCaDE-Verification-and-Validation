@@ -6,6 +6,7 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xs: <http://www.w3.org/2001/XMLSchema#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix casShapes_dcterms: <https://product-information-graph.org/v0.2/ontology/shapes/dcterms#> .
 @prefix FMC: <http://fmc-modeling.org#> .
 @prefix casShapes_FMC: <https://product-information-graph.org/v0.2/ontology/shapes/FMC#> .
 @prefix IREB: <https://cpre.ireb.org/en/downloads-and-resources/glossary#> .
@@ -32,11 +33,19 @@ d:
 	owl:imports <http://www.w3.org/1999/02/22-rdf-syntax-ns#> ,
 		<http://www.w3.org/2000/01/rdf-schema#> ;
 	dcterms:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
-	dcterms:modified "2026-04-08T09:46:35.451Z" .
+	dcterms:modified "2026-05-14T08:07:58.531Z" .
 
 #################################################################
 # CASCaRA Metamodel and Semantic Infrastructure
 #################################################################
+
+cas:Enumeration
+	rdf:type owl:Class ;
+	rdfs:label "Enumeration" ;
+	skos:definition "A CASCaRA meta-model item used for value enumerations." .
+
+casShapes_cas:Enumeration
+	rdf:type sh:NodeShape .
 
 cas:Entity
 	rdf:type owl:Class ;
@@ -54,108 +63,35 @@ casShapes_cas:Entity
 		sh:path rdfs:comment ;
 		sh:minCount 1
 	] ,
-		casShapes_cas:Category ,
-		casShapes_cas:Icon .
-
-cas:Package
-	rdf:type owl:Class ;
-	rdfs:subClassOf cas:Entity ;
-	rdfs:label "Package" ;
-	skos:definition "A CASCaRA meta-model item used for packages comprising entities, relationships and potentially nested packages." .
-
-casShapes_cas:Package
-	rdf:type sh:NodeShape ;
-	sh:targetClass cas:Package ;
-	sh:property [ 
-		sh:path rdfs:label ;
-		sh:minCount 1
-	] ,
-		[ 
-		sh:path rdfs:comment ;
-		sh:minCount 1
-	] .
-
-cas:Artifact
-	rdf:type owl:Class ;
-	rdfs:subClassOf cas:Entity ;
-	rdfs:label "Artifact" ;
-	skos:definition "The most generic class for all model entities (e.g. requirement, function, system, component, state, event, ...)." .
-
-casShapes_cas:Artifact
-	rdf:type sh:NodeShape ;
-	sh:targetClass cas:Artifact ;
-	sh:property [ 
-		sh:path rdfs:label ;
-		sh:minCount 1
-	] ,
-		[ 
-		sh:path rdfs:comment ;
-		sh:minCount 1
-	] .
-
-FMC:Actor
-	rdf:type owl:Class ;
-	rdfs:subClassOf cas:Artifact ;
-	rdfs:label "Actor" ;
-	skos:definition "A fundamental model-element class for actors (e.g. users, functions, systems, components, ...)." .
-
-casShapes_FMC:Actor
-	rdf:type sh:NodeShape ;
-	sh:targetClass FMC:Actor ;
-	sh:property [ 
-		sh:path rdfs:label ;
-		sh:minCount 1
-	] ,
-		[ 
-		sh:path rdfs:comment ;
-		sh:minCount 1
-	] .
-
-FMC:State
-	rdf:type owl:Class ;
-	rdfs:subClassOf cas:Artifact ;
-	rdfs:label "State" ;
-	skos:definition "A fundamental model-element class for states (e.g. system or process states, information, form, color, ...)." .
-
-casShapes_FMC:State
-	rdf:type sh:NodeShape ;
-	sh:targetClass FMC:State ;
-	sh:property [ 
-		sh:path rdfs:label ;
-		sh:minCount 1
-	] ,
-		[ 
-		sh:path rdfs:comment ;
-		sh:minCount 1
-	] .
-
-FMC:Event
-	rdf:type owl:Class ;
-	rdfs:subClassOf cas:Artifact ;
-	rdfs:label "Event" ;
-	skos:definition "A fundamental model-element class for events (e.g. environmental or process events, ...)." .
-
-casShapes_FMC:Event
-	rdf:type sh:NodeShape ;
-	sh:targetClass FMC:Event ;
-	sh:property [ 
-		sh:path rdfs:label ;
-		sh:minCount 1
-	] ,
-		[ 
-		sh:path rdfs:comment ;
-		sh:minCount 1
-	] .
+		casShapes_cas:Category .
 
 cas:Organizer
 	rdf:type owl:Class ;
 	rdfs:subClassOf cas:Entity ;
 	rdfs:label "Organizer" ;
-	skos:definition "A class for organizing model-elements. An example is a list of requirements or a diagram using a certain notation." .
+	skos:definition "A CASCaRA meta-model item for organizing model-elements. An example is a list of requirements or a diagram using a certain notation." .
 
 casShapes_cas:Organizer
 	rdf:type sh:NodeShape ;
 	sh:targetClass cas:Organizer ;
+	sh:property [ 
+		sh:path rdfs:label ;
+		sh:minCount 1
+	] ,
+		[ 
+		sh:path rdfs:comment ;
+		sh:minCount 1
+	] .
+
+cas:Package
+	rdf:type owl:Class ;
+	rdfs:subClassOf cas:Organizer ;
+	rdfs:label "Package" ;
+	skos:definition "A subclass of cas:Organizer used for a partial graph selected for exchange or access permissions." .
+
+casShapes_cas:Package
+	rdf:type sh:NodeShape ;
+	sh:targetClass cas:Package ;
 	sh:property [ 
 		sh:path rdfs:label ;
 		sh:minCount 1
@@ -221,28 +157,6 @@ casShapes_cas:Outline
 		sh:minCount 1
 	] .
 
-cas:View
-	rdf:type owl:Class ;
-	rdfs:subClassOf cas:Organizer ;
-	rdfs:label "View" ;
-	skos:definition "A subclass of cas:Organizer representing a model view (diagram) using a certain notation showing selected model elements." .
-
-casShapes_cas:View
-	rdf:type sh:NodeShape ;
-	sh:targetClass cas:View ;
-	sh:property [ 
-		sh:path rdfs:label ;
-		sh:minCount 1
-	] ,
-		[ 
-		sh:path rdfs:comment ;
-		sh:minCount 1
-	] ,
-		casShapes_cas:Diagram ,
-		casShapes_cas:Notation ,
-		casShapes_cas:shows ,
-		casShapes_cas:depicts .
-
 cas:Table
 	rdf:type owl:Class ;
 	rdfs:subClassOf cas:Organizer ;
@@ -262,23 +176,6 @@ casShapes_cas:Table
 	] ,
 		casShapes_cas:shows .
 
-cas:Enumeration
-	rdf:type owl:Class ;
-	rdfs:label "Enumeration" ;
-	skos:definition "A CASCaRA meta-model item used for enumerations of values." .
-
-casShapes_cas:Enumeration
-	rdf:type sh:NodeShape ;
-	sh:targetClass cas:Enumeration ;
-	sh:property [ 
-		sh:path rdfs:label ;
-		sh:minCount 1
-	] ,
-		[ 
-		sh:path rdfs:comment ;
-		sh:minCount 1
-	] .
-
 cas:Relationship
 	rdf:type owl:Class ;
 	rdfs:label "Relationship" ;
@@ -296,9 +193,8 @@ casShapes_cas:Relationship
 		sh:minCount 1
 	] ,
 		casShapes_cas:Category ,
-		casShapes_cas:Icon ,
-		casShapes_cas:SourceLink ,
-		casShapes_cas:TargetLink .
+		casShapes_cas:linksSource ,
+		casShapes_cas:linksTarget .
 
 cas:Property
 	rdf:type owl:DatatypeProperty ;
@@ -309,19 +205,6 @@ casShapes_cas:Property
 	rdf:type sh:PropertyShape ;
 	sh:path cas:Property ;
 	sh:datatype xs:anyType .
-
-cas:Icon
-	rdf:type owl:DatatypeProperty ;
-	rdfs:subPropertyOf cas:Property ;
-	rdfs:label "has icon" ;
-	skos:definition "Specifies an icon for a model element (entity or relationship)." .
-
-casShapes_cas:Icon
-	rdf:type sh:PropertyShape ;
-	sh:path cas:Icon ;
-	sh:datatype xs:string ;
-	sh:minCount "0" ;
-	sh:maxCount "1" .
 
 cas:Diagram
 	rdf:type owl:DatatypeProperty ;
@@ -379,7 +262,7 @@ casShapes_cas:Link
 			[ sh:class cas:Relationship ]
 		) .
 
-cas:SourceLink
+cas:linksSource
 	rdf:type owl:ObjectProperty ;
 	rdfs:subPropertyOf cas:Link ;
 	rdfs:range [ owl:unionOf(
@@ -389,15 +272,15 @@ cas:SourceLink
 	rdfs:label "to source" ;
 	skos:definition "Connects the source of a reified relationship." .
 
-casShapes_cas:SourceLink
+casShapes_cas:linksSource
 	rdf:type sh:PropertyShape ;
-	sh:path cas:SourceLink ;
+	sh:path cas:linksSource ;
 	sh:or (
 			[ sh:class cas:Entity ]
 			[ sh:class cas:Relationship ]
 		) .
 
-cas:TargetLink
+cas:linksTarget
 	rdf:type owl:ObjectProperty ;
 	rdfs:subPropertyOf cas:Link ;
 	rdfs:range [ owl:unionOf(
@@ -407,9 +290,9 @@ cas:TargetLink
 	rdfs:label "to target" ;
 	skos:definition "Connects the target of a reified relationship or an organizer." .
 
-casShapes_cas:TargetLink
+casShapes_cas:linksTarget
 	rdf:type sh:PropertyShape ;
-	sh:path cas:TargetLink ;
+	sh:path cas:linksTarget ;
 	sh:or (
 			[ sh:class cas:Entity ]
 			[ sh:class cas:Relationship ]
@@ -417,7 +300,7 @@ casShapes_cas:TargetLink
 
 cas:lists
 	rdf:type owl:ObjectProperty ;
-	rdfs:subPropertyOf cas:TargetLink ;
+	rdfs:subPropertyOf cas:linksTarget ;
 	rdfs:range [ owl:unionOf(
 			cas:Entity
 			cas:Relationship
@@ -437,7 +320,7 @@ casShapes_cas:lists
 
 cas:shows
 	rdf:type owl:ObjectProperty ;
-	rdfs:subPropertyOf cas:TargetLink ;
+	rdfs:subPropertyOf cas:linksTarget ;
 	rdfs:range [ owl:unionOf(
 			cas:Entity
 			cas:Relationship
@@ -455,7 +338,7 @@ casShapes_cas:shows
 
 cas:depicts
 	rdf:type owl:ObjectProperty ;
-	rdfs:subPropertyOf cas:TargetLink ;
+	rdfs:subPropertyOf cas:linksTarget ;
 	rdfs:range cas:Entity ;
 	rdfs:label "depicts" ;
 	skos:definition "Depicts an entity; inverse of uml:ownedDiagram." .
@@ -471,7 +354,7 @@ casShapes_cas:depicts
 # Data Types with Enumerated Values
 #################################################################
 
-SpecIF:Priority-Value
+SpecIF:Priority-Enumeration
 	rdf:type owl:Class ;
 	rdfs:subClassOf cas:Enumeration ;
 	rdfs:label "Priority"@en ,
@@ -486,17 +369,17 @@ SpecIF:Priority-Value
 			SpecIF:priorityLow
 		) .
 SpecIF:priorityHigh
-	rdf:type SpecIF:Priority-Value ;
+	rdf:type SpecIF:Priority-Enumeration ;
 	rdfs:label "high"@en ,
 		"hoch"@de ,
 		"haut"@fr .
 SpecIF:priorityMedium
-	rdf:type SpecIF:Priority-Value ;
+	rdf:type SpecIF:Priority-Enumeration ;
 	rdfs:label "medium"@en ,
 		"mittel"@de ,
 		"moyen"@fr .
 SpecIF:priorityLow
-	rdf:type SpecIF:Priority-Value ;
+	rdf:type SpecIF:Priority-Enumeration ;
 	rdfs:label "low"@en ,
 		"niedrig"@de ,
 		"bas"@fr .
@@ -520,23 +403,23 @@ SpecIF:Priority
 		"Priorität"@de ,
 		"Priorité"@fr ;
 	skos:definition "Enumerated values for the 'Priority' of the resource."@en ;
-	rdfs:range SpecIF:Priority-Value .
+	rdfs:range SpecIF:Priority-Enumeration .
 
 casShapes_SpecIF:Priority
 	rdf:type sh:PropertyShape ;
 	sh:path SpecIF:Priority ;
 	sh:maxCount "1" ;
-	sh:class SpecIF:Priority-Value .
+	sh:class SpecIF:Priority-Enumeration .
 
-o:PC-Diagram-8164640266
+o:PC-Diagram-10900558082
 	rdf:type owl:DatatypeProperty ;
 	rdfs:subPropertyOf cas:Property ;
 	rdfs:label "cas:Diagram" ;
 	skos:definition "A diagram illustrating the resource or a link to a diagram." .
 
-o:PC-Diagram-8164640266_shape
+o:PC-Diagram-10900558082_shape
 	rdf:type sh:PropertyShape ;
-	sh:path o:PC-Diagram-8164640266 ;
+	sh:path o:PC-Diagram-10900558082 ;
 	sh:datatype xs:string .
 
 #################################################################
@@ -545,7 +428,7 @@ o:PC-Diagram-8164640266_shape
 
 SpecIF:Paragraph
 	rdf:type owl:Class ;
-	rdfs:subClassOf cas:Artifact ;
+	rdfs:subClassOf cas:Entity ;
 	rdfs:label "Paragraph"@en ,
 		"Textabsatz"@de ,
 		"Paragraphe"@fr ;
@@ -566,9 +449,102 @@ casShapes_SpecIF:Paragraph
 		casShapes_cas:Diagram ,
 		casShapes_cas:Category .
 
+cas:View
+	rdf:type owl:Class ;
+	rdfs:subClassOf cas:Organizer ;
+	rdfs:label "View" ;
+	skos:definition "A PIG organizer class representing a diagram with certain model-elements for a given communication purpose." ;
+	cas:Icon "▣" .
+
+casShapes_cas:View
+	rdf:type sh:NodeShape ;
+	sh:targetClass cas:View ;
+	sh:property [ 
+		sh:path rdfs:label ;
+		sh:minCount 1
+	] ,
+		[ 
+		sh:path rdfs:comment ;
+		sh:minCount 1
+	] ,
+		casShapes_cas:Diagram ,
+		casShapes_cas:Category .
+
+FMC:Actor
+	rdf:type owl:Class ;
+	rdfs:subClassOf cas:Entity ;
+	rdfs:label "Actor"@en ,
+		"Akteur"@de ,
+		"Acteur"@fr ;
+	skos:definition "<p>An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role.</p><p>The  particular use or original type is specified with a [[dcterms:type]] property of the 'FMC:Actor'. A value of that property should be an ontology-term, such as [[bpmn:processStep]].</p>"@en ,
+		"<p>Ein 'Akteur' ist ein fundamentaler Modellelementtyp, der eine aktive Entität darstellt, sei es eine Aktivität, ein Prozessschritt, eine Funktion, eine Systemkomponente oder eine Rolle.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Actor' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[bpmn:timer]].</p>"@de ,
+		"<p>Un 'Acteur' est un type d'élément de modèle fondamental représentant une entité active, qu'il s'agisse d'une activité, d'une étape de processus, d'une fonction, d'un composant de système ou d'un rôle.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:Actor'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[bpmn:timer]].</p>"@fr ;
+	cas:Icon "&#x25A1;" .
+
+casShapes_FMC:Actor
+	rdf:type sh:NodeShape ;
+	sh:targetClass FMC:Actor ;
+	sh:property [ 
+		sh:path rdfs:label ;
+		sh:minCount 1
+	] ,
+		[ 
+		sh:path rdfs:comment ;
+		sh:minCount 1
+	] ,
+		casShapes_cas:Category .
+
+FMC:State
+	rdf:type owl:Class ;
+	rdfs:subClassOf cas:Entity ;
+	rdfs:label "State"@en ,
+		"Zustand"@de ,
+		"État"@fr ;
+	skos:definition "<p>A 'State' is a fundamental model element type representing a passive entity, be it a value, a condition, an information storage or even a physical shape.</p><p>The particular use or the original type is specified with a [[dcterms:type]] property of the 'FMC:State'. A value of that property should bean  ontology-term, such as [[bpmn:dataObject]].</p>"@en ,
+		"<p>Ein 'Zustand' ist ein fundamentaler Modellelementtyp, der eine passive Entität darstellt, sei es ein Wert, ein Dokument, ein Informationsspeicher, eine Bedingung oder eine physische Beschaffenheit.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:State' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[ArchiMate:DataObject]].</p>"@de ,
+		"<p>Un 'État' est un type d'élément de modèle fondamental représentant une entité passive, qu'il s'agisse d'une valeur, d'une condition, d'un stockage d'informations ou même d'une forme physique.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:State'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[ArchiMate:DataObject]].</p>"@fr ;
+	cas:Icon "&#x25CB;" .
+
+casShapes_FMC:State
+	rdf:type sh:NodeShape ;
+	sh:targetClass FMC:State ;
+	sh:property [ 
+		sh:path rdfs:label ;
+		sh:minCount 1
+	] ,
+		[ 
+		sh:path rdfs:comment ;
+		sh:minCount 1
+	] ,
+		casShapes_cas:Category .
+
+FMC:Event
+	rdf:type owl:Class ;
+	rdfs:subClassOf cas:Entity ;
+	rdfs:label "Event"@en ,
+		"Ereignis"@de ,
+		"Évenement"@fr ;
+	skos:definition "<p>An 'Event' is a fundamental model element type representing a time reference, a change in condition/value or more generally a synchronization primitive.</p><p>The particular use or the original type is specified with a [[dcterms:type]] property of the 'FMC:Event'. A value of that property should be an ontology-term, such as [[bpmn:startEvent]].</p>"@en ,
+		"<p>Ein 'Ereignis' ist ein fundamentaler Modellelementtyp, der eine Zeitreferenz, eine Änderung einer Bedingung/eines Wertes oder allgemeiner ein Synchronisationsmittel darstellt.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Event' spezifiziert. Die Werte dieser Eigenschaft sollen Ontologiebegriffe sein, wie z.B. [[bpmn:startEvent]].</p>"@de ,
+		"<p>Un 'Événement' est un type d'élément de modèle fondamental représentant une référence temporelle, un changement de condition/valeur ou plus généralement une primitive de synchronisation.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:Event'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[bpmn:startEvent]].</p>"@fr ;
+	cas:Icon "&#x2662;" .
+
+casShapes_FMC:Event
+	rdf:type sh:NodeShape ;
+	sh:targetClass FMC:Event ;
+	sh:property [ 
+		sh:path rdfs:label ;
+		sh:minCount 1
+	] ,
+		[ 
+		sh:path rdfs:comment ;
+		sh:minCount 1
+	] ,
+		casShapes_cas:Category .
+
 IREB:Requirement
 	rdf:type owl:Class ;
-	rdfs:subClassOf cas:Artifact ;
+	rdfs:subClassOf cas:Entity ;
 	rdfs:label "Requirement"@en ,
 		"Anforderung"@de ,
 		"Exigence"@fr ;
@@ -590,16 +566,16 @@ casShapes_IREB:Requirement
 	] ,
 		casShapes_SpecIF:Priority .
 
-o:RC-Paragraph-8164640297
+o:RC-Paragraph-10900558082
 	rdf:type owl:Class ;
-	rdfs:subClassOf cas:Artifact ;
+	rdfs:subClassOf cas:Entity ;
 	rdfs:label "SpecIF:Paragraph" ;
 	skos:definition "<p>A 'Paragraph' is an unspecified information in a document at any level.</p>"@en ,
 		"<p>Ein 'Textabschnitt' in einem Dokument auf beliebiger Ebene.</p>"@de .
 
-o:RC-Paragraph-8164640297_shape
+o:RC-Paragraph-10900558082_shape
 	rdf:type sh:NodeShape ;
-	sh:targetClass o:RC-Paragraph-8164640297 ;
+	sh:targetClass o:RC-Paragraph-10900558082 ;
 	sh:property [ 
 		sh:path rdfs:label ;
 		sh:minCount 1
@@ -608,7 +584,7 @@ o:RC-Paragraph-8164640297_shape
 		sh:path rdfs:comment ;
 		sh:minCount 1
 	] ,
-		o:PC-Diagram-8164640266_shape ,
+		o:PC-Diagram-10900558082_shape ,
 		casShapes_cas:Category .
 
 #################################################################
@@ -625,14 +601,14 @@ SpecIF:writes
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
 
 SpecIF:writes-toSource
-	rdfs:subPropertyOf cas:SourceLink ;
+	rdfs:subPropertyOf cas:linksSource ;
 	rdfs:label "SpecIF:writes to source" ;
 	rdfs:comment "Connects the source of SpecIF:writes" ;
 	rdfs:domain SpecIF:writes ;
 	rdfs:range FMC:Actor .
 
 SpecIF:writes-toTarget
-	rdfs:subPropertyOf cas:TargetLink ;
+	rdfs:subPropertyOf cas:linksTarget ;
 	rdfs:label "SpecIF:writes to target" ;
 	rdfs:comment "Connects the target of SpecIF:writes" ;
 	rdfs:domain SpecIF:writes ;
@@ -672,14 +648,14 @@ SpecIF:reads
 	dcterms:modified "2018-05-10T11:54:00+01:00" .
 
 SpecIF:reads-toSource
-	rdfs:subPropertyOf cas:SourceLink ;
+	rdfs:subPropertyOf cas:linksSource ;
 	rdfs:label "SpecIF:reads to source" ;
 	rdfs:comment "Connects the source of SpecIF:reads" ;
 	rdfs:domain SpecIF:reads ;
 	rdfs:range FMC:Actor .
 
 SpecIF:reads-toTarget
-	rdfs:subPropertyOf cas:TargetLink ;
+	rdfs:subPropertyOf cas:linksTarget ;
 	rdfs:label "SpecIF:reads to target" ;
 	rdfs:comment "Connects the target of SpecIF:reads" ;
 	rdfs:domain SpecIF:reads ;
@@ -719,7 +695,7 @@ oslc_rm:satisfies
 	dcterms:modified "2016-05-26T08:59:00+02:00" .
 
 oslc_rm:satisfies-toSource
-	rdfs:subPropertyOf cas:SourceLink ;
+	rdfs:subPropertyOf cas:linksSource ;
 	rdfs:label "oslc_rm:satisfies to source" ;
 	rdfs:comment "Connects the source of oslc_rm:satisfies" ;
 	rdfs:domain oslc_rm:satisfies ;
@@ -729,7 +705,7 @@ oslc_rm:satisfies-toSource
 		)] .
 
 oslc_rm:satisfies-toTarget
-	rdfs:subPropertyOf cas:TargetLink ;
+	rdfs:subPropertyOf cas:linksTarget ;
 	rdfs:label "oslc_rm:satisfies to target" ;
 	rdfs:comment "Connects the target of oslc_rm:satisfies" ;
 	rdfs:domain oslc_rm:satisfies ;
@@ -855,7 +831,7 @@ d:Ssat-50fbfe8f0029b1a8016ea86245a9d83a-2b9016e2872e78ecadc50feddc0013Ac
 
 d:HierarchyRoot-ACP-Very-Simple-Model-FMC-with-Requirements
 	rdf:type cas:Root ;
-	dcterms:modified "2026-04-08T09:46:35.606Z" ;
+	dcterms:modified "2026-05-14T08:07:58.699Z" ;
 	rdfs:label "Hierarchy Root" ;
 	rdfs:comment "... anchoring all hierarchies of this graph (package)" ;
 	cas:lists (
@@ -869,7 +845,7 @@ d:HR-Folder-Introduction
 	rdf:type cas:Outline ;
 	rdfs:label "Project 'Very Simple Model (FMC) with Requirements'" ;
 	cas:Category ReqIF:HierarchyRoot ;
-	dcterms:modified "2026-04-08T09:46:35.533Z" ;
+	dcterms:modified "2026-05-14T08:07:58.619Z" ;
 	cas:lists (
 			d:Folder-Introduction
 		) .
@@ -884,7 +860,7 @@ d:HR-Folder-Requirements
 	rdf:type cas:Outline ;
 	rdfs:label "Project 'Very Simple Model (FMC) with Requirements'" ;
 	cas:Category ReqIF:HierarchyRoot ;
-	dcterms:modified "2026-04-08T09:46:35.533Z" ;
+	dcterms:modified "2026-05-14T08:07:58.619Z" ;
 	cas:lists (
 			d:Folder-Requirements
 		) .
@@ -903,7 +879,7 @@ d:HR-Folder-SystemModel
 	rdf:type cas:Outline ;
 	rdfs:label "Project 'Very Simple Model (FMC) with Requirements'" ;
 	cas:Category ReqIF:HierarchyRoot ;
-	dcterms:modified "2026-04-08T09:46:35.533Z" ;
+	dcterms:modified "2026-05-14T08:07:58.619Z" ;
 	cas:lists (
 			d:Folder-SystemModel
 		) .
@@ -920,7 +896,7 @@ d:HR-FolderGlossary-10875487071
 	rdf:type cas:Outline ;
 	rdfs:label "Project 'Very Simple Model (FMC) with Requirements'" ;
 	cas:Category ReqIF:HierarchyRoot ;
-	dcterms:modified "2026-04-08T09:46:35.533Z" ;
+	dcterms:modified "2026-05-14T08:07:58.619Z" ;
 	cas:lists (
 			d:FolderGlossary-10875487071
 		) .
@@ -929,7 +905,7 @@ d:FolderGlossary-10875487071
 	rdf:type cas:Outline ;
 	rdfs:label "Model Elements (Glossary)" ;
 	cas:Category SpecIF:Glossary ;
-	dcterms:modified "2026-04-08T09:46:11.053Z" ;
+	dcterms:modified "2026-05-14T08:07:46.986Z" ;
 	cas:lists (
 			d:MEl-50fbfe8f0029b1a8016ea86245a9d83a
 			d:MEl-50feddc00029b1a8016e2872e78ecadc
