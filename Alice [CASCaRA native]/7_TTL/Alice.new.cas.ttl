@@ -53,7 +53,8 @@ casShapes_cas:Entity
 
 cas:Package
 	rdf:type owl:Class ;
-	rdfs:subClassOf cas:Entity ;
+	rdfs:subClassOf cas:Organizer ;
+	cas:itemType cas:Entity ;
 	rdfs:label "Package"@en ;
 	skos:definition "A CASCaRA meta-model item used for packages comprising entities, relationships and potentially nested packages."@en .
 
@@ -71,7 +72,7 @@ casShapes_cas:Package
 
 cas:Organizer
 	rdf:type owl:Class ;
-	rdfs:subClassOf cas:Entity ;
+	cas:itemType cas:Entity ;
 	rdfs:label "Organizer"@en ;
 	skos:definition "A class for organizing model-elements. An example is a list of requirements or a diagram using a certain notation."@en .
 
@@ -90,6 +91,7 @@ casShapes_cas:Organizer
 cas:Root
 	rdf:type owl:Class ;
 	rdfs:subClassOf cas:Organizer ;
+	cas:itemType cas:Entity ;
 	rdfs:label "Package Root"@en ;
 	skos:definition "A subclass of CASCaRA organizer serving as a root for trees and tables."@en .
 
@@ -109,6 +111,7 @@ casShapes_cas:Root
 cas:Tree
 	rdf:type owl:Class ;
 	rdfs:subClassOf cas:Organizer ;
+	cas:itemType cas:Entity ;
 	rdfs:label "Tree"@en ;
 	skos:definition "A subclass of CASCaRA organizer for strictly hierarchical data structures referencing entities and relationships."@en .
 
@@ -128,6 +131,7 @@ casShapes_cas:Tree
 cas:Outline
 	rdf:type owl:Class ;
 	rdfs:subClassOf cas:Tree ;
+	cas:itemType cas:Entity ;
 	rdfs:label "Outline"@en ;
 	skos:definition "A subclass of CASCaRA tree comprising all information items of a human-readable document. As usual, the outline is hierarchically organized."@en .
 
@@ -175,7 +179,7 @@ casShapes_cas:Property
 
 cas:Diagram
 	rdf:type owl:DatatypeProperty ;
-	rdfs:subPropertyOf cas:Property ;
+	cas:itemType cas:Property ;
 	rdfs:label "Diagram"@en ;
 	skos:definition "A diagram illustrating the resource or a link to a diagram."@en .
 
@@ -187,7 +191,7 @@ casShapes_cas:Diagram
 
 cas:Category
 	rdf:type owl:DatatypeProperty ;
-	rdfs:subPropertyOf cas:Property ;
+	cas:itemType cas:Property ;
 	rdfs:label "has category"@en ;
 	skos:definition "Specifies a category for an element (entity, relationship or organizer)."@en .
 
@@ -202,6 +206,7 @@ casShapes_cas:Category
 cas:Notation
 	rdf:type owl:DatatypeProperty ;
 	rdfs:subPropertyOf cas:Category ;
+	cas:itemType cas:Property ;
 	rdfs:label "Notation"@en ;
 	skos:definition "A reference to a notation defining the syntax and semantics of a diagram."@en .
 
@@ -231,7 +236,7 @@ casShapes_cas:Link
 
 cas:linksSource
 	rdf:type owl:ObjectProperty ;
-	rdfs:subPropertyOf cas:Link ;
+	cas:itemType cas:Link ;
 	rdfs:range [ owl:unionOf(
 			cas:Entity
 			cas:Relationship
@@ -249,7 +254,7 @@ casShapes_cas:linksSource
 
 cas:linksTarget
 	rdf:type owl:ObjectProperty ;
-	rdfs:subPropertyOf cas:Link ;
+	cas:itemType cas:Link ;
 	rdfs:range [ owl:unionOf(
 			cas:Entity
 			cas:Relationship
@@ -268,6 +273,7 @@ casShapes_cas:linksTarget
 cas:lists
 	rdf:type owl:ObjectProperty ;
 	rdfs:subPropertyOf cas:linksTarget ;
+	cas:itemType cas:Link ;
 	rdfs:range [ owl:unionOf(
 			cas:Entity
 			cas:Relationship
@@ -288,6 +294,7 @@ casShapes_cas:lists
 cas:shows
 	rdf:type owl:ObjectProperty ;
 	rdfs:subPropertyOf cas:linksTarget ;
+	cas:itemType cas:Link ;
 	rdfs:range [ owl:unionOf(
 			cas:Entity
 			cas:Relationship
@@ -306,6 +313,7 @@ casShapes_cas:shows
 cas:depicts
 	rdf:type owl:ObjectProperty ;
 	rdfs:subPropertyOf cas:linksTarget ;
+	cas:itemType cas:Link ;
 	rdfs:range cas:Entity ;
 	rdfs:label "depicts"@en ;
 	skos:definition "Depicts an entity; inverse of uml:ownedDiagram."@en .
@@ -323,7 +331,7 @@ casShapes_cas:depicts
 
 schema:Person
 	rdf:type owl:Class ;
-	rdfs:subClassOf cas:Entity ;
+	cas:itemType cas:Entity ;
 	rdfs:label "Person"@en ;
 	rdfs:comment "A person (alive, dead, undead, or fictional)."@en .
 	
@@ -344,7 +352,7 @@ casShapes_schema:Person
 
 schema:Organization
 	rdf:type owl:Class ;
-	rdfs:subClassOf cas:Entity ;
+	cas:itemType cas:Entity ;
 	rdfs:label "Organization"@en ;
 	rdfs:comment "An organization such as a school, NGO, corporation, club, etc."@en .
 	
@@ -363,7 +371,8 @@ casShapes_schema:Organization
 		casShapes_schema:taxID .
 
 schema:birthDate
-	rdfs:subPropertyOf cas:Property ;
+	rdf:type owl:DatatypeProperty ;
+	cas:itemType cas:Property ;
 	rdfs:label "birth date"@en ;
 	rdfs:comment "Date of birth."@en .
 
@@ -375,7 +384,8 @@ casShapes_schema:birthDate
 	sh:maxCount "1" .
 
 schema:familyName
-	rdfs:subPropertyOf cas:Property ;
+	rdf:type owl:DatatypeProperty ;
+	cas:itemType cas:Property ;
 	rdfs:label "family name"@en ;
 	rdfs:comment "Family name. In the U.S., the last name of a Person."@en .
 
@@ -387,7 +397,8 @@ casShapes_schema:familyName
 	sh:maxCount "1" .
 
 schema:givenName
-	rdfs:subPropertyOf cas:Property ;
+	rdf:type owl:DatatypeProperty ;
+	cas:itemType cas:Property ;
 	rdfs:label "given name"@en ;
 	rdfs:comment "Family name. In the U.S., the last name of a Person."@en .
 
@@ -399,7 +410,8 @@ casShapes_schema:givenName
 	sh:maxCount "1" .
 
 schema:legalName
-	rdfs:subPropertyOf cas:Property ;
+	rdf:type owl:DatatypeProperty ;
+	cas:itemType cas:Property ;
 	rdfs:label "legal name"@en ;
 	rdfs:comment "The official name of the organization, e.g. the registered company name."@en .
 
@@ -411,7 +423,8 @@ casShapes_schema:legalName
 	sh:maxCount "1" .
 
 schema:taxID
-	rdfs:subPropertyOf cas:Property ;
+	rdf:type owl:DatatypeProperty ;
+	cas:itemType cas:Property ;
 	rdfs:label "tax ID"@en ;
 	rdfs:comment "The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain."@en .
 
@@ -423,12 +436,14 @@ casShapes_schema:taxID
 	sh:maxCount "1" .
 	
 schema:WorksFor
-	rdfs:subClassOf cas:Relationship ;
+	rdf:type owl:Class ;
+	cas:itemType cas:Relationship ;
 	rdfs:label "works for"@en ;
 	rdfs:comment "Organizations that the person works for."@en .
 
 o:Employee
 	rdfs:subPropertyOf cas:linksSource ;
+	cas:itemType cas:Link ;
 	rdfs:label "employee" ;
 	rdfs:comment "The employee in a 'worksFor' relationship" ;
 	rdfs:domain schema:WorksFor ;
@@ -436,6 +451,7 @@ o:Employee
 
 o:Employer
 	rdfs:subPropertyOf cas:linksTarget ;
+	cas:itemType cas:Link ;
 	rdfs:label "employer"@en ;
 	rdfs:comment "The employer in a 'worksFor' relationship"@en ;
 	rdfs:domain schema:WorksFor ;
