@@ -491,18 +491,21 @@ casShapes_schema:WorksFor
 
 d:ACME
 	rdf:type schema:Organization ;
+	cas:itemType cas:anEntity ;
 	rdfs:label "ACME Corp." ;
 	schema:legalName "ACME Corp." ;
 	schema:taxID "DE_123456789" .
 	
 d:Alice
 	rdf:type schema:Person ;
+	cas:itemType cas:anEntity ;
 	rdfs:label "Alice" ;
 	schema:familyName "Carpenter" ;
 	schema:givenName "Alice" .
 	
 d:Alice_worksFor_ACME
 	rdf:type schema:WorksFor ;
+	cas:itemType cas:aRelationship ;
 	rdfs:label "works for"@en ;
 	o:Employee d:Alice ;
 	o:Employer d:ACME .
