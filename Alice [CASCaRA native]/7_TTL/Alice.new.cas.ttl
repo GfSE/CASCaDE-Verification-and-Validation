@@ -516,6 +516,7 @@ d:Alice_worksFor_ACME
 
 d:Root_Alice_worksFor_ACME
 	rdf:type cas:Root ;
+	cas:itemType cas:anEntity ;
 	rdfs:label "Package Root"@en ;
 	rdfs:comment "... anchoring all outlines of this graph (package)"@en ;
 	dcterms:modified "2026-03-06T17:36:25.645Z" ;
