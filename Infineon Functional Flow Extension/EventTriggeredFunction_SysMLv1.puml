@@ -1,0 +1,60 @@
+@startuml EventTriggeredFunction_SysMLv1
+' =============================================================================
+' SysML v1 (PlantUML) -- Event-triggered Function
+' Closes ISO 15288 Cl. 6.4.3.3 b)1) NOTE 6 evidence gap
+' (commence / cease conditions on a Function).
+' Companion to: EventTriggeredFunction_SysMLv2.sysml
+' =============================================================================
+title bdd -- Function with commence + cease events (ISO 15288 6.4.3.3 b)1) NOTE 6)
+
+skinparam class {
+    BackgroundColor #FFF8E1
+    BorderColor     #7A6100
+    ArrowColor      #333333
+}
+
+' ---- Two InformationFlow specializations for the event kinds -------------
+
+class CommenceEvent <<block, InformationFlow>> {
+    +description    : "ISO 15288 commence condition"
+    +protocolStr    : "LIN"
+    +bytes          : 1
+    +triggerReason  : "NightDetected"
+}
+class CeaseEvent <<block, InformationFlow>> {
+    +description    : "ISO 15288 cease condition"
+    +protocolStr    : "LIN"
+    +bytes          : 1
+    +stopReason     : "DaylightDetected"
+}
+
+' ---- Function with two FunctionPorts (commence + cease) ------------------
+
+class HeadlightController <<Function>> {
+    +commenceIn : FunctionPort <<in>>
+    +ceaseIn    : FunctionPort <<in>>
+    +behavior   : ControlHeadlight()
+}
+
+' ---- External Actor (Sensor + Source of both events) ---------------------
+
+class AmbientLightSensor <<Sensor, Source>>
+
+' ---- ItemFlow edges: one commence, one cease -----------------------------
+
+AmbientLightSensor ..> HeadlightController : "«InformationFlow» CommenceEvent\n(commence condition)"
+AmbientLightSensor ..> HeadlightController : "«InformationFlow» CeaseEvent\n(cease condition)"
+
+note bottom of HeadlightController
+  ISO 15288:2023 Cl. 6.4.3.3 b)1) NOTE 6 asks for
+  "the conditions under which the system is to
+  commence performing that function and the
+  conditions under which the system is to cease
+  performing that function".
+
+  With the CASCaRA extension both conditions are
+  ordinary InformationFlow items connected to a
+  FunctionPort -- no special metaclass required.
+end note
+
+@enduml

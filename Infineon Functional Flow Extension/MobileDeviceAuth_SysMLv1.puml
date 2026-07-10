@@ -1,0 +1,95 @@
+@startuml MobileDeviceAuth_SysMLv1_Architecture
+' =============================================================================
+' SysML v1 (PlantUML) -- Mobile Device Authentication with Concurrent WiFi
+' Second worked example from
+' "2026-06-22-ProposalForCASCaRAExtension.docx" (Part 2, Example 2).
+' Companion to: MobileDeviceAuth_SysMLv2.sysml
+'
+' Uses the working-group-agreed vocabulary:
+'   ItemFlow (root) with 4 direct specializations
+'   FunctionPort with security attributes
+'   Actor hierarchy + Source / Sink roles
+' =============================================================================
+title bdd -- MobileDevice (Authentication + concurrent WiFi)
+
+skinparam class {
+    BackgroundColor #FFF8E1
+    BorderColor     #7A6100
+    ArrowColor      #333333
+}
+
+' ---- InformationFlow specializations with security attributes ----------
+
+class Password <<block, InformationFlow>> {
+    +bytes                   : 32
+    +protocolStr             : "TLS 1.3"
+    +securityClassification  : "Confidential"
+    +integrityLevelSpec      : "ASIL-B"
+}
+class AuthToken <<block, InformationFlow>> {
+    +bytes                   : 256
+    +protocolStr             : "OAuth2"
+    +privilegeLevel          : "Enhanced"
+    +securityClassification  : "Confidential"
+}
+class WiFiPayload <<block, InformationFlow>> {
+    +protocolStr             : "IEEE 802.11"
+    +securityContext         : "Isolated"
+    +integrityLevelSpec      : "QM"
+}
+
+' ---- Mobile device (system boundary) + 3 internal Functions -----------
+
+class MobileDevice <<SystemBoundary>> {
+    +authenticate    : AuthenticateBlock
+    +grantPrivileges : GrantPrivilegesBlock
+    +wifi            : WiFiTransceiveBlock
+}
+class AuthenticateBlock <<Function>> {
+    +pwIn     : FunctionPort <<in>>
+    +tokenOut : FunctionPort <<out>>
+    +behavior : Authenticate()
+}
+class GrantPrivilegesBlock <<Function>> {
+    +tokenIn  : FunctionPort <<in>>
+    +behavior : GrantPrivileges()
+}
+class WiFiTransceiveBlock <<Function>> {
+    +wifi     : FunctionPort <<inout>>
+    +behavior : WiFiTransceive()
+}
+MobileDevice *-- AuthenticateBlock
+MobileDevice *-- GrantPrivilegesBlock
+MobileDevice *-- WiFiTransceiveBlock
+
+' ---- External Actors (Actor sub-kind + flow role) ---------------------
+
+class HumanUser <<User, Source>>
+class WiFiPeer  <<ExternalSystem, Source, Sink>>
+
+' ---- Flow A -- Confidential authentication chain ----------------------
+
+HumanUser            ..> AuthenticateBlock    : "«InformationFlow» Password\nsecurityClassification=Confidential"
+AuthenticateBlock    ..> GrantPrivilegesBlock : "«InformationFlow» AuthToken\nprivilegeLevel=Enhanced"
+
+' ---- Flow B -- Isolated WiFi payload (concurrent, bidirectional) ------
+
+WiFiPeer             ..> WiFiTransceiveBlock  : "«InformationFlow» WiFiPayload\nprotocol=IEEE 802.11, securityContext=Isolated"
+WiFiTransceiveBlock  ..> WiFiPeer             : "«InformationFlow» WiFiPayload (return)"
+
+note bottom of MobileDevice
+  Two concurrent flows sharing one
+  system boundary but in DIFFERENT
+  security contexts.
+
+  CASCaRA (today) cannot express
+  either the flow items or their
+  security attributes.
+
+  With the proposal (ItemFlow +
+  FunctionPort + Actor Source/Sink)
+  every attribute above is
+  representable.
+end note
+
+@enduml

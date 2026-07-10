@@ -1,0 +1,154 @@
+@startuml CourtesyLight_SysMLv1_PreliminaryArchitecture
+' =============================================================================
+' SysML v1 (PlantUML) — Courtesy Light system, Preliminary Architecture (BDD)
+' Mirrors the SmartSysKit "AUTO_BDD_PreliminaryArchitecture" diagram from
+' CIC_Sample1 (SystemBoundary + two SystemFunctions + ExternalIFs).
+' =============================================================================
+title bdd [package] CourtesyLightSystem [PreliminaryArchitecture]
+
+skinparam class {
+    BackgroundColor #FFF8E1
+    BorderColor     #7A6100
+    ArrowColor      #333333
+}
+skinparam stereotypeCBackgroundColor #E0F0FF
+
+' ---------------- SystemDataTypes (each carries a «flowProperty» CANFD Frame) ----------------
+
+class CANFDFrame <<flowSpecification>> {
+    +frameId : Integer <<flowProperty>>
+    +payload : String  <<flowProperty>>
+}
+class DoorOpens            <<flowSpecification>>
+class DoorCloses           <<flowSpecification>>
+class DoorsAggregateState  <<flowSpecification>>
+class CourtseyLightOn      <<flowSpecification>>
+class CourtseyLightOff     <<flowSpecification>>
+class LastDoorClosedEvent  <<flowSpecification>>
+class ConfigDataType       <<flowSpecification>>
+
+DoorOpens           --|> CANFDFrame
+DoorCloses          --|> CANFDFrame
+DoorsAggregateState --|> CANFDFrame
+CourtseyLightOn     --|> CANFDFrame
+CourtseyLightOff    --|> CANFDFrame
+LastDoorClosedEvent --|> CANFDFrame
+ConfigDataType      --|> CANFDFrame
+
+' ---------------- SystemBoundary (block) + two SystemFunctions (blocks) ----------------
+
+class SystemBoundary <<block, SystemBoundary>> {
+    +registerFirstDoorOpens : SystemFunction_RegisterFirstDoorOpens
+    +registerLastDoorCloses : SystemFunction_RegisterLastDoorCloses
+}
+
+class SystemFunction_RegisterFirstDoorOpens <<block, SystemFunction>> {
+    +portIn  : DoorOpens        <<FullPort, in>>
+    +portOut : CourtseyLightOn  <<FullPort, out>>
+}
+
+class SystemFunction_RegisterLastDoorCloses <<block, SystemFunction>> {
+    +portIn  : DoorCloses       <<FullPort, in>>
+    +portOut : CourtseyLightOff <<FullPort, out>>
+}
+
+SystemBoundary "1" *-- "1" SystemFunction_RegisterFirstDoorOpens : «part of»
+SystemBoundary "1" *-- "1" SystemFunction_RegisterLastDoorCloses : «part of»
+
+' ---------------- OperationalEnvironment / ExternalIFs (Actors) ----------------
+
+class OperationalEnvironment <<block, OperationalEnvironment>> {
+    +firstOpenSender   : RegisterFirstDoorOpens_Sender
+    +firstOpenReceiver : RegisterFirstDoorOpens_Receiver
+    +lastCloseSender   : RegisterLastDoorCloses_Sender
+    +lastCloseReceiver : RegisterLastDoorCloses_Receiver
+}
+
+class RegisterFirstDoorOpens_Sender   <<block, ExternalIF>>
+class RegisterFirstDoorOpens_Receiver <<block, ExternalIF>>
+class RegisterLastDoorCloses_Sender   <<block, ExternalIF>>
+class RegisterLastDoorCloses_Receiver <<block, ExternalIF>>
+
+OperationalEnvironment *-- RegisterFirstDoorOpens_Sender
+OperationalEnvironment *-- RegisterFirstDoorOpens_Receiver
+OperationalEnvironment *-- RegisterLastDoorCloses_Sender
+OperationalEnvironment *-- RegisterLastDoorCloses_Receiver
+
+' ---------------- ItemFlows (this is what CASCaRA cannot qualify today) ----------------
+
+RegisterFirstDoorOpens_Sender    ..> SystemFunction_RegisterFirstDoorOpens : «itemFlow» DoorOpens\nlatencyMs = 100
+SystemFunction_RegisterFirstDoorOpens ..> RegisterFirstDoorOpens_Receiver : «itemFlow» CourtseyLightOn\nlatencyMs = 5
+RegisterLastDoorCloses_Sender    ..> SystemFunction_RegisterLastDoorCloses : «itemFlow» DoorCloses
+SystemFunction_RegisterLastDoorCloses ..> RegisterLastDoorCloses_Receiver : «itemFlow» CourtseyLightOff\npowerMw = 1
+
+' ---------------- ReferenceSystem (from SystemAssumptions) ----------------
+
+class ReferenceSystem <<block, ReferenceSystem>>
+SystemBoundary        ..> ReferenceSystem : «part of»
+OperationalEnvironment ..> ReferenceSystem : «part of»
+
+@enduml
+
+
+@startuml CourtesyLight_SysMLv1_UseCase
+' =============================================================================
+' SysML v1 (PlantUML) — Courtesy Light, Functional Use Case diagram
+' Mirrors AUTO_UseCase_FunctionalUseCase from CIC_Sample1.
+' =============================================================================
+title uc [package] FunctionalUseCase [AUTO_UseCase_FunctionalUseCase]
+
+left to right direction
+
+actor "SystemFunction_RegisterFirstDoorOpens_Sender\n«ExternalIF»"   as SenderFirst
+actor "SystemFunction_RegisterFirstDoorOpens_Receiver\n«ExternalIF»" as ReceiverFirst
+
+usecase "SystemUseCase_RegisterFirstDoorOpens\n«SystemUseCase»" as SUC
+usecase "RegisterFirstDoorOpens\n«FunctionalUseCase»"           as FUC
+
+SenderFirst    --> SUC : «Association to» DoorOpens
+SUC            --> ReceiverFirst : «Association to» CourtseyLightOn
+FUC            ..> SUC : «UseCase from»
+
+@enduml
+
+
+@startuml CourtesyLight_SysMLv1_Activity
+' =============================================================================
+' SysML v1 (PlantUML) — RegisterFirstDoorOpens activity diagram
+' Mirrors the activity from CIC_Sample1 with typed action pins (object flows).
+' =============================================================================
+title act [activity] RegisterFirstDoorOpens
+
+|RegisterFirstDoorOpens|
+start
+:«CallBehaviorAction»
+Receive CANFD Frame;
+note right
+  «ActionPinIn»  DoorOpens : DoorOpens
+  «ActionPinIn»  ConfigDataType : ConfigDataType
+end note
+
+:«CallBehaviorAction»
+Process CANFD Frame;
+note right: «ActionPinOut» DoorOpens : DoorOpens
+
+:«CallBehaviorAction»
+Register First Door Opening;
+note right: «ActionPinOut» DoorsAggregateState
+
+:«CallBehaviorAction»
+Check Status All Doors;
+
+:«CallBehaviorAction»
+Switch On Courtsey Light;
+note right: «ActionPinOut» CourtseyLightOn : CourtseyLightOn
+
+:«CallBehaviorAction»
+Process CANFD Frame;
+
+:«CallBehaviorAction»
+Transmit CANFD Frame;
+note right: «ActivityParameterOut» ~CourtseyLightOn : CourtseyLightOn
+
+stop
+@enduml

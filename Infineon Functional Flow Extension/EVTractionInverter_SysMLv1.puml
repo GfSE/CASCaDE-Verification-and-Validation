@@ -1,0 +1,77 @@
+@startuml EVTractionInverter_SysMLv1_Architecture
+' =============================================================================
+' SysML v1 (PlantUML) -- EV Traction Inverter (SiC power module + gate driver)
+' Electronics validation of the CASCaRA extension (Infineon core domain).
+' Companion to: EVTractionInverter_SysMLv2.sysml
+'
+' Working-group-agreed vocabulary:
+'   ItemFlow (root) + EnergyFlow, ForceFlow, MaterialFlow, InformationFlow
+'   FunctionPort
+'   Actor hierarchy + Source / Sink roles
+' =============================================================================
+title bdd -- TractionSubsystem (Inverter + Motor + Cooling)
+
+skinparam class {
+    BackgroundColor #FFF8E1
+    BorderColor     #7A6100
+    ArrowColor      #333333
+}
+
+' ---- SystemBoundary and Functions ----------------------------------------
+
+class TractionSubsystem <<SystemBoundary>> {
+    +vcu         : VehicleControlUnit_ECU
+    +controller  : InverterController_MCU
+    +powerModule : SiCPowerModule
+    +motor       : TractionMotor_Winding
+    +cooling     : CoolingLoop
+}
+class VehicleControlUnit_ECU  <<Function>>
+class InverterController_MCU  <<Function>>  { +Infineon AURIX-class MCU }
+class SiCPowerModule          <<Function>>  { +3-phase SiC MOSFET bridge }
+class TractionMotor_Winding   <<Function>>
+class CoolingLoop             <<Function>>
+
+TractionSubsystem *-- VehicleControlUnit_ECU
+TractionSubsystem *-- InverterController_MCU
+TractionSubsystem *-- SiCPowerModule
+TractionSubsystem *-- TractionMotor_Winding
+TractionSubsystem *-- CoolingLoop
+
+' ---- External Actors (with Actor sub-kind + flow role) -------------------
+
+class Driver           <<User, Source>>
+class HVBattery        <<ExternalSystem, Source>>
+class CoolantSupply    <<ExternalSystem, Source>>
+class TelemetryBus     <<ExternalSystem, Sink>>
+class HotCoolantReturn <<Actuator, Sink>>
+class Wheel            <<Actuator, Sink>>
+
+' ---- Item flows -- every ItemFlow sub-kind is used -----------------------
+
+Driver               ..> VehicleControlUnit_ECU : "«InformationFlow» AcceleratorPosition\nAnalog, 0..100 %"
+VehicleControlUnit_ECU ..> InverterController_MCU : "«InformationFlow» TorqueRequest\nCAN-FD 2 Mbit/s, 8 B, 5 ms"
+InverterController_MCU ..> SiCPowerModule       : "«InformationFlow» GatePWMSignal\nisolated gate driver, 20 kHz"
+InverterController_MCU ..> TelemetryBus         : "«InformationFlow» InverterTelemetry\nCAN-FD, 32 B"
+
+HVBattery            ..> SiCPowerModule         : "«EnergyFlow» HVDCPower\n400 V DC, 150 kW"
+SiCPowerModule       ..> TractionMotor_Winding  : "«EnergyFlow» ThreePhaseACPower\n400 V AC, 140 kW"
+SiCPowerModule       ..> CoolingLoop            : "«EnergyFlow» ThermalLoss\n~2 kW dissipated"
+
+TractionMotor_Winding ..> Wheel                 : "«ForceFlow» ShaftTorque\n250 Nm, 12000 rpm"
+
+CoolantSupply        ..> CoolingLoop            : "«MaterialFlow» ColdCoolantIn\nliquid, 100 g/s, 65 degC"
+CoolingLoop          ..> HotCoolantReturn       : "«MaterialFlow» HotCoolantOut\nliquid, 100 g/s, 80 degC"
+
+note bottom of SiCPowerModule
+  Infineon core product family:
+    * CoolSiC MOSFET modules
+    * EiceDRIVER isolated gate drivers
+    * AURIX MCU for gate-timing control
+
+  Every attribute on the edges above
+  is a NON-FUNCTIONAL property that
+  CASCaRA cannot represent today.
+end note
+
+@enduml

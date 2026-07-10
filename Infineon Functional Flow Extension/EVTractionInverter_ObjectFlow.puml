@@ -1,0 +1,72 @@
+@startuml EVTractionInverter_ObjectFlow
+' =============================================================================
+' EV Traction Inverter -- Object-flow diagram (FAS Fig. 1 style)
+'
+' Shows the same object flows that are declared in
+'   examples/EVTractionInverter_SysMLv2.sysml
+'     -> action def TractionInverterBehavior
+' but rendered as a reliably-drawn PlantUML activity graph, so every flow
+' appears as a labeled directional arrow between two Function rectangles.
+'
+' Reference: Lamm, J.G., "FAS as a Formula" (GfSE, 2022), Fig. 1.
+'
+' Flow labels use the SAME names as the SysML v2 file:
+'   f_pedal, f_torque, f_pwm, f_ac, f_thermal, f_shaft, f_hotCoolant,
+'   f_telemetry, f_hvdc, f_coolantIn
+' =============================================================================
+
+title EV Traction Inverter -- Object Flow (FAS activity view)
+
+skinparam rectangle {
+    BackgroundColor #FFF8E1
+    BorderColor     #7A6100
+}
+skinparam ArrowColor         #333333
+skinparam ArrowFontColor     #005577
+skinparam ArrowFontSize      11
+
+' ---- Internal activities (Functions) --------------------------------------
+rectangle "<b>interpret</b>\n«Function»\nInterpretPedal"     as interpret
+rectangle "<b>control</b>\n«Function»\nControlSwitching"     as control
+rectangle "<b>switch</b>\n«Function»\nSwitchPower"           as switchp
+rectangle "<b>driveMot</b>\n«Function»\nDriveMotor"          as driveMot
+rectangle "<b>transport</b>\n«Function»\nTransportHeat"      as transport
+
+' ---- Activity parameters (composite Function's own interfaces) ------------
+usecase "apPedalIn\n«ActivityParam»\nAcceleratorPosition"    as apPedal
+usecase "apHvdcIn\n«ActivityParam»\nHVDCPower"               as apHvdc
+usecase "apCoolantIn\n«ActivityParam»\nColdCoolantIn"        as apCoolIn
+usecase "apShaftTorqueOut\n«ActivityParam»\nShaftTorque"     as apShaft
+usecase "apHotCoolantOut\n«ActivityParam»\nHotCoolantOut"    as apHotCool
+usecase "apTelemetryOut\n«ActivityParam»\nInverterTelemetry" as apTelem
+
+' ---- Object flows (labeled, directional) ----------------------------------
+apPedal    --> interpret  : "<b>f_pedal</b> : «InformationFlow»\nAcceleratorPosition"
+interpret  --> control    : "<b>f_torque</b> : «InformationFlow»\nTorqueRequest\nlatencyMs=5, ASIL-B"
+control    --> switchp    : "<b>f_pwm</b> : «InformationFlow»\nGatePWMSignal"
+control    --> apTelem    : "<b>f_telemetry</b> : «InformationFlow»\nInverterTelemetry"
+
+apHvdc     --> switchp    : "<b>f_hvdc</b> : «EnergyFlow»\nHVDCPower\n400 V, 150 kW"
+switchp    --> driveMot   : "<b>f_ac</b> : «EnergyFlow»\nThreePhaseACPower\n140 kW"
+switchp    --> transport  : "<b>f_thermal</b> : «EnergyFlow»\nThermalLoss\n~2 kW"
+
+driveMot   --> apShaft    : "<b>f_shaft</b> : «ForceFlow»\nShaftTorque\n250 Nm, 12 000 rpm"
+
+apCoolIn   --> transport  : "<b>f_coolantIn</b> : «MaterialFlow»\nColdCoolantIn\n100 g/s @ 65 °C"
+transport  --> apHotCool  : "<b>f_hotCoolant</b> : «MaterialFlow»\nHotCoolantOut\n100 g/s @ 80 °C"
+
+' ---- Legend ---------------------------------------------------------------
+legend right
+  ItemFlow sub-kinds used on the arrows:
+    «InformationFlow»  --  cas-arch:InformationFlow
+    «EnergyFlow»       --  cas-arch:EnergyFlow
+    «MaterialFlow»     --  cas-arch:MaterialFlow
+    «ForceFlow»        --  ext:ForceFlow      (proposal addition)
+
+  Each arrow name (f_pedal, f_torque, ...) IS
+  the SysML v2 flow name in
+  EVTractionInverter_SysMLv2.sysml
+  -> action def TractionInverterBehavior.
+endlegend
+
+@enduml

@@ -1,0 +1,318 @@
+# =============================================================================
+# CASCaRA instance file -- EV Traction Inverter (Infineon SiC power module +
+# gate driver + AURIX MCU).
+#
+# Real CASCaRA data. Uses the actual OMG CASCaRA namespaces / classes /
+# properties from CASCaRA v1.1 for everything the ontology already covers:
+#
+#   cas-arch:Function, cas-arch:FunctionalInterface, cas-arch:FunctionFlow,
+#   cas-arch:EnergyFlow, cas-arch:InformationFlow, cas-arch:MaterialFlow,
+#   cas-arch:Requirement, cas-arch:StakeholderRequirement, cas-arch:UseCase,
+#   cas-arch:SystemComponent, cas-org:Actor, cas-org:Person, cas-org:Role
+#
+# Adds a small local <ext:> extension namespace for what the working-group-
+# agreed proposal is still contributing on top of CASCaRA v1.1:
+#
+#   ext:ForceFlow           :>  cas-arch:FunctionFlow      (4th flow kind)
+#   ext:User                :>  cas-org:Actor              (human operator)
+#   ext:Source              -   flow-role (initiates a FunctionFlow)
+#   ext:Sink                -   flow-role (absorbs a FunctionFlow)
+#   ext:carries             -   FunctionalInterface -> FunctionFlow
+#   ext:flowsFromInterface  -   FunctionFlow -> FunctionalInterface (source)
+#   ext:flowsToInterface    -   FunctionFlow -> FunctionalInterface (target)
+#   ext:maxLatencyMs, ext:maxPowerDissipationMw, ext:securityClassification,
+#   ext:integrityLevel, ext:protocolStr     (non-functional properties on
+#                                            FunctionalInterface -- proposal
+#                                            Extension 1)
+#
+# Load with any RDF tool (rdflib, Protege, GraphDB, ...). Validate with the
+# CASCaRA SHACL shapes on top of `cas-arch:*` triples; the `ext:*` triples
+# document what the proposal is contributing.
+# =============================================================================
+
+@prefix cas:      <http://www.omg.org/spec/CASCaRA/metamodel/> .
+@prefix cas-arch: <http://www.omg.org/spec/CASCaRA/ontology/ProductArchitecture/> .
+@prefix cas-ee:   <http://www.omg.org/spec/CASCaRA/ontology/ProductDesign/ElectricElectronicDesign/> .
+@prefix cas-org:  <http://www.omg.org/spec/CASCaRA/ontology/Organization/> .
+@prefix cas-ref:  <http://www.omg.org/spec/CASCaRA/ontology/references/> .
+@prefix ext:      <https://cascara.gfse.org/proposal-extension/2026-06/> .
+@prefix ifx:      <https://infineon.com/example/ev-traction-inverter/> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:     <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+
+# =============================================================================
+# 1) PROPOSAL EXTENSIONS (not yet in CASCaRA v1.1 -- declared here so the
+#    example is self-contained and a reviewer sees exactly what is added)
+# =============================================================================
+
+ext:ForceFlow
+    a owl:Class ;
+    rdfs:subClassOf cas-arch:FunctionFlow ;
+    rdfs:label "Force Flow"@en ,
+               "Kraftfluss"@de ;
+    skos:definition "Represents the transfer of mechanical force, torque or pressure between functions."@en .
+
+ext:User
+    a owl:Class ;
+    rdfs:subClassOf cas-org:Actor ;
+    rdfs:label "User"@en ,
+               "Nutzer"@de ;
+    skos:definition "A human actor that interacts with a system function."@en .
+
+ext:Source
+    a owl:Class ;
+    rdfs:label "Flow Source (role)"@en ;
+    skos:definition "Role played by an Actor that initiates a FunctionFlow."@en .
+
+ext:Sink
+    a owl:Class ;
+    rdfs:label "Flow Sink (role)"@en ;
+    skos:definition "Role played by an Actor that absorbs a FunctionFlow."@en .
+
+ext:carries              a owl:ObjectProperty ;
+    rdfs:domain cas-arch:FunctionalInterface ;
+    rdfs:range  cas-arch:FunctionFlow ;
+    rdfs:label "carries"@en .
+
+ext:flowsFromInterface   a owl:ObjectProperty ;
+    rdfs:domain cas-arch:FunctionFlow ;
+    rdfs:range  cas-arch:FunctionalInterface ;
+    rdfs:label "flows from interface"@en .
+
+ext:flowsToInterface     a owl:ObjectProperty ;
+    rdfs:domain cas-arch:FunctionFlow ;
+    rdfs:range  cas-arch:FunctionalInterface ;
+    rdfs:label "flows to interface"@en .
+
+ext:maxLatencyMs           a owl:DatatypeProperty ; rdfs:range xsd:double ; rdfs:label "max latency (ms)"@en .
+ext:maxPowerDissipationMw  a owl:DatatypeProperty ; rdfs:range xsd:double ; rdfs:label "max power dissipation (mW)"@en .
+ext:securityClassification a owl:DatatypeProperty ; rdfs:range xsd:string ; rdfs:label "security classification"@en .
+ext:integrityLevel         a owl:DatatypeProperty ; rdfs:range xsd:string ; rdfs:label "integrity level"@en .
+ext:protocolStr            a owl:DatatypeProperty ; rdfs:range xsd:string ; rdfs:label "protocol"@en .
+ext:playsRole              a owl:ObjectProperty  ; rdfs:label "plays role"@en .
+
+
+# =============================================================================
+# 2) STAKEHOLDER + STAKEHOLDER REQUIREMENT (drives the example)
+# =============================================================================
+
+ifx:Stakeholder_TractionOEM
+    a cas-org:Role ;
+    rdfs:label "Traction-Inverter OEM"@en .
+
+ifx:Requirement_100kW_Delivery
+    a cas-arch:StakeholderRequirement ;
+    rdfs:label "Deliver 100 kW continuous traction power"@en ;
+    skos:definition "The inverter shall convert 400 V HV DC to 3-phase AC providing 100 kW continuous power to the traction motor with < 5 ms end-to-end torque-request latency."@en ;
+    cas-arch:Requirement_ownedBy_Role ifx:Stakeholder_TractionOEM .
+
+
+# =============================================================================
+# 3) FUNCTIONS  (cas-arch:Function -- five functions inside the inverter)
+# =============================================================================
+
+ifx:Function_InterpretPedal
+    a cas-arch:Function ;
+    rdfs:label "Interpret Accelerator Pedal"@en ;
+    skos:definition "Convert analog accelerator pedal position into a CAN-FD torque request."@en ;
+    cas-arch:Function_satisfies_Requirement ifx:Requirement_100kW_Delivery .
+
+ifx:Function_ControlSwitching
+    a cas-arch:Function ;
+    rdfs:label "Control Switching"@en ;
+    skos:definition "Compute the gate PWM pattern for the SiC MOSFET bridge from the torque request."@en ;
+    cas-arch:Function_follows_Function ifx:Function_InterpretPedal .
+
+ifx:Function_SwitchPower
+    a cas-arch:Function ;
+    rdfs:label "Switch Power"@en ;
+    skos:definition "Chop the HV DC bus into 3-phase AC voltage under gate-driver control."@en ;
+    cas-arch:Function_follows_Function ifx:Function_ControlSwitching .
+
+ifx:Function_DriveMotor
+    a cas-arch:Function ;
+    rdfs:label "Drive Motor"@en ;
+    skos:definition "Convert 3-phase AC into shaft torque in the traction motor."@en ;
+    cas-arch:Function_follows_Function ifx:Function_SwitchPower .
+
+ifx:Function_TransportHeat
+    a cas-arch:Function ;
+    rdfs:label "Transport Heat"@en ;
+    skos:definition "Transfer thermal loss from the SiC power module into the coolant."@en ;
+    cas-arch:Function_follows_Function ifx:Function_SwitchPower .
+
+
+# =============================================================================
+# 4) SYSTEM COMPONENTS  (cas-ee:ElectricElectronicComponent -- Infineon parts)
+# =============================================================================
+
+ifx:Component_VCU
+    a cas-ee:ElectricElectronicComponent ;
+    rdfs:label "Vehicle Control Unit (AURIX-class MCU)"@en .
+
+ifx:Component_InverterController
+    a cas-ee:ElectricElectronicComponent ;
+    rdfs:label "Inverter Controller MCU + Gate Driver Front-End"@en .
+
+ifx:Component_SiCPowerModule
+    a cas-ee:ElectricElectronicComponent ;
+    rdfs:label "Infineon CoolSiC 3-phase MOSFET bridge"@en .
+
+
+# =============================================================================
+# 5) FUNCTIONAL INTERFACES  (cas-arch:FunctionalInterface -- with proposal's
+#    non-functional properties from ext:)
+# =============================================================================
+
+ifx:Interface_VCU_TorqueOut
+    a cas-arch:FunctionalInterface ;
+    rdfs:label "VCU torque-request output"@en ;
+    cas-arch:FunctionalInterface_partOf_Function ifx:Function_InterpretPedal ;
+    ext:maxLatencyMs           "5.0"^^xsd:double ;
+    ext:protocolStr            "CAN-FD 2 Mbit/s" ;
+    ext:integrityLevel         "ASIL-B" ;
+    ext:securityClassification "Confidential" .
+
+ifx:Interface_Controller_TorqueIn
+    a cas-arch:FunctionalInterface ;
+    rdfs:label "Inverter-Controller torque-request input"@en ;
+    cas-arch:FunctionalInterface_partOf_Function ifx:Function_ControlSwitching ;
+    ext:protocolStr    "CAN-FD 2 Mbit/s" ;
+    ext:integrityLevel "ASIL-B" .
+
+ifx:Interface_Controller_PWMOut
+    a cas-arch:FunctionalInterface ;
+    rdfs:label "Isolated gate-driver PWM output"@en ;
+    cas-arch:FunctionalInterface_partOf_Function ifx:Function_ControlSwitching ;
+    ext:protocolStr           "Isolated Gate Driver" ;
+    ext:maxLatencyMs          "0.05"^^xsd:double ;
+    ext:integrityLevel        "ASIL-D" .
+
+ifx:Interface_PowerModule_PWMIn
+    a cas-arch:FunctionalInterface ;
+    rdfs:label "SiC power-module gate input"@en ;
+    cas-arch:FunctionalInterface_partOf_Function ifx:Function_SwitchPower .
+
+ifx:Interface_PowerModule_HVDCIn
+    a cas-arch:FunctionalInterface ;
+    rdfs:label "SiC power-module HV DC input"@en ;
+    cas-arch:FunctionalInterface_partOf_Function ifx:Function_SwitchPower ;
+    ext:maxPowerDissipationMw "2000000.0"^^xsd:double .   # 2 kW dissipated
+
+ifx:Interface_PowerModule_ACOut
+    a cas-arch:FunctionalInterface ;
+    rdfs:label "SiC power-module 3-phase AC output"@en ;
+    cas-arch:FunctionalInterface_partOf_Function ifx:Function_SwitchPower .
+
+ifx:Interface_PowerModule_ThermalOut
+    a cas-arch:FunctionalInterface ;
+    rdfs:label "SiC power-module thermal loss port"@en ;
+    cas-arch:FunctionalInterface_partOf_Function ifx:Function_SwitchPower .
+
+ifx:Interface_Motor_TorqueOut
+    a cas-arch:FunctionalInterface ;
+    rdfs:label "Traction-motor shaft torque output"@en ;
+    cas-arch:FunctionalInterface_partOf_Function ifx:Function_DriveMotor .
+
+ifx:Interface_Cooling_CoolantIn
+    a cas-arch:FunctionalInterface ;
+    rdfs:label "Cooling-loop coolant intake"@en ;
+    cas-arch:FunctionalInterface_partOf_Function ifx:Function_TransportHeat .
+
+ifx:Interface_Cooling_CoolantOut
+    a cas-arch:FunctionalInterface ;
+    rdfs:label "Cooling-loop heated coolant outlet"@en ;
+    cas-arch:FunctionalInterface_partOf_Function ifx:Function_TransportHeat .
+
+
+# =============================================================================
+# 6) FUNCTION FLOWS  (four ItemFlow sub-kinds -- three exist in CASCaRA v1.1,
+#    ext:ForceFlow is the proposal addition)
+# =============================================================================
+
+# ---- InformationFlow (torque request via CAN-FD) ---------------------------
+ifx:Flow_TorqueRequest
+    a cas-arch:InformationFlow ;
+    rdfs:label "Torque request (CAN-FD)"@en ;
+    ext:flowsFromInterface ifx:Interface_VCU_TorqueOut ;
+    ext:flowsToInterface   ifx:Interface_Controller_TorqueIn .
+
+# ---- InformationFlow (gate PWM) --------------------------------------------
+ifx:Flow_GatePWMSignal
+    a cas-arch:InformationFlow ;
+    rdfs:label "Gate PWM signal"@en ;
+    ext:flowsFromInterface ifx:Interface_Controller_PWMOut ;
+    ext:flowsToInterface   ifx:Interface_PowerModule_PWMIn .
+
+# ---- EnergyFlow (HV DC bus) ------------------------------------------------
+ifx:Flow_HVDCPower
+    a cas-arch:EnergyFlow ;
+    rdfs:label "HV DC bus (400 V, 150 kW)"@en ;
+    ext:flowsToInterface ifx:Interface_PowerModule_HVDCIn .
+
+# ---- EnergyFlow (3-phase AC to motor) --------------------------------------
+ifx:Flow_ThreePhaseACPower
+    a cas-arch:EnergyFlow ;
+    rdfs:label "3-phase AC power (400 V, 140 kW)"@en ;
+    ext:flowsFromInterface ifx:Interface_PowerModule_ACOut .
+
+# ---- EnergyFlow (thermal loss) ---------------------------------------------
+ifx:Flow_ThermalLoss
+    a cas-arch:EnergyFlow ;
+    rdfs:label "Thermal loss (~2 kW dissipated)"@en ;
+    ext:flowsFromInterface ifx:Interface_PowerModule_ThermalOut .
+
+# ---- ForceFlow (proposal addition: motor shaft torque) ---------------------
+ifx:Flow_ShaftTorque
+    a ext:ForceFlow ;
+    rdfs:label "Shaft torque (250 Nm, 12 000 rpm)"@en ;
+    ext:flowsFromInterface ifx:Interface_Motor_TorqueOut .
+
+# ---- MaterialFlow (coolant loop) -------------------------------------------
+ifx:Flow_ColdCoolant
+    a cas-arch:MaterialFlow ;
+    rdfs:label "Cold coolant intake (liquid, 100 g/s, 65 degC)"@en ;
+    ext:flowsToInterface ifx:Interface_Cooling_CoolantIn .
+
+ifx:Flow_HotCoolant
+    a cas-arch:MaterialFlow ;
+    rdfs:label "Hot coolant outlet (liquid, 100 g/s, 80 degC)"@en ;
+    ext:flowsFromInterface ifx:Interface_Cooling_CoolantOut .
+
+
+# =============================================================================
+# 7) ACTORS (cas-org:Actor + ext:User) with Source / Sink roles
+# =============================================================================
+
+ifx:Actor_Driver
+    a ext:User ;                # <-- proposal addition: User specializes Actor
+    rdfs:label "Human Driver"@en ;
+    ext:playsRole ext:Source .
+
+ifx:Actor_HVBattery
+    a cas-org:Actor ;
+    rdfs:label "HV Battery (400 V)"@en ;
+    ext:playsRole ext:Source .
+
+ifx:Actor_CoolantSupply
+    a cas-org:Actor ;
+    rdfs:label "Coolant supply (radiator loop)"@en ;
+    ext:playsRole ext:Source .
+
+ifx:Actor_TractionMotor
+    a cas-org:Actor ;
+    rdfs:label "Traction Motor"@en ;
+    ext:playsRole ext:Sink .
+
+ifx:Actor_Wheel
+    a cas-org:Actor ;
+    rdfs:label "Wheel"@en ;
+    ext:playsRole ext:Sink .
+
+ifx:Actor_HotCoolantReturn
+    a cas-org:Actor ;
+    rdfs:label "Hot coolant return"@en ;
+    ext:playsRole ext:Sink .

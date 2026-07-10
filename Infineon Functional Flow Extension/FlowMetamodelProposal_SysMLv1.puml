@@ -1,0 +1,160 @@
+@startuml FlowMetamodelProposal_SysMLv1_Ontology
+' =============================================================================
+' SysML v1 (PlantUML) -- CASCaRA Flow Extension ontology
+' (working-group-agreed vocabulary; matches
+'  FlowMetamodelProposal_SysMLv2.sysml)
+'
+'   Extension 1 -- FunctionPort
+'   Extension 2 -- ItemFlow taxonomy: EnergyFlow, ForceFlow,
+'                                     MaterialFlow, InformationFlow
+'   Extension 3 -- Actor hierarchy + Source / Sink flow roles
+' =============================================================================
+title bdd [package] CASCaRA Flow Extension (working-group-agreed)
+
+skinparam class {
+    BackgroundColor #B7EEE8
+    BorderColor     #006677
+    ArrowColor      #333333
+}
+skinparam stereotypeCBackgroundColor #FFF3B0
+
+' ============================================================================
+' Extension 2 -- ItemFlow taxonomy
+' ============================================================================
+
+package "ItemFlow taxonomy" as IFT {
+    class ItemFlow <<abstract, ItemFlow>> {
+        +description : String
+        +latencyMs   : Real
+    }
+
+    class EnergyFlow <<ItemFlow>> {
+        +powerW   : Real
+        +voltageV : Real
+        +currentA : Real
+    }
+
+    class ForceFlow <<ItemFlow>> {
+        +forceN      : Real
+        +torqueNm    : Real
+        +rpm         : Real
+        +pressureKPa : Real
+    }
+
+    class MaterialFlow <<ItemFlow>> {
+        +massKg     : Real
+        +stateStr   : String
+        +massFlowGs : Real
+    }
+
+    class InformationFlow <<ItemFlow>> {
+        +bytes       : Integer
+        +protocolStr : String
+    }
+
+    ItemFlow <|-- EnergyFlow
+    ItemFlow <|-- ForceFlow
+    ItemFlow <|-- MaterialFlow
+    ItemFlow <|-- InformationFlow
+}
+
+' ============================================================================
+' Extension 1 -- FunctionPort
+' ============================================================================
+
+package "FunctionPort" as FP {
+    class FunctionPort <<FunctionPort>> {
+        +directionSpec           : {in, out, inout}
+        +maxLatencyMs            : Real
+        +maxPowerDissipationMw   : Real
+        +securityClassification  : Enum
+        +integrityLevel          : Enum
+        +protocolStr             : String
+    }
+    class Function <<Function>>
+
+    Function "1" *-- "0..*" FunctionPort : hasInputPort / hasOutputPort
+    FunctionPort  --> ItemFlow     : carries
+    FunctionPort  --> FunctionPort : isConnectedTo
+}
+
+' ============================================================================
+' Extension 3 -- Actor hierarchy + Source/Sink flow roles
+' ============================================================================
+
+package "Actor hierarchy + flow roles" as AH {
+    class Actor          <<Actor>>
+    class User           <<Actor>>
+    class ExternalSystem <<Actor>>
+    class Sensor         <<Actor>>
+    class Actuator       <<Actor>>
+
+    class Source <<flowRole>> {
+        initiates → FunctionPort
+    }
+    class Sink   <<flowRole>> {
+        receives  → FunctionPort
+    }
+
+    Actor <|-- User
+    Actor <|-- ExternalSystem
+    Actor <|-- Sensor
+    Actor <|-- Actuator
+}
+
+note right of Source
+  An Actor takes the **Source** role
+  for a given FunctionPort when it
+  initiates the flow (e.g. Battery
+  is a Source of EnergyFlow).
+end note
+
+note right of Sink
+  An Actor takes the **Sink** role
+  for a given FunctionPort when it
+  absorbs the flow (e.g. LED is a
+  Sink of EnergyFlow).
+end note
+
+' Cross-package relations ---------------------------------------------------
+Actor --> FunctionPort : initiates / receives
+
+@enduml
+
+
+@startuml FlowMetamodelProposal_SysMLv1_SlideExample
+' =============================================================================
+' Direct rendering of the prostep ivip slide, using the working-group-agreed
+' vocabulary (ItemFlow + 4 direct specializations).
+' =============================================================================
+title Functional Architecture (per prostep ivip slide, agreed vocabulary)
+
+skinparam class {
+    BackgroundColor #B7EEE8
+    BorderColor     #006677
+}
+
+class "Function.1" as F1 <<Function>>
+class "Function.2" as F2 <<Function>>
+F1 --> F2 : follows
+
+class "FunctionPort" as FP1 <<FunctionPort>>
+class "FunctionPort" as FP2 <<FunctionPort>>
+F1 *-- FP1
+F2 *-- FP2
+
+class ItemFlow        <<ItemFlow>>
+class EnergyFlow      <<ItemFlow>>
+class ForceFlow       <<ItemFlow>>
+class MaterialFlow    <<ItemFlow>>
+class InformationFlow <<ItemFlow>>
+
+FP1 --> ItemFlow : flowsFrom
+ItemFlow --> FP2 : flowsTo
+
+ItemFlow <|-- EnergyFlow
+ItemFlow <|-- ForceFlow
+ItemFlow <|-- MaterialFlow
+ItemFlow <|-- InformationFlow
+
+@enduml

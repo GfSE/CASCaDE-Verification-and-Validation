@@ -1,0 +1,6 @@
+# Enterprise Architect SQLite journals (transient while .qea is open)
+*.qea-journal
+*.qeax-journal
+*.eap-journal
+# Visual Studio environment files
+*.vs/

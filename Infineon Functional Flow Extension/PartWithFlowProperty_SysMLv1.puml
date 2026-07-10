@@ -1,0 +1,85 @@
+@startuml PartWithFlowProperty_SysMLv1
+' =============================================================================
+' SysML v1 (PlantUML) -- Part with FlowProperties (pure electronics)
+' Companion to: PartWithFlowProperty_SysMLv2.sysml
+'
+' Renders the classic SysML v1 pattern reviewers recognise:
+'   «block» with «flowProperty» in / out members
+'   «ItemFlow» edges typed by the flowing block
+' Uses a pure-electronics 12 V -> 3.3 V power-rail chain
+' (Infineon-style Battery -> Buck -> LDO -> MCU -> CAN transceiver).
+' =============================================================================
+title bdd -- Part with FlowProperties (SysML v1, pure electronics)
+
+skinparam class {
+    BackgroundColor #FFF8E1
+    BorderColor     #7A6100
+    ArrowColor      #333333
+}
+
+' ---- ItemFlow classifiers (proposal Extension 2) -------------------------
+
+class ItemFlow <<abstract, ItemFlow>>
+
+class Rail12V <<block, EnergyFlow>> {
+    +voltageV : 12.0
+    +powerW   : 24.0
+}
+class Rail5V <<block, EnergyFlow>> {
+    +voltageV : 5.0
+    +powerW   : 5.0
+}
+class Rail3V3 <<block, EnergyFlow>> {
+    +voltageV : 3.3
+    +powerW   : 1.0
+}
+class CANMessage <<block, InformationFlow>> {
+    +bytes       : 8
+    +protocolStr : "CAN 2.0B"
+    +latencyMs   : 1.0
+}
+ItemFlow <|-- Rail12V
+ItemFlow <|-- Rail5V
+ItemFlow <|-- Rail3V3
+ItemFlow <|-- CANMessage
+
+' ---- Five Blocks, each with «flowProperty» members -----------------------
+
+class Battery12V <<block, Part>> {
+    «flowProperty» +out rail12Out : Rail12V
+}
+class BuckConverter <<block, Part>> {
+    «flowProperty» +in  rail12In : Rail12V
+    «flowProperty» +out rail5Out : Rail5V
+}
+class LDO <<block, Part>> {
+    «flowProperty» +in  rail5In     : Rail5V
+    «flowProperty» +out rail3v3Out  : Rail3V3
+}
+class Microcontroller <<block, Part>> {
+    «flowProperty» +in  rail3v3In : Rail3V3
+    «flowProperty» +out canOut    : CANMessage
+}
+class CANTransceiver <<block, Part>> {
+    «flowProperty» +in canIn : CANMessage
+}
+
+' ---- Typed ItemFlow edges (block level) ----------------------------------
+
+Battery12V     ..> BuckConverter   : "«ItemFlow» Rail12V"
+BuckConverter  ..> LDO             : "«ItemFlow» Rail5V"
+LDO            ..> Microcontroller : "«ItemFlow» Rail3V3"
+Microcontroller ..> CANTransceiver : "«ItemFlow» CANMessage"
+
+note bottom of Battery12V
+  SysML v1 pattern:
+    «block» Battery12V {
+      «flowProperty» out rail12Out : Rail12V
+    }
+  SysML v2 equivalent (this file's twin):
+    part def Battery12V {
+      out rail12Out : Rail12V;
+    }
+end note
+
+@enduml
