@@ -19,13 +19,21 @@
 
     <dcterms:title>Project 'Very Simple Model (FMC) with Requirements'</dcterms:title>
     <dcterms:modified>2026-01-17T22:38:19.595Z</dcterms:modified>
+	<cas:aProperty cas:hasClass="dcterms:contributor">
+		<value>mailto:oskar.dungern@gfse.org</value>
+	</cas:aProperty>
+	<cas:aProperty cas:hasClass="dcterms:license">
+		<value>https://creativecommons.org/licenses/by-sa/4.0/</value>
+	</cas:aProperty>
 
     <graph>
         <!-- Metamodel: Entity Classes -->
-        <cas:Entity id="cas:Entity" rdf:type="owl:Class">
-            <dcterms:title>Entity</dcterms:title>
-            <skos:definition>A CASCaRA meta-model element used for entities (aka resources or artifacts).</skos:definition>
-            <cas:enumeratedProperty>cas:Category</cas:enumeratedProperty>
+        <cas:Entity id="cas:Package" cas:hasClass="owl:Class">
+            <cas:specializes>cas:Entity</cas:specializes>
+            <dcterms:title>Package</dcterms:title>
+            <skos:definition>A CASCaRA meta-model item used for packages comprising entities, relationships and potentially nested packages, both classes and instances.</skos:definition>
+            <cas:enumeratedProperty>dcterms:contributor</cas:enumeratedProperty>
+            <cas:enumeratedProperty>dcterms:license</cas:enumeratedProperty>
         </cas:Entity>
 
         <cas:Entity id="cas:Organizer" cas:hasClass="owl:Class">
@@ -61,21 +69,8 @@
         </cas:Entity>
 
         <!-- Metamodel: Relationship Class -->
-        <cas:Relationship id="cas:Relationship" rdf:type="owl:Class">
-            <dcterms:title>Relationship</dcterms:title>
-            <skos:definition>A CASCaRA meta-model element used for reified relationships (aka predicates).</skos:definition>
-            <cas:enumeratedProperty>cas:Category</cas:enumeratedProperty>
-        </cas:Relationship>
 
         <!-- Metamodel: Properties -->
-        <cas:Property id="cas:Property" rdf:type="owl:DatatypeProperty">
-            <dcterms:title>Property</dcterms:title>
-            <skos:definition>A CASCaRA meta-model element used for properties (aka attributes).</skos:definition>
-            <xs:simpleType>
-                <xs:restriction base="xs:anyType"/>
-            </xs:simpleType>
-        </cas:Property>
-
         <cas:Property id="cas:Category" cas:hasClass="owl:DatatypeProperty">
             <cas:specializes>cas:Property</cas:specializes>
             <dcterms:title>has category</dcterms:title>
@@ -90,13 +85,6 @@
         </cas:Property>
 
         <!-- Metamodel: Links -->
-        <cas:Link id="cas:Link" rdf:type="owl:ObjectProperty">
-            <cas:enumeratedEndpoint>cas:Entity</cas:enumeratedEndpoint>
-            <cas:enumeratedEndpoint>cas:Relationship</cas:enumeratedEndpoint>
-            <dcterms:title>linked with</dcterms:title>
-            <skos:definition>Connects a reified relationship with its source or target. Also connects an organizer to a model element</skos:definition>
-        </cas:Link>
-
         <cas:Link id="cas:linksSource" cas:hasClass="owl:ObjectProperty">
             <cas:specializes>cas:Link</cas:specializes>
             <cas:enumeratedEndpoint>cas:Entity</cas:enumeratedEndpoint>
