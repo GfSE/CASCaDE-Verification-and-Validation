@@ -846,6 +846,11 @@
       "@value": "Very Simple Car Model"
     }
   ],
+  "dcterms:description": [
+    {
+      "@value": "An example where a car has four identical wheels at four defined positions."
+    }
+  ],
   "dcterms:modified": "2026-01-17T22:38:19.595Z",
   "dcterms:contributor": [
     {

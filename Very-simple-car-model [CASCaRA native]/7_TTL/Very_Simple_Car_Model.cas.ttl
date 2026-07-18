@@ -28,6 +28,7 @@ d:ACP-Very-Simple-Model-FMC-with-Requirements_ontology
 d:ACP-Very-Simple-Model-FMC-with-Requirements
 	a cas:Package ;
 	rdfs:label "Very Simple Car Model" ;
+	rdfs:comment "An example where a car has four identical wheels at four defined positions." ;
 	dcterms:modified "2026-01-17T22:38:19.595Z"^^xs:dateTime .
 
 #################################################################

@@ -16,6 +16,7 @@
     rdf:type="cas:Package">
 
     <dcterms:title>Very Simple Car Model</dcterms:title>
+	<dcterms:description>An example where a car has four identical wheels at four defined positions.</dcterms:description>
     <dcterms:modified>2026-01-17T22:38:19.595Z</dcterms:modified>
 	<cas:aProperty rdf:type="dcterms:contributor">
 		<value>cecilia.tonelli@collins.com</value>
