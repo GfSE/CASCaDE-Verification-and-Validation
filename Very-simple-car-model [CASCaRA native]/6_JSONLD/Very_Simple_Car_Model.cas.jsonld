@@ -1,0 +1,872 @@
+{
+  "@context": {
+    "FMC": "http://fmc-modeling.org#",
+    "IREB": "https://cpre.ireb.org/en/downloads-and-resources/glossary#",
+    "ReqIF": "https://www.prostep.org/fileadmin/downloads/PSI_ImplementationGuide_ReqIF_V1-7.pdf#",
+    "SpecIF": "https://specif.de/v1.2/schema#",
+    "cas": "https://product-information-graph.org/ontology/2026-05-08/metamodel#",
+    "d": "http://product-information-graph.org/example#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "o": "http://product-information-graph.org/ontology/application#",
+    "oslc_rm": "http://open-services.net/ns/rm#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "skos": "https://www.w3.org/TR/skos-reference/",
+    "xs": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": "d:ACP-Very-Simple-Model-FMC-with-Requirements",
+  "@type": "cas:Package",
+  "@graph": [
+    {
+      "@id": "cas:Package",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Entity"
+      },
+      "cas:specializes": {
+        "@id": "cas:Entity"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Package"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "A CASCaRA meta-model item used for packages comprising entities, relationships and potentially nested packages, both classes and instances."
+        }
+      ],
+      "cas:enumeratedProperty": [
+        {
+          "@id": "dcterms:contributor"
+        },
+        {
+          "@id": "dcterms:license"
+        }
+      ]
+    },
+    {
+      "@id": "cas:Organizer",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Entity"
+      },
+      "cas:specializes": {
+        "@id": "cas:Entity"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Organizer"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "An element organizing model elements. An example is a list of requirements or a diagram using a certain notation."
+        }
+      ],
+      "cas:enumeratedProperty": [
+        {
+          "@id": "cas:Category"
+        }
+      ]
+    },
+    {
+      "@id": "cas:Root",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Entity"
+      },
+      "cas:specializes": {
+        "@id": "cas:Organizer"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Hierarchy Root"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "A subclass of CASCaRA organizer serving as a root for hierarchically organized graph elements."
+        }
+      ],
+      "cas:enumeratedTargetLink": [
+        {
+          "@id": "cas:lists"
+        }
+      ]
+    },
+    {
+      "@id": "cas:Outline",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Entity"
+      },
+      "cas:specializes": {
+        "@id": "cas:Organizer"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Outline"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "A subclass of CASCaRA organizer comprising all information items of a human-readable document. As usual, the outline is hierarchically organized."
+        }
+      ],
+      "cas:enumeratedProperty": [
+        {
+          "@id": "cas:Category"
+        }
+      ],
+      "cas:enumeratedTargetLink": [
+        {
+          "@id": "cas:lists"
+        }
+      ]
+    },
+    {
+      "@id": "FMC:Actor",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Entity"
+      },
+      "cas:specializes": {
+        "@id": "cas:Entity"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Actor",
+          "@language": "en"
+        },
+        {
+          "@value": "Akteur",
+          "@language": "de"
+        },
+        {
+          "@value": "Acteur",
+          "@language": "fr"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "<p>An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role.</p><p>The particular use or original type is specified with a [[dcterms:type]] property of the 'FMC:Actor'. A value of that property should be an ontology-term, such as [[bpmn:processStep]].</p>",
+          "@language": "en"
+        },
+        {
+          "@value": "<p>Ein 'Akteur' ist ein fundamentaler Modellelementtyp, der eine aktive Entität darstellt, sei es eine Aktivität, ein Prozessschritt, eine Funktion, eine Systemkomponente oder eine Rolle.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Actor' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[bpmn:timer]].</p>",
+          "@language": "de"
+        },
+        {
+          "@value": "<p>Un 'Acteur' est un type d'élément de modèle fondamental représentant une entité active, qu'il s'agisse d'une activité, d'une étape de processus, d'une fonction, d'un composant de système ou d'un rôle.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:Actor'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[bpmn:timer]].</p>",
+          "@language": "fr"
+        }
+      ],
+      "cas:enumeratedProperty": [
+        {
+          "@id": "cas:Category"
+        }
+      ],
+      "cas:icon": {
+        "@value": "□"
+      }
+    },
+    {
+      "@id": "cas:hasPart",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Relationship"
+      },
+      "cas:specializes": {
+        "@id": "cas:Relationship"
+      },
+      "dcterms:title": [
+        {
+          "@value": "has part",
+          "@language": "en"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "A [[Component]] has a [[Component]].",
+          "@language": "en"
+        }
+      ],
+      "cas:enumeratedSourceLink": [
+        {
+          "@id": "cas:linksSource"
+        }
+      ],
+      "cas:enumeratedTargetLink": [
+        {
+          "@id": "cas:linksTarget"
+        }
+      ]
+    },
+    {
+      "@id": "cas:Category",
+      "@type": "owl:DatatypeProperty",
+      "cas:itemType": {
+        "@id": "cas:Property"
+      },
+      "cas:specializes": {
+        "@id": "cas:Property"
+      },
+      "dcterms:title": [
+        {
+          "@value": "has category"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Specifies a category for an element (entity, relationship or organizer)."
+        }
+      ],
+      "sh:datatype": {
+        "@id": "xs:string"
+      },
+      "sh:maxCount": 1,
+      "sh:maxLength": 32,
+      "sh:minCount": 0
+    },
+    {
+      "@id": "cas:linksSource",
+      "@type": "owl:ObjectProperty",
+      "cas:itemType": {
+        "@id": "cas:Link"
+      },
+      "cas:specializes": {
+        "@id": "cas:Link"
+      },
+      "dcterms:title": [
+        {
+          "@value": "to source"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Connects the source of a reified relationship."
+        }
+      ],
+      "cas:enumeratedEndpoint": [
+        {
+          "@id": "cas:Entity"
+        },
+        {
+          "@id": "cas:Relationship"
+        }
+      ]
+    },
+    {
+      "@id": "cas:linksTarget",
+      "@type": "owl:ObjectProperty",
+      "cas:itemType": {
+        "@id": "cas:Link"
+      },
+      "cas:specializes": {
+        "@id": "cas:Link"
+      },
+      "dcterms:title": [
+        {
+          "@value": "to target"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Connects the target of a reified relationship or an organizer."
+        }
+      ],
+      "cas:enumeratedEndpoint": [
+        {
+          "@id": "cas:Entity"
+        },
+        {
+          "@id": "cas:Relationship"
+        }
+      ]
+    },
+    {
+      "@id": "cas:lists",
+      "@type": "owl:ObjectProperty",
+      "cas:itemType": {
+        "@id": "cas:Link"
+      },
+      "cas:specializes": {
+        "@id": "cas:linksTarget"
+      },
+      "dcterms:title": [
+        {
+          "@value": "lists"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Lists an entity, a relationship or a subordinated organizer."
+        }
+      ],
+      "cas:enumeratedEndpoint": [
+        {
+          "@id": "cas:Entity"
+        },
+        {
+          "@id": "cas:Relationship"
+        },
+        {
+          "@id": "cas:Organizer"
+        }
+      ]
+    },
+    {
+      "@id": "o:WheelPosition-Value",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Enumeration"
+      },
+      "cas:specializes": {
+        "@id": "cas:Enumeration"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Wheel Position",
+          "@language": "en"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Enumerated values for the wheel position of a car.",
+          "@language": "en"
+        }
+      ],
+      "dcterms:modified": "2020-03-26T22:59:00+02:00",
+      "cas:enumeratedValue": [
+        {
+          "@id": "o:frontRight",
+          "dcterms:title": [
+            {
+              "@value": "front right",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@id": "o:frontLeft",
+          "dcterms:title": [
+            {
+              "@value": "front left",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@id": "o:backRight",
+          "dcterms:title": [
+            {
+              "@value": "back right",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@id": "o:backLeft",
+          "dcterms:title": [
+            {
+              "@value": "fback left",
+              "@language": "en"
+            }
+          ]
+        }
+      ],
+      "sh:datatype": {
+        "@id": "xs:string"
+      }
+    },
+    {
+      "@id": "o:TireDimension",
+      "@type": "owl:DatatypeProperty",
+      "cas:itemType": {
+        "@id": "cas:Property"
+      },
+      "cas:specializes": {
+        "@id": "cas:Property"
+      },
+      "dcterms:title": [
+        {
+          "@value": "tire dimension",
+          "@language": "en"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The dimension (size) of a tire.",
+          "@language": "en"
+        }
+      ],
+      "sh:datatype": {
+        "@id": "xs:string"
+      },
+      "sh:maxCount": 1,
+      "sh:minCount": 0
+    },
+    {
+      "@id": "o:atPosition",
+      "@type": "owl:ObjectProperty",
+      "cas:itemType": {
+        "@id": "cas:Link"
+      },
+      "cas:specializes": {
+        "@id": "cas:linksTarget"
+      },
+      "dcterms:title": [
+        {
+          "@value": "at position",
+          "@language": "en"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Enumerated value for the position of a wheel on a car.",
+          "@language": "en"
+        }
+      ],
+      "dcterms:modified": "2020-03-26T22:59:00+02:00",
+      "cas:enumeratedEndpoint": [
+        {
+          "@id": "o:WheelPosition-Value"
+        }
+      ],
+      "sh:maxCount": 1,
+      "sh:minCount": 1
+    },
+    {
+      "@id": "o:Vehicle",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Entity"
+      },
+      "cas:specializes": {
+        "@id": "FMC:Actor"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Vehicle",
+          "@language": "en"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "<p>A 'Vehicle' is a ...</p>",
+          "@language": "en"
+        }
+      ],
+      "cas:enumeratedProperty": [
+        {
+          "@id": "cas:Category"
+        }
+      ]
+    },
+    {
+      "@id": "o:Car",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Entity"
+      },
+      "cas:specializes": {
+        "@id": "o:Vehicle"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Car",
+          "@language": "en"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "<p>A 'Car' is...</p>",
+          "@language": "en"
+        }
+      ],
+      "cas:enumeratedProperty": [
+        {
+          "@id": "cas:Category"
+        }
+      ]
+    },
+    {
+      "@id": "o:Wheel",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Entity"
+      },
+      "cas:specializes": {
+        "@id": "FMC:Actor"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Wheel",
+          "@language": "en"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "<p> A 'Wheel' is... </p>",
+          "@language": "en"
+        }
+      ],
+      "cas:enumeratedProperty": [
+        {
+          "@id": "o:TireDimension"
+        }
+      ]
+    },
+    {
+      "@id": "o:hasWheel",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Relationship"
+      },
+      "cas:specializes": {
+        "@id": "cas:hasPart"
+      },
+      "dcterms:title": [
+        {
+          "@value": "has wheel",
+          "@language": "en"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "A [[Car]] has a [[Wheel]].",
+          "@language": "en"
+        }
+      ],
+      "cas:enumeratedSourceLink": [
+        {
+          "@id": "o:hasWheel-toCar"
+        }
+      ],
+      "cas:enumeratedTargetLink": [
+        {
+          "@id": "o:atPosition"
+        },
+        {
+          "@id": "o:hasWheel-toWheel"
+        }
+      ]
+    },
+    {
+      "@id": "o:hasWheel-toCar",
+      "@type": "owl:ObjectProperty",
+      "cas:itemType": {
+        "@id": "cas:Link"
+      },
+      "cas:specializes": {
+        "@id": "cas:linksSource"
+      },
+      "dcterms:title": [
+        {
+          "@value": "is wheel of"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Connects the car"
+        }
+      ],
+      "cas:enumeratedEndpoint": [
+        {
+          "@id": "o:Vehicle"
+        }
+      ],
+      "sh:maxCount": 1,
+      "sh:minCount": 1
+    },
+    {
+      "@id": "o:hasWheel-toWheel",
+      "@type": "owl:ObjectProperty",
+      "cas:itemType": {
+        "@id": "cas:Link"
+      },
+      "cas:specializes": {
+        "@id": "cas:linksTarget"
+      },
+      "dcterms:title": [
+        {
+          "@value": "has wheel"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Connects the wheel"
+        }
+      ],
+      "cas:enumeratedEndpoint": [
+        {
+          "@id": "o:Wheel"
+        }
+      ],
+      "sh:maxCount": 1,
+      "sh:minCount": 1
+    },
+    {
+      "@id": "d:Car-1a8016e2872e78ecadc50feddc00029b",
+      "@type": "o:Car",
+      "cas:itemType": {
+        "@id": "cas:anEntity"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Fiat_600E_2023"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "<p>An iconic electric car ideal for the city.</p>"
+        }
+      ],
+      "dcterms:modified": "2020-10-17T10:00:00+01:00"
+    },
+    {
+      "@id": "d:Wheel-0Z7916e2872e78ecadc50feddc00918a",
+      "@type": "o:Wheel",
+      "cas:itemType": {
+        "@id": "cas:anEntity"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Pirelli_215/65R18"
+        }
+      ],
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "o:TireDimension": [
+        {
+          "@value": "215/65R18",
+          "cas:itemType": {
+            "@id": "cas:aProperty"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "d:hasWheel-50feddc00029b1a8016e2872e78ecadc",
+      "@type": "o:hasWheel",
+      "cas:itemType": {
+        "@id": "cas:aRelationship"
+      },
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "o:atPosition": [
+        {
+          "@id": "o:frontRight",
+          "cas:itemType": {
+            "@id": "cas:aTargetLink"
+          }
+        }
+      ],
+      "o:hasWheel-toCar": [
+        {
+          "@id": "d:Car-1a8016e2872e78ecadc50feddc00029b",
+          "cas:itemType": {
+            "@id": "cas:aSourceLink"
+          }
+        }
+      ],
+      "o:hasWheel-toWheel": [
+        {
+          "@id": "d:Wheel-0Z7916e2872e78ecadc50feddc00918a",
+          "cas:itemType": {
+            "@id": "cas:aTargetLink"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "d:hasWheel-50fedd872e78ecadcc00029b1a8016e2",
+      "@type": "o:hasWheel",
+      "cas:itemType": {
+        "@id": "cas:aRelationship"
+      },
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "o:atPosition": [
+        {
+          "@id": "o:frontLeft",
+          "cas:itemType": {
+            "@id": "cas:aTargetLink"
+          }
+        }
+      ],
+      "o:hasWheel-toCar": [
+        {
+          "@id": "d:Car-1a8016e2872e78ecadc50feddc00029b",
+          "cas:itemType": {
+            "@id": "cas:aSourceLink"
+          }
+        }
+      ],
+      "o:hasWheel-toWheel": [
+        {
+          "@id": "d:Wheel-0Z7916e2872e78ecadc50feddc00918a",
+          "cas:itemType": {
+            "@id": "cas:aTargetLink"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "d:hasWheel-50fed2e78ecadcdc00029b1a8016e287",
+      "@type": "o:hasWheel",
+      "cas:itemType": {
+        "@id": "cas:aRelationship"
+      },
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "o:atPosition": [
+        {
+          "@id": "o:backRight",
+          "cas:itemType": {
+            "@id": "cas:aTargetLink"
+          }
+        }
+      ],
+      "o:hasWheel-toCar": [
+        {
+          "@id": "d:Car-1a8016e2872e78ecadc50feddc00029b",
+          "cas:itemType": {
+            "@id": "cas:aSourceLink"
+          }
+        }
+      ],
+      "o:hasWheel-toWheel": [
+        {
+          "@id": "d:Wheel-0Z7916e2872e78ecadc50feddc00918a",
+          "cas:itemType": {
+            "@id": "cas:aTargetLink"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "d:hasWheel-50feddc0002e2872e78ecadc9b1a8016",
+      "@type": "o:hasWheel",
+      "cas:itemType": {
+        "@id": "cas:aRelationship"
+      },
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "o:atPosition": [
+        {
+          "@id": "o:backLeft",
+          "cas:itemType": {
+            "@id": "cas:aTargetLink"
+          }
+        }
+      ],
+      "o:hasWheel-toCar": [
+        {
+          "@id": "d:Car-1a8016e2872e78ecadc50feddc00029b",
+          "cas:itemType": {
+            "@id": "cas:aSourceLink"
+          }
+        }
+      ],
+      "o:hasWheel-toWheel": [
+        {
+          "@id": "d:Wheel-0Z7916e2872e78ecadc50feddc00918a",
+          "cas:itemType": {
+            "@id": "cas:aTargetLink"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "d:Root",
+      "@type": "cas:Root",
+      "cas:itemType": {
+        "@id": "cas:anEntity"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Package Root",
+          "@language": "en"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "... anchoring all outlines of this graph (package)",
+          "@language": "en"
+        }
+      ],
+      "dcterms:modified": "2026-01-17T22:38:20.041Z",
+      "cas:lists": [
+        {
+          "@id": "d:Car_with_four_wheels",
+          "cas:itemType": {
+            "@id": "cas:aTargetLink"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "d:Car_with_four_wheels",
+      "@type": "cas:Outline",
+      "cas:itemType": {
+        "@id": "cas:anEntity"
+      },
+      "dcterms:title": [
+        {
+          "@value": "BoM of a car with four wheels",
+          "@language": "en"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "A car having for wheels, where four 'has' relationships indicating the respective positions are defined.",
+          "@language": "en"
+        }
+      ],
+      "dcterms:modified": "2026-01-17T22:38:20.041Z",
+      "cas:lists": [
+        {
+          "@id": "d:Car",
+          "cas:itemType": {
+            "@id": "cas:aTargetLink"
+          }
+        },
+        {
+          "@id": "d:Wheel",
+          "cas:itemType": {
+            "@id": "cas:aTargetLink"
+          }
+        }
+      ]
+    }
+  ],
+  "cas:itemType": {
+    "@id": "cas:aPackage"
+  },
+  "dcterms:title": [
+    {
+      "@value": "Very Simple Car Model"
+    }
+  ],
+  "dcterms:modified": "2026-01-17T22:38:19.595Z",
+  "dcterms:contributor": [
+    {
+      "@value": "cecilia.tonelli@collins.com",
+      "cas:itemType": {
+        "@id": "cas:aProperty"
+      }
+    },
+    {
+      "@value": "oskar.dungern@gfse.org",
+      "cas:itemType": {
+        "@id": "cas:aProperty"
+      }
+    }
+  ],
+  "dcterms:license": [
+    {
+      "@value": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "cas:itemType": {
+        "@id": "cas:aProperty"
+      }
+    }
+  ]
+}

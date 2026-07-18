@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cas:aPackage
+    xmlns:cas="https://product-information-graph.org/ontology/2026-05-08/metamodel#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:skos="https://www.w3.org/TR/skos-reference/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+    xmlns:FMC="http://fmc-modeling.org#"
+    xmlns:IREB="https://cpre.ireb.org/en/downloads-and-resources/glossary#"
+    xmlns:ReqIF="https://www.prostep.org/fileadmin/downloads/PSI_ImplementationGuide_ReqIF_V1-7.pdf#"
+    xmlns:oslc_rm="http://open-services.net/ns/rm#"
+    xmlns:SpecIF="https://specif.de/v1.2/schema#"
+    id="d:ACP-Very-Simple-Model-FMC-with-Requirements"
+    rdf:type="cas:Package">
+
+    <dcterms:title>Very Simple Car Model</dcterms:title>
+    <dcterms:modified>2026-01-17T22:38:19.595Z</dcterms:modified>
+	<cas:aProperty rdf:type="dcterms:contributor">
+		<value>cecilia.tonelli@collins.com</value>
+	</cas:aProperty>
+	<cas:aProperty rdf:type="dcterms:contributor">
+		<value>oskar.dungern@gfse.org</value>
+	</cas:aProperty>
+	<cas:aProperty rdf:type="dcterms:license">
+		<value>https://creativecommons.org/licenses/by-sa/4.0/</value>
+	</cas:aProperty>
+
+    <graph>
+        <!-- Semantic Infrastructure: Entity Classes -->
+        <cas:Entity id="cas:Package" rdf:type="owl:Class">
+            <cas:specializes>cas:Entity</cas:specializes>
+            <dcterms:title>Package</dcterms:title>
+            <skos:definition>A CASCaRA meta-model item used for packages comprising entities, relationships and potentially nested packages, both classes and instances.</skos:definition>
+            <cas:enumeratedProperty>dcterms:contributor</cas:enumeratedProperty>
+            <cas:enumeratedProperty>dcterms:license</cas:enumeratedProperty>
+        </cas:Entity>
+
+        <cas:Entity id="cas:Organizer" rdf:type="owl:Class">
+            <cas:specializes>cas:Entity</cas:specializes>
+            <dcterms:title>Organizer</dcterms:title>
+            <skos:definition>An element organizing model elements. An example is a list of requirements or a diagram using a certain notation.</skos:definition>
+            <cas:enumeratedProperty>cas:Category</cas:enumeratedProperty>
+        </cas:Entity>
+
+        <cas:Entity id="cas:Root" rdf:type="owl:Class">
+            <cas:specializes>cas:Organizer</cas:specializes>
+            <dcterms:title>Hierarchy Root</dcterms:title>
+            <skos:definition>A subclass of CASCaRA organizer serving as a root for hierarchically organized graph elements.</skos:definition>
+            <cas:enumeratedTargetLink>cas:lists</cas:enumeratedTargetLink>
+        </cas:Entity>
+
+        <cas:Entity id="cas:Outline" rdf:type="owl:Class">
+            <cas:specializes>cas:Organizer</cas:specializes>
+            <dcterms:title>Outline</dcterms:title>
+            <skos:definition>A subclass of CASCaRA organizer comprising all information items of a human-readable document. As usual, the outline is hierarchically organized.</skos:definition>
+            <cas:enumeratedProperty>cas:Category</cas:enumeratedProperty>
+            <cas:enumeratedTargetLink>cas:lists</cas:enumeratedTargetLink>
+        </cas:Entity>
+
+        <cas:Entity id="FMC:Actor" rdf:type="owl:Class">
+            <dcterms:title xml:lang="en">Actor</dcterms:title>
+            <dcterms:title xml:lang="de">Akteur</dcterms:title>
+            <dcterms:title xml:lang="fr">Acteur</dcterms:title>
+            <dcterms:description xml:lang="en">
+                <p>An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role.</p>
+                <p>The  particular use or original type is specified with a [[dcterms:type]] property of the 'FMC:Actor'. A value of that property should be an ontology-term, such as [[bpmn:processStep]].</p>
+            </dcterms:description>
+            <dcterms:description xml:lang="de">
+                <p>Ein 'Akteur' ist ein fundamentaler Modellelementtyp, der eine aktive Entität darstellt, sei es eine Aktivität, ein Prozessschritt, eine Funktion, eine Systemkomponente oder eine Rolle.</p>
+                <p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Actor' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[bpmn:timer]].</p>
+            </dcterms:description>
+            <dcterms:description xml:lang="fr">
+                <p>Un 'Acteur' est un type d'élément de modèle fondamental représentant une entité active, qu'il s'agisse d'une activité, d'une étape de processus, d'une fonction, d'un composant de système ou d'un rôle.</p>
+                <p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:Actor'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[bpmn:timer]].</p>
+            </dcterms:description>
+            <cas:specializes>cas:Entity</cas:specializes>
+            <cas:icon>&#x25A1;</cas:icon>
+            <cas:enumeratedProperty>cas:Category</cas:enumeratedProperty>
+        </cas:Entity>
+
+        <!-- Semantic Infrastructure: Relationship Classes -->
+        <cas:Relationship id="cas:hasPart" rdf:type="owl:Class">
+            <cas:specializes>cas:Relationship</cas:specializes>
+            <dcterms:title xml:lang="en">has part</dcterms:title>
+            <dcterms:description xml:lang="en">A [[Component]] has a [[Component]].</dcterms:description>
+            <cas:enumeratedSourceLink>cas:linksSource</cas:enumeratedSourceLink>
+            <cas:enumeratedTargetLink>cas:linksTarget</cas:enumeratedTargetLink>
+        </cas:Relationship>
+
+        <!-- Semantic Infrastructure: Property Classes -->
+        <cas:Property id="cas:Category" rdf:type="owl:DatatypeProperty">
+            <cas:specializes>cas:Property</cas:specializes>
+            <dcterms:title>has category</dcterms:title>
+            <skos:definition>Specifies a category for an element (entity, relationship or organizer).</skos:definition>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:maxLength value="32"/>
+                    <xs:minOccurs>0</xs:minOccurs>
+                    <xs:maxOccurs>1</xs:maxOccurs>
+                </xs:restriction>
+            </xs:simpleType>
+        </cas:Property>
+
+        <!-- Semantic Infrastructure: Link Classes -->
+        <cas:Link id="cas:linksSource" rdf:type="owl:ObjectProperty">
+            <cas:specializes>cas:Link</cas:specializes>
+            <cas:enumeratedEndpoint>cas:Entity</cas:enumeratedEndpoint>
+            <cas:enumeratedEndpoint>cas:Relationship</cas:enumeratedEndpoint>
+            <dcterms:title>to source</dcterms:title>
+            <skos:definition>Connects the source of a reified relationship.</skos:definition>
+        </cas:Link>
+
+        <cas:Link id="cas:linksTarget" rdf:type="owl:ObjectProperty">
+            <cas:specializes>cas:Link</cas:specializes>
+            <cas:enumeratedEndpoint>cas:Entity</cas:enumeratedEndpoint>
+            <cas:enumeratedEndpoint>cas:Relationship</cas:enumeratedEndpoint>
+            <dcterms:title>to target</dcterms:title>
+            <skos:definition>Connects the target of a reified relationship or an organizer.</skos:definition>
+        </cas:Link>
+
+        <cas:Link id="cas:lists" rdf:type="owl:ObjectProperty">
+            <cas:specializes>cas:linksTarget</cas:specializes>
+            <cas:enumeratedEndpoint>cas:Entity</cas:enumeratedEndpoint>
+            <cas:enumeratedEndpoint>cas:Relationship</cas:enumeratedEndpoint>
+            <cas:enumeratedEndpoint>cas:Organizer</cas:enumeratedEndpoint>
+            <dcterms:title>lists</dcterms:title>
+            <skos:definition>Lists an entity, a relationship or a subordinated organizer.</skos:definition>
+        </cas:Link>
+
+        <!-- Domain-Specific Enumerations -->
+        <cas:Enumeration id="WheelPosition-Value" rdf:type="owl:Class">
+            <cas:specializes>cas:Enumeration</cas:specializes>
+            <dcterms:title xml:lang="en">Wheel Position</dcterms:title>
+            <skos:definition xml:lang="en">Enumerated values for the wheel position of a car.</skos:definition>
+            <dcterms:modified>2020-03-26T22:59:00+02:00</dcterms:modified>
+            <xs:simpleType>
+                <xs:restriction base="xs:string"/>
+            </xs:simpleType>
+            <cas:enumeratedValue id="frontRight">
+                <dcterms:title xml:lang="en">front right</dcterms:title>
+            </cas:enumeratedValue>
+            <cas:enumeratedValue id="frontLeft">
+                <dcterms:title xml:lang="en">front left</dcterms:title>
+            </cas:enumeratedValue>
+            <cas:enumeratedValue id="backRight">
+                <dcterms:title xml:lang="en">back right</dcterms:title>
+            </cas:enumeratedValue>
+            <cas:enumeratedValue id="backLeft">
+                <dcterms:title xml:lang="en">fback left</dcterms:title>
+            </cas:enumeratedValue>
+        </cas:Enumeration>
+
+        <!-- Domain-Specific Property Classes -->
+        <cas:Property id="TireDimension" cas:hasClass="owl:DatatypeProperty">
+            <cas:specializes>cas:Property</cas:specializes>
+            <dcterms:title xml:lang="en">tire dimension</dcterms:title>
+            <skos:definition xml:lang="en">The dimension (size) of a tire.</skos:definition>
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:minOccurs>0</xs:minOccurs>
+                    <xs:maxOccurs>1</xs:maxOccurs>
+                </xs:restriction>
+            </xs:simpleType>
+        </cas:Property>
+        
+        <!-- Domain-Specific Link Classes -->
+        <cas:Link id="atPosition" rdf:type="owl:ObjectProperty">
+            <cas:specializes>cas:linksTarget</cas:specializes>
+            <dcterms:title xml:lang="en">at position</dcterms:title>
+            <skos:definition xml:lang="en">Enumerated value for the position of a wheel on a car.</skos:definition>
+            <dcterms:modified>2020-03-26T22:59:00+02:00</dcterms:modified>
+            <cas:enumeratedEndpoint>WheelPosition-Value</cas:enumeratedEndpoint>
+            <xs:minOccurs>1</xs:minOccurs>
+            <xs:maxOccurs>1</xs:maxOccurs>
+        </cas:Link>
+
+        <!-- Domain-Specific Entity Classes -->
+        <cas:Entity id="Vehicle" rdf:type="owl:Class">
+            <cas:specializes>FMC:Actor</cas:specializes>
+            <dcterms:title xml:lang="en">Vehicle</dcterms:title>
+            <dcterms:description xml:lang="en">
+                <p>A 'Vehicle' is a ...</p>
+            </dcterms:description>
+            <cas:enumeratedProperty>cas:Category</cas:enumeratedProperty>
+        </cas:Entity>
+
+        <cas:Entity id="Car" rdf:type="owl:Class">
+            <cas:specializes>Vehicle</cas:specializes>
+            <dcterms:title xml:lang="en">Car</dcterms:title>
+            <dcterms:description xml:lang="en">
+                <p>A 'Car' is...</p>
+            </dcterms:description>
+            <cas:enumeratedProperty>cas:Category</cas:enumeratedProperty>
+        </cas:Entity>
+
+        <cas:Entity id="Wheel" rdf:type="owl:Class">
+            <cas:specializes>FMC:Actor</cas:specializes>
+            <dcterms:title xml:lang="en">Wheel</dcterms:title>
+            <dcterms:description xml:lang="en">
+                <p> A 'Wheel' is... </p>
+			</dcterms:description>
+            <cas:enumeratedProperty>TireDimension</cas:enumeratedProperty>
+        </cas:Entity>
+		
+        <!-- Domain-Specific Relationship Classes -->
+        <cas:Relationship id="hasWheel" rdf:type="owl:Class">
+            <cas:specializes>cas:hasPart</cas:specializes>
+            <dcterms:title xml:lang="en">has wheel</dcterms:title>
+            <dcterms:description xml:lang="en">A [[Car]] has a [[Wheel]].</dcterms:description>
+            <cas:enumeratedTargetLink>atPosition</cas:enumeratedTargetLink> <!-- we also could create subclasses of 'hasWheel' for each position -->
+            <cas:enumeratedSourceLink>hasWheel-toCar</cas:enumeratedSourceLink>
+            <cas:enumeratedTargetLink>hasWheel-toWheel</cas:enumeratedTargetLink>
+        </cas:Relationship>
+
+        <cas:Link id="hasWheel-toCar" rdf:type="owl:ObjectProperty">
+            <cas:specializes>cas:linksSource</cas:specializes>
+            <dcterms:title>is wheel of</dcterms:title>
+            <skos:definition>Connects the car</skos:definition>
+            <cas:enumeratedEndpoint>Vehicle</cas:enumeratedEndpoint>
+            <xs:minOccurs>1</xs:minOccurs>
+            <xs:maxOccurs>1</xs:maxOccurs>
+        </cas:Link>
+
+        <cas:Link id="hasWheel-toWheel" rdf:type="owl:ObjectProperty">
+            <cas:specializes>cas:linksTarget</cas:specializes>
+            <dcterms:title>has wheel</dcterms:title>
+            <skos:definition>Connects the wheel</skos:definition>
+            <cas:enumeratedEndpoint>Wheel</cas:enumeratedEndpoint>
+            <xs:minOccurs>1</xs:minOccurs>
+            <xs:maxOccurs>1</xs:maxOccurs>
+        </cas:Link>
+		
+        <!-- Instance Data: Car Model -->
+        <cas:anEntity id="Car-1a8016e2872e78ecadc50feddc00029b" rdf:type="Car">
+            <dcterms:modified>2020-10-17T10:00:00+01:00</dcterms:modified>
+            <dcterms:title>Fiat_600E_2023</dcterms:title>
+            <dcterms:description>
+                <p>An iconic electric car ideal for the city.</p>
+            </dcterms:description>
+        </cas:anEntity>
+
+        <cas:anEntity id="Wheel-0Z7916e2872e78ecadc50feddc00918a" rdf:type="Wheel">
+            <dcterms:modified>2020-10-17T10:00:00+01:00</dcterms:modified>
+            <dcterms:title>Pirelli_215/65R18</dcterms:title>
+			<cas:aProperty rdf:type="TireDimension">
+				<value>215/65R18</value>
+			</cas:aProperty>
+        </cas:anEntity>
+
+        <cas:aRelationship id="hasWheel-50feddc00029b1a8016e2872e78ecadc" rdf:type="hasWheel">
+            <dcterms:modified>2020-10-17T10:00:00+01:00</dcterms:modified>
+			<cas:aTargetLink rdf:type="atPosition" >
+				<idRef>frontRight</idRef>
+			</cas:aTargetLink>
+            <cas:aSourceLink rdf:type="hasWheel-toCar">
+                <idRef>Car-1a8016e2872e78ecadc50feddc00029b</idRef>
+            </cas:aSourceLink>
+            <cas:aTargetLink rdf:type="hasWheel-toWheel">
+                <idRef>Wheel-0Z7916e2872e78ecadc50feddc00918a</idRef>
+            </cas:aTargetLink>
+        </cas:aRelationship>
+
+        <cas:aRelationship id="hasWheel-50fedd872e78ecadcc00029b1a8016e2" rdf:type="hasWheel">
+            <dcterms:modified>2020-10-17T10:00:00+01:00</dcterms:modified>
+			<cas:aTargetLink rdf:type="atPosition" >
+				<idRef>frontLeft</idRef>
+			</cas:aTargetLink>
+            <cas:aSourceLink rdf:type="hasWheel-toCar">
+                <idRef>Car-1a8016e2872e78ecadc50feddc00029b</idRef>
+            </cas:aSourceLink>
+            <cas:aTargetLink rdf:type="hasWheel-toWheel">
+                <idRef>Wheel-0Z7916e2872e78ecadc50feddc00918a</idRef>
+            </cas:aTargetLink>
+        </cas:aRelationship>
+
+        <cas:aRelationship id="hasWheel-50fed2e78ecadcdc00029b1a8016e287" rdf:type="hasWheel">
+            <dcterms:modified>2020-10-17T10:00:00+01:00</dcterms:modified>
+			<cas:aTargetLink rdf:type="atPosition" >
+				<idRef>backRight</idRef>
+			</cas:aTargetLink>
+            <cas:aSourceLink rdf:type="hasWheel-toCar">
+                <idRef>Car-1a8016e2872e78ecadc50feddc00029b</idRef>
+            </cas:aSourceLink>
+            <cas:aTargetLink rdf:type="hasWheel-toWheel">
+                <idRef>Wheel-0Z7916e2872e78ecadc50feddc00918a</idRef>
+            </cas:aTargetLink>
+        </cas:aRelationship>
+
+        <cas:aRelationship id="hasWheel-50feddc0002e2872e78ecadc9b1a8016" rdf:type="hasWheel">
+            <dcterms:modified>2020-10-17T10:00:00+01:00</dcterms:modified>
+			<cas:aTargetLink rdf:type="atPosition" >
+				<idRef>backLeft</idRef>
+			</cas:aTargetLink>
+            <cas:aSourceLink rdf:type="hasWheel-toCar">
+                <idRef>Car-1a8016e2872e78ecadc50feddc00029b</idRef>
+            </cas:aSourceLink>
+            <cas:aTargetLink rdf:type="hasWheel-toWheel">
+                <idRef>Wheel-0Z7916e2872e78ecadc50feddc00918a</idRef>
+            </cas:aTargetLink>
+        </cas:aRelationship>
+
+        <!-- Instance Data: Outline -->
+        <cas:anEntity id="Root" cas:hasClass="cas:Root">
+            <dcterms:modified>2026-01-17T22:38:20.041Z</dcterms:modified>
+            <dcterms:title xml:lang="en">Package Root</dcterms:title>
+            <dcterms:description xml:lang="en">... anchoring all outlines of this graph (package)</dcterms:description>
+            <cas:aTargetLink cas:hasClass="cas:lists">
+                <idRef>Car_with_four_wheels</idRef>
+            </cas:aTargetLink>
+        </cas:anEntity>
+        <cas:anEntity id="Car_with_four_wheels" cas:hasClass="cas:Outline">
+            <dcterms:modified>2026-01-17T22:38:20.041Z</dcterms:modified>
+            <dcterms:title xml:lang="en">BoM of a car with four wheels</dcterms:title>
+            <dcterms:description xml:lang="en">A car having for wheels, where four 'has' relationships indicating the respective positions are defined.</dcterms:description>
+            <cas:aTargetLink cas:hasClass="cas:lists">
+                <idRef>Car</idRef>
+            </cas:aTargetLink>
+            <cas:aTargetLink cas:hasClass="cas:lists">
+                <idRef>Wheel</idRef>
+            </cas:aTargetLink>
+        </cas:anEntity>
+
+    </graph>
+</cas:aPackage>

@@ -1,0 +1,567 @@
+
+@prefix cas: <https://product-information-graph.org/ontology/2026-05-08/metamodel#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <https://www.w3.org/TR/skos-reference/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xs: <http://www.w3.org/2001/XMLSchema#> .
+@prefix FMC: <http://fmc-modeling.org#> .
+@prefix IREB: <https://cpre.ireb.org/en/downloads-and-resources/glossary#> .
+@prefix ReqIF: <https://www.prostep.org/fileadmin/downloads/PSI_ImplementationGuide_ReqIF_V1-7.pdf#> .
+@prefix oslc_rm: <http://open-services.net/ns/rm#> .
+@prefix SpecIF: <https://specif.de/v1.2/schema#> .
+@prefix o: <http://product-information-graph.org/ontology/application#> .
+@prefix d: <http://product-information-graph.org/example#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+d:ACP-Very-Simple-Model-FMC-with-Requirements_ontology
+	a owl:Ontology ;
+	dcterms:contributor "cecilia.tonelli@collins.com" ,
+		"oskar.dungern@gfse.org" ;
+	dcterms:license "https://creativecommons.org/licenses/by-sa/4.0/" ;
+	owl:versionInfo "2026-07-03" .
+
+d:ACP-Very-Simple-Model-FMC-with-Requirements
+	a cas:Package ;
+	rdfs:label "Very Simple Car Model" ;
+	dcterms:modified "2026-01-17T22:38:19.595Z"^^xs:dateTime .
+
+#################################################################
+# Graph Items
+#################################################################
+
+cas:Package
+	rdfs:subClassOf cas:Entity ;
+	rdfs:label "Package" ;
+	skos:definition "A CASCaRA meta-model item used for packages comprising entities, relationships and potentially nested packages, both classes and instances." .
+
+cas:Package_shape
+	a sh:NodeShape ;
+	sh:targetClass cas:Package ;
+	sh:or ( [ sh:path rdfs:label ; sh:minCount 1 ] [ sh:path rdfs:comment ; sh:minCount 1 ] ) .
+
+cas:Organizer
+	rdfs:subClassOf cas:Entity ;
+	rdfs:label "Organizer" ;
+	skos:definition "An element organizing model elements. An example is a list of requirements or a diagram using a certain notation." .
+
+cas:Organizer_shape
+	a sh:NodeShape ;
+	sh:targetClass cas:Organizer ;
+	sh:or ( [ sh:path rdfs:label ; sh:minCount 1 ] [ sh:path rdfs:comment ; sh:minCount 1 ] ) ;
+	sh:property cas:Category_shape .
+
+cas:Root
+	rdfs:subClassOf cas:Organizer ;
+	rdfs:label "Hierarchy Root" ;
+	skos:definition "A subclass of CASCaRA organizer serving as a root for hierarchically organized graph elements." .
+
+cas:Root_shape
+	a sh:NodeShape ;
+	sh:targetClass cas:Root ;
+	sh:or ( [ sh:path rdfs:label ; sh:minCount 1 ] [ sh:path rdfs:comment ; sh:minCount 1 ] ) ;
+	sh:property cas:lists_shape .
+
+cas:Outline
+	rdfs:subClassOf cas:Organizer ;
+	rdfs:label "Outline" ;
+	skos:definition "A subclass of CASCaRA organizer comprising all information items of a human-readable document. As usual, the outline is hierarchically organized." .
+
+cas:Outline_shape
+	a sh:NodeShape ;
+	sh:targetClass cas:Outline ;
+	sh:or ( [ sh:path rdfs:label ; sh:minCount 1 ] [ sh:path rdfs:comment ; sh:minCount 1 ] ) ;
+	sh:property cas:Category_shape ;
+	sh:property cas:lists_shape .
+
+FMC:Actor
+	rdfs:subClassOf cas:Entity ;
+	rdfs:label "Actor"@en ,
+		"Akteur"@de ,
+		"Acteur"@fr ;
+	rdfs:comment "<p>An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role.</p><p>The particular use or original type is specified with a [[dcterms:type]] property of the 'FMC:Actor'. A value of that property should be an ontology-term, such as [[bpmn:processStep]].</p>"@en ,
+		"<p>Ein 'Akteur' ist ein fundamentaler Modellelementtyp, der eine aktive Entität darstellt, sei es eine Aktivität, ein Prozessschritt, eine Funktion, eine Systemkomponente oder eine Rolle.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Actor' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[bpmn:timer]].</p>"@de ,
+		"<p>Un 'Acteur' est un type d'élément de modèle fondamental représentant une entité active, qu'il s'agisse d'une activité, d'une étape de processus, d'une fonction, d'un composant de système ou d'un rôle.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:Actor'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[bpmn:timer]].</p>"@fr ;
+	cas:icon "\"□\"" .
+
+FMC:Actor_shape
+	a sh:NodeShape ;
+	sh:targetClass FMC:Actor ;
+	sh:or ( [ sh:path rdfs:label ; sh:minCount 1 ] [ sh:path rdfs:comment ; sh:minCount 1 ] ) ;
+	sh:property cas:Category_shape .
+
+cas:hasPart
+	rdfs:subClassOf cas:Relationship ;
+	rdfs:label "has part"@en ;
+	rdfs:comment "A [[Component]] has a [[Component]]."@en .
+
+cas:hasPart_shape
+	a sh:NodeShape ;
+	sh:targetClass cas:hasPart ;
+	sh:property cas:linksSource_shape ;
+	sh:property cas:linksTarget_shape .
+
+cas:Category
+	rdfs:subPropertyOf cas:Property ;
+	rdfs:label "has category" ;
+	skos:definition "Specifies a category for an element (entity, relationship or organizer)." .
+
+cas:Category_shape
+	a sh:PropertyShape ;
+	sh:path cas:Category ;
+	sh:datatype xs:string ;
+	sh:minCount 0 ;
+	sh:maxCount 1 ;
+	sh:maxLength 32 .
+
+cas:linksSource
+	rdfs:subPropertyOf cas:Link ;
+	rdfs:label "to source" ;
+	skos:definition "Connects the source of a reified relationship." ;
+	rdfs:range [ owl:unionOf ( cas:Entity cas:Relationship ) ] .
+
+cas:linksSource_shape
+	a sh:PropertyShape ;
+	sh:path cas:linksSource ;
+	sh:or ( [ sh:class cas:Entity ] [ sh:class cas:Relationship ] ) .
+
+cas:linksTarget
+	rdfs:subPropertyOf cas:Link ;
+	rdfs:label "to target" ;
+	skos:definition "Connects the target of a reified relationship or an organizer." ;
+	rdfs:range [ owl:unionOf ( cas:Entity cas:Relationship ) ] .
+
+cas:linksTarget_shape
+	a sh:PropertyShape ;
+	sh:path cas:linksTarget ;
+	sh:or ( [ sh:class cas:Entity ] [ sh:class cas:Relationship ] ) .
+
+cas:lists
+	rdfs:subPropertyOf cas:linksTarget ;
+	rdfs:label "lists" ;
+	skos:definition "Lists an entity, a relationship or a subordinated organizer." ;
+	rdfs:range [ owl:unionOf ( cas:Entity cas:Relationship cas:Organizer ) ] .
+
+cas:lists_shape
+	a sh:PropertyShape ;
+	sh:path cas:lists ;
+	sh:or ( [ sh:class cas:Entity ] [ sh:class cas:Relationship ] [ sh:class cas:Organizer ] ) .
+
+o:WheelPosition-Value
+	rdfs:subClassOf cas:Enumeration ;
+	rdfs:label "Wheel Position"@en ;
+	skos:definition "Enumerated values for the wheel position of a car."@en ;
+	dcterms:modified "2020-03-26T22:59:00+02:00"^^xs:dateTime ;
+	cas:enumeratedValue o:frontRight ,
+		o:frontLeft ,
+		o:backRight ,
+		o:backLeft .
+
+o:TireDimension
+	rdfs:subPropertyOf cas:Property ;
+	rdfs:label "tire dimension"@en ;
+	skos:definition "The dimension (size) of a tire."@en .
+
+o:TireDimension_shape
+	a sh:PropertyShape ;
+	sh:path o:TireDimension ;
+	sh:datatype xs:string ;
+	sh:minCount 0 ;
+	sh:maxCount 1 .
+
+o:atPosition
+	rdfs:subPropertyOf cas:linksTarget ;
+	rdfs:label "at position"@en ;
+	skos:definition "Enumerated value for the position of a wheel on a car."@en ;
+	dcterms:modified "2020-03-26T22:59:00+02:00"^^xs:dateTime ;
+	rdfs:range o:WheelPosition-Value .
+
+o:atPosition_shape
+	a sh:PropertyShape ;
+	sh:path o:atPosition ;
+	sh:class o:WheelPosition-Value ;
+	sh:minCount 1 ;
+	sh:maxCount 1 .
+
+o:Vehicle
+	rdfs:subClassOf FMC:Actor ;
+	rdfs:label "Vehicle"@en ;
+	rdfs:comment "<p>A 'Vehicle' is a ...</p>"@en .
+
+o:Vehicle_shape
+	a sh:NodeShape ;
+	sh:targetClass o:Vehicle ;
+	sh:or ( [ sh:path rdfs:label ; sh:minCount 1 ] [ sh:path rdfs:comment ; sh:minCount 1 ] ) ;
+	sh:property cas:Category_shape .
+
+o:Car
+	rdfs:subClassOf o:Vehicle ;
+	rdfs:label "Car"@en ;
+	rdfs:comment "<p>A 'Car' is...</p>"@en .
+
+o:Car_shape
+	a sh:NodeShape ;
+	sh:targetClass o:Car ;
+	sh:or ( [ sh:path rdfs:label ; sh:minCount 1 ] [ sh:path rdfs:comment ; sh:minCount 1 ] ) ;
+	sh:property cas:Category_shape .
+
+o:Wheel
+	rdfs:subClassOf FMC:Actor ;
+	rdfs:label "Wheel"@en ;
+	rdfs:comment "<p> A 'Wheel' is... </p>"@en .
+
+o:Wheel_shape
+	a sh:NodeShape ;
+	sh:targetClass o:Wheel ;
+	sh:or ( [ sh:path rdfs:label ; sh:minCount 1 ] [ sh:path rdfs:comment ; sh:minCount 1 ] ) ;
+	sh:property o:TireDimension_shape .
+
+o:hasWheel
+	rdfs:subClassOf cas:hasPart ;
+	rdfs:label "has wheel"@en ;
+	rdfs:comment "A [[Car]] has a [[Wheel]]."@en .
+
+o:hasWheel_shape
+	a sh:NodeShape ;
+	sh:targetClass o:hasWheel ;
+	sh:property o:hasWheel-toCar_shape ;
+	sh:property o:atPosition_shape ;
+	sh:property o:hasWheel-toWheel_shape .
+
+o:hasWheel-toCar
+	rdfs:subPropertyOf cas:linksSource ;
+	rdfs:label "is wheel of" ;
+	skos:definition "Connects the car" ;
+	rdfs:range o:Vehicle .
+
+o:hasWheel-toCar_shape
+	a sh:PropertyShape ;
+	sh:path o:hasWheel-toCar ;
+	sh:class o:Vehicle ;
+	sh:minCount 1 ;
+	sh:maxCount 1 .
+
+o:hasWheel-toWheel
+	rdfs:subPropertyOf cas:linksTarget ;
+	rdfs:label "has wheel" ;
+	skos:definition "Connects the wheel" ;
+	rdfs:range o:Wheel .
+
+o:hasWheel-toWheel_shape
+	a sh:PropertyShape ;
+	sh:path o:hasWheel-toWheel ;
+	sh:class o:Wheel ;
+	sh:minCount 1 ;
+	sh:maxCount 1 .
+
+d:Car-1a8016e2872e78ecadc50feddc00029b
+	a o:Car ;
+	rdfs:label "Fiat_600E_2023" ;
+	rdfs:comment "<p>An iconic electric car ideal for the city.</p>" ;
+	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime .
+
+d:Wheel-0Z7916e2872e78ecadc50feddc00918a
+	a o:Wheel ;
+	rdfs:label "Pirelli_215/65R18" ;
+	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
+	o:TireDimension "215/65R18" .
+
+d:hasWheel-50feddc00029b1a8016e2872e78ecadc
+	a o:hasWheel ;
+	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
+	o:hasWheel-toCar d:Car-1a8016e2872e78ecadc50feddc00029b ;
+	o:atPosition o:frontRight ;
+	o:hasWheel-toWheel d:Wheel-0Z7916e2872e78ecadc50feddc00918a .
+
+d:hasWheel-50fedd872e78ecadcc00029b1a8016e2
+	a o:hasWheel ;
+	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
+	o:hasWheel-toCar d:Car-1a8016e2872e78ecadc50feddc00029b ;
+	o:atPosition o:frontLeft ;
+	o:hasWheel-toWheel d:Wheel-0Z7916e2872e78ecadc50feddc00918a .
+
+d:hasWheel-50fed2e78ecadcdc00029b1a8016e287
+	a o:hasWheel ;
+	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
+	o:hasWheel-toCar d:Car-1a8016e2872e78ecadc50feddc00029b ;
+	o:atPosition o:backRight ;
+	o:hasWheel-toWheel d:Wheel-0Z7916e2872e78ecadc50feddc00918a .
+
+d:hasWheel-50feddc0002e2872e78ecadc9b1a8016
+	a o:hasWheel ;
+	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
+	o:hasWheel-toCar d:Car-1a8016e2872e78ecadc50feddc00029b ;
+	o:atPosition o:backLeft ;
+	o:hasWheel-toWheel d:Wheel-0Z7916e2872e78ecadc50feddc00918a .
+
+d:Root
+	a cas:Root ;
+	rdfs:label "Package Root"@en ;
+	rdfs:comment "... anchoring all outlines of this graph (package)"@en ;
+	dcterms:modified "2026-01-17T22:38:20.041Z"^^xs:dateTime ;
+	cas:lists d:Car_with_four_wheels .
+
+d:Car_with_four_wheels
+	a cas:Outline ;
+	rdfs:label "BoM of a car with four wheels"@en ;
+	rdfs:comment "A car having for wheels, where four 'has' relationships indicating the respective positions are defined."@en ;
+	dcterms:modified "2026-01-17T22:38:20.041Z"^^xs:dateTime ;
+	cas:lists d:Car ,
+		d:Wheel .
+
+
+#################################################################
+# Metamodel Class Shapes
+#################################################################
+
+cas:Property_class_shape
+	a sh:NodeShape ;
+	sh:targetSubjectsOf rdfs:subPropertyOf ;
+	sh:targetClass owl:DatatypeProperty ;
+	sh:closed "true" ;
+	sh:ignoredProperties ( rdf:type ) ;
+	sh:or ( [ sh:path rdf:type ; sh:hasValue owl:DatatypeProperty ] [ sh:path rdfs:subPropertyOf ; sh:minCount 1 ] ) ;
+	sh:property [ sh:path rdfs:label ; sh:minCount 1 ; sh:maxCount 1 ] ;
+	sh:property [ sh:path rdfs:comment ; sh:maxCount 1 ] ;
+	sh:property [ sh:path skos:definition ; sh:maxCount 1 ] ;
+	sh:property [ sh:path cas:revision ; sh:maxCount 1 ; sh:datatype xs:string ] ;
+	sh:property [ sh:path cas:priorRevision ] ;
+	sh:property [ sh:path dcterms:modified ; sh:maxCount 1 ; sh:datatype xs:dateTime ] ;
+	sh:property [ sh:path dcterms:creator ; sh:maxCount 1 ] ;
+	sh:property [ sh:path sh:defaultValue ; sh:maxCount 1 ] ;
+	sh:property [ sh:path cas:composes ] ;
+	sh:property [ sh:path cas:itemType ; sh:maxCount 1 ] .
+
+cas:Property_shape_shape
+	a sh:NodeShape ;
+	sh:targetSubjectsOf rdfs:subPropertyOf ;
+	sh:targetClass owl:DatatypeProperty ;
+	sh:sparql [
+		sh:message "Property class must have a corresponding PropertyShape with at least sh:datatype defined" ;
+		sh:select """
+			SELECT $this
+			WHERE {
+				FILTER NOT EXISTS {
+					?shape a sh:PropertyShape ;
+						sh:path $this ;
+						sh:datatype ?dt .
+				}
+			}
+		"""
+	] .
+
+cas:Link_class_shape
+	a sh:NodeShape ;
+	sh:targetSubjectsOf rdfs:subPropertyOf ;
+	sh:targetClass owl:ObjectProperty ;
+	sh:closed "true" ;
+	sh:ignoredProperties ( rdf:type ) ;
+	sh:or ( [ sh:path rdf:type ; sh:hasValue owl:ObjectProperty ] [ sh:path rdfs:subPropertyOf ; sh:minCount 1 ] ) ;
+	sh:property [ sh:path rdfs:label ; sh:minCount 1 ; sh:maxCount 1 ] ;
+	sh:property [ sh:path rdfs:range ; sh:minCount 1 ] ;
+	sh:property [ sh:path rdfs:comment ; sh:maxCount 1 ] ;
+	sh:property [ sh:path skos:definition ; sh:maxCount 1 ] ;
+	sh:property [ sh:path cas:revision ; sh:maxCount 1 ; sh:datatype xs:string ] ;
+	sh:property [ sh:path cas:priorRevision ] ;
+	sh:property [ sh:path dcterms:modified ; sh:maxCount 1 ; sh:datatype xs:dateTime ] ;
+	sh:property [ sh:path dcterms:creator ; sh:maxCount 1 ] ;
+	sh:property [ sh:path cas:itemType ; sh:maxCount 1 ] .
+
+cas:Link_shape_requirement_shape
+	a sh:NodeShape ;
+	sh:targetSubjectsOf rdfs:subPropertyOf ;
+	sh:targetClass owl:ObjectProperty ;
+	sh:sparql [
+		sh:message "Link class must have a corresponding PropertyShape with at least sh:class or sh:or constraint defined" ;
+		sh:select """
+			SELECT $this
+			WHERE {
+				FILTER NOT EXISTS {
+					?shape a sh:PropertyShape ;
+						sh:path $this .
+					FILTER ( EXISTS { ?shape sh:class ?c } || EXISTS { ?shape sh:or ?o } )
+				}
+			}
+		"""
+	] .
+
+cas:Enumeration_class_shape
+	a sh:NodeShape ;
+	sh:targetSubjectsOf rdfs:subClassOf ;
+	sh:targetClass owl:Class ;
+	sh:closed "true" ;
+	sh:ignoredProperties ( rdf:type ) ;
+	sh:or ( [ sh:path rdf:type ; sh:hasValue owl:Class ] [ sh:path rdfs:subClassOf ; sh:minCount 1 ] ) ;
+	sh:property [ sh:path rdfs:label ; sh:minCount 1 ; sh:maxCount 1 ] ;
+	sh:property [ sh:path cas:enumeratedValue ; sh:minCount 1 ] ;
+	sh:property [ sh:path rdfs:comment ; sh:maxCount 1 ] ;
+	sh:property [ sh:path skos:definition ; sh:maxCount 1 ] ;
+	sh:property [ sh:path cas:revision ; sh:maxCount 1 ; sh:datatype xs:string ] ;
+	sh:property [ sh:path cas:priorRevision ] ;
+	sh:property [ sh:path dcterms:modified ; sh:maxCount 1 ; sh:datatype xs:dateTime ] ;
+	sh:property [ sh:path dcterms:creator ; sh:maxCount 1 ] ;
+	sh:property [ sh:path cas:itemType ; sh:maxCount 1 ] .
+
+cas:Enumeration_shape_shape
+	a sh:NodeShape ;
+	sh:targetSubjectsOf rdfs:subClassOf ;
+	sh:targetClass owl:Class ;
+	sh:sparql [
+		sh:message "Enumeration class must have at least one valid enumeratedValue" ;
+		sh:select """
+			SELECT $this
+			WHERE {
+				FILTER NOT EXISTS {
+					$this cas:enumeratedValue ?value .
+				}
+			}
+		"""
+	] .
+
+cas:Entity_class_shape
+	a sh:NodeShape ;
+	sh:targetSubjectsOf rdfs:subClassOf ;
+	sh:targetClass cas:Entity ;
+	sh:closed "true" ;
+	sh:ignoredProperties ( rdf:type ) ;
+	sh:or ( [ sh:path rdf:type ; sh:hasValue owl:Class ] [ sh:path rdfs:subClassOf ; sh:minCount 1 ] ) ;
+	sh:property [ sh:path rdfs:label ; sh:minCount 1 ; sh:maxCount 1 ] ;
+	sh:property [ sh:path rdfs:comment ; sh:maxCount 1 ] ;
+	sh:property [ sh:path skos:definition ; sh:maxCount 1 ] ;
+	sh:property [ sh:path cas:revision ; sh:maxCount 1 ; sh:datatype xs:string ] ;
+	sh:property [ sh:path cas:priorRevision ] ;
+	sh:property [ sh:path dcterms:modified ; sh:maxCount 1 ; sh:datatype xs:dateTime ] ;
+	sh:property [ sh:path dcterms:creator ; sh:maxCount 1 ] ;
+	sh:property [ sh:path cas:icon ; sh:maxCount 1 ] ;
+	sh:property [ sh:path cas:itemType ; sh:maxCount 1 ] .
+
+cas:Entity_shape_shape
+	a sh:NodeShape ;
+	sh:targetSubjectsOf rdfs:subClassOf ;
+	sh:targetClass cas:Entity ;
+	sh:sparql [
+		sh:message "Entity class should have a corresponding NodeShape with sh:targetClass constraint" ;
+		sh:select """
+			SELECT $this
+			WHERE {
+				FILTER NOT EXISTS {
+					?shape a sh:NodeShape ;
+						sh:targetClass $this .
+				}
+			}
+		"""
+	] ;
+	sh:sparql [
+		sh:message "Entity shape should have sh:property for each enumeratedProperty defined in the class" ;
+		sh:select """
+			SELECT $this ?prop
+			WHERE {
+				$this cas:enumeratedProperty ?prop .
+				FILTER NOT EXISTS {
+					?shape a sh:NodeShape ;
+						sh:targetClass $this ;
+						sh:property ?propShape .
+					?propShape sh:path ?prop .
+				}
+			}
+		"""
+	] ;
+	sh:sparql [
+		sh:message "Entity shape should have sh:property for each enumeratedTargetLink defined in the class" ;
+		sh:select """
+			SELECT $this ?link
+			WHERE {
+				$this cas:enumeratedTargetLink ?link .
+				FILTER NOT EXISTS {
+					?shape a sh:NodeShape ;
+						sh:targetClass $this ;
+						sh:property ?linkShape .
+					?linkShape sh:path ?link .
+				}
+			}
+		"""
+	] .
+
+cas:Relationship_class_shape
+	a sh:NodeShape ;
+	sh:targetSubjectsOf rdfs:subClassOf ;
+	sh:targetClass cas:Relationship ;
+	sh:closed "true" ;
+	sh:ignoredProperties ( rdf:type ) ;
+	sh:or ( [ sh:path rdf:type ; sh:hasValue owl:Class ] [ sh:path rdfs:subClassOf ; sh:minCount 1 ] ) ;
+	sh:property [ sh:path rdfs:label ; sh:minCount 1 ; sh:maxCount 1 ] ;
+	sh:property [ sh:path rdfs:comment ; sh:maxCount 1 ] ;
+	sh:property [ sh:path skos:definition ; sh:maxCount 1 ] ;
+	sh:property [ sh:path cas:revision ; sh:maxCount 1 ; sh:datatype xs:string ] ;
+	sh:property [ sh:path cas:priorRevision ] ;
+	sh:property [ sh:path dcterms:modified ; sh:maxCount 1 ; sh:datatype xs:dateTime ] ;
+	sh:property [ sh:path dcterms:creator ; sh:maxCount 1 ] ;
+	sh:property [ sh:path cas:icon ; sh:maxCount 1 ] ;
+	sh:property [ sh:path cas:itemType ; sh:maxCount 1 ] .
+
+cas:Relationship_shape_shape
+	a sh:NodeShape ;
+	sh:targetSubjectsOf rdfs:subClassOf ;
+	sh:targetClass cas:Relationship ;
+	sh:sparql [
+		sh:message "Relationship class should have a corresponding NodeShape with sh:targetClass constraint" ;
+		sh:select """
+			SELECT $this
+			WHERE {
+				FILTER NOT EXISTS {
+					?shape a sh:NodeShape ;
+						sh:targetClass $this .
+				}
+			}
+		"""
+	] ;
+	sh:sparql [
+		sh:message "Relationship shape should have sh:property for each enumeratedProperty defined in the class" ;
+		sh:select """
+			SELECT $this ?prop
+			WHERE {
+				$this cas:enumeratedProperty ?prop .
+				FILTER NOT EXISTS {
+					?shape a sh:NodeShape ;
+						sh:targetClass $this ;
+						sh:property ?propShape .
+					?propShape sh:path ?prop .
+				}
+			}
+		"""
+	] ;
+	sh:sparql [
+		sh:message "Relationship shape should have sh:property for each enumeratedSourceLink defined in the class" ;
+		sh:select """
+			SELECT $this ?link
+			WHERE {
+				$this cas:enumeratedSourceLink ?link .
+				FILTER NOT EXISTS {
+					?shape a sh:NodeShape ;
+						sh:targetClass $this ;
+						sh:property ?linkShape .
+					?linkShape sh:path ?link .
+				}
+			}
+		"""
+	] ;
+	sh:sparql [
+		sh:message "Relationship shape should have sh:property for each enumeratedTargetLink defined in the class" ;
+		sh:select """
+			SELECT $this ?link
+			WHERE {
+				$this cas:enumeratedTargetLink ?link .
+				FILTER NOT EXISTS {
+					?shape a sh:NodeShape ;
+						sh:targetClass $this ;
+						sh:property ?linkShape .
+					?linkShape sh:path ?link .
+				}
+			}
+		"""
+	] .
+
