@@ -8,11 +8,11 @@
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:xs="http://www.w3.org/2001/XMLSchema#"
     xmlns:FMC="http://fmc-modeling.org#"
-    id="Very_Simple_Car_Model"
+    id="Very_Simple_Car_Model-with-direct-link"
     rdf:type="cas:Package">
 
-    <dcterms:title>Very Simple Car Model</dcterms:title>
-	<dcterms:description>An example where a car has identical wheels at four defined positions. The wheels are attached with a reified relationship.</dcterms:description>
+    <dcterms:title>Very Simple Car Model-with-direct-link</dcterms:title>
+	<dcterms:description>An example where a car has identical wheels at four defined positions. The wheels are related with a direct link.</dcterms:description>
     <dcterms:modified>2026-01-17T22:38:19.595Z</dcterms:modified>
 	<cas:aProperty rdf:type="dcterms:contributor">
 		<value>cecilia.tonelli@collins.com</value>
@@ -126,29 +126,6 @@
             <skos:definition>Lists an entity, a relationship or a subordinated organizer.</skos:definition>
         </cas:Link>
 
-        <!-- Domain-Specific Enumerations -->
-        <cas:Enumeration id="WheelPosition-Value" rdf:type="owl:Class">
-            <cas:specializes>cas:Enumeration</cas:specializes>
-            <dcterms:title xml:lang="en">Wheel Position</dcterms:title>
-            <skos:definition xml:lang="en">Enumerated values for the wheel position of a car.</skos:definition>
-            <dcterms:modified>2020-03-26T22:59:00+02:00</dcterms:modified>
-            <xs:simpleType>
-                <xs:restriction base="xs:string"/>
-            </xs:simpleType>
-            <cas:enumeratedValue id="frontRight">
-                <dcterms:title xml:lang="en">front right</dcterms:title>
-            </cas:enumeratedValue>
-            <cas:enumeratedValue id="frontLeft">
-                <dcterms:title xml:lang="en">front left</dcterms:title>
-            </cas:enumeratedValue>
-            <cas:enumeratedValue id="backRight">
-                <dcterms:title xml:lang="en">back right</dcterms:title>
-            </cas:enumeratedValue>
-            <cas:enumeratedValue id="backLeft">
-                <dcterms:title xml:lang="en">fback left</dcterms:title>
-            </cas:enumeratedValue>
-        </cas:Enumeration>
-
         <!-- Domain-Specific Property Classes -->
         <cas:Property id="TireDimension" rdf:type="owl:DatatypeProperty">
             <cas:specializes>cas:Property</cas:specializes>
@@ -163,12 +140,35 @@
         </cas:Property>
         
         <!-- Domain-Specific Link Classes -->
-        <cas:Link id="atPosition" rdf:type="owl:ObjectProperty">
+        <cas:Link id="hasWheel_frontRight" rdf:type="owl:ObjectProperty">
             <cas:specializes>cas:linksTarget</cas:specializes>
-            <dcterms:title xml:lang="en">at position</dcterms:title>
-            <skos:definition xml:lang="en">Enumerated value for the position of a wheel on a car.</skos:definition>
+            <dcterms:title xml:lang="en">wheel at position front-right</dcterms:title>
             <dcterms:modified>2020-03-26T22:59:00+02:00</dcterms:modified>
-            <cas:enumeratedEndpoint>WheelPosition-Value</cas:enumeratedEndpoint>
+            <cas:enumeratedEndpoint>Wheel</cas:enumeratedEndpoint>
+            <xs:minOccurs>1</xs:minOccurs>
+            <xs:maxOccurs>1</xs:maxOccurs>
+        </cas:Link>
+        <cas:Link id="hasWheel_frontLeft" rdf:type="owl:ObjectProperty">
+            <cas:specializes>cas:linksTarget</cas:specializes>
+            <dcterms:title xml:lang="en">wheel at position front-left</dcterms:title>
+            <dcterms:modified>2020-03-26T22:59:00+02:00</dcterms:modified>
+            <cas:enumeratedEndpoint>Wheel</cas:enumeratedEndpoint>
+            <xs:minOccurs>1</xs:minOccurs>
+            <xs:maxOccurs>1</xs:maxOccurs>
+        </cas:Link>
+        <cas:Link id="hasWheel_backRight" rdf:type="owl:ObjectProperty">
+            <cas:specializes>cas:linksTarget</cas:specializes>
+            <dcterms:title xml:lang="en">wheel at position back-right</dcterms:title>
+            <dcterms:modified>2020-03-26T22:59:00+02:00</dcterms:modified>
+            <cas:enumeratedEndpoint>Wheel</cas:enumeratedEndpoint>
+            <xs:minOccurs>1</xs:minOccurs>
+            <xs:maxOccurs>1</xs:maxOccurs>
+        </cas:Link>
+        <cas:Link id="hasWheel_backLeft" rdf:type="owl:ObjectProperty">
+            <cas:specializes>cas:linksTarget</cas:specializes>
+            <dcterms:title xml:lang="en">wheel at position back-left</dcterms:title>
+            <dcterms:modified>2020-03-26T22:59:00+02:00</dcterms:modified>
+            <cas:enumeratedEndpoint>Wheel</cas:enumeratedEndpoint>
             <xs:minOccurs>1</xs:minOccurs>
             <xs:maxOccurs>1</xs:maxOccurs>
         </cas:Link>
@@ -190,6 +190,10 @@
                 <p>A 'Car' is...</p>
             </dcterms:description>
             <cas:enumeratedProperty>cas:Category</cas:enumeratedProperty>
+            <cas:enumeratedTargetLink>hasWheel_frontRight</cas:enumeratedTargetLink>
+            <cas:enumeratedTargetLink>hasWheel_frontLeft</cas:enumeratedTargetLink>
+            <cas:enumeratedTargetLink>hasWheel_backRight</cas:enumeratedTargetLink>
+            <cas:enumeratedTargetLink>hasWheel_backLeft</cas:enumeratedTargetLink>
         </cas:Entity>
 
         <cas:Entity id="Wheel" rdf:type="owl:Class">
@@ -201,34 +205,6 @@
             <cas:enumeratedProperty>TireDimension</cas:enumeratedProperty>
         </cas:Entity>
 		
-        <!-- Domain-Specific Relationship Classes -->
-        <cas:Relationship id="hasWheel" rdf:type="owl:Class">
-            <cas:specializes>cas:hasPart</cas:specializes>
-            <dcterms:title xml:lang="en">has wheel</dcterms:title>
-            <dcterms:description xml:lang="en">A [[Car]] has a [[Wheel]].</dcterms:description>
-            <cas:enumeratedTargetLink>atPosition</cas:enumeratedTargetLink> <!-- we also could create subclasses of 'hasWheel' for each position -->
-            <cas:enumeratedSourceLink>hasWheel-toCar</cas:enumeratedSourceLink>
-            <cas:enumeratedTargetLink>hasWheel-toWheel</cas:enumeratedTargetLink>
-        </cas:Relationship>
-
-        <cas:Link id="hasWheel-toCar" rdf:type="owl:ObjectProperty">
-            <cas:specializes>cas:linksSource</cas:specializes>
-            <dcterms:title>is wheel of</dcterms:title>
-            <skos:definition>Connects the car</skos:definition>
-            <cas:enumeratedEndpoint>Vehicle</cas:enumeratedEndpoint>
-            <xs:minOccurs>1</xs:minOccurs>
-            <xs:maxOccurs>1</xs:maxOccurs>
-        </cas:Link>
-
-        <cas:Link id="hasWheel-toWheel" rdf:type="owl:ObjectProperty">
-            <cas:specializes>cas:linksTarget</cas:specializes>
-            <dcterms:title>has wheel</dcterms:title>
-            <skos:definition>Connects the wheel</skos:definition>
-            <cas:enumeratedEndpoint>Wheel</cas:enumeratedEndpoint>
-            <xs:minOccurs>1</xs:minOccurs>
-            <xs:maxOccurs>1</xs:maxOccurs>
-        </cas:Link>
-		
         <!-- Instance Data: Car Model -->
         <cas:anEntity id="Car-1a8016e2872e78ecadc50feddc00029b" rdf:type="Car">
             <dcterms:modified>2020-10-17T10:00:00+01:00</dcterms:modified>
@@ -236,6 +212,18 @@
             <dcterms:description>
                 <p>An iconic electric car ideal for the city.</p>
             </dcterms:description>
+            <cas:aTargetLink rdf:type="hasWheel_frontRight">
+                <idRef>Wheel-0Z7916e2872e78ecadc50feddc00918a</idRef>
+            </cas:aTargetLink>
+            <cas:aTargetLink rdf:type="hasWheel_frontLeft">
+                <idRef>Wheel-0Z7916e2872e78ecadc50feddc00918a</idRef>
+            </cas:aTargetLink>
+            <cas:aTargetLink rdf:type="hasWheel_backRight">
+                <idRef>Wheel-0Z7916e2872e78ecadc50feddc00918a</idRef>
+            </cas:aTargetLink>
+            <cas:aTargetLink rdf:type="hasWheel_backLeft">
+                <idRef>Wheel-0Z7916e2872e78ecadc50feddc00918a</idRef>
+            </cas:aTargetLink>
         </cas:anEntity>
 
         <cas:anEntity id="Wheel-0Z7916e2872e78ecadc50feddc00918a" rdf:type="Wheel">
@@ -246,57 +234,6 @@
 			</cas:aProperty>
         </cas:anEntity>
 
-        <cas:aRelationship id="hasWheel-50feddc00029b1a8016e2872e78ecadc" rdf:type="hasWheel">
-            <dcterms:modified>2020-10-17T10:00:00+01:00</dcterms:modified>
-			<cas:aTargetLink rdf:type="atPosition" >
-				<idRef>frontRight</idRef>
-			</cas:aTargetLink>
-            <cas:aSourceLink rdf:type="hasWheel-toCar">
-                <idRef>Car-1a8016e2872e78ecadc50feddc00029b</idRef>
-            </cas:aSourceLink>
-            <cas:aTargetLink rdf:type="hasWheel-toWheel">
-                <idRef>Wheel-0Z7916e2872e78ecadc50feddc00918a</idRef>
-            </cas:aTargetLink>
-        </cas:aRelationship>
-
-        <cas:aRelationship id="hasWheel-50fedd872e78ecadcc00029b1a8016e2" rdf:type="hasWheel">
-            <dcterms:modified>2020-10-17T10:00:00+01:00</dcterms:modified>
-			<cas:aTargetLink rdf:type="atPosition" >
-				<idRef>frontLeft</idRef>
-			</cas:aTargetLink>
-            <cas:aSourceLink rdf:type="hasWheel-toCar">
-                <idRef>Car-1a8016e2872e78ecadc50feddc00029b</idRef>
-            </cas:aSourceLink>
-            <cas:aTargetLink rdf:type="hasWheel-toWheel">
-                <idRef>Wheel-0Z7916e2872e78ecadc50feddc00918a</idRef>
-            </cas:aTargetLink>
-        </cas:aRelationship>
-
-        <cas:aRelationship id="hasWheel-50fed2e78ecadcdc00029b1a8016e287" rdf:type="hasWheel">
-            <dcterms:modified>2020-10-17T10:00:00+01:00</dcterms:modified>
-			<cas:aTargetLink rdf:type="atPosition" >
-				<idRef>backRight</idRef>
-			</cas:aTargetLink>
-            <cas:aSourceLink rdf:type="hasWheel-toCar">
-                <idRef>Car-1a8016e2872e78ecadc50feddc00029b</idRef>
-            </cas:aSourceLink>
-            <cas:aTargetLink rdf:type="hasWheel-toWheel">
-                <idRef>Wheel-0Z7916e2872e78ecadc50feddc00918a</idRef>
-            </cas:aTargetLink>
-        </cas:aRelationship>
-
-        <cas:aRelationship id="hasWheel-50feddc0002e2872e78ecadc9b1a8016" rdf:type="hasWheel">
-            <dcterms:modified>2020-10-17T10:00:00+01:00</dcterms:modified>
-			<cas:aTargetLink rdf:type="atPosition" >
-				<idRef>backLeft</idRef>
-			</cas:aTargetLink>
-            <cas:aSourceLink rdf:type="hasWheel-toCar">
-                <idRef>Car-1a8016e2872e78ecadc50feddc00029b</idRef>
-            </cas:aSourceLink>
-            <cas:aTargetLink rdf:type="hasWheel-toWheel">
-                <idRef>Wheel-0Z7916e2872e78ecadc50feddc00918a</idRef>
-            </cas:aTargetLink>
-        </cas:aRelationship>
 
         <!-- Instance Data: Outline -->
         <cas:anEntity id="Root" rdf:type="cas:Root">

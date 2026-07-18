@@ -11,7 +11,7 @@
     "skos": "https://www.w3.org/TR/skos-reference/",
     "xs": "http://www.w3.org/2001/XMLSchema#"
   },
-  "@id": "d:Very_Simple_Car_Model",
+  "@id": "d:Very_Simple_Car_Model-with-direct-link",
   "@type": "cas:Package",
   "@graph": [
     {
@@ -314,70 +314,6 @@
       ]
     },
     {
-      "@id": "o:WheelPosition-Value",
-      "@type": "owl:Class",
-      "cas:itemType": {
-        "@id": "cas:Enumeration"
-      },
-      "cas:specializes": {
-        "@id": "cas:Enumeration"
-      },
-      "dcterms:title": [
-        {
-          "@value": "Wheel Position",
-          "@language": "en"
-        }
-      ],
-      "skos:definition": [
-        {
-          "@value": "Enumerated values for the wheel position of a car.",
-          "@language": "en"
-        }
-      ],
-      "dcterms:modified": "2020-03-26T22:59:00+02:00",
-      "cas:enumeratedValue": [
-        {
-          "@id": "o:frontRight",
-          "dcterms:title": [
-            {
-              "@value": "front right",
-              "@language": "en"
-            }
-          ]
-        },
-        {
-          "@id": "o:frontLeft",
-          "dcterms:title": [
-            {
-              "@value": "front left",
-              "@language": "en"
-            }
-          ]
-        },
-        {
-          "@id": "o:backRight",
-          "dcterms:title": [
-            {
-              "@value": "back right",
-              "@language": "en"
-            }
-          ]
-        },
-        {
-          "@id": "o:backLeft",
-          "dcterms:title": [
-            {
-              "@value": "fback left",
-              "@language": "en"
-            }
-          ]
-        }
-      ],
-      "sh:datatype": {
-        "@id": "xs:string"
-      }
-    },
-    {
       "@id": "o:TireDimension",
       "@type": "owl:DatatypeProperty",
       "cas:itemType": {
@@ -405,7 +341,7 @@
       "sh:minCount": 0
     },
     {
-      "@id": "o:atPosition",
+      "@id": "o:hasWheel_frontRight",
       "@type": "owl:ObjectProperty",
       "cas:itemType": {
         "@id": "cas:Link"
@@ -415,20 +351,86 @@
       },
       "dcterms:title": [
         {
-          "@value": "at position",
-          "@language": "en"
-        }
-      ],
-      "skos:definition": [
-        {
-          "@value": "Enumerated value for the position of a wheel on a car.",
+          "@value": "wheel at position front-right",
           "@language": "en"
         }
       ],
       "dcterms:modified": "2020-03-26T22:59:00+02:00",
       "cas:enumeratedEndpoint": [
         {
-          "@id": "o:WheelPosition-Value"
+          "@id": "o:Wheel"
+        }
+      ],
+      "sh:maxCount": 1,
+      "sh:minCount": 1
+    },
+    {
+      "@id": "o:hasWheel_frontLeft",
+      "@type": "owl:ObjectProperty",
+      "cas:itemType": {
+        "@id": "cas:Link"
+      },
+      "cas:specializes": {
+        "@id": "cas:linksTarget"
+      },
+      "dcterms:title": [
+        {
+          "@value": "wheel at position front-left",
+          "@language": "en"
+        }
+      ],
+      "dcterms:modified": "2020-03-26T22:59:00+02:00",
+      "cas:enumeratedEndpoint": [
+        {
+          "@id": "o:Wheel"
+        }
+      ],
+      "sh:maxCount": 1,
+      "sh:minCount": 1
+    },
+    {
+      "@id": "o:hasWheel_backRight",
+      "@type": "owl:ObjectProperty",
+      "cas:itemType": {
+        "@id": "cas:Link"
+      },
+      "cas:specializes": {
+        "@id": "cas:linksTarget"
+      },
+      "dcterms:title": [
+        {
+          "@value": "wheel at position back-right",
+          "@language": "en"
+        }
+      ],
+      "dcterms:modified": "2020-03-26T22:59:00+02:00",
+      "cas:enumeratedEndpoint": [
+        {
+          "@id": "o:Wheel"
+        }
+      ],
+      "sh:maxCount": 1,
+      "sh:minCount": 1
+    },
+    {
+      "@id": "o:hasWheel_backLeft",
+      "@type": "owl:ObjectProperty",
+      "cas:itemType": {
+        "@id": "cas:Link"
+      },
+      "cas:specializes": {
+        "@id": "cas:linksTarget"
+      },
+      "dcterms:title": [
+        {
+          "@value": "wheel at position back-left",
+          "@language": "en"
+        }
+      ],
+      "dcterms:modified": "2020-03-26T22:59:00+02:00",
+      "cas:enumeratedEndpoint": [
+        {
+          "@id": "o:Wheel"
         }
       ],
       "sh:maxCount": 1,
@@ -486,6 +488,20 @@
         {
           "@id": "cas:Category"
         }
+      ],
+      "cas:enumeratedTargetLink": [
+        {
+          "@id": "o:hasWheel_frontRight"
+        },
+        {
+          "@id": "o:hasWheel_frontLeft"
+        },
+        {
+          "@id": "o:hasWheel_backRight"
+        },
+        {
+          "@id": "o:hasWheel_backLeft"
+        }
       ]
     },
     {
@@ -516,95 +532,6 @@
       ]
     },
     {
-      "@id": "o:hasWheel",
-      "@type": "owl:Class",
-      "cas:itemType": {
-        "@id": "cas:Relationship"
-      },
-      "cas:specializes": {
-        "@id": "cas:hasPart"
-      },
-      "dcterms:title": [
-        {
-          "@value": "has wheel",
-          "@language": "en"
-        }
-      ],
-      "dcterms:description": [
-        {
-          "@value": "A [[Car]] has a [[Wheel]].",
-          "@language": "en"
-        }
-      ],
-      "cas:enumeratedSourceLink": [
-        {
-          "@id": "o:hasWheel-toCar"
-        }
-      ],
-      "cas:enumeratedTargetLink": [
-        {
-          "@id": "o:atPosition"
-        },
-        {
-          "@id": "o:hasWheel-toWheel"
-        }
-      ]
-    },
-    {
-      "@id": "o:hasWheel-toCar",
-      "@type": "owl:ObjectProperty",
-      "cas:itemType": {
-        "@id": "cas:Link"
-      },
-      "cas:specializes": {
-        "@id": "cas:linksSource"
-      },
-      "dcterms:title": [
-        {
-          "@value": "is wheel of"
-        }
-      ],
-      "skos:definition": [
-        {
-          "@value": "Connects the car"
-        }
-      ],
-      "cas:enumeratedEndpoint": [
-        {
-          "@id": "o:Vehicle"
-        }
-      ],
-      "sh:maxCount": 1,
-      "sh:minCount": 1
-    },
-    {
-      "@id": "o:hasWheel-toWheel",
-      "@type": "owl:ObjectProperty",
-      "cas:itemType": {
-        "@id": "cas:Link"
-      },
-      "cas:specializes": {
-        "@id": "cas:linksTarget"
-      },
-      "dcterms:title": [
-        {
-          "@value": "has wheel"
-        }
-      ],
-      "skos:definition": [
-        {
-          "@value": "Connects the wheel"
-        }
-      ],
-      "cas:enumeratedEndpoint": [
-        {
-          "@id": "o:Wheel"
-        }
-      ],
-      "sh:maxCount": 1,
-      "sh:minCount": 1
-    },
-    {
       "@id": "d:Car-1a8016e2872e78ecadc50feddc00029b",
       "@type": "o:Car",
       "cas:itemType": {
@@ -620,7 +547,39 @@
           "@value": "<p>An iconic electric car ideal for the city.</p>"
         }
       ],
-      "dcterms:modified": "2020-10-17T10:00:00+01:00"
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "o:hasWheel_backLeft": [
+        {
+          "@id": "d:Wheel-0Z7916e2872e78ecadc50feddc00918a",
+          "cas:itemType": {
+            "@id": "cas:aTargetLink"
+          }
+        }
+      ],
+      "o:hasWheel_backRight": [
+        {
+          "@id": "d:Wheel-0Z7916e2872e78ecadc50feddc00918a",
+          "cas:itemType": {
+            "@id": "cas:aTargetLink"
+          }
+        }
+      ],
+      "o:hasWheel_frontLeft": [
+        {
+          "@id": "d:Wheel-0Z7916e2872e78ecadc50feddc00918a",
+          "cas:itemType": {
+            "@id": "cas:aTargetLink"
+          }
+        }
+      ],
+      "o:hasWheel_frontRight": [
+        {
+          "@id": "d:Wheel-0Z7916e2872e78ecadc50feddc00918a",
+          "cas:itemType": {
+            "@id": "cas:aTargetLink"
+          }
+        }
+      ]
     },
     {
       "@id": "d:Wheel-0Z7916e2872e78ecadc50feddc00918a",
@@ -639,134 +598,6 @@
           "@value": "215/65R18",
           "cas:itemType": {
             "@id": "cas:aProperty"
-          }
-        }
-      ]
-    },
-    {
-      "@id": "d:hasWheel-50feddc00029b1a8016e2872e78ecadc",
-      "@type": "o:hasWheel",
-      "cas:itemType": {
-        "@id": "cas:aRelationship"
-      },
-      "dcterms:modified": "2020-10-17T10:00:00+01:00",
-      "o:atPosition": [
-        {
-          "@id": "o:frontRight",
-          "cas:itemType": {
-            "@id": "cas:aTargetLink"
-          }
-        }
-      ],
-      "o:hasWheel-toCar": [
-        {
-          "@id": "d:Car-1a8016e2872e78ecadc50feddc00029b",
-          "cas:itemType": {
-            "@id": "cas:aSourceLink"
-          }
-        }
-      ],
-      "o:hasWheel-toWheel": [
-        {
-          "@id": "d:Wheel-0Z7916e2872e78ecadc50feddc00918a",
-          "cas:itemType": {
-            "@id": "cas:aTargetLink"
-          }
-        }
-      ]
-    },
-    {
-      "@id": "d:hasWheel-50fedd872e78ecadcc00029b1a8016e2",
-      "@type": "o:hasWheel",
-      "cas:itemType": {
-        "@id": "cas:aRelationship"
-      },
-      "dcterms:modified": "2020-10-17T10:00:00+01:00",
-      "o:atPosition": [
-        {
-          "@id": "o:frontLeft",
-          "cas:itemType": {
-            "@id": "cas:aTargetLink"
-          }
-        }
-      ],
-      "o:hasWheel-toCar": [
-        {
-          "@id": "d:Car-1a8016e2872e78ecadc50feddc00029b",
-          "cas:itemType": {
-            "@id": "cas:aSourceLink"
-          }
-        }
-      ],
-      "o:hasWheel-toWheel": [
-        {
-          "@id": "d:Wheel-0Z7916e2872e78ecadc50feddc00918a",
-          "cas:itemType": {
-            "@id": "cas:aTargetLink"
-          }
-        }
-      ]
-    },
-    {
-      "@id": "d:hasWheel-50fed2e78ecadcdc00029b1a8016e287",
-      "@type": "o:hasWheel",
-      "cas:itemType": {
-        "@id": "cas:aRelationship"
-      },
-      "dcterms:modified": "2020-10-17T10:00:00+01:00",
-      "o:atPosition": [
-        {
-          "@id": "o:backRight",
-          "cas:itemType": {
-            "@id": "cas:aTargetLink"
-          }
-        }
-      ],
-      "o:hasWheel-toCar": [
-        {
-          "@id": "d:Car-1a8016e2872e78ecadc50feddc00029b",
-          "cas:itemType": {
-            "@id": "cas:aSourceLink"
-          }
-        }
-      ],
-      "o:hasWheel-toWheel": [
-        {
-          "@id": "d:Wheel-0Z7916e2872e78ecadc50feddc00918a",
-          "cas:itemType": {
-            "@id": "cas:aTargetLink"
-          }
-        }
-      ]
-    },
-    {
-      "@id": "d:hasWheel-50feddc0002e2872e78ecadc9b1a8016",
-      "@type": "o:hasWheel",
-      "cas:itemType": {
-        "@id": "cas:aRelationship"
-      },
-      "dcterms:modified": "2020-10-17T10:00:00+01:00",
-      "o:atPosition": [
-        {
-          "@id": "o:backLeft",
-          "cas:itemType": {
-            "@id": "cas:aTargetLink"
-          }
-        }
-      ],
-      "o:hasWheel-toCar": [
-        {
-          "@id": "d:Car-1a8016e2872e78ecadc50feddc00029b",
-          "cas:itemType": {
-            "@id": "cas:aSourceLink"
-          }
-        }
-      ],
-      "o:hasWheel-toWheel": [
-        {
-          "@id": "d:Wheel-0Z7916e2872e78ecadc50feddc00918a",
-          "cas:itemType": {
-            "@id": "cas:aTargetLink"
           }
         }
       ]
@@ -839,12 +670,12 @@
   },
   "dcterms:title": [
     {
-      "@value": "Very Simple Car Model"
+      "@value": "Very Simple Car Model-with-direct-link"
     }
   ],
   "dcterms:description": [
     {
-      "@value": "An example where a car has identical wheels at four defined positions. The wheels are attached with a reified relationship."
+      "@value": "An example where a car has identical wheels at four defined positions. The wheels are related with a direct link."
     }
   ],
   "dcterms:modified": "2026-01-17T22:38:19.595Z",

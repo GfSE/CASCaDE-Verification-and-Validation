@@ -7,24 +7,24 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xs: <http://www.w3.org/2001/XMLSchema#> .
 @prefix FMC: <http://fmc-modeling.org#> .
-@prefix o: <http://product-information-graph.org/ontology/application#> .
 @prefix d: <http://product-information-graph.org/example#> .
+@prefix o: <http://product-information-graph.org/ontology/application#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 
-d:Very_Simple_Car_Model_ontology
+d:Very_Simple_Car_Model-with-direct-link_ontology
 	a owl:Ontology ;
 	dcterms:contributor "cecilia.tonelli@collins.com" ,
 		"oskar.dungern@gfse.org" ;
 	dcterms:license "https://creativecommons.org/licenses/by-sa/4.0/" ;
 	owl:versionInfo "2026-07-03" .
 
-d:Very_Simple_Car_Model
+d:Very_Simple_Car_Model-with-direct-link
 	a cas:Package ;
-	rdfs:label "Very Simple Car Model" ;
-	rdfs:comment "An example where a car has identical wheels at four defined positions." ;
+	rdfs:label "Very Simple Car Model-with-direct-link" ;
+	rdfs:comment "An example where a car has identical wheels at four defined positions. The wheels are related with a direct link." ;
 	dcterms:modified "2026-01-17T22:38:19.595Z"^^xs:dateTime .
 
 #################################################################
@@ -148,16 +148,6 @@ cas:lists_shape
 	sh:path cas:lists ;
 	sh:or ( [ sh:class cas:Entity ] [ sh:class cas:Relationship ] [ sh:class cas:Organizer ] ) .
 
-o:WheelPosition-Value
-	rdfs:subClassOf cas:Enumeration ;
-	rdfs:label "Wheel Position"@en ;
-	skos:definition "Enumerated values for the wheel position of a car."@en ;
-	dcterms:modified "2020-03-26T22:59:00+02:00"^^xs:dateTime ;
-	cas:enumeratedValue o:frontRight ,
-		o:frontLeft ,
-		o:backRight ,
-		o:backLeft .
-
 o:TireDimension
 	rdfs:subPropertyOf cas:Property ;
 	rdfs:label "tire dimension"@en ;
@@ -170,17 +160,55 @@ o:TireDimension_shape
 	sh:minCount 0 ;
 	sh:maxCount 1 .
 
-o:atPosition
+o:hasWheel_frontRight
 	rdfs:subPropertyOf cas:linksTarget ;
-	rdfs:label "at position"@en ;
-	skos:definition "Enumerated value for the position of a wheel on a car."@en ;
+	rdfs:label "wheel at position front-right"@en ;
 	dcterms:modified "2020-03-26T22:59:00+02:00"^^xs:dateTime ;
-	rdfs:range o:WheelPosition-Value .
+	rdfs:range o:Wheel .
 
-o:atPosition_shape
+o:hasWheel_frontRight_shape
 	a sh:PropertyShape ;
-	sh:path o:atPosition ;
-	sh:class o:WheelPosition-Value ;
+	sh:path o:hasWheel_frontRight ;
+	sh:class o:Wheel ;
+	sh:minCount 1 ;
+	sh:maxCount 1 .
+
+o:hasWheel_frontLeft
+	rdfs:subPropertyOf cas:linksTarget ;
+	rdfs:label "wheel at position front-left"@en ;
+	dcterms:modified "2020-03-26T22:59:00+02:00"^^xs:dateTime ;
+	rdfs:range o:Wheel .
+
+o:hasWheel_frontLeft_shape
+	a sh:PropertyShape ;
+	sh:path o:hasWheel_frontLeft ;
+	sh:class o:Wheel ;
+	sh:minCount 1 ;
+	sh:maxCount 1 .
+
+o:hasWheel_backRight
+	rdfs:subPropertyOf cas:linksTarget ;
+	rdfs:label "wheel at position back-right"@en ;
+	dcterms:modified "2020-03-26T22:59:00+02:00"^^xs:dateTime ;
+	rdfs:range o:Wheel .
+
+o:hasWheel_backRight_shape
+	a sh:PropertyShape ;
+	sh:path o:hasWheel_backRight ;
+	sh:class o:Wheel ;
+	sh:minCount 1 ;
+	sh:maxCount 1 .
+
+o:hasWheel_backLeft
+	rdfs:subPropertyOf cas:linksTarget ;
+	rdfs:label "wheel at position back-left"@en ;
+	dcterms:modified "2020-03-26T22:59:00+02:00"^^xs:dateTime ;
+	rdfs:range o:Wheel .
+
+o:hasWheel_backLeft_shape
+	a sh:PropertyShape ;
+	sh:path o:hasWheel_backLeft ;
+	sh:class o:Wheel ;
 	sh:minCount 1 ;
 	sh:maxCount 1 .
 
@@ -204,7 +232,11 @@ o:Car_shape
 	a sh:NodeShape ;
 	sh:targetClass o:Car ;
 	sh:or ( [ sh:path rdfs:label ; sh:minCount 1 ] [ sh:path rdfs:comment ; sh:minCount 1 ] ) ;
-	sh:property cas:Category_shape .
+	sh:property cas:Category_shape ;
+	sh:property o:hasWheel_frontRight_shape ;
+	sh:property o:hasWheel_frontLeft_shape ;
+	sh:property o:hasWheel_backRight_shape ;
+	sh:property o:hasWheel_backLeft_shape .
 
 o:Wheel
 	rdfs:subClassOf FMC:Actor ;
@@ -217,83 +249,21 @@ o:Wheel_shape
 	sh:or ( [ sh:path rdfs:label ; sh:minCount 1 ] [ sh:path rdfs:comment ; sh:minCount 1 ] ) ;
 	sh:property o:TireDimension_shape .
 
-o:hasWheel
-	rdfs:subClassOf cas:hasPart ;
-	rdfs:label "has wheel"@en ;
-	rdfs:comment "A [[Car]] has a [[Wheel]]."@en .
-
-o:hasWheel_shape
-	a sh:NodeShape ;
-	sh:targetClass o:hasWheel ;
-	sh:property o:hasWheel-toCar_shape ;
-	sh:property o:atPosition_shape ;
-	sh:property o:hasWheel-toWheel_shape .
-
-o:hasWheel-toCar
-	rdfs:subPropertyOf cas:linksSource ;
-	rdfs:label "is wheel of" ;
-	skos:definition "Connects the car" ;
-	rdfs:range o:Vehicle .
-
-o:hasWheel-toCar_shape
-	a sh:PropertyShape ;
-	sh:path o:hasWheel-toCar ;
-	sh:class o:Vehicle ;
-	sh:minCount 1 ;
-	sh:maxCount 1 .
-
-o:hasWheel-toWheel
-	rdfs:subPropertyOf cas:linksTarget ;
-	rdfs:label "has wheel" ;
-	skos:definition "Connects the wheel" ;
-	rdfs:range o:Wheel .
-
-o:hasWheel-toWheel_shape
-	a sh:PropertyShape ;
-	sh:path o:hasWheel-toWheel ;
-	sh:class o:Wheel ;
-	sh:minCount 1 ;
-	sh:maxCount 1 .
-
 d:Car-1a8016e2872e78ecadc50feddc00029b
 	a o:Car ;
 	rdfs:label "Fiat_600E_2023" ;
 	rdfs:comment "<p>An iconic electric car ideal for the city.</p>" ;
-	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime .
+	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
+	o:hasWheel_frontRight d:Wheel-0Z7916e2872e78ecadc50feddc00918a ;
+	o:hasWheel_frontLeft d:Wheel-0Z7916e2872e78ecadc50feddc00918a ;
+	o:hasWheel_backRight d:Wheel-0Z7916e2872e78ecadc50feddc00918a ;
+	o:hasWheel_backLeft d:Wheel-0Z7916e2872e78ecadc50feddc00918a .
 
 d:Wheel-0Z7916e2872e78ecadc50feddc00918a
 	a o:Wheel ;
 	rdfs:label "Pirelli_215/65R18" ;
 	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
 	o:TireDimension "215/65R18" .
-
-d:hasWheel-50feddc00029b1a8016e2872e78ecadc
-	a o:hasWheel ;
-	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
-	o:hasWheel-toCar d:Car-1a8016e2872e78ecadc50feddc00029b ;
-	o:atPosition o:frontRight ;
-	o:hasWheel-toWheel d:Wheel-0Z7916e2872e78ecadc50feddc00918a .
-
-d:hasWheel-50fedd872e78ecadcc00029b1a8016e2
-	a o:hasWheel ;
-	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
-	o:hasWheel-toCar d:Car-1a8016e2872e78ecadc50feddc00029b ;
-	o:atPosition o:frontLeft ;
-	o:hasWheel-toWheel d:Wheel-0Z7916e2872e78ecadc50feddc00918a .
-
-d:hasWheel-50fed2e78ecadcdc00029b1a8016e287
-	a o:hasWheel ;
-	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
-	o:hasWheel-toCar d:Car-1a8016e2872e78ecadc50feddc00029b ;
-	o:atPosition o:backRight ;
-	o:hasWheel-toWheel d:Wheel-0Z7916e2872e78ecadc50feddc00918a .
-
-d:hasWheel-50feddc0002e2872e78ecadc9b1a8016
-	a o:hasWheel ;
-	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
-	o:hasWheel-toCar d:Car-1a8016e2872e78ecadc50feddc00029b ;
-	o:atPosition o:backLeft ;
-	o:hasWheel-toWheel d:Wheel-0Z7916e2872e78ecadc50feddc00918a .
 
 d:Root
 	a cas:Root ;
