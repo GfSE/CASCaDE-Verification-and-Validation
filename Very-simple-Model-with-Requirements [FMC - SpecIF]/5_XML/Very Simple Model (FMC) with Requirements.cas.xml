@@ -17,18 +17,18 @@
     id="d:ACP-Very-Simple-Model-FMC-with-Requirements"
     rdf:type="cas:Package">
 
-    <dcterms:title>Project 'Very Simple Model (FMC) with Requirements'</dcterms:title>
+    <dcterms:title>Very Simple Model (FMC) with Requirements</dcterms:title>
     <dcterms:modified>2026-01-17T22:38:19.595Z</dcterms:modified>
-	<cas:aProperty cas:hasClass="dcterms:contributor">
+	<cas:aProperty rdf:type="dcterms:contributor">
 		<value>mailto:oskar.dungern@gfse.org</value>
 	</cas:aProperty>
-	<cas:aProperty cas:hasClass="dcterms:license">
+	<cas:aProperty rdf:type="dcterms:license">
 		<value>https://creativecommons.org/licenses/by-sa/4.0/</value>
 	</cas:aProperty>
 
     <graph>
         <!-- Metamodel: Entity Classes -->
-        <cas:Entity id="cas:Package" cas:hasClass="owl:Class">
+        <cas:Entity id="cas:Package" rdf:type="owl:Class">
             <cas:specializes>cas:Entity</cas:specializes>
             <dcterms:title>Package</dcterms:title>
             <skos:definition>A CASCaRA meta-model item used for packages comprising entities, relationships and potentially nested packages, both classes and instances.</skos:definition>
@@ -36,32 +36,32 @@
             <cas:enumeratedProperty>dcterms:license</cas:enumeratedProperty>
         </cas:Entity>
 
-        <cas:Entity id="cas:Organizer" cas:hasClass="owl:Class">
+        <cas:Entity id="cas:Organizer" rdf:type="owl:Class">
             <cas:specializes>cas:Entity</cas:specializes>
             <dcterms:title>Organizer</dcterms:title>
             <skos:definition>An element organizing model elements. An example is a list of requirements or a diagram using a certain notation.</skos:definition>
             <cas:enumeratedProperty>cas:Category</cas:enumeratedProperty>
         </cas:Entity>
 
-        <cas:Entity id="cas:Root" cas:hasClass="owl:Class">
+        <cas:Entity id="cas:Root" rdf:type="owl:Class">
             <cas:specializes>cas:Organizer</cas:specializes>
             <dcterms:title>Hierarchy Root</dcterms:title>
-            <skos:definition>A subclass of CASCaRA organizer serving as a root for hierarchically organized graph elements.</skos:definition>
+            <skos:definition>A root for hierarchically organized graph elements.</skos:definition>
             <cas:enumeratedTargetLink>cas:lists</cas:enumeratedTargetLink>
         </cas:Entity>
 
-        <cas:Entity id="cas:Outline" cas:hasClass="owl:Class">
+        <cas:Entity id="cas:Outline" rdf:type="owl:Class">
             <cas:specializes>cas:Organizer</cas:specializes>
             <dcterms:title>Outline</dcterms:title>
-            <skos:definition>A subclass of CASCaRA organizer comprising all information items of a human-readable document. As usual, the outline is hierarchically organized.</skos:definition>
+            <skos:definition>Comprises all information items of a human-readable document. As usual, the outline is hierarchically organized.</skos:definition>
             <cas:enumeratedProperty>cas:Category</cas:enumeratedProperty>
             <cas:enumeratedTargetLink>cas:lists</cas:enumeratedTargetLink>
         </cas:Entity>
 
-        <cas:Entity id="cas:View" cas:hasClass="owl:Class">
+        <cas:Entity id="cas:View" rdf:type="owl:Class">
             <cas:specializes>cas:Organizer</cas:specializes>
             <dcterms:title>View</dcterms:title>
-            <skos:definition>A subclass of CASCaRA organizer representing a model view (diagram) using a certain notation showing selected model elements.</skos:definition>
+            <skos:definition>Represents a model view (diagram) using a certain notation showing selected model elements.</skos:definition>
             <cas:enumeratedProperty>cas:Category</cas:enumeratedProperty>
             <cas:enumeratedProperty>cas:Diagram</cas:enumeratedProperty>
             <cas:enumeratedTargetLink>cas:shows</cas:enumeratedTargetLink>
@@ -71,7 +71,7 @@
         <!-- Metamodel: Relationship Class -->
 
         <!-- Metamodel: Properties -->
-        <cas:Property id="cas:Category" cas:hasClass="owl:DatatypeProperty">
+        <cas:Property id="cas:Category" rdf:type="owl:DatatypeProperty">
             <cas:specializes>cas:Property</cas:specializes>
             <dcterms:title>has category</dcterms:title>
             <skos:definition>Specifies a category for an element (entity, relationship or organizer).</skos:definition>
@@ -85,7 +85,7 @@
         </cas:Property>
 
         <!-- Metamodel: Links -->
-        <cas:Link id="cas:linksSource" cas:hasClass="owl:ObjectProperty">
+        <cas:Link id="cas:linksSource" rdf:type="owl:ObjectProperty">
             <cas:specializes>cas:Link</cas:specializes>
             <cas:enumeratedEndpoint>cas:Entity</cas:enumeratedEndpoint>
             <cas:enumeratedEndpoint>cas:Relationship</cas:enumeratedEndpoint>
@@ -93,7 +93,7 @@
             <skos:definition>Connects the source of a reified relationship.</skos:definition>
         </cas:Link>
 
-        <cas:Link id="cas:linksTarget" cas:hasClass="owl:ObjectProperty">
+        <cas:Link id="cas:linksTarget" rdf:type="owl:ObjectProperty">
             <cas:specializes>cas:Link</cas:specializes>
             <cas:enumeratedEndpoint>cas:Entity</cas:enumeratedEndpoint>
             <cas:enumeratedEndpoint>cas:Relationship</cas:enumeratedEndpoint>
@@ -101,7 +101,7 @@
             <skos:definition>Connects the target of a reified relationship or an organizer.</skos:definition>
         </cas:Link>
 
-        <cas:Link id="cas:lists" cas:hasClass="owl:ObjectProperty">
+        <cas:Link id="cas:lists" rdf:type="owl:ObjectProperty">
             <cas:specializes>cas:linksTarget</cas:specializes>
             <cas:enumeratedEndpoint>cas:Entity</cas:enumeratedEndpoint>
             <cas:enumeratedEndpoint>cas:Relationship</cas:enumeratedEndpoint>
@@ -110,7 +110,7 @@
             <skos:definition>Lists an entity, a relationship or a subordinated organizer.</skos:definition>
         </cas:Link>
 
-        <cas:Link id="cas:shows" cas:hasClass="owl:ObjectProperty">
+        <cas:Link id="cas:shows" rdf:type="owl:ObjectProperty">
             <cas:specializes>cas:linksTarget</cas:specializes>
             <cas:enumeratedEndpoint>cas:Entity</cas:enumeratedEndpoint>
             <cas:enumeratedEndpoint>cas:Relationship</cas:enumeratedEndpoint>
@@ -118,68 +118,12 @@
             <skos:definition>Shows an entity or a relationship.</skos:definition>
         </cas:Link>
 
-        <cas:Link id="cas:depicts" cas:hasClass="owl:ObjectProperty">
+        <cas:Link id="cas:depicts" rdf:type="owl:ObjectProperty">
             <cas:specializes>cas:linksTarget</cas:specializes>
             <cas:enumeratedEndpoint>cas:Entity</cas:enumeratedEndpoint>
             <dcterms:title>depicts</dcterms:title>
             <skos:definition>Depicts an entity; inverse of uml:ownedDiagram.</skos:definition>
         </cas:Link>
-
-        <!-- Dublin Core Properties -->
-        <cas:Property id="dcterms:title" rdf:type="owl:DatatypeProperty">
-            <dcterms:title xml:lang="en">Title</dcterms:title>
-            <dcterms:title xml:lang="de">Titel</dcterms:title>
-            <dcterms:title xml:lang="fr">Titre</dcterms:title>
-            <dcterms:description xml:lang="en">
-                <p>
-                    A name given to the resource. <small>
-                        (<i>
-                            source: <a href="http://purl.org/dc/elements/1.1/title">DCMI</a>
-                        </i>)
-                    </small>
-                </p>
-                <p>
-                    Title (reference: Dublin Core) of the resource represented as rich text in XHTML content. SHOULD include only content that is valid inside an XHTML 'span' element. <small>
-                        (<i>
-                            source: <a href="http://open-services.net/">OSLC</a>
-                        </i>)
-                    </small>
-                </p>
-            </dcterms:description>
-            <xs:simpleType>
-                <xs:restriction base="xs:string">
-                    <xs:maxLength value="256"/>
-                    <xs:maxOccurs>1</xs:maxOccurs>
-                </xs:restriction>
-            </xs:simpleType>
-        </cas:Property>
-
-        <cas:Property id="dcterms:description" rdf:type="owl:DatatypeProperty">
-            <dcterms:title xml:lang="en">Description</dcterms:title>
-            <dcterms:title xml:lang="de">Beschreibung</dcterms:title>
-            <dcterms:title xml:lang="fr">Description</dcterms:title>
-            <dcterms:description xml:lang="en">
-                <p>
-                    An account of the resource. <small>
-                        (<i>
-                            source: <a href="http://purl.org/dc/elements/1.1/description">DCMI</a>
-                        </i>)
-                    </small>
-                </p>
-                <p>
-                    Descriptive text (reference: Dublin Core) about resource represented as rich text in XHTML content. SHOULD include only content that is valid and suitable inside an XHTML 'div' element. <small>
-                        (<i>
-                            source: <a href="http://open-services.net/">OSLC</a>
-                        </i>)
-                    </small>
-                </p>
-            </dcterms:description>
-            <xs:simpleType>
-                <xs:restriction base="xs:string">
-                    <xs:maxOccurs>1</xs:maxOccurs>
-                </xs:restriction>
-            </xs:simpleType>
-        </cas:Property>
 
         <!-- SpecIF Properties -->
         <cas:Property id="cas:Diagram" rdf:type="owl:DatatypeProperty">
@@ -193,22 +137,7 @@
         </cas:Property>
 
         <!-- Domain-Specific Entity Classes -->
-        <cas:Entity id="SpecIF:Paragraph" cas:hasClass="owl:Class">
-            <dcterms:title xml:lang="en">Paragraph</dcterms:title>
-            <dcterms:title xml:lang="de">Textabsatz</dcterms:title>
-            <dcterms:title xml:lang="fr">Paragraphe</dcterms:title>
-            <dcterms:description xml:lang="en">
-                <p>A 'Paragraph' is an unspecified information in a document at any level.</p>
-            </dcterms:description>
-            <dcterms:description xml:lang="de">
-                <p>Ein 'Textabschnitt' in einem Dokument auf beliebiger Ebene.</p>
-            </dcterms:description>
-            <cas:specializes>cas:Entity</cas:specializes>
-            <cas:enumeratedProperty>cas:Diagram</cas:enumeratedProperty>
-            <cas:enumeratedProperty>cas:Category</cas:enumeratedProperty>
-        </cas:Entity>
-
-        <cas:Entity id="FMC:Actor" cas:hasClass="owl:Class">
+        <cas:Entity id="FMC:Actor" rdf:type="owl:Class">
             <dcterms:title xml:lang="en">Actor</dcterms:title>
             <dcterms:title xml:lang="de">Akteur</dcterms:title>
             <dcterms:title xml:lang="fr">Acteur</dcterms:title>
@@ -229,7 +158,7 @@
             <cas:enumeratedProperty>cas:Category</cas:enumeratedProperty>
         </cas:Entity>
 
-        <cas:Entity id="FMC:State" cas:hasClass="owl:Class">
+        <cas:Entity id="FMC:State" rdf:type="owl:Class">
             <dcterms:title xml:lang="en">State</dcterms:title>
             <dcterms:title xml:lang="de">Zustand</dcterms:title>
             <dcterms:title xml:lang="fr">État</dcterms:title>
@@ -250,7 +179,7 @@
             <cas:enumeratedProperty>cas:Category</cas:enumeratedProperty>
         </cas:Entity>
 
-        <cas:Entity id="FMC:Event" cas:hasClass="owl:Class">
+        <cas:Entity id="FMC:Event" rdf:type="owl:Class">
             <dcterms:title xml:lang="en">Event</dcterms:title>
             <dcterms:title xml:lang="de">Ereignis</dcterms:title>
             <dcterms:title xml:lang="fr">Évenement</dcterms:title>
@@ -271,7 +200,7 @@
             <cas:enumeratedProperty>cas:Category</cas:enumeratedProperty>
         </cas:Entity>
 
-        <cas:Entity id="IREB:Requirement" cas:hasClass="owl:Class">
+        <cas:Entity id="IREB:Requirement" rdf:type="owl:Class">
             <dcterms:title xml:lang="en">Requirement</dcterms:title>
             <dcterms:title xml:lang="de">Anforderung</dcterms:title>
             <dcterms:title xml:lang="fr">Exigence</dcterms:title>
@@ -344,7 +273,7 @@
         </cas:Entity>
 
         <!-- Domain-Specific Relationship Classes -->
-        <cas:Relationship id="SpecIF:writes" cas:hasClass="owl:Class">
+        <cas:Relationship id="SpecIF:writes" rdf:type="owl:Class">
             <dcterms:title xml:lang="en">writes</dcterms:title>
             <dcterms:title xml:lang="de">schreibt</dcterms:title>
             <dcterms:title xml:lang="fr">écrit</dcterms:title>
@@ -354,21 +283,21 @@
             <cas:enumeratedTargetLink>SpecIF:writes-toTarget</cas:enumeratedTargetLink>
         </cas:Relationship>
 
-        <cas:Link id="SpecIF:writes-toSource" cas:hasClass="owl:ObjectProperty">
+        <cas:Link id="SpecIF:writes-toSource" rdf:type="owl:ObjectProperty">
             <cas:specializes>cas:linksSource</cas:specializes>
             <dcterms:title>SpecIF:writes to source</dcterms:title>
             <skos:definition>Connects the source of SpecIF:writes</skos:definition>
             <cas:enumeratedEndpoint>FMC:Actor</cas:enumeratedEndpoint>
         </cas:Link>
 
-        <cas:Link id="SpecIF:writes-toTarget" cas:hasClass="owl:ObjectProperty">
+        <cas:Link id="SpecIF:writes-toTarget" rdf:type="owl:ObjectProperty">
             <cas:specializes>cas:linksTarget</cas:specializes>
             <dcterms:title>SpecIF:writes to target</dcterms:title>
             <skos:definition>Connects the target of SpecIF:writes</skos:definition>
             <cas:enumeratedEndpoint>FMC:State</cas:enumeratedEndpoint>
         </cas:Link>
 
-        <cas:Relationship id="SpecIF:reads" cas:hasClass="owl:Class">
+        <cas:Relationship id="SpecIF:reads" rdf:type="owl:Class">
             <dcterms:title xml:lang="en">reads</dcterms:title>
             <dcterms:title xml:lang="de">liest</dcterms:title>
             <dcterms:title xml:lang="fr">lit</dcterms:title>
@@ -378,42 +307,34 @@
             <cas:enumeratedTargetLink>SpecIF:reads-toTarget</cas:enumeratedTargetLink>
         </cas:Relationship>
 
-        <cas:Link id="SpecIF:reads-toSource" cas:hasClass="owl:ObjectProperty">
+        <cas:Link id="SpecIF:reads-toSource" rdf:type="owl:ObjectProperty">
             <cas:specializes>cas:linksSource</cas:specializes>
             <dcterms:title>SpecIF:reads to source</dcterms:title>
             <skos:definition>Connects the source of SpecIF:reads</skos:definition>
             <cas:enumeratedEndpoint>FMC:Actor</cas:enumeratedEndpoint>
         </cas:Link>
 
-        <cas:Link id="SpecIF:reads-toTarget" cas:hasClass="owl:ObjectProperty">
+        <cas:Link id="SpecIF:reads-toTarget" rdf:type="owl:ObjectProperty">
             <cas:specializes>cas:linksTarget</cas:specializes>
             <dcterms:title>SpecIF:reads to target</dcterms:title>
             <skos:definition>Connects the target of SpecIF:reads</skos:definition>
             <cas:enumeratedEndpoint>FMC:State</cas:enumeratedEndpoint>
         </cas:Link>
 
-        <cas:Relationship id="oslc_rm:satisfies" cas:hasClass="owl:Class">
+        <cas:Relationship id="oslc_rm:satisfies" rdf:type="owl:Class">
             <dcterms:title xml:lang="en">satisfies</dcterms:title>
             <dcterms:title xml:lang="de">erfüllt</dcterms:title>
             <dcterms:title xml:lang="fr">satisfait</dcterms:title>
             <dcterms:description xml:lang="en">
-                <p>
-                    The object is satisfied by the subject. <small>
-                        (<i>
-                            source: <a href="http://open-services.net/">OSLC</a>
-                        </i>)
-                    </small>
-                </p>
-                <p>
-                    SpecIF suggests that the subject is confined to a model element, e.g, a [[FMC:Actor]] or [[FMC:State]], and the object is confined to a [[IREB:Requirement]]. More concretely, an example for this type of statement is 'Component-X <em>satisfies</em> 'Requirement-4711'.
-                </p>
+                <p>The object is satisfied by the subject. <small>(<i>source: <a href="http://open-services.net/">OSLC</a></i>)</small></p>
+                <p>SpecIF suggests that the subject is confined to a model element, e.g, a [[FMC:Actor]] or [[FMC:State]], and the object is confined to a [[IREB:Requirement]]. More concretely, an example for this type of statement is 'Component-X <em>satisfies</em> 'Requirement-4711'.</p>
             </dcterms:description>
             <cas:specializes>cas:Relationship</cas:specializes>
             <cas:enumeratedSourceLink>oslc_rm:satisfies-toSource</cas:enumeratedSourceLink>
             <cas:enumeratedTargetLink>oslc_rm:satisfies-toTarget</cas:enumeratedTargetLink>
         </cas:Relationship>
 
-        <cas:Link id="oslc_rm:satisfies-toSource" cas:hasClass="owl:ObjectProperty">
+        <cas:Link id="oslc_rm:satisfies-toSource" rdf:type="owl:ObjectProperty">
             <cas:specializes>cas:linksSource</cas:specializes>
             <dcterms:title>oslc_rm:satisfies to source</dcterms:title>
             <skos:definition>Connects the source of oslc_rm:satisfies</skos:definition>
@@ -421,7 +342,7 @@
             <cas:enumeratedEndpoint>FMC:State</cas:enumeratedEndpoint>
         </cas:Link>
 
-        <cas:Link id="oslc_rm:satisfies-toTarget" cas:hasClass="owl:ObjectProperty">
+        <cas:Link id="oslc_rm:satisfies-toTarget" rdf:type="owl:ObjectProperty">
             <cas:specializes>cas:linksTarget</cas:specializes>
             <dcterms:title>oslc_rm:satisfies to target</dcterms:title>
             <skos:definition>Connects the target of oslc_rm:satisfies</skos:definition>
@@ -429,7 +350,7 @@
         </cas:Link>
 
         <!-- Enumerations -->
-        <cas:Enumeration id="SpecIF:Priority-Value" cas:hasClass="owl:Class">
+        <cas:Enumeration id="SpecIF:Priority-Value" rdf:type="owl:Class">
             <dcterms:title xml:lang="en">Priority</dcterms:title>
             <dcterms:title xml:lang="de">Priorität</dcterms:title>
             <dcterms:title xml:lang="fr">Priorité</dcterms:title>
@@ -467,7 +388,7 @@
         </cas:Enumeration>
 
         <!-- Links -->
-        <cas:Link id="SpecIF:Priority" cas:hasClass="owl:ObjectProperty">
+        <cas:Link id="SpecIF:Priority" rdf:type="owl:ObjectProperty">
             <cas:specializes>cas:linksTarget</cas:specializes>
             <dcterms:title xml:lang="en">Priority</dcterms:title>
             <dcterms:title xml:lang="de">Priorität</dcterms:title>
@@ -514,34 +435,32 @@
         <!-- Instance Data: View/Diagram -->
         <cas:anEntity id="d:Diagram-aec0df7900010000017001eaf53e8876" rdf:type="cas:View">
             <dcterms:modified>2020-03-06T08:32:00+01:00</dcterms:modified>
-            <dcterms:title>IT-Integration: FiCo-Application and FiCo-Data</dcterms:title>
+            <dcterms:title>FiCo-Architecure Diagram</dcterms:title>
             <cas:aProperty rdf:type="cas:Diagram">
                 <value>
                     <p class="inline-label">Model Diagram:</p>
-                    <p>
-                        <object type="image/svg+xml" data="files_and_images/Very-Simple-Model-FMC.svg">Notation: FMC Block Diagram</object>
-                    </p>
+                    <p><object type="image/svg+xml" data="files_and_images/Very-Simple-Model-FMC.svg">Notation: FMC Block Diagram</object></p>
                 </value>
             </cas:aProperty>
             <cas:aProperty rdf:type="cas:Category">
                 <value>FMC Block Diagram</value>
             </cas:aProperty>
             <cas:aTargetLink rdf:type="cas:shows">
-                <idRef>d:MEl-50fbfe8f0029b1a8016ea86245a9d83a</idRef>
+                <idRef>d:Actor-50fbfe8f0029b1a8016ea86245a9d83a</idRef>
             </cas:aTargetLink>
             <cas:aTargetLink rdf:type="cas:shows">
-                <idRef>d:MEl-50feddc00029b1a8016e2872e78ecadc</idRef>
+                <idRef>d:State-50feddc00029b1a8016e2872e78ecadc</idRef>
             </cas:aTargetLink>
             <cas:aTargetLink rdf:type="cas:shows">
-                <idRef>d:SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc</idRef>
+                <idRef>d:Writes-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc</idRef>
             </cas:aTargetLink>
             <cas:aTargetLink rdf:type="cas:shows">
-                <idRef>d:SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc</idRef>
+                <idRef>d:Reads--50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc</idRef>
             </cas:aTargetLink>
         </cas:anEntity>
 
-        <!-- Instance Data: Model Elements -->
-        <cas:anEntity id="d:MEl-50fbfe8f0029b1a8016ea86245a9d83a" rdf:type="FMC:Actor">
+        <!-- Instance Data: Model Entities -->
+        <cas:anEntity id="d:Actor-50fbfe8f0029b1a8016ea86245a9d83a" rdf:type="FMC:Actor">
             <dcterms:modified>2020-03-06T09:04:00+01:00</dcterms:modified>
             <dcterms:title>FiCo-Application</dcterms:title>
             <dcterms:description>
@@ -549,7 +468,7 @@
             </dcterms:description>
         </cas:anEntity>
 
-        <cas:anEntity id="d:MEl-50feddc00029b1a8016e2872e78ecadc" rdf:type="FMC:State">
+        <cas:anEntity id="d:State-50feddc00029b1a8016e2872e78ecadc" rdf:type="FMC:State">
             <dcterms:modified>2020-03-06T09:03:00+01:00</dcterms:modified>
             <dcterms:title>FiCo-Data</dcterms:title>
             <dcterms:description>
@@ -558,56 +477,56 @@
         </cas:anEntity>
 
         <!-- Instance Data: Model Relationships -->
-        <cas:aRelationship id="d:SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc" rdf:type="SpecIF:writes">
+        <cas:aRelationship id="d:Writes-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc" rdf:type="SpecIF:writes">
             <dcterms:modified>2020-03-06T09:05:00+01:00</dcterms:modified>
             <dcterms:description>'FiCo-Application' writes 'FiCo-Data'</dcterms:description>
             <cas:aSourceLink rdf:type="SpecIF:writes-toSource">
-                <idRef>d:MEl-50fbfe8f0029b1a8016ea86245a9d83a</idRef>
+                <idRef>d:Actor-50fbfe8f0029b1a8016ea86245a9d83a</idRef>
             </cas:aSourceLink>
             <cas:aTargetLink rdf:type="SpecIF:writes-toTarget">
-                <idRef>d:MEl-50feddc00029b1a8016e2872e78ecadc</idRef>
+                <idRef>d:State-50feddc00029b1a8016e2872e78ecadc</idRef>
             </cas:aTargetLink>
         </cas:aRelationship>
 
-        <cas:aRelationship id="d:SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc" rdf:type="SpecIF:reads">
+        <cas:aRelationship id="d:Reads--50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc" rdf:type="SpecIF:reads">
             <dcterms:modified>2020-03-06T09:05:00+01:00</dcterms:modified>
             <dcterms:description>'FiCo-Application' reads 'FiCo-Data'</dcterms:description>
             <cas:aSourceLink rdf:type="SpecIF:reads-toSource">
-                <idRef>d:MEl-50fbfe8f0029b1a8016ea86245a9d83a</idRef>
+                <idRef>d:Actor-50fbfe8f0029b1a8016ea86245a9d83a</idRef>
             </cas:aSourceLink>
             <cas:aTargetLink rdf:type="SpecIF:reads-toTarget">
-                <idRef>d:MEl-50feddc00029b1a8016e2872e78ecadc</idRef>
+                <idRef>d:State-50feddc00029b1a8016e2872e78ecadc</idRef>
             </cas:aTargetLink>
         </cas:aRelationship>
 
         <!-- Instance Data: Satisfaction Relationships -->
-        <cas:aRelationship id="d:Ssat-50feddc00029b1a8016e2872e78ecadc-1a8016e2872e78ecadc50feddc00029b" rdf:type="oslc_rm:satisfies">
+        <cas:aRelationship id="d:Satisfies-50feddc00029b1a8016e2872e78ecadc-1a8016e2872e78ecadc50feddc00029b" rdf:type="oslc_rm:satisfies">
             <dcterms:modified>2020-10-17T10:00:00+01:00</dcterms:modified>
             <dcterms:description>'FiCo-Data' satisfies 'Data Volume'</dcterms:description>
             <cas:aSourceLink rdf:type="oslc_rm:satisfies-toSource">
-                <idRef>d:MEl-50feddc00029b1a8016e2872e78ecadc</idRef>
+                <idRef>d:State-50feddc00029b1a8016e2872e78ecadc</idRef>
             </cas:aSourceLink>
             <cas:aTargetLink rdf:type="oslc_rm:satisfies-toTarget">
                 <idRef>d:Req-1a8016e2872e78ecadc50feddc00029b</idRef>
             </cas:aTargetLink>
         </cas:aRelationship>
 
-        <cas:aRelationship id="d:Ssat-50feddc00029b1a8016e2872e78ecadc-0Z7916e2872e78ecadc50feddc00918a" rdf:type="oslc_rm:satisfies">
+        <cas:aRelationship id="d:Satisfies-50feddc00029b1a8016e2872e78ecadc-0Z7916e2872e78ecadc50feddc00918a" rdf:type="oslc_rm:satisfies">
             <dcterms:modified>2020-10-17T10:00:00+01:00</dcterms:modified>
             <dcterms:description>'FiCo-Data' satisfies 'Consistency'</dcterms:description>
             <cas:aSourceLink rdf:type="oslc_rm:satisfies-toSource">
-                <idRef>d:MEl-50feddc00029b1a8016e2872e78ecadc</idRef>
+                <idRef>d:State-50feddc00029b1a8016e2872e78ecadc</idRef>
             </cas:aSourceLink>
             <cas:aTargetLink rdf:type="oslc_rm:satisfies-toTarget">
                 <idRef>d:Req-0Z7916e2872e78ecadc50feddc00918a</idRef>
             </cas:aTargetLink>
         </cas:aRelationship>
 
-        <cas:aRelationship id="d:Ssat-50fbfe8f0029b1a8016ea86245a9d83a-2b9016e2872e78ecadc50feddc0013Ac" rdf:type="oslc_rm:satisfies">
+        <cas:aRelationship id="d:Satisfies-50fbfe8f0029b1a8016ea86245a9d83a-2b9016e2872e78ecadc50feddc0013Ac" rdf:type="oslc_rm:satisfies">
             <dcterms:modified>2020-10-17T10:00:00+01:00</dcterms:modified>
             <dcterms:description>'FiCo-Application' satisfies 'Response Time'</dcterms:description>
             <cas:aSourceLink rdf:type="oslc_rm:satisfies-toSource">
-                <idRef>d:MEl-50fbfe8f0029b1a8016ea86245a9d83a</idRef>
+                <idRef>d:Actor-50fbfe8f0029b1a8016ea86245a9d83a</idRef>
             </cas:aSourceLink>
             <cas:aTargetLink rdf:type="oslc_rm:satisfies-toTarget">
                 <idRef>d:Req-2b9016e2872e78ecadc50feddc0013Ac</idRef>
@@ -620,16 +539,16 @@
             <dcterms:title>Hierarchy Root</dcterms:title>
             <dcterms:description>... anchoring all hierarchies of this graph (package)</dcterms:description>
             <cas:aTargetLink rdf:type="cas:lists">
-                <idRef>d:HR-Folder-Introduction</idRef>
+                <idRef>d:Folder-Introduction</idRef>
             </cas:aTargetLink>
             <cas:aTargetLink rdf:type="cas:lists">
-                <idRef>d:HR-Folder-Requirements</idRef>
+                <idRef>d:Folder-Requirements</idRef>
             </cas:aTargetLink>
             <cas:aTargetLink rdf:type="cas:lists">
-                <idRef>d:HR-Folder-SystemModel</idRef>
+                <idRef>d:Folder-SystemDiagrams</idRef>
             </cas:aTargetLink>
             <cas:aTargetLink rdf:type="cas:lists">
-                <idRef>d:HR-FolderGlossary-10875487071</idRef>
+                <idRef>d:FolderGlossary-10875487071</idRef>
             </cas:aTargetLink>
         </cas:anEntity>
 
@@ -637,21 +556,8 @@
             <dcterms:modified>2025-02-07T08:32:00+01:00</dcterms:modified>
             <dcterms:title>Introduction</dcterms:title>
             <dcterms:description>
-                <p>
-                    This is a minimal showcase for a model with model-elements and related requirements. It covers pretty much all characteristics neeeded in such cases (including 'statements on statements'), so that transformations and expressive power of other data formats can be evaluated. The example and its representation in SpecIF format is discussed in <a href="https://specif.de/Tutorials/06_Very-Simple-Model-FMC.html" target="_blank">Tutorial 6: Very Simple Model (FMC)</a> and <a href="https://specif.de/Tutorials/09_Very-Simple-Model-FMC-with-Requirements.html" target="_blank">Tutorial 9: Very Simple Model (FMC) with Requirements</a>.
-                </p>
+                <p>This is a minimal showcase of a model with model-elements and related requirements. It covers pretty much all characteristics neeeded in such cases (including 'statements on statements'), so that transformations and expressive power of other data formats can be evaluated.</p>
             </dcterms:description>
-        </cas:anEntity>
-
-        <cas:anEntity id="d:HR-Folder-Introduction" rdf:type="cas:Outline">
-            <dcterms:modified>2026-01-17T22:38:19.821Z</dcterms:modified>
-            <dcterms:title>Project 'Very Simple Model (FMC) with Requirements'</dcterms:title>
-            <cas:aProperty rdf:type="cas:Category">
-                <value>ReqIF:HierarchyRoot</value>
-            </cas:aProperty>
-            <cas:aTargetLink rdf:type="cas:lists">
-                <idRef>d:Folder-Introduction</idRef>
-            </cas:aTargetLink>
         </cas:anEntity>
 
         <cas:anEntity id="d:Folder-Requirements" rdf:type="cas:Outline">
@@ -668,59 +574,27 @@
             </cas:aTargetLink>
         </cas:anEntity>
 
-        <cas:anEntity id="d:HR-Folder-Requirements" rdf:type="cas:Outline">
-            <dcterms:modified>2026-01-17T22:38:19.821Z</dcterms:modified>
-            <dcterms:title>Project 'Very Simple Model (FMC) with Requirements'</dcterms:title>
-            <cas:aProperty rdf:type="cas:Category">
-                <value>ReqIF:HierarchyRoot</value>
-            </cas:aProperty>
-            <cas:aTargetLink rdf:type="cas:lists">
-                <idRef>d:Folder-Requirements</idRef>
-            </cas:aTargetLink>
-        </cas:anEntity>
-
-        <cas:anEntity id="d:Folder-SystemModel" rdf:type="cas:Outline">
+        <cas:anEntity id="d:Folder-SystemDiagrams" rdf:type="cas:Outline">
             <dcterms:modified>2020-03-06T08:32:00+01:00</dcterms:modified>
-            <dcterms:title>System Model</dcterms:title>
+            <dcterms:title>System Diagrams</dcterms:title>
             <cas:aTargetLink rdf:type="cas:lists">
                 <idRef>d:Diagram-aec0df7900010000017001eaf53e8876</idRef>
             </cas:aTargetLink>
         </cas:anEntity>
 
-        <cas:anEntity id="d:HR-Folder-SystemModel" rdf:type="cas:Outline">
-            <dcterms:modified>2026-01-17T22:38:19.821Z</dcterms:modified>
-            <dcterms:title>Project 'Very Simple Model (FMC) with Requirements'</dcterms:title>
-            <cas:aProperty rdf:type="cas:Category">
-                <value>ReqIF:HierarchyRoot</value>
-            </cas:aProperty>
-            <cas:aTargetLink rdf:type="cas:lists">
-                <idRef>d:Folder-SystemModel</idRef>
-            </cas:aTargetLink>
-        </cas:anEntity>
-
         <cas:anEntity id="d:FolderGlossary-10875487071" rdf:type="cas:Outline">
             <dcterms:modified>2026-01-17T22:38:13.953Z</dcterms:modified>
-            <dcterms:title>Model Elements (Glossary)</dcterms:title>
+            <dcterms:title>Glossary</dcterms:title>
             <cas:aProperty rdf:type="cas:Category">
                 <value>SpecIF:Glossary</value>
             </cas:aProperty>
             <cas:aTargetLink rdf:type="cas:lists">
-                <idRef>d:MEl-50fbfe8f0029b1a8016ea86245a9d83a</idRef>
+                <idRef>d:Actor-50fbfe8f0029b1a8016ea86245a9d83a</idRef>
             </cas:aTargetLink>
             <cas:aTargetLink rdf:type="cas:lists">
-                <idRef>d:MEl-50feddc00029b1a8016e2872e78ecadc</idRef>
+                <idRef>d:State-50feddc00029b1a8016e2872e78ecadc</idRef>
             </cas:aTargetLink>
         </cas:anEntity>
 
-        <cas:anEntity id="d:HR-FolderGlossary-10875487071" rdf:type="cas:Outline">
-            <dcterms:modified>2026-01-17T22:38:19.821Z</dcterms:modified>
-            <dcterms:title>Project 'Very Simple Model (FMC) with Requirements'</dcterms:title>
-            <cas:aProperty rdf:type="cas:Category">
-                <value>ReqIF:HierarchyRoot</value>
-            </cas:aProperty>
-            <cas:aTargetLink rdf:type="cas:lists">
-                <idRef>d:FolderGlossary-10875487071</idRef>
-            </cas:aTargetLink>
-        </cas:anEntity>
     </graph>
 </cas:aPackage>

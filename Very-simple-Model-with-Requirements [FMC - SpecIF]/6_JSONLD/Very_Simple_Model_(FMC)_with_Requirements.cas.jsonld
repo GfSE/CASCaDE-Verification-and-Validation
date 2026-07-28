@@ -87,7 +87,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "A subclass of CASCaRA organizer serving as a root for hierarchically organized graph elements."
+          "@value": "A root for hierarchically organized graph elements."
         }
       ],
       "cas:enumeratedTargetLink": [
@@ -112,7 +112,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "A subclass of CASCaRA organizer comprising all information items of a human-readable document. As usual, the outline is hierarchically organized."
+          "@value": "Comprises all information items of a human-readable document. As usual, the outline is hierarchically organized."
         }
       ],
       "cas:enumeratedProperty": [
@@ -142,7 +142,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "A subclass of CASCaRA organizer representing a model view (diagram) using a certain notation showing selected model elements."
+          "@value": "Represents a model view (diagram) using a certain notation showing selected model elements."
         }
       ],
       "cas:enumeratedProperty": [
@@ -329,69 +329,6 @@
       ]
     },
     {
-      "@id": "dcterms:title",
-      "@type": "owl:DatatypeProperty",
-      "cas:itemType": {
-        "@id": "cas:Property"
-      },
-      "dcterms:title": [
-        {
-          "@value": "Title",
-          "@language": "en"
-        },
-        {
-          "@value": "Titel",
-          "@language": "de"
-        },
-        {
-          "@value": "Titre",
-          "@language": "fr"
-        }
-      ],
-      "dcterms:description": [
-        {
-          "@value": "<p> A name given to the resource. <small> (<i> source: <a href=\"http://purl.org/dc/elements/1.1/title\">DCMI</a></i>) </small></p><p> Title (reference: Dublin Core) of the resource represented as rich text in XHTML content. SHOULD include only content that is valid inside an XHTML 'span' element. <small> (<i> source: <a href=\"http://open-services.net/\">OSLC</a></i>) </small></p>",
-          "@language": "en"
-        }
-      ],
-      "sh:datatype": {
-        "@id": "xs:string"
-      },
-      "sh:maxCount": 1,
-      "sh:maxLength": 256
-    },
-    {
-      "@id": "dcterms:description",
-      "@type": "owl:DatatypeProperty",
-      "cas:itemType": {
-        "@id": "cas:Property"
-      },
-      "dcterms:title": [
-        {
-          "@value": "Description",
-          "@language": "en"
-        },
-        {
-          "@value": "Beschreibung",
-          "@language": "de"
-        },
-        {
-          "@value": "Description",
-          "@language": "fr"
-        }
-      ],
-      "dcterms:description": [
-        {
-          "@value": "<p> An account of the resource. <small> (<i> source: <a href=\"http://purl.org/dc/elements/1.1/description\">DCMI</a></i>) </small></p><p> Descriptive text (reference: Dublin Core) about resource represented as rich text in XHTML content. SHOULD include only content that is valid and suitable inside an XHTML 'div' element. <small> (<i> source: <a href=\"http://open-services.net/\">OSLC</a></i>) </small></p>",
-          "@language": "en"
-        }
-      ],
-      "sh:datatype": {
-        "@id": "xs:string"
-      },
-      "sh:maxCount": 1
-    },
-    {
       "@id": "cas:Diagram",
       "@type": "owl:DatatypeProperty",
       "cas:itemType": {
@@ -420,48 +357,6 @@
       "sh:datatype": {
         "@id": "xs:string"
       }
-    },
-    {
-      "@id": "SpecIF:Paragraph",
-      "@type": "owl:Class",
-      "cas:itemType": {
-        "@id": "cas:Entity"
-      },
-      "cas:specializes": {
-        "@id": "cas:Entity"
-      },
-      "dcterms:title": [
-        {
-          "@value": "Paragraph",
-          "@language": "en"
-        },
-        {
-          "@value": "Textabsatz",
-          "@language": "de"
-        },
-        {
-          "@value": "Paragraphe",
-          "@language": "fr"
-        }
-      ],
-      "dcterms:description": [
-        {
-          "@value": "<p>A 'Paragraph' is an unspecified information in a document at any level.</p>",
-          "@language": "en"
-        },
-        {
-          "@value": "<p>Ein 'Textabschnitt' in einem Dokument auf beliebiger Ebene.</p>",
-          "@language": "de"
-        }
-      ],
-      "cas:enumeratedProperty": [
-        {
-          "@id": "cas:Diagram"
-        },
-        {
-          "@id": "cas:Category"
-        }
-      ]
     },
     {
       "@id": "FMC:Actor",
@@ -852,7 +747,7 @@
       ],
       "dcterms:description": [
         {
-          "@value": "<p> The object is satisfied by the subject. <small> (<i> source: <a href=\"http://open-services.net/\">OSLC</a></i>) </small></p><p> SpecIF suggests that the subject is confined to a model element, e.g, a [[FMC:Actor]] or [[FMC:State]], and the object is confined to a [[IREB:Requirement]]. More concretely, an example for this type of statement is 'Component-X <em>satisfies</em> 'Requirement-4711'. </p>",
+          "@value": "<p>The object is satisfied by the subject. <small>(<i>source: <a href=\"http://open-services.net/\">OSLC</a></i>)</small></p><p>SpecIF suggests that the subject is confined to a model element, e.g, a [[FMC:Actor]] or [[FMC:State]], and the object is confined to a [[IREB:Requirement]]. More concretely, an example for this type of statement is 'Component-X <em>satisfies</em> 'Requirement-4711'.</p>",
           "@language": "en"
         }
       ],
@@ -1163,7 +1058,7 @@
       },
       "dcterms:title": [
         {
-          "@value": "IT-Integration: FiCo-Application and FiCo-Data"
+          "@value": "FiCo-Architecure Diagram"
         }
       ],
       "dcterms:modified": "2020-03-06T08:32:00+01:00",
@@ -1177,7 +1072,7 @@
       ],
       "cas:Diagram": [
         {
-          "@value": "\n                    <p class=\"inline-label\">Model Diagram:</p>\n                    <p>\n                        <object type=\"image/svg+xml\" data=\"files_and_images/Very-Simple-Model-FMC.svg\">Notation: FMC Block Diagram</object>\n                    </p>\n                ",
+          "@value": "\n                    <p class=\"inline-label\">Model Diagram:</p>\n                    <p><object type=\"image/svg+xml\" data=\"files_and_images/Very-Simple-Model-FMC.svg\">Notation: FMC Block Diagram</object></p>\n                ",
           "cas:itemType": {
             "@id": "cas:aProperty"
           }
@@ -1185,25 +1080,25 @@
       ],
       "cas:shows": [
         {
-          "@id": "d:MEl-50fbfe8f0029b1a8016ea86245a9d83a",
+          "@id": "d:Actor-50fbfe8f0029b1a8016ea86245a9d83a",
           "cas:itemType": {
             "@id": "cas:aTargetLink"
           }
         },
         {
-          "@id": "d:MEl-50feddc00029b1a8016e2872e78ecadc",
+          "@id": "d:State-50feddc00029b1a8016e2872e78ecadc",
           "cas:itemType": {
             "@id": "cas:aTargetLink"
           }
         },
         {
-          "@id": "d:SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc",
+          "@id": "d:Writes-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc",
           "cas:itemType": {
             "@id": "cas:aTargetLink"
           }
         },
         {
-          "@id": "d:SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc",
+          "@id": "d:Reads--50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc",
           "cas:itemType": {
             "@id": "cas:aTargetLink"
           }
@@ -1211,7 +1106,7 @@
       ]
     },
     {
-      "@id": "d:MEl-50fbfe8f0029b1a8016ea86245a9d83a",
+      "@id": "d:Actor-50fbfe8f0029b1a8016ea86245a9d83a",
       "@type": "FMC:Actor",
       "cas:itemType": {
         "@id": "cas:anEntity"
@@ -1229,7 +1124,7 @@
       "dcterms:modified": "2020-03-06T09:04:00+01:00"
     },
     {
-      "@id": "d:MEl-50feddc00029b1a8016e2872e78ecadc",
+      "@id": "d:State-50feddc00029b1a8016e2872e78ecadc",
       "@type": "FMC:State",
       "cas:itemType": {
         "@id": "cas:anEntity"
@@ -1247,7 +1142,7 @@
       "dcterms:modified": "2020-03-06T09:03:00+01:00"
     },
     {
-      "@id": "d:SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc",
+      "@id": "d:Writes-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc",
       "@type": "SpecIF:writes",
       "cas:itemType": {
         "@id": "cas:aRelationship"
@@ -1260,7 +1155,7 @@
       "dcterms:modified": "2020-03-06T09:05:00+01:00",
       "SpecIF:writes-toSource": [
         {
-          "@id": "d:MEl-50fbfe8f0029b1a8016ea86245a9d83a",
+          "@id": "d:Actor-50fbfe8f0029b1a8016ea86245a9d83a",
           "cas:itemType": {
             "@id": "cas:aSourceLink"
           }
@@ -1268,7 +1163,7 @@
       ],
       "SpecIF:writes-toTarget": [
         {
-          "@id": "d:MEl-50feddc00029b1a8016e2872e78ecadc",
+          "@id": "d:State-50feddc00029b1a8016e2872e78ecadc",
           "cas:itemType": {
             "@id": "cas:aTargetLink"
           }
@@ -1276,7 +1171,7 @@
       ]
     },
     {
-      "@id": "d:SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc",
+      "@id": "d:Reads--50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc",
       "@type": "SpecIF:reads",
       "cas:itemType": {
         "@id": "cas:aRelationship"
@@ -1289,7 +1184,7 @@
       "dcterms:modified": "2020-03-06T09:05:00+01:00",
       "SpecIF:reads-toSource": [
         {
-          "@id": "d:MEl-50fbfe8f0029b1a8016ea86245a9d83a",
+          "@id": "d:Actor-50fbfe8f0029b1a8016ea86245a9d83a",
           "cas:itemType": {
             "@id": "cas:aSourceLink"
           }
@@ -1297,7 +1192,7 @@
       ],
       "SpecIF:reads-toTarget": [
         {
-          "@id": "d:MEl-50feddc00029b1a8016e2872e78ecadc",
+          "@id": "d:State-50feddc00029b1a8016e2872e78ecadc",
           "cas:itemType": {
             "@id": "cas:aTargetLink"
           }
@@ -1305,7 +1200,7 @@
       ]
     },
     {
-      "@id": "d:Ssat-50feddc00029b1a8016e2872e78ecadc-1a8016e2872e78ecadc50feddc00029b",
+      "@id": "d:Satisfies-50feddc00029b1a8016e2872e78ecadc-1a8016e2872e78ecadc50feddc00029b",
       "@type": "oslc_rm:satisfies",
       "cas:itemType": {
         "@id": "cas:aRelationship"
@@ -1318,7 +1213,7 @@
       "dcterms:modified": "2020-10-17T10:00:00+01:00",
       "oslc_rm:satisfies-toSource": [
         {
-          "@id": "d:MEl-50feddc00029b1a8016e2872e78ecadc",
+          "@id": "d:State-50feddc00029b1a8016e2872e78ecadc",
           "cas:itemType": {
             "@id": "cas:aSourceLink"
           }
@@ -1334,7 +1229,7 @@
       ]
     },
     {
-      "@id": "d:Ssat-50feddc00029b1a8016e2872e78ecadc-0Z7916e2872e78ecadc50feddc00918a",
+      "@id": "d:Satisfies-50feddc00029b1a8016e2872e78ecadc-0Z7916e2872e78ecadc50feddc00918a",
       "@type": "oslc_rm:satisfies",
       "cas:itemType": {
         "@id": "cas:aRelationship"
@@ -1347,7 +1242,7 @@
       "dcterms:modified": "2020-10-17T10:00:00+01:00",
       "oslc_rm:satisfies-toSource": [
         {
-          "@id": "d:MEl-50feddc00029b1a8016e2872e78ecadc",
+          "@id": "d:State-50feddc00029b1a8016e2872e78ecadc",
           "cas:itemType": {
             "@id": "cas:aSourceLink"
           }
@@ -1363,7 +1258,7 @@
       ]
     },
     {
-      "@id": "d:Ssat-50fbfe8f0029b1a8016ea86245a9d83a-2b9016e2872e78ecadc50feddc0013Ac",
+      "@id": "d:Satisfies-50fbfe8f0029b1a8016ea86245a9d83a-2b9016e2872e78ecadc50feddc0013Ac",
       "@type": "oslc_rm:satisfies",
       "cas:itemType": {
         "@id": "cas:aRelationship"
@@ -1376,7 +1271,7 @@
       "dcterms:modified": "2020-10-17T10:00:00+01:00",
       "oslc_rm:satisfies-toSource": [
         {
-          "@id": "d:MEl-50fbfe8f0029b1a8016ea86245a9d83a",
+          "@id": "d:Actor-50fbfe8f0029b1a8016ea86245a9d83a",
           "cas:itemType": {
             "@id": "cas:aSourceLink"
           }
@@ -1410,25 +1305,25 @@
       "dcterms:modified": "2026-01-17T22:38:20.041Z",
       "cas:lists": [
         {
-          "@id": "d:HR-Folder-Introduction",
+          "@id": "d:Folder-Introduction",
           "cas:itemType": {
             "@id": "cas:aTargetLink"
           }
         },
         {
-          "@id": "d:HR-Folder-Requirements",
+          "@id": "d:Folder-Requirements",
           "cas:itemType": {
             "@id": "cas:aTargetLink"
           }
         },
         {
-          "@id": "d:HR-Folder-SystemModel",
+          "@id": "d:Folder-SystemDiagrams",
           "cas:itemType": {
             "@id": "cas:aTargetLink"
           }
         },
         {
-          "@id": "d:HR-FolderGlossary-10875487071",
+          "@id": "d:FolderGlossary-10875487071",
           "cas:itemType": {
             "@id": "cas:aTargetLink"
           }
@@ -1448,39 +1343,10 @@
       ],
       "dcterms:description": [
         {
-          "@value": "<p> This is a minimal showcase for a model with model-elements and related requirements. It covers pretty much all characteristics neeeded in such cases (including 'statements on statements'), so that transformations and expressive power of other data formats can be evaluated. The example and its representation in SpecIF format is discussed in <a href=\"https://specif.de/Tutorials/06_Very-Simple-Model-FMC.html\" target=\"_blank\">Tutorial 6: Very Simple Model (FMC)</a> and <a href=\"https://specif.de/Tutorials/09_Very-Simple-Model-FMC-with-Requirements.html\" target=\"_blank\">Tutorial 9: Very Simple Model (FMC) with Requirements</a>. </p>"
+          "@value": "<p>This is a minimal showcase for a model with model-elements and related requirements. It covers pretty much all characteristics neeeded in such cases (including 'statements on statements'), so that transformations and expressive power of other data formats can be evaluated. The example and its representation in SpecIF format is discussed in <a href=\"https://specif.de/Tutorials/06_Very-Simple-Model-FMC.html\" target=\"_blank\">Tutorial 6: Very Simple Model (FMC)</a> and <a href=\"https://specif.de/Tutorials/09_Very-Simple-Model-FMC-with-Requirements.html\" target=\"_blank\">Tutorial 9: Very Simple Model (FMC) with Requirements</a>.</p>"
         }
       ],
       "dcterms:modified": "2025-02-07T08:32:00+01:00"
-    },
-    {
-      "@id": "d:HR-Folder-Introduction",
-      "@type": "cas:Outline",
-      "cas:itemType": {
-        "@id": "cas:anEntity"
-      },
-      "dcterms:title": [
-        {
-          "@value": "Project 'Very Simple Model (FMC) with Requirements'"
-        }
-      ],
-      "dcterms:modified": "2026-01-17T22:38:19.821Z",
-      "cas:Category": [
-        {
-          "@value": "ReqIF:HierarchyRoot",
-          "cas:itemType": {
-            "@id": "cas:aProperty"
-          }
-        }
-      ],
-      "cas:lists": [
-        {
-          "@id": "d:Folder-Introduction",
-          "cas:itemType": {
-            "@id": "cas:aTargetLink"
-          }
-        }
-      ]
     },
     {
       "@id": "d:Folder-Requirements",
@@ -1516,78 +1382,20 @@
       ]
     },
     {
-      "@id": "d:HR-Folder-Requirements",
+      "@id": "d:Folder-SystemDiagrams",
       "@type": "cas:Outline",
       "cas:itemType": {
         "@id": "cas:anEntity"
       },
       "dcterms:title": [
         {
-          "@value": "Project 'Very Simple Model (FMC) with Requirements'"
-        }
-      ],
-      "dcterms:modified": "2026-01-17T22:38:19.821Z",
-      "cas:Category": [
-        {
-          "@value": "ReqIF:HierarchyRoot",
-          "cas:itemType": {
-            "@id": "cas:aProperty"
-          }
-        }
-      ],
-      "cas:lists": [
-        {
-          "@id": "d:Folder-Requirements",
-          "cas:itemType": {
-            "@id": "cas:aTargetLink"
-          }
-        }
-      ]
-    },
-    {
-      "@id": "d:Folder-SystemModel",
-      "@type": "cas:Outline",
-      "cas:itemType": {
-        "@id": "cas:anEntity"
-      },
-      "dcterms:title": [
-        {
-          "@value": "System Model"
+          "@value": "System Diagrams"
         }
       ],
       "dcterms:modified": "2020-03-06T08:32:00+01:00",
       "cas:lists": [
         {
           "@id": "d:Diagram-aec0df7900010000017001eaf53e8876",
-          "cas:itemType": {
-            "@id": "cas:aTargetLink"
-          }
-        }
-      ]
-    },
-    {
-      "@id": "d:HR-Folder-SystemModel",
-      "@type": "cas:Outline",
-      "cas:itemType": {
-        "@id": "cas:anEntity"
-      },
-      "dcterms:title": [
-        {
-          "@value": "Project 'Very Simple Model (FMC) with Requirements'"
-        }
-      ],
-      "dcterms:modified": "2026-01-17T22:38:19.821Z",
-      "cas:Category": [
-        {
-          "@value": "ReqIF:HierarchyRoot",
-          "cas:itemType": {
-            "@id": "cas:aProperty"
-          }
-        }
-      ],
-      "cas:lists": [
-        {
-          "@id": "d:Folder-SystemModel",
           "cas:itemType": {
             "@id": "cas:aTargetLink"
           }
@@ -1602,7 +1410,7 @@
       },
       "dcterms:title": [
         {
-          "@value": "Model Elements (Glossary)"
+          "@value": "Glossary"
         }
       ],
       "dcterms:modified": "2026-01-17T22:38:13.953Z",
@@ -1616,42 +1424,13 @@
       ],
       "cas:lists": [
         {
-          "@id": "d:MEl-50fbfe8f0029b1a8016ea86245a9d83a",
+          "@id": "d:Actor-50fbfe8f0029b1a8016ea86245a9d83a",
           "cas:itemType": {
             "@id": "cas:aTargetLink"
           }
         },
         {
-          "@id": "d:MEl-50feddc00029b1a8016e2872e78ecadc",
-          "cas:itemType": {
-            "@id": "cas:aTargetLink"
-          }
-        }
-      ]
-    },
-    {
-      "@id": "d:HR-FolderGlossary-10875487071",
-      "@type": "cas:Outline",
-      "cas:itemType": {
-        "@id": "cas:anEntity"
-      },
-      "dcterms:title": [
-        {
-          "@value": "Project 'Very Simple Model (FMC) with Requirements'"
-        }
-      ],
-      "dcterms:modified": "2026-01-17T22:38:19.821Z",
-      "cas:Category": [
-        {
-          "@value": "ReqIF:HierarchyRoot",
-          "cas:itemType": {
-            "@id": "cas:aProperty"
-          }
-        }
-      ],
-      "cas:lists": [
-        {
-          "@id": "d:FolderGlossary-10875487071",
+          "@id": "d:State-50feddc00029b1a8016e2872e78ecadc",
           "cas:itemType": {
             "@id": "cas:aTargetLink"
           }
@@ -1664,7 +1443,7 @@
   },
   "dcterms:title": [
     {
-      "@value": "Project 'Very Simple Model (FMC) with Requirements'"
+      "@value": "Very Simple Model (FMC) with Requirements"
     }
   ],
   "dcterms:modified": "2026-01-17T22:38:19.595Z",

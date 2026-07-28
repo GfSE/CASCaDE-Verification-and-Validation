@@ -1,0 +1,2507 @@
+{
+  "@context": {
+    "dcterms": "http://purl.org/dc/terms/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "dash": "http://datashapes.org/dash#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "cas": "https://product-information-graph.org/ontology/2026-05-08/metamodel#",
+    "o": "https://product-information-graph.org/ontology/custom#",
+    "d": "https://product-information-graph.org/examples/09_Very-Simple-Model-FMC-with-Requirements.specif.zip#",
+    "FMC": "http://fmc-modeling.org#",
+    "IREB": "https://cpre.ireb.org/en/downloads-and-resources/glossary#",
+    "ReqIF": "https://www.prostep.org/fileadmin/downloads/PSI_ImplementationGuide_ReqIF_V1-7.pdf#",
+    "oslc_rm": "http://open-services.net/ns/rm#",
+    "SpecIF": "https://specif.de/v1.2/schema#"
+  },
+  "@graph": [
+    {
+      "@id": "_:g1",
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:label"
+      }
+    },
+    {
+      "@id": "_:g100",
+      "sh:path": {
+        "@id": "cas:priorRevision"
+      }
+    },
+    {
+      "@id": "_:g101",
+      "sh:datatype": {
+        "@id": "xsd:dateTime"
+      },
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "dcterms:modified"
+      }
+    },
+    {
+      "@id": "_:g102",
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "dcterms:creator"
+      }
+    },
+    {
+      "@id": "_:g103",
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "cas:itemType"
+      }
+    },
+    {
+      "@id": "_:g104",
+      "sh:message": "Link class must have a corresponding PropertyShape with at least sh:class or sh:or constraint defined",
+      "sh:select": "\n\t\t\tSELECT $this\n\t\t\tWHERE {\n\t\t\t\tFILTER NOT EXISTS {\n\t\t\t\t\t?shape a sh:PropertyShape ;\n\t\t\t\t\t\tsh:path $this .\n\t\t\t\t\tFILTER ( EXISTS { ?shape sh:class ?c } || EXISTS { ?shape sh:or ?o } )\n\t\t\t\t}\n\t\t\t}\n\t\t"
+    },
+    {
+      "@id": "_:g107",
+      "sh:hasValue": {
+        "@id": "owl:Class"
+      },
+      "sh:path": {
+        "@id": "rdf:type"
+      }
+    },
+    {
+      "@id": "_:g109",
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:subClassOf"
+      }
+    },
+    {
+      "@id": "_:g11",
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:comment"
+      }
+    },
+    {
+      "@id": "_:g110",
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:label"
+      }
+    },
+    {
+      "@id": "_:g111",
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "cas:enumeratedValue"
+      }
+    },
+    {
+      "@id": "_:g112",
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:comment"
+      }
+    },
+    {
+      "@id": "_:g113",
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "https://www.w3.org/TR/skos-reference/definition"
+      }
+    },
+    {
+      "@id": "_:g114",
+      "sh:datatype": {
+        "@id": "xsd:string"
+      },
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "cas:revision"
+      }
+    },
+    {
+      "@id": "_:g115",
+      "sh:path": {
+        "@id": "cas:priorRevision"
+      }
+    },
+    {
+      "@id": "_:g116",
+      "sh:datatype": {
+        "@id": "xsd:dateTime"
+      },
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "dcterms:modified"
+      }
+    },
+    {
+      "@id": "_:g117",
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "dcterms:creator"
+      }
+    },
+    {
+      "@id": "_:g118",
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "cas:itemType"
+      }
+    },
+    {
+      "@id": "_:g119",
+      "sh:message": "Enumeration class must have at least one valid enumeratedValue",
+      "sh:select": "\n\t\t\tSELECT $this\n\t\t\tWHERE {\n\t\t\t\tFILTER NOT EXISTS {\n\t\t\t\t\t$this cas:enumeratedValue ?value .\n\t\t\t\t}\n\t\t\t}\n\t\t"
+    },
+    {
+      "@id": "_:g122",
+      "sh:hasValue": {
+        "@id": "owl:Class"
+      },
+      "sh:path": {
+        "@id": "rdf:type"
+      }
+    },
+    {
+      "@id": "_:g124",
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:subClassOf"
+      }
+    },
+    {
+      "@id": "_:g125",
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:label"
+      }
+    },
+    {
+      "@id": "_:g126",
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:comment"
+      }
+    },
+    {
+      "@id": "_:g127",
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "https://www.w3.org/TR/skos-reference/definition"
+      }
+    },
+    {
+      "@id": "_:g128",
+      "sh:datatype": {
+        "@id": "xsd:string"
+      },
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "cas:revision"
+      }
+    },
+    {
+      "@id": "_:g129",
+      "sh:path": {
+        "@id": "cas:priorRevision"
+      }
+    },
+    {
+      "@id": "_:g13",
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:label"
+      }
+    },
+    {
+      "@id": "_:g130",
+      "sh:datatype": {
+        "@id": "xsd:dateTime"
+      },
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "dcterms:modified"
+      }
+    },
+    {
+      "@id": "_:g131",
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "dcterms:creator"
+      }
+    },
+    {
+      "@id": "_:g132",
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "cas:icon"
+      }
+    },
+    {
+      "@id": "_:g133",
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "cas:itemType"
+      }
+    },
+    {
+      "@id": "_:g134",
+      "sh:message": "Entity class should have a corresponding NodeShape with sh:targetClass constraint",
+      "sh:select": "\n\t\t\tSELECT $this\n\t\t\tWHERE {\n\t\t\t\tFILTER NOT EXISTS {\n\t\t\t\t\t?shape a sh:NodeShape ;\n\t\t\t\t\t\tsh:targetClass $this .\n\t\t\t\t}\n\t\t\t}\n\t\t"
+    },
+    {
+      "@id": "_:g135",
+      "sh:message": "Entity shape should have sh:property for each enumeratedProperty defined in the class",
+      "sh:select": "\n\t\t\tSELECT $this ?prop\n\t\t\tWHERE {\n\t\t\t\t$this cas:enumeratedProperty ?prop .\n\t\t\t\tFILTER NOT EXISTS {\n\t\t\t\t\t?shape a sh:NodeShape ;\n\t\t\t\t\t\tsh:targetClass $this ;\n\t\t\t\t\t\tsh:property ?propShape .\n\t\t\t\t\t?propShape sh:path ?prop .\n\t\t\t\t}\n\t\t\t}\n\t\t"
+    },
+    {
+      "@id": "_:g136",
+      "sh:message": "Entity shape should have sh:property for each enumeratedTargetLink defined in the class",
+      "sh:select": "\n\t\t\tSELECT $this ?link\n\t\t\tWHERE {\n\t\t\t\t$this cas:enumeratedTargetLink ?link .\n\t\t\t\tFILTER NOT EXISTS {\n\t\t\t\t\t?shape a sh:NodeShape ;\n\t\t\t\t\t\tsh:targetClass $this ;\n\t\t\t\t\t\tsh:property ?linkShape .\n\t\t\t\t\t?linkShape sh:path ?link .\n\t\t\t\t}\n\t\t\t}\n\t\t"
+    },
+    {
+      "@id": "_:g139",
+      "sh:hasValue": {
+        "@id": "owl:Class"
+      },
+      "sh:path": {
+        "@id": "rdf:type"
+      }
+    },
+    {
+      "@id": "_:g141",
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:subClassOf"
+      }
+    },
+    {
+      "@id": "_:g142",
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:label"
+      }
+    },
+    {
+      "@id": "_:g143",
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:comment"
+      }
+    },
+    {
+      "@id": "_:g144",
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "https://www.w3.org/TR/skos-reference/definition"
+      }
+    },
+    {
+      "@id": "_:g145",
+      "sh:datatype": {
+        "@id": "xsd:string"
+      },
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "cas:revision"
+      }
+    },
+    {
+      "@id": "_:g146",
+      "sh:path": {
+        "@id": "cas:priorRevision"
+      }
+    },
+    {
+      "@id": "_:g147",
+      "sh:datatype": {
+        "@id": "xsd:dateTime"
+      },
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "dcterms:modified"
+      }
+    },
+    {
+      "@id": "_:g148",
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "dcterms:creator"
+      }
+    },
+    {
+      "@id": "_:g149",
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "cas:icon"
+      }
+    },
+    {
+      "@id": "_:g15",
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:comment"
+      }
+    },
+    {
+      "@id": "_:g150",
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "cas:itemType"
+      }
+    },
+    {
+      "@id": "_:g151",
+      "sh:message": "Relationship class should have a corresponding NodeShape with sh:targetClass constraint",
+      "sh:select": "\n\t\t\tSELECT $this\n\t\t\tWHERE {\n\t\t\t\tFILTER NOT EXISTS {\n\t\t\t\t\t?shape a sh:NodeShape ;\n\t\t\t\t\t\tsh:targetClass $this .\n\t\t\t\t}\n\t\t\t}\n\t\t"
+    },
+    {
+      "@id": "_:g152",
+      "sh:message": "Relationship shape should have sh:property for each enumeratedProperty defined in the class",
+      "sh:select": "\n\t\t\tSELECT $this ?prop\n\t\t\tWHERE {\n\t\t\t\t$this cas:enumeratedProperty ?prop .\n\t\t\t\tFILTER NOT EXISTS {\n\t\t\t\t\t?shape a sh:NodeShape ;\n\t\t\t\t\t\tsh:targetClass $this ;\n\t\t\t\t\t\tsh:property ?propShape .\n\t\t\t\t\t?propShape sh:path ?prop .\n\t\t\t\t}\n\t\t\t}\n\t\t"
+    },
+    {
+      "@id": "_:g153",
+      "sh:message": "Relationship shape should have sh:property for each enumeratedSourceLink defined in the class",
+      "sh:select": "\n\t\t\tSELECT $this ?link\n\t\t\tWHERE {\n\t\t\t\t$this cas:enumeratedSourceLink ?link .\n\t\t\t\tFILTER NOT EXISTS {\n\t\t\t\t\t?shape a sh:NodeShape ;\n\t\t\t\t\t\tsh:targetClass $this ;\n\t\t\t\t\t\tsh:property ?linkShape .\n\t\t\t\t\t?linkShape sh:path ?link .\n\t\t\t\t}\n\t\t\t}\n\t\t"
+    },
+    {
+      "@id": "_:g154",
+      "sh:message": "Relationship shape should have sh:property for each enumeratedTargetLink defined in the class",
+      "sh:select": "\n\t\t\tSELECT $this ?link\n\t\t\tWHERE {\n\t\t\t\t$this cas:enumeratedTargetLink ?link .\n\t\t\t\tFILTER NOT EXISTS {\n\t\t\t\t\t?shape a sh:NodeShape ;\n\t\t\t\t\t\tsh:targetClass $this ;\n\t\t\t\t\t\tsh:property ?linkShape .\n\t\t\t\t\t?linkShape sh:path ?link .\n\t\t\t\t}\n\t\t\t}\n\t\t"
+    },
+    {
+      "@id": "_:g17",
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:label"
+      }
+    },
+    {
+      "@id": "_:g19",
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:comment"
+      }
+    },
+    {
+      "@id": "_:g20",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "cas:Entity"
+          },
+          {
+            "@id": "cas:Relationship"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "_:g24",
+      "sh:class": {
+        "@id": "cas:Entity"
+      }
+    },
+    {
+      "@id": "_:g26",
+      "sh:class": {
+        "@id": "cas:Relationship"
+      }
+    },
+    {
+      "@id": "_:g27",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "cas:Entity"
+          },
+          {
+            "@id": "cas:Relationship"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "_:g3",
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:comment"
+      }
+    },
+    {
+      "@id": "_:g31",
+      "sh:class": {
+        "@id": "cas:Entity"
+      }
+    },
+    {
+      "@id": "_:g33",
+      "sh:class": {
+        "@id": "cas:Relationship"
+      }
+    },
+    {
+      "@id": "_:g34",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "cas:Entity"
+          },
+          {
+            "@id": "cas:Relationship"
+          },
+          {
+            "@id": "cas:Organizer"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "_:g39",
+      "sh:class": {
+        "@id": "cas:Entity"
+      }
+    },
+    {
+      "@id": "_:g41",
+      "sh:class": {
+        "@id": "cas:Relationship"
+      }
+    },
+    {
+      "@id": "_:g43",
+      "sh:class": {
+        "@id": "cas:Organizer"
+      }
+    },
+    {
+      "@id": "_:g44",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "cas:Entity"
+          },
+          {
+            "@id": "cas:Relationship"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "_:g48",
+      "sh:class": {
+        "@id": "cas:Entity"
+      }
+    },
+    {
+      "@id": "_:g5",
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:label"
+      }
+    },
+    {
+      "@id": "_:g50",
+      "sh:class": {
+        "@id": "cas:Relationship"
+      }
+    },
+    {
+      "@id": "_:g52",
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:label"
+      }
+    },
+    {
+      "@id": "_:g54",
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:comment"
+      }
+    },
+    {
+      "@id": "_:g56",
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:label"
+      }
+    },
+    {
+      "@id": "_:g58",
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:comment"
+      }
+    },
+    {
+      "@id": "_:g60",
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:label"
+      }
+    },
+    {
+      "@id": "_:g62",
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:comment"
+      }
+    },
+    {
+      "@id": "_:g64",
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:label"
+      }
+    },
+    {
+      "@id": "_:g66",
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:comment"
+      }
+    },
+    {
+      "@id": "_:g67",
+      "owl:unionOf": {
+        "@list": [
+          {
+            "@id": "FMC:Actor"
+          },
+          {
+            "@id": "FMC:State"
+          }
+        ]
+      }
+    },
+    {
+      "@id": "_:g7",
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:comment"
+      }
+    },
+    {
+      "@id": "_:g71",
+      "sh:class": {
+        "@id": "FMC:Actor"
+      }
+    },
+    {
+      "@id": "_:g73",
+      "sh:class": {
+        "@id": "FMC:State"
+      }
+    },
+    {
+      "@id": "_:g76",
+      "sh:hasValue": {
+        "@id": "owl:DatatypeProperty"
+      },
+      "sh:path": {
+        "@id": "rdf:type"
+      }
+    },
+    {
+      "@id": "_:g78",
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:subPropertyOf"
+      }
+    },
+    {
+      "@id": "_:g79",
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:label"
+      }
+    },
+    {
+      "@id": "_:g80",
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:comment"
+      }
+    },
+    {
+      "@id": "_:g81",
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "https://www.w3.org/TR/skos-reference/definition"
+      }
+    },
+    {
+      "@id": "_:g82",
+      "sh:datatype": {
+        "@id": "xsd:string"
+      },
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "cas:revision"
+      }
+    },
+    {
+      "@id": "_:g83",
+      "sh:path": {
+        "@id": "cas:priorRevision"
+      }
+    },
+    {
+      "@id": "_:g84",
+      "sh:datatype": {
+        "@id": "xsd:dateTime"
+      },
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "dcterms:modified"
+      }
+    },
+    {
+      "@id": "_:g85",
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "dcterms:creator"
+      }
+    },
+    {
+      "@id": "_:g86",
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "sh:defaultValue"
+      }
+    },
+    {
+      "@id": "_:g87",
+      "sh:path": {
+        "@id": "cas:composes"
+      }
+    },
+    {
+      "@id": "_:g88",
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "cas:itemType"
+      }
+    },
+    {
+      "@id": "_:g89",
+      "sh:message": "Property class must have a corresponding PropertyShape with at least sh:datatype defined",
+      "sh:select": "\n\t\t\tSELECT $this\n\t\t\tWHERE {\n\t\t\t\tFILTER NOT EXISTS {\n\t\t\t\t\t?shape a sh:PropertyShape ;\n\t\t\t\t\t\tsh:path $this ;\n\t\t\t\t\t\tsh:datatype ?dt .\n\t\t\t\t}\n\t\t\t}\n\t\t"
+    },
+    {
+      "@id": "_:g9",
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:label"
+      }
+    },
+    {
+      "@id": "_:g92",
+      "sh:hasValue": {
+        "@id": "owl:ObjectProperty"
+      },
+      "sh:path": {
+        "@id": "rdf:type"
+      }
+    },
+    {
+      "@id": "_:g94",
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:subPropertyOf"
+      }
+    },
+    {
+      "@id": "_:g95",
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:label"
+      }
+    },
+    {
+      "@id": "_:g96",
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:range"
+      }
+    },
+    {
+      "@id": "_:g97",
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "rdfs:comment"
+      }
+    },
+    {
+      "@id": "_:g98",
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "https://www.w3.org/TR/skos-reference/definition"
+      }
+    },
+    {
+      "@id": "_:g99",
+      "sh:datatype": {
+        "@id": "xsd:string"
+      },
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:path": {
+        "@id": "cas:revision"
+      }
+    },
+    {
+      "@id": "FMC:Actor",
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "<p>An 'Actor' is a fundamental model element type representing an active entity, be it an activity, a process step, a function, a system component or a role.</p><p>The particular use or original type is specified with a [[dcterms:type]] property of the 'FMC:Actor'. A value of that property should be an ontology-term, such as [[bpmn:processStep]].</p>"
+        },
+        {
+          "@language": "de",
+          "@value": "<p>Ein 'Akteur' ist ein fundamentaler Modellelementtyp, der eine aktive Entität darstellt, sei es eine Aktivität, ein Prozessschritt, eine Funktion, eine Systemkomponente oder eine Rolle.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Actor' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[bpmn:timer]].</p>"
+        },
+        {
+          "@language": "fr",
+          "@value": "<p>Un 'Acteur' est un type d'élément de modèle fondamental représentant une entité active, qu'il s'agisse d'une activité, d'une étape de processus, d'une fonction, d'un composant de système ou d'un rôle.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:Actor'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[bpmn:timer]].</p>"
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Actor"
+        },
+        {
+          "@language": "de",
+          "@value": "Akteur"
+        },
+        {
+          "@language": "fr",
+          "@value": "Acteur"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "cas:Entity"
+      },
+      "cas:icon": "□"
+    },
+    {
+      "@id": "FMC:Actor_shape",
+      "@type": "sh:NodeShape",
+      "sh:or": {
+        "@list": [
+          {
+            "@id": "_:g52"
+          },
+          {
+            "@id": "_:g54"
+          }
+        ]
+      },
+      "sh:property": {
+        "@id": "cas:Category_shape"
+      },
+      "sh:targetClass": {
+        "@id": "FMC:Actor"
+      }
+    },
+    {
+      "@id": "FMC:Event",
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "<p>An 'Event' is a fundamental model element type representing a time reference, a change in condition/value or more generally a synchronization primitive.</p><p>The particular use or the original type is specified with a [[dcterms:type]] property of the 'FMC:Event'. A value of that property should be an ontology-term, such as [[bpmn:startEvent]].</p>"
+        },
+        {
+          "@language": "de",
+          "@value": "<p>Ein 'Ereignis' ist ein fundamentaler Modellelementtyp, der eine Zeitreferenz, eine Änderung einer Bedingung/eines Wertes oder allgemeiner ein Synchronisationsmittel darstellt.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:Event' spezifiziert. Die Werte dieser Eigenschaft sollen Ontologiebegriffe sein, wie z.B. [[bpmn:startEvent]].</p>"
+        },
+        {
+          "@language": "fr",
+          "@value": "<p>Un 'Événement' est un type d'élément de modèle fondamental représentant une référence temporelle, un changement de condition/valeur ou plus généralement une primitive de synchronisation.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:Event'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[bpmn:startEvent]].</p>"
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Event"
+        },
+        {
+          "@language": "de",
+          "@value": "Ereignis"
+        },
+        {
+          "@language": "fr",
+          "@value": "Évenement"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "cas:Entity"
+      },
+      "cas:icon": "♢"
+    },
+    {
+      "@id": "FMC:Event_shape",
+      "@type": "sh:NodeShape",
+      "sh:or": {
+        "@list": [
+          {
+            "@id": "_:g60"
+          },
+          {
+            "@id": "_:g62"
+          }
+        ]
+      },
+      "sh:property": {
+        "@id": "cas:Category_shape"
+      },
+      "sh:targetClass": {
+        "@id": "FMC:Event"
+      }
+    },
+    {
+      "@id": "FMC:State",
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "<p>A 'State' is a fundamental model element type representing a passive entity, be it a value, a condition, an information storage or even a physical shape.</p><p>The particular use or the original type is specified with a [[dcterms:type]] property of the 'FMC:State'. A value of that property should bean ontology-term, such as [[bpmn:dataObject]].</p>"
+        },
+        {
+          "@language": "de",
+          "@value": "<p>Ein 'Zustand' ist ein fundamentaler Modellelementtyp, der eine passive Entität darstellt, sei es ein Wert, ein Dokument, ein Informationsspeicher, eine Bedingung oder eine physische Beschaffenheit.</p><p>Die spezielle Verwendung oder der ursprüngliche Typ wird mit einer [[dcterms:type]] Eigenschaft von 'FMC:State' spezifiziert. Die Werte dieser Eigenschaft können Ontologiebegriffe sein, wie z.B. [[ArchiMate:DataObject]].</p>"
+        },
+        {
+          "@language": "fr",
+          "@value": "<p>Un 'État' est un type d'élément de modèle fondamental représentant une entité passive, qu'il s'agisse d'une valeur, d'une condition, d'un stockage d'informations ou même d'une forme physique.</p><p>L'utilisation particulière ou le type original est spécifié avec une propriété [[dcterms:type]] de 'FMC:State'. Les valeurs de cette propriété peuvent être des termes d'ontologie, tels que [[ArchiMate:DataObject]].</p>"
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "State"
+        },
+        {
+          "@language": "de",
+          "@value": "Zustand"
+        },
+        {
+          "@language": "fr",
+          "@value": "État"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "cas:Entity"
+      },
+      "cas:icon": "○"
+    },
+    {
+      "@id": "FMC:State_shape",
+      "@type": "sh:NodeShape",
+      "sh:or": {
+        "@list": [
+          {
+            "@id": "_:g56"
+          },
+          {
+            "@id": "_:g58"
+          }
+        ]
+      },
+      "sh:property": {
+        "@id": "cas:Category_shape"
+      },
+      "sh:targetClass": {
+        "@id": "FMC:State"
+      }
+    },
+    {
+      "@id": "oslc_rm:satisfies",
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "<p>The object is satisfied by the subject. <small>(<i>source: <a href=\"http://open-services.net/\">OSLC</a></i>)</small></p><p>SpecIF suggests that the subject is confined to a model element, e.g, a [[FMC:Actor]] or [[FMC:State]], and the object is confined to a [[IREB:Requirement]]. More concretely, an example for this type of statement is 'Component-X <em>satisfies</em> 'Requirement-4711'.</p>"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "satisfies"
+        },
+        {
+          "@language": "de",
+          "@value": "erfüllt"
+        },
+        {
+          "@language": "fr",
+          "@value": "satisfait"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "cas:Relationship"
+      }
+    },
+    {
+      "@id": "oslc_rm:satisfies-toSource",
+      "rdfs:label": "oslc_rm:satisfies to source",
+      "rdfs:range": {
+        "@id": "_:g67"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "cas:linksSource"
+      },
+      "https://www.w3.org/TR/skos-reference/definition": "Connects the source of oslc_rm:satisfies"
+    },
+    {
+      "@id": "oslc_rm:satisfies-toSource_shape",
+      "@type": "sh:PropertyShape",
+      "sh:or": {
+        "@list": [
+          {
+            "@id": "_:g71"
+          },
+          {
+            "@id": "_:g73"
+          }
+        ]
+      },
+      "sh:path": {
+        "@id": "oslc_rm:satisfies-toSource"
+      }
+    },
+    {
+      "@id": "oslc_rm:satisfies-toTarget",
+      "rdfs:label": "oslc_rm:satisfies to target",
+      "rdfs:range": {
+        "@id": "IREB:Requirement"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "cas:linksTarget"
+      },
+      "https://www.w3.org/TR/skos-reference/definition": "Connects the target of oslc_rm:satisfies"
+    },
+    {
+      "@id": "oslc_rm:satisfies-toTarget_shape",
+      "@type": "sh:PropertyShape",
+      "sh:class": {
+        "@id": "IREB:Requirement"
+      },
+      "sh:path": {
+        "@id": "oslc_rm:satisfies-toTarget"
+      }
+    },
+    {
+      "@id": "oslc_rm:satisfies_shape",
+      "@type": "sh:NodeShape",
+      "sh:property": [
+        {
+          "@id": "oslc_rm:satisfies-toSource_shape"
+        },
+        {
+          "@id": "oslc_rm:satisfies-toTarget_shape"
+        }
+      ],
+      "sh:targetClass": {
+        "@id": "oslc_rm:satisfies"
+      }
+    },
+    {
+      "@id": "IREB:Requirement",
+      "rdfs:comment": [
+        {
+          "@language": "en",
+          "@value": "<p> A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform. <small> (<i> source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>) </small></p><p>Definition:</p><ol><li>A condition or capability needed by a user to solve a problem or achieve an objective.</li><li>A condition or capability that must be met or possessed by a system or system component to satisfy a contract, standard, specification, or other formally imposed documents.</li><li>A documented representation of a condition or capability as in (1) or (2).</li></ol><p>Note: The definition above is the classic one from IEEE Std 610.12 of 1990. Alternatively, we also give a more modern definition:</p><ol><li>A need perceived by a stakeholder.</li><li>A capability or property that a system shall have.</li><li>A documented representation of a need, capability or property.</li></ol>"
+        },
+        {
+          "@language": "de",
+          "@value": "<p> Eine 'Anforderung' ist ein einzelnes dokumentiertes physisches und funktionales Bedürfnis, das ein bestimmter Entwurf, ein Produkt oder ein Prozess erfüllen muss. <small> (<i> source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>) </small></p><p>Definition:</p><ol><li>Eine Bedingung oder Fähigkeit, die ein Benutzer benötigt, um ein Problem zu lösen oder ein Ziel zu erreichen.</li><li>Eine Bedingung oder Fähigkeit, die ein System oder eine Systemkomponente erfüllen oder besitzen muss, um einen Vertrag, eine Norm, eine Spezifikation oder ein anderes formal vorgeschriebenes Dokument zu erfüllen.</li><li>Eine dokumentierte Darstellung einer Bedingung oder Fähigkeit wie in (1) oder (2).</li></ol><p>Anmerkung: Die obige Definition ist die klassische Definition aus IEEE Std 610.12 von 1990. Alternativ geben wir auch eine modernere Definition an:</p><ol><li>Ein von einem Stakeholder wahrgenommener Bedarf.</li><li>Eine Fähigkeit oder Eigenschaft, die ein System haben soll.</li><li>Eine dokumentierte Darstellung eines Bedarfs, einer Fähigkeit oder Eigenschaft.</li></ol>"
+        },
+        {
+          "@language": "fr",
+          "@value": "<p> Une 'Exigence' est un besoin physique et fonctionnel unique et documenté qu'une conception, un produit ou un processus particulier doit pouvoir satisfaire. <small> (<i> source: <a href=\"https://en.wikipedia.org/wiki/Requirement\">Wikipedia</a></i>) </small></p><p>Définition:</p><ol><li>Condition ou capacité dont un utilisateur a besoin pour résoudre un problème ou atteindre un objectif.</li><li>Condition ou capacité qui doit être remplie ou possédée par un système ou un composant de système pour satisfaire à un contrat, à une norme, à une spécification ou à d'autres documents imposés officiellement.</li><li>Une représentation documentée d'une condition ou d'une capacité comme dans (1) ou (2).</li></ol><p>Remarque: La définition ci-dessus est la définition classique de la norme IEEE 610.12 de 1990. Nous donnons également une définition plus moderne:</p><ol><li>Un besoin perçu par une partie prenante;</li><li>Une capacité ou une propriété qu'un système doit avoir.</li><li>Une représentation documentée d'un besoin, d'une capacité ou d'une propriété.</li></ol>"
+        }
+      ],
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Requirement"
+        },
+        {
+          "@language": "de",
+          "@value": "Anforderung"
+        },
+        {
+          "@language": "fr",
+          "@value": "Exigence"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "cas:Entity"
+      },
+      "cas:icon": "↯"
+    },
+    {
+      "@id": "IREB:Requirement_shape",
+      "@type": "sh:NodeShape",
+      "sh:or": {
+        "@list": [
+          {
+            "@id": "_:g64"
+          },
+          {
+            "@id": "_:g66"
+          }
+        ]
+      },
+      "sh:property": {
+        "@id": "SpecIF:Priority_shape"
+      },
+      "sh:targetClass": {
+        "@id": "IREB:Requirement"
+      }
+    },
+    {
+      "@id": "d:ACP-Very-Simple-Model-FMC-with-Requirements",
+      "@type": "cas:Package",
+      "dcterms:modified": {
+        "@type": "xsd:dateTime",
+        "@value": "2026-01-17T22:38:19.595Z"
+      },
+      "rdfs:label": "Very Simple Model (FMC) with Requirements"
+    },
+    {
+      "@id": "d:ACP-Very-Simple-Model-FMC-with-Requirements_ontology",
+      "@type": "owl:Ontology",
+      "dcterms:contributor": "mailto:oskar.dungern@gfse.org",
+      "dcterms:license": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "owl:versionInfo": "2026-07-20"
+    },
+    {
+      "@id": "d:Actor-50fbfe8f0029b1a8016ea86245a9d83a",
+      "@type": "FMC:Actor",
+      "dcterms:modified": {
+        "@type": "xsd:dateTime",
+        "@value": "2020-03-06T09:04:00+01:00"
+      },
+      "rdfs:comment": "<p>IT-Application for Finance and Controlling.</p>",
+      "rdfs:label": "FiCo-Application"
+    },
+    {
+      "@id": "d:Diagram-aec0df7900010000017001eaf53e8876",
+      "@type": "cas:View",
+      "dcterms:modified": {
+        "@type": "xsd:dateTime",
+        "@value": "2020-03-06T08:32:00+01:00"
+      },
+      "rdfs:label": "FiCo-Architecure Diagram",
+      "cas:Category": "FMC Block Diagram",
+      "cas:Diagram": "\n                    <p class=\"inline-label\">Model Diagram:</p>\n                    <p><object type=\"image/svg+xml\" data=\"files_and_images/Very-Simple-Model-FMC.svg\">Notation: FMC Block Diagram</object></p>\n                ",
+      "cas:shows": [
+        {
+          "@id": "d:Actor-50fbfe8f0029b1a8016ea86245a9d83a"
+        },
+        {
+          "@id": "d:State-50feddc00029b1a8016e2872e78ecadc"
+        },
+        {
+          "@id": "d:Writes-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc"
+        },
+        {
+          "@id": "d:Reads--50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc"
+        }
+      ]
+    },
+    {
+      "@id": "d:Folder-Introduction",
+      "@type": "cas:Outline",
+      "dcterms:modified": {
+        "@type": "xsd:dateTime",
+        "@value": "2025-02-07T08:32:00+01:00"
+      },
+      "rdfs:comment": "<p>This is a minimal showcase for a model with model-elements and related requirements. It covers pretty much all characteristics neeeded in such cases (including 'statements on statements'), so that transformations and expressive power of other data formats can be evaluated. The example and its representation in SpecIF format is discussed in <a href=\"https://specif.de/Tutorials/06_Very-Simple-Model-FMC.html\" target=\"_blank\">Tutorial 6: Very Simple Model (FMC)</a> and <a href=\"https://specif.de/Tutorials/09_Very-Simple-Model-FMC-with-Requirements.html\" target=\"_blank\">Tutorial 9: Very Simple Model (FMC) with Requirements</a>.</p>",
+      "rdfs:label": "Introduction"
+    },
+    {
+      "@id": "d:Folder-Requirements",
+      "@type": "cas:Outline",
+      "dcterms:modified": {
+        "@type": "xsd:dateTime",
+        "@value": "2020-03-06T08:32:00+01:00"
+      },
+      "rdfs:label": "Requirements",
+      "cas:lists": [
+        {
+          "@id": "d:Req-1a8016e2872e78ecadc50feddc00029b"
+        },
+        {
+          "@id": "d:Req-0Z7916e2872e78ecadc50feddc00918a"
+        },
+        {
+          "@id": "d:Req-2b9016e2872e78ecadc50feddc0013Ac"
+        }
+      ]
+    },
+    {
+      "@id": "d:Folder-SystemDiagrams",
+      "@type": "cas:Outline",
+      "dcterms:modified": {
+        "@type": "xsd:dateTime",
+        "@value": "2020-03-06T08:32:00+01:00"
+      },
+      "rdfs:label": "System Diagrams",
+      "cas:lists": {
+        "@id": "d:Diagram-aec0df7900010000017001eaf53e8876"
+      }
+    },
+    {
+      "@id": "d:FolderGlossary-10875487071",
+      "@type": "cas:Outline",
+      "dcterms:modified": {
+        "@type": "xsd:dateTime",
+        "@value": "2026-01-17T22:38:13.953Z"
+      },
+      "rdfs:label": "Glossary",
+      "cas:Category": {
+        "@id": "SpecIF:Glossary"
+      },
+      "cas:lists": [
+        {
+          "@id": "d:Actor-50fbfe8f0029b1a8016ea86245a9d83a"
+        },
+        {
+          "@id": "d:State-50feddc00029b1a8016e2872e78ecadc"
+        }
+      ]
+    },
+    {
+      "@id": "d:HierarchyRoot-ACP-Very-Simple-Model-FMC-with-Requirements",
+      "@type": "cas:Root",
+      "dcterms:modified": {
+        "@type": "xsd:dateTime",
+        "@value": "2026-01-17T22:38:20.041Z"
+      },
+      "rdfs:comment": "... anchoring all hierarchies of this graph (package)",
+      "rdfs:label": "Hierarchy Root",
+      "cas:lists": [
+        {
+          "@id": "d:Folder-Introduction"
+        },
+        {
+          "@id": "d:Folder-Requirements"
+        },
+        {
+          "@id": "d:Folder-SystemDiagrams"
+        },
+        {
+          "@id": "d:FolderGlossary-10875487071"
+        }
+      ]
+    },
+    {
+      "@id": "d:Reads--50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc",
+      "@type": "SpecIF:reads",
+      "dcterms:modified": {
+        "@type": "xsd:dateTime",
+        "@value": "2020-03-06T09:05:00+01:00"
+      },
+      "rdfs:comment": "'FiCo-Application' reads 'FiCo-Data'",
+      "SpecIF:reads-toSource": {
+        "@id": "d:Actor-50fbfe8f0029b1a8016ea86245a9d83a"
+      },
+      "SpecIF:reads-toTarget": {
+        "@id": "d:State-50feddc00029b1a8016e2872e78ecadc"
+      }
+    },
+    {
+      "@id": "d:Req-0Z7916e2872e78ecadc50feddc00918a",
+      "@type": "IREB:Requirement",
+      "dcterms:modified": {
+        "@type": "xsd:dateTime",
+        "@value": "2020-10-17T10:00:00+01:00"
+      },
+      "rdfs:comment": "<p>The data store MUST be consistent at all times.</p>",
+      "rdfs:label": "Consistency",
+      "SpecIF:Priority": {
+        "@id": "SpecIF:priorityHigh"
+      }
+    },
+    {
+      "@id": "d:Req-1a8016e2872e78ecadc50feddc00029b",
+      "@type": "IREB:Requirement",
+      "dcterms:modified": {
+        "@type": "xsd:dateTime",
+        "@value": "2020-10-17T10:00:00+01:00"
+      },
+      "rdfs:comment": "<p>The data store MUST support a total volume up to 850 GB.</p>",
+      "rdfs:label": "Data Volume",
+      "SpecIF:Priority": {
+        "@id": "SpecIF:priorityHigh"
+      }
+    },
+    {
+      "@id": "d:Req-2b9016e2872e78ecadc50feddc0013Ac",
+      "@type": "IREB:Requirement",
+      "dcterms:modified": {
+        "@type": "xsd:dateTime",
+        "@value": "2020-10-17T10:00:00+01:00"
+      },
+      "rdfs:comment": "<p>The system SHOULD respond on user queries within 300 ms.</p>",
+      "rdfs:label": "Response Time",
+      "SpecIF:Priority": {
+        "@id": "SpecIF:priorityMedium"
+      }
+    },
+    {
+      "@id": "d:Satisfies-50fbfe8f0029b1a8016ea86245a9d83a-2b9016e2872e78ecadc50feddc0013Ac",
+      "@type": "oslc_rm:satisfies",
+      "oslc_rm:satisfies-toSource": {
+        "@id": "d:Actor-50fbfe8f0029b1a8016ea86245a9d83a"
+      },
+      "oslc_rm:satisfies-toTarget": {
+        "@id": "d:Req-2b9016e2872e78ecadc50feddc0013Ac"
+      },
+      "dcterms:modified": {
+        "@type": "xsd:dateTime",
+        "@value": "2020-10-17T10:00:00+01:00"
+      },
+      "rdfs:comment": "'FiCo-Application' satisfies 'Response Time'"
+    },
+    {
+      "@id": "d:Satisfies-50feddc00029b1a8016e2872e78ecadc-0Z7916e2872e78ecadc50feddc00918a",
+      "@type": "oslc_rm:satisfies",
+      "oslc_rm:satisfies-toSource": {
+        "@id": "d:State-50feddc00029b1a8016e2872e78ecadc"
+      },
+      "oslc_rm:satisfies-toTarget": {
+        "@id": "d:Req-0Z7916e2872e78ecadc50feddc00918a"
+      },
+      "dcterms:modified": {
+        "@type": "xsd:dateTime",
+        "@value": "2020-10-17T10:00:00+01:00"
+      },
+      "rdfs:comment": "'FiCo-Data' satisfies 'Consistency'"
+    },
+    {
+      "@id": "d:Satisfies-50feddc00029b1a8016e2872e78ecadc-1a8016e2872e78ecadc50feddc00029b",
+      "@type": "oslc_rm:satisfies",
+      "oslc_rm:satisfies-toSource": {
+        "@id": "d:State-50feddc00029b1a8016e2872e78ecadc"
+      },
+      "oslc_rm:satisfies-toTarget": {
+        "@id": "d:Req-1a8016e2872e78ecadc50feddc00029b"
+      },
+      "dcterms:modified": {
+        "@type": "xsd:dateTime",
+        "@value": "2020-10-17T10:00:00+01:00"
+      },
+      "rdfs:comment": "'FiCo-Data' satisfies 'Data Volume'"
+    },
+    {
+      "@id": "d:State-50feddc00029b1a8016e2872e78ecadc",
+      "@type": "FMC:State",
+      "dcterms:modified": {
+        "@type": "xsd:dateTime",
+        "@value": "2020-03-06T09:03:00+01:00"
+      },
+      "rdfs:comment": "<p>Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc.</p>",
+      "rdfs:label": "FiCo-Data"
+    },
+    {
+      "@id": "d:Writes-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc",
+      "@type": "SpecIF:writes",
+      "dcterms:modified": {
+        "@type": "xsd:dateTime",
+        "@value": "2020-03-06T09:05:00+01:00"
+      },
+      "rdfs:comment": "'FiCo-Application' writes 'FiCo-Data'",
+      "SpecIF:writes-toSource": {
+        "@id": "d:Actor-50fbfe8f0029b1a8016ea86245a9d83a"
+      },
+      "SpecIF:writes-toTarget": {
+        "@id": "d:State-50feddc00029b1a8016e2872e78ecadc"
+      }
+    },
+    {
+      "@id": "cas:Category",
+      "rdfs:label": "has category",
+      "rdfs:subPropertyOf": {
+        "@id": "cas:Property"
+      },
+      "https://www.w3.org/TR/skos-reference/definition": "Specifies a category for an element (entity, relationship or organizer)."
+    },
+    {
+      "@id": "cas:Category_shape",
+      "@type": "sh:PropertyShape",
+      "sh:datatype": {
+        "@id": "xsd:string"
+      },
+      "sh:maxCount": {
+        "@type": "xsd:integer",
+        "@value": "1"
+      },
+      "sh:maxLength": {
+        "@type": "xsd:integer",
+        "@value": "32"
+      },
+      "sh:minCount": {
+        "@type": "xsd:integer",
+        "@value": "0"
+      },
+      "sh:path": {
+        "@id": "cas:Category"
+      }
+    },
+    {
+      "@id": "cas:Diagram",
+      "@type": "owl:DatatypeProperty",
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Diagram"
+        },
+        {
+          "@language": "de",
+          "@value": "Diagramm"
+        },
+        {
+          "@language": "fr",
+          "@value": "Diagramme"
+        }
+      ],
+      "https://www.w3.org/TR/skos-reference/definition": {
+        "@language": "en",
+        "@value": "A diagram illustrating the resource or a link to a diagram."
+      }
+    },
+    {
+      "@id": "cas:Diagram_shape",
+      "@type": "sh:PropertyShape",
+      "sh:datatype": {
+        "@id": "xsd:string"
+      },
+      "sh:path": {
+        "@id": "cas:Diagram"
+      }
+    },
+    {
+      "@id": "cas:Entity_class_shape",
+      "@type": "sh:NodeShape",
+      "sh:closed": "true",
+      "sh:ignoredProperties": {
+        "@list": [
+          {
+            "@id": "rdf:type"
+          }
+        ]
+      },
+      "sh:or": {
+        "@list": [
+          {
+            "@id": "_:g122"
+          },
+          {
+            "@id": "_:g124"
+          }
+        ]
+      },
+      "sh:property": [
+        {
+          "@id": "_:g125"
+        },
+        {
+          "@id": "_:g126"
+        },
+        {
+          "@id": "_:g127"
+        },
+        {
+          "@id": "_:g128"
+        },
+        {
+          "@id": "_:g129"
+        },
+        {
+          "@id": "_:g130"
+        },
+        {
+          "@id": "_:g131"
+        },
+        {
+          "@id": "_:g132"
+        },
+        {
+          "@id": "_:g133"
+        }
+      ],
+      "sh:targetClass": {
+        "@id": "cas:Entity"
+      },
+      "sh:targetSubjectsOf": {
+        "@id": "rdfs:subClassOf"
+      }
+    },
+    {
+      "@id": "cas:Entity_shape_shape",
+      "@type": "sh:NodeShape",
+      "sh:sparql": [
+        {
+          "@id": "_:g134"
+        },
+        {
+          "@id": "_:g135"
+        },
+        {
+          "@id": "_:g136"
+        }
+      ],
+      "sh:targetClass": {
+        "@id": "cas:Entity"
+      },
+      "sh:targetSubjectsOf": {
+        "@id": "rdfs:subClassOf"
+      }
+    },
+    {
+      "@id": "cas:Enumeration_class_shape",
+      "@type": "sh:NodeShape",
+      "sh:closed": "true",
+      "sh:ignoredProperties": {
+        "@list": [
+          {
+            "@id": "rdf:type"
+          }
+        ]
+      },
+      "sh:or": {
+        "@list": [
+          {
+            "@id": "_:g107"
+          },
+          {
+            "@id": "_:g109"
+          }
+        ]
+      },
+      "sh:property": [
+        {
+          "@id": "_:g110"
+        },
+        {
+          "@id": "_:g111"
+        },
+        {
+          "@id": "_:g112"
+        },
+        {
+          "@id": "_:g113"
+        },
+        {
+          "@id": "_:g114"
+        },
+        {
+          "@id": "_:g115"
+        },
+        {
+          "@id": "_:g116"
+        },
+        {
+          "@id": "_:g117"
+        },
+        {
+          "@id": "_:g118"
+        }
+      ],
+      "sh:targetClass": {
+        "@id": "owl:Class"
+      },
+      "sh:targetSubjectsOf": {
+        "@id": "rdfs:subClassOf"
+      }
+    },
+    {
+      "@id": "cas:Enumeration_shape_shape",
+      "@type": "sh:NodeShape",
+      "sh:sparql": {
+        "@id": "_:g119"
+      },
+      "sh:targetClass": {
+        "@id": "owl:Class"
+      },
+      "sh:targetSubjectsOf": {
+        "@id": "rdfs:subClassOf"
+      }
+    },
+    {
+      "@id": "cas:Link_class_shape",
+      "@type": "sh:NodeShape",
+      "sh:closed": "true",
+      "sh:ignoredProperties": {
+        "@list": [
+          {
+            "@id": "rdf:type"
+          }
+        ]
+      },
+      "sh:or": {
+        "@list": [
+          {
+            "@id": "_:g92"
+          },
+          {
+            "@id": "_:g94"
+          }
+        ]
+      },
+      "sh:property": [
+        {
+          "@id": "_:g95"
+        },
+        {
+          "@id": "_:g96"
+        },
+        {
+          "@id": "_:g97"
+        },
+        {
+          "@id": "_:g98"
+        },
+        {
+          "@id": "_:g99"
+        },
+        {
+          "@id": "_:g100"
+        },
+        {
+          "@id": "_:g101"
+        },
+        {
+          "@id": "_:g102"
+        },
+        {
+          "@id": "_:g103"
+        }
+      ],
+      "sh:targetClass": {
+        "@id": "owl:ObjectProperty"
+      },
+      "sh:targetSubjectsOf": {
+        "@id": "rdfs:subPropertyOf"
+      }
+    },
+    {
+      "@id": "cas:Link_shape_requirement_shape",
+      "@type": "sh:NodeShape",
+      "sh:sparql": {
+        "@id": "_:g104"
+      },
+      "sh:targetClass": {
+        "@id": "owl:ObjectProperty"
+      },
+      "sh:targetSubjectsOf": {
+        "@id": "rdfs:subPropertyOf"
+      }
+    },
+    {
+      "@id": "cas:Organizer",
+      "rdfs:label": "Organizer",
+      "rdfs:subClassOf": {
+        "@id": "cas:Entity"
+      },
+      "https://www.w3.org/TR/skos-reference/definition": "An element organizing model elements. An example is a list of requirements or a diagram using a certain notation."
+    },
+    {
+      "@id": "cas:Organizer_shape",
+      "@type": "sh:NodeShape",
+      "sh:or": {
+        "@list": [
+          {
+            "@id": "_:g5"
+          },
+          {
+            "@id": "_:g7"
+          }
+        ]
+      },
+      "sh:property": {
+        "@id": "cas:Category_shape"
+      },
+      "sh:targetClass": {
+        "@id": "cas:Organizer"
+      }
+    },
+    {
+      "@id": "cas:Outline",
+      "rdfs:label": "Outline",
+      "rdfs:subClassOf": {
+        "@id": "cas:Organizer"
+      },
+      "https://www.w3.org/TR/skos-reference/definition": "Comprises all information items of a human-readable document. As usual, the outline is hierarchically organized."
+    },
+    {
+      "@id": "cas:Outline_shape",
+      "@type": "sh:NodeShape",
+      "sh:or": {
+        "@list": [
+          {
+            "@id": "_:g13"
+          },
+          {
+            "@id": "_:g15"
+          }
+        ]
+      },
+      "sh:property": [
+        {
+          "@id": "cas:Category_shape"
+        },
+        {
+          "@id": "cas:lists_shape"
+        }
+      ],
+      "sh:targetClass": {
+        "@id": "cas:Outline"
+      }
+    },
+    {
+      "@id": "cas:Package",
+      "rdfs:label": "Package",
+      "rdfs:subClassOf": {
+        "@id": "cas:Entity"
+      },
+      "https://www.w3.org/TR/skos-reference/definition": "A CASCaRA meta-model item used for packages comprising entities, relationships and potentially nested packages, both classes and instances."
+    },
+    {
+      "@id": "cas:Package_shape",
+      "@type": "sh:NodeShape",
+      "sh:or": {
+        "@list": [
+          {
+            "@id": "_:g1"
+          },
+          {
+            "@id": "_:g3"
+          }
+        ]
+      },
+      "sh:targetClass": {
+        "@id": "cas:Package"
+      }
+    },
+    {
+      "@id": "cas:Property_class_shape",
+      "@type": "sh:NodeShape",
+      "sh:closed": "true",
+      "sh:ignoredProperties": {
+        "@list": [
+          {
+            "@id": "rdf:type"
+          }
+        ]
+      },
+      "sh:or": {
+        "@list": [
+          {
+            "@id": "_:g76"
+          },
+          {
+            "@id": "_:g78"
+          }
+        ]
+      },
+      "sh:property": [
+        {
+          "@id": "_:g79"
+        },
+        {
+          "@id": "_:g80"
+        },
+        {
+          "@id": "_:g81"
+        },
+        {
+          "@id": "_:g82"
+        },
+        {
+          "@id": "_:g83"
+        },
+        {
+          "@id": "_:g84"
+        },
+        {
+          "@id": "_:g85"
+        },
+        {
+          "@id": "_:g86"
+        },
+        {
+          "@id": "_:g87"
+        },
+        {
+          "@id": "_:g88"
+        }
+      ],
+      "sh:targetClass": {
+        "@id": "owl:DatatypeProperty"
+      },
+      "sh:targetSubjectsOf": {
+        "@id": "rdfs:subPropertyOf"
+      }
+    },
+    {
+      "@id": "cas:Property_shape_shape",
+      "@type": "sh:NodeShape",
+      "sh:sparql": {
+        "@id": "_:g89"
+      },
+      "sh:targetClass": {
+        "@id": "owl:DatatypeProperty"
+      },
+      "sh:targetSubjectsOf": {
+        "@id": "rdfs:subPropertyOf"
+      }
+    },
+    {
+      "@id": "cas:Relationship_class_shape",
+      "@type": "sh:NodeShape",
+      "sh:closed": "true",
+      "sh:ignoredProperties": {
+        "@list": [
+          {
+            "@id": "rdf:type"
+          }
+        ]
+      },
+      "sh:or": {
+        "@list": [
+          {
+            "@id": "_:g139"
+          },
+          {
+            "@id": "_:g141"
+          }
+        ]
+      },
+      "sh:property": [
+        {
+          "@id": "_:g142"
+        },
+        {
+          "@id": "_:g143"
+        },
+        {
+          "@id": "_:g144"
+        },
+        {
+          "@id": "_:g145"
+        },
+        {
+          "@id": "_:g146"
+        },
+        {
+          "@id": "_:g147"
+        },
+        {
+          "@id": "_:g148"
+        },
+        {
+          "@id": "_:g149"
+        },
+        {
+          "@id": "_:g150"
+        }
+      ],
+      "sh:targetClass": {
+        "@id": "cas:Relationship"
+      },
+      "sh:targetSubjectsOf": {
+        "@id": "rdfs:subClassOf"
+      }
+    },
+    {
+      "@id": "cas:Relationship_shape_shape",
+      "@type": "sh:NodeShape",
+      "sh:sparql": [
+        {
+          "@id": "_:g151"
+        },
+        {
+          "@id": "_:g152"
+        },
+        {
+          "@id": "_:g153"
+        },
+        {
+          "@id": "_:g154"
+        }
+      ],
+      "sh:targetClass": {
+        "@id": "cas:Relationship"
+      },
+      "sh:targetSubjectsOf": {
+        "@id": "rdfs:subClassOf"
+      }
+    },
+    {
+      "@id": "cas:Root",
+      "rdfs:label": "Hierarchy Root",
+      "rdfs:subClassOf": {
+        "@id": "cas:Organizer"
+      },
+      "https://www.w3.org/TR/skos-reference/definition": "A root for hierarchically organized graph elements."
+    },
+    {
+      "@id": "cas:Root_shape",
+      "@type": "sh:NodeShape",
+      "sh:or": {
+        "@list": [
+          {
+            "@id": "_:g9"
+          },
+          {
+            "@id": "_:g11"
+          }
+        ]
+      },
+      "sh:property": {
+        "@id": "cas:lists_shape"
+      },
+      "sh:targetClass": {
+        "@id": "cas:Root"
+      }
+    },
+    {
+      "@id": "cas:View",
+      "rdfs:label": "View",
+      "rdfs:subClassOf": {
+        "@id": "cas:Organizer"
+      },
+      "https://www.w3.org/TR/skos-reference/definition": "Represents a model view (diagram) using a certain notation showing selected model elements."
+    },
+    {
+      "@id": "cas:View_shape",
+      "@type": "sh:NodeShape",
+      "sh:or": {
+        "@list": [
+          {
+            "@id": "_:g17"
+          },
+          {
+            "@id": "_:g19"
+          }
+        ]
+      },
+      "sh:property": [
+        {
+          "@id": "cas:Category_shape"
+        },
+        {
+          "@id": "cas:Diagram_shape"
+        },
+        {
+          "@id": "cas:shows_shape"
+        },
+        {
+          "@id": "cas:depicts_shape"
+        }
+      ],
+      "sh:targetClass": {
+        "@id": "cas:View"
+      }
+    },
+    {
+      "@id": "cas:depicts",
+      "rdfs:label": "depicts",
+      "rdfs:range": {
+        "@id": "cas:Entity"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "cas:linksTarget"
+      },
+      "https://www.w3.org/TR/skos-reference/definition": "Depicts an entity; inverse of uml:ownedDiagram."
+    },
+    {
+      "@id": "cas:depicts_shape",
+      "@type": "sh:PropertyShape",
+      "sh:class": {
+        "@id": "cas:Entity"
+      },
+      "sh:path": {
+        "@id": "cas:depicts"
+      }
+    },
+    {
+      "@id": "cas:linksSource",
+      "rdfs:label": "to source",
+      "rdfs:range": {
+        "@id": "_:g20"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "cas:Link"
+      },
+      "https://www.w3.org/TR/skos-reference/definition": "Connects the source of a reified relationship."
+    },
+    {
+      "@id": "cas:linksSource_shape",
+      "@type": "sh:PropertyShape",
+      "sh:or": {
+        "@list": [
+          {
+            "@id": "_:g24"
+          },
+          {
+            "@id": "_:g26"
+          }
+        ]
+      },
+      "sh:path": {
+        "@id": "cas:linksSource"
+      }
+    },
+    {
+      "@id": "cas:linksTarget",
+      "rdfs:label": "to target",
+      "rdfs:range": {
+        "@id": "_:g27"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "cas:Link"
+      },
+      "https://www.w3.org/TR/skos-reference/definition": "Connects the target of a reified relationship or an organizer."
+    },
+    {
+      "@id": "cas:linksTarget_shape",
+      "@type": "sh:PropertyShape",
+      "sh:or": {
+        "@list": [
+          {
+            "@id": "_:g31"
+          },
+          {
+            "@id": "_:g33"
+          }
+        ]
+      },
+      "sh:path": {
+        "@id": "cas:linksTarget"
+      }
+    },
+    {
+      "@id": "cas:lists",
+      "rdfs:label": "lists",
+      "rdfs:range": {
+        "@id": "_:g34"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "cas:linksTarget"
+      },
+      "https://www.w3.org/TR/skos-reference/definition": "Lists an entity, a relationship or a subordinated organizer."
+    },
+    {
+      "@id": "cas:lists_shape",
+      "@type": "sh:PropertyShape",
+      "sh:or": {
+        "@list": [
+          {
+            "@id": "_:g39"
+          },
+          {
+            "@id": "_:g41"
+          },
+          {
+            "@id": "_:g43"
+          }
+        ]
+      },
+      "sh:path": {
+        "@id": "cas:lists"
+      }
+    },
+    {
+      "@id": "cas:shows",
+      "rdfs:label": "shows",
+      "rdfs:range": {
+        "@id": "_:g44"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "cas:linksTarget"
+      },
+      "https://www.w3.org/TR/skos-reference/definition": "Shows an entity or a relationship."
+    },
+    {
+      "@id": "cas:shows_shape",
+      "@type": "sh:PropertyShape",
+      "sh:or": {
+        "@list": [
+          {
+            "@id": "_:g48"
+          },
+          {
+            "@id": "_:g50"
+          }
+        ]
+      },
+      "sh:path": {
+        "@id": "cas:shows"
+      }
+    },
+    {
+      "@id": "SpecIF:Priority",
+      "dcterms:modified": {
+        "@type": "xsd:dateTime",
+        "@value": "2020-03-26T22:59:00+02:00"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Priority"
+        },
+        {
+          "@language": "de",
+          "@value": "Priorität"
+        },
+        {
+          "@language": "fr",
+          "@value": "Priorité"
+        }
+      ],
+      "rdfs:range": {
+        "@id": "SpecIF:Priority-Value"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "cas:linksTarget"
+      },
+      "https://www.w3.org/TR/skos-reference/definition": {
+        "@language": "en",
+        "@value": "Enumerated values for the 'Priority' of the resource."
+      }
+    },
+    {
+      "@id": "SpecIF:Priority-Value",
+      "dcterms:modified": {
+        "@type": "xsd:dateTime",
+        "@value": "2020-03-26T22:59:00+02:00"
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "Priority"
+        },
+        {
+          "@language": "de",
+          "@value": "Priorität"
+        },
+        {
+          "@language": "fr",
+          "@value": "Priorité"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "cas:Enumeration"
+      },
+      "cas:enumeratedValue": [
+        {
+          "@id": "SpecIF:priorityHigh"
+        },
+        {
+          "@id": "SpecIF:priorityRatherHigh"
+        },
+        {
+          "@id": "SpecIF:priorityMedium"
+        },
+        {
+          "@id": "SpecIF:priorityRatherLow"
+        },
+        {
+          "@id": "SpecIF:priorityLow"
+        }
+      ],
+      "https://www.w3.org/TR/skos-reference/definition": {
+        "@language": "en",
+        "@value": "Enumerated values for the 'Priority' of the resource."
+      }
+    },
+    {
+      "@id": "SpecIF:Priority_shape",
+      "@type": "sh:PropertyShape",
+      "sh:class": {
+        "@id": "SpecIF:Priority-Value"
+      },
+      "sh:path": {
+        "@id": "SpecIF:Priority"
+      }
+    },
+    {
+      "@id": "SpecIF:reads",
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "A [[FMC:Actor]] 'reads' a [[FMC:State]]."
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "reads"
+        },
+        {
+          "@language": "de",
+          "@value": "liest"
+        },
+        {
+          "@language": "fr",
+          "@value": "lit"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "cas:Relationship"
+      }
+    },
+    {
+      "@id": "SpecIF:reads-toSource",
+      "rdfs:label": "SpecIF:reads to source",
+      "rdfs:range": {
+        "@id": "FMC:Actor"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "cas:linksSource"
+      },
+      "https://www.w3.org/TR/skos-reference/definition": "Connects the source of SpecIF:reads"
+    },
+    {
+      "@id": "SpecIF:reads-toSource_shape",
+      "@type": "sh:PropertyShape",
+      "sh:class": {
+        "@id": "FMC:Actor"
+      },
+      "sh:path": {
+        "@id": "SpecIF:reads-toSource"
+      }
+    },
+    {
+      "@id": "SpecIF:reads-toTarget",
+      "rdfs:label": "SpecIF:reads to target",
+      "rdfs:range": {
+        "@id": "FMC:State"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "cas:linksTarget"
+      },
+      "https://www.w3.org/TR/skos-reference/definition": "Connects the target of SpecIF:reads"
+    },
+    {
+      "@id": "SpecIF:reads-toTarget_shape",
+      "@type": "sh:PropertyShape",
+      "sh:class": {
+        "@id": "FMC:State"
+      },
+      "sh:path": {
+        "@id": "SpecIF:reads-toTarget"
+      }
+    },
+    {
+      "@id": "SpecIF:reads_shape",
+      "@type": "sh:NodeShape",
+      "sh:property": [
+        {
+          "@id": "SpecIF:reads-toSource_shape"
+        },
+        {
+          "@id": "SpecIF:reads-toTarget_shape"
+        }
+      ],
+      "sh:targetClass": {
+        "@id": "SpecIF:reads"
+      }
+    },
+    {
+      "@id": "SpecIF:writes",
+      "rdfs:comment": {
+        "@language": "en",
+        "@value": "A [[FMC:Actor]] 'writes' (changes) a [[FMC:State]]."
+      },
+      "rdfs:label": [
+        {
+          "@language": "en",
+          "@value": "writes"
+        },
+        {
+          "@language": "de",
+          "@value": "schreibt"
+        },
+        {
+          "@language": "fr",
+          "@value": "écrit"
+        }
+      ],
+      "rdfs:subClassOf": {
+        "@id": "cas:Relationship"
+      }
+    },
+    {
+      "@id": "SpecIF:writes-toSource",
+      "rdfs:label": "SpecIF:writes to source",
+      "rdfs:range": {
+        "@id": "FMC:Actor"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "cas:linksSource"
+      },
+      "https://www.w3.org/TR/skos-reference/definition": "Connects the source of SpecIF:writes"
+    },
+    {
+      "@id": "SpecIF:writes-toSource_shape",
+      "@type": "sh:PropertyShape",
+      "sh:class": {
+        "@id": "FMC:Actor"
+      },
+      "sh:path": {
+        "@id": "SpecIF:writes-toSource"
+      }
+    },
+    {
+      "@id": "SpecIF:writes-toTarget",
+      "rdfs:label": "SpecIF:writes to target",
+      "rdfs:range": {
+        "@id": "FMC:State"
+      },
+      "rdfs:subPropertyOf": {
+        "@id": "cas:linksTarget"
+      },
+      "https://www.w3.org/TR/skos-reference/definition": "Connects the target of SpecIF:writes"
+    },
+    {
+      "@id": "SpecIF:writes-toTarget_shape",
+      "@type": "sh:PropertyShape",
+      "sh:class": {
+        "@id": "FMC:State"
+      },
+      "sh:path": {
+        "@id": "SpecIF:writes-toTarget"
+      }
+    },
+    {
+      "@id": "SpecIF:writes_shape",
+      "@type": "sh:NodeShape",
+      "sh:property": [
+        {
+          "@id": "SpecIF:writes-toSource_shape"
+        },
+        {
+          "@id": "SpecIF:writes-toTarget_shape"
+        }
+      ],
+      "sh:targetClass": {
+        "@id": "SpecIF:writes"
+      }
+    }
+  ]
+}
