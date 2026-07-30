@@ -1,0 +1,2441 @@
+{
+  "@context": {
+    "FMC": "http://fmc-modeling.org#",
+    "IREB": "https://cpre.ireb.org/en/downloads-and-resources/glossary#",
+    "ReqIF": "https://www.prostep.org/fileadmin/downloads/PSI_ImplementationGuide_ReqIF_V1-7.pdf#",
+    "SpecIF": "https://specif.de/v1.2/schema#",
+    "cas": "https://product-information-graph.org/ontology/2026-05-08/metamodel#",
+    "d": "https://product-information-graph.org/examples/09_Very-Simple-Model-FMC-with-Requirements.specif.zip#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "o": "https://product-information-graph.org/ontology/custom#",
+    "oslc_rm": "http://open-services.net/ns/rm#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "skos": "https://www.w3.org/TR/skos-reference/",
+    "xs": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": "d:ACP-Very-Simple-Model-FMC-with-Requirements",
+  "@type": "cas:Package",
+  "@graph": [
+    {
+      "@id": "cas:Package",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Entity"
+      },
+      "cas:specializes": {
+        "@id": "cas:Entity"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Package"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "A CASCaRA meta-model item used for packages comprising entities, relationships and potentially nested packages, both classes and instances."
+        }
+      ],
+      "cas:enumeratedProperty": [
+        {
+          "@id": "dcterms:contributor"
+        },
+        {
+          "@id": "dcterms:license"
+        }
+      ]
+    },
+    {
+      "@id": "cas:Organizer",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Entity"
+      },
+      "cas:specializes": {
+        "@id": "cas:Entity"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Organizer"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "An element organizing model elements. An example is a list of requirements or a diagram using a certain notation."
+        }
+      ],
+      "cas:enumeratedProperty": [
+        {
+          "@id": "cas:Category"
+        }
+      ]
+    },
+    {
+      "@id": "cas:Root",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Entity"
+      },
+      "cas:specializes": {
+        "@id": "cas:Organizer"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Hierarchy Root"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "A subclass of CASCaRA organizer serving as a root for hierarchically organized graph elements."
+        }
+      ],
+      "cas:enumeratedTargetLink": [
+        {
+          "@id": "cas:lists"
+        }
+      ]
+    },
+    {
+      "@id": "cas:Outline",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Entity"
+      },
+      "cas:specializes": {
+        "@id": "cas:Organizer"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Outline"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "A subclass of CASCaRA organizer comprising all information items of a human-readable document. As usual, the outline is hierarchically organized."
+        }
+      ],
+      "cas:enumeratedProperty": [
+        {
+          "@id": "cas:Category"
+        }
+      ],
+      "cas:enumeratedTargetLink": [
+        {
+          "@id": "cas:lists"
+        }
+      ]
+    },
+    {
+      "@id": "cas:View",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Entity"
+      },
+      "cas:specializes": {
+        "@id": "cas:Organizer"
+      },
+      "dcterms:title": [
+        {
+          "@value": "View"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "A subclass of CASCaRA organizer representing a model view (diagram) using a certain notation showing selected model elements."
+        }
+      ],
+      "cas:enumeratedProperty": [
+        {
+          "@id": "cas:Category"
+        },
+        {
+          "@id": "cas:Diagram"
+        }
+      ],
+      "cas:enumeratedTargetLink": [
+        {
+          "@id": "cas:shows"
+        },
+        {
+          "@id": "cas:depicts"
+        }
+      ]
+    },
+    {
+      "@id": "cas:Category",
+      "@type": "owl:DatatypeProperty",
+      "cas:itemType": {
+        "@id": "cas:Property"
+      },
+      "cas:specializes": {
+        "@id": "cas:Property"
+      },
+      "dcterms:title": [
+        {
+          "@value": "has category"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Specifies a category for an element (entity, relationship or organizer)."
+        }
+      ],
+      "sh:datatype": {
+        "@id": "xs:string"
+      },
+      "sh:maxCount": 1,
+      "sh:maxLength": 32,
+      "sh:minCount": 0
+    },
+    {
+      "@id": "cas:linksSource",
+      "@type": "owl:ObjectProperty",
+      "cas:itemType": {
+        "@id": "cas:Link"
+      },
+      "cas:specializes": {
+        "@id": "cas:Link"
+      },
+      "dcterms:title": [
+        {
+          "@value": "to source"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Connects the source of a reified relationship."
+        }
+      ],
+      "cas:enumeratedEndpoint": [
+        {
+          "@id": "cas:Entity"
+        },
+        {
+          "@id": "cas:Relationship"
+        }
+      ]
+    },
+    {
+      "@id": "cas:linksTarget",
+      "@type": "owl:ObjectProperty",
+      "cas:itemType": {
+        "@id": "cas:Link"
+      },
+      "cas:specializes": {
+        "@id": "cas:Link"
+      },
+      "dcterms:title": [
+        {
+          "@value": "to target"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Connects the target of a reified relationship or an organizer."
+        }
+      ],
+      "cas:enumeratedEndpoint": [
+        {
+          "@id": "cas:Entity"
+        },
+        {
+          "@id": "cas:Relationship"
+        }
+      ]
+    },
+    {
+      "@id": "cas:lists",
+      "@type": "owl:ObjectProperty",
+      "cas:itemType": {
+        "@id": "cas:Link"
+      },
+      "cas:specializes": {
+        "@id": "cas:linksTarget"
+      },
+      "dcterms:title": [
+        {
+          "@value": "lists"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Lists an entity, a relationship or a subordinated organizer."
+        }
+      ],
+      "cas:enumeratedEndpoint": [
+        {
+          "@id": "cas:Entity"
+        },
+        {
+          "@id": "cas:Relationship"
+        },
+        {
+          "@id": "cas:Organizer"
+        }
+      ]
+    },
+    {
+      "@id": "cas:shows",
+      "@type": "owl:ObjectProperty",
+      "cas:itemType": {
+        "@id": "cas:Link"
+      },
+      "cas:specializes": {
+        "@id": "cas:linksTarget"
+      },
+      "dcterms:title": [
+        {
+          "@value": "shows"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Shows an entity or a relationship."
+        }
+      ],
+      "cas:enumeratedEndpoint": [
+        {
+          "@id": "cas:Entity"
+        },
+        {
+          "@id": "cas:Relationship"
+        }
+      ]
+    },
+    {
+      "@id": "cas:depicts",
+      "@type": "owl:ObjectProperty",
+      "cas:itemType": {
+        "@id": "cas:Link"
+      },
+      "cas:specializes": {
+        "@id": "cas:linksTarget"
+      },
+      "dcterms:title": [
+        {
+          "@value": "depicts"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Depicts an entity; inverse of uml:ownedDiagram."
+        }
+      ],
+      "cas:enumeratedEndpoint": [
+        {
+          "@id": "cas:Entity"
+        }
+      ]
+    },
+    {
+      "@id": "dcterms:title",
+      "@type": "owl:DatatypeProperty",
+      "cas:itemType": {
+        "@id": "cas:Property"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Title",
+          "@language": "en"
+        },
+        {
+          "@value": "Titel",
+          "@language": "de"
+        },
+        {
+          "@value": "Titre",
+          "@language": "fr"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "<p> A name given to the resource. <small> (<i> source: <a href=\"http://purl.org/dc/elements/1.1/title\">DCMI</a></i>) </small></p><p> Title (reference: Dublin Core) of the resource represented as rich text in XHTML content. SHOULD include only content that is valid inside an XHTML 'span' element. <small> (<i> source: <a href=\"http://open-services.net/\">OSLC</a></i>) </small></p>",
+          "@language": "en"
+        }
+      ],
+      "sh:datatype": {
+        "@id": "xs:string"
+      },
+      "sh:maxCount": 1,
+      "sh:maxLength": 256
+    },
+    {
+      "@id": "dcterms:description",
+      "@type": "owl:DatatypeProperty",
+      "cas:itemType": {
+        "@id": "cas:Property"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Description",
+          "@language": "en"
+        },
+        {
+          "@value": "Beschreibung",
+          "@language": "de"
+        },
+        {
+          "@value": "Description",
+          "@language": "fr"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "<p> An account of the resource. <small> (<i> source: <a href=\"http://purl.org/dc/elements/1.1/description\">DCMI</a></i>) </small></p><p> Descriptive text (reference: Dublin Core) about resource represented as rich text in XHTML content. SHOULD include only content that is valid and suitable inside an XHTML 'div' element. <small> (<i> source: <a href=\"http://open-services.net/\">OSLC</a></i>) </small></p>",
+          "@language": "en"
+        }
+      ],
+      "sh:datatype": {
+        "@id": "xs:string"
+      },
+      "sh:maxCount": 1
+    },
+    {
+      "@id": "cas:Diagram",
+      "@type": "owl:DatatypeProperty",
+      "cas:itemType": {
+        "@id": "cas:Property"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Diagram",
+          "@language": "en"
+        },
+        {
+          "@value": "Diagramm",
+          "@language": "de"
+        },
+        {
+          "@value": "Diagramme",
+          "@language": "fr"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "A diagram illustrating the resource or a link to a diagram.",
+          "@language": "en"
+        }
+      ],
+      "sh:datatype": {
+        "@id": "xs:string"
+      }
+    },
+    {
+      "@id": "o:Object",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Entity"
+      },
+      "cas:specializes": {
+        "@id": "cas:Entity"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Object",
+          "@language": "en"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "<p>An 'Object' is...</p>",
+          "@language": "en"
+        }
+      ],
+      "cas:enumeratedProperty": [
+        {
+          "@id": "cas:Diagram"
+        },
+        {
+          "@id": "cas:Category"
+        }
+      ]
+    },
+    {
+      "@id": "o:Role",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Entity"
+      },
+      "cas:specializes": {
+        "@id": "cas:Entity"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Role",
+          "@language": "en"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "<p>A 'Role' is..</p>",
+          "@language": "en"
+        }
+      ],
+      "cas:enumeratedProperty": [
+        {
+          "@id": "cas:Category"
+        }
+      ]
+    },
+    {
+      "@id": "o:Vehicle",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Entity"
+      },
+      "cas:specializes": {
+        "@id": "o:Object"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Vehicle",
+          "@language": "en"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "<p>A 'Vehicle' is a ...</p>",
+          "@language": "en"
+        }
+      ],
+      "cas:enumeratedProperty": [
+        {
+          "@id": "o:model"
+        },
+        {
+          "@id": "cas:Category"
+        }
+      ]
+    },
+    {
+      "@id": "o:Car",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Entity"
+      },
+      "cas:specializes": {
+        "@id": "o:Vehicle"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Car",
+          "@language": "en"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "<p>A 'Car' is...</p>",
+          "@language": "en"
+        }
+      ],
+      "cas:enumeratedProperty": [
+        {
+          "@id": "cas:Category"
+        }
+      ]
+    },
+    {
+      "@id": "o:Tyre",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Entity"
+      },
+      "cas:specializes": {
+        "@id": "o:Object"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Tyre",
+          "@language": "en"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "<p> A 'Tyre' is... </p>",
+          "@language": "en"
+        }
+      ],
+      "cas:enumeratedProperty": [
+        {
+          "@id": "o:Tyre_Dimension"
+        },
+        {
+          "@id": "SpecIF:Priority"
+        }
+      ]
+    },
+    {
+      "@id": "o:Tyre_Position",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Entity"
+      },
+      "cas:specializes": {
+        "@id": "o:Role"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Tyre on car",
+          "@language": "en"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "<p> ... </p>",
+          "@language": "en"
+        }
+      ],
+      "cas:enumeratedProperty": [
+        {
+          "@id": "SpecIF:Priority"
+        }
+      ],
+      "cas:enumeratedTargetLink": [
+        {
+          "@id": "o:atPosition"
+        }
+      ]
+    },
+    {
+      "@id": "o:Tyre_Medium_Wear",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Entity"
+      },
+      "cas:specializes": {
+        "@id": "cas:Entity"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Tyre Medium Wear",
+          "@language": "en"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "<p> ... </p>",
+          "@language": "en"
+        }
+      ],
+      "cas:enumeratedProperty": [
+        {
+          "@id": "SpecIF:Priority"
+        },
+        {
+          "@id": "o:Tyre_Medium_Wear_Value"
+        },
+        {
+          "@id": "o:hasUnit"
+        }
+      ]
+    },
+    {
+      "@id": "o:Tyre_Recommended_Pressure",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Entity"
+      },
+      "cas:specializes": {
+        "@id": "cas:Entity"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Tyre Recommended Pressure",
+          "@language": "en"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "<p> ... </p>",
+          "@language": "en"
+        }
+      ],
+      "cas:enumeratedProperty": [
+        {
+          "@id": "o:Tyre_Pressure_Value"
+        },
+        {
+          "@id": "o:hasUnit"
+        },
+        {
+          "@id": "SpecIF:Priority"
+        }
+      ]
+    },
+    {
+      "@id": "o:Weather_Condition",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Entity"
+      },
+      "cas:specializes": {
+        "@id": "cas:Entity"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Weather Condition",
+          "@language": "en"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "<p> ... </p>",
+          "@language": "en"
+        }
+      ],
+      "cas:enumeratedProperty": [
+        {
+          "@id": "SpecIF:Priority"
+        }
+      ],
+      "cas:enumeratedTargetLink": [
+        {
+          "@id": "o:weathCondition"
+        },
+        {
+          "@id": "o:humidity"
+        }
+      ]
+    },
+    {
+      "@id": "o:Loaded_Weight",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Entity"
+      },
+      "cas:specializes": {
+        "@id": "cas:Entity"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Loaded Weight",
+          "@language": "en"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "<p> ... </p>",
+          "@language": "en"
+        }
+      ],
+      "cas:enumeratedProperty": [
+        {
+          "@id": "o:Loaded_Weight_Value"
+        },
+        {
+          "@id": "o:hasUnit"
+        },
+        {
+          "@id": "SpecIF:Priority"
+        }
+      ]
+    },
+    {
+      "@id": "o:atPosition",
+      "@type": "owl:ObjectProperty",
+      "cas:itemType": {
+        "@id": "cas:Link"
+      },
+      "cas:specializes": {
+        "@id": "cas:linksTarget"
+      },
+      "dcterms:title": [
+        {
+          "@value": "at position",
+          "@language": "en"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Enumerated value for the position of a tyre on a car.",
+          "@language": "en"
+        }
+      ],
+      "dcterms:modified": "2020-03-26T22:59:00+02:00",
+      "cas:enumeratedEndpoint": [
+        {
+          "@id": "o:TyrePosition-Value"
+        }
+      ],
+      "sh:maxCount": 1,
+      "sh:minCount": 1
+    },
+    {
+      "@id": "o:weathCondition",
+      "@type": "owl:ObjectProperty",
+      "cas:itemType": {
+        "@id": "cas:Link"
+      },
+      "cas:specializes": {
+        "@id": "cas:linksTarget"
+      },
+      "dcterms:title": [
+        {
+          "@value": "weather Condition",
+          "@language": "en"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Enumerated value for the weather Condition.",
+          "@language": "en"
+        }
+      ],
+      "dcterms:modified": "2020-03-26T22:59:00+02:00",
+      "cas:enumeratedEndpoint": [
+        {
+          "@id": "o:Weather_Condition_Enum"
+        }
+      ],
+      "sh:maxCount": 1,
+      "sh:minCount": 1
+    },
+    {
+      "@id": "o:humidity",
+      "@type": "owl:ObjectProperty",
+      "cas:itemType": {
+        "@id": "cas:Link"
+      },
+      "cas:specializes": {
+        "@id": "cas:linksTarget"
+      },
+      "dcterms:title": [
+        {
+          "@value": "humidity",
+          "@language": "en"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Enumerated value for humidity.",
+          "@language": "en"
+        }
+      ],
+      "dcterms:modified": "2020-03-26T22:59:00+02:00",
+      "cas:enumeratedEndpoint": [
+        {
+          "@id": "o:humidity_Enum"
+        }
+      ],
+      "sh:maxCount": 1,
+      "sh:minCount": 1
+    },
+    {
+      "@id": "o:TyrePosition-Value",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Enumeration"
+      },
+      "cas:specializes": {
+        "@id": "cas:Enumeration"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Tyre Position",
+          "@language": "en"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Enumerated values for the tyre position of a car.",
+          "@language": "en"
+        }
+      ],
+      "dcterms:modified": "2020-03-26T22:59:00+02:00",
+      "cas:enumeratedValue": [
+        {
+          "@id": "o:frontRight",
+          "dcterms:title": [
+            {
+              "@value": "front right",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@id": "o:frontLeft",
+          "dcterms:title": [
+            {
+              "@value": "front left",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@id": "o:backRight",
+          "dcterms:title": [
+            {
+              "@value": "back right",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@id": "o:backLeft",
+          "dcterms:title": [
+            {
+              "@value": "fback left",
+              "@language": "en"
+            }
+          ]
+        }
+      ],
+      "sh:datatype": {
+        "@id": "xs:string"
+      }
+    },
+    {
+      "@id": "o:Weather_Condition_Enum",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Enumeration"
+      },
+      "cas:specializes": {
+        "@id": "cas:Enumeration"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Weather Condition enum",
+          "@language": "en"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Enumerated values for the weather conditions.",
+          "@language": "en"
+        }
+      ],
+      "dcterms:modified": "2020-03-26T22:59:00+02:00",
+      "cas:enumeratedValue": [
+        {
+          "@id": "o:Rainy",
+          "dcterms:title": [
+            {
+              "@value": "Rainy",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@id": "o:Sunny",
+          "dcterms:title": [
+            {
+              "@value": "Sunny",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@id": "o:Fog",
+          "dcterms:title": [
+            {
+              "@value": "Fog",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@id": "o:Storm",
+          "dcterms:title": [
+            {
+              "@value": "Storm",
+              "@language": "en"
+            }
+          ]
+        }
+      ],
+      "sh:datatype": {
+        "@id": "xs:string"
+      }
+    },
+    {
+      "@id": "o:Humidity_Enum",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Enumeration"
+      },
+      "cas:specializes": {
+        "@id": "cas:Enumeration"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Humidity enum",
+          "@language": "en"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Enumerated values for humidity.",
+          "@language": "en"
+        }
+      ],
+      "dcterms:modified": "2020-03-26T22:59:00+02:00",
+      "cas:enumeratedValue": [
+        {
+          "@id": "o:Less25",
+          "dcterms:title": [
+            {
+              "@value": "Less then 25",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@id": "o:Btw25And50",
+          "dcterms:title": [
+            {
+              "@value": "Between 25 And 50",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@id": "o:Btw50And75",
+          "dcterms:title": [
+            {
+              "@value": "Between 50 And 75",
+              "@language": "en"
+            }
+          ]
+        },
+        {
+          "@id": "o:Higer75",
+          "dcterms:title": [
+            {
+              "@value": "Higher that 75",
+              "@language": "en"
+            }
+          ]
+        }
+      ],
+      "sh:datatype": {
+        "@id": "xs:string"
+      }
+    },
+    {
+      "@id": "o:Tyre_Dimension",
+      "@type": "owl:DatatypeProperty",
+      "cas:itemType": {
+        "@id": "cas:Property"
+      },
+      "cas:specializes": {
+        "@id": "cas:Property"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Tyre Dimension",
+          "@language": "en"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The dimension (size) of a tyre.",
+          "@language": "en"
+        }
+      ],
+      "sh:datatype": {
+        "@id": "xs:string"
+      },
+      "sh:maxCount": 1,
+      "sh:minCount": 0
+    },
+    {
+      "@id": "o:Tyre_Pressure_Value",
+      "@type": "owl:DatatypeProperty",
+      "cas:itemType": {
+        "@id": "cas:Property"
+      },
+      "cas:specializes": {
+        "@id": "cas:Property"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Tyre Pressure Value",
+          "@language": "en"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Pressure Value of a tyre.",
+          "@language": "en"
+        }
+      ],
+      "sh:datatype": {
+        "@id": "xs:string"
+      },
+      "sh:maxCount": 1,
+      "sh:minCount": 0
+    },
+    {
+      "@id": "o:Tyre_Medium_Wear_Value",
+      "@type": "owl:DatatypeProperty",
+      "cas:itemType": {
+        "@id": "cas:Property"
+      },
+      "cas:specializes": {
+        "@id": "cas:Property"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Tyre Medium Wear Value",
+          "@language": "en"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Medium Wear Value of a tyre.",
+          "@language": "en"
+        }
+      ],
+      "sh:datatype": {
+        "@id": "xs:string"
+      },
+      "sh:maxCount": 1,
+      "sh:minCount": 0
+    },
+    {
+      "@id": "o:Loaded_Weight_Value",
+      "@type": "owl:DatatypeProperty",
+      "cas:itemType": {
+        "@id": "cas:Property"
+      },
+      "cas:specializes": {
+        "@id": "cas:Property"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Loaded Weight Value",
+          "@language": "en"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Loaded Weight.",
+          "@language": "en"
+        }
+      ],
+      "sh:datatype": {
+        "@id": "xs:string"
+      },
+      "sh:maxCount": 1,
+      "sh:minCount": 0
+    },
+    {
+      "@id": "o:hasUnit",
+      "@type": "owl:DatatypeProperty",
+      "cas:itemType": {
+        "@id": "cas:Property"
+      },
+      "cas:specializes": {
+        "@id": "cas:Property"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Unit of Measure",
+          "@language": "en"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Unit of Measure.",
+          "@language": "en"
+        }
+      ],
+      "sh:datatype": {
+        "@id": "xs:string"
+      },
+      "sh:maxCount": 1,
+      "sh:minCount": 0
+    },
+    {
+      "@id": "o:model",
+      "@type": "owl:DatatypeProperty",
+      "cas:itemType": {
+        "@id": "cas:Property"
+      },
+      "cas:specializes": {
+        "@id": "cas:Property"
+      },
+      "dcterms:title": [
+        {
+          "@value": "model of a Vehicle",
+          "@language": "en"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "model of a Vehicle.",
+          "@language": "en"
+        }
+      ],
+      "sh:datatype": {
+        "@id": "xs:string"
+      },
+      "sh:maxCount": 1,
+      "sh:minCount": 0
+    },
+    {
+      "@id": "o:bearer_of",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Relationship"
+      },
+      "cas:specializes": {
+        "@id": "cas:Relationship"
+      },
+      "dcterms:title": [
+        {
+          "@value": "bearer of",
+          "@language": "en"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "An [[Object]] is a 'bearer of' [[Role]].",
+          "@language": "en"
+        }
+      ],
+      "cas:enumeratedSourceLink": [
+        {
+          "@id": "o:bearer_of-toSource"
+        }
+      ],
+      "cas:enumeratedTargetLink": [
+        {
+          "@id": "o:bearer_of-toTarget"
+        }
+      ]
+    },
+    {
+      "@id": "o:bearer_of-toSource",
+      "@type": "owl:ObjectProperty",
+      "cas:itemType": {
+        "@id": "cas:Link"
+      },
+      "cas:specializes": {
+        "@id": "cas:linksSource"
+      },
+      "dcterms:title": [
+        {
+          "@value": "bearer of to source"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Connects the source of bearer of"
+        }
+      ],
+      "cas:enumeratedEndpoint": [
+        {
+          "@id": "o:Object"
+        }
+      ]
+    },
+    {
+      "@id": "o:bearer_of-toTarget",
+      "@type": "owl:ObjectProperty",
+      "cas:itemType": {
+        "@id": "cas:Link"
+      },
+      "cas:specializes": {
+        "@id": "cas:linksTarget"
+      },
+      "dcterms:title": [
+        {
+          "@value": "bearer of to target"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Connects the target of bearer of"
+        }
+      ],
+      "cas:enumeratedEndpoint": [
+        {
+          "@id": "o:Role"
+        }
+      ]
+    },
+    {
+      "@id": "o:mounted_on",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Relationship"
+      },
+      "cas:specializes": {
+        "@id": "cas:Relationship"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Mounted on",
+          "@language": "en"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "A [[Tyre_Position]] is mounted on a [[Vehicle]].",
+          "@language": "en"
+        }
+      ],
+      "cas:enumeratedSourceLink": [
+        {
+          "@id": "o:mounted_on-toSource"
+        }
+      ],
+      "cas:enumeratedTargetLink": [
+        {
+          "@id": "o:mounted_on-toTarget"
+        }
+      ]
+    },
+    {
+      "@id": "o:mounted_on-toSource",
+      "@type": "owl:ObjectProperty",
+      "cas:itemType": {
+        "@id": "cas:Link"
+      },
+      "cas:specializes": {
+        "@id": "cas:linksSource"
+      },
+      "dcterms:title": [
+        {
+          "@value": "mounted on to source"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Connects the source of mounted on"
+        }
+      ],
+      "cas:enumeratedEndpoint": [
+        {
+          "@id": "o:Tyre_Position"
+        }
+      ]
+    },
+    {
+      "@id": "o:mounted_on-toTarget",
+      "@type": "owl:ObjectProperty",
+      "cas:itemType": {
+        "@id": "cas:Link"
+      },
+      "cas:specializes": {
+        "@id": "cas:linksTarget"
+      },
+      "dcterms:title": [
+        {
+          "@value": "mounted on to target"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Connects the target of mounted on"
+        }
+      ],
+      "cas:enumeratedEndpoint": [
+        {
+          "@id": "o:Vehicle"
+        }
+      ]
+    },
+    {
+      "@id": "o:TRP_depends_on_LW",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Relationship"
+      },
+      "cas:specializes": {
+        "@id": "cas:Relationship"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Tyre Recommended Pressure Depends on Loaded Weight",
+          "@language": "en"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "[[Tyre Recommended Pressure]] depends on a [[Loaded Weight]].",
+          "@language": "en"
+        }
+      ],
+      "cas:enumeratedSourceLink": [
+        {
+          "@id": "o:TRP_depends_on_LW-toSource"
+        }
+      ],
+      "cas:enumeratedTargetLink": [
+        {
+          "@id": "o:TRP_depends_on_LW-toTarget"
+        }
+      ]
+    },
+    {
+      "@id": "o:TRP_depends_on_LW-toSource",
+      "@type": "owl:ObjectProperty",
+      "cas:itemType": {
+        "@id": "cas:Link"
+      },
+      "cas:specializes": {
+        "@id": "cas:linksSource"
+      },
+      "dcterms:title": [
+        {
+          "@value": "TRP depends on LW to source"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Connects the source of depends on"
+        }
+      ],
+      "cas:enumeratedEndpoint": [
+        {
+          "@id": "o:Tyre_Recommended_Pressure"
+        }
+      ]
+    },
+    {
+      "@id": "o:TRP_depends_on_LW-toTarget",
+      "@type": "owl:ObjectProperty",
+      "cas:itemType": {
+        "@id": "cas:Link"
+      },
+      "cas:specializes": {
+        "@id": "cas:linksTarget"
+      },
+      "dcterms:title": [
+        {
+          "@value": "TRP depends on LW to target"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Connects the target of depends on"
+        }
+      ],
+      "cas:enumeratedEndpoint": [
+        {
+          "@id": "o:Loaded_Weight"
+        }
+      ]
+    },
+    {
+      "@id": "o:TMW_depends_on_WC",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Relationship"
+      },
+      "cas:specializes": {
+        "@id": "cas:Relationship"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Tyre Medium Wear Depends on Weather Condition",
+          "@language": "en"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "[[Tyre Medium Wear]] depends on a [[Weather Condition]].",
+          "@language": "en"
+        }
+      ],
+      "cas:enumeratedSourceLink": [
+        {
+          "@id": "o:TMW_depends_on_WC-toSource"
+        }
+      ],
+      "cas:enumeratedTargetLink": [
+        {
+          "@id": "o:TMW_depends_on_WC-toTarget"
+        }
+      ]
+    },
+    {
+      "@id": "o:TMW_depends_on_WC-toSource",
+      "@type": "owl:ObjectProperty",
+      "cas:itemType": {
+        "@id": "cas:Link"
+      },
+      "cas:specializes": {
+        "@id": "cas:linksSource"
+      },
+      "dcterms:title": [
+        {
+          "@value": "TMW depends on WC to source"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Connects the source of depends on"
+        }
+      ],
+      "cas:enumeratedEndpoint": [
+        {
+          "@id": "o:Tyre_Medium_Wear"
+        }
+      ]
+    },
+    {
+      "@id": "o:TMW_depends_on_WC-toTarget",
+      "@type": "owl:ObjectProperty",
+      "cas:itemType": {
+        "@id": "cas:Link"
+      },
+      "cas:specializes": {
+        "@id": "cas:linksTarget"
+      },
+      "dcterms:title": [
+        {
+          "@value": "TMW depends on WC on to target"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Connects the target of depends on"
+        }
+      ],
+      "cas:enumeratedEndpoint": [
+        {
+          "@id": "o:Weather_Condition"
+        }
+      ]
+    },
+    {
+      "@id": "o:TMW_depends_on_TP",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Relationship"
+      },
+      "cas:specializes": {
+        "@id": "cas:Relationship"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Tyre Medium Wear Depends on Tyre Position",
+          "@language": "en"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "[[Tyre Medium Wear]] depends on a [[Tyre Position]].",
+          "@language": "en"
+        }
+      ],
+      "cas:enumeratedSourceLink": [
+        {
+          "@id": "o:TMW_depends_on_TP-toSource"
+        }
+      ],
+      "cas:enumeratedTargetLink": [
+        {
+          "@id": "o:TMW_depends_on_TP-toTarget"
+        }
+      ]
+    },
+    {
+      "@id": "o:TMW_depends_on_TP-toSource",
+      "@type": "owl:ObjectProperty",
+      "cas:itemType": {
+        "@id": "cas:Link"
+      },
+      "cas:specializes": {
+        "@id": "cas:linksSource"
+      },
+      "dcterms:title": [
+        {
+          "@value": "TMW depends on TP to source"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Connects the source of depends on"
+        }
+      ],
+      "cas:enumeratedEndpoint": [
+        {
+          "@id": "o:Tyre_Medium_Wear"
+        }
+      ]
+    },
+    {
+      "@id": "o:TMW_depends_on_TP-toTarget",
+      "@type": "owl:ObjectProperty",
+      "cas:itemType": {
+        "@id": "cas:Link"
+      },
+      "cas:specializes": {
+        "@id": "cas:linksTarget"
+      },
+      "dcterms:title": [
+        {
+          "@value": "TMW depends on TP to target"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Connects the target of depends on"
+        }
+      ],
+      "cas:enumeratedEndpoint": [
+        {
+          "@id": "o:Tyre_Position"
+        }
+      ]
+    },
+    {
+      "@id": "o:TRP_depends_on_TP",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Relationship"
+      },
+      "cas:specializes": {
+        "@id": "cas:Relationship"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Tyre Recommended Pressure Depends on Tyre Position",
+          "@language": "en"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "[[Tyre Recommended Pressure]] depends on a [[Tyre_Position]].",
+          "@language": "en"
+        }
+      ],
+      "cas:enumeratedSourceLink": [
+        {
+          "@id": "o:TRP_depends_on_TP-toSource"
+        }
+      ],
+      "cas:enumeratedTargetLink": [
+        {
+          "@id": "o:TRP_depends_on_TP-toTarget"
+        }
+      ]
+    },
+    {
+      "@id": "o:TRP_depends_on_TP-toSource",
+      "@type": "owl:ObjectProperty",
+      "cas:itemType": {
+        "@id": "cas:Link"
+      },
+      "cas:specializes": {
+        "@id": "cas:linksSource"
+      },
+      "dcterms:title": [
+        {
+          "@value": "TRP depends on TP to source"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Connects the source of depends on"
+        }
+      ],
+      "cas:enumeratedEndpoint": [
+        {
+          "@id": "o:Tyre_Recommended_Pressure"
+        }
+      ]
+    },
+    {
+      "@id": "o:TRP_depends_on_TP-toTarget",
+      "@type": "owl:ObjectProperty",
+      "cas:itemType": {
+        "@id": "cas:Link"
+      },
+      "cas:specializes": {
+        "@id": "cas:linksTarget"
+      },
+      "dcterms:title": [
+        {
+          "@value": "TRP depends on TP to target"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Connects the target of depends on"
+        }
+      ],
+      "cas:enumeratedEndpoint": [
+        {
+          "@id": "o:Tyre_Position"
+        }
+      ]
+    },
+    {
+      "@id": "SpecIF:Priority-Value",
+      "@type": "owl:Class",
+      "cas:itemType": {
+        "@id": "cas:Enumeration"
+      },
+      "cas:specializes": {
+        "@id": "cas:Enumeration"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Priority",
+          "@language": "en"
+        },
+        {
+          "@value": "Priorität",
+          "@language": "de"
+        },
+        {
+          "@value": "Priorité",
+          "@language": "fr"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Enumerated values for the 'Priority' of the resource.",
+          "@language": "en"
+        }
+      ],
+      "dcterms:modified": "2020-03-26T22:59:00+02:00",
+      "cas:enumeratedValue": [
+        {
+          "@id": "SpecIF:priorityHigh",
+          "dcterms:title": [
+            {
+              "@value": "high",
+              "@language": "en"
+            },
+            {
+              "@value": "hoch",
+              "@language": "de"
+            },
+            {
+              "@value": "haut",
+              "@language": "fr"
+            }
+          ]
+        },
+        {
+          "@id": "SpecIF:priorityRatherHigh",
+          "dcterms:title": [
+            {
+              "@value": "rather high",
+              "@language": "en"
+            },
+            {
+              "@value": "eher hoch",
+              "@language": "de"
+            },
+            {
+              "@value": "plutôt haut",
+              "@language": "fr"
+            }
+          ]
+        },
+        {
+          "@id": "SpecIF:priorityMedium",
+          "dcterms:title": [
+            {
+              "@value": "medium",
+              "@language": "en"
+            },
+            {
+              "@value": "mittel",
+              "@language": "de"
+            },
+            {
+              "@value": "moyen",
+              "@language": "fr"
+            }
+          ]
+        },
+        {
+          "@id": "SpecIF:priorityRatherLow",
+          "dcterms:title": [
+            {
+              "@value": "rather low",
+              "@language": "en"
+            },
+            {
+              "@value": "eher niedrig",
+              "@language": "de"
+            },
+            {
+              "@value": "plutôt bas",
+              "@language": "fr"
+            }
+          ]
+        },
+        {
+          "@id": "SpecIF:priorityLow",
+          "dcterms:title": [
+            {
+              "@value": "low",
+              "@language": "en"
+            },
+            {
+              "@value": "niedrig",
+              "@language": "de"
+            },
+            {
+              "@value": "bas",
+              "@language": "fr"
+            }
+          ]
+        }
+      ],
+      "sh:datatype": {
+        "@id": "xs:string"
+      }
+    },
+    {
+      "@id": "SpecIF:Priority",
+      "@type": "owl:ObjectProperty",
+      "cas:itemType": {
+        "@id": "cas:Link"
+      },
+      "cas:specializes": {
+        "@id": "cas:linksTarget"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Priority",
+          "@language": "en"
+        },
+        {
+          "@value": "Priorität",
+          "@language": "de"
+        },
+        {
+          "@value": "Priorité",
+          "@language": "fr"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Enumerated values for the 'Priority' of the resource.",
+          "@language": "en"
+        }
+      ],
+      "dcterms:modified": "2020-03-26T22:59:00+02:00",
+      "cas:enumeratedEndpoint": [
+        {
+          "@id": "SpecIF:Priority-Value"
+        }
+      ]
+    },
+    {
+      "@id": "d:Car_1a8016e2872e78ecadc50feddc00029b",
+      "@type": "o:Car",
+      "cas:itemType": {
+        "@id": "cas:anEntity"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Fiat_600_2021"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "<p>Fiat 600 year 2021.</p>"
+        }
+      ],
+      "dcterms:modified": "2020-10-17T10:00:00+01:00"
+    },
+    {
+      "@id": "d:Tyre_0Z7916e2872e78ecadc50feddc00918a",
+      "@type": "o:Tyre",
+      "cas:itemType": {
+        "@id": "cas:anEntity"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Pirelli_215/65R18"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "<p>Pirelli tyre 215/65R18</p>"
+        }
+      ],
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "o:Tyre_Dimension": [
+        {
+          "@value": "215/65R18",
+          "cas:itemType": {
+            "@id": "cas:aProperty"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "d:TP_2b9016e2872e78ecadc50feddc0013Ac",
+      "@type": "o:Tyre_Position",
+      "cas:itemType": {
+        "@id": "cas:anEntity"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Pirelli_215/65R18 mounted as Front Right Tyre on a Fiat 600 (2021)"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "<p>....</p>"
+        }
+      ],
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "o:atPosition": [
+        {
+          "@id": "o:frontRight",
+          "cas:itemType": {
+            "@id": "cas:aTargetLink"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "d:WC_0Z7916e2872e78ecadc50feddc0013Ac",
+      "@type": "o:Weather_Condition",
+      "cas:itemType": {
+        "@id": "cas:anEntity"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Weather Condition sunny and low humidity"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "<p>....</p>"
+        }
+      ],
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "o:humidity": [
+        {
+          "@id": "d:Less25",
+          "cas:itemType": {
+            "@id": "cas:aTargetLink"
+          }
+        }
+      ],
+      "o:weathCondition": [
+        {
+          "@id": "o:Sunny",
+          "cas:itemType": {
+            "@id": "cas:aTargetLink"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "d:WC_0S7516e2872e78ecadc578ecadc0013Ac",
+      "@type": "o:Weather_Condition",
+      "cas:itemType": {
+        "@id": "cas:anEntity"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Weather Condition sunny and high humidity"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "<p>....</p>"
+        }
+      ],
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "o:humidity": [
+        {
+          "@id": "d:Higer75",
+          "cas:itemType": {
+            "@id": "cas:aTargetLink"
+          }
+        }
+      ],
+      "o:weathCondition": [
+        {
+          "@id": "o:Sunny",
+          "cas:itemType": {
+            "@id": "cas:aTargetLink"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "d:TMW_0Z7916e2872e7c0013Ac50feddc0013Ac",
+      "@type": "o:Tyre_Medium_Wear",
+      "cas:itemType": {
+        "@id": "cas:anEntity"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Tyre Medium Wear 0.1"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "<p>....</p>"
+        }
+      ],
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "o:Tyre_Medium_Wear_Value": [
+        {
+          "@value": "0.01",
+          "cas:itemType": {
+            "@id": "cas:aProperty"
+          }
+        }
+      ],
+      "o:hasUnit": [
+        {
+          "@value": "gr/month",
+          "cas:itemType": {
+            "@id": "cas:aProperty"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "d:TMW_02Z7916e2872e7c0013Ac50feddc0013Ac",
+      "@type": "o:Tyre_Medium_Wear",
+      "cas:itemType": {
+        "@id": "cas:anEntity"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Tyre Medium Wear 0.2"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "<p>....</p>"
+        }
+      ],
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "o:Tyre_Medium_Wear_Value": [
+        {
+          "@value": "0.02",
+          "cas:itemType": {
+            "@id": "cas:aProperty"
+          }
+        }
+      ],
+      "o:hasUnit": [
+        {
+          "@value": "gr/month",
+          "cas:itemType": {
+            "@id": "cas:aProperty"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "d:TRP_0Z7ec6e2872e7c0013Ac50feddc0013Ac",
+      "@type": "o:Tyre_Recommended_Pressure",
+      "cas:itemType": {
+        "@id": "cas:anEntity"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Tyre Recommended Pressure 2.5"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "<p>....</p>"
+        }
+      ],
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "o:Tyre_Pressure_Value": [
+        {
+          "@value": "2.5",
+          "cas:itemType": {
+            "@id": "cas:aProperty"
+          }
+        }
+      ],
+      "o:hasUnit": [
+        {
+          "@value": "atm",
+          "cas:itemType": {
+            "@id": "cas:aProperty"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "d:TRP_220Z7ec6efeddc00013Ac50feddc0013Ac",
+      "@type": "o:Tyre_Recommended_Pressure",
+      "cas:itemType": {
+        "@id": "cas:anEntity"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Tyre Recommended Pressure 2.2"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "<p>....</p>"
+        }
+      ],
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "o:Tyre_Pressure_Value": [
+        {
+          "@value": "2.2",
+          "cas:itemType": {
+            "@id": "cas:aProperty"
+          }
+        }
+      ],
+      "o:hasUnit": [
+        {
+          "@value": "atm",
+          "cas:itemType": {
+            "@id": "cas:aProperty"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "d:LW_0Z7ec650feddc013Ac50feddc0013Ac",
+      "@type": "o:Loaded_Weight",
+      "cas:itemType": {
+        "@id": "cas:anEntity"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Loaded Weight 145"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "<p>....</p>"
+        }
+      ],
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "o:Loaded_Weight_Value": [
+        {
+          "@value": "145",
+          "cas:itemType": {
+            "@id": "cas:aProperty"
+          }
+        }
+      ],
+      "o:hasUnit": [
+        {
+          "@value": "kg",
+          "cas:itemType": {
+            "@id": "cas:aProperty"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "d:LW_400Z7ec650feddc013Ac50feddc0013Ac",
+      "@type": "o:Loaded_Weight",
+      "cas:itemType": {
+        "@id": "cas:anEntity"
+      },
+      "dcterms:title": [
+        {
+          "@value": "Loaded Weight 400"
+        }
+      ],
+      "dcterms:description": [
+        {
+          "@value": "<p>....</p>"
+        }
+      ],
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "o:Loaded_Weight_Value": [
+        {
+          "@value": "400",
+          "cas:itemType": {
+            "@id": "cas:aProperty"
+          }
+        }
+      ],
+      "o:hasUnit": [
+        {
+          "@value": "kg",
+          "cas:itemType": {
+            "@id": "cas:aProperty"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "d:mounted_on-50fedd872e78ecadcc00029b1a8016e2",
+      "@type": "o:mounted_on",
+      "cas:itemType": {
+        "@id": "cas:aRelationship"
+      },
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "o:mounted_on-toSource": [
+        {
+          "@id": "d:TP_2b9016e2872e78ecadc50feddc0013Ac",
+          "cas:itemType": {
+            "@id": "cas:aSourceLink"
+          }
+        }
+      ],
+      "o:mounted_on-toTarget": [
+        {
+          "@id": "d:Car_1a8016e2872e78ecadc50feddc00029b",
+          "cas:itemType": {
+            "@id": "cas:aTargetLink"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "d:bearer_of-50fedd872e78ecadcc000250fedd87216e2",
+      "@type": "o:bearer_of",
+      "cas:itemType": {
+        "@id": "cas:aRelationship"
+      },
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "o:bearer_of-toSource": [
+        {
+          "@id": "d:Tyre_0Z7916e2872e78ecadc50feddc00918a",
+          "cas:itemType": {
+            "@id": "cas:aSourceLink"
+          }
+        }
+      ],
+      "o:bearer_of-toTarget": [
+        {
+          "@id": "d:TP_2b9016e2872e78ecadc50feddc0013Ac",
+          "cas:itemType": {
+            "@id": "cas:aTargetLink"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "d:TMW_depends_on_WC-50fe78ec72e78ecadcc00016e287216e2",
+      "@type": "o:TMW_depends_on_WC",
+      "cas:itemType": {
+        "@id": "cas:aRelationship"
+      },
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "o:TMW_depends_on_WC-toSource": [
+        {
+          "@id": "d:TMW_02Z7916e2872e7c0013Ac50feddc0013Ac",
+          "cas:itemType": {
+            "@id": "cas:aSourceLink"
+          }
+        }
+      ],
+      "o:TMW_depends_on_WC-toTarget": [
+        {
+          "@id": "d:WC_0S7516e2872e78ecadc578ecadc0013Ac",
+          "cas:itemType": {
+            "@id": "cas:aTargetLink"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "d:TMW_depends_on_TP-50fe78ec72e78ecad16e2878ec2872e78",
+      "@type": "o:TMW_depends_on_TP",
+      "cas:itemType": {
+        "@id": "cas:aRelationship"
+      },
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "o:TMW_depends_on_TP-toSource": [
+        {
+          "@id": "d:TMW_02Z7916e2872e7c0013Ac50feddc0013Ac",
+          "cas:itemType": {
+            "@id": "cas:aSourceLink"
+          }
+        }
+      ],
+      "o:TMW_depends_on_TP-toTarget": [
+        {
+          "@id": "d:TP_2b9016e2872e78ecadc50feddc0013Ac",
+          "cas:itemType": {
+            "@id": "cas:aTargetLink"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "d:TRP_depends_on_TP-50000100008ecad16e2878ec2872e78",
+      "@type": "o:TRP_depends_on_TP",
+      "cas:itemType": {
+        "@id": "cas:aRelationship"
+      },
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "o:TRP_depends_on_TP-toSource": [
+        {
+          "@id": "d:TRP_220Z7ec6efeddc00013Ac50feddc0013Ac",
+          "cas:itemType": {
+            "@id": "cas:aSourceLink"
+          }
+        }
+      ],
+      "o:TRP_depends_on_TP-toTarget": [
+        {
+          "@id": "d:TP_2b9016e2872e78ecadc50feddc0013Ac",
+          "cas:itemType": {
+            "@id": "cas:aTargetLink"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "d:TRP_depends_on_LW-50000100008ec16e287287ec2872e78",
+      "@type": "o:TRP_depends_on_LW",
+      "cas:itemType": {
+        "@id": "cas:aRelationship"
+      },
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "o:TRP_depends_on_LW-toSource": [
+        {
+          "@id": "d:TRP_220Z7ec6efeddc00013Ac50feddc0013Ac",
+          "cas:itemType": {
+            "@id": "cas:aSourceLink"
+          }
+        }
+      ],
+      "o:TRP_depends_on_LW-toTarget": [
+        {
+          "@id": "d:LW_400Z7ec650feddc013Ac50feddc0013Ac",
+          "cas:itemType": {
+            "@id": "cas:aTargetLink"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "d:TMW_depends_on_WC-50fe78ec72e78ecadcc000278ec7216e2",
+      "@type": "o:TMW_depends_on_WC",
+      "cas:itemType": {
+        "@id": "cas:aRelationship"
+      },
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "o:TMW_depends_on_WC-toSource": [
+        {
+          "@id": "d:TMW_0Z7916e2872e7c0013Ac50feddc0013Ac",
+          "cas:itemType": {
+            "@id": "cas:aSourceLink"
+          }
+        }
+      ],
+      "o:TMW_depends_on_WC-toTarget": [
+        {
+          "@id": "d:WC_0Z7916e2872e78ecadc50feddc0013Ac",
+          "cas:itemType": {
+            "@id": "cas:aTargetLink"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "d:TMW_depends_on_TP-50fe78ec72e78ecadcc000278ec2872e78",
+      "@type": "o:TMW_depends_on_TP",
+      "cas:itemType": {
+        "@id": "cas:aRelationship"
+      },
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "o:TMW_depends_on_TP-toSource": [
+        {
+          "@id": "d:TMW_0Z7916e2872e7c0013Ac50feddc0013Ac",
+          "cas:itemType": {
+            "@id": "cas:aSourceLink"
+          }
+        }
+      ],
+      "o:TMW_depends_on_TP-toTarget": [
+        {
+          "@id": "d:TP_2b9016e2872e78ecadc50feddc0013Ac",
+          "cas:itemType": {
+            "@id": "cas:aTargetLink"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "d:TRP_depends_on_TP-50000100008ecadcc000278ec2872e78",
+      "@type": "o:TRP_depends_on_TP",
+      "cas:itemType": {
+        "@id": "cas:aRelationship"
+      },
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "o:TRP_depends_on_TP-toSource": [
+        {
+          "@id": "d:TRP_0Z7ec6e2872e7c0013Ac50feddc0013Ac",
+          "cas:itemType": {
+            "@id": "cas:aSourceLink"
+          }
+        }
+      ],
+      "o:TRP_depends_on_TP-toTarget": [
+        {
+          "@id": "d:TP_2b9016e2872e78ecadc50feddc0013Ac",
+          "cas:itemType": {
+            "@id": "cas:aTargetLink"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "d:TRP_depends_on_LW-50000100008ecadcc000278ec2872e78",
+      "@type": "o:TRP_depends_on_LW",
+      "cas:itemType": {
+        "@id": "cas:aRelationship"
+      },
+      "dcterms:modified": "2020-10-17T10:00:00+01:00",
+      "o:TRP_depends_on_LW-toSource": [
+        {
+          "@id": "d:TRP_0Z7ec6e2872e7c0013Ac50feddc0013Ac",
+          "cas:itemType": {
+            "@id": "cas:aSourceLink"
+          }
+        }
+      ],
+      "o:TRP_depends_on_LW-toTarget": [
+        {
+          "@id": "d:LW_0Z7ec650feddc013Ac50feddc0013Ac",
+          "cas:itemType": {
+            "@id": "cas:aTargetLink"
+          }
+        }
+      ]
+    }
+  ],
+  "cas:itemType": {
+    "@id": "cas:aPackage"
+  },
+  "dcterms:title": [
+    {
+      "@value": "Project 'Very Simple Car Model'"
+    }
+  ],
+  "dcterms:modified": "2026-01-17T22:38:19.595Z",
+  "dcterms:contributor": [
+    {
+      "@value": "cecilia.tonelli@collins.com",
+      "cas:itemType": {
+        "@id": "cas:aProperty"
+      }
+    },
+    {
+      "@value": "oskar.dungern@gfse.org",
+      "cas:itemType": {
+        "@id": "cas:aProperty"
+      }
+    }
+  ],
+  "dcterms:license": [
+    {
+      "@value": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "cas:itemType": {
+        "@id": "cas:aProperty"
+      }
+    }
+  ]
+}

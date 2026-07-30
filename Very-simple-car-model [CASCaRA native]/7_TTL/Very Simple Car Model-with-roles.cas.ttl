@@ -1,0 +1,512 @@
+
+@prefix cas: <https://product-information-graph.org/ontology/2026-05-08/metamodel#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos: <https://www.w3.org/TR/skos-reference/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix o: <https://product-information-graph.org/ontology/custom#> .
+@prefix d: <https://product-information-graph.org/examples/09_Very-Simple-Model-FMC-with-Requirements.specif.zip#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xs: <http://www.w3.org/2001/XMLSchema#> .
+@prefix FMC: <http://fmc-modeling.org#> .
+@prefix IREB: <https://cpre.ireb.org/en/downloads-and-resources/glossary#> .
+@prefix ReqIF: <https://www.prostep.org/fileadmin/downloads/PSI_ImplementationGuide_ReqIF_V1-7.pdf#> .
+@prefix oslc_rm: <http://open-services.net/ns/rm#> .
+@prefix SpecIF: <https://specif.de/v1.2/schema#> .
+
+d:ACP-Very-Simple-Model-FMC-with-Requirements_ontology
+	a owl:Ontology ;
+	dcterms:contributor "cecilia.tonelli@collins.com" ,
+		"oskar.dungern@gfse.org" ;
+	dcterms:license "https://creativecommons.org/licenses/by-sa/4.0/" ;
+	owl:versionInfo "2026-07-20" .
+
+d:ACP-Very-Simple-Model-FMC-with-Requirements
+	a cas:Package ;
+	rdfs:label "Project 'Very Simple Car Model'" ;
+	dcterms:modified "2026-01-17T22:38:19.595Z"^^xs:dateTime .
+
+#################################################################
+# Graph Items
+#################################################################
+
+cas:Package
+	rdfs:subClassOf cas:Entity ;
+	rdfs:label "Package" ;
+	skos:definition "A CASCaRA meta-model item used for packages comprising entities, relationships and potentially nested packages, both classes and instances." .
+
+cas:Organizer
+	rdfs:subClassOf cas:Entity ;
+	rdfs:label "Organizer" ;
+	skos:definition "An element organizing model elements. An example is a list of requirements or a diagram using a certain notation." .
+
+cas:Root
+	rdfs:subClassOf cas:Organizer ;
+	rdfs:label "Hierarchy Root" ;
+	skos:definition "A subclass of CASCaRA organizer serving as a root for hierarchically organized graph elements." .
+
+cas:Outline
+	rdfs:subClassOf cas:Organizer ;
+	rdfs:label "Outline" ;
+	skos:definition "A subclass of CASCaRA organizer comprising all information items of a human-readable document. As usual, the outline is hierarchically organized." .
+
+cas:View
+	rdfs:subClassOf cas:Organizer ;
+	rdfs:label "View" ;
+	skos:definition "A subclass of CASCaRA organizer representing a model view (diagram) using a certain notation showing selected model elements." .
+
+cas:Category
+	rdfs:subPropertyOf cas:Property ;
+	rdfs:label "has category" ;
+	skos:definition "Specifies a category for an element (entity, relationship or organizer)." .
+
+cas:linksSource
+	rdfs:subPropertyOf cas:Link ;
+	rdfs:label "to source" ;
+	skos:definition "Connects the source of a reified relationship." ;
+	rdfs:range [ owl:unionOf ( cas:Entity cas:Relationship ) ] .
+
+cas:linksTarget
+	rdfs:subPropertyOf cas:Link ;
+	rdfs:label "to target" ;
+	skos:definition "Connects the target of a reified relationship or an organizer." ;
+	rdfs:range [ owl:unionOf ( cas:Entity cas:Relationship ) ] .
+
+cas:lists
+	rdfs:subPropertyOf cas:linksTarget ;
+	rdfs:label "lists" ;
+	skos:definition "Lists an entity, a relationship or a subordinated organizer." ;
+	rdfs:range [ owl:unionOf ( cas:Entity cas:Relationship cas:Organizer ) ] .
+
+cas:shows
+	rdfs:subPropertyOf cas:linksTarget ;
+	rdfs:label "shows" ;
+	skos:definition "Shows an entity or a relationship." ;
+	rdfs:range [ owl:unionOf ( cas:Entity cas:Relationship ) ] .
+
+cas:depicts
+	rdfs:subPropertyOf cas:linksTarget ;
+	rdfs:label "depicts" ;
+	skos:definition "Depicts an entity; inverse of uml:ownedDiagram." ;
+	rdfs:range cas:Entity .
+
+dcterms:title
+	a owl:DatatypeProperty ;
+	rdfs:label "Title"@en ,
+		"Titel"@de ,
+		"Titre"@fr ;
+	rdfs:comment "<p> A name given to the resource. <small> (<i> source: <a href=\"http://purl.org/dc/elements/1.1/title\">DCMI</a></i>) </small></p><p> Title (reference: Dublin Core) of the resource represented as rich text in XHTML content. SHOULD include only content that is valid inside an XHTML 'span' element. <small> (<i> source: <a href=\"http://open-services.net/\">OSLC</a></i>) </small></p>"@en .
+
+dcterms:description
+	a owl:DatatypeProperty ;
+	rdfs:label "Description"@en ,
+		"Beschreibung"@de ,
+		"Description"@fr ;
+	rdfs:comment "<p> An account of the resource. <small> (<i> source: <a href=\"http://purl.org/dc/elements/1.1/description\">DCMI</a></i>) </small></p><p> Descriptive text (reference: Dublin Core) about resource represented as rich text in XHTML content. SHOULD include only content that is valid and suitable inside an XHTML 'div' element. <small> (<i> source: <a href=\"http://open-services.net/\">OSLC</a></i>) </small></p>"@en .
+
+cas:Diagram
+	a owl:DatatypeProperty ;
+	rdfs:label "Diagram"@en ,
+		"Diagramm"@de ,
+		"Diagramme"@fr ;
+	skos:definition "A diagram illustrating the resource or a link to a diagram."@en .
+
+o:Object
+	rdfs:subClassOf cas:Entity ;
+	rdfs:label "Object"@en ;
+	rdfs:comment "<p>An 'Object' is...</p>"@en .
+
+o:Role
+	rdfs:subClassOf cas:Entity ;
+	rdfs:label "Role"@en ;
+	rdfs:comment "<p>A 'Role' is..</p>"@en .
+
+o:Vehicle
+	rdfs:subClassOf o:Object ;
+	rdfs:label "Vehicle"@en ;
+	rdfs:comment "<p>A 'Vehicle' is a ...</p>"@en .
+
+o:Car
+	rdfs:subClassOf o:Vehicle ;
+	rdfs:label "Car"@en ;
+	rdfs:comment "<p>A 'Car' is...</p>"@en .
+
+o:Tyre
+	rdfs:subClassOf o:Object ;
+	rdfs:label "Tyre"@en ;
+	rdfs:comment "<p> A 'Tyre' is... </p>"@en .
+
+o:Tyre_Position
+	rdfs:subClassOf o:Role ;
+	rdfs:label "Tyre on car"@en ;
+	rdfs:comment "<p> ... </p>"@en .
+
+o:Tyre_Medium_Wear
+	rdfs:subClassOf cas:Entity ;
+	rdfs:label "Tyre Medium Wear"@en ;
+	rdfs:comment "<p> ... </p>"@en .
+
+o:Tyre_Recommended_Pressure
+	rdfs:subClassOf cas:Entity ;
+	rdfs:label "Tyre Recommended Pressure"@en ;
+	rdfs:comment "<p> ... </p>"@en .
+
+o:Weather_Condition
+	rdfs:subClassOf cas:Entity ;
+	rdfs:label "Weather Condition"@en ;
+	rdfs:comment "<p> ... </p>"@en .
+
+o:Loaded_Weight
+	rdfs:subClassOf cas:Entity ;
+	rdfs:label "Loaded Weight"@en ;
+	rdfs:comment "<p> ... </p>"@en .
+
+o:atPosition
+	rdfs:subPropertyOf cas:linksTarget ;
+	rdfs:label "at position"@en ;
+	skos:definition "Enumerated value for the position of a tyre on a car."@en ;
+	dcterms:modified "2020-03-26T22:59:00+02:00"^^xs:dateTime ;
+	rdfs:range o:TyrePosition-Value .
+
+o:weathCondition
+	rdfs:subPropertyOf cas:linksTarget ;
+	rdfs:label "weather Condition"@en ;
+	skos:definition "Enumerated value for the weather Condition."@en ;
+	dcterms:modified "2020-03-26T22:59:00+02:00"^^xs:dateTime ;
+	rdfs:range o:Weather_Condition_Enum .
+
+o:humidity
+	rdfs:subPropertyOf cas:linksTarget ;
+	rdfs:label "humidity"@en ;
+	skos:definition "Enumerated value for humidity."@en ;
+	dcterms:modified "2020-03-26T22:59:00+02:00"^^xs:dateTime ;
+	rdfs:range o:humidity_Enum .
+
+o:TyrePosition-Value
+	rdfs:subClassOf cas:Enumeration ;
+	rdfs:label "Tyre Position"@en ;
+	skos:definition "Enumerated values for the tyre position of a car."@en ;
+	dcterms:modified "2020-03-26T22:59:00+02:00"^^xs:dateTime ;
+	cas:enumeratedValue o:frontRight ,
+		o:frontLeft ,
+		o:backRight ,
+		o:backLeft .
+
+o:Weather_Condition_Enum
+	rdfs:subClassOf cas:Enumeration ;
+	rdfs:label "Weather Condition enum"@en ;
+	skos:definition "Enumerated values for the weather conditions."@en ;
+	dcterms:modified "2020-03-26T22:59:00+02:00"^^xs:dateTime ;
+	cas:enumeratedValue o:Rainy ,
+		o:Sunny ,
+		o:Fog ,
+		o:Storm .
+
+o:Humidity_Enum
+	rdfs:subClassOf cas:Enumeration ;
+	rdfs:label "Humidity enum"@en ;
+	skos:definition "Enumerated values for humidity."@en ;
+	dcterms:modified "2020-03-26T22:59:00+02:00"^^xs:dateTime ;
+	cas:enumeratedValue o:Less25 ,
+		o:Btw25And50 ,
+		o:Btw50And75 ,
+		o:Higer75 .
+
+o:Tyre_Dimension
+	rdfs:subPropertyOf cas:Property ;
+	rdfs:label "Tyre Dimension"@en ;
+	skos:definition "The dimension (size) of a tyre."@en .
+
+o:Tyre_Pressure_Value
+	rdfs:subPropertyOf cas:Property ;
+	rdfs:label "Tyre Pressure Value"@en ;
+	skos:definition "Pressure Value of a tyre."@en .
+
+o:Tyre_Medium_Wear_Value
+	rdfs:subPropertyOf cas:Property ;
+	rdfs:label "Tyre Medium Wear Value"@en ;
+	skos:definition "Medium Wear Value of a tyre."@en .
+
+o:Loaded_Weight_Value
+	rdfs:subPropertyOf cas:Property ;
+	rdfs:label "Loaded Weight Value"@en ;
+	skos:definition "Loaded Weight."@en .
+
+o:hasUnit
+	rdfs:subPropertyOf cas:Property ;
+	rdfs:label "Unit of Measure"@en ;
+	skos:definition "Unit of Measure."@en .
+
+o:model
+	rdfs:subPropertyOf cas:Property ;
+	rdfs:label "model of a Vehicle"@en ;
+	skos:definition "model of a Vehicle."@en .
+
+o:bearer_of
+	rdfs:subClassOf cas:Relationship ;
+	rdfs:label "bearer of"@en ;
+	rdfs:comment "An [[Object]] is a 'bearer of' [[Role]]."@en .
+
+o:bearer_of-toSource
+	rdfs:subPropertyOf cas:linksSource ;
+	rdfs:label "bearer of to source" ;
+	skos:definition "Connects the source of bearer of" ;
+	rdfs:range o:Object .
+
+o:bearer_of-toTarget
+	rdfs:subPropertyOf cas:linksTarget ;
+	rdfs:label "bearer of to target" ;
+	skos:definition "Connects the target of bearer of" ;
+	rdfs:range o:Role .
+
+o:mounted_on
+	rdfs:subClassOf cas:Relationship ;
+	rdfs:label "Mounted on"@en ;
+	rdfs:comment "A [[Tyre_Position]] is mounted on a [[Vehicle]]."@en .
+
+o:mounted_on-toSource
+	rdfs:subPropertyOf cas:linksSource ;
+	rdfs:label "mounted on to source" ;
+	skos:definition "Connects the source of mounted on" ;
+	rdfs:range o:Tyre_Position .
+
+o:mounted_on-toTarget
+	rdfs:subPropertyOf cas:linksTarget ;
+	rdfs:label "mounted on to target" ;
+	skos:definition "Connects the target of mounted on" ;
+	rdfs:range o:Vehicle .
+
+o:TRP_depends_on_LW
+	rdfs:subClassOf cas:Relationship ;
+	rdfs:label "Tyre Recommended Pressure Depends on Loaded Weight"@en ;
+	rdfs:comment "[[Tyre Recommended Pressure]] depends on a [[Loaded Weight]]."@en .
+
+o:TRP_depends_on_LW-toSource
+	rdfs:subPropertyOf cas:linksSource ;
+	rdfs:label "TRP depends on LW to source" ;
+	skos:definition "Connects the source of depends on" ;
+	rdfs:range o:Tyre_Recommended_Pressure .
+
+o:TRP_depends_on_LW-toTarget
+	rdfs:subPropertyOf cas:linksTarget ;
+	rdfs:label "TRP depends on LW to target" ;
+	skos:definition "Connects the target of depends on" ;
+	rdfs:range o:Loaded_Weight .
+
+o:TMW_depends_on_WC
+	rdfs:subClassOf cas:Relationship ;
+	rdfs:label "Tyre Medium Wear Depends on Weather Condition"@en ;
+	rdfs:comment "[[Tyre Medium Wear]] depends on a [[Weather Condition]]."@en .
+
+o:TMW_depends_on_WC-toSource
+	rdfs:subPropertyOf cas:linksSource ;
+	rdfs:label "TMW depends on WC to source" ;
+	skos:definition "Connects the source of depends on" ;
+	rdfs:range o:Tyre_Medium_Wear .
+
+o:TMW_depends_on_WC-toTarget
+	rdfs:subPropertyOf cas:linksTarget ;
+	rdfs:label "TMW depends on WC on to target" ;
+	skos:definition "Connects the target of depends on" ;
+	rdfs:range o:Weather_Condition .
+
+o:TMW_depends_on_TP
+	rdfs:subClassOf cas:Relationship ;
+	rdfs:label "Tyre Medium Wear Depends on Tyre Position"@en ;
+	rdfs:comment "[[Tyre Medium Wear]] depends on a [[Tyre Position]]."@en .
+
+o:TMW_depends_on_TP-toSource
+	rdfs:subPropertyOf cas:linksSource ;
+	rdfs:label "TMW depends on TP to source" ;
+	skos:definition "Connects the source of depends on" ;
+	rdfs:range o:Tyre_Medium_Wear .
+
+o:TMW_depends_on_TP-toTarget
+	rdfs:subPropertyOf cas:linksTarget ;
+	rdfs:label "TMW depends on TP to target" ;
+	skos:definition "Connects the target of depends on" ;
+	rdfs:range o:Tyre_Position .
+
+o:TRP_depends_on_TP
+	rdfs:subClassOf cas:Relationship ;
+	rdfs:label "Tyre Recommended Pressure Depends on Tyre Position"@en ;
+	rdfs:comment "[[Tyre Recommended Pressure]] depends on a [[Tyre_Position]]."@en .
+
+o:TRP_depends_on_TP-toSource
+	rdfs:subPropertyOf cas:linksSource ;
+	rdfs:label "TRP depends on TP to source" ;
+	skos:definition "Connects the source of depends on" ;
+	rdfs:range o:Tyre_Recommended_Pressure .
+
+o:TRP_depends_on_TP-toTarget
+	rdfs:subPropertyOf cas:linksTarget ;
+	rdfs:label "TRP depends on TP to target" ;
+	skos:definition "Connects the target of depends on" ;
+	rdfs:range o:Tyre_Position .
+
+SpecIF:Priority-Value
+	rdfs:subClassOf cas:Enumeration ;
+	rdfs:label "Priority"@en ,
+		"Priorität"@de ,
+		"Priorité"@fr ;
+	skos:definition "Enumerated values for the 'Priority' of the resource."@en ;
+	dcterms:modified "2020-03-26T22:59:00+02:00"^^xs:dateTime ;
+	cas:enumeratedValue SpecIF:priorityHigh ,
+		SpecIF:priorityRatherHigh ,
+		SpecIF:priorityMedium ,
+		SpecIF:priorityRatherLow ,
+		SpecIF:priorityLow .
+
+SpecIF:Priority
+	rdfs:subPropertyOf cas:linksTarget ;
+	rdfs:label "Priority"@en ,
+		"Priorität"@de ,
+		"Priorité"@fr ;
+	skos:definition "Enumerated values for the 'Priority' of the resource."@en ;
+	dcterms:modified "2020-03-26T22:59:00+02:00"^^xs:dateTime ;
+	rdfs:range SpecIF:Priority-Value .
+
+d:Car_1a8016e2872e78ecadc50feddc00029b
+	a o:Car ;
+	rdfs:label "Fiat_600_2021" ;
+	rdfs:comment "<p>Fiat 600 year 2021.</p>" ;
+	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime .
+
+d:Tyre_0Z7916e2872e78ecadc50feddc00918a
+	a o:Tyre ;
+	rdfs:label "Pirelli_215/65R18" ;
+	rdfs:comment "<p>Pirelli tyre 215/65R18</p>" ;
+	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
+	o:Tyre_Dimension "215/65R18" .
+
+d:TP_2b9016e2872e78ecadc50feddc0013Ac
+	a o:Tyre_Position ;
+	rdfs:label "Pirelli_215/65R18 mounted as Front Right Tyre on a Fiat 600 (2021)" ;
+	rdfs:comment "<p>....</p>" ;
+	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
+	o:atPosition o:frontRight .
+
+d:WC_0Z7916e2872e78ecadc50feddc0013Ac
+	a o:Weather_Condition ;
+	rdfs:label "Weather Condition sunny and low humidity" ;
+	rdfs:comment "<p>....</p>" ;
+	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
+	o:weathCondition o:Sunny ;
+	o:humidity d:Less25 .
+
+d:WC_0S7516e2872e78ecadc578ecadc0013Ac
+	a o:Weather_Condition ;
+	rdfs:label "Weather Condition sunny and high humidity" ;
+	rdfs:comment "<p>....</p>" ;
+	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
+	o:weathCondition o:Sunny ;
+	o:humidity d:Higer75 .
+
+d:TMW_0Z7916e2872e7c0013Ac50feddc0013Ac
+	a o:Tyre_Medium_Wear ;
+	rdfs:label "Tyre Medium Wear 0.1" ;
+	rdfs:comment "<p>....</p>" ;
+	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
+	o:Tyre_Medium_Wear_Value "0.01" ;
+	o:hasUnit "gr/month" .
+
+d:TMW_02Z7916e2872e7c0013Ac50feddc0013Ac
+	a o:Tyre_Medium_Wear ;
+	rdfs:label "Tyre Medium Wear 0.2" ;
+	rdfs:comment "<p>....</p>" ;
+	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
+	o:Tyre_Medium_Wear_Value "0.02" ;
+	o:hasUnit "gr/month" .
+
+d:TRP_0Z7ec6e2872e7c0013Ac50feddc0013Ac
+	a o:Tyre_Recommended_Pressure ;
+	rdfs:label "Tyre Recommended Pressure 2.5" ;
+	rdfs:comment "<p>....</p>" ;
+	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
+	o:Tyre_Pressure_Value "2.5" ;
+	o:hasUnit "atm" .
+
+d:TRP_220Z7ec6efeddc00013Ac50feddc0013Ac
+	a o:Tyre_Recommended_Pressure ;
+	rdfs:label "Tyre Recommended Pressure 2.2" ;
+	rdfs:comment "<p>....</p>" ;
+	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
+	o:Tyre_Pressure_Value "2.2" ;
+	o:hasUnit "atm" .
+
+d:LW_0Z7ec650feddc013Ac50feddc0013Ac
+	a o:Loaded_Weight ;
+	rdfs:label "Loaded Weight 145" ;
+	rdfs:comment "<p>....</p>" ;
+	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
+	o:Loaded_Weight_Value "145" ;
+	o:hasUnit "kg" .
+
+d:LW_400Z7ec650feddc013Ac50feddc0013Ac
+	a o:Loaded_Weight ;
+	rdfs:label "Loaded Weight 400" ;
+	rdfs:comment "<p>....</p>" ;
+	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
+	o:Loaded_Weight_Value "400" ;
+	o:hasUnit "kg" .
+
+d:mounted_on-50fedd872e78ecadcc00029b1a8016e2
+	a o:mounted_on ;
+	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
+	o:mounted_on-toSource d:TP_2b9016e2872e78ecadc50feddc0013Ac ;
+	o:mounted_on-toTarget d:Car_1a8016e2872e78ecadc50feddc00029b .
+
+d:bearer_of-50fedd872e78ecadcc000250fedd87216e2
+	a o:bearer_of ;
+	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
+	o:bearer_of-toSource d:Tyre_0Z7916e2872e78ecadc50feddc00918a ;
+	o:bearer_of-toTarget d:TP_2b9016e2872e78ecadc50feddc0013Ac .
+
+d:TMW_depends_on_WC-50fe78ec72e78ecadcc00016e287216e2
+	a o:TMW_depends_on_WC ;
+	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
+	o:TMW_depends_on_WC-toSource d:TMW_02Z7916e2872e7c0013Ac50feddc0013Ac ;
+	o:TMW_depends_on_WC-toTarget d:WC_0S7516e2872e78ecadc578ecadc0013Ac .
+
+d:TMW_depends_on_TP-50fe78ec72e78ecad16e2878ec2872e78
+	a o:TMW_depends_on_TP ;
+	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
+	o:TMW_depends_on_TP-toSource d:TMW_02Z7916e2872e7c0013Ac50feddc0013Ac ;
+	o:TMW_depends_on_TP-toTarget d:TP_2b9016e2872e78ecadc50feddc0013Ac .
+
+d:TRP_depends_on_TP-50000100008ecad16e2878ec2872e78
+	a o:TRP_depends_on_TP ;
+	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
+	o:TRP_depends_on_TP-toSource d:TRP_220Z7ec6efeddc00013Ac50feddc0013Ac ;
+	o:TRP_depends_on_TP-toTarget d:TP_2b9016e2872e78ecadc50feddc0013Ac .
+
+d:TRP_depends_on_LW-50000100008ec16e287287ec2872e78
+	a o:TRP_depends_on_LW ;
+	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
+	o:TRP_depends_on_LW-toSource d:TRP_220Z7ec6efeddc00013Ac50feddc0013Ac ;
+	o:TRP_depends_on_LW-toTarget d:LW_400Z7ec650feddc013Ac50feddc0013Ac .
+
+d:TMW_depends_on_WC-50fe78ec72e78ecadcc000278ec7216e2
+	a o:TMW_depends_on_WC ;
+	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
+	o:TMW_depends_on_WC-toSource d:TMW_0Z7916e2872e7c0013Ac50feddc0013Ac ;
+	o:TMW_depends_on_WC-toTarget d:WC_0Z7916e2872e78ecadc50feddc0013Ac .
+
+d:TMW_depends_on_TP-50fe78ec72e78ecadcc000278ec2872e78
+	a o:TMW_depends_on_TP ;
+	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
+	o:TMW_depends_on_TP-toSource d:TMW_0Z7916e2872e7c0013Ac50feddc0013Ac ;
+	o:TMW_depends_on_TP-toTarget d:TP_2b9016e2872e78ecadc50feddc0013Ac .
+
+d:TRP_depends_on_TP-50000100008ecadcc000278ec2872e78
+	a o:TRP_depends_on_TP ;
+	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
+	o:TRP_depends_on_TP-toSource d:TRP_0Z7ec6e2872e7c0013Ac50feddc0013Ac ;
+	o:TRP_depends_on_TP-toTarget d:TP_2b9016e2872e78ecadc50feddc0013Ac .
+
+d:TRP_depends_on_LW-50000100008ecadcc000278ec2872e78
+	a o:TRP_depends_on_LW ;
+	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
+	o:TRP_depends_on_LW-toSource d:TRP_0Z7ec6e2872e7c0013Ac50feddc0013Ac ;
+	o:TRP_depends_on_LW-toTarget d:LW_0Z7ec650feddc013Ac50feddc0013Ac .
+
