@@ -192,11 +192,39 @@ SpecIF:Priority-Value
 		"Priorité"@fr ;
 	skos:definition "Enumerated values for the 'Priority' of the resource."@en ;
 	dcterms:modified "2020-03-26T22:59:00+02:00"^^xs:dateTime ;
-	cas:enumeratedValue SpecIF:priorityHigh ,
-		SpecIF:priorityRatherHigh ,
-		SpecIF:priorityMedium ,
-		SpecIF:priorityRatherLow ,
-		SpecIF:priorityLow .
+	sh:datatype xs:string ;
+	owl:oneOf (
+		SpecIF:priorityHigh
+		SpecIF:priorityRatherHigh
+		SpecIF:priorityMedium
+		SpecIF:priorityRatherLow
+		SpecIF:priorityLow
+	) .
+SpecIF:priorityHigh
+	a SpecIF:Priority-Value ;
+	rdfs:label "high"@en ,
+		"hoch"@de ,
+		"haut"@fr .
+SpecIF:priorityRatherHigh
+	a SpecIF:Priority-Value ;
+	rdfs:label "rather high"@en ,
+		"eher hoch"@de ,
+		"plutôt haut"@fr .
+SpecIF:priorityMedium
+	a SpecIF:Priority-Value ;
+	rdfs:label "medium"@en ,
+		"mittel"@de ,
+		"moyen"@fr .
+SpecIF:priorityRatherLow
+	a SpecIF:Priority-Value ;
+	rdfs:label "rather low"@en ,
+		"eher niedrig"@de ,
+		"plutôt bas"@fr .
+SpecIF:priorityLow
+	a SpecIF:Priority-Value ;
+	rdfs:label "low"@en ,
+		"niedrig"@de ,
+		"bas"@fr .
 
 SpecIF:Priority
 	rdfs:subPropertyOf cas:linksTarget ;

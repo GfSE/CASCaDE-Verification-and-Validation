@@ -345,11 +345,39 @@ SpecIF:Priority-Value
 		"Priorité"@fr ;
 	skos:definition "Enumerated values for the 'Priority' of the resource."@en ;
 	dcterms:modified "2020-03-26T22:59:00+02:00"^^xs:dateTime ;
-	cas:enumeratedValue SpecIF:priorityHigh ,
-		SpecIF:priorityRatherHigh ,
-		SpecIF:priorityMedium ,
-		SpecIF:priorityRatherLow ,
-		SpecIF:priorityLow .
+	sh:datatype xs:string ;
+	owl:oneOf (
+		SpecIF:priorityHigh
+		SpecIF:priorityRatherHigh
+		SpecIF:priorityMedium
+		SpecIF:priorityRatherLow
+		SpecIF:priorityLow
+	) .
+SpecIF:priorityHigh
+	a SpecIF:Priority-Value ;
+	rdfs:label "high"@en ,
+		"hoch"@de ,
+		"haut"@fr .
+SpecIF:priorityRatherHigh
+	a SpecIF:Priority-Value ;
+	rdfs:label "rather high"@en ,
+		"eher hoch"@de ,
+		"plutôt haut"@fr .
+SpecIF:priorityMedium
+	a SpecIF:Priority-Value ;
+	rdfs:label "medium"@en ,
+		"mittel"@de ,
+		"moyen"@fr .
+SpecIF:priorityRatherLow
+	a SpecIF:Priority-Value ;
+	rdfs:label "rather low"@en ,
+		"eher niedrig"@de ,
+		"plutôt bas"@fr .
+SpecIF:priorityLow
+	a SpecIF:Priority-Value ;
+	rdfs:label "low"@en ,
+		"niedrig"@de ,
+		"bas"@fr .
 
 SpecIF:Priority
 	rdfs:subPropertyOf cas:linksTarget ;
@@ -457,7 +485,7 @@ d:HierarchyRoot-ACP-Very-Simple-Model-FMC-with-Requirements
 d:Folder-Introduction
 	a cas:Outline ;
 	rdfs:label "Introduction" ;
-	rdfs:comment "<p>This is a minimal showcase for a model with model-elements and related requirements. It covers pretty much all characteristics neeeded in such cases (including 'statements on statements'), so that transformations and expressive power of other data formats can be evaluated. The example and its representation in SpecIF format is discussed in <a href=\"https://specif.de/Tutorials/06_Very-Simple-Model-FMC.html\" target=\"_blank\">Tutorial 6: Very Simple Model (FMC)</a> and <a href=\"https://specif.de/Tutorials/09_Very-Simple-Model-FMC-with-Requirements.html\" target=\"_blank\">Tutorial 9: Very Simple Model (FMC) with Requirements</a>.</p>" ;
+	rdfs:comment "<p>This is a minimal showcase of a model with model-elements and related requirements. It covers pretty much all characteristics neeeded in such cases (including 'statements on statements'), so that transformations and expressive power of other data formats can be evaluated.</p>" ;
 	dcterms:modified "2025-02-07T08:32:00+01:00"^^xs:dateTime .
 
 d:Folder-Requirements
