@@ -178,13 +178,7 @@
             <dcterms:title xml:lang="de">Anforderung</dcterms:title>
             <dcterms:title xml:lang="fr">Exigence</dcterms:title>
             <dcterms:description xml:lang="en">
-                <p>
-                    A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform. <small>
-                        (<i>
-                            source: <a href="https://en.wikipedia.org/wiki/Requirement">Wikipedia</a>
-                        </i>)
-                    </small>
-                </p>
+                <p>A 'Requirement' is a singular documented physical and functional need that a particular design, product or process must be able to perform. <small>(<i>source: <a href="https://en.wikipedia.org/wiki/Requirement">Wikipedia</a></i>)</small></p>
                 <p>Definition:</p>
                 <ol>
                     <li>A condition or capability needed by a user to solve a problem or achieve an objective.</li>
@@ -199,13 +193,7 @@
                 </ol>
             </dcterms:description>
             <dcterms:description xml:lang="de">
-                <p>
-                    Eine 'Anforderung' ist ein einzelnes dokumentiertes physisches und funktionales Bedürfnis, das ein bestimmter Entwurf, ein Produkt oder ein Prozess erfüllen muss. <small>
-                        (<i>
-                            source: <a href="https://en.wikipedia.org/wiki/Requirement">Wikipedia</a>
-                        </i>)
-                    </small>
-                </p>
+                <p>Eine 'Anforderung' ist ein einzelnes dokumentiertes physisches und funktionales Bedürfnis, das ein bestimmter Entwurf, ein Produkt oder ein Prozess erfüllen muss. <small>(<i>source: <a href="https://en.wikipedia.org/wiki/Requirement">Wikipedia</a></i>)</small></p>
                 <p>Definition:</p>
                 <ol>
                     <li>Eine Bedingung oder Fähigkeit, die ein Benutzer benötigt, um ein Problem zu lösen oder ein Ziel zu erreichen.</li>
@@ -220,13 +208,7 @@
                 </ol>
             </dcterms:description>
             <dcterms:description xml:lang="fr">
-                <p>
-                    Une 'Exigence' est un besoin physique et fonctionnel unique et documenté qu'une conception, un produit ou un processus particulier doit pouvoir satisfaire. <small>
-                        (<i>
-                            source: <a href="https://en.wikipedia.org/wiki/Requirement">Wikipedia</a>
-                        </i>)
-                    </small>
-                </p>
+                <p>Une 'Exigence' est un besoin physique et fonctionnel unique et documenté qu'une conception, un produit ou un processus particulier doit pouvoir satisfaire. <small>(<i>source: <a href="https://en.wikipedia.org/wiki/Requirement">Wikipedia</a></i>)</small></p>
                 <p>Définition:</p>
                 <ol>
                     <li>Condition ou capacité dont un utilisateur a besoin pour résoudre un problème ou atteindre un objectif.</li>
@@ -242,7 +224,7 @@
             </dcterms:description>
             <cas:specializes>cas:Entity</cas:specializes>
             <cas:icon>&#8623;</cas:icon>
-            <cas:enumeratedProperty>SpecIF:Priority</cas:enumeratedProperty>
+            <cas:enumeratedTargetLink>SpecIF:Priority</cas:enumeratedTargetLink>
         </cas:Entity>
 
         <!-- Instances -->

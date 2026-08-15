@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<cas:aPackage
+<cas:Package
     xmlns:cas="https://product-information-graph.org/ontology/2026-05-08/metamodel#"
     xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:skos="https://www.w3.org/TR/skos-reference/"
@@ -15,50 +15,50 @@
     xmlns:oslc_rm="http://open-services.net/ns/rm#"
     xmlns:SpecIF="https://specif.de/v1.2/schema#"
     id="d:ACP-Very-Simple-Model-FMC-with-Requirements"
-    rdf:type="cas:Package">
+    cas:itemType="cas:aPackage">
 
     <dcterms:title>Very Simple Model (FMC) with Requirements</dcterms:title>
     <dcterms:modified>2026-01-17T22:38:19.595Z</dcterms:modified>
-	<cas:aProperty cas:hasClass="dcterms:contributor">
+	<dcterms:contributor cas:itemType="cas:aProperty">
 		<value>mailto:oskar.dungern@gfse.org</value>
-	</cas:aProperty>
-	<cas:aProperty cas:hasClass="dcterms:license">
+	</dcterms:contributor>
+	<dcterms:license cas:itemType="cas:aProperty">
 		<value>https://creativecommons.org/licenses/by-sa/4.0/</value>
-	</cas:aProperty>
+	</dcterms:license>
 
     <graph>
         <!-- Metamodel: Entity Classes -->
-        <cas:Entity id="cas:Package" cas:hasClass="owl:Class">
+        <owl:Class id="cas:Package" cas:itemType="cas:Entity">
             <cas:specializes>cas:Entity</cas:specializes>
             <dcterms:title>Package</dcterms:title>
             <skos:definition>A CASCaRA meta-model item used for packages comprising entities, relationships and potentially nested packages, both classes and instances.</skos:definition>
             <cas:enumeratedProperty>dcterms:contributor</cas:enumeratedProperty>
             <cas:enumeratedProperty>dcterms:license</cas:enumeratedProperty>
-        </cas:Entity>
+        </owl:Class>
 
-        <cas:Entity id="cas:Organizer" cas:hasClass="owl:Class">
+        <owl:Class id="cas:Organizer" cas:itemType="cas:Entity">
             <cas:specializes>cas:Entity</cas:specializes>
             <dcterms:title>Organizer</dcterms:title>
             <skos:definition>An element organizing model elements. An example is a list of requirements or a diagram using a certain notation.</skos:definition>
             <cas:enumeratedProperty>cas:Category</cas:enumeratedProperty>
-        </cas:Entity>
+        </owl:Class>
 
-        <cas:Entity id="cas:Root" cas:hasClass="owl:Class">
+        <owl:Class id="cas:Root" cas:itemType="cas:Entity">
             <cas:specializes>cas:Organizer</cas:specializes>
             <dcterms:title>Hierarchy Root</dcterms:title>
             <skos:definition>A subclass of CASCaRA organizer serving as a root for hierarchically organized graph elements.</skos:definition>
             <cas:enumeratedTargetLink>cas:lists</cas:enumeratedTargetLink>
-        </cas:Entity>
+        </owl:Class>
 
-        <cas:Entity id="cas:Outline" cas:hasClass="owl:Class">
+        <owl:Class id="cas:Outline" cas:itemType="cas:Entity">
             <cas:specializes>cas:Organizer</cas:specializes>
             <dcterms:title>Outline</dcterms:title>
             <skos:definition>A subclass of CASCaRA organizer comprising all information items of a human-readable document. As usual, the outline is hierarchically organized.</skos:definition>
             <cas:enumeratedProperty>cas:Category</cas:enumeratedProperty>
             <cas:enumeratedTargetLink>cas:lists</cas:enumeratedTargetLink>
-        </cas:Entity>
+        </owl:Class>
 
-        <cas:Entity id="cas:View" cas:hasClass="owl:Class">
+        <owl:Class id="cas:View" cas:itemType="cas:Entity">
             <cas:specializes>cas:Organizer</cas:specializes>
             <dcterms:title>View</dcterms:title>
             <skos:definition>A subclass of CASCaRA organizer representing a model view (diagram) using a certain notation showing selected model elements.</skos:definition>
@@ -66,12 +66,12 @@
             <cas:enumeratedProperty>cas:Diagram</cas:enumeratedProperty>
             <cas:enumeratedTargetLink>cas:shows</cas:enumeratedTargetLink>
             <cas:enumeratedTargetLink>cas:depicts</cas:enumeratedTargetLink>
-        </cas:Entity>
+        </owl:Class>
 
         <!-- Metamodel: Relationship Class -->
 
         <!-- Metamodel: Properties -->
-        <cas:Property id="cas:Category" cas:hasClass="owl:DatatypeProperty">
+        <owl:DatatypeProperty id="cas:Category" cas:itemType="cas:Property">
             <cas:specializes>cas:Property</cas:specializes>
             <dcterms:title>has category</dcterms:title>
             <skos:definition>Specifies a category for an element (entity, relationship or organizer).</skos:definition>
@@ -82,51 +82,51 @@
                     <xs:maxOccurs>1</xs:maxOccurs>
                 </xs:restriction>
             </xs:simpleType>
-        </cas:Property>
+        </owl:DatatypeProperty>
 
         <!-- Metamodel: Links -->
-        <cas:Link id="cas:linksSource" cas:hasClass="owl:ObjectProperty">
+        <owl:ObjectProperty id="cas:linksSource" cas:itemType="cas:Link">
             <cas:specializes>cas:Link</cas:specializes>
             <cas:enumeratedEndpoint>cas:Entity</cas:enumeratedEndpoint>
             <cas:enumeratedEndpoint>cas:Relationship</cas:enumeratedEndpoint>
             <dcterms:title>to source</dcterms:title>
             <skos:definition>Connects the source of a reified relationship.</skos:definition>
-        </cas:Link>
+        </owl:ObjectProperty>
 
-        <cas:Link id="cas:linksTarget" cas:hasClass="owl:ObjectProperty">
+        <owl:ObjectProperty id="cas:linksTarget" cas:itemType="cas:Link">
             <cas:specializes>cas:Link</cas:specializes>
             <cas:enumeratedEndpoint>cas:Entity</cas:enumeratedEndpoint>
             <cas:enumeratedEndpoint>cas:Relationship</cas:enumeratedEndpoint>
             <dcterms:title>to target</dcterms:title>
             <skos:definition>Connects the target of a reified relationship or an organizer.</skos:definition>
-        </cas:Link>
+        </owl:ObjectProperty>
 
-        <cas:Link id="cas:lists" cas:hasClass="owl:ObjectProperty">
+        <owl:ObjectProperty id="cas:lists" cas:itemType="cas:Link">
             <cas:specializes>cas:linksTarget</cas:specializes>
             <cas:enumeratedEndpoint>cas:Entity</cas:enumeratedEndpoint>
             <cas:enumeratedEndpoint>cas:Relationship</cas:enumeratedEndpoint>
             <cas:enumeratedEndpoint>cas:Organizer</cas:enumeratedEndpoint>
             <dcterms:title>lists</dcterms:title>
             <skos:definition>Lists an entity, a relationship or a subordinated organizer.</skos:definition>
-        </cas:Link>
+        </owl:ObjectProperty>
 
-        <cas:Link id="cas:shows" cas:hasClass="owl:ObjectProperty">
+        <owl:ObjectProperty id="cas:shows" cas:itemType="cas:Link">
             <cas:specializes>cas:linksTarget</cas:specializes>
             <cas:enumeratedEndpoint>cas:Entity</cas:enumeratedEndpoint>
             <cas:enumeratedEndpoint>cas:Relationship</cas:enumeratedEndpoint>
             <dcterms:title>shows</dcterms:title>
             <skos:definition>Shows an entity or a relationship.</skos:definition>
-        </cas:Link>
+        </owl:ObjectProperty>
 
-        <cas:Link id="cas:depicts" cas:hasClass="owl:ObjectProperty">
+        <owl:ObjectProperty id="cas:depicts" cas:itemType="cas:Link">
             <cas:specializes>cas:linksTarget</cas:specializes>
             <cas:enumeratedEndpoint>cas:Entity</cas:enumeratedEndpoint>
             <dcterms:title>depicts</dcterms:title>
             <skos:definition>Depicts an entity; inverse of uml:ownedDiagram.</skos:definition>
-        </cas:Link>
+        </owl:ObjectProperty>
 
         <!-- Dublin Core Properties -->
-        <cas:Property id="dcterms:title" rdf:type="owl:DatatypeProperty">
+        <owl:DatatypeProperty id="dcterms:title" cas:itemType="cas:Property">
             <dcterms:title xml:lang="en">Title</dcterms:title>
             <dcterms:title xml:lang="de">Titel</dcterms:title>
             <dcterms:title xml:lang="fr">Titre</dcterms:title>
@@ -152,9 +152,9 @@
                     <xs:maxOccurs>1</xs:maxOccurs>
                 </xs:restriction>
             </xs:simpleType>
-        </cas:Property>
+        </owl:DatatypeProperty>
 
-        <cas:Property id="dcterms:description" rdf:type="owl:DatatypeProperty">
+        <owl:DatatypeProperty id="dcterms:description" cas:itemType="cas:Property">
             <dcterms:title xml:lang="en">Description</dcterms:title>
             <dcterms:title xml:lang="de">Beschreibung</dcterms:title>
             <dcterms:title xml:lang="fr">Description</dcterms:title>
@@ -179,10 +179,10 @@
                     <xs:maxOccurs>1</xs:maxOccurs>
                 </xs:restriction>
             </xs:simpleType>
-        </cas:Property>
+        </owl:DatatypeProperty>
 
         <!-- SpecIF Properties -->
-        <cas:Property id="cas:Diagram" rdf:type="owl:DatatypeProperty">
+        <owl:DatatypeProperty id="cas:Diagram" cas:itemType="cas:Property">
             <dcterms:title xml:lang="en">Diagram</dcterms:title>
             <dcterms:title xml:lang="de">Diagramm</dcterms:title>
             <dcterms:title xml:lang="fr">Diagramme</dcterms:title>
@@ -190,10 +190,10 @@
             <xs:simpleType>
                 <xs:restriction base="xs:string"/>
             </xs:simpleType>
-        </cas:Property>
+        </owl:DatatypeProperty>
 
         <!-- Domain-Specific Entity Classes -->
-        <cas:Entity id="SpecIF:Paragraph" cas:hasClass="owl:Class">
+        <owl:Class id="SpecIF:Paragraph" cas:itemType="cas:Entity">
             <dcterms:title xml:lang="en">Paragraph</dcterms:title>
             <dcterms:title xml:lang="de">Textabsatz</dcterms:title>
             <dcterms:title xml:lang="fr">Paragraphe</dcterms:title>
@@ -206,9 +206,9 @@
             <cas:specializes>cas:Entity</cas:specializes>
             <cas:enumeratedProperty>cas:Diagram</cas:enumeratedProperty>
             <cas:enumeratedProperty>cas:Category</cas:enumeratedProperty>
-        </cas:Entity>
+        </owl:Class>
 
-        <cas:Entity id="FMC:Actor" cas:hasClass="owl:Class">
+        <owl:Class id="FMC:Actor" cas:itemType="cas:Entity">
             <dcterms:title xml:lang="en">Actor</dcterms:title>
             <dcterms:title xml:lang="de">Akteur</dcterms:title>
             <dcterms:title xml:lang="fr">Acteur</dcterms:title>
@@ -227,9 +227,9 @@
             <cas:specializes>cas:Entity</cas:specializes>
             <cas:icon>&#x25A1;</cas:icon>
             <cas:enumeratedProperty>cas:Category</cas:enumeratedProperty>
-        </cas:Entity>
+        </owl:Class>
 
-        <cas:Entity id="FMC:State" cas:hasClass="owl:Class">
+        <owl:Class id="FMC:State" cas:itemType="cas:Entity">
             <dcterms:title xml:lang="en">State</dcterms:title>
             <dcterms:title xml:lang="de">Zustand</dcterms:title>
             <dcterms:title xml:lang="fr">État</dcterms:title>
@@ -248,9 +248,9 @@
             <cas:specializes>cas:Entity</cas:specializes>
             <cas:icon>&#x25CB;</cas:icon>
             <cas:enumeratedProperty>cas:Category</cas:enumeratedProperty>
-        </cas:Entity>
+        </owl:Class>
 
-        <cas:Entity id="FMC:Event" cas:hasClass="owl:Class">
+        <owl:Class id="FMC:Event" cas:itemType="cas:Entity">
             <dcterms:title xml:lang="en">Event</dcterms:title>
             <dcterms:title xml:lang="de">Ereignis</dcterms:title>
             <dcterms:title xml:lang="fr">Évenement</dcterms:title>
@@ -269,9 +269,9 @@
             <cas:specializes>cas:Entity</cas:specializes>
             <cas:icon>&#x2662;</cas:icon>
             <cas:enumeratedProperty>cas:Category</cas:enumeratedProperty>
-        </cas:Entity>
+        </owl:Class>
 
-        <cas:Entity id="IREB:Requirement" cas:hasClass="owl:Class">
+        <owl:Class id="IREB:Requirement" cas:itemType="cas:Entity">
             <dcterms:title xml:lang="en">Requirement</dcterms:title>
             <dcterms:title xml:lang="de">Anforderung</dcterms:title>
             <dcterms:title xml:lang="fr">Exigence</dcterms:title>
@@ -341,10 +341,10 @@
             <cas:specializes>cas:Entity</cas:specializes>
             <cas:icon>&#8623;</cas:icon>
             <cas:enumeratedTargetLink>SpecIF:Priority</cas:enumeratedTargetLink>
-        </cas:Entity>
+        </owl:Class>
 
         <!-- Domain-Specific Relationship Classes -->
-        <cas:Relationship id="SpecIF:writes" cas:hasClass="owl:Class">
+        <owl:Class id="SpecIF:writes" cas:itemType="cas:Relationship">
             <dcterms:title xml:lang="en">writes</dcterms:title>
             <dcterms:title xml:lang="de">schreibt</dcterms:title>
             <dcterms:title xml:lang="fr">écrit</dcterms:title>
@@ -352,23 +352,23 @@
             <cas:specializes>cas:Relationship</cas:specializes>
             <cas:enumeratedSourceLink>SpecIF:writes-toSource</cas:enumeratedSourceLink>
             <cas:enumeratedTargetLink>SpecIF:writes-toTarget</cas:enumeratedTargetLink>
-        </cas:Relationship>
+        </owl:Class>
 
-        <cas:Link id="SpecIF:writes-toSource" cas:hasClass="owl:ObjectProperty">
+        <owl:ObjectProperty id="SpecIF:writes-toSource" cas:itemType="cas:Link">
             <cas:specializes>cas:linksSource</cas:specializes>
             <dcterms:title>SpecIF:writes to source</dcterms:title>
             <skos:definition>Connects the source of SpecIF:writes</skos:definition>
             <cas:enumeratedEndpoint>FMC:Actor</cas:enumeratedEndpoint>
-        </cas:Link>
+        </owl:ObjectProperty>
 
-        <cas:Link id="SpecIF:writes-toTarget" cas:hasClass="owl:ObjectProperty">
+        <owl:ObjectProperty id="SpecIF:writes-toTarget" cas:itemType="cas:Link">
             <cas:specializes>cas:linksTarget</cas:specializes>
             <dcterms:title>SpecIF:writes to target</dcterms:title>
             <skos:definition>Connects the target of SpecIF:writes</skos:definition>
             <cas:enumeratedEndpoint>FMC:State</cas:enumeratedEndpoint>
-        </cas:Link>
+        </owl:ObjectProperty>
 
-        <cas:Relationship id="SpecIF:reads" cas:hasClass="owl:Class">
+        <owl:Class id="SpecIF:reads" cas:itemType="cas:Relationship">
             <dcterms:title xml:lang="en">reads</dcterms:title>
             <dcterms:title xml:lang="de">liest</dcterms:title>
             <dcterms:title xml:lang="fr">lit</dcterms:title>
@@ -376,23 +376,23 @@
             <cas:specializes>cas:Relationship</cas:specializes>
             <cas:enumeratedSourceLink>SpecIF:reads-toSource</cas:enumeratedSourceLink>
             <cas:enumeratedTargetLink>SpecIF:reads-toTarget</cas:enumeratedTargetLink>
-        </cas:Relationship>
+        </owl:Class>
 
-        <cas:Link id="SpecIF:reads-toSource" cas:hasClass="owl:ObjectProperty">
+        <owl:ObjectProperty id="SpecIF:reads-toSource" cas:itemType="cas:Link">
             <cas:specializes>cas:linksSource</cas:specializes>
             <dcterms:title>SpecIF:reads to source</dcterms:title>
             <skos:definition>Connects the source of SpecIF:reads</skos:definition>
             <cas:enumeratedEndpoint>FMC:Actor</cas:enumeratedEndpoint>
-        </cas:Link>
+        </owl:ObjectProperty>
 
-        <cas:Link id="SpecIF:reads-toTarget" cas:hasClass="owl:ObjectProperty">
+        <owl:ObjectProperty id="SpecIF:reads-toTarget" cas:itemType="cas:Link">
             <cas:specializes>cas:linksTarget</cas:specializes>
             <dcterms:title>SpecIF:reads to target</dcterms:title>
             <skos:definition>Connects the target of SpecIF:reads</skos:definition>
             <cas:enumeratedEndpoint>FMC:State</cas:enumeratedEndpoint>
-        </cas:Link>
+        </owl:ObjectProperty>
 
-        <cas:Relationship id="oslc_rm:satisfies" cas:hasClass="owl:Class">
+        <owl:Class id="oslc_rm:satisfies" cas:itemType="cas:Relationship">
             <dcterms:title xml:lang="en">satisfies</dcterms:title>
             <dcterms:title xml:lang="de">erfüllt</dcterms:title>
             <dcterms:title xml:lang="fr">satisfait</dcterms:title>
@@ -411,25 +411,25 @@
             <cas:specializes>cas:Relationship</cas:specializes>
             <cas:enumeratedSourceLink>oslc_rm:satisfies-toSource</cas:enumeratedSourceLink>
             <cas:enumeratedTargetLink>oslc_rm:satisfies-toTarget</cas:enumeratedTargetLink>
-        </cas:Relationship>
+        </owl:Class>
 
-        <cas:Link id="oslc_rm:satisfies-toSource" cas:hasClass="owl:ObjectProperty">
+        <owl:ObjectProperty id="oslc_rm:satisfies-toSource" cas:itemType="cas:Link">
             <cas:specializes>cas:linksSource</cas:specializes>
             <dcterms:title>oslc_rm:satisfies to source</dcterms:title>
             <skos:definition>Connects the source of oslc_rm:satisfies</skos:definition>
             <cas:enumeratedEndpoint>FMC:Actor</cas:enumeratedEndpoint>
             <cas:enumeratedEndpoint>FMC:State</cas:enumeratedEndpoint>
-        </cas:Link>
+        </owl:ObjectProperty>
 
-        <cas:Link id="oslc_rm:satisfies-toTarget" cas:hasClass="owl:ObjectProperty">
+        <owl:ObjectProperty id="oslc_rm:satisfies-toTarget" cas:itemType="cas:Link">
             <cas:specializes>cas:linksTarget</cas:specializes>
             <dcterms:title>oslc_rm:satisfies to target</dcterms:title>
             <skos:definition>Connects the target of oslc_rm:satisfies</skos:definition>
             <cas:enumeratedEndpoint>IREB:Requirement</cas:enumeratedEndpoint>
-        </cas:Link>
+        </owl:ObjectProperty>
 
         <!-- Enumerations -->
-        <cas:Enumeration id="SpecIF:Priority-Value" cas:hasClass="owl:Class">
+        <owl:Class id="SpecIF:Priority-Value" cas:itemType="cas:Enumeration">
             <dcterms:title xml:lang="en">Priority</dcterms:title>
             <dcterms:title xml:lang="de">Priorität</dcterms:title>
             <dcterms:title xml:lang="fr">Priorité</dcterms:title>
@@ -464,10 +464,10 @@
                 <dcterms:title xml:lang="de">niedrig</dcterms:title>
                 <dcterms:title xml:lang="fr">bas</dcterms:title>
             </cas:enumeratedValue>
-        </cas:Enumeration>
+        </owl:Class>
 
         <!-- Links -->
-        <cas:Link id="SpecIF:Priority" cas:hasClass="owl:ObjectProperty">
+        <owl:ObjectProperty id="SpecIF:Priority" cas:itemType="cas:Link">
             <cas:specializes>cas:linksTarget</cas:specializes>
             <dcterms:title xml:lang="en">Priority</dcterms:title>
             <dcterms:title xml:lang="de">Priorität</dcterms:title>
@@ -475,7 +475,7 @@
             <skos:definition xml:lang="en">Enumerated values for the 'Priority' of the resource.</skos:definition>
             <dcterms:modified>2020-03-26T22:59:00+02:00</dcterms:modified>
             <cas:enumeratedEndpoint>SpecIF:Priority-Value</cas:enumeratedEndpoint>
-        </cas:Link>
+        </owl:ObjectProperty>
 
         <!-- Instance Data: Requirements -->
         <cas:anEntity id="d:Req-1a8016e2872e78ecadc50feddc00029b" rdf:type="IREB:Requirement">
@@ -687,4 +687,4 @@
             </cas:aTargetLink>
         </cas:anEntity>
     </graph>
-</cas:aPackage>
+</cas:Package>
