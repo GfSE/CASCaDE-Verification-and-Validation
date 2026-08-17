@@ -478,41 +478,41 @@
         </owl:ObjectProperty>
 
         <!-- Instance Data: Requirements -->
-        <cas:anEntity id="d:Req-1a8016e2872e78ecadc50feddc00029b" rdf:type="IREB:Requirement">
+        <IREB:Requirement id="d:Req-1a8016e2872e78ecadc50feddc00029b" cas:itemType="cas:anEntity">
             <dcterms:modified>2020-10-17T10:00:00+01:00</dcterms:modified>
             <dcterms:title>Data Volume</dcterms:title>
             <dcterms:description>
                 <p>The data store MUST support a total volume up to 850 GB.</p>
             </dcterms:description>
-            <cas:aTargetLink rdf:type="SpecIF:Priority">
+            <SpecIF:Priority cas:itemType="cas:aTargetLink">
                 <idRef>SpecIF:priorityHigh</idRef>
-            </cas:aTargetLink>
-        </cas:anEntity>
+            </SpecIF:Priority>
+        </IREB:Requirement>
 
-        <cas:anEntity id="d:Req-0Z7916e2872e78ecadc50feddc00918a" rdf:type="IREB:Requirement">
+        <IREB:Requirement id="d:Req-0Z7916e2872e78ecadc50feddc00918a" cas:itemType="cas:anEntity">
             <dcterms:modified>2020-10-17T10:00:00+01:00</dcterms:modified>
             <dcterms:title>Consistency</dcterms:title>
             <dcterms:description>
                 <p>The data store MUST be consistent at all times.</p>
             </dcterms:description>
-            <cas:aTargetLink rdf:type="SpecIF:Priority">
+            <SpecIF:Priority cas:itemType="cas:aTargetLink">
                 <idRef>SpecIF:priorityHigh</idRef>
-            </cas:aTargetLink>
-        </cas:anEntity>
+            </SpecIF:Priority>
+        </IREB:Requirement>
 
-        <cas:anEntity id="d:Req-2b9016e2872e78ecadc50feddc0013Ac" rdf:type="IREB:Requirement">
+        <IREB:Requirement id="d:Req-2b9016e2872e78ecadc50feddc0013Ac" cas:itemType="cas:anEntity">
             <dcterms:modified>2020-10-17T10:00:00+01:00</dcterms:modified>
             <dcterms:title>Response Time</dcterms:title>
             <dcterms:description>
                 <p>The system SHOULD respond on user queries within 300 ms.</p>
             </dcterms:description>
-            <cas:aTargetLink rdf:type="SpecIF:Priority">
+            <SpecIF:Priority cas:itemType="cas:aTargetLink">
                 <idRef>SpecIF:priorityMedium</idRef>
-            </cas:aTargetLink>
-        </cas:anEntity>
+            </SpecIF:Priority>
+        </IREB:Requirement>
 
         <!-- Instance Data: View/Diagram -->
-        <cas:anEntity id="d:Diagram-aec0df7900010000017001eaf53e8876" rdf:type="cas:View">
+        <cas:View id="d:Diagram-aec0df7900010000017001eaf53e8876" cas:itemType="cas:anEntity">
             <dcterms:modified>2020-03-06T08:32:00+01:00</dcterms:modified>
             <dcterms:title>IT-Integration: FiCo-Application and FiCo-Data</dcterms:title>
             <cas:aProperty rdf:type="cas:Diagram">
@@ -526,122 +526,110 @@
             <cas:aProperty rdf:type="cas:Category">
                 <value>FMC Block Diagram</value>
             </cas:aProperty>
-            <cas:aTargetLink rdf:type="cas:shows">
+            <cas:shows cas:itemType="cas:aTargetLink">
                 <idRef>d:MEl-50fbfe8f0029b1a8016ea86245a9d83a</idRef>
-            </cas:aTargetLink>
-            <cas:aTargetLink rdf:type="cas:shows">
                 <idRef>d:MEl-50feddc00029b1a8016e2872e78ecadc</idRef>
-            </cas:aTargetLink>
-            <cas:aTargetLink rdf:type="cas:shows">
                 <idRef>d:SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc</idRef>
-            </cas:aTargetLink>
-            <cas:aTargetLink rdf:type="cas:shows">
                 <idRef>d:SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc</idRef>
-            </cas:aTargetLink>
-        </cas:anEntity>
+            </cas:shows>
+        </cas:View>
 
         <!-- Instance Data: Model Elements -->
-        <cas:anEntity id="d:MEl-50fbfe8f0029b1a8016ea86245a9d83a" rdf:type="FMC:Actor">
+        <FMC:Actor id="d:MEl-50fbfe8f0029b1a8016ea86245a9d83a" cas:itemType="cas:anEntity">
             <dcterms:modified>2020-03-06T09:04:00+01:00</dcterms:modified>
             <dcterms:title>FiCo-Application</dcterms:title>
             <dcterms:description>
                 <p>IT-Application for Finance and Controlling.</p>
             </dcterms:description>
-        </cas:anEntity>
+        </FMC:Actor>
 
-        <cas:anEntity id="d:MEl-50feddc00029b1a8016e2872e78ecadc" rdf:type="FMC:State">
+        <FMC:State id="d:MEl-50feddc00029b1a8016e2872e78ecadc" cas:itemType="cas:anEntity">
             <dcterms:modified>2020-03-06T09:03:00+01:00</dcterms:modified>
             <dcterms:title>FiCo-Data</dcterms:title>
             <dcterms:description>
                 <p>Finance and Controlling Data, such as cost-units per project with budget, accrued cost etc.</p>
             </dcterms:description>
-        </cas:anEntity>
+        </FMC:State>
 
         <!-- Instance Data: Model Relationships -->
-        <cas:aRelationship id="d:SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc" rdf:type="SpecIF:writes">
+        <SpecIF:writes id="d:SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc" cas:itemType="cas:aRelationship">
             <dcterms:modified>2020-03-06T09:05:00+01:00</dcterms:modified>
             <dcterms:description>'FiCo-Application' writes 'FiCo-Data'</dcterms:description>
-            <cas:aSourceLink rdf:type="SpecIF:writes-toSource">
+            <SpecIF:writes-toSource cas:itemType="cas:aSourceLink">
                 <idRef>d:MEl-50fbfe8f0029b1a8016ea86245a9d83a</idRef>
-            </cas:aSourceLink>
-            <cas:aTargetLink rdf:type="SpecIF:writes-toTarget">
+            </SpecIF:writes-toSource>
+            <SpecIF:writes-toTarget cas:itemType="cas:aTargetLink">
                 <idRef>d:MEl-50feddc00029b1a8016e2872e78ecadc</idRef>
-            </cas:aTargetLink>
-        </cas:aRelationship>
+            </SpecIF:writes-toTarget>
+        </SpecIF:writes>
 
-        <cas:aRelationship id="d:SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc" rdf:type="SpecIF:reads">
+        <SpecIF:reads id="d:SRea-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc" cas:itemType="cas:aRelationship">
             <dcterms:modified>2020-03-06T09:05:00+01:00</dcterms:modified>
             <dcterms:description>'FiCo-Application' reads 'FiCo-Data'</dcterms:description>
-            <cas:aSourceLink rdf:type="SpecIF:reads-toSource">
+            <SpecIF:reads-toSource cas:itemType="cas:aSourceLink">
                 <idRef>d:MEl-50fbfe8f0029b1a8016ea86245a9d83a</idRef>
-            </cas:aSourceLink>
-            <cas:aTargetLink rdf:type="SpecIF:reads-toTarget">
+            </SpecIF:reads-toSource>
+            <SpecIF:reads-toTarget cas:itemType="cas:aTargetLink">
                 <idRef>d:MEl-50feddc00029b1a8016e2872e78ecadc</idRef>
-            </cas:aTargetLink>
-        </cas:aRelationship>
+            </SpecIF:reads-toTarget>
+        </SpecIF:reads>
 
         <!-- Instance Data: Satisfaction Relationships -->
-        <cas:aRelationship id="d:Ssat-50feddc00029b1a8016e2872e78ecadc-1a8016e2872e78ecadc50feddc00029b" rdf:type="oslc_rm:satisfies">
+        <oslc_rm:satisfies id="d:Ssat-50feddc00029b1a8016e2872e78ecadc-1a8016e2872e78ecadc50feddc00029b" cas:itemType="cas:aRelationship">
             <dcterms:modified>2020-10-17T10:00:00+01:00</dcterms:modified>
             <dcterms:description>'FiCo-Data' satisfies 'Data Volume'</dcterms:description>
-            <cas:aSourceLink rdf:type="oslc_rm:satisfies-toSource">
+            <oslc_rm:satisfies-toSource cas:itemType="cas:aSourceLink">
                 <idRef>d:MEl-50feddc00029b1a8016e2872e78ecadc</idRef>
-            </cas:aSourceLink>
-            <cas:aTargetLink rdf:type="oslc_rm:satisfies-toTarget">
+            </oslc_rm:satisfies-toSource>
+            <oslc_rm:satisfies-toTarget cas:itemType="cas:aTargetLink">
                 <idRef>d:Req-1a8016e2872e78ecadc50feddc00029b</idRef>
-            </cas:aTargetLink>
-        </cas:aRelationship>
+            </oslc_rm:satisfies-toTarget>
+        </oslc_rm:satisfies>
 
-        <cas:aRelationship id="d:Ssat-50feddc00029b1a8016e2872e78ecadc-0Z7916e2872e78ecadc50feddc00918a" rdf:type="oslc_rm:satisfies">
+        <oslc_rm:satisfies id="d:Ssat-50feddc00029b1a8016e2872e78ecadc-0Z7916e2872e78ecadc50feddc00918a" cas:itemType="cas:aRelationship">
             <dcterms:modified>2020-10-17T10:00:00+01:00</dcterms:modified>
             <dcterms:description>'FiCo-Data' satisfies 'Consistency'</dcterms:description>
-            <cas:aSourceLink rdf:type="oslc_rm:satisfies-toSource">
+            <oslc_rm:satisfies-toSource cas:itemType="cas:aSourceLink">
                 <idRef>d:MEl-50feddc00029b1a8016e2872e78ecadc</idRef>
-            </cas:aSourceLink>
-            <cas:aTargetLink rdf:type="oslc_rm:satisfies-toTarget">
+            </oslc_rm:satisfies-toSource>
+            <oslc_rm:satisfies-toTarget cas:itemType="cas:aTargetLink">
                 <idRef>d:Req-0Z7916e2872e78ecadc50feddc00918a</idRef>
-            </cas:aTargetLink>
-        </cas:aRelationship>
+            </oslc_rm:satisfies-toTarget>
+        </oslc_rm:satisfies>
 
-        <cas:aRelationship id="d:Ssat-50fbfe8f0029b1a8016ea86245a9d83a-2b9016e2872e78ecadc50feddc0013Ac" rdf:type="oslc_rm:satisfies">
+        <oslc_rm:satisfies id="d:Ssat-50fbfe8f0029b1a8016ea86245a9d83a-2b9016e2872e78ecadc50feddc0013Ac" cas:itemType="cas:aRelationship">
             <dcterms:modified>2020-10-17T10:00:00+01:00</dcterms:modified>
             <dcterms:description>'FiCo-Application' satisfies 'Response Time'</dcterms:description>
-            <cas:aSourceLink rdf:type="oslc_rm:satisfies-toSource">
+            <oslc_rm:satisfies-toSource cas:itemType="cas:aSourceLink">
                 <idRef>d:MEl-50fbfe8f0029b1a8016ea86245a9d83a</idRef>
-            </cas:aSourceLink>
-            <cas:aTargetLink rdf:type="oslc_rm:satisfies-toTarget">
+            </oslc_rm:satisfies-toSource>
+            <oslc_rm:satisfies-toTarget cas:itemType="cas:aTargetLink">
                 <idRef>d:Req-2b9016e2872e78ecadc50feddc0013Ac</idRef>
-            </cas:aTargetLink>
-        </cas:aRelationship>
+            </oslc_rm:satisfies-toTarget>
+        </oslc_rm:satisfies>
 
         <!-- Instance Data: Hierarchy -->
-        <cas:anEntity id="d:HierarchyRoot-ACP-Very-Simple-Model-FMC-with-Requirements" rdf:type="cas:Root">
+        <cas:Root id="d:HierarchyRoot-ACP-Very-Simple-Model-FMC-with-Requirements" cas:itemType="cas:anEntity">
             <dcterms:modified>2026-01-17T22:38:20.041Z</dcterms:modified>
             <dcterms:title>Hierarchy Root</dcterms:title>
             <dcterms:description>... anchoring all hierarchies of this graph (package)</dcterms:description>
-            <cas:aTargetLink rdf:type="cas:lists">
+            <cas:lists cas:itemType="cas:aTargetLink">
                 <idRef>d:Folder-ACP-Very-Simple-Model-FMC-with-Requirements</idRef>
-            </cas:aTargetLink>
-        </cas:anEntity>
+            </cas:lists>
+        </cas:Root>
 
-        <cas:anEntity id="d:Folder-ACP-Very-Simple-Model-FMC-with-Requirements" rdf:type="cas:Outline">
+        <cas:Outline id="d:Folder-ACP-Very-Simple-Model-FMC-with-Requirements" cas:itemType="cas:anEntity">
             <dcterms:modified>2026-01-17T22:38:20.041Z</dcterms:modified>
             <dcterms:title>Very Simple Model (FMC) with Requirements</dcterms:title>
-            <cas:aTargetLink rdf:type="cas:lists">
+            <cas:lists cas:itemType="cas:aTargetLink">
                 <idRef>d:Folder-Introduction</idRef>
-            </cas:aTargetLink>
-            <cas:aTargetLink rdf:type="cas:lists">
                 <idRef>d:Folder-Requirements</idRef>
-            </cas:aTargetLink>
-            <cas:aTargetLink rdf:type="cas:lists">
                 <idRef>d:Folder-SystemModel</idRef>
-            </cas:aTargetLink>
-            <cas:aTargetLink rdf:type="cas:lists">
                 <idRef>d:FolderGlossary-10875487071</idRef>
-            </cas:aTargetLink>
-        </cas:anEntity>
+            </cas:lists>
+        </cas:Outline>
 
-        <cas:anEntity id="d:Folder-Introduction" rdf:type="cas:Outline">
+        <cas:Outline id="d:Folder-Introduction" cas:itemType="cas:anEntity">
             <dcterms:modified>2025-02-07T08:32:00+01:00</dcterms:modified>
             <dcterms:title>Introduction</dcterms:title>
             <dcterms:description>
@@ -649,42 +637,36 @@
                     This is a minimal showcase for a model with model-elements and related requirements. It covers pretty much all characteristics neeeded in such cases (including 'statements on statements'), so that transformations and expressive power of other data formats can be evaluated.
                 </p>
             </dcterms:description>
-        </cas:anEntity>
+        </cas:Outline>
 
-        <cas:anEntity id="d:Folder-Requirements" rdf:type="cas:Outline">
+        <cas:Outline id="d:Folder-Requirements" cas:itemType="cas:anEntity">
             <dcterms:modified>2020-03-06T08:32:00+01:00</dcterms:modified>
             <dcterms:title>Requirements</dcterms:title>
-            <cas:aTargetLink rdf:type="cas:lists">
+            <cas:lists cas:itemType="cas:aTargetLink">
                 <idRef>d:Req-1a8016e2872e78ecadc50feddc00029b</idRef>
-            </cas:aTargetLink>
-            <cas:aTargetLink rdf:type="cas:lists">
                 <idRef>d:Req-0Z7916e2872e78ecadc50feddc00918a</idRef>
-            </cas:aTargetLink>
-            <cas:aTargetLink rdf:type="cas:lists">
                 <idRef>d:Req-2b9016e2872e78ecadc50feddc0013Ac</idRef>
-            </cas:aTargetLink>
-        </cas:anEntity>
+            </cas:lists>
+        </cas:Outline>
 
-        <cas:anEntity id="d:Folder-SystemModel" rdf:type="cas:Outline">
+        <cas:Outline id="d:Folder-SystemModel" cas:itemType="cas:anEntity">
             <dcterms:modified>2020-03-06T08:32:00+01:00</dcterms:modified>
             <dcterms:title>System Model</dcterms:title>
-            <cas:aTargetLink rdf:type="cas:lists">
+            <cas:lists cas:itemType="cas:aTargetLink">
                 <idRef>d:Diagram-aec0df7900010000017001eaf53e8876</idRef>
-            </cas:aTargetLink>
-        </cas:anEntity>
+            </cas:lists>
+        </cas:Outline>
 
-        <cas:anEntity id="d:FolderGlossary-10875487071" rdf:type="cas:Outline">
+        <cas:Outline id="d:FolderGlossary-10875487071" cas:itemType="cas:anEntity">
             <dcterms:modified>2026-01-17T22:38:13.953Z</dcterms:modified>
             <dcterms:title>Model Elements (Glossary)</dcterms:title>
             <cas:aProperty rdf:type="cas:Category">
                 <value>SpecIF:Glossary</value>
             </cas:aProperty>
-            <cas:aTargetLink rdf:type="cas:lists">
+            <cas:lists cas:itemType="cas:aTargetLink">
                 <idRef>d:MEl-50fbfe8f0029b1a8016ea86245a9d83a</idRef>
-            </cas:aTargetLink>
-            <cas:aTargetLink rdf:type="cas:lists">
                 <idRef>d:MEl-50feddc00029b1a8016e2872e78ecadc</idRef>
-            </cas:aTargetLink>
-        </cas:anEntity>
+            </cas:lists>
+        </cas:Outline>
     </graph>
 </cas:Package>
