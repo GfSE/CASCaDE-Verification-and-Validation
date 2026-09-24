@@ -29,6 +29,6 @@ CASCaRA (formerly CASCaDE) is a project to standardize such collaboration in ter
 Interested organizations are asked to fill an initial Form to characterize and describe the use case. 
 The intention is to understand the the case and to evaluate the operability of the case with regard to the actual CASCaRA development status.
 
-[CASCaRA-WP5_UseCaseForm (Markdown)](https://github.com/GfSE/CASCaDE-Verification-and-Validation/blob/main/CASCaRA-WP5_UseCaseForm_260527.md) _(preferred format)_
-[CASCaRA-WP5_UseCaseForm (DOCX)](https://github.com/GfSE/CASCaDE-Verification-and-Validation/blob/main/CASCaRA-WP5_UseCaseForm_260527.docx)
+- [CASCaRA-WP5_UseCaseForm (Markdown)](https://github.com/GfSE/CASCaDE-Verification-and-Validation/blob/main/CASCaRA-WP5_UseCaseForm_260527.md) _(preferred format)_
+- [CASCaRA-WP5_UseCaseForm (DOCX)](https://github.com/GfSE/CASCaDE-Verification-and-Validation/blob/main/CASCaRA-WP5_UseCaseForm_260527.docx)
 
