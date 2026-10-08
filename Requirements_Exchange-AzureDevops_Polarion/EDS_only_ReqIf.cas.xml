@@ -1,0 +1,2230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cas:aPackage
+	xmlns:cas="http://product-information-graph.org"
+	xmlns:csc="http://omg.org/CASCaRA/cas/"
+	xmlns:dcterms="http://purl.org/dc/terms/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:reqif="http://www.omg.org/spec/ReqIF/20110401/reqif.xsd"
+	xmlns:sh="http://www.w3.org/ns/shacl#"
+	xmlns:skos="https://www.w3.org/TR/skos-reference/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+	xmlns:d="http://product-information-graph.org/example#"
+	xmlns:o="http://product-information-graph.org/ontology/application#"
+	id="d:_155cb446-9e65-45f7-b8e9-6b60298e5e4b"
+	rdf:type="cas:Package">
+
+	<dcterms:title>EDS_only_ReqIf</dcterms:title>
+	<dcterms:description>Created with Polarion ReqIF Roundtrip</dcterms:description>
+	<dcterms:modified>2026-10-05T15:25:06.285+02:00</dcterms:modified>
+
+	<graph>
+	<cas:Entity id="cas:Organizer" rdf:type="owl:Class">
+		<cas:specializes>cas:Entity</cas:specializes>
+		<dcterms:title>Organizer</dcterms:title>
+		<skos:definition>A class for organizing model-elements. An example is a list of requirements or a diagram using a certain notation.</skos:definition>
+	</cas:Entity>
+	<cas:Entity id="cas:Root" rdf:type="owl:Class">
+		<cas:specializes>cas:Organizer</cas:specializes>
+		<dcterms:title>Root</dcterms:title>
+		<skos:definition>A subclass of cas:Organizer serving as a root for trees and tables.</skos:definition>
+		<cas:enumeratedTargetLink>
+			<idRef>cas:lists</idRef>
+		</cas:enumeratedTargetLink>
+	</cas:Entity>
+	<cas:Link id="cas:linksTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>to target</dcterms:title>
+		<skos:definition>Connects the target of a reified relationship or an organizer.</skos:definition>
+		<cas:enumeratedEndpoint>
+			<idRef>cas:Entity</idRef>
+			<idRef>cas:Relationship</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="cas:lists" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:linksTarget</cas:specializes>
+		<dcterms:title>lists</dcterms:title>
+		<skos:definition>Lists an entity, a relationship or a subordinated organizer.</skos:definition>
+		<cas:enumeratedEndpoint>
+			<idRef>cas:Entity</idRef>
+			<idRef>cas:Relationship</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Property id="o:rmf-ad54dce3-c2a7-4a24-9a96-0cc0a560d2dc" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ChapterName</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.470+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-8afb406f-305b-472a-9955-93a986769534" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignCreatedBy</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.470+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-67d815a3-3b74-47a8-92c1-5b76b927724a" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignCreatedOn</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.470+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:dateTime"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-61466577-5a32-4e7e-a5f2-0be6554e2669" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignID</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.470+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-e7b90ba1-19c4-43ff-9997-32d1c27b067e" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.Text</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.470+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-4fcf7ba7-87cc-4c47-84a5-3169a0979d4c" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ChapterName</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-5470a859-d95a-4a64-ab79-5e4a3a5eef3b" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignCreatedBy</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-f19db2f9-7c12-4e0a-afc1-e46441ca0541" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignCreatedOn</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:dateTime"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-3624e9c8-fd34-415e-86cf-aae848cc497f" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignID</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-2a57783d-3892-4681-8217-bceeb8230133" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.Text</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-dedd1018-6aeb-4dc8-80f1-74a5dcdfe263" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ChapterName</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-8f625b5e-dae3-4fb1-ae95-aa377f8ac8ed" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignCreatedBy</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-1aa8406c-ba51-4449-9953-d5e4368a2b25" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignCreatedOn</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:dateTime"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-35e65570-d667-4779-aaee-682b86772c6d" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignID</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-e72921f2-129a-4b4e-9ca6-2a6830960502" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.Text</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-b8c6d2f6-cabb-4d58-9e05-5c5f0cccbb99" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ChapterName</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-75e0e23e-6fbd-4222-92a3-40830a6f2889" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignCreatedBy</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-dd66954a-47f4-4796-8b25-9cff5d748d1e" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignCreatedOn</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:dateTime"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-118f7401-e936-4bed-be3f-687988dd3113" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignID</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-0251a4b7-4316-4b0f-bb33-7954936f0c63" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.Text</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-94f392eb-54d4-41a1-9e66-bc419c5d4ae0" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ChapterName</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-db2dcb34-cdff-458f-b9a5-a8c702a291f7" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignCreatedBy</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-7cf77378-7c4c-4057-a410-f27c4962c1aa" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignCreatedOn</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:dateTime"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-eebd8fd6-e4df-4850-af5a-b40ca7ec09b6" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignID</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-431d0621-1ea4-47ba-94b4-161c25d6f214" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.Text</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-e985babd-113b-47ba-b158-4ea9277e0dca" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ChapterName</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-a5971681-4c1c-4e8f-b482-353c1f15cac1" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignCreatedBy</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-169c5d32-9024-412e-abf8-82b55e3a2429" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignCreatedOn</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:dateTime"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-f7cd63e4-9ac3-4e0c-b04d-63d756300cce" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignID</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-e33b78c6-d2ab-4563-bada-f4e27e6afacf" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.Text</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-7ad96028-45ff-4352-8e0b-9d23f7476fb4" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ChapterName</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-52008b8c-5391-4be1-9928-b120f6ef801b" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignCreatedBy</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-bf75c843-c7f9-4da4-b337-b71606e78483" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignCreatedOn</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.472+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:dateTime"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-0ac605e5-0cbd-44c7-92e6-855ffdb27513" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignID</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.472+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-e8751254-d1c2-460b-ba3b-185f132ffaf3" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.Text</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.472+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Entity id="o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1" rdf:type="owl:Class">
+		<cas:specializes>cas:Entity</cas:specializes>
+		<dcterms:title>Heading</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.470+02:00</dcterms:modified>
+		<cas:enumeratedProperty>
+			<idRef>o:rmf-ad54dce3-c2a7-4a24-9a96-0cc0a560d2dc</idRef>
+			<idRef>o:rmf-8afb406f-305b-472a-9955-93a986769534</idRef>
+			<idRef>o:rmf-67d815a3-3b74-47a8-92c1-5b76b927724a</idRef>
+			<idRef>o:rmf-61466577-5a32-4e7e-a5f2-0be6554e2669</idRef>
+			<idRef>o:rmf-e7b90ba1-19c4-43ff-9997-32d1c27b067e</idRef>
+		</cas:enumeratedProperty>
+	</cas:Entity>
+	<cas:Entity id="o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216" rdf:type="owl:Class">
+		<cas:specializes>cas:Entity</cas:specializes>
+		<dcterms:title>Content</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<cas:enumeratedProperty>
+			<idRef>o:rmf-4fcf7ba7-87cc-4c47-84a5-3169a0979d4c</idRef>
+			<idRef>o:rmf-5470a859-d95a-4a64-ab79-5e4a3a5eef3b</idRef>
+			<idRef>o:rmf-f19db2f9-7c12-4e0a-afc1-e46441ca0541</idRef>
+			<idRef>o:rmf-3624e9c8-fd34-415e-86cf-aae848cc497f</idRef>
+			<idRef>o:rmf-2a57783d-3892-4681-8217-bceeb8230133</idRef>
+		</cas:enumeratedProperty>
+	</cas:Entity>
+	<cas:Entity id="o:_09e62475-6d75-47f9-b537-7eac766748d5" rdf:type="owl:Class">
+		<cas:specializes>cas:Entity</cas:specializes>
+		<dcterms:title>Document Reference</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<cas:enumeratedProperty>
+			<idRef>o:rmf-dedd1018-6aeb-4dc8-80f1-74a5dcdfe263</idRef>
+			<idRef>o:rmf-8f625b5e-dae3-4fb1-ae95-aa377f8ac8ed</idRef>
+			<idRef>o:rmf-1aa8406c-ba51-4449-9953-d5e4368a2b25</idRef>
+			<idRef>o:rmf-35e65570-d667-4779-aaee-682b86772c6d</idRef>
+			<idRef>o:rmf-e72921f2-129a-4b4e-9ca6-2a6830960502</idRef>
+		</cas:enumeratedProperty>
+	</cas:Entity>
+	<cas:Entity id="o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba" rdf:type="owl:Class">
+		<cas:specializes>cas:Entity</cas:specializes>
+		<dcterms:title>Requirement</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<cas:enumeratedProperty>
+			<idRef>o:rmf-b8c6d2f6-cabb-4d58-9e05-5c5f0cccbb99</idRef>
+			<idRef>o:rmf-75e0e23e-6fbd-4222-92a3-40830a6f2889</idRef>
+			<idRef>o:rmf-dd66954a-47f4-4796-8b25-9cff5d748d1e</idRef>
+			<idRef>o:rmf-118f7401-e936-4bed-be3f-687988dd3113</idRef>
+			<idRef>o:rmf-0251a4b7-4316-4b0f-bb33-7954936f0c63</idRef>
+		</cas:enumeratedProperty>
+	</cas:Entity>
+	<cas:Entity id="o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc" rdf:type="owl:Class">
+		<cas:specializes>cas:Entity</cas:specializes>
+		<dcterms:title>Use Environment</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<cas:enumeratedProperty>
+			<idRef>o:rmf-94f392eb-54d4-41a1-9e66-bc419c5d4ae0</idRef>
+			<idRef>o:rmf-db2dcb34-cdff-458f-b9a5-a8c702a291f7</idRef>
+			<idRef>o:rmf-7cf77378-7c4c-4057-a410-f27c4962c1aa</idRef>
+			<idRef>o:rmf-eebd8fd6-e4df-4850-af5a-b40ca7ec09b6</idRef>
+			<idRef>o:rmf-431d0621-1ea4-47ba-94b4-161c25d6f214</idRef>
+		</cas:enumeratedProperty>
+	</cas:Entity>
+	<cas:Entity id="o:_7462a293-5580-4dd4-b482-a55486879b26" rdf:type="owl:Class">
+		<cas:specializes>cas:Entity</cas:specializes>
+		<dcterms:title>Use Scenario</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<cas:enumeratedProperty>
+			<idRef>o:rmf-e985babd-113b-47ba-b158-4ea9277e0dca</idRef>
+			<idRef>o:rmf-a5971681-4c1c-4e8f-b482-353c1f15cac1</idRef>
+			<idRef>o:rmf-169c5d32-9024-412e-abf8-82b55e3a2429</idRef>
+			<idRef>o:rmf-f7cd63e4-9ac3-4e0c-b04d-63d756300cce</idRef>
+			<idRef>o:rmf-e33b78c6-d2ab-4563-bada-f4e27e6afacf</idRef>
+		</cas:enumeratedProperty>
+	</cas:Entity>
+	<cas:Entity id="o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c" rdf:type="owl:Class">
+		<cas:specializes>cas:Entity</cas:specializes>
+		<dcterms:title>User Profile</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.471+02:00</dcterms:modified>
+		<cas:enumeratedProperty>
+			<idRef>o:rmf-7ad96028-45ff-4352-8e0b-9d23f7476fb4</idRef>
+			<idRef>o:rmf-52008b8c-5391-4be1-9928-b120f6ef801b</idRef>
+			<idRef>o:rmf-bf75c843-c7f9-4da4-b337-b71606e78483</idRef>
+			<idRef>o:rmf-0ac605e5-0cbd-44c7-92e6-855ffdb27513</idRef>
+			<idRef>o:rmf-e8751254-d1c2-460b-ba3b-185f132ffaf3</idRef>
+		</cas:enumeratedProperty>
+	</cas:Entity>
+	<cas:Entity id="o:polarion_live_document" rdf:type="owl:Class">
+		<cas:specializes>cas:Root</cas:specializes>
+		<dcterms:title>Polarion Live Document</dcterms:title>
+		<dcterms:modified>2013-01-01T00:00:00Z</dcterms:modified>
+	</cas:Entity>
+	<cas:Relationship id="o:rmf-9d89c52b-20e1-4fcd-a7a9-5f1fdd2426c6" rdf:type="owl:Class">
+		<dcterms:title>belongs to</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T15:24:59.470+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-9d89c52b-20e1-4fcd-a7a9-5f1fdd2426c6-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>belongs to to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-9d89c52b-20e1-4fcd-a7a9-5f1fdd2426c6-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>belongs to to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-101360c9-f19b-4451-98f1-cae0337dd12e" rdf:type="owl:Class">
+		<dcterms:title>conflicts with</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T15:24:59.470+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-101360c9-f19b-4451-98f1-cae0337dd12e-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>conflicts with to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-101360c9-f19b-4451-98f1-cae0337dd12e-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>conflicts with to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-d610093f-99e9-4f89-a0ba-4ed2e8eb65a5" rdf:type="owl:Class">
+		<dcterms:title>has Harm</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T15:24:59.470+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-d610093f-99e9-4f89-a0ba-4ed2e8eb65a5-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>has Harm to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-d610093f-99e9-4f89-a0ba-4ed2e8eb65a5-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>has Harm to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-8ac0ac53-0b44-4d18-9a56-b2bd983af1fb" rdf:type="owl:Class">
+		<dcterms:title>has Hazard</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T15:24:59.470+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-8ac0ac53-0b44-4d18-9a56-b2bd983af1fb-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>has Hazard to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-8ac0ac53-0b44-4d18-9a56-b2bd983af1fb-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>has Hazard to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-9b1ead02-bb98-4468-b917-adf67da390a7" rdf:type="owl:Class">
+		<dcterms:title>has Hazardous Situation</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T15:24:59.470+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-9b1ead02-bb98-4468-b917-adf67da390a7-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>has Hazardous Situation to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-9b1ead02-bb98-4468-b917-adf67da390a7-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>has Hazardous Situation to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-a5d4fd38-a990-4911-b1ff-e8b84c1196c4" rdf:type="owl:Class">
+		<dcterms:title>has Risk</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T15:24:59.470+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-a5d4fd38-a990-4911-b1ff-e8b84c1196c4-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>has Risk to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-a5d4fd38-a990-4911-b1ff-e8b84c1196c4-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>has Risk to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-b82ae85b-4981-40a8-b1ac-f2e405035f34" rdf:type="owl:Class">
+		<dcterms:title>has Use Error</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T15:24:59.470+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-b82ae85b-4981-40a8-b1ac-f2e405035f34-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>has Use Error to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-b82ae85b-4981-40a8-b1ac-f2e405035f34-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>has Use Error to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-176234ff-53ab-4919-95e5-3b0ad076b4b3" rdf:type="owl:Class">
+		<dcterms:title>has residual Harm</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T15:24:59.470+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-176234ff-53ab-4919-95e5-3b0ad076b4b3-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>has residual Harm to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-176234ff-53ab-4919-95e5-3b0ad076b4b3-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>has residual Harm to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-6439a4aa-fee7-4f15-afd2-650a77768be5" rdf:type="owl:Class">
+		<dcterms:title>implements</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T15:24:59.470+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-6439a4aa-fee7-4f15-afd2-650a77768be5-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>implements  to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-6439a4aa-fee7-4f15-afd2-650a77768be5-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>implements  to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-6d81df8d-89f9-44fe-a3ae-1333d411162b" rdf:type="owl:Class">
+		<dcterms:title>is branched from</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T15:24:59.470+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-6d81df8d-89f9-44fe-a3ae-1333d411162b-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>is branched from to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-6d81df8d-89f9-44fe-a3ae-1333d411162b-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>is branched from to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-fca3036a-0c21-4a01-a41a-6e41843813c4" rdf:type="owl:Class">
+		<dcterms:title>is derived from</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T15:24:59.470+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-fca3036a-0c21-4a01-a41a-6e41843813c4-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>is derived from to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-fca3036a-0c21-4a01-a41a-6e41843813c4-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>is derived from to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-1d761f09-1d59-44c1-ac28-de03b6efe1af" rdf:type="owl:Class">
+		<dcterms:title>is impacted by</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T15:24:59.470+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-1d761f09-1d59-44c1-ac28-de03b6efe1af-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>is impacted by to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-1d761f09-1d59-44c1-ac28-de03b6efe1af-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>is impacted by to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-dde54a74-fc10-4e0a-acb8-ba47c1e65da1" rdf:type="owl:Class">
+		<dcterms:title>is introduced by</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T15:24:59.470+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-dde54a74-fc10-4e0a-acb8-ba47c1e65da1-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>is introduced by  to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-dde54a74-fc10-4e0a-acb8-ba47c1e65da1-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>is introduced by  to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-f35562d2-c947-4c70-a8f1-4435fda34231" rdf:type="owl:Class">
+		<dcterms:title>mitigates</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T15:24:59.470+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-f35562d2-c947-4c70-a8f1-4435fda34231-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>mitigates to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-f35562d2-c947-4c70-a8f1-4435fda34231-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>mitigates to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-0daca86f-2b83-490e-a874-2225d14d45c4" rdf:type="owl:Class">
+		<dcterms:title>refines</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T15:24:59.470+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-0daca86f-2b83-490e-a874-2225d14d45c4-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>refines to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-0daca86f-2b83-490e-a874-2225d14d45c4-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>refines to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-390a0e24-6e0c-4717-a7be-c33c5a926dc0" rdf:type="owl:Class">
+		<dcterms:title>relates to</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T15:24:59.470+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-390a0e24-6e0c-4717-a7be-c33c5a926dc0-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>relates to to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-390a0e24-6e0c-4717-a7be-c33c5a926dc0-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>relates to to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-6dd83790-78e5-4cb6-910e-9c217dd6598f" rdf:type="owl:Class">
+		<dcterms:title>requires</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T15:24:59.470+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-6dd83790-78e5-4cb6-910e-9c217dd6598f-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>requires to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-6dd83790-78e5-4cb6-910e-9c217dd6598f-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>requires to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-846b1050-42b9-4343-967b-2b9d57dfa15a" rdf:type="owl:Class">
+		<dcterms:title>triggered by</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T15:24:59.470+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-846b1050-42b9-4343-967b-2b9d57dfa15a-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>triggered by to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-846b1050-42b9-4343-967b-2b9d57dfa15a-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>triggered by to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-3b63ec65-6619-4da4-b486-0192a0d54938" rdf:type="owl:Class">
+		<dcterms:title>validates</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T15:24:59.470+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-3b63ec65-6619-4da4-b486-0192a0d54938-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>validates to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-3b63ec65-6619-4da4-b486-0192a0d54938-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>validates to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-c189bb56-94b3-482c-bba3-df3492a46e08" rdf:type="owl:Class">
+		<dcterms:title>verifies</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T15:24:59.470+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-c189bb56-94b3-482c-bba3-df3492a46e08-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>verifies to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-c189bb56-94b3-482c-bba3-df3492a46e08-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>verifies to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1</idRef>
+			<idRef>o:_cd1f9f2c-902b-4ed3-be20-f5b62cdda216</idRef>
+			<idRef>o:_09e62475-6d75-47f9-b537-7eac766748d5</idRef>
+			<idRef>o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba</idRef>
+			<idRef>o:_9504f7fc-e17b-41ab-82c9-1e0c898c89dc</idRef>
+			<idRef>o:_7462a293-5580-4dd4-b482-a55486879b26</idRef>
+			<idRef>o:_77c8f5be-6162-4866-a065-c1cb33a4ce2c</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:anEntity id="d:_7fe4bd8f-666b-4d6d-8e61-8c53797774f8" rdf:type="o:polarion_live_document">
+		<dcterms:title>Specification with id=_7fe4bd8f-666b-4d6d-8e61-8c53797774f8</dcterms:title>
+		<dcterms:modified>2026-10-05T15:24:59.469+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-87283339-c910-4c8c-8739-d6eefa1fea51" rdf:type="o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1">
+		<dcterms:title>Introduction</dcterms:title>
+		<dcterms:modified>2026-10-05T15:25:03.132+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-10a4c4d5-0f09-420c-b53c-ef211ff930f1" rdf:type="o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1">
+		<dcterms:title>Requirements</dcterms:title>
+		<dcterms:modified>2026-10-05T15:25:03.133+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-905c857c-def9-4840-a0dc-082c0f67af7a" rdf:type="o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1">
+		<dcterms:title>Open issues</dcterms:title>
+		<dcterms:modified>2026-10-05T15:25:03.133+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-98a72486-f51e-40b6-ae7d-9b902a27cdac" rdf:type="o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1">
+		<dcterms:title>Annex</dcterms:title>
+		<dcterms:modified>2026-10-05T15:25:03.133+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-0fbabc5f-f7cd-4785-8ea5-47e08a0f0ac3" rdf:type="o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1">
+		<dcterms:title>Purpose of this document</dcterms:title>
+		<dcterms:modified>2026-10-05T15:25:03.133+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-66f0d185-d767-4f98-ba22-1528fe0e3eb7" rdf:type="o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1">
+		<dcterms:title>Scope</dcterms:title>
+		<dcterms:modified>2026-10-05T15:25:03.134+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-1142c38c-650e-4372-9552-0e2015aa2dbb" rdf:type="o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1">
+		<dcterms:title>Definitions, acronyms and abbreviations</dcterms:title>
+		<dcterms:modified>2026-10-05T15:25:03.134+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-ab68c9a6-43eb-4b3b-a3e6-1e081b40ae06" rdf:type="o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1">
+		<dcterms:title>References</dcterms:title>
+		<dcterms:modified>2026-10-05T15:25:03.134+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-9215b558-3179-433a-8ca9-a335f389ecef" rdf:type="o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1">
+		<dcterms:title>Definitions</dcterms:title>
+		<dcterms:modified>2026-10-05T15:25:03.134+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-62904245-c772-42d8-b9db-8a280c09cd35" rdf:type="o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1">
+		<dcterms:title>Acronyms and abbreviations</dcterms:title>
+		<dcterms:modified>2026-10-05T15:25:03.134+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-2ae8b125-28a3-4f61-9ce7-db9d27caa9ba" rdf:type="o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1">
+		<dcterms:title>Design Specification for CASCaRA Implementation</dcterms:title>
+		<dcterms:modified>2026-10-05T15:25:03.134+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-f6aa7dd6-0d69-4d10-aafe-60ea36e7afe3" rdf:type="o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba">
+		<dcterms:title>EDS-001 – Product Repository Database</dcterms:title>
+		<dcterms:description>EDS-001 – Product Repository Database Implementation of a relational database for product information storage. Satisfies: EPH-001</dcterms:description>
+		<dcterms:modified>2026-10-05T15:25:05.838+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-bce38636-f10d-470d-95b6-ec64d4046811" rdf:type="o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba">
+		<dcterms:title>EDS-002 – Role-Based Access Control Module</dcterms:title>
+		<dcterms:description>EDS-002 – Role-Based Access Control Module Implementation of role and permission management. Satisfies: EPH-002</dcterms:description>
+		<dcterms:modified>2026-10-05T15:25:05.840+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-4157fff0-1eb8-4322-a175-734e67cac40d" rdf:type="o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba">
+		<dcterms:title>EDS-003 – Audit Logging Service</dcterms:title>
+		<dcterms:description>EDS-003 – Audit Logging Service Implementation of audit trail recording. Satisfies: EPH-003, EPH-006</dcterms:description>
+		<dcterms:modified>2026-10-05T15:25:05.836+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-9648a754-0473-43b0-9cfd-44518f570dab" rdf:type="o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba">
+		<dcterms:title>EDS-004 – Variant Management Engine</dcterms:title>
+		<dcterms:description>EDS-004 – Variant Management Engine Implementation of configurable product structures. Satisfies: EPH-004, EPH-009</dcterms:description>
+		<dcterms:modified>2026-10-05T15:25:05.842+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-59759763-9847-4e67-a92b-8d77f78cb096" rdf:type="o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba">
+		<dcterms:title>EDS-005 – Workflow Engine</dcterms:title>
+		<dcterms:description>EDS-005 – Workflow Engine Implementation of review and approval workflows. Satisfies: EPH-005, EPH-010</dcterms:description>
+		<dcterms:modified>2026-10-05T15:25:03.162+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-e018f5bc-f78e-4eec-833e-4cc1cebfc5e2" rdf:type="o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba">
+		<dcterms:title>EDS-006 – Reporting Service</dcterms:title>
+		<dcterms:description>EDS-006 – Reporting Service Implementation of compliance and audit report generation. Satisfies: EPH-006</dcterms:description>
+		<dcterms:modified>2026-10-05T15:25:05.843+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-c8d0c797-a053-436d-809d-95ebc8b4330b" rdf:type="o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba">
+		<dcterms:title>EDS-007 – API Gateway</dcterms:title>
+		<dcterms:description>EDS-007 – API Gateway Implementation of standardized interface services. Satisfies: EPH-007</dcterms:description>
+		<dcterms:modified>2026-10-05T15:25:05.845+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-79a7510b-917c-448f-9b10-db7343a5684c" rdf:type="o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba">
+		<dcterms:title>EDS-008 – Synchronization Service</dcterms:title>
+		<dcterms:description>EDS-008 – Synchronization Service Implementation of data synchronization mechanisms. Satisfies: EPH-007, EPH-008</dcterms:description>
+		<dcterms:modified>2026-10-05T15:25:05.835+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-812b3f93-0338-40b8-9446-49e5cf3aa829" rdf:type="o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba">
+		<dcterms:title>EDS-009 – Validation Engine</dcterms:title>
+		<dcterms:description>EDS-009 – Validation Engine Implementation of consistency and configuration validation rules. Satisfies: EPH-008, EPH-009</dcterms:description>
+		<dcterms:modified>2026-10-05T15:25:05.830+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-f5dc4bcf-3e46-42b5-a03e-66e29b99fabb" rdf:type="o:_c8bd0dac-d872-4f50-8994-ebed5d8417ba">
+		<dcterms:title>EDS-010 – Electronic Signature Component</dcterms:title>
+		<dcterms:description>EDS-010 – Electronic Signature Component Implementation of electronic approval records. Satisfies: EPH-010</dcterms:description>
+		<dcterms:modified>2026-10-05T15:25:05.832+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-97fa65ed-d009-49ac-bf94-33dedeaca751" rdf:type="o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1">
+		<dcterms:title>Abbreviations and Definitions</dcterms:title>
+		<dcterms:modified>2026-10-05T15:25:03.171+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-e647af20-6902-4871-9e23-d6cb8a689f31" rdf:type="o:_55e68dea-3875-4f2c-8350-0bbc5e15b3e1">
+		<dcterms:title>Table of Requirements</dcterms:title>
+		<dcterms:modified>2026-10-05T15:25:03.172+02:00</dcterms:modified>
+	</cas:anEntity>
+	</graph>
+</cas:aPackage>
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<cas:aPackage
+	xmlns:cas="http://product-information-graph.org"
+	xmlns:csc="http://omg.org/CASCaRA/cas/"
+	xmlns:dcterms="http://purl.org/dc/terms/"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:reqif="http://www.omg.org/spec/ReqIF/20110401/reqif.xsd"
+	xmlns:sh="http://www.w3.org/ns/shacl#"
+	xmlns:skos="https://www.w3.org/TR/skos-reference/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema#"
+	xmlns:d="http://product-information-graph.org/example#"
+	xmlns:o="http://product-information-graph.org/ontology/application#"
+	id="d:_b120a60f-4eb0-48c4-8ec3-8fb982599243"
+	rdf:type="cas:Package">
+
+	<dcterms:title>EPH_only_ReqIF</dcterms:title>
+	<dcterms:description>Created with Polarion ReqIF Roundtrip</dcterms:description>
+	<dcterms:modified>2026-10-05T16:04:19.803+02:00</dcterms:modified>
+
+	<graph>
+	<cas:Entity id="cas:Organizer" rdf:type="owl:Class">
+		<cas:specializes>cas:Entity</cas:specializes>
+		<dcterms:title>Organizer</dcterms:title>
+		<skos:definition>A class for organizing model-elements. An example is a list of requirements or a diagram using a certain notation.</skos:definition>
+	</cas:Entity>
+	<cas:Entity id="cas:Root" rdf:type="owl:Class">
+		<cas:specializes>cas:Organizer</cas:specializes>
+		<dcterms:title>Root</dcterms:title>
+		<skos:definition>A subclass of cas:Organizer serving as a root for trees and tables.</skos:definition>
+		<cas:enumeratedTargetLink>
+			<idRef>cas:lists</idRef>
+		</cas:enumeratedTargetLink>
+	</cas:Entity>
+	<cas:Link id="cas:linksTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>to target</dcterms:title>
+		<skos:definition>Connects the target of a reified relationship or an organizer.</skos:definition>
+		<cas:enumeratedEndpoint>
+			<idRef>cas:Entity</idRef>
+			<idRef>cas:Relationship</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="cas:lists" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:linksTarget</cas:specializes>
+		<dcterms:title>lists</dcterms:title>
+		<skos:definition>Lists an entity, a relationship or a subordinated organizer.</skos:definition>
+		<cas:enumeratedEndpoint>
+			<idRef>cas:Entity</idRef>
+			<idRef>cas:Relationship</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Property id="o:rmf-5e29aa9f-f972-4b44-8c9e-deec730460fb" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ChapterName</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.574+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-21a1bd58-df86-47c2-9a2e-07b264b2a3aa" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignCreatedBy</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.574+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-07719917-4754-43ef-9bd3-fb2ff333f109" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignCreatedOn</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.574+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:dateTime"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-8131f966-e2c3-4d07-b93d-99d2178e53f9" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignID</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.574+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-7f6cc4bb-aed0-4c02-ba57-4b71be860102" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.Text</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.574+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-c3617830-7c6a-4649-90d5-f9afacdc7416" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ChapterName</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.574+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-0a50775a-1591-42f8-9ffb-324b259a9793" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignCreatedBy</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.575+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-ceb65af7-66d7-4730-9a24-27f278b75405" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignCreatedOn</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.575+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:dateTime"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-74b997c0-1be1-44b7-8cd0-b1426a72b81f" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignID</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.575+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-c1c8fc9c-b091-4c4d-a561-cb82af612dda" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.Text</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.575+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-08f3b9f1-bb2d-4225-9c7f-ddaf181ebb99" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ChapterName</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.576+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-986571ac-7701-41b2-a70d-7327e06af436" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignCreatedBy</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.576+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-2ab0a3d1-7cc1-4af2-8a75-5840223c1393" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignCreatedOn</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.576+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:dateTime"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-2a2113a5-9356-4db1-a3b4-2a680e561517" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignID</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.576+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-0c6441aa-e20a-40a3-a6fd-00d71a38ff52" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.Text</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.576+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-75451c9e-bbac-4ba8-82bb-b961d2b182ea" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ChapterName</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.576+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-b8a30cf1-4f0c-40db-9dc5-f2774cad0cb4" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignCreatedBy</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.576+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-414ac9c9-dffa-4167-8e70-f5f55a1aa46d" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignCreatedOn</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.576+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:dateTime"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-9bab635a-011f-4b5f-9c2e-296b3426f213" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignID</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.576+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-395580f5-f8c6-4924-9d41-5ee5713f2d45" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.Text</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.576+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-a4f61458-7118-40cc-be1e-271a9e618f5a" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ChapterName</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.576+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-47b3a2be-8e66-45ac-8ac9-409517c738b9" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignCreatedBy</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.576+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-1965cfeb-5a97-4b1e-9c50-4a71ed4cab95" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignCreatedOn</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.576+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:dateTime"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-50b6b3e7-a492-4c27-bcf9-160f6ef334cd" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignID</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.576+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-bfb250bf-ba47-4315-85f0-bea7909899f1" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.Text</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.576+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-30a8e4b8-4b85-49ec-8d25-c7e6294c9a6a" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ChapterName</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.576+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-a4f9cc63-29e1-4ebe-9891-2f6c5ec1c3f9" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignCreatedBy</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.576+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-9b70358a-5777-4c04-b5de-e1c79fd64b42" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignCreatedOn</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.576+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:dateTime"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-1bdf2c96-a5ac-43f2-b021-c416e21fbc7f" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignID</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.576+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-6140abbb-9ce6-4f53-834a-88408fbfcef7" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.Text</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.576+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-528a0b08-880b-439b-b416-6355bb056ff1" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ChapterName</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.576+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-747893b2-65c5-4b8c-a074-6c2963afbe85" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignCreatedBy</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.576+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-d1a6c6c7-9882-4947-8b05-afd527fcb528" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignCreatedOn</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.576+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:dateTime"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-c9ea5441-a7c8-4583-a2f7-b8223186ea1d" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.ForeignID</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.576+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Property id="o:rmf-9bee28a7-963d-4297-a358-2e478b8bbf6d" rdf:type="owl:DatatypeProperty">
+		<dcterms:title>ReqIF.Text</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.576+02:00</dcterms:modified>
+		<xs:simpleType>
+			<xs:restriction base="xs:string"/>
+		</xs:simpleType>
+	</cas:Property>
+	<cas:Entity id="o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04" rdf:type="owl:Class">
+		<cas:specializes>cas:Entity</cas:specializes>
+		<dcterms:title>Heading</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.574+02:00</dcterms:modified>
+		<cas:enumeratedProperty>
+			<idRef>o:rmf-5e29aa9f-f972-4b44-8c9e-deec730460fb</idRef>
+			<idRef>o:rmf-21a1bd58-df86-47c2-9a2e-07b264b2a3aa</idRef>
+			<idRef>o:rmf-07719917-4754-43ef-9bd3-fb2ff333f109</idRef>
+			<idRef>o:rmf-8131f966-e2c3-4d07-b93d-99d2178e53f9</idRef>
+			<idRef>o:rmf-7f6cc4bb-aed0-4c02-ba57-4b71be860102</idRef>
+		</cas:enumeratedProperty>
+	</cas:Entity>
+	<cas:Entity id="o:_a9bd5c05-20a6-4eae-9451-f73295d83597" rdf:type="owl:Class">
+		<cas:specializes>cas:Entity</cas:specializes>
+		<dcterms:title>Content</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.574+02:00</dcterms:modified>
+		<cas:enumeratedProperty>
+			<idRef>o:rmf-c3617830-7c6a-4649-90d5-f9afacdc7416</idRef>
+			<idRef>o:rmf-0a50775a-1591-42f8-9ffb-324b259a9793</idRef>
+			<idRef>o:rmf-ceb65af7-66d7-4730-9a24-27f278b75405</idRef>
+			<idRef>o:rmf-74b997c0-1be1-44b7-8cd0-b1426a72b81f</idRef>
+			<idRef>o:rmf-c1c8fc9c-b091-4c4d-a561-cb82af612dda</idRef>
+		</cas:enumeratedProperty>
+	</cas:Entity>
+	<cas:Entity id="o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d" rdf:type="owl:Class">
+		<cas:specializes>cas:Entity</cas:specializes>
+		<dcterms:title>Document Reference</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.575+02:00</dcterms:modified>
+		<cas:enumeratedProperty>
+			<idRef>o:rmf-08f3b9f1-bb2d-4225-9c7f-ddaf181ebb99</idRef>
+			<idRef>o:rmf-986571ac-7701-41b2-a70d-7327e06af436</idRef>
+			<idRef>o:rmf-2ab0a3d1-7cc1-4af2-8a75-5840223c1393</idRef>
+			<idRef>o:rmf-2a2113a5-9356-4db1-a3b4-2a680e561517</idRef>
+			<idRef>o:rmf-0c6441aa-e20a-40a3-a6fd-00d71a38ff52</idRef>
+		</cas:enumeratedProperty>
+	</cas:Entity>
+	<cas:Entity id="o:_cc9c5a93-e3b4-452e-9441-2718dc629578" rdf:type="owl:Class">
+		<cas:specializes>cas:Entity</cas:specializes>
+		<dcterms:title>Requirement</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.576+02:00</dcterms:modified>
+		<cas:enumeratedProperty>
+			<idRef>o:rmf-75451c9e-bbac-4ba8-82bb-b961d2b182ea</idRef>
+			<idRef>o:rmf-b8a30cf1-4f0c-40db-9dc5-f2774cad0cb4</idRef>
+			<idRef>o:rmf-414ac9c9-dffa-4167-8e70-f5f55a1aa46d</idRef>
+			<idRef>o:rmf-9bab635a-011f-4b5f-9c2e-296b3426f213</idRef>
+			<idRef>o:rmf-395580f5-f8c6-4924-9d41-5ee5713f2d45</idRef>
+		</cas:enumeratedProperty>
+	</cas:Entity>
+	<cas:Entity id="o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24" rdf:type="owl:Class">
+		<cas:specializes>cas:Entity</cas:specializes>
+		<dcterms:title>Use Environment</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.576+02:00</dcterms:modified>
+		<cas:enumeratedProperty>
+			<idRef>o:rmf-a4f61458-7118-40cc-be1e-271a9e618f5a</idRef>
+			<idRef>o:rmf-47b3a2be-8e66-45ac-8ac9-409517c738b9</idRef>
+			<idRef>o:rmf-1965cfeb-5a97-4b1e-9c50-4a71ed4cab95</idRef>
+			<idRef>o:rmf-50b6b3e7-a492-4c27-bcf9-160f6ef334cd</idRef>
+			<idRef>o:rmf-bfb250bf-ba47-4315-85f0-bea7909899f1</idRef>
+		</cas:enumeratedProperty>
+	</cas:Entity>
+	<cas:Entity id="o:_32b061d2-885f-418c-9733-ee8f1fb491c9" rdf:type="owl:Class">
+		<cas:specializes>cas:Entity</cas:specializes>
+		<dcterms:title>Use Scenario</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.576+02:00</dcterms:modified>
+		<cas:enumeratedProperty>
+			<idRef>o:rmf-30a8e4b8-4b85-49ec-8d25-c7e6294c9a6a</idRef>
+			<idRef>o:rmf-a4f9cc63-29e1-4ebe-9891-2f6c5ec1c3f9</idRef>
+			<idRef>o:rmf-9b70358a-5777-4c04-b5de-e1c79fd64b42</idRef>
+			<idRef>o:rmf-1bdf2c96-a5ac-43f2-b021-c416e21fbc7f</idRef>
+			<idRef>o:rmf-6140abbb-9ce6-4f53-834a-88408fbfcef7</idRef>
+		</cas:enumeratedProperty>
+	</cas:Entity>
+	<cas:Entity id="o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9" rdf:type="owl:Class">
+		<cas:specializes>cas:Entity</cas:specializes>
+		<dcterms:title>User Profile</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.576+02:00</dcterms:modified>
+		<cas:enumeratedProperty>
+			<idRef>o:rmf-528a0b08-880b-439b-b416-6355bb056ff1</idRef>
+			<idRef>o:rmf-747893b2-65c5-4b8c-a074-6c2963afbe85</idRef>
+			<idRef>o:rmf-d1a6c6c7-9882-4947-8b05-afd527fcb528</idRef>
+			<idRef>o:rmf-c9ea5441-a7c8-4583-a2f7-b8223186ea1d</idRef>
+			<idRef>o:rmf-9bee28a7-963d-4297-a358-2e478b8bbf6d</idRef>
+		</cas:enumeratedProperty>
+	</cas:Entity>
+	<cas:Entity id="o:polarion_live_document" rdf:type="owl:Class">
+		<cas:specializes>cas:Root</cas:specializes>
+		<dcterms:title>Polarion Live Document</dcterms:title>
+		<dcterms:modified>2013-01-01T00:00:00Z</dcterms:modified>
+	</cas:Entity>
+	<cas:Relationship id="o:rmf-fb629db1-1e38-4fa2-af0a-ef279205417e" rdf:type="owl:Class">
+		<dcterms:title>belongs to</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T16:04:15.574+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-fb629db1-1e38-4fa2-af0a-ef279205417e-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>belongs to to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-fb629db1-1e38-4fa2-af0a-ef279205417e-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>belongs to to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-654e0546-36a9-4ec6-87b8-e07ef5373b81" rdf:type="owl:Class">
+		<dcterms:title>conflicts with</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T16:04:15.574+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-654e0546-36a9-4ec6-87b8-e07ef5373b81-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>conflicts with to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-654e0546-36a9-4ec6-87b8-e07ef5373b81-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>conflicts with to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-84fbf63c-f62c-4c55-a55d-dee5288b243d" rdf:type="owl:Class">
+		<dcterms:title>has Harm</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T16:04:15.574+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-84fbf63c-f62c-4c55-a55d-dee5288b243d-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>has Harm to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-84fbf63c-f62c-4c55-a55d-dee5288b243d-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>has Harm to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-02b0cc0c-3f19-490d-b42e-068369c0170c" rdf:type="owl:Class">
+		<dcterms:title>has Hazard</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T16:04:15.574+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-02b0cc0c-3f19-490d-b42e-068369c0170c-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>has Hazard to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-02b0cc0c-3f19-490d-b42e-068369c0170c-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>has Hazard to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-bc84a512-cb1a-4c4a-94fc-44a107acbc99" rdf:type="owl:Class">
+		<dcterms:title>has Hazardous Situation</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T16:04:15.574+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-bc84a512-cb1a-4c4a-94fc-44a107acbc99-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>has Hazardous Situation to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-bc84a512-cb1a-4c4a-94fc-44a107acbc99-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>has Hazardous Situation to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-e0edc061-ee3a-4180-8078-51d2d7b85415" rdf:type="owl:Class">
+		<dcterms:title>has Risk</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T16:04:15.574+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-e0edc061-ee3a-4180-8078-51d2d7b85415-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>has Risk to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-e0edc061-ee3a-4180-8078-51d2d7b85415-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>has Risk to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-e63a58ae-8cde-49c3-8b91-74e95d5b7ddc" rdf:type="owl:Class">
+		<dcterms:title>has Use Error</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T16:04:15.574+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-e63a58ae-8cde-49c3-8b91-74e95d5b7ddc-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>has Use Error to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-e63a58ae-8cde-49c3-8b91-74e95d5b7ddc-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>has Use Error to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-cc6ce5f8-b78b-43b0-adbb-f57d7b2107bb" rdf:type="owl:Class">
+		<dcterms:title>has residual Harm</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T16:04:15.574+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-cc6ce5f8-b78b-43b0-adbb-f57d7b2107bb-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>has residual Harm to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-cc6ce5f8-b78b-43b0-adbb-f57d7b2107bb-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>has residual Harm to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-890f0329-ed0e-4c96-8dba-97578e9f826c" rdf:type="owl:Class">
+		<dcterms:title>implements</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T16:04:15.574+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-890f0329-ed0e-4c96-8dba-97578e9f826c-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>implements  to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-890f0329-ed0e-4c96-8dba-97578e9f826c-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>implements  to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-1ca20a88-d01d-4702-adb7-67b9320d3b7f" rdf:type="owl:Class">
+		<dcterms:title>is branched from</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T16:04:15.574+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-1ca20a88-d01d-4702-adb7-67b9320d3b7f-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>is branched from to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-1ca20a88-d01d-4702-adb7-67b9320d3b7f-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>is branched from to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-23e76a76-4892-4960-b174-c6cfc8696a9b" rdf:type="owl:Class">
+		<dcterms:title>is derived from</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T16:04:15.574+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-23e76a76-4892-4960-b174-c6cfc8696a9b-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>is derived from to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-23e76a76-4892-4960-b174-c6cfc8696a9b-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>is derived from to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-cccd058a-373c-464d-94ad-e5433b3d15d3" rdf:type="owl:Class">
+		<dcterms:title>is impacted by</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T16:04:15.574+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-cccd058a-373c-464d-94ad-e5433b3d15d3-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>is impacted by to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-cccd058a-373c-464d-94ad-e5433b3d15d3-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>is impacted by to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-7d956319-6f58-4a40-b184-c1d83629a288" rdf:type="owl:Class">
+		<dcterms:title>is introduced by</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T16:04:15.574+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-7d956319-6f58-4a40-b184-c1d83629a288-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>is introduced by  to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-7d956319-6f58-4a40-b184-c1d83629a288-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>is introduced by  to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-1fb5921a-f366-4258-aaab-ac01589f5b7b" rdf:type="owl:Class">
+		<dcterms:title>mitigates</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T16:04:15.574+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-1fb5921a-f366-4258-aaab-ac01589f5b7b-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>mitigates to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-1fb5921a-f366-4258-aaab-ac01589f5b7b-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>mitigates to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-58e881e4-00e1-490c-9290-82c075c76f83" rdf:type="owl:Class">
+		<dcterms:title>refines</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T16:04:15.574+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-58e881e4-00e1-490c-9290-82c075c76f83-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>refines to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-58e881e4-00e1-490c-9290-82c075c76f83-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>refines to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-d7204433-4170-4d18-b136-bc8866125bd6" rdf:type="owl:Class">
+		<dcterms:title>relates to</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T16:04:15.574+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-d7204433-4170-4d18-b136-bc8866125bd6-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>relates to to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-d7204433-4170-4d18-b136-bc8866125bd6-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>relates to to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-92dcac83-65da-4f1b-8af6-aabc68e2c753" rdf:type="owl:Class">
+		<dcterms:title>requires</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T16:04:15.574+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-92dcac83-65da-4f1b-8af6-aabc68e2c753-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>requires to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-92dcac83-65da-4f1b-8af6-aabc68e2c753-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>requires to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-65313d32-2fd6-4484-bfa6-8b20ce7b0696" rdf:type="owl:Class">
+		<dcterms:title>triggered by</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T16:04:15.574+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-65313d32-2fd6-4484-bfa6-8b20ce7b0696-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>triggered by to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-65313d32-2fd6-4484-bfa6-8b20ce7b0696-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>triggered by to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-37e683ee-f896-449f-bb03-656933cd6e0d" rdf:type="owl:Class">
+		<dcterms:title>validates</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T16:04:15.574+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-37e683ee-f896-449f-bb03-656933cd6e0d-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>validates to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-37e683ee-f896-449f-bb03-656933cd6e0d-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>validates to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Relationship id="o:rmf-210800dc-54b0-4d02-880f-0d30d0d5c8e1" rdf:type="owl:Class">
+		<dcterms:title>verifies</dcterms:title>
+		<cas:specializes>cas:Relationship</cas:specializes>
+		<dcterms:modified>2026-10-05T16:04:15.574+02:00</dcterms:modified>
+	</cas:Relationship>
+	<cas:Link id="o:rmf-210800dc-54b0-4d02-880f-0d30d0d5c8e1-toSource" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>verifies to Source</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:Link id="o:rmf-210800dc-54b0-4d02-880f-0d30d0d5c8e1-toTarget" rdf:type="owl:ObjectProperty">
+		<cas:specializes>cas:Link</cas:specializes>
+		<dcterms:title>verifies to Target</dcterms:title>
+		<cas:enumeratedEndpoint>
+			<idRef>o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04</idRef>
+			<idRef>o:_a9bd5c05-20a6-4eae-9451-f73295d83597</idRef>
+			<idRef>o:_fd6ba46c-db3c-4fae-8c73-bf5e5bb60f0d</idRef>
+			<idRef>o:_cc9c5a93-e3b4-452e-9441-2718dc629578</idRef>
+			<idRef>o:_ce66aff5-45da-4cc9-a128-5f4f0f39ee24</idRef>
+			<idRef>o:_32b061d2-885f-418c-9733-ee8f1fb491c9</idRef>
+			<idRef>o:_c5ad0a1e-e44e-4b4f-9ec1-28b0355902e9</idRef>
+		</cas:enumeratedEndpoint>
+	</cas:Link>
+	<cas:anEntity id="d:_e47a0753-5944-4e00-9ada-4d0f5e4d5c25" rdf:type="o:polarion_live_document">
+		<dcterms:title>Specification with id=_e47a0753-5944-4e00-9ada-4d0f5e4d5c25</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:15.574+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-50011310-1d5a-415d-9d09-b51d616addcf" rdf:type="o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04">
+		<dcterms:title>Introduction</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:18.336+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-51e78415-6d3d-4ed6-956e-b2c7d2e52077" rdf:type="o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04">
+		<dcterms:title>Requirements</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:18.336+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-ac7d6484-3109-4063-8943-729ae3a4ed50" rdf:type="o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04">
+		<dcterms:title>Open issues</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:18.336+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-2e9b3fb1-dafe-4a45-9be6-d2cb30203321" rdf:type="o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04">
+		<dcterms:title>Annex</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:18.336+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-4a3d0428-13ca-4058-a219-d4deea393e81" rdf:type="o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04">
+		<dcterms:title>Purpose of this document</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:18.336+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-0f004952-d738-4ed7-8be2-844db0d51002" rdf:type="o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04">
+		<dcterms:title>Scope</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:18.336+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-068112c3-a64b-4e20-9eaa-50d711e81433" rdf:type="o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04">
+		<dcterms:title>Definitions, acronyms and abbreviations</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:18.336+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-65090b2c-b715-46fe-8fae-5acd6da07db3" rdf:type="o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04">
+		<dcterms:title>References</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:18.337+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-530abf87-73fd-492c-b6fb-183cfef84f26" rdf:type="o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04">
+		<dcterms:title>Definitions</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:18.337+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-ab5b733a-974f-41d6-ae89-fa8a9ead6584" rdf:type="o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04">
+		<dcterms:title>Acronyms and abbreviations</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:18.337+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-f1ebd6cf-e383-425d-b100-b6ebf926ec01" rdf:type="o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04">
+		<dcterms:title>Generic Product Requirements for CASCaRA Implementation</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:18.337+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-eae25453-2562-4fa7-9e17-3402794bb96c" rdf:type="o:_cc9c5a93-e3b4-452e-9441-2718dc629578">
+		<dcterms:title>Product Repository</dcterms:title>
+		<dcterms:description>Product RepositoryThe system shall store all product information in a centralized repository. Trace: ELH-001</dcterms:description>
+		<dcterms:modified>2026-10-05T16:04:18.339+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-d92a6d90-f56a-4dc8-b0ee-196ea208ff9b" rdf:type="o:_cc9c5a93-e3b4-452e-9441-2718dc629578">
+		<dcterms:title>User and Role Management</dcterms:title>
+		<dcterms:description>User and Role ManagementThe system shall manage authorization through configurable user roles. Trace: ELH-002, EGA-002</dcterms:description>
+		<dcterms:modified>2026-10-05T16:04:18.341+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-8ee1d1fb-28b8-46f3-ad2d-c3e600414b14" rdf:type="o:_cc9c5a93-e3b4-452e-9441-2718dc629578">
+		<dcterms:title>Audit Trail</dcterms:title>
+		<dcterms:description>Audit TrailThe system shall log all modifications including user, timestamp, and modification reason. Trace: ELH-003, EGA-002</dcterms:description>
+		<dcterms:modified>2026-10-05T16:04:18.343+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-416717f2-8f85-4f42-8134-ce698f476788" rdf:type="o:_cc9c5a93-e3b4-452e-9441-2718dc629578">
+		<dcterms:title>Product Variant Model</dcterms:title>
+		<dcterms:description>Product Variant ModelThe system shall maintain configurable product structures and variant definitions. Trace: ELH-004, EGA-003</dcterms:description>
+		<dcterms:modified>2026-10-05T16:04:18.345+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-3f34f1fb-c8ed-4427-8643-2c3370ba4743" rdf:type="o:_cc9c5a93-e3b4-452e-9441-2718dc629578">
+		<dcterms:title>Approval Workflow Management</dcterms:title>
+		<dcterms:description>Approval Workflow ManagementThe system shall support configurable review and approval workflows. Trace: ELH-005, EGA-004</dcterms:description>
+		<dcterms:modified>2026-10-05T16:04:18.346+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-46fc90d7-b688-4e52-96ba-0d6e18cfe7ab" rdf:type="o:_cc9c5a93-e3b4-452e-9441-2718dc629578">
+		<dcterms:title>Compliance Reporting</dcterms:title>
+		<dcterms:description>Compliance ReportingThe system shall generate audit and compliance reports. Trace: ELH-006, EGA-005</dcterms:description>
+		<dcterms:modified>2026-10-05T16:04:18.347+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-4f6adc01-8664-4624-8025-e68ccd9f6a15" rdf:type="o:_cc9c5a93-e3b4-452e-9441-2718dc629578">
+		<dcterms:title>Data Exchange Interfaces</dcterms:title>
+		<dcterms:description>Data Exchange InterfacesThe system shall provide interfaces for product information exchange. Trace: ELH-007, ELH-008, EGA-001, EGA-006</dcterms:description>
+		<dcterms:modified>2026-10-05T16:04:18.349+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-b6c5b9bd-c170-4d22-9a9d-102c1827e8ff" rdf:type="o:_cc9c5a93-e3b4-452e-9441-2718dc629578">
+		<dcterms:title>Consistency Verification</dcterms:title>
+		<dcterms:description>Consistency VerificationThe system shall automatically detect inconsistencies between information sources. Trace: ELH-007, EGA-001</dcterms:description>
+		<dcterms:modified>2026-10-05T16:04:18.350+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-6fad099b-0b3f-49ea-acc6-96d9a41c63e5" rdf:type="o:_cc9c5a93-e3b4-452e-9441-2718dc629578">
+		<dcterms:title>Configuration Validation</dcterms:title>
+		<dcterms:description>Configuration ValidationThe system shall validate product configurations against predefined rules. Trace: ELH-004, EGA-003</dcterms:description>
+		<dcterms:modified>2026-10-05T16:04:18.351+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-bf948690-29ef-48f9-aca5-5b5cd84e2227" rdf:type="o:_cc9c5a93-e3b4-452e-9441-2718dc629578">
+		<dcterms:title>Electronic Approval Records</dcterms:title>
+		<dcterms:description>Electronic Approval RecordsThe system shall maintain electronically signed approval records. Trace: ELH-005, ELH-006, EGA-004</dcterms:description>
+		<dcterms:modified>2026-10-05T16:04:18.353+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-34e288ca-1645-4cee-a084-e435059c0e53" rdf:type="o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04">
+		<dcterms:title>Abbreviations and Definitions</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:18.353+02:00</dcterms:modified>
+	</cas:anEntity>
+	<cas:anEntity id="d:rmf-09a8a702-ce02-4977-8353-8ee986710ad2" rdf:type="o:_ff8b6298-bb3c-4729-9b38-bf20dbacbe04">
+		<dcterms:title>Table of Requirements</dcterms:title>
+		<dcterms:modified>2026-10-05T16:04:18.353+02:00</dcterms:modified>
+	</cas:anEntity>
+	</graph>
+</cas:aPackage>
