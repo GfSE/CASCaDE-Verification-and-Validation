@@ -35,21 +35,10 @@ Output data is in the CS 25 data in ttl format. To achieve this, two steps were 
 
    
 Two steps were needed, since the original file was too big for the CASCaRA Validation Tool.
-A further note is that it was needed to slightly modify the original reqIF file (see the bolded parts below)
-
-*<ATTRIBUTE-DEFINITION-STRING DESC="Label" IS-EDITABLE="true" IDENTIFIER="idLabel1" LAST-CHANGE="2026-02-24T16:47:22.4536074+01:00" LONG-NAME="**Group**Label">
-                     <TYPE>
-                        <DATATYPE-DEFINITION-STRING-REF>datatype2</DATATYPE-DEFINITION-STRING-REF>
-                     </TYPE>
-                  </ATTRIBUTE-DEFINITION-STRING>
-<ATTRIBUTE-DEFINITION-STRING DESC="Title" IS-EDITABLE="true" IDENTIFIER="idTitle1" LAST-CHANGE="2026-02-24T16:47:22.4536074+01:00" LONG-NAME="**Group**Title">
-                     <TYPE>
-                        <DATATYPE-DEFINITION-STRING-REF>datatype2</DATATYPE-DEFINITION-STRING-REF>
-                     </TYPE>
-                  </ATTRIBUTE-DEFINITION-STRING>*
-                  
+A further note is that it was needed to slightly modify the original reqIF file (from LONG-NAME="Title" to LONG-NAME="GroupTitle" and from LONG-NAME="Label" to LONG-NAME="GroupLabel")                  
 
 Intermediate step -> |Requirements|SpecIF Tool|jasonLD|
+
 Output -> |Requirements|CASCaRA Validation Tool|Turtle|
 
 ## Validation
