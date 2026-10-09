@@ -32,10 +32,12 @@ Input -> |Requirements|ReqIF|Dassault Aviation tool|
 Output data is in the CS 25 data in ttl format. To achieve this, two steps were taken:
 1. The input CS 25 reqIF file was transformed into cas.jasonld format using Tool https://specif.de/apps-alpha/edit was used.
 2. CS 25 cas.jasonld file was transformed into ttl file using CASCaRA Validation Tool https://app-alpha.product-information-graph.org/interfaces
+
+   
 Two steps were needed, since the original file was too big for the CASCaRA Validation Tool.
 A further note is that it was needed to slightly modify the original reqIF file (see the bolded parts below)
 
-<ATTRIBUTE-DEFINITION-STRING DESC="Label" IS-EDITABLE="true" IDENTIFIER="idLabel1" LAST-CHANGE="2026-02-24T16:47:22.4536074+01:00" LONG-NAME="**Group**Label">
+*<ATTRIBUTE-DEFINITION-STRING DESC="Label" IS-EDITABLE="true" IDENTIFIER="idLabel1" LAST-CHANGE="2026-02-24T16:47:22.4536074+01:00" LONG-NAME="**Group**Label">
                      <TYPE>
                         <DATATYPE-DEFINITION-STRING-REF>datatype2</DATATYPE-DEFINITION-STRING-REF>
                      </TYPE>
@@ -44,7 +46,7 @@ A further note is that it was needed to slightly modify the original reqIF file 
                      <TYPE>
                         <DATATYPE-DEFINITION-STRING-REF>datatype2</DATATYPE-DEFINITION-STRING-REF>
                      </TYPE>
-                  </ATTRIBUTE-DEFINITION-STRING>
+                  </ATTRIBUTE-DEFINITION-STRING>*
                   
 
 Intermediate step -> |Requirements|SpecIF Tool|jasonLD|
