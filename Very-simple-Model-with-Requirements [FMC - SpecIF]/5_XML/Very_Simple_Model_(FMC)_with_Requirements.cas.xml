@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cas:aPackage
-	xmlns:o="https://product-information-graph.org/v0.2/ontology#"
-	xmlns:d="https://product-information-graph.org/examples/09_Very-Simple-Model-FMC-with-Requirements.specif.zip#"
-	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-	xmlns:owl="http://www.w3.org/2002/07/owl#"
-	xmlns:skos="https://www.w3.org/TR/skos-reference/"
-	xmlns:sh="http://www.w3.org/ns/shacl#"
-	xmlns:xs="http://www.w3.org/2001/XMLSchema#"
-	xmlns:dcterms="http://purl.org/dc/terms/"
 	xmlns:FMC="http://fmc-modeling.org#"
 	xmlns:IREB="https://cpre.ireb.org/en/downloads-and-resources/glossary#"
-	xmlns:oslc_rm="http://open-services.net/ns/rm#"
-	xmlns:cas="https://product-information-graph.org/v0.2/metamodel#"
 	xmlns:SpecIF="https://specif.de/v1.2/schema#"
+	xmlns:cas="https://product-information-graph.org/v0.2/metamodel#"
+	xmlns:d="https://product-information-graph.org/examples/09_Very-Simple-Model-FMC-with-Requirements.specif.zip#"
+	xmlns:dcterms="http://purl.org/dc/terms/"
+	xmlns:o="https://product-information-graph.org/v0.2/ontology#"
+	xmlns:oslc_rm="http://open-services.net/ns/rm#"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:sh="http://www.w3.org/ns/shacl#"
+	xmlns:skos="https://www.w3.org/TR/skos-reference/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema#"
 	id="d:ACP-Very-Simple-Model-FMC-with-Requirements"
 	rdf:type="cas:Package">
 
@@ -415,11 +415,11 @@
 	<cas:anEntity id="d:Diagram-aec0df7900010000017001eaf53e8876" rdf:type="cas:View">
 		<dcterms:title>IT-Integration: FiCo-Application and FiCo-Data</dcterms:title>
 		<dcterms:modified>2020-03-06T08:32:00+01:00</dcterms:modified>
-		<cas:aProperty rdf:type="cas:Diagram">
-			<value><p class="inline-label">Model Diagram:</p><p><object type="image/svg+xml" data="files_and_images/Very-Simple-Model-FMC.svg">Notation: FMC Block Diagram</object></p></value>
-		</cas:aProperty>
 		<cas:aProperty rdf:type="cas:Category">
 			<value>FMC Block Diagram</value>
+		</cas:aProperty>
+		<cas:aProperty rdf:type="cas:Diagram">
+			<value><p class="inline-label">Model Diagram:</p><p><object type="image/svg+xml" data="files_and_images/Very-Simple-Model-FMC.svg">Notation: FMC Block Diagram</object></p></value>
 		</cas:aProperty>
 		<cas:aTargetLink rdf:type="cas:shows">
 			<idRef>d:MEl-50fbfe8f0029b1a8016ea86245a9d83a</idRef>
