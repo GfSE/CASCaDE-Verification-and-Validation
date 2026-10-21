@@ -24,6 +24,16 @@ List of examples and test-data collected, so far:
 ... are publicly available examples and test-cases for collaboration in the product lifecycle. 
 CASCaRA (formerly CASCaDE) is a project to standardize such collaboration in terms of data format and ontology.
 
+List of actual supported customer Use cases
+
+|  Organization   |   Contact     |    Description / Title                             |  Status               |   Comment              |  Link             |
+|:--------------- | :------------:| :------------------------------------------------: |:--------------------: | :--------------------: | :----------------: |
+|  PSG Inc.       | Todd Kleber <br> Joe Marvin | UC1 – Tool Interoperability and Federated Model Integration |  in preparation  | |  https://github.com/GfSE/CASCaDE-Verification-and-Validation/tree/main/PSG/UC-1  |
+|  Collins      | Cecilia Tonelli | CS 25, Requirements  |  in preparation  | |  https://github.com/GfSE/CASCaDE-Verification-and-Validation/tree/main/EASA%20Concerto%20CS25%20%5BReqIF%5D  |
+|  Siemens <br> Healthineers      | Tom Werner | Bidirectional Synchronization of Requirements Between Azure DevOps and Polarion  |  in preparation  | |  https://github.com/GfSE/CASCaDE-Verification-and-Validation/pull/1/commits/5a1a728a778d69e33bd4e0f39a119ead21106e36  |
+|  NN      | NN |   |    |   |  |
+
+*[in preparartion]*
 
 #### Use Case Submission Process
 Interested organizations are asked to fill an initial form to characterize and describe the use case. 
