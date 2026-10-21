@@ -44,14 +44,32 @@ Output -> |Requirements|CASCaRA Validation Tool|Turtle|
 ## Validation
 
 *The submitted validation requirements shall give a first insight and can be précised after*
+To validate the output, following requirements must be met:
+1. REQ1: Data contained in the original reqIF file shall be also contained in the output ttl file 
+2. REQ2: Entity, Relations and Instance Names & IDs shall not be modified when refIF is transformed into ttl
+3. REQ3: No unnecessary information shall be added to the ttl file (e.g. repetitions) 
 
 ### Validation Criteria
 
 *Provide a short description of the validation criteria you like to apply.*
+ 1. REQ1:
+    a. Competency questions (CQs) shall be defined, to be as much as possible complete;
+    b. Answers to CQs shall be provided (independently from the ttl file generation)
+    b. CQs shall be executed and the answers shall be compared with the ones provided.
+2. REQ2: How to check this?
+3. REQ3: How to check this?
+
+Competency questions shall be written in regular English, trying to be univocal in the meaning and resolvable. Univocal, meaning it shall be granted that the questions can be interpreted in a unique way, independently from the reader. Resolvable, meaning that the answer to the questions shall be contained in the input file provided, and who writes the questions shall have in mind a way to infer the answer from it.
+Competency questions shall be written by someone knowing the original content (CS 25 available on the web).
+Once Competency Questions are defined, they shall be translated into SPARQL code. This can be done by someone being familiar with the names of the entities and relationships defined in the input reqIF file.
+
+As a first step, CQs can be just a few, and then added incrementally. 
 
 ### Validation Queries
 
 *List of SPARQL competency questions to check completeness and consistence (Can the relevant information be retrieved from the graph?).*
+CQ1: What are all the Requirements (or Interpretations), published in section X, subsection Y, that refer to a certain given Requirement/Interpretation?
+CQ2: Which are all the Requirements (or Interpretations) that have as applicability date (or entry into force date) a date before (or after) a certain given date?
 
 ### Validation Results
 
