@@ -1,18 +1,18 @@
 
-@prefix o: <https://product-information-graph.org/v0.2/ontology#> .
-@prefix d: <https://product-information-graph.org/examples/09_Very-Simple-Model-FMC-with-Requirements.specif.zip#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix skos: <https://www.w3.org/TR/skos-reference/> .
-@prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix xs: <http://www.w3.org/2001/XMLSchema#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix FMC: <http://fmc-modeling.org#> .
 @prefix IREB: <https://cpre.ireb.org/en/downloads-and-resources/glossary#> .
-@prefix oslc_rm: <http://open-services.net/ns/rm#> .
-@prefix cas: <https://product-information-graph.org/v0.2/metamodel#> .
 @prefix SpecIF: <https://specif.de/v1.2/schema#> .
+@prefix cas: <https://product-information-graph.org/v0.2/metamodel#> .
+@prefix d: <https://product-information-graph.org/examples/09_Very-Simple-Model-FMC-with-Requirements.specif.zip#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix o: <https://product-information-graph.org/v0.2/ontology#> .
+@prefix oslc_rm: <http://open-services.net/ns/rm#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <https://www.w3.org/TR/skos-reference/> .
+@prefix xs: <http://www.w3.org/2001/XMLSchema#> .
 @prefix dash: <http://datashapes.org/dash#> .
 
 d:ACP-Very-Simple-Model-FMC-with-Requirements_ontology
@@ -85,6 +85,39 @@ cas:Outline_shape
 	sh:targetClass cas:Outline ;
 	sh:or ( [ sh:path rdfs:label ; sh:minCount 1 ] [ sh:path rdfs:comment ; sh:minCount 1 ] ) .
 
+cas:Paragraph
+	a owl:Class ;
+	rdfs:subClassOf cas:Outline ;
+	rdfs:label "Paragraph"@en ,
+		"Textabsatz"@de ,
+		"Paragraphe"@fr ;
+	skos:definition "<p>A 'Paragraph' is an unspecified information in a document at any level.</p>"@en ,
+		"<p>Ein 'Textabschnitt' in einem Dokument auf beliebiger Ebene.</p>"@de ;
+	dcterms:modified "2023-07-16T09:30:25.850Z"^^xs:dateTime .
+
+cas:Paragraph_shape
+	a sh:NodeShape ;
+	sh:targetClass cas:Paragraph ;
+	sh:or ( [ sh:path rdfs:label ; sh:minCount 1 ] [ sh:path rdfs:comment ; sh:minCount 1 ] ) ;
+	sh:property cas:Diagram_shape .
+
+cas:View
+	a owl:Class ;
+	rdfs:subClassOf cas:Organizer ;
+	rdfs:label "View" ;
+	skos:definition "A PIG organizer class representing a diagram with certain model-elements for a given communication purpose." ;
+	dcterms:modified "2018-05-10T11:54:00+01:00"^^xs:dateTime ;
+	cas:icon "▣" .
+
+cas:View_shape
+	a sh:NodeShape ;
+	sh:targetClass cas:View ;
+	sh:or ( [ sh:path rdfs:label ; sh:minCount 1 ] [ sh:path rdfs:comment ; sh:minCount 1 ] ) ;
+	sh:property cas:Diagram_shape ;
+	sh:property cas:Category_shape ;
+	sh:property cas:shows_shape ;
+	sh:property cas:depicts_shape .
+
 cas:Table
 	a owl:Class ;
 	rdfs:subClassOf cas:Organizer ;
@@ -106,8 +139,7 @@ cas:Diagram
 cas:Diagram_shape
 	a sh:PropertyShape ;
 	sh:path cas:Diagram ;
-	sh:datatype xs:string ;
-	sh:minCount "0" .
+	sh:datatype xs:string .
 
 cas:Category
 	a owl:DatatypeProperty ;
@@ -241,53 +273,17 @@ SpecIF:Priority_shape
 	sh:path SpecIF:Priority ;
 	sh:class SpecIF:Priority-Enumeration .
 
-o:PC-Diagram-9792185554
+SpecIF:Stakeholder
 	a owl:DatatypeProperty ;
 	rdfs:subPropertyOf cas:Property ;
-	rdfs:label "cas:Diagram" ;
-	skos:definition "A diagram illustrating the resource or a link to a diagram." ;
-	cas:revision "1.1" ;
-	dcterms:modified "2026-02-12T22:05:14.551Z"^^xs:dateTime .
+	rdfs:label "Stakeholder"@en ,
+		"Interessenvertreter"@de ;
+	skos:definition "Enumerated values for the 'Priority' of the resource."@en .
 
-o:PC-Diagram-9792185554_shape
+SpecIF:Stakeholder_shape
 	a sh:PropertyShape ;
-	sh:path o:PC-Diagram-9792185554 ;
+	sh:path SpecIF:Stakeholder ;
 	sh:datatype xs:string .
-
-SpecIF:Paragraph
-	a owl:Class ;
-	rdfs:subClassOf cas:Entity ;
-	rdfs:label "Paragraph"@en ,
-		"Textabsatz"@de ,
-		"Paragraphe"@fr ;
-	skos:definition "<p>A 'Paragraph' is an unspecified information in a document at any level.</p>"@en ,
-		"<p>Ein 'Textabschnitt' in einem Dokument auf beliebiger Ebene.</p>"@de ;
-	cas:revision "1.1" ;
-	dcterms:modified "2023-07-16T09:30:25.850Z"^^xs:dateTime .
-
-SpecIF:Paragraph_shape
-	a sh:NodeShape ;
-	sh:targetClass SpecIF:Paragraph ;
-	sh:or ( [ sh:path rdfs:label ; sh:minCount 1 ] [ sh:path rdfs:comment ; sh:minCount 1 ] ) ;
-	sh:property cas:Diagram_shape ;
-	sh:property cas:Category_shape .
-
-cas:View
-	a owl:Class ;
-	rdfs:subClassOf cas:Organizer ;
-	rdfs:label "View" ;
-	skos:definition "A PIG organizer class representing a diagram with certain model-elements for a given communication purpose." ;
-	dcterms:modified "2018-05-10T11:54:00+01:00"^^xs:dateTime ;
-	cas:icon "▣" .
-
-cas:View_shape
-	a sh:NodeShape ;
-	sh:targetClass cas:View ;
-	sh:or ( [ sh:path rdfs:label ; sh:minCount 1 ] [ sh:path rdfs:comment ; sh:minCount 1 ] ) ;
-	sh:property cas:Diagram_shape ;
-	sh:property cas:Category_shape ;
-	sh:property cas:shows_shape ;
-	sh:property cas:depicts_shape .
 
 FMC:Actor
 	a owl:Class ;
@@ -359,23 +355,8 @@ IREB:Requirement_shape
 	a sh:NodeShape ;
 	sh:targetClass IREB:Requirement ;
 	sh:or ( [ sh:path rdfs:label ; sh:minCount 1 ] [ sh:path rdfs:comment ; sh:minCount 1 ] ) ;
+	sh:property SpecIF:Stakeholder_shape ;
 	sh:property SpecIF:Priority_shape .
-
-o:RC-Paragraph-9792185554
-	a owl:Class ;
-	rdfs:subClassOf cas:Entity ;
-	rdfs:label "SpecIF:Paragraph" ;
-	skos:definition "<p>A 'Paragraph' is an unspecified information in a document at any level.</p>"@en ,
-		"<p>Ein 'Textabschnitt' in einem Dokument auf beliebiger Ebene.</p>"@de ;
-	cas:revision "1.1" ;
-	dcterms:modified "2024-03-02T20:55:23.295Z"^^xs:dateTime .
-
-o:RC-Paragraph-9792185554_shape
-	a sh:NodeShape ;
-	sh:targetClass o:RC-Paragraph-9792185554 ;
-	sh:or ( [ sh:path rdfs:label ; sh:minCount 1 ] [ sh:path rdfs:comment ; sh:minCount 1 ] ) ;
-	sh:property o:PC-Diagram-9792185554_shape ;
-	sh:property cas:Category_shape .
 
 SpecIF:writes
 	a owl:Class ;
@@ -395,7 +376,7 @@ SpecIF:writes_shape
 SpecIF:writes-toSource
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf cas:linksSource ;
-	rdfs:label "SpecIF:writes to source" ;
+	rdfs:label "writes to source" ;
 	rdfs:comment "Connects the source of SpecIF:writes" ;
 	rdfs:range FMC:Actor .
 
@@ -407,7 +388,7 @@ SpecIF:writes-toSource_shape
 SpecIF:writes-toTarget
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf cas:linksTarget ;
-	rdfs:label "SpecIF:writes to target" ;
+	rdfs:label "writes to target" ;
 	rdfs:comment "Connects the target of SpecIF:writes" ;
 	rdfs:range FMC:State .
 
@@ -434,7 +415,7 @@ SpecIF:reads_shape
 SpecIF:reads-toSource
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf cas:linksSource ;
-	rdfs:label "SpecIF:reads to source" ;
+	rdfs:label "reads to source" ;
 	rdfs:comment "Connects the source of SpecIF:reads" ;
 	rdfs:range FMC:Actor .
 
@@ -446,7 +427,7 @@ SpecIF:reads-toSource_shape
 SpecIF:reads-toTarget
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf cas:linksTarget ;
-	rdfs:label "SpecIF:reads to target" ;
+	rdfs:label "reads to target" ;
 	rdfs:comment "Connects the target of SpecIF:reads" ;
 	rdfs:range FMC:State .
 
@@ -473,7 +454,7 @@ oslc_rm:satisfies_shape
 oslc_rm:satisfies-toSource
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf cas:linksSource ;
-	rdfs:label "oslc_rm:satisfies to source" ;
+	rdfs:label "satisfies to source" ;
 	rdfs:comment "Connects the source of oslc_rm:satisfies" ;
 	rdfs:range [ owl:unionOf ( FMC:Actor FMC:State ) ] .
 
@@ -485,7 +466,7 @@ oslc_rm:satisfies-toSource_shape
 oslc_rm:satisfies-toTarget
 	a owl:ObjectProperty ;
 	rdfs:subPropertyOf cas:linksTarget ;
-	rdfs:label "oslc_rm:satisfies to target" ;
+	rdfs:label "satisfies to target" ;
 	rdfs:comment "Connects the target of oslc_rm:satisfies" ;
 	rdfs:range IREB:Requirement .
 
@@ -499,6 +480,7 @@ d:Req-1a8016e2872e78ecadc50feddc00029b
 	rdfs:label "Data Volume" ;
 	rdfs:comment "<p>The data store MUST support a total volume up to 850 GB.</p>" ;
 	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
+	SpecIF:Stakeholder "Customer" ;
 	SpecIF:Priority SpecIF:priorityHigh .
 
 d:Req-0Z7916e2872e78ecadc50feddc00918a
@@ -506,6 +488,7 @@ d:Req-0Z7916e2872e78ecadc50feddc00918a
 	rdfs:label "Consistency" ;
 	rdfs:comment "<p>The data store MUST be consistent at all times.</p>" ;
 	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
+	SpecIF:Stakeholder "Customer" ;
 	SpecIF:Priority SpecIF:priorityHigh .
 
 d:Req-2b9016e2872e78ecadc50feddc0013Ac
@@ -513,14 +496,15 @@ d:Req-2b9016e2872e78ecadc50feddc0013Ac
 	rdfs:label "Response Time" ;
 	rdfs:comment "<p>The system SHOULD respond on user queries within 300 ms.</p>" ;
 	dcterms:modified "2020-10-17T10:00:00+01:00"^^xs:dateTime ;
+	SpecIF:Stakeholder "Customer" ;
 	SpecIF:Priority SpecIF:priorityMedium .
 
 d:Diagram-aec0df7900010000017001eaf53e8876
 	a cas:View ;
 	rdfs:label "IT-Integration: FiCo-Application and FiCo-Data" ;
 	dcterms:modified "2020-03-06T08:32:00+01:00"^^xs:dateTime ;
-	cas:Diagram "<p class=\"inline-label\">Model Diagram:</p><p><object type=\"image/svg+xml\" data=\"files_and_images/Very-Simple-Model-FMC.svg\">Notation: FMC Block Diagram</object></p>" ;
 	cas:Category "FMC Block Diagram" ;
+	cas:Diagram "<p class=\"inline-label\">Model Diagram:</p><p><object type=\"image/svg+xml\" data=\"files_and_images/Very-Simple-Model-FMC.svg\">Notation: FMC Block Diagram</object></p>" ;
 	cas:shows d:MEl-50fbfe8f0029b1a8016ea86245a9d83a ,
 		d:MEl-50feddc00029b1a8016e2872e78ecadc ,
 		d:SWri-50fbfe8f0029b1a8016ea86245a9d83a-50feddc00029b1a8016e2872e78ecadc ,
